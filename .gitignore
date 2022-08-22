@@ -1,0 +1,7 @@
+# ignore all PDF files
+*.pdf
+
+# ignore auxiliary files created by luaLaTeX or pdfLaTeX
+*.aux
+*.log
+*.out
