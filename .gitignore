@@ -5,3 +5,6 @@
 *.aux
 *.log
 *.out
+
+# ingnore auto/ cataloges created by Emacs
+auto/
