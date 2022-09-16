@@ -4,7 +4,14 @@
 # ignore auxiliary files created by luaLaTeX or pdfLaTeX
 *.aux
 *.log
+*.nav
 *.out
+*.snm
+*.toc
+*.vrb
+
+# ignore Emacs backup files
+*~
 
 # ingnore auto/ cataloges created by Emacs
 auto/
