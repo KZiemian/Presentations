@@ -1,0 +1,572 @@
+% Autor: Kamil Ziemian
+
+% --------------------------------------------------------------------
+% Podstawowe ustawienia Beamera i używane pakiety
+% --------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag} % Wykrywa przestarzałe i niewłaściwe
+% sposoby używania LaTeXa. Więcej jest w l2tabu English version.
+
+\documentclass{beamer}  % Klasa dokumentu
+\mode<presentation>  % Rodzaj tworzonych slajdów Beamera
+\usetheme{Warsaw}  % Temat graficzny
+
+\setbeamertemplate{headline}{}  % Usuwa nagłówek
+\setbeamersize{text margin left=3mm}  % Wielkość lewego marginesu
+\setbeamersize{text margin right=3mm}  % Wielkość prawego marginesu
+\setbeamertemplate{navigation symbols}{}  % Usuwa ikony nawigacji w prawym
+% dolnym rogu
+
+
+
+\usepackage[polish]{babel}  % Tłumaczy na polski teksty automatyczne LaTeXa
+% i pomaga z typografią.
+\usepackage[MeX]{polski}  % Polonizacja LaTeXa, bez niej będzie pracował
+% w języku angielskim.
+\usepackage[utf8]{inputenc}  % Włączenie kodowania UTF-8, co daje dostęp
+% do polskich znaków.
+\usepackage{lmodern}  % Wprowadza fonty Latin Modern.
+\usepackage[T1]{fontenc}  % Potrzebne do używania fontów Latin Modern.
+
+
+
+% ----------------------------
+% Pakiety napisane przez użytkownika.
+% Mają być w tym samym katalogu to ten plik .tex
+% ----------------------------
+\usepackage{latexshortcuts}
+
+
+
+% ----------------------------
+% Pakiet "hyperref"
+% Polecano by umieszczać go na końcu preambuły.
+% ----------------------------
+\usepackage{hyperref}  % Pozwala tworzyć hiperlinki i zamienia odwołania
+% do bibliografii na hiperlinki.
+
+
+
+
+
+% --------------------------------------------------------------------
+\title[]{Star Wars, mythology \\
+  and~psychoanalysis with a~thousand faces}
+\author{Kamil Ziemian} 
+
+% \\ \texttt{ziemniakzkosmosu@gmail.com}}
+
+% \institute{II rok, fizyka teoretyczna, studia magisterskie.}
+
+\date{12 May 2014}
+% --------------------------------------------------------------------
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+\maketitle
+
+
+% ##########
+\begin{frame}
+  \frametitle{Introduction}
+
+  % \begin{block}{}
+  %   Connections of Star Wars and mythology are generally known to
+  %   fans of this Universe.
+  % \end{block}
+
+  \begin{block}{I claim that is a connection between}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.7in, width=1.4in]{Star-Wars-1.jpg}
+      % \uncover<2>{
+      \includegraphics[height=1.7in, width=1.2in]{Sigmund-Freud.jpg}
+      \caption{\textbf{Star Wars}, Sigmund Freud (1856--1939)}
+      % }
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{Introduction}
+
+  \begin{block}{And this connection is\ldots}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.5in, width=2.3in]{Joseph-Campbell.jpg}
+      \caption{Joseph Campbell (1904--1987)}
+      American mythologist and psychoanalyst.
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{Introduction}
+
+  \begin{block}{Campbell's magnum opus}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.7in,
+      width=1.4in]{Hero-with-a-Thousand-Faces.jpg}
+      % \uncover<2>{
+      \includegraphics[height=1.7in,
+      width=1.2in]{Bohater-o-Tysiacu-Twarzy.jpg}
+
+      \caption{\textbf{The Hero with a Thousand Faces}}
+      % }
+      First published in United States in 1949 (picture on the
+      left). \\
+      On the right polish editon from 1997.
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{Introduction}
+
+  \begin{block}{But we need one more man in our story}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.7in, width=1.4in]{CGJ}
+      % \uncover<2>{
+      \includegraphics[height=1.7in, width=1.4in]{CGJ1}
+      \caption{Carl Gustav Jung (1875--1961)}
+      % }
+      The most important follower of Freud. Author of concepts:
+      collective unconscious and archetypes.
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of Campbell begins\ldots}
+
+  \begin{block}{The first words of the book}
+    "The truths contained in religious doctrines are after all
+    so~distorted and systematically disguised," writes Sigmund Freud,
+    "that the mass of humanity cannot recognize them as
+    truth." %The~case is similar to what happens when we tell a child that new-born babies are brought by the stork."
+    (Sigmund Freud~\emph{The future of an illusion}, trans. by James
+    Strachey) Page 9.
+  \end{block}
+
+  \begin{block}{Remark}
+    % \begin{itemize}
+    % \item
+    Numbers of pages refers to polish edition [2].
+    % \uncover<4>{
+    % \item Strok is:
+    %   \begin{figure}
+    %     \centering \includegraphics[height=0.8in,
+    %     width=1.0in]{Stroke}
+    %   \end{figure}}
+    % \end{itemize}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of Campbell begins\ldots}
+
+  \begin{block}{He continues}
+    "It is the purpose of the present book to uncover some of the
+    truths disguised for us under the figures of religion and
+    mythology by~bringing together a multitude of~not-too-difficult
+    examples and~letting the ancient meaning become apparent of
+    itself." Page 9.
+  \end{block}
+  \pause
+
+  \begin{block}{}
+    "The old teachers knew what they were saying. Once we have learned
+    to read again their symbolic language, it~requires no more than
+    the talent of an anthologist to let their teaching be heard.
+    But~first we must learn the grammar of the symbols, and~as a~key
+    to this mystery I know of no better modern tool than
+    psychoanalysis. Without regarding this as the last word on the
+    subject, one can nevertheless permit it to serve as~an~approach."
+    Page 9.
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The Monomyth}
+
+  \begin{block}{Prolouge: The Monomyth}
+    Name of this part of the book was taken from J. Joyce "Finnegan's
+    wake", on which Campbell previously worked. It consist of four
+    parts:
+    \begin{itemize}
+    \item[--] Myth and Dream,
+    \item[--] Tragedy and Comedy,
+    \item[--] The Hero and the God,
+    \item[--] The World Navel.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The Monomyth}
+
+  \begin{block}{}
+    Campbell starting from saying, in slightly mischievous way, that
+    whatever we:
+    \begin{itemize}
+    \item[--] hearing "mumbo jumbo of some red-eyed witch doctor
+      of~the~Congo",
+    \item[--] read sonnets of the mystic Lao-tse,
+    \item[--] work on argument of Aquinas,
+    \item[--] discover meaning of "a bizarre Eskimo fair' tale".
+    \end{itemize}
+    "it will be always the one, shape-shifting yet marvelously
+    constant story that we find, together with a challengingly
+    persistent suggestion of more remaining to be experienced than
+    will ever be known or told." Page 19.
+  \end{block}
+  \pause
+
+  \begin{block}{}
+    "It would not be too much to say that myth is the secret opening
+    through which the inexhaustible energies of the cosmos pour into
+    human cultural manifestation." Page 19.
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The Monomyth}
+
+  \begin{block}{But for the myths}
+    "Most remarkable of all, however, are the revelations that have
+    emerged from the mental clinic." Because based on it "Freud, Jung,
+    and their followers have demonstrated irrefutably that the logic,
+    the~heroes, and the deeds of myth survive into modern times." Page
+    20.
+  \end{block}
+  \pause
+
+  \begin{block}{}
+    "The latest incarnation of~Oedipus, the continued romance
+    of~Beauty and the Beast, stand this afternoon on the corner
+    of~Forty-second Street and fifth Avenue, waiting for the traffic
+    light to change." Page 20.
+  \end{block}
+
+  \begin{block}{I can only replay}
+    \begin{figure}
+      \centering \includegraphics[height=0.8in, width=1.0in]{Stroke}
+      \begin{captation}
+      \end{figure}}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of the Hero begins\ldots}
+
+  \begin{block}{}
+    "The unfortunate father is the first radical intrusion of another
+    order of reality into the beatitude of this earthly restatement
+    of~ the~excellence of the situation within the womb; he,
+    therefore, is~experienced primarily as an enemy." Page 21.
+  \end{block}
+  \pause
+
+  \begin{block}{I can't say more than this picture}
+    \begin{figure}
+      \centering \includegraphics[height=1.7in, width=2.2in]{IamYour1}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The Monomyth}
+
+  \begin{block}{}
+    "The unfortunate father is the first radical intrusion of another
+    order of reality into the beatitude of this earthly restatement
+    of~ the~excellence of the situation within the womb; he,
+    therefore, is~experienced primarily as an enemy." Page 21.
+  \end{block}
+  \pause
+
+  \begin{block}{I can't say more than this picture}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.7in, width=2.2in]{IamYour1}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The Monomyth}
+
+  \begin{block}{}
+    "What is difficult to leave, then, is~not~the womb but~the~phallus
+    - unless, indeed, the life-weariness has~already seized the~heart,
+    when it will be death that calls with the~promise of bliss that
+    formerly was the~lure of love. Full circle from the tomb of the
+    womb to~the~womb of the tomb, we come: an ambiguous, enigmatical
+    incursion into a world of solid matter that is soon to~melt from
+    us, like the substance of a dream." Pages 24 and 25.
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of the Hero begins\ldots}
+
+  \begin{block}{General strucutre of monomyth}
+    "The standard path of the~mythological adventure of the hero
+    is~a~magnification of the formula represented in the rites of
+    passage: separation - initiation - return: which might be named
+    the nuclear unit of the monomyth." Page 34.
+  \end{block}
+
+  \begin{block}{American context}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.7in, width=2.2in]{SWIa}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of the Hero begins\ldots}
+
+  \begin{block}{Departure. Part I. The call to adventure}
+    "A blunder - apparently the merest chance - reveals an unsuspected
+    world, and the individual is drawn into a relationship with forces
+    that are not rightly understood." Page 50.
+  \end{block}
+
+  \begin{block}{}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.5in, width=2.0in]{SWII}
+      \includegraphics[height=1.5in, width=2.0in]{SWIII}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of the Hero begins\ldots}
+
+  \begin{block}{Departure. Part I: The call to adventure}
+    "This first stage of the mythological journey—which we
+    havedesignated the "call to adventure" —signifies that destiny has
+    summoned the~hero and transferred his spiritual center of gravity
+    from within the pale of his society to a zone unknown." Page 54.
+  \end{block}
+
+  \begin{block}{}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.5in, width=2.0in]{SWIV}
+      \includegraphics[height=1.5in, width=2.0in]{SWV}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of the Hero begins\ldots}
+
+  \begin{block}{Departure. Part II: Refusal of the Call}
+    "Often in actual life, and not infrequently in the myths and
+    popular
+    tales, we encounter the dull case of the call unanswered;\ldots \\
+    His flowering world becomes a wasteland of dry stones and his~life
+    feels meaningless\ldots Whatever house he builds, it will be
+    a~house of~death: a labyrinth of cyclopean walls to hide from him
+    his~Minotaur." Page 55.
+  \end{block}
+
+  \begin{block}{}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.5in, width=2.0in]{SWVIa}
+      \includegraphics[height=1.5in, width=2.0in]{SWVII}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The adventure of the Hero begins\ldots}
+
+  \begin{block}{Departure. Part III: Supernatural Aid}
+    "For those who have not refused the call, the first encounter of
+    the hero-journey is with a protective figure (often a little old
+    crone or~old man) who provides the adventurer with amulets against
+    the dragon forces he is about to pass." Page 55.
+  \end{block}
+
+  \begin{block}{}
+    \begin{figure}
+      \centering
+
+      \includegraphics[height=1.5in, width=2.0in]{SWVIII}
+      \includegraphics[height=1.5in, width=2.0in]{SWIX}
+    \end{figure}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The End}
+
+\begin{block}{How Campbell said}
+  "Long long ago, when wishing still could lead to something\ldots"
+  Page 49.
+\end{block}
+
+\begin{block}{Or George Lucas}
+  \begin{figure}
+    \centering
+
+    \includegraphics[height=1.5in, width=2.0in]{SWX}
+  \end{figure}
+\end{block}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+  \frametitle{The End}
+  \begin{center}
+    \LARGE{Thank you!}
+  \end{center}
+
+\end{frame}
+% ##########
+
+
+
+% ##########
+\begin{frame}
+
+  \begin{block}{Bibliography}
+    \begin{itemize}
+    \item[1] Joseph Campbell, \emph{The Hero with a Thousand Faces},
+      Princeton University Press 2004.
+    \item[2] Joseph Campbell, \emph{Bohater o~tysiącu twarzy}, \\ Zysk
+      i~Sk\dywiz a 1997.
+    \item[3] A. Burzyńska, M. P. Markowski, \emph{Teorie literatury~XX
+        wieku}, Znak 2006.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+% ##########
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliografia
+\bibliographystyle{alpha} \bibliography{Bibliography}{}
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}
