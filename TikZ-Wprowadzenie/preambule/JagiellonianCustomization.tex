@@ -1,0 +1,229 @@
+% ------------------------------
+% Textpos (TEXT POSition) -- pakiet do dobrego zarządzania ułożeniem
+% obiektów na „kartce” tekstu
+% ------------------------------
+% Potrzebne do slajdu końcowego
+% \usepackage[showboxes,overlay,absolute]{textpos}
+\usepackage[overlay,absolute]{textpos}
+\setlength{\TPHorizModule}{10mm}
+\setlength{\TPVertModule}{\TPHorizModule}
+% \textblockorigin{10mm}{10mm}
+
+
+
+
+
+% ------------------------------
+% Paczki potrzebne w danym projekcie
+% ------------------------------
+\newcommand{\bmmax}{0}  % Górne ograniczenie na ilość "alfabetów
+% matematycznych", które może wykorzystać paczka "bm" do tworzenia
+% "Bold symbols". Zapobiega przekroczenia standardowej maksymalnej
+% ilości jakie dopuszcza TeX (i pdfLaTeX), wynoszącej 16.
+\newcommand{\hmmax}{0}
+\usepackage{bm}  % Bold Math symbols, obecnie preferowany sposób.
+
+
+
+
+% ------------------------------
+% Pakiety do tekstów z nauk przyrodniczych
+% ------------------------------
+% \let\lll\undefined  % Amsmath gryzie się z pakietami do języka
+% % polskiego, bo oba definiują komendę \lll. Aby rozwiązać ten problem
+% % oddefiniowuję tę komendę, ale może tym samym pozbywam się dużego Ł.
+\usepackage{amsmath}  % Podstawowe wsparcie od American
+% Mathematical Society (w skrócie AMS)
+% \usepackage{amsfonts, amssymb, amscd, amsthm}  % Dalsze wsparcie od AMS
+\usepackage{amssymb, amscd, amsthm}  % Dalsze wsparcie od AMS
+\usepackage{siunitx}  % Do prostszego pisania jednostek fizycznych
+\usepackage{upgreek}  % Ładniejsze greckie litery
+% Przykładowa składnia: pi = \uppi
+\usepackage{icomma} % Przecinek w trybie matematyczny ma właściwy odstęp
+
+
+
+% ------------------------------
+% TikZ
+% ------------------------------
+% Włączenie konkretnych bibliotek pakietu TikZ
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{angles}
+\usetikzlibrary{3d}
+\usetikzlibrary{positioning}
+\usetikzlibrary{intersections}
+\usetikzlibrary{decorations.markings}
+\usetikzlibrary{calc}
+
+
+
+
+
+
+% ------------------------------
+% Komendy i ustawienia do wykładów „Geometria 3D dla twórców gier wideo”
+% ------------------------------
+\newcommand{\colorhref}[2]{\href{#1}{\color{jDarkOrange} #2}}
+% Potrzebna w komendach poniżej
+
+\newcommand{\titlebackground}{./pictures/SzablonTytBluedark.png}
+% Dla trybu Dark
+% \newcommand{\sectionbackground}{./pictures/SzablonTytBluedark.png}
+% Dla trybu Light
+\newcommand{\sectionbackground}{./pictures/SzablonTytLight.png}
+
+
+
+\newcommand{\jagielloniantitlepage}{
+  \begingroup
+
+  \setbeamercolor{background canvas}{bg=JagiellonianBlue}
+
+  \maketitle
+
+  \endgroup
+}
+
+\newcommand{\jagielloniantitlepagewithpicture}{
+  \begingroup
+  \usebackgroundtemplate{ \hspace*{-11.5em}
+    \includegraphics[height=\paperheight]{\titlebackground}}
+
+  \maketitle
+
+  \endgroup
+}
+
+
+\newcommand{\jagielloniansectionwithpicture}[1]{%
+  \begingroup
+  \usebackgroundtemplate{ \hspace*{-11.5em}
+    \includegraphics[height=\paperheight]{\sectionbackground}}
+
+  \setbeamercolor{titlelike}{fg=normal text.fg}
+
+  \section{#1}
+
+  \endgroup }
+
+
+
+\newcommand{\jagiellonianendslide}[1]{%
+  \begin{frame}[standout]
+
+
+    \begin{textblock}{11}(1,0.7)
+
+      \begin{flushleft}
+        \mdseries
+
+        \footnotesize
+
+        \color{jStrongWhite}
+
+        Treść niniejszego wykładu jest udostępniona na~licencji
+        Creative Commons (\textsc{cc}), z~uzna- \\
+        niem autorstwa (\textsc{by}) oraz udostępnianiem na tych samych
+        warunkach (\textsc{sa}). Rysunki i~wykresy zawarte w~wykładzie są
+        autorstwa dr.~hab.~Pawła Węgrzyna et~al. i~są dostępne na tej
+        samej licencji, o~ile nie wskazano inaczej. W~prezentacji
+        wykorzystano temat Beamera Jagiellonian, oparty na~temacie
+        Metropolis Matthiasa Vogelgesanga, dostępnym na licencji
+        \LaTeX{ } Project Public License~1.3c pod adresem:
+        \colorhref{https://github.com/matze/mtheme}
+        {https://github.com/matze/mtheme}.
+
+        Projekt typograficzny: Iwona Grabska-Gradzińska \\
+        Skład: Kamil Ziemian \\
+        Projekt graficzny i~wykonanie grafik: Dariusz Frymus \\
+        Rysunki i~wykresy ilustrujące treści merytoryczne,
+        Ti\emph{k}Z: Kamil Ziemian, Paweł Węgrzyn \\
+        Rysunki i~wykresy ilustrujące treści merytoryczne,
+        Mathematica: Paweł Węgrzyn
+
+        Materiały powstały w ramach projektu ZintegrUJ -- Kompleksowego
+        Programu Rozwoju Uniwersytetu Jagiellońskiego. Projekt
+        współfinansowany ze~środków Unii Europejskiej w~ramach
+        Europejskiego Funduszu Społecznego.
+
+      \end{flushleft}
+
+    \end{textblock}
+
+
+
+
+    \begin{textblock}{3.2}(1,7.83)
+
+      \includegraphics[scale=0.3]
+      {./pictures/logotypFundusze_biale_bez_tla2.pdf}
+
+    \end{textblock}
+
+
+
+    \begin{textblock}{4.2}(7.4,7.9)
+
+      \includegraphics[scale=0.3]{./pictures/logotypUE_biale_bez_tla2.pdf}
+
+    \end{textblock}
+
+    % \begin{textblock}{4}(7.3,7.8)
+    %   \includegraphics{./pictures/CC-by-sa.png}
+    % \end{textblock}
+
+  \end{frame}
+
+
+
+
+
+  \begin{frame}[standout]
+
+
+    \begingroup
+
+    \color{jStrongWhite}
+
+    #1
+
+    \endgroup
+
+  \end{frame}
+}
+% ##################
+
+
+
+
+
+% ############################ Komendy Beamera i LaTeX
+
+% Zmiana koloru fontu matematycznego
+\newcommand{\beamermathcolor}[2]{{\color{#1}\setbeamercolor{math text}
+    {fg=#1} #2}}
+
+% Zmiana koloru fontu na foreground BEAMER-koloru „normal text”
+\newcommand{\normaltextcolor}[1]{{\color{normal text.fg}{#1}}}
+
+% Zmiana koloru fontu matematycznego na jMathTextForegorundWhite
+\newcommand{\beamermathcolorwhite}[1]{{\color{jStrongWhite}
+    \setbeamercolor{math text}{fg=jStrongWhite} #1}}
+
+\newcommand{\alertmath}[1]{{\color{jDarkOrange} \setbeamercolor{math
+      text}{fg=jDarkOrange} #1}}
+
+
+
+
+
+
+
+
+% ------------------------------
+% Pakiety napisane do wykładów z  „Geometrii 3D dla twórców gier
+% komputerowych”
+% ------------------------------
+% \usepackage{./Geometria3DPaczki/Geometria3D}
+% \usepackage{./Geometria3DPaczki/Geometria3DKolory}
+% \usepackage{./Geometria3DPaczki/Geometria3DIndeksy}

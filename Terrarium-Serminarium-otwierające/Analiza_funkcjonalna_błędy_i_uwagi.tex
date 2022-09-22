@@ -1,0 +1,252 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}% Pozwala pisać polskie znaki bezpośrednio.
+\usepackage[polish]{babel}% Tłumaczy na polski teksty automatyczne LaTeXa i pomaga z typografią.
+\usepackage[MeX]{polski}% Polska notacja we wzorach matematycznych. Ładne polskie
+% \usepackage[T1]{fontenc}% Pozwala pisać znaki diakrytyczne z języków innych
+\usepackage{amsfonts}% Czcionki matematyczne od American Mathematic Society.
+\usepackage{amsmath}% Dalsze wsparcie od AMS. Więc tego, co najlepsze w LaTeX, czyli trybu
+% matematycznego.
+\usepackage{amscd}% Jeszcze wsparcie od AMS.
+\usepackage{latexsym}% Więcej symboli.
+\usepackage{upgreek}%Lepsze greckie czcionki. Przyklad skladni: pi = \uppi
+\usepackage{textcomp}% Pakiet z dziwnymi symbolami.
+% \usepackage{slashed}% Pozwala pisać slash Feynmana.
+\usepackage{xy}% Pozwala rysować grafy.
+\usepackage{tensor}% Pozwala prosto używać notacji tensorowej. Albo nawet pięknej notacji
+% tensorowej:).
+\usepackage{graphicx}% Pozwala wstawiać grafikę.
+\usepackage{hyperref}
+\usepackage{vmargin}
+% ----------------------------------------------------------------------------------------
+% MARGINS
+% ----------------------------------------------------------------------------------------
+\setmarginsrb { 0.7in} % left margin
+{ 0.6in} % top margin
+{ 0.7in} % right margin
+{ 0.8in} % bottom margin
+{ 20pt} % head height
+{0.25in} % head sep
+{ 9pt} % foot height
+{ 0.3in} % foot sep
+
+\newcommand{\Center}[1]{\begin{center} #1 \end{center}}
+\newcommand{\e}{\mathrm{e}} 
+\newcommand{\tb}{\textbf}
+\newcommand{\noi}{\noindent}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\de}{\mathrm{d}} 
+\newcommand{\dA}[1]{\, d#1}
+\newcommand{\dd}[3]{\frac{ \de^{ #1 } #2 }{ \de #3^{ #1 } }} 
+\newcommand{\pd}[3]{\frac{ \partial^{ #1 } #2 }{ \partial #3^{ #1 } }} 
+\newcommand{\s}{\sigma}
+\newcommand{\Str}[1]{\textbf{Str. #1.}}
+\newcommand{\StrWg}[2]{\textbf{Str. #1, wiersz #2.}}
+\newcommand{\StrWd}[2]{\textbf{Str. #1, wiersz #2 (od dołu).}}
+\newcommand{\Jest}{\textbf{Jest: }}
+\newcommand{\Pow}{\textbf{Powinno być: }}
+\newcommand{\Prze}{\textbf{Przemyśl.}}
+\newcommand{\Dok}{\textbf{Dokończ.}}
+\newcommand{\Field}[1]{ \begin{center} {\Large \tb{#1} } \end{center} }
+\newcommand{\Work}[1]{ \begin{center} {\large #1} \end{center} }
+
+\renewcommand{\arraystretch}{1.2}
+
+
+
+\begin{document}
+
+
+
+\Field{Analiza funkcjonalna, błędy i~uwagi.}
+
+,,P\ldots'' oznacza, że w wydaniu ,,\ldots'' błąd został poprawiony.\\
+
+
+
+\Work{ A. V. Balakrishnan \\
+  ,,Analiza funkcjonalna stosowana'', \cite{Bal92}. }
+
+% Uwagi:
+% \begin{itemize}
+% \item[--]
+% \end{itemize}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    13 & & 10 & $\int^{ 1 }_{ -1 }$ & $2 \int^{ 1 }_{ -1 }$ \\
+    14 & 15 & & $<$ & $\leq$ \\
+    15 & 18 & & otrzymywaliśmy & otrzymalibyśmy \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+\Work{I. M. Gelfand, G. E. Shilov \\
+  ,,Generalized Functions: Volume I, Properties and Operations'',
+  \cite{GS64}. }
+
+% Uwagi:
+% \begin{itemize}
+% \item[--]
+% \end{itemize}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    12 & 4 & & $f_{ 0 } = 0$ & $x_{ 0 } = 0$ \\
+    28 & 16 & & $r \leq a$ & $r \geq a$ \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+
+\Work{ M. Reed, B. Simon \\
+  ,,Methods of Modern Mathematical Physics I: Functional Analysis'',
+  \cite{RS80}. }
+
+
+
+\Center{Uwagi:} \noi \tb{Rozdział I.}
+
+\tb{--} Nie została podana definicja $\sup$ i~$\inf$ ani w~przypadku
+ogólny relacji porządku, ani w~przypadku liczb rzeczywistych.
+
+\tb{--} Nie~zdefiniowano zbiorów zwartych, ani~nie~wskazano, że~zbiór
+domknięty i~ograniczony w $\mathbb{R}^{ n }$ jest zwarty.
+
+\tb{--} Nie podana została definicja sumy miar borelowskich,
+ani~nie~zostało udowodnione, że funkcja całkowalna względem miar
+$\mu_{ 1 }$ i~$\mu_{ 2 }$ jest całkowalna względem ich
+sumy. Uzupełnienie tych braków nie jest jednak trudne.  Dla dowolnych
+dwóch miar dodatnich $\mu_{ 1 }$ i~$\mu_{ 2 }$, niekoniecznie
+borelowskich, zdefiniowanych na wspólnej $\s$\dywiz pierścieniu
+$\mathcal{R}$, określamy ich sumę jak:
+\begin{displaymath}
+  (\mu_{ 1 } + \mu_{ 2 })( A ) = \mu_{ 1 }( A ) + \mu_{ 2 }( A ), \quad \forall A \in \mathcal{R}.
+\end{displaymath}
+Należy zauważyć, że~dla przeliczalnej sumy rozłącznych zbiorów
+$A_{ i }$, zachodzi:
+\begin{displaymath}
+  \begin{split}
+    ( \mu_{ 1 } + \mu_{ 2 } )\left( \bigcup_{ i = 1 }^{ \infty } A_{ i } \right) =& \mu_{ 1 }\left( \bigcup_{ i = 1 }^{ \infty } A_{ i } \right) + \mu_{ 2 }\left( \bigcup_{ i = 1 }^{ \infty } A_{ i } \right) = \sum_{ i = 1 }^{ \infty } \mu_{ 1 }( A_{ i } ) + \sum_{ i = 1 }^{ \infty } \mu_{ 2 }( A_{ i } )\\
+    =& \sum_{ i = 1 }^{ \infty } ( \mu_{ 1 }( A_{ i } ) + \mu_{ 2 }(
+    A_{ i } ) ) = \sum_{ i = 1 }^{ \infty } ( \mu_{ 1 } + \mu_{ 2 } )(
+    A_{ i } ).
+  \end{split}
+\end{displaymath}
+Gdy miary są dodatnie nie ma żadnego problemu z~wciągnięciem dwóch sum
+szeregów pod jedną sumę, gdy wszystkie zbiory mają miarę skończoną
+względem $\mu_{ 1 }$ i $\mu_{ 2 }$, zaś gdy któraś z~tych miar jest
+nieskończona, to obie strony są równe $+\infty$.  Jednak nie jestem
+pewien, czy w~przypadku miar które nie są dodatnie też to
+zachodzi. \Prze
+
+Rozpatrzmy teraz problem całkowania funkcji $f$ całkowalnej względem
+dwóch miar dodatnich $\mu_{ 1 }$ i~$\mu_{ 2 }$, względem sumy
+miar. Ograniczymy się przy tym dla przypadku funkcji określonej na
+$\mathbb{R}$. Jeżeli $f \geq 0$, wtedy z~równości:
+\begin{displaymath}
+  \begin{split}
+    \sum_{ n }( f )_{ \mu_{ 1 } + \mu_{ 2 } } =& \sum_{ m = 0 }^{ \infty } \frac{ m }{ n } ( \mu_{ 1 } + \mu_{ 2 } )\left( f^{ -1 }\left[ \left[ \frac{ m }{ n }, \frac{ m + 1 }{ n } \right) \right] \right) = \sum_{ m = 0 }^{ \infty } \left\{ \frac{ m }{ n } \mu_{ 1 }\left( f^{ -1 }\left[ \left[ \frac{ m }{ n }, \frac{ m + 1 }{ n } \right) \right] \right) \right. \\
+    &+ \left. \frac{ m }{ n } \mu_{ 2 }\left( f^{ -1 }\left[ \left[
+            \frac{ m }{ n }, \frac{ m + 1 }{ n } \right) \right]
+      \right) \right\} = \sum_{ n }( f )_{ \mu_{ 1 } } + \sum_{ n }( f
+    )_{ \mu_{ 2 } }.
+  \end{split}
+\end{displaymath}
+Dzięki dodatniości miar nie ma problemu z~przekształceniem szeregów,
+jednak przypadek ogólniejszy wciąż pozostaje do zanalizowania. \Prze
+
+Ponieważ w podejściu prezentowanym przez Reeda i Simona, całkowanie
+funkcji zespolonych sprowadza~się do całkowania funkcji dodatnich,
+widzimy więc, że~funkcja całkowalna względem każdej z~miar dodatnich
+z~osobna jest też całkowalna względem ich sumy. Należy to jednak
+odróżnić od~przypadku, gdy mamy dwie funkcje $f_{ 1 }$ i~$f_{ 2 }$,
+całkowalne odpowiednio względem miar $\mu_{ 1 }$ i~$\mu_{ 2 }$,
+i~chcemy powiedzieć coś o~całkowalności ich sumy. Wtedy bowiem może
+okazać się, że~funkcja np.~$f_{ 1 }$ jest całkowalna bo jest duża na
+zbiorze, którego miara $\mu_{ 1 }$ jest mała, ale którego miara
+$\mu_{ 2 }$ jest duża.
+
+Dla przykładu weźmy funkcję $f$ całkowalną względem miary
+Lebesgue'a. Możemy zmienić jej wartość w~0 na $+\infty$, bez żadnych
+konsekwencji. Jeżeli teraz dodamy do miary Lebesgue'a miarę Diraca
+skupioną w~0 to ta funkcja jest niecałkowalna względem takiej miary.
+
+\vspace{2em}
+
+\noi \textbf{Konkretne strony.}
+
+\tb{--} \Str{12} Ponieważ nie została podana definicja podciągu, nie
+można było użyć następującej eleganckiej definicji. $b$ jest punktem
+skupienia ciągu $\{ a_{ n } \}$, jeśli $\{ a_{ n } \}$ zawiera podciąg
+zbieżny do $b$.
+
+\tb{--} \Str{12} Zaproponowana na tej stronie alternatywna definicja
+$\overline{\lim}$ ma sens tylko dla zbiorów ograniczonych. Tak jak
+poprzednio należy ją rozszerzyć na przypadki zbiorów nieograniczonych.
+
+\tb{--} \Str{17} W~twierdzeniu o~zbieżności monotonicznej jest
+powiedziane,
+że~$\int | f( p ) - f_{ n }( p ) | \dA{ p } \rightarrow 0$, co wymaga
+pewnego komentarza. Ponieważ $f( p ) \geq f_{ n }( p )$ więc
+$f( p ) - f_{ n }( p ) \geq 0$ więc zachodzi ciąg równoważności
+$\int | f( p ) - f_{ n }( p ) | \dA{ p } = \int ( f( p ) - f_{ n }( p
+) ) \dA{ p } = \int f( p ) \dA{ p } - \int f_{ n }( p ) \dA{ p }$.
+Dowód tej ostatniej równości można znaleźć w~każdej książce do teorii
+całki.
+
+\tb{--} \Str{21} W~podanej charakterystyce liczbowej wzoru Cantora
+jest błąd ,,miary zero''. Zbiór Cantora jest skonstruowany jako
+dopełnienie do odcinka $[ 0, 1 ]$ zbioru otwartego
+$S = \left( \frac{ 1 }{ 3 }, \frac{ 2 }{ 3 } \right) \cup \left(
+  \frac{ 1 }{ 9 }, \frac{ 2 }{ 9 } \right) \cup \left( \frac{ 7 }{ 9
+  }, \frac{ 8 }{ 9 } \right) \cup \ldots$, stąd zawiera np.~punkt
+$\tfrac{ 1 }{ 3 }$, który ma rozwinięcie trójkowe $0,1000\ldots$
+Jednak tego typu punktów, jest tylko przeliczalnie wiele, więc
+stanowią one ,,mały zbiór''.
+% \item
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    2 & 8 & & \tb{surjective} & surjective \\
+    2 & 9 & & surjective & \tb{surjective} \\
+    14 & 10 & & $\Sigma_{ 2^{ n } }( f )$ & $\Sigma_{ 2 n }( f )$ \\
+    14 & 14 & & $\Sigma_{ 2^{ n } }( f )$ & $\Sigma_{ 2 n }( f )$ \\
+    46 & & 9 & $(v_{ 1 }, u_{ 1 } ) v_{ k }$ & $(v_{ 1 }, u_{ 2 } ) v_{ 1 }$ \\
+    50 & 2 & & $( \eta, \mu )$ & $( \mu, \eta )$ \\
+    50 & 4 & & $( \eta, \mu ) = \bigg( \sum\limits_{ i = 1 }^{ N } c_{ i } ( \varphi_{ i } \otimes \psi_{ i } ), \mu \bigg)$ & $( \mu, \eta ) = \bigg( \mu, \sum\limits_{ i = 1 }^{ N } c_{ i } ( \varphi_{ i } \otimes \psi_{ i } )\bigg)$ \\
+    53 & & 12 & $\varphi_{ k_{ \sigma( 1 ) } } \otimes \varphi_{ k_{ \sigma( 2 ) } } \cdots \otimes \varphi_{ k_{ n( p ) } }$ & $\varphi_{ k_{ \sigma( 1 ) } } \otimes \varphi_{ k_{ \sigma( 2 ) }  } \otimes \cdots \otimes \varphi_{ k_{ \sigma( p ) } }$ \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+
+
+
+
+
+
+
+
+\bibliographystyle{ieeetr} \bibliography{Bibliography}{}
+
+
+
+\end{document}

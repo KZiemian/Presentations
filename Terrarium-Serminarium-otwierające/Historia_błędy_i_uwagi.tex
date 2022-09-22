@@ -1,0 +1,525 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}% Pozwala pisać polskie znaki bezpośrednio.
+\usepackage[polish]{babel}% Tłumaczy na polski teksty automatyczne LaTeXa i pomaga z typografią.
+\usepackage[MeX]{polski}% Polska notacja we wzorach matematycznych. Ładne polskie
+\usepackage{vmargin}
+%----------------------------------------------------------------------------------------
+%	MARGINS
+%----------------------------------------------------------------------------------------
+\setmarginsrb           { 0.7in}  % left margin
+                        { 0.6in}  % top margin
+                        { 0.7in}  % right margin
+                        { 0.8in}  % bottom margin
+                        {  20pt}  % head height
+                        {0.25in}  % head sep
+                        {   9pt}  % foot height
+                        { 0.3in}  % foot sep
+%\usepackage{amsfonts}% Czcionki matematyczne od American Mathematic Society.
+%\usepackage{amsmath}% Dalsze wsparcie od AMS. Więc tego, co najlepsze w LaTeX, czyli trybu
+%matematycznego.
+%\usepackage{amscd}% Jeszcze wsparcie od AMS.
+%\usepackage{latexsym}% Więcej symboli.
+%\usepackage{textcomp}% Pakiet z dziwnymi symbolami.
+%\usepackage{xy}% Pozwala rysować grafy.
+%\usepackage{tensor}% Pozwala prosto używać notacji tensorowej. Albo nawet pięknej notacji
+%tensorowej:).
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\newcommand{\Center}[1]{\begin{center} #1 \end{center}}
+\newcommand{\tb}{\textbf}
+\newcommand{\Str}[1]{\textbf{Str. #1.}}
+\newcommand{\StrWg}[2]{\textbf{Str. #1, wiersz #2.}}
+\newcommand{\StrWd}[2]{\textbf{Str. #1, wiersz #2 (od dołu).}}
+\newcommand{\noi}{\noindent}
+\newcommand{\start}{\noi \tb{--} {}}
+\newcommand{\Jest}{\textbf{Jest: }}
+\newcommand{\Pow}{\textbf{Powinno być: }}
+\newcommand{\Prze}{\textbf{Przemyśl.}}
+\newcommand{\Dok}{\textbf{Dokończ.}}
+\newcommand{\Field}[1]{ \begin{center} {\Large \tb{#1} } \end{center} }
+\newcommand{\Work}[1]{ \begin{center} {\large #1} \end{center} }
+
+\renewcommand{\arraystretch}{1.2}
+
+
+
+\begin{document}
+
+
+\Field{Historia, błędy i~uwagi.}
+
+
+
+\Work{
+  Nicolas Bourbaki \\
+  ,,Elementy historii matematyki'', \cite{NBEHM}. }
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    8 & 11 & & metodzie '' & metodzie'' \\
+    82 & & 9 & \emph{metafizycznego}''; & \emph{metafizycznego}''); \\
+    & & & & \\
+    & & & & \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+
+\Work{
+  C. B. Boyer \\
+  ,,Historia rachunku różniczkowego i~całkowego i~rozwój jego pojęć'',
+  \cite{Boy64}. }
+
+
+\Center{Uwagi:}
+
+\start W~całej książce angielskie zwarte i~treściwe słowo ,,calculus''
+jest zastąpione długim polskim terminem ,,rachunek różniczkowy
+i~całkowy'', co często prowadzi do bardzo niezgrabnych stylistycznie
+zdań. Lepiej byłoby wprowadzi do książki, obok powyższego, termin
+,,analiza matematyczna'', który można ładnie skrócić do ,,analizy''.
+
+\vspace{2em}
+
+\noi \textbf{Konkretne strony.}
+
+\start \StrWd{18}{2} Umieszczenie w~tym samym zdaniu stwierdzenia
+o~ścisłym sformułowaniu analizy już u~jej początków oraz faktu,
+że~matematycy byli niewrażliwi na pewne subtelności, jest dość
+karkołomne. Nie wspominając już o~tym, że~te ,,subtelności'' były
+często bardzo poważne.
+
+\start \StrWd{19}{18} Użyte tu określenie ,,mistycyzm imaginacyjnej
+spekulacji'' jest wyraźnie niesprawiedliwe w~stosunku do metafizyki,
+najważniejszego działu filozofii. Nie~zmienia tego fakt, że~możliwe
+iż~odnosi~się tylko do transcendentalnej metafizyki ze~szkoły Kanta.
+
+\start \Str{23} Stwierdzenie, że pewne podstawowe idea zostały
+usunięte z~analizy matematycznej, szerzej zaś, z~matematyki, są~mocno
+wątpliwe.
+
+\start \StrWd{26}{6} Nazwanie podanych wyżej pojęć ,,sztucznymi'',
+ciężko jest mi nazwać czymś innym, niż nieczułością na piękno
+matematyki.
+
+\start \Str{28} Ponieważ drugie wydanie tej książki ukazało~się w~1949
+r., autor nie mógł wiedzieć, że~w~latach 60 XX w., głównie za sprawą
+prac Abrahama Robinsona zostanie sformułowana analiza niestandardowa,
+oparta na ścisły pojęciu nieskończenie małych liczb.
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    29 & & 4 & [(376] & ([376] \\
+    42 & 13 & & [402 & [402] \\
+    & & & & \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+
+\Work{
+  Christopher A. Ferrara\\
+  ,,Liberty: The God That Failed'', \cite{Fer12}. }
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    23 & 3 & & in & in an other \\
+    40 & & 1 & \emph{St. Saint} & \emph{Saint} \\
+    207 & & 2 & Government & \emph{Government} \\
+    227 & 11 & & doing-not & doing--not \\
+    & & & & \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  Martin Gilbert \\
+  ,,Pierwsza wojna światowa'', \cite{Gil03}.
+\end{center}
+
+Uwagi:
+\begin{itemize}
+\item[] \StrWg{70}{2} Nie wiem kto popełnił błąd, żołnierz, autor czy
+  tłumacz, ale to zdanie o martwym doboszu jest bez sensu.
+\item[] \StrWd{70}{5} To zdanie jest na~pewno źle przetłumaczone,
+  ale~nie~wiem jakie je poprawić.
+\end{itemize}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    21 & 1 & & 1996 & 1993 \\
+    68 & & 2 & Wielka Brytania & Rosja \\
+    69 & 2 & & kulturowo & kulturowo'' \\
+    69 & 16 & & 1 sierpnia & 12 sierpnia \\
+    70 & 8 & & Pułk Feuchtingera, kiedy & Kiedy pułk Feuchtingera \\
+    70 & & 4 & Sir Edward Gray, kiedy & Kiedy sir Edward Gray \\
+    122 & & 10 & dal & dał \\
+    177 & 15 & & ,,Walcie, aż lufy pękną''. & <<Walcie, aż lufy pękną>>''. \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+% \noindent\\
+% \tb{Jest:} nieczystości pierworodnej córki jest ślepotą ducha. \\
+% \tb{Powinno być:} pierworodną córką nieczystości jest ślepota ducha. \\
+
+
+\begin{center}
+  Paul Johnson\\
+  ,,Historia świata XX wieku, od Rewolucji Październikowej do
+  <<Solidarności>>. Tom I.'', \cite{Joh09a}.
+\end{center}
+
+Uwagi:
+\begin{itemize}
+\item[--] \StrWd{70}{4} Terminy id, ego, superego nie zostały
+  wprowadzone przez Freuda, lecz przez jego tłumaczy na język
+  angielski. Sam Freud używał zwykłych słów z~języka niemieckiego:
+  das~Es, Ich, Uberich. (Powinno to być omówione w książce Burzyńskiej
+  i~Markowskiego \cite{BM09}).
+\item[--] \Str{56} Książka Keynesa \emph{Ekonomiczne konsekwencje
+    pokoju}, nie mogła ukazać~się pod koniec 1917
+  roku. Najprawdopodobniej chodzi tu o~koniec roku 1919. Powinno~się
+  tu też znaleźć obszerniejsze omówienie treści tej książki.
+\item[--] \Str{63} Głosowanie nad traktatem o~którym tu mowa
+  nie~odbyło~się w~marcu 1919 roku, lecz w~marcu 1920 r.
+\item[--] \Str{72} Wyrażoną tu opinię, że~Polska skorzystała z~obawy
+  Wielkiej Brytanii przed zalewem bolszewizmu, warto skonfrontować
+  z~tym co wielokrotnie mówił na dostępnych na YouTubie wystąpieniach
+  Andrzej Nowak i~co opisał w~,,Pierwszej zdradzie zachodu''.
+\end{itemize}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    15 & 17 & & Mendla & prac Mendla \\
+    28 & 8 & & cywilizacyjne & cywilizowane \\
+    36 & 10 & & zastąpić & zaspokoić \\
+    51 & & & Jedyny & Jeden \\
+    54 & 11 & & [dotyczących planu) & [dotyczących planu] \\
+    & & & ] & \\
+    55 & & 1 & M. Keynes & J. M. Keynes \\
+    64 & 2 & & kształt ów & ów kształt \\
+    65 & & 14 & późniejszy doradca & doradca \\
+    68 & 5 & & szśćdziesiątych & sześćdziesiątych \\
+    82 & 6 & & Ghandi: & Ghandi. \\
+    89 & 5 & & odbyć & przebiegać \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+\noindent\\
+\tb{Okładka.} \\
+\Jest ''Solidarności'' \\
+\Pow ,,Solidarności'' \\
+\Str{1} \\
+\Jest \tb{Historia świata} \\
+\Pow \tb{Historia świata XX wieku} \\
+\Str{3} \\
+\Jest \tb{Historia świata} \\
+\Pow \tb{Historia świata XX wieku} \\
+
+\begin{center}
+  Paul Johnson\\
+  ,,Narodziny nowoczesności'', \cite{Joh95}.
+\end{center}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    29 & 2 & & cali, członie & cali, o członie \\
+    142 & 1 & & Barbaji & Barbajowi \\
+    142 & & 14 & w nową operą & z nową operą \\
+    345 & 15 & & XIX & XVIII \\
+    345 & 18 & & od & na od \\
+    409 & 8 & & sposób & nie sposób \\ \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  Tony Judt \\
+  ,,Powojnie. Historia Europy od roku 1945.'', \cite{Jud13}.
+\end{center}
+
+Uwagi:
+\begin{itemize}
+\item[--] \Str{28} Uwaga, że~jeszcze w~latach trzydziestych
+  XIX~w. babcie hiszpańskie straszyły dzieci Napoleonem, jest zapewne
+  pomyłkom. Wojny napoleońskie skończyły~się dopiero w~1815 roku, więc
+  pamiętanie o~nich po kilkunastu latach nie~jest niczym
+  niezwykłym. Zapewne chodziło o~lata trzydzieste XX~w.
+\end{itemize}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    35 & & 17 & miast, prądu & miast, lecz prądu \\
+    58 & & 7 & postępującą & postępującej \\
+    58 & & 6 & degeneracją & degeneracji \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  J. Kofman, W. Roszkowski \\
+  ,,Transformacja i postkomunizm'', \cite{KR99}.
+\end{center}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    10 & & 17 & jedynie & jedynej \\
+    13 & & 4 & o ekspansji & do ekspansji \\
+    16 & 9 & & marntrawstwem & marnotrawstwem \\
+    & & & & \\
+    & & & &  \\ \hline
+  \end{tabular}
+\end{center}
+
+
+\begin{center}
+  Andrzej Nowak \\
+  ,,Strachy i lachy. Przemiany polskiej pamięci 1982-2012.'',
+  \cite{Now12}.
+\end{center}
+
+\Center{Uwagi:}
+
+\start \Str{47} T.~S.~Eliot jest na tej stronie nazwany ,,wielkim
+poetą katolickim'', acz z~tego co wiem do Kościoła nigdy nie
+przyszedł, zamiast tego dołączył do jakiegoś wyznania
+anglokatolickiego. Zaś użycie przymiotnika ,,wielki'' w~odniesieniu to
+tego poety, którego twórczości nie da~się czytać, jest już na~pewno
+błędem.
+
+
+% Błędy:\\
+% \begin{center}
+%   \begin{tabular}{|c|c|c|c|c|}
+%     \hline
+%     & \multicolumn{2}{c|}{} & & \\
+%     Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+%     & Od góry & Od dołu &  &  \\ \hline
+%     & & & & \\
+%     & & & & \\ \hline
+%   \end{tabular}
+% \end{center}
+
+
+\begin{center}
+  Andrzej Nowak \\
+  ,,Intelektualna historia III RP. Rozmowy z lat 1990--2012.'',
+  \cite{Now13}.
+\end{center}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+\noindent\\
+\tb{Przednia okładka, wiersz 14.}\\
+\Jest \emph{ImperologicalStudies.APolishPerspective}(2011);\emph{Czaswalki} \\
+\Pow \emph{Imperological Studies. A Polish Perspective} (2011);\emph{Czas walki} \\
+\tb{Przednia okładka, wiersz 10 (od dołu).}\\
+\Jest ...w Brnie \\
+\Pow w Brnie. \\
+
+
+\Work{
+  Andrzej Nowak \\
+  ,,Dzieje Polski. Tom I do 1202: Skąd nasz ród.'', \cite{Now14a}. }
+
+Uwagi: \\
+\start \tb{Strona tytułowa.} W informacjach o~autorze jest podane,
+że~był redaktorem naczelnym ARCANA w~latach 1994--2012, lecz
+prawidłowy okres to 1995--2012. \\
+\start \Str{96} W~swoim wykładzie z~cyklu \href{https://www.youtube.com/watch?v=QovVLT2fitc}{,,Filary Polskości: Mieszko i~Bolesław''} Nowak znacznie wyraźniej niż w~tej książce, pokazał cynizm polityczny Mieszka~I. O~możliwości takiego spojrzenia na tego władcę mówi on otwarcie na tym wykładzie, a~który to zarzut próbuje tak tam, jak i~tu, przykryć określeniem jego działań mianem ,,majstersztyku polityki polskiej''.
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    41 & 3 & & W X w. jeszcze & Jeszcze w X w. \\
+    53 & & 1 & Księga Wyjścia & Księga Rodzaju \\
+    61 & 10 & & do dziejów & dla dziejów \\
+    % & & & & \\
+    % & & & & \\
+    % & & & & \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+\StrWg{61}{8} \\
+\Jest z~Rocznika kapituły krakowskiej dawnego \ldots \\
+\Pow z~dawnego Rocznika kapituły krakowskiej \ldots \\
+
+
+\begin{center}
+  Red. A. Nowak \\
+  ,,Historie Polski w~XIX wieku. Tom I: Kominy, ludzie i~obłoki:
+  modernizacja i~kultura.'', \cite{HPXIX1}.
+\end{center}
+
+% Uwagi:
+% \begin{itemize}
+% \item[--] \Str{45} T.~S.~ Eliot jest na tej stronie nazwany
+%   ,,wielkim poetą katolickim'', acz z~tego co wiem do Kościoła nigdy
+%   nie przyszedł, zamiast tego dołączył do jakiegoś wyznania
+%   anglokatolickiego. Zaś przymiotnik ,,wielki'' w~odniesieniu to
+%   tego poety, którego twórczości nie da~się czytać, jest już
+%   na~pewno błędny.
+% \end{itemize}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    16 & & 15 & równości równość & równości \\ \hline
+  \end{tabular}
+\end{center}
+
+
+
+\begin{center}
+  R. Rhodes \\
+  ,,Jak powstała bomba atomowa'', \cite{Rho00}.
+\end{center}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    719 & & 6 & 1993 & 1933 \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  W. Roszkowski \\
+  ,,Najnowsza historia Polski: 1914--1939'', \cite{Ros11a}.
+\end{center}
+
+Uwagi:
+\begin{itemize}
+\item[--] Karygodną cechą całego tego wydania ,,Najnowszej historii
+  Polski'', jest nieumieszczenie w~każdym tomie listy używanych w~nim
+  skrótów, niezależnie od tego, czy zostały one pierwszy raz użyte
+  w~tym, czy~w~poprzednim tomie.
+\item[--] \Str{26} Podany tu opis przyczyn wybuchu I~Wojny Światowej,
+  zwłaszcza bardzo silne stwierdzenie, że~Austro\dywiz Węgry
+  wypowiedziały wojnę Serbii pod naciskiem Niemiec, warto
+  skonfrontować z~tym co pisze M. Gilbert w~swojej książce na temat
+  tego przedziwnego wydarzenia \cite{Gil03}.
+\item[--] \StrWd{78}{4} W~tym wierszu jest niedomknięty cudzysłów,
+  który sprawie, że~nie wiadomo czy dany fragment jest cytatem,
+  a~jeśli tak to gdzie~się zaczyna.
+\end{itemize}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    & \multicolumn{2}{c|}{} & & \\
+    Strona & \multicolumn{2}{c|}{Wiersz}& Jest & Powinno być \\ \cline{2-3}
+    & Od góry & Od dołu &  &  \\ \hline
+    & & & & \\
+    20 & & 9 & sita & siła \\
+    27 & & 16 & z agrozić & zagrozić \\
+    31 & & 8 & Hans Beseler & Hans von Beseler \\
+    36 & 3 & & POW & POW. \\
+    37 & 12 & & LLOYDA & LOYDA \\
+    47 & & 6 & przed nadchodzącą zimą & nadchodzącej zimy \\
+    50 & 21 & & \emph{Pobki} & \emph{Polski} \\
+    73 & & 13 & 1920 R & 1920 R. \\
+    & & 17 & W braku & Z braku \\
+    & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+\begin{center}
+  A. K. Wróblewski \\
+  ,,Historia fizyki'', \cite{Wro06}.
+\end{center}
+
+Błędy:\\
+\begin{center}
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    % & \multicolumn{2}{c|}{} & & \\
+      & \multicolumn{2}{c|}{Wiersz} & & \\ \cline{2-3}
+    Strona & Od góry & Od dołu & Jest & Powinno być \\ 
+      & (kolumna) & (kolumna) & & \\ \hline
+      & & & & \\
+    203 & 3 (2) & & Jacob 'sGravesande'a & Jacob's Gravesande'a \\
+      & & & & \\ \hline
+  \end{tabular}
+\end{center}
+
+
+\bibliographystyle{ieeetr} \bibliography{Bibliography}{}
+
+
+
+\end{document}

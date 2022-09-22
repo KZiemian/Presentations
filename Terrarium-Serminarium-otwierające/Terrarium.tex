@@ -1,0 +1,223 @@
+\documentclass{beamer} \mode<presentation>
+% \usepackage{beamerthemesplit}
+\usepackage{epsfig} 
+\usetheme{Warsaw} 
+\usecolortheme{orchid}
+% \usecolortheme{whale} \usecolortheme{seahorse}
+\usepackage{verbatim}
+\usepackage{subfigure}%Pozwala dzielić figury na podfigury.
+\usepackage[polish]{babel}% Tłumaczy na polski teksty automatyczne LaTeXa i pomaga z typografią.
+\usepackage[plmath,OT4,MeX]{polski}% Polska notacja we wzorach matematycznych. Ładne polskie
+\usepackage[T1]{fontenc}% Pozwala pisać znaki diakrytyczne z języków innych niż polski.
+\usepackage[utf8]{inputenc}% Pozwala pisać polskie znaki bezpośrednio.
+\usepackage{indentfirst}% Sprawia, że jest wcięcie w pierwszym akapicie.
+\frenchspacing% Wyłącza duże odstępy na końcu zdania. Pakiet babel polski robi to samo, ale to jest zabezpieczenie jakibym chciał przestać go używać.
+% \usepackage{fullpage}% Mniejszse marginesy.
+\usepackage{amsfonts}% Czcionki matematyczne od American Mathematic Society.
+\usepackage{amsmath}% Dalsze wsparcie od AMS. Więc tego, co najlepsze w LaTeX, czyli trybu %matematycznego.
+\usepackage{amscd}% Jeszcze wsparcie od AMS.
+\usepackage{latexsym}% Więcej symboli.
+\usepackage{textcomp}% Pakiet z dziwnymi symbolami.
+\usepackage{xy}% Pozwala rysować grafy.
+\usepackage{tensor}% Pozwala prosto używać notacji tensorowej. Albo nawet pięknej notacji %tensorowej:).
+\usepackage{graphicx}% Pozwala wstawiać grafikę.
+% \usepackage{url}% Pozwala pisać ładnie znak ~.
+\newcommand{\de}{\mathrm{d}}
+
+
+\title[Terrarium]{NKFowy Grupa Miłośników Python
+  Terrarium} %Spotkanie pierwsze oby nie ostatnie.
+\subtitle{Spotkanie pierwsze. Oby nie ostatnie.}  \author{Kamil
+  Ziemian}
+% \\ \texttt{ziemniakzkosmosu@gmail.com}} \institute{II rok, fizyka
+% teoretyczna, studia magisterskie.}
+\date[27 III 2014]{27 marca 2014 r.}
+
+
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+\begin{frame}
+\frametitle{Cel i plan}
+
+\begin{block}{Cel spotkań}
+Wspólna nauka języka programowania Python i jego zastosowań do rozwiązywania problemów naukowych symbolicznie i numerycznie, analizy i wizualizacji danych etc.
+\end{block}
+
+\begin{block}{W planie}
+\begin{itemize}
+\item[--] Podstawy języka i podstawowe wiadomości z informatyki.
+\item[--] IPython.
+\item[--] NumPy/SciPy.
+\item[--] MathPlotLib.
+\item[--] Zadania.
+\item[--] Wasze pomysły.
+\item[--] Józef Sokołowski.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Przywitanie}
+\begin{block}{Przywitanie}
+\begin{figure}
+\centering
+\includegraphics[height=1.8in, width=1.3in]{GvR2}
+\includegraphics[height=1.8in, width=1.2in]{GvR}
+\caption{Guido van Rossum (1956 - ), holender.}
+\end{figure}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Dlaczego Python?}
+
+\begin{block}{Python}
+\begin{itemize}
+\item[--] Jest bardzo prostym językiem:
+\item[-] ma dobrą i przejrzystą składnie;
+\item[-] zawiera zaawansowane i dobrze dobrane typy danych.
+\item[--] Jest interpretowany.
+\item[--] Posiada OGROMNY zasób bibliotek.
+\item[--] Powszechnie stosowany.
+\item[--] Dynamicznie rozwijany.
+\item[--] Wieloparadygmatowy.
+\end{itemize}
+\end{block}
+
+\begin{block}{Problemy}
+\begin{itemize}
+\item[--] Jest wolny. Najprawdopodobniej.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Kilka ważnych informacji}
+
+\begin{block}{Uwagi o Python}
+\begin{itemize}
+\item[--] Jest dwustandardowy: 2.7x, 3.x (3.3.x). Wersje te nie są wstecznie kompatybilne.
+\item[--] ,,Rzeczy niebezpieczne mają być utrudnione, lecz nie zabronione.''
+\item[--] Doświadczenie z nauki można łatwo przenieść na wiele innych języków.
+\end{itemize}
+\end{block}
+
+\begin{block}{Uwagi o Terrarium}
+\begin{itemize}
+\item[--] Będzie trochę matematyki.
+\item[--] Prowadzący spotkania nie jest najlepszy. Za to ma oddane wsparcie.
+\end{itemize}
+\end{block}
+\end{frame}
+
+\begin{frame}
+\frametitle{Ilustracja}
+
+\begin{block}{Python}
+def factorial(n):\\
+\hspace{5 mm}if n > 1:\\
+\hspace{10 mm}return n*factorial(n-1)\\
+\hspace{5 mm}else:\\
+\hspace{10 mm}return 1\\
+\vspace{8pt}
+print factorial(4)
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ilustracja}
+
+\begin{block}{C}
+\begin{verbatim}
+int factorial(int n)
+{
+  if (n > 1) return n*factorial(n - 1);
+  else return 1;
+}
+
+int main()
+{
+  printf("%i\n", factorial(4));
+  return 0;
+}
+\end{verbatim}
+\end{block}
+
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Ilustracja}
+
+\begin{block}{Common Lisp}
+\begin{verbatim}
+(defun factorial (x)
+  (if (> x 1)
+    (* x (factorial (- x 1)))
+    1))
+
+(factorial 4)
+\end{verbatim}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Krótka lista innych bibliotek/rozszerzeń}
+
+\begin{block}{}
+\begin{itemize}
+\item[--] PyFeyn. (Nie udało mi się uruchomić.)
+\item[--] Biopython.
+\item[--] Astropysics.
+\item[--] PsychoPy.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Materiały}
+
+\begin{block}{}
+\begin{itemize}
+\item[--] Oficjalna strona Pythona: http://www.python.org/
+\item[--] Stowarzyszenie Polska Grupa Użytkowników Pythona: http://pl.python.org
+\item[--] Kurs z MIT ,,Introduction to Computer Science and Programming''. Specjalne podziękowania dla Johna Guttaga, Erica Grimsona i MIT.
+\item[--] Zanurkuj w Pythonie.
+\item[--] A. B. Downey ,,Think Python'', ,,Think Complexity'' http://greenteapress.com
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Materiały}
+
+\begin{block}{}
+\begin{itemize}
+\item[--] M. Newman ,,Computational Physics with Python'' http://www-personal.umich.edu/~mejn/computational-physics/
+\item[--] E. Ayars ,,Computational Physics with Python''
+\item[--] Oficjalna grupa dyskusyjna: comp.lang.python
+\item[--] Cała masa innych.
+\end{itemize}
+\end{block}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{}
+
+\begin{center}
+\LARGE{DZIĘKUJE.}
+\end{center}
+
+\end{frame}
+
+
+\end{document}
