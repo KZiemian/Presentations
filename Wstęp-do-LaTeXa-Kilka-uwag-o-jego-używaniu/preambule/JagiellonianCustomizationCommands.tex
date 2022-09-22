@@ -1,0 +1,143 @@
+% ---------------------------------------
+% Commands for handling colors
+% ---------------------------------------
+
+
+% Command for setting normal text color for some text in math modestyle
+% Text color depend on used style of Jagiellonian
+
+% Beamer version of command
+\newcommand{\TextWithNormalTextColor}[1]{%
+  {\color{jNormalTextFGColor}
+    \setbeamercolor{math text}{fg=jNormalTextFGColor} {#1}}
+}
+
+% Article and similar classes version of command
+% \newcommand{\TextWithNormalTextColor}[1]{%
+%   {\color{jNormalTextsFGColor} {#1}}
+% }
+
+
+
+% Beamer version of command
+\newcommand{\NormalTextInMathMode}[1]{%
+  {\color{jNormalTextFGColor}
+    \setbeamercolor{math text}{fg=jNormalTextFGColor} \text{#1}}
+}
+
+
+% Article and similar classes version of command
+% \newcommand{\NormalTextInMathMode}[1]{%
+%   {\color{jNormalTextsFGColor} \text{#1}}
+% }
+
+
+
+
+% Command that sets color of some mathematical text to the same color
+% that has normal text in header (?)
+
+% Beamer version of the command
+\newcommand{\MathTextFrametitleFGColor}[1]{%
+  {\color{jFrametitleFGColor}
+    \setbeamercolor{math text}{fg=jFrametitleFGColor} #1}
+}
+
+% Article and similar classes version of the command
+% \newcommand{\MathTextWhiteColor}[1]{{\color{jFrametitleFGColor} #1}}
+
+
+
+
+
+% Command for setting color of alert text for some text in math modestyle
+
+% Beamer version of the command
+\newcommand{\MathTextAlertColor}[1]{%
+  {\color{jOrange} \setbeamercolor{math text}{fg=jOrange} #1}
+}
+
+% Article and similar classes version of the command
+% \newcommand{\MathTextAlertColor}[1]{{\color{jOrange} #1}}
+
+
+
+
+
+% Command that allow you to sets chosen color as the color of some text into
+% math mode. Due to some nuances in the way that Beamer handle colors
+% it not work in all cases. We hope that in the future we will improve it.
+
+% Beamer version of the command
+\newcommand{\SetMathTextsColor}[2]{%
+  {\color{#1} \setbeamercolor{math text}{fg=#1} #2}
+}
+
+
+% Article and similar classes version of the command
+% \newcommand{\SetMathTextColor}[2]{{\color{#1} #2}}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% Commands for setting background pictures for some slides
+% ---------------------------------------
+\newcommand{\TitleBackgroundPicture}
+{./PresentationPictures/CommonPictures/Cute_dragon_BG_dark.png}
+\newcommand{\SectionBackgroundPicture}
+{./PresentationPictures/CommonPictures/Cute_dragon_small_BG_light.png}
+
+
+
+\newcommand{\TitleSlideWithPicture}{
+  \begingroup
+
+  \usebackgroundtemplate{ % \hspace*{-11.5em}
+    \includegraphics[height=\paperheight]{\TitleBackgroundPicture}}
+
+  \maketitle
+
+  \endgroup
+}
+
+
+
+
+
+\newcommand{\SectionSlideWithPicture}[1]{%
+  \begingroup
+
+  \usebackgroundtemplate{ % \hspace*{-11.5em}
+    \includegraphics[height=\paperheight]{\SectionBackgroundPicture}}
+
+  \setbeamercolor{titlelike}{fg=normal text.fg}
+
+  \section{#1}
+
+  \endgroup
+}
+
+
+
+
+
+\newcommand{\EndingSlide}[1]{%
+  \begin{frame}[standout]
+
+    \begingroup
+
+    \color{jFrametitleFGColor}
+
+    #1
+
+    \endgroup
+
+  \end{frame}
+}

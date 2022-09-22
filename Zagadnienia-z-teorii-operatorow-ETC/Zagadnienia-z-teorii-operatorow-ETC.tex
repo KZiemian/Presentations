@@ -1,0 +1,1714 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{beamer} \mode<presentation>
+\usepackage[utf8]{inputenc}% Pozwala pisać polskie znaki bezpośrednio.
+\usepackage[polish]{babel}
+\usepackage[MeX]{polski}
+\usepackage{microtype}
+\let\lll\undefined
+\usepackage{amsmath}
+\usepackage{amsfonts, amssymb, amscd, amsthm}
+\usepackage{latexsym}
+\usepackage{subfigure}
+\usepackage{xcolor}
+\usepackage{graphicx}% Pozwala wstawiać grafikę.
+\usepackage{verbatim}
+\usepackage{calrsfs}
+\usepackage{hyperref}
+% #####################################################################
+
+
+% Ustawienia beamera
+\usetheme{Warsaw} 
+\usecolortheme{orchid}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamersize{text margin left=3mm}
+\setbeamersize{text margin right=3mm}
+
+% #####################################################################
+
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+
+\newcommand{\ld}{\ldots}
+
+% Slashe w tekście
+\newcommand{\tb}{\textbf}
+\newcommand{\tbs}{\textbackslash}
+
+% Podstawowe oznaczenia matematyczne
+\newcommand{\fr}{\frac}
+\newcommand{\tfr}{\tfrac}
+\newcommand{\tr}{\textrm}
+
+% Oznaczenia ,,nad i pod''. Wymyśl lepszą nazwę
+\newcommand{\ul}{\underline}
+\newcommand{\ol}{\overline}
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde}
+
+% Trzcionki matematyczne
+\newcommand{\mr}{\mathrm}
+\newcommand{\mb}{\mathbb}
+\newcommand{\mc}{\mathcal}
+\newcommand{\mf}{\mathfrak}
+\newcommand{\mbf}{\mathbf}
+
+% Strzałki
+\newcommand{\ra}{\rightarrow}
+\newcommand{\Ra}{\Rightarrow}
+
+\newcommand{\wtw}{wtedy i~tylko wtedy}
+
+% Litery greckie
+\newcommand{\al}{\alpha}
+\newcommand{\be}{\beta}
+\newcommand{\ga}{\gamma}
+\newcommand{\del}{\delta}
+\newcommand{\Del}{\Delta}
+\newcommand{\la}{\lambda}
+\newcommand{\eps}{\epsilon}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\om}{\omega}
+\newcommand{\Om}{\Omega}
+\newcommand{\si}{\sigma}
+\newcommand{\Si}{\Sigma}
+
+% Standardowe oznaczenia literowe
+\newcommand{\N}{\mb{N}}
+\newcommand{\R}{\mb{R}}
+\newcommand{\C}{\mb{C}}
+\newcommand{\D}{\mc{D}}
+\let\H\undefined
+\newcommand{\H}{\mc{H}}
+\let\L\undefined
+\newcommand{\L}{\mc{L}}
+\newcommand{\Rn}{\R^{ n }}
+\newcommand{\Rc}{\mc{R}}
+\newcommand{\Cc}{\mc{C}}
+
+% Mniej używane oznaczenia literowe
+\newcommand{\B}{\mc{B}}
+\newcommand{\Oc}{\mc{O}}
+\newcommand{\Rp}{\R_{ + }}
+
+% Teoria mnogości
+\newcommand{\es}{\emptyset}
+\newcommand{\sset}{\subset}
+\newcommand{\setm}{\setminus}
+\newcommand{\ti}{\times}
+
+% Algebra
+\newcommand{\Real}{\mf{Re}}
+\newcommand{\Imag}{\mf{Im}}
+\newcommand{\ot}{\otimes}
+\newcommand{\Tr}{\mr{Tr}}
+
+% Granice
+\newcommand{\Lim}{\lim\limits}
+\newcommand{\Liminf}{\ul{\lim}}
+\newcommand{\Limsup}{\ol{\lim}}
+
+
+% Sumy
+\newcommand{\Sum}{\sum\limits}
+
+% Różniczkowanie i pochodne
+\newcommand{\pr}{\partial}
+\newcommand{\de}{\mr{d}}
+\newcommand{\dd}[3]{\fr{ \de^{ #1 } { #2 } }{ \de { #3 }^{ #1 } }}
+\newcommand{\pd}[3]{\fr{ \pr^{ #1 } { #2 } }{ \pr { #3 }^{ #1 } }}
+
+% Całki
+\newcommand{\Int}{\int\limits}
+\newcommand{\IntA}[1]{\Int_{ -\infty }^{ +\infty } \de #1 \;}
+\newcommand{\IntB}[1]{\int_{ \R } \de #1 \;}
+\newcommand{\IntC}[1]{\Int_{ 0 }^{ +\infty } \de #1 \;}
+\newcommand{\IntCa}[2]{ \Int #1 \, \de#2 } % Juz z calkowaniem
+\newcommand{\IntFi}[2]{ \Int \de#1 \, #2 } % Bardziej Fizyczna notacja;)
+\newcommand{\IntWie}[3]{ \int_{ #1 } \de^{ #2 }#3 \; } % Wielowymiarowa.
+\newcommand{\IntDo}[5]{ \Int_{ #1 } \de^{ #2 }#3\, \de^{ #4 } #5 \; }
+\newcommand{\IntL}[3]{ \int\limits_{ { #1 } }^{ { #2 } } \d#3 \; }
+
+% Powszechnie używane symbole 
+\newcommand{\Cinfty}{\Cc^{ \infty }}
+
+% Analiza funkcjonalna
+\newcommand{\da}{\dagger}
+
+% Różne oznaczenia z analizy
+\newcommand{\dx}{\de x}
+
+% Brakety
+\newcommand{\lket}{\langle}
+\newcommand{\rket}{\rangle}
+
+% Wartość bezwzględna i normy
+\providecommand{\absj}[1]{\lvert #1 \rvert}
+\providecommand{\absd}[1]{\left| #1 \right|}
+\newcommand{\norm}[1]{\left|\left| #1 \right|\right|}
+
+% Oznaczenia wektorów
+\newcommand{\veca}{\vec{ a }}
+\newcommand{\vecb}{\vec{ b }}
+\newcommand{\vecx}{\vec{ x }}
+\newcommand{\vecp}{\vec{ p }}
+\newcommand{\vecq}{\vec{ q }}
+
+
+% Do wystąpień
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\colorlink}[1]{\href{#1}{\color{orange} link}}
+
+% Do tej konkretnej prezentacji
+\newcommand{\DA}{\D( A )}
+\newcommand{\g}{\wh{ g }}
+\newcommand{\gl}{g_{ \la }}
+
+
+
+% ####################################################################
+\title[]{Zgadnienia teorii operatorów nieograniczonych \\
+  w~efekcie Casimira}
+\subtitle{Seminarium Zakładu Teorii Pola}
+\author{Kamil Ziemian \\
+  \texttt{kziemianfvt@gmail.com} }
+\institute{Uniwersytet Jagielloński w Krakowie}
+\date[24 marca 2017]{24 marca 2017}
+% #####################################################################
+
+
+
+
+% #####################################################################
+\begin{document}
+% #####################################################################
+
+
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+
+
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+
+
+% ####################################################################
+\section{Efekt Casimira dla swobodnego pola skalarnego}
+
+
+\begin{frame}
+  \frametitle{Przedstawienie problemu}
+
+
+  \begin{block}{Podstawowe informacje}
+    Dynamika swobodnego pola skalarnego dane jest przez równanie
+    \begin{equation}
+      \label{eq:EC01}
+      ( \pr^{ 2 }_{ t } + h^{ 2 }) \phi( \vecx, t ) = 0, \quad h^{ 2 } = -\Del.
+    \end{equation}
+    Położenie ciał makroskopowych opisują parametry oznaczane zbiorczo
+    jako $a$. Wprowadzamy operator:
+    \begin{equation}
+      \label{eq:EC02}
+      h_{ a }^{ 2 } = h^{ 2 } + V_{ a } = -\Del + V_{ a }.
+    \end{equation}
+    $V_{ a }$ opisuje wpływ ciał makroskopowych na pole $\phi$.
+    Równanie ewolucji pola z~uwzględnieniem efektów od~wprowadzonych
+    ciał, ma następującą postać:
+    \begin{equation}
+      \label{eq:EC03}
+      ( \pr^{ 2 }_{ t } + h_{ a }^{ 2 }) \phi( \vecx, t ) = 0.
+    \end{equation}
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Problem fizyczny}
+
+  \begin{block}{Dwa punkty materialne}
+    Chcemy zbadać jak będzie wyglądał efekt Casimira, to pomysł
+    dr.~Damskiego, gdy wprowadzimy do układu dwie cząstki punktowe. \\
+    Oznacza to, że~\red{chcielibyśmy czegoś takiego jak potencjał}
+    \begin{equation}
+      \label{eq:EC04}
+      V( \vecx ) = -c \del( \vecx - \vecx_{ 1 } ) - c \del( \vecx
+      - \vecx_{ 2 } ),
+      \quad c > 0.
+    \end{equation}
+    Z~nie do końca zrozumiałych dla mnie względów, w~dalszej analizie
+    efektu Casimira, które nie będę tu omawiał, okazuje~się, że~musimy
+    pracować z~pseudopotencjałem, który odpowiada słabo
+    przyciągającemu potencjałowi $-c\del( \vecx - \vecx_{ 1 })$.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Operator $V_{ a }$}
+
+  \begin{block}{Jawna postać}
+    Przyjęliśmy, że~operator ten, jest operatorem rzutowym.
+    \begin{equation}
+      \label{eq:EC05}
+      V_{ \veca } = \si( g ) ( | U_{ \vecb } g \rket \lket U_{ \vecb } g |
+      + | U_{ -\vecb } g \rket \lket U_{ -\vecb } g | ), \quad
+      \vecb = \fr{ \veca }{ 2 }.
+    \end{equation}
+    $g( \vecx )$ jest sferycznie symetryczną funkcją zespoloną klasy
+    $\Cinfty$.
+    \begin{equation}
+      \label{eq:EC06}
+      (U_{ \vecb }g)( \vecx ) = g( \vecx - \vecb ).
+    \end{equation}
+    Czyli
+    \begin{equation}
+      \label{eq:EC07}
+      | U_{ \vecb } g \rket \lket U_{ \vecb } g | f \rket
+      = | U_{ \vecb } g \rket \left( \IntWie{ \R^{ 3 } }{ 3 }{ x }
+        \ol{ g }( \vecx - \vecb ) f( \vecx ) \right).
+    \end{equation}
+  \end{block}
+
+  \begin{block}{Skalowanie}
+    Potencjał ,,dwóch $\del$'' otrzymujemy w~granicy $\la \ra 0$, gdy
+    \begin{equation}
+      \label{eq:EC08}
+      g( \vecx - \vecb ) \ra g_{ \la }( \vecx - \vecb )
+      = \la^{ -\ga } g( \tfr{ \vecx - \vecb }{ \la } ).
+    \end{equation}
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Operator $V_{ a }$}
+
+  \begin{block}{$\si( g )$}
+    \begin{equation}
+      \label{eq:EC09}
+      V_{ \veca } = \si( g ) ( | U_{ \vecb } g \rket \lket U_{ \vecb } g |
+      + | U_{ -\vecb } g \rket \lket U_{ -\vecb } g | ).
+    \end{equation}
+    Nie całkiem trywialna analiza pokazała, że~aby otrzymać
+    interesujące oddziaływania w~granicy $\la \ra 0$, musimy przyjąć,
+    że~$\si$ jest funkcjonałem na~funkcjach $g$.
+    \begin{align}
+      \label{eq:EC10}
+      \g( \absj{ \vecp } ) = \g( \vecp ) &=  \fr{ 1 }{ \sqrt{ 2 \pi }^{ 2 } }
+                                           \IntWie{ \R^{ 3 } }{ 3 }{ x } g( \vecx )
+                                           e^{ -i \vecx \cdot \vecp }, \\
+      M_{ p } &= \absj{ \g( p ) }^{ 2 }, \\
+      \si^{ -1 }( g ) = \fr{ 1 }{ \si( g ) } &= -\al M_{ 0 }
+                                               - 2 \pi \IntA{ p } M_{ p }.
+    \end{align}
+    Sytuacja ta wydaje mi~się dość nietypowa.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Siła Casimira}
+
+  \begin{block}{Podstawowe wzory fizyczne}
+    Przypomnijmy
+    \begin{align}
+      \label{eq:EC11}
+      h_{ a }^{ 2 } &= h^{ 2 } + V_{ a } = -\Del + V_{ a } \\
+      V_{ \veca } = \si( g ) ( | U_{ \vecb } g \rket & \lket U_{ \vecb } g |
+                                                       + | U_{ -\vecb } g \rket \lket U_{ -\vecb } g | ), \quad
+                                                       \vecb = \fr{ \veca }{ 2 }.
+    \end{align}
+    Energia układu pola skalarnego $\phi$ w~obecności ciała
+    makroskopowych dana jest wzorem, który może wydawać~się zupełnie
+    niespodziewany.
+    \begin{equation}
+      \label{eq:EC12}
+      \mc{E}_{ a } = (\Om_{ a }, H \Om_{ a } ) = \fr{ 1 }{ 4 } \Tr[ ( h_{ a } - h )
+      h_{ a }^{ -1 } ( h_{ a } - h ) ],
+    \end{equation}
+    gdzie $\Om_{ a }$ to stan próżni dla operatora $h_{ a }^{ 2 }$.
+    Jeżeli wykonamy podstawienie $g \ra \gl$, to powyższy wzór będzie
+    zależał również od~$\la$.
+  \end{block}
+  
+\end{frame}
+
+
+
+% #####################################################################
+\section{Pytania matematyczne}
+% #####################################################################
+
+
+
+\begin{frame}
+  \frametitle{Podstawowe pytania matematyczne}
+
+  \begin{block}{Operatory liniowe}
+    Niech $\D( A ) \sset \H$ będzie podprzestrzenią liniową.
+    \tb{Operator liniowy} to~liniowe odwzorowanie $A: \D( A ) \ra \H$.
+    $\D( A )$ nazywamy \tb{dziedziną operatora}.
+  \end{block}
+
+  \begin{block}{Czy}
+    \begin{enumerate}
+    \item $h_{ a }^{ 2 } = -\Del + V_{ a }$ jest samosprzężony?
+    \item Czy jego widmo nie zawiera części ,,niefizycznej''?
+    \end{enumerate}
+    Innych pytań, również matematycznych jest wiele, ale~nim nie
+    będę~się zajmował.
+  \end{block}
+
+\end{frame}
+
+
+
+% #####################################################################
+\section{Problem dziedziny}
+% #####################################################################
+
+
+
+\begin{frame}
+  \frametitle{Uwagi i~przypomnienie}
+
+  \begin{block}{Ważne}
+    Cały czas będziemy pracowali w~zespolonej przestrzeni Hilberta
+    $\H$.
+  \end{block}
+
+  \begin{block}{Zbiór gęsty}
+    W~przestrzeni metrycznej $X$ zbiór $D$ jest gęsty jeśli
+    \begin{equation}
+      \label{eq:EC}
+      \forall x \in X, \exists \; a_{ n } \in D, \; \Lim_{ n \ra +\infty}
+      a_{ n } = x.
+    \end{equation}
+    Ogólniejsze sformułowanie to $\ol{ D } = X$.
+  \end{block}
+
+  \begin{block}{Przypadek niekończenie wymiarowy}
+    Jeżeli przestrzeń wektorowo\dywiz topologiczna, w~szczególności
+    przestrzeń Hilberta, jest nieskończenie wymiarowa, to mogą istnieć
+    gęste podprzestrzenie liniowe. \tb{Przykład.} Na mocy twierdzenia
+    Weierstrassa o~aproksymacji wielomianami, podprzestrzeń
+    wielomianów jest gęsta w przestrzeni funkcji
+    $\Cc( [ a, b ], \R )$, jednak nie każda funkcja ciągła na odcinku
+    jest wielomianem.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Operatory ograniczone}
+
+  \begin{block}{Operatory ograniczone}
+    Operator jest ograniczony jeśli istnieje stała $C > 0$ taka, że
+    \begin{equation}
+      \label{eq:5}
+      \forall \vp \in \D(A), \; \norm{ A \vp } \leq C \norm{ \vp }.
+    \end{equation}
+    Wtedy
+    \begin{equation}
+      \label{eq:3}
+      \norm{ A } = \inf\{ C \, | \, \norm{ A \vp } \leq C \norm{ \vp } \},
+    \end{equation}
+    nazywamy normą operatora.
+  \end{block}
+
+  \begin{block}{Widmo samosprzężonego operatora ograniczonego}
+    Widmo takie operatora zawiera~się w~odcinku
+    $[ -\norm{ A }, +\norm{ A }]$. \\
+  \end{block}
+
+  \begin{block}{Wniosek}
+    Większość powszechnie znanych i~lubianych operatorów nie może być
+    ograniczona.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Operatory nieograniczone}
+
+  \begin{block}{Operatory nieograniczone}
+    Jeśli operator $A$ o~dziedzinie $\D( A )$ nie jest ograniczony,
+    to~nazywamy go~nieograniczonym (ang. unbounded). Inaczej, \tb{nie
+      istnieje} stała $C > 0$, \\
+    taka by zachodziło
+    \begin{equation}
+      \label{eq:5}
+      \forall \vp \in \D(A), \; \norm{ A \vp } \leq C \norm{ \vp }.
+    \end{equation}
+    Inna charakterystyka jest następująca. \tb{Istnieje} ciąg
+    $D( A ) \ni \vp_{ n } \ra 0$ \\
+    taki, że
+    \begin{equation}
+      \label{eq:4}
+      \Lim_{ n \ra +\infty } A \vp_{ n } \neq 0.
+    \end{equation}
+    W~istocie ciąg ten można wybrać tak, że
+    \begin{equation}
+      \label{eq:4}
+      \Lim_{ n \ra +\infty } \norm{ A \vp_{ n } } = +\infty.
+    \end{equation}
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Sedno wielu subtelności}
+
+  \begin{block}{Twierdzenie Hellingera\dywiz Toeplitza}
+    Jeśli $\D( A ) = \H$ i~operator $A$ jest samosprzężony, to jest
+    ograniczony.
+  \end{block}
+
+  \begin{block}{Konsekwencje}
+    Nieograniczony operator samosprzężony może być określony najwyżej
+    na gęstej dziedzinie $\D( A )$. Ponieważ może zachodzić
+    $\D( A ) \cap \D( B ) = \{ 0 \}$, choć obie dziedziny są gęste,
+    większość wzorów z~podręczników do~mechaniki kwantowej zostaje
+    poddana w~matematyczną wątpliwość. Żeby nie powiedzieć, że~zostaje
+    zredukowana do czysto formalnych manipulacji, nonsensownych
+    z~punktu widzenia matematyki.
+  \end{block}
+
+  \begin{block}{Konkrente problemy}
+    \begin{enumerate}
+    \item Zmiana dziedziny $\D( A )$ może zmienić widmo operatora,
+      a~tym samym jego sens fizyczny.
+    \item $A + B$ ma sens tylko na zbiorze $\D( A ) \cap \D( B )$.
+    \end{enumerate}
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Sedno wielu subtelności}
+
+  \begin{block}{Konkrente problemy}
+    \begin{enumerate}
+    \item Zmiana dziedziny $\D( A )$ może zmienić widmo operatora,
+      a~tym samym jego sens fizyczny.
+    \item $A + B$ ma sens tylko na zbiorze $\D( A ) \cap \D( B )$.
+    \item $[ A, B ] = AB - BA$ ma sens tylko dla takiego $\vp$,
+      że~$B \vp \in \D( A )$ i~$A \vp \in \D( B )$.
+    \item $[ \wh{ x }, \wh{ p } ] = i \hbar I$, można udowodnić,
+      że~operatory ograniczone nie mogą mieć takiej relacji komutacji.
+      Z~drugiej strony, co ta relacja niby znaczy? Wszak trzeba
+      ustalić dziedzinę prawej strony.
+    \item Operator ewolucji
+      \begin{equation}
+        \label{eq:6}
+        e^{ -\fr{ i }{ \hbar } \wh{ H } t } = I + \fr{ 1 }{ 1! }
+        \left( -\fr{ i }{ \hbar } t \right) \wh{ H } + \fr{ 1 }{ 2! }
+        \left( -\fr{ i }{ \hbar } t \right)^{ 2 } \wh{ H }^{ 2 } + \ld
+        + \fr{ 1 }{ n! } \left( -\fr{ i }{ \hbar } t \right)^{ n }
+        \wh{ H }^{ n } + \ld
+      \end{equation}
+      N\dywiz ty wyraz ma sens tylko na $\D( \wh{ H }^{ n } )$, więc
+      ten szereg może być zbieżny tylko dla $0$.
+    \end{enumerate}
+  \end{block}
+  
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Problem głębszy}
+
+
+  \begin{block}{Konkretne problemy --~relacje komutacji}
+    Przykład z~książki Schiffa, \S 1.3, równanie (3.2). Rozpatrzmy
+    operator współrzędnej kątowej $\wh{ \vp }$ i $\wh{ L }_{ z }$:
+    \begin{align}
+      \label{eq:8}
+      \wh{ \vp } \psi( r, \vp, \theta ) &= \vp \psi( r, \vp, \theta ) \\
+      \wh{ L }_{ z } &= -i \hbar \pd{}{}{ \vp }.
+    \end{align}
+    Od razu mamy:
+    \begin{equation}
+      \label{eq:9}
+      [ \wh{ \vp }, \wh{ L }_{ z } ] = i \hbar I.
+    \end{equation}
+    Analogicznie więc jak dla położenia i~pędu musi być:
+    \begin{equation}
+      \label{eq:10}
+      \si_{ \vp } \si_{ L_{ z } } \geq \fr{ \hbar }{ 2 }.
+    \end{equation}
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Problem głębszy}
+
+  \begin{block}{Problem}
+    Którego ani ja, ani Shift nie zauważył, a~Pawłowi Duchowi zajęło
+    to 15~sekund. Po pierwsze byłoby dziwne, gdyby
+    $\si_{ \vp } > 2 \pi$. Po drugie, skoro istnieje zupełnie normalny
+    stan własny $\wh{ L }_{ z }$, to dla niego mamy
+    \begin{equation}
+      \label{eq:11}
+      \si_{ \vp } \si_{ L_{ z } } = \si_{ \vp } 0 = 0 \geq \fr{ \hbar }{ 2 }.
+    \end{equation}
+  \end{block}
+
+  \begin{block}{Rozwiązanie problemu}
+    Dla operatorów nieograniczonych, nie można tak po prostu liczyć
+    komutatorów, bo trzeba ustalić odpowiednie dziedziny. Andrzej
+    Herdegen i~Piotr Ziobro poświęcili temu zagadnieniu pracę
+    ,,Generalized uncertainty relations'', arXiv:~1511.06589,
+    \colorlink{https://arxiv.org/abs/1511.06589}, którą polecam
+    zainteresowanym.
+  \end{block}
+
+  \begin{block}{Więcej tego typu zagadek}
+    Można znaleźć w~F. Gieres ,,Mathematical surprises and~Dirac's
+    formalism in~quantum mechanics'', arXiv:~9907069,
+    \colorlink{https://arxiv.org/abs/quant-ph/9907069}.
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Operatory samosprzężone}
+
+  \begin{block}{Szczęśliwie}
+    Fizyka matematyczna wysiłkiem takich ludzi jak John von Neumann,
+    Tosio Kato, Marshall Stone i~wielu innych, potrafi sobie poradzić
+    z~większością tych wyzwań przypadku najważniejszy modeli
+    i~problemów nierelatywistycznej mechaniki kwantowej, a~niekiedy
+    nawet w~bardziej skomplikowanych. \\
+    Więcej w~bibliografii.
+  \end{block}
+
+  \begin{block}{Uwaga}
+    Od tej pory zakładamy, że~dziedziny wszystkich operatorów~są gęste
+    w~$\H$.
+  \end{block}
+
+  \begin{block}{Operatory symetryczne}
+    Operator nieograniczony $A$ jest symetrycznych, jeśli
+    \begin{equation}
+      \label{eq:7}
+      \forall \vp, \psi \in \DA, \; ( \vp, A\psi ) = ( A\vp, \psi ).
+    \end{equation}
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Operatory samosprzężone}
+
+  \begin{block}{Operator sprzężony}
+    Niech dany będzie operator $A$ z~gęstą dziedziną $\DA$. Oznaczmy
+    przez $\D( A^{ * } )$ zbiór wektorów $\vp$ takich,
+    że~odwzorowanie:
+    \begin{equation}
+      \label{eq:12}
+      \DA \ni \psi \ra ( \vp, A\psi ),
+    \end{equation}
+    jest ciągłe na~$\DA$. Używając twierdzenia o~rozszerzaniu
+    operatorów ograniczonych i~lematu Risza, dostajemy, że~istnieje
+    wektor $\eta$ taki, iż
+    \begin{equation}
+      \label{eq:13}
+      \forall \psi \in \DA, \; ( \vp, A\psi ) = ( \eta, \psi ).
+    \end{equation}
+    Przypomnienie z~algebry liniowej. Definiujemy operator $A^{ * }$
+    jako
+    \begin{equation}
+      \label{eq:14}
+      A^{ * } \vp = \eta.
+    \end{equation}
+    Jest to operator liniowy o~dziedzinie $\D( A^{ * } )$, sprzężony
+    do~$A$.
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Operatory samosprzężone}
+
+  \begin{block}{Operatory samosprzężone}
+    Operator $A$ jest samosprzężony jeśli:
+    \begin{enumerate}
+    \item $\DA = \D( A^{ * } )$.
+    \item
+      $\forall \vp, \psi \in \DA, \; ( \vp, A\psi ) = ( A\vp, \psi )$.
+    \end{enumerate}
+    Oba warunki~są równie ważne. Choć ze świecą szukać pierwszego
+    w~podręcznikach do~mechaniki kwantowej.
+  \end{block}
+
+  \begin{block}{Przypomnienie} % C-x C-+
+    Czy możemy stwierdzić, że operator
+    \begin{equation}
+      \label{eq:15}
+      h_{ a }^{ 2 } = -\Del + V_{ a },
+    \end{equation}
+    jest samosprzężony, jeśli wiemy, że~laplasjan jest samosprzężony?
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Twierdzenie Kato\dywiz Rellicha}
+
+  \begin{block}{$H$\dywiz ograniczoność}
+    Niech $H$ i~$A$, będą operatorami o~gęstych dziedzinach. Jeżeli
+    \begin{enumerate}
+    \item $\D( H ) \sset \DA$.
+    \item Istnieją stałe $a, b > 0$ takie, że
+      \begin{equation}
+        \label{eq:16}
+        \forall \vp \in \D( H ), \; \norm{ A\vp } \leq a \norm{ H \vp }
+        + b \norm{ \vp }.
+      \end{equation}
+    \end{enumerate}
+    Wówczas $A$ nazywamy $H$\dywiz ograniczony. Liczbę $\inf a$
+    nazywamy $H$\dywiz granicą operatora $A$.
+  \end{block}
+
+  \begin{block}{Wniosek} % C-x C-+
+    Dla operatora ograniczonego $A$ można przyjąć $a = 0$
+    i~$b = \norm{ A }$. Operator ograniczony jest więc $H$\dywiz
+    ograniczony dla każdego operatora $H$ z~$H$\dywiz granicą równą 0.
+    Detale pominę.
+  \end{block}
+  
+\end{frame}
+
+
+
+
+\begin{frame}
+  \frametitle{Twierdzenie Kato\dywiz Rellicha}
+
+  \begin{block}{Uproszczone twierdzenie Kato\dywiz Rellicha}
+    Załóżmy, że~operator $H_{ 0 }$ jest samosprzężony, a~$V$ jest
+    symetryczny, $H$\dywiz ograniczony z~$H$\dywiz granicą mniejszą od
+    1. Wtedy $H = H_{ 0 } + V$ jest samosprzężony na $\D( H )$
+  \end{block}
+
+  \begin{block}{Przypadek badanego efektu Casimira}
+    \begin{align}
+      \label{eq:19}
+      h_{ a }^{ 2 } &= -\Del + V_{ a }, \\
+      V_{ \veca } = \si( g ) ( | U_{ \vecb } &g \rket \lket U_{ \vecb } g |
+                                               + | U_{ -\vecb } g \rket \lket U_{ -\vecb } g | ).
+    \end{align}
+    $V_{ a }$ jest operatorem skończonego rzędu, tym bardziej jest
+    ograniczony. \\
+    $h_{ a }^{ 2 }$ jest więc samosprzężony na~$\D( -\Del )$.
+  \end{block}
+  
+\end{frame}
+
+
+
+% #####################################################################
+\section{Analiza spektralna widma ciągłego}
+% #####################################################################
+
+
+
+\begin{frame}
+  \frametitle{Klasyfikacja widma operatora samosprzężonego}
+
+  \begin{block}{Widmo operatora samosprzężonego $\si( A )$}
+    To nie tylko zbiór $\si( A ) \sset \R$, ale to także pewna miara
+    $\mu_{ A }$ na tym zbiorze. Dokładniej: dodatnia, $\si$\dywiz
+    skończona miara borelowska na~tym zbiorze. Czyli
+    \begin{itemize}
+    \item[--] Jest określona na zbiorach borelowskich
+      $\B( \si( A ) )$;
+    \item[--] $\mu_{ A } : \B( \si( A ) ) \ra \Rp$;
+    \item[--]
+      $\si( A ) = \bigcup\limits_{ i = 1 }^{ \infty } \Oc_{ i }$,
+      $\mu_{ A }( \Oc_{ i } ) < +\infty$;
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Standardowa mądrość mówi,~że}
+    Widmo dzieli~się na dyskretne oraz ciągłe. I~tyle. W~fizyce
+    matematycznej jest~trudniej/ciekawiej. Widmo ciągłe należy jeszcze
+    podzielić na część absolutnie ciągłą względem miary Lebesgue'a
+    i~część osobliwą względem tej miary.
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Klasyfikacja widma operatora samosprzężonego}
+
+  \begin{block}{Standardowa mądrość mówi,~że}
+    Widmo dzieli~się na dyskretne oraz ciągłe. I~tyle. W~fizyce
+    matematycznej jest~trudniej/ciekawiej. Widmo ciągłe należy jeszcze
+    podzielić na część absolutnie ciągłą względem miary Lebesgue'a
+    i~część osobliwą względem tej~miary.
+  \end{block}
+  
+  \begin{block}{Szczególny przypadek twierdzenia Lebesgue'a
+      o~rozkładzie miary}
+    Dowolna miara $\si$\dywiz skończona na~$\R$ ma rozkład
+    $\mu_{ A } = \mu_{ pp } + \mu_{ ac } + \mu_{ s }$.
+    \begin{itemize}
+    \item[--] $\mu_{ pp }( S ) = \Sum_{ x \in S } \mu_{ pp }( x )$,
+      $S \sset \si( A )$. Istnieje przeliczalna ilość punktów o~mierze
+      różnej od~0, $\mu_{ pp }( x_{ i } ) \neq 0$. Zbiór który nie ma
+      zawiera tych punktów ma miarę~0.
+    \item[--] $\mu_{ ac }( x ) = f( x ) \, \de x$, gdzie $\de x$ jest
+      miarą Lebesgue'a na~prostej. Nie chcę wchodzić w~szczegóły.
+    \item[--] $\mu_{ s }$. Jeżeli $\mu_{ s }( S ) \neq 0$, to miara
+      Lebesgue'a tego zbioru jest równa 0. Analogicznie w~drugą
+      stronę.
+    \end{itemize}
+    
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Klasyfikacja widma operatora samosprzężonego}
+
+  \begin{block}{Sens widma}
+    \begin{itemize}
+    \item[--] $\mu_{ pp }$, (ang. pure points) --~stany związane.
+    \item[--] $\mu_{ ac }$, (ang. absolutely continous) --~stany
+      rozproszeniowe. % Sprawdź angielski.
+    \item[--] $\mu_{ s }$, (ang. singular) --~standardowo uważa~się,
+      że nie mają sensu fizycznego. Dobra teoria powinna być go
+      pozbawiona.
+    \end{itemize}
+    
+  \end{block}
+
+  \begin{block}{Twr. XIII 20, Reed, Simon, \emph{Analysis~of Operators}}
+    Niech $G( w^{ 2 } ) = ( w^{ 2 } I - H )^{ -1 }$, będzie rezolwentą
+    operatora~$H$ i~niech $(a , b)$ będzie ograniczonym odcinkiem.
+    Jeśli istnieje taki $\veps > 0$, $\eta > 0$, $p > 1$ i~gęsty
+    podzbiór~$\D$
+    \begin{equation}
+      \label{eq:17}
+      \sup_{ 0 < \veps < \eta } \Int_{ a }^{ b }
+      \absj{ \Imag( \vp, G( x + i \veps ) \vp ) }^{ p } \, \dx < +\infty,
+      \quad \forall \vp \in \D,
+    \end{equation}
+    to~na~odcinku $( a, b )$ jest tylko widmo absolutnie ciągłe.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Widmo ciągłe w~efekcie Casimira}
+
+  \begin{block}{Ogólnie}
+    Widmo $-\Del$ składa~się tylko z~widma absolutnie ciągłego, które
+    jest równe $[ 0, +\infty )$. Z~twierdzenia Weyla wiemy,
+    że~$\si( h_{ a }^{ 2 } )_{ c } \sset [ 0, +\infty )$.
+  \end{block}
+
+  \begin{block}{Idea}
+    \begin{equation}
+      \label{eq:17}
+      \sup_{ 0 < \veps < \eta } \Int_{ a }^{ b }
+      \absj{ \Imag( \vp, G( x + i \veps ) \vp ) }^{ p } \, \dx < +\infty,
+      \quad \forall \vp \in \D,
+    \end{equation}
+    Prof. Herdegen zaproponował, żeby znaleźć pokazać, żeby dla~danego
+    odcinka $( a, b )$ i każdego $\veps$ z~przedziału $( 0, \eta )$
+    wyraz $( \vp, G( x + i \veps ) \vp )$ jest ograniczony.
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Widmo ciągłe w~efekcie Casimira}
+
+  \begin{block}{Rezolwenta $h_{ a }^{ 2 }$}
+    \begin{align}
+      \label{eq:18}
+      G( w^{ 2 } ) &= G_{ 0 }( w^{ 2 } ) + G_{ V }( w^{ 2 } ) \\
+      G_{ 0 }( w^{ 2 } ) | \vecp \rket &= \fr{ 1 }{ w^{ 2 } - \vecp^{ 2 } }.
+    \end{align}
+    Należy więc pokazać, że~dla wszystkich $\vp$ z~pewnego gęstego
+    zbioru $\D$ i~na pasku $( a, b ) + i \veps$,
+    $\veps \in ( 0, \eta )$, ograniczone~są jednocześnie iloczyny
+    skalarne $( \vp, G_{ 0 }( x + i \veps ) \vp )$
+    i~$( \vp, G_{ V }( x + i \veps ) \vp )$
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Widmo ciągłe w~efekcie Casimira}
+
+  \begin{block}{Rezolwenta $G_{ V }( w^{ 2 } )$}
+    Jest do obliczenia za pomocą wzorów z~teorii rozpraszania. Jak~się
+    okazuje
+    \begin{equation}
+      \label{eq:20}
+      \begin{split}
+        ( f, G_{ V } f ) = &\left( \IntWie{}{ 3 }{ p } \ol{ f( \vecp )
+          } \g( \vecp ) \fr{ 1 }{ w^{ 2 } - \vecp^{ 2 } } ( \exp( -i
+          \vecb \cdot \vecp ) \; \exp( -i \vecb \cdot \vecp )
+          ) \right) \\
+        & T( w^{ 2 } ) \left( \IntWie{}{ 3 }{ q } f( \vecq ) \ol{ \g(
+            \vecq ) } \fr{ 1 }{ w^{ 2 } - \vecq^{ 2 } } ( \exp( -i
+          \vecb \cdot \vecq ) \; \exp( -i \vecb \cdot \vecq ) )^{ \da
+          } \right).
+      \end{split}
+    \end{equation}
+    $T( w^{ 2 } )$ jest macierzą $2 \ti 2$.
+  \end{block}
+
+  \begin{block}{Taktyka dowodu}
+    Dla rezolwenty laplasjanu $( f, G_{ 0 }( k^{ 2 } + i \veps ) f)$
+    jest ograniczony w~paskach, gdy~$f$ należy do~gęstego
+    w~$L^{ 2 }( \R^{ 3 }, \de^{ 3 } x )$ zbioru funkcji klasy
+    $\Cinfty$ o~nośniku zwartym. Trzeb pokazać, że~na tym samym
+    zbiorze jest ograniczony ten sam iloczyn skalarny dla
+    $G_{ V }( w^{ 2 } )$.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Widmo ciągłe w~efekcie Casimira}
+
+  \begin{block}{Ostatnie wyniki}
+    Dotyczą pokazania, że~wyrazy typu
+    \begin{equation}
+      \label{eq:21}
+      \IntWie{}{ 3 }{ p } \ol{ f( \vecp ) } \fr{ 1 }{ w^{ 2 }
+        - \vecp^{ 2 } },
+    \end{equation}
+    są~ograniczone na rozpatrywanych paskach.
+  \end{block}
+
+  \begin{block}{Obliczenia}
+    \begin{align}
+      \label{eq:22}
+      \IntWie{}{ 3 }{ p } \ol{ f( \vecp ) } \fr{ 1 }{ w^{ 2 }
+      - \vecp^{ 2 } } &= 2 \pi \IntA{ p } \fr{ p^{ 2 } }{ w^{ 2 }
+                        - p^{ 2 } } N( p ) \\
+      N( p ) &= \Int_{ S^{ 2 } } \de \Om \; f( \vecp ).
+    \end{align}
+    $N( p )$ jest funkcją klasy $\Cinfty( \R )$.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Widmo ciągłe w~efekcie Casimira}
+
+  \begin{block}{Przekształcenia}
+    Podstawmy $k^{ 2 } + i \veps$
+    \begin{equation}
+      \label{eq:22}
+      \begin{split}
+        \IntA{ p } \fr{ p^{ 2 } }{ k^{ 2 } - p^{ 2 } + i \veps } N( p
+        ) &= \IntA{ p } N( p ) \fr{ k^{ 2 } + i \veps }{ k^{ 2 } - p^{
+            2 } + i \veps } - \IntA{ p } N( p ).
+      \end{split}
+    \end{equation}
+    Trzeba teraz pokazać, że~wyrażenie to~jest ograniczone, gdy
+    $k^{ 2 } \in ( a^{ 2 }, b^{ 2 })$, $a > 0$, $b > 0$.
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}[fragile]
+  \frametitle{Standardowe operacja z~rachunku dystrybucji}
+
+  \begin{block}{}
+    \begin{equation}
+      \label{eq:23}
+      \begin{split}
+        & \IntA{ p } N( p ) \fr{ k^{ 2 } + i \veps }{ k^{ 2 } - p^{ 2
+          } + i \veps } = N( k ) \IntA{ p } \fr{ k^{ 2 } + i \veps}
+        { k^{ 2 } - p^{ 2 } + i \veps } \\
+        & + ( k^{ 2 } + i \veps ) \IntA{ p } \fr{ N( p ) - N( k ) } {
+          k^{ 2 } - p^{ 2 } }
+        \fr{ k^{ 2 } - p^{ 2 } }{ k^{ 2 } - p^{ 2 } + i \veps } \\
+        &= -i \pi \sqrt{ k^{ 2 } + i \veps } N( k ) + ( k^{ 2 } + i
+        \veps ) \IntA{ p } \fr{ N( p ) - N( k ) }{ k^{ 2 } - p^{ 2 } }
+        \fr{ k^{ 2 } - p^{ 2 } }{ k^{ 2 } - p^{ 2 } + i \veps }.
+      \end{split}
+    \end{equation}
+    $( N( p ) - N( k ) )/( k^{ 2 } - p^{ 2 } )$ jest funkcją gładką,
+    więc wyrażenie wyżej jest ograniczone jeśli tylko $k^{ 2 } > 0$.
+    Biorąc $k^{ 2 } \in ( a^{ 2 }, b^{ 2 } )$, dla coraz mniejszych
+    $a > 0$, możemy ,,wyczerpać'' zbiór $( 0, +\infty )$ i~wraz
+    z~podobnie uzyskaną wiedzą o~macierzy $T( w^{ 2 } )$ pozwala
+    wykazać, że~nie zawiera widma osobliwego. Podsumowując
+    $\si_{ s }( h_{ a }^{ 2 } ) = \emptyset$.
+  \end{block}
+
+\end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Wróćmy do~tekstu}
+
+%   \begin{block}{Część główna}
+%     Zawiera tekst, który (po obrobieniu przez \LaTeX a) znajdzie~się
+%     w~gotowym dokumencie.
+%     \begin{verbatim}
+% \begin{document}
+
+
+
+% Hello World!
+
+
+
+% \end{document}
+% \end{verbatim}
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}
+%   \frametitle{Białe znaki w~\LaTeX u}
+
+%   \begin{block}{}
+%     Białe znaki to \tb{spacja}, \tb{tab} i~\tb{enter}. \LaTeX{}
+%     traktuje jedną spację i~100 spacji tak samo: jako jeden odstęp.
+%     Tab traktuje jako spację. Przejście do nowej linii,
+%     \red{traktuje jako jeden odstęp.} Jedną pustą linię traktuje
+%     jako komendę, że~w~tym miejscu ma {\color{red} skończyć akapit}
+%     (częsty błąd początkujących), zaś~100 pustych linii jak jedną
+%     pustą linię.
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}
+%   \frametitle{Białe znaki w~\LaTeX u}
+
+%   \begin{block}{Organizacja tekstu za pomocą białych znaków}
+%     Plik dobrze napisany, to plik który łatwiej~się poprawia.
+%     A~każdy musi go~poprawiać.
+%     \begin{itemize}
+%     \item[--] W~preambule białe znaki nie mają znaczenie, co nie
+%       znaczy, że~nie należy ich używać. Wręcz przeciwnie!
+%     \item[--] Ponieważ przejście do~nowej to tyle samo co spacja,
+%       warto dzielić tekst na~krótsze linie (ja stosuje standard 79
+%       znaków). Dzięki temu nie musimy scrolować tekstu by~go
+%       zmienić,
+%       wszystko jest na ekranie. \\
+%       Poza tym komentarze lepiej działają, ale~o~tym za chwilę.
+%     \item[--] Ja wyznaję zasadę, że~dwie ważne części pliku
+%       źródłowego powinien oddzielać odstęp 3~pustych linii.
+%     \item[--] Pomiędzy mniej ważnymi fragmentami powinny
+%       znajdować~się 2~lub~1 puste linie. Przy założeniu,
+%       że~przejście do~nowego akapitu nie psuje wyglądu tekstu.
+%     \end{itemize}
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Przykład}
+
+%   \begin{block}{Stąd taki dziki wygląd tego pliku}
+    
+%   \begin{verbatim}
+% \RequirePackage[l2tabu, orthodox]{nag}
+% \documentclass{article}
+
+
+
+% \begin{document}
+
+
+
+% Hello World!
+
+
+
+% \end{document}
+% \end{verbatim}
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}
+%   \frametitle{Białe znaki w~\LaTeX u}
+
+%   \begin{block}{Organizacja tekstu za pomocą białych znaków}
+%     Plik dobrze napisany, to plik który łatwiej~się poprawia.
+%     A~każdy musi go~poprawiać.
+%     \begin{itemize}
+%     \item[--] Ponieważ przejście do~nowej to tyle samo co spacja,
+%       warto dzielić tekst na~krótsze linie (ja stosuje standard 79
+%       znaków). Dzięki temu nie musimy scrolować tekstu by~go
+%       zmienić,
+%       wszystko jest na ekranie. \\
+%       Poza tym komentarze lepiej działają, ale~o~tym za chwilę.
+%     \item[--] Ja wyznaję zasadę, że~dwie ważne części pliku
+%       źródłowego powinien oddzielać odstęp 3~pustych linii.
+%     \item[--] Pomiędzy mniej ważnymi fragmentami powinny
+%       znajdować~się 2~lub~1 puste linie. Przy założeniu,
+%       że~przejście do~nowego akapitu nie psuje wyglądu tekstu.
+%     \end{itemize}
+%   \end{block}
+
+%   \begin{block}{Ważne}
+%     Nie musicie tego robić tak jak ja, jednak gorąco polecam przyjąć
+%     jakiś standard. To~niezmiernie ułatwia pracę z~plikiem
+%     źródłowym.
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Polskie znaki}
+
+%   \begin{block}{Na razie pewnie nie da~się ich pisać}
+%     \LaTeX{} został stworzony do pracy z~językiem angielskim, stąd
+%     aby~używać wygodnie znaków polskich, należy rozszerzyć jego
+%     możliwości.
+%   \end{block}
+
+%   \begin{block}{Mądrość starożytnych, znaleziona w~bibliotece
+%     dr.~Google}
+%     Powiada że~należy tak zmodyfikować preambułę
+% \begin{verbatim}
+% \documentclass[a4paper,11pt]{article}
+% \usepackage[utf8]{inputenc}
+% \usepackage[polish]{babel}
+% \usepackage[MeX]{polski}
+% \end{verbatim}
+%   \end{block}
+
+%   \begin{block}{\tbs usepackage}
+%     Dosłownie ,,użyj paczki''. Importuje paczkę, która rozszerza
+%     możliwości standardowego \LaTeX a.
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Co warto zawsze mieć w~preambule?}
+
+%   \begin{block}{Według mnie to}
+% \begin{verbatim}
+% \let\lll\undefined
+% \usepackage{amsmath, amsfonts, amssymb, amscd, amsthm}
+% \usepackage{calrsfs}
+% \usepackage{xcolor}
+% \end{verbatim}
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Co warto zawsze mieć w~preambule?}
+
+%   \begin{block}{}
+% \begin{verbatim}
+% \usepackage{vmargin}
+% % ------------------------------------------------------
+% % MARGINS
+% % ------------------------------------------------------
+% \setmarginsrb
+% { 0.7in} % left margin
+% { 0.6in} % top margin
+% { 0.7in} % right margin
+% { 0.8in} % bottom margin
+% {  20pt} % head height
+% {0.25in} % head sep
+% {   9pt} % foot height
+% { 0.3in} % foot sep
+
+% \usepackage{hyperref}
+% \usepackage{cleveref}
+% \end{verbatim}
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Polecenia w~części głównej}
+
+%   \begin{block}{Składnia}
+%     Polecenie zaczyna~się ,,\tbs'' zaś kończy \tb{spacją} lub
+%     nawiasem wąsatym ,,\}''. Spacja w~pierwszym przypadku \tb{nie
+%     oznacza} odstępu, lecz koniec polecenia.
+%   \end{block}
+  
+%   \begin{block}{Wpiszcie taki tekst}
+%     \verb+\TeX i~\LaTeX to \emph{nie} jest to samo.+
+%   \end{block}
+
+%   \begin{block}{Dlaczego?}
+%     WYWINWYG =~to czego chcesz, to nie jest to co dostajesz.
+%     Ponieważ spacja po \verb+\TeX+ nie oznacza odstępu, tylko koniec
+%     polecenia \LaTeX{} rozumiem, że~odstępu ma tam nie być. Danie
+%     dwóch spacji nic nie da, bo dla niego 1 spacja = $N$ spacji =
+%     koniec komendy. Są różne szkoły radzenia sobie z~tym:
+%     \begin{itemize}
+%     \item[--] \verb+\TeX{} i~\LaTeX{} to+;
+%     \item[--] \verb+{\TeX} i~{\LaTeX} to+.
+%     \end{itemize}
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Wdowy i~sieroty}
+
+%   \begin{block}{Po co ta $\sim$?}
+%     Przyimki takie jak ,,a'', ,,w'', ,,u'', ,,z'', czy też zaimek
+%     zwrotny ,,się'' \\
+%     źle wyglądają na końcu lub początku linii, bo~nie mają sensu bez
+%     słów które~są zaraz obok. Podobno określa~się je jako wdowy
+%     i~sieroty. \LaTeX{} sam decyduje jak rozłożyć graficznie słowa
+%     ,,na~kartce'', więc często produkuje takie kwiatki. Aby temu
+%     zapobiec, należy użyć \tb{twardej spacji}. Od zwykłe spacji
+%     różni~się tym, że~\LaTeX{} zrobi wszystko, by~te słowa
+%     znalazły~się w~jednej linii, oznacza ją właśnie \verb+~+.
+%   \end{block}
+
+%   \begin{block}{Porównanie}
+%     \begin{itemize}
+%     \item[--] \tb{Poprawnie:} \verb+zrobi~się+.
+%     \item[--] \tb{Niepoprawnie:} \verb+zrobi się+.
+%     \end{itemize}
+%   \end{block}
+
+%   \begin{block}{Dłuższe wyrażenia}
+%     Jeśli chcemy by jakiś ciąg słów nigdy nie został rozbity między
+%     dwie linie, to~piszemy np.~\verb+\mbox{coś tam, coś tam}+.
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{\% --~nasz najlepszy przyjaciel w~\LaTeX u}
+
+%   \begin{block}{O~co chodzi z~tym~\%?}
+%     Jak każdy dobry język programowania, \LaTeX{} posiada
+%     komentarze. Wszystko od znaku \%, do końca linii jest zupełnie
+%     przez niego ignorowane. Jeśli chcemy mieć znak procenta
+%     w~tekście trzeba napisać \verb+\%+.
+%   \end{block}
+
+%   \begin{block}{Podstawowe rady}
+%     \begin{itemize}
+%     \item[--] Jeżeli dopiero zaczynasz pisać w~\LaTeX u i~uznałeś,
+%       że~chcesz usunąć tekst z~pliku źródłowego, to~najlepiej go
+%       wykomentuj. Zaraz dojdziesz do~wniosku, że~by ci~się przydał.
+%     \item[--] Komentarz to najlepszy debugger na świecie, dzięki
+%       znanej już Platonowi, to jest bodaj w~dialogu ,,Sofista'',
+%       metodzie bisekcji. Za~sekundę do~tego wrócimy.
+%     \end{itemize}
+%   \end{block}
+
+%   \begin{block}{Skorzystaj z~możliwości swojego środowiska}
+%     Każde środowisko ma skrót klawiszowy odpowiedzialne
+%     za~wykomentowanie i~odkomentowanie dowolnego bloku tekstu.
+%     Dla~\TeX Makera: Ctrl-T, Ctrl-U.
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Plik~się nie kompiluje}
+
+%   \begin{block}{Początkujący powinien powiesić to nad łóżkiem}
+%     Skróty klawiszowe do~komentowania i~odkomentowania bloków
+%     tekstu. Dla \TeX Makera:
+%     \begin{itemize}
+%     \item[--] wykomentuj --~Ctrl-T;
+%     \item[--] odkomentuj --~Ctrl-U.
+%     \end{itemize}
+%     Skoro już przy tym jesteśmy, to~trzeba powiedzieć o~trybie
+%     matematycznym.
+%   \end{block}
+
+%   \begin{block}{Jeśli mamy błąd kompilacji i~nie wiesz jaki}
+%     \begin{enumerate}
+%     \item Kompilator podaje nam linię w~której jest błąd, ale
+%       często~się myli w~zakresie 10~linii. Jeśli linie~są relatywnie
+%       krótkie, to~jest większa szansa, że~poda poprawną.
+%     \item Odkomentowujemy tekst, gdzie kompilator wskazuje błąd.
+%     \item Kompilujemy jeszcze raz. Jeśli błąd jest wciąż obecny, to
+%       znaczy, że~błędów jest więcej albo~wykomentowaliśmy zły
+%       fragment.
+%     \item Powtarzamy krok 2, aż~kompilator zadziała.
+%     \end{enumerate}
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Plik~się nie kompiluje}
+
+%   \begin{block}{Jeśli mamy błąd kompilacji i~nie wiesz jaki}
+%     \begin{enumerate}
+%     \item Kompilator podaje nam linię w~której jest błąd, ale
+%       często~się myli w~zakresie 10~linii. Jeśli linie~są relatywnie
+%       krótkie, to~jest większa szansa, że~poda poprawną.
+%     \item Odkomentowujemy tekst, gdzie kompilator wskazuje błąd.
+%     \item Kompilujemy jeszcze raz. Jeśli błąd jest wciąż obecny, to
+%       znaczy, że~błędów jest więcej albo~zakomentowaliśmy zły
+%       fragment.
+%     \item Powtarzamy krok 2, aż~kompilator zadziała.
+%     \item Przyglądamy~się krótkiemu fragmentowi zakomentowanego
+%       tekstu, jeśli~znajdziemy w~nim błąd to go poprawiamy, jeśli
+%       nie to go~odkomentowujemy.
+%     \item Jeśli zadziałał, to powtarzamy krok 5, jeśli nie, to
+%       znaczy, że~przeoczyliśmy błąd i~musimy dokładnie
+%       przeanalizować odkomentowany fragment.
+%     \item Stosujemy tę procedurę, aż~wszystko działa.
+%     \end{enumerate}
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Warto robić wcięcia}
+
+%   \begin{block}{Dlaczego warto skracać linie?}
+%     Relatywnie krótkie linie w~pliku źródłowym pozwalają pracować na
+%     małych fragmentach tekstu, a~znacznie łatwiej znaleźć błąd
+%     w~krótkim fragmencie tekstu niż w~długim.
+%   \end{block}
+  
+%   \begin{block}{Przykład trybu matematycznego}
+%     \begin{equation}
+%       \label{eq:2}
+%       \eps > 0, \quad \veps > 0.
+%     \end{equation}
+%     Aby to otrzymać piszemy
+% \begin{verbatim}
+% \begin{equation}
+%   \label{eq:1}
+%   \epsilon > 0, \quad \varepsilon > 0.
+% \end{equation}
+% \end{verbatim}
+%     Wcięcia bardzo ułatwiają później pracę z~\LaTeX em, dobre
+%     środowisko zrobi je za was. A~o~trybie matematyczny, więcej
+%     opowie wam Wojtek.
+%   \end{block}
+    
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Tryb matematyczny}
+
+%   \begin{block}{Chcemy mieć}
+%     \begin{equation}
+%       \label{eq:1}
+%       \pd{ 2 }{ u( x, t ) }{ x } - \fr{ 1 }{ c^{ 2 } } \pd{ 2 }{ u(
+%         x, t ) }{ t } = 0.
+%     \end{equation}
+%     Będzie trochę roboty, ale~potem pokażemy jak zmniejszyć jej
+%     ilość do~rozsądnych rozmiarów.
+%   \end{block}
+
+%   \begin{block}{Słownik}
+%     \begin{itemize}
+%     \item[--] potęga --~\verb+a^{ 2 }+ = $a^{ 2 }$;
+%     \item[--] ułamek --~\verb+\frac{ 1 }{ 2 }+ = $\fr{ 1 }{ 2 }$;
+%     \item[--] pochodna cząstkowa --~\verb+\partial+ = $\partial$.
+%     \end{itemize}
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Tryb matematyczny}
+
+%   \begin{block}{Musimy napisać}
+% \begin{verbatim}
+% \begin{equation}
+%   \label{eq:1}
+%   \frac{ \partial^{ 2 } u( x, t ) }{ \partial x^{ 2 } }
+%   - \frac{ 1 }{ c^{ 2 } } \frac{ \partial^{ 2 } u( x, t ) }
+%   { \partial t^{ 2 } }  = 0
+% \end{equation}
+% \end{verbatim}
+%     Większość białych znaków jest tu niepotrzebna, dodałem je dla
+%     własnej wygody. Tak samo podział na linie. W~trybie
+%     matematycznym {\color{red} nie wolno} zostawiać pustych linii!!!
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Tryb matematyczny}
+
+%   \begin{block}{Jeśli mamy błąd kompilacji i~nie wiesz jaki}
+%     \begin{enumerate}
+%     \item Kompilator podaje nam linię w~której jest błąd, ale
+%       często~się myli o~jakieś 10~linii. Jeśli linie~są relatywnie
+%       krótkie, to~jest większa szansa, że~poda poprawną.
+%     \item Odkomentowujemy tekst, gdzie kompilator wskazuje błąd.
+%     \item Kompilujemy jeszcze raz. Jeśli błąd jest wciąż obecny, to
+%       znaczy, że~błędów jest więcej albo ~zakomentowaliśmy zły
+%       fragment.
+%     \item Powtarzamy krok 2, aż~kompilator zadziała.
+%     \item Przyglądamy~się krótkiemu fragmentowi zakomentowanego
+%       tekstu, jeśli~znajdziemy w~nim błąd to go poprawiamy, jeśli
+%       nie to go~odkomentowujemy.
+%     \item Jeśli zadziałał, to powtarzamy krok 5, jeśli nie, to
+%       znaczy, że~przeoczyliśmy błąd i~musimy dokładnie
+%       przeanalizować odkomentowany fragment.
+%     \item Stosujemy tę procedurę, aż~wszystko działa.
+%     \end{enumerate}
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Uprośćmy sobie życie}
+
+%   \begin{block}{Dlaczego warto skracać linie?}
+%     Relatywnie krótkie linie w~pliku źródłowym pozwalają pracować na
+%     małych fragmentach tekstu, a~znacznie łatwiej znaleźć błąd
+%     w~krótkiej części tekstu niż w~długiej.
+%   \end{block}
+  
+%   \begin{block}{Przy odrobinie sprytu życie jest prostsze}
+%     Chcemy mieć % (trochę to brzydkie, ale~kod prosty)
+%     \begin{equation}
+%       \label{eq:2}
+%       \eps > 0, \veps > 0.
+%     \end{equation}
+%     Aby to uzyskać trzeba napisać
+% \begin{verbatim}
+% \begin{equation}
+%   \label{eq:2}
+%   \epsilon > 0, \varepsilon > 0.
+% \end{equation}
+% \end{verbatim}
+%     Nie ma potrzeby tyle pisać.
+%   \end{block}
+    
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Uprośćmy sobie życie}
+
+%   \begin{block}{\tbs newcommand}
+%     Wstawiamy do preambuły, najlepiej po ostatnim
+%     \verb+\usepackage+, linię
+% \begin{verbatim}
+% \newcommand{\eps}{\epsilon}
+% \end{verbatim}
+%     Jeżeli dobrze rozumiem, a~to rozumowanie jeszcze mnie nie
+%     zawiodło, urządzenie zwane preprocesorem zamieni w~tekście ,,na
+%     chama'' każde wystąpienie \verb+\eps+ na \verb+\epsilon+.
+%     Analogicznie
+% \begin{verbatim}
+% \newcommand{\veps}{\varepsilon}
+% \end{verbatim}
+%     Od razu lepiej:).
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Uprośćmy sobie życie}
+
+%   \begin{block}{Pochodna cząstkowa}
+%     Wstawiamy do~preambuły
+% \begin{verbatim}
+% \newcommand{\pd}[3]{\frac{ \partial^{ #1 } { #2 } }
+% { \partial { #3 }^{ #1 } }}
+% \end{verbatim}
+%     Lepiej nie rozdzielać, choć można, tej komendy na dwie linie jak
+%     powyżej, zrobiłem to, aby tekst ładnie mieścił~się na~slajdzie.
+%     Nawiasy wąsate wokół ,,\#liczba'', nie~są konieczne, ale~bez
+%     nich \LaTeX{} czasem protestuje.
+%   \end{block}
+
+%   \begin{block}{Piszemy}
+% \begin{verbatim}
+% \pd{ 2 }{ u( x, t ) }{ x } 
+% - \frac{ 1 }{ c^{ 2 } } \pd{ 2 }{ u( x, t ) }{ t } = 0
+% \end{verbatim}
+%     Która wersja jest prostsza?
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Uprośćmy sobie życie}
+
+%   \begin{block}{Objaśnienie}
+% \begin{verbatim}
+% \newcommand{\nazwa-komendy}[ilość-argumentów]
+% {treść komendy #1 #2 #3,...}
+% \end{verbatim}
+%     Nazwa komendy to chyba jasne. Jeśli komenda ma nie przyjmować
+%     żadnych argumentów, jak komenda \verb+\LaTeX+, to pomijamy
+%     nawias kwadratowy. Jeśli ma przyjmować np.~5 argumentów, to
+%     piszemy [5]. W~treści komendy \LaTeX{} podstawi ,,na chama''
+%     pierwszy argument za ,,\#1'', drugi za~,,\#2'', etc.
+%   \end{block}
+
+%   \begin{block}{}
+%     Tutaj też lepiej nie rozbijać \verb+\newcommand+ na~dwie linie.
+%   \end{block}
+
+%   \begin{block}{Użycie komendy}
+% \begin{verbatim}
+% \nazwa-komendy{pierwszy-argument}{drugi-argument}...
+% \end{verbatim}
+%   \end{block}
+
+% \end{frame}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Uprośćmy sobie życie}
+
+%   \begin{block}{Czy rozumiecie już jak działa}
+% \begin{verbatim}
+% \newcommand{\pd}[3]{\frac{ \partial^{ #1 } { #2 } }
+% { \partial { #3 }^{ #1 } } }
+% \pd{ 2 }{ u( x, t ) }{ x } 
+% \end{verbatim}
+%     ta komenda?
+%   \end{block}
+
+%   \begin{block}{}
+%     {\color{red} Ważne}, \verb+\pd{ }{ u( x, t ) }{ x }+ też działa.
+%   \end{block}
+
+%   \begin{block}{Inny przykład}
+%     \verb+\newcommand{\sizeOne}{8pt}+ --~definicja rozmiaru
+%     czcionki.
+%   \end{block}
+
+%   \begin{block}{Osobiste doświadczenie}
+%     Potrafię mieć 40 \verb+\newcommand+ w~jednym pliku źródłowym,
+%     tak bardzo upraszczają mi życie. Np.~jeśli chcę mieć znak $\ra$,
+%     to po co mam pisać \verb+\rightarrow+, kiedy mogę \verb+\ra+?
+%   \end{block}
+  
+% \end{frame}
+
+
+
+% \begin{frame}
+%   \frametitle{Nie pytaj co możesz zrobić dla swojego środowiska}
+
+%   \begin{block}{To środowisko ma zrobić coś dla ciebie :)}
+%     Podstawowe skróty i~polecenia, na przykładzie \TeX Makera.
+%     \begin{itemize}
+%     \item[--] Ctrl-T --~zakomentuj blok tekstu;
+%     \item[--] Ctrl-U --~odkomentuj blok tekstu;
+%     \item[--] Ctrl-$>$ - wcięcie bloku;
+%     \item[--] Ctrl-$<$ - usunięcie wcięcia bloku;
+%     \item[--] Ctrl-R - zastąp;
+%     \item[--] Ctrl-F - znajdź;
+%     \item[--] Ctrl-M - znajdź następny;
+%     \item[--] Ctrl-G - przejdź do linii;
+%     \item[--] Narzędzia $\ra$ Wyczyść.
+%     \end{itemize}
+%     Sprawdź jakie są w~twoim i~ich używaj :).
+%   \end{block}
+  
+% \end{frame}
+
+
+% \begin{frame}
+%   \frametitle{Co warto zrobić dalej?}
+
+%   \begin{block}{Rady}
+%     \begin{itemize}
+%     \item Posłuchać następnych wystąpień :).
+%     \item Przeczytać \emph{Nie za~krótkie wprowadzenie do~systemu
+%       \LaTeX a}.
+%     \item Nauczyć~się Bib\TeX a (chyba, że~jest już jakieś lepsze
+%       rozwiązanie).
+%     \item Pogooglować i~poeksperymentować.
+%     \end{itemize}
+%   \end{block}
+
+% \end{frame}
+
+
+\begin{frame}
+  \frametitle{Koniec}
+
+  \begin{center}
+    {\LARGE Dziękuję}
+  \end{center}
+  
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Literatura}
+
+  \begin{block}{Podstawy uczynienia nierelatywistycznej mechaniki
+      kwantowej sensowną}
+    \begin{itemize}
+    \item[--] M. Reed, B. Simon, \emph{Methods of Modern Mathematical
+        Physics. \\
+        Vol.~I: Functional Analysis}.
+    \item[--] M. Reed, B. Simon, \emph{Methods of Modern Mathematical
+        Physics. \\
+        Vol.~II: Fourier Analysis, Self-Adjointness}.
+    \item[--] M. Reed, B. Simon, \emph{Methods of Modern Mathematical
+        Physics. \\
+        Vol.~III: Scattering Theory}. Książka już przestarzała, należy
+      ją uzupełnić, np.~następną pozycją.
+    \item[--] J. Dereziński, Ch. Gerard, \emph{Scattering theory~of
+        classical and quantum N-particle systems},
+      \colorlink{http://www.fuw.edu.pl/~derezins/}.
+    \item[--] M. Reed, B. Simon, \emph{Methods of Modern Mathematical
+        Physics. \\
+        Vol.~IV: Analysis of Operators}. Dr~Mariusz Hynek nazwał tę
+      pozycję ,,najlepszą książką popularnonaukową do~analizy
+      funkcjonalnej''.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+
+
+\begin{frame}
+  \frametitle{Literatura}
+
+  \begin{block}{Podstawy uczynienia nierelatywistycznej mechaniki
+      kwantowej sensowną}
+    \begin{itemize}
+    \item[--] M. Reed, B. Simon, \emph{Methods of Modern Mathematical
+        Physics. \\
+        Vol.~IV: Analysis~of Operators}. Dr Mariusz Hynek nazwał tę
+      pozycję ,,najlepszą książką popularnonaukową do analizy
+      funkcjonalnej''.
+    \item[--] M. Grabowksi, R. S. Ingarden, \emph{Mechanika kwantowa.
+        Ujęcie w~przestrzeni Hilberta}. W~dużej mierze to tłumaczenie
+      wybranych fragmentów Reeda, Simona na~polski.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Literatura dodatkowa}
+    \begin{itemize}
+    \item[--] Andrzej Herdegen, Piotr Ziobro, \emph{Generalized
+        uncertainty relations},
+      \colorlink{https://arxiv.org/abs/1511.06589}.
+    \item[--] F.~Gieres, \emph{Mathematical surprises and Dirac's
+        formalism in quantum mechanics},
+      \colorlink{https://arxiv.org/abs/quant-ph/9907069}.
+    \item[--] Walter Thirring, \emph{Fizyka matematyczna. Tom 3:
+        Mechanika kwantowa atomów i~cząstek}.
+    \item[--] Walter Thirring, \emph{Fizyka matematyczna. Tom 4:
+        Mechanika kwantowa wielkich układów}.
+    \end{itemize}
+  \end{block}
+  
+\end{frame}
+
+
+
+\end{document}

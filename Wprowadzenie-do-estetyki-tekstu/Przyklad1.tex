@@ -1,0 +1,32 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage[polish]{babel}%Tłumaczy na polski teksty automatyczne LaTeXa i pomaga z typografią.
+\usepackage{amsfonts}%Czcionki matematyczne od American Mathematic Society.
+\usepackage{fullpage}%Mniejszse marginesy.
+\usepackage{fullpage}%Mniejszse marginesy.
+\usepackage{amsmath}%Dalsze wsparcie od AMS. Więc tego, co najlepsze w LaTeX, czyli trybu matematycznego.
+\usepackage[plmath,OT4,MeX]{polski}%Polska notacja we wzorach matematycznych. Ładne polskie czcionki i więcej cudzysłowów. Pełna polonizacja.
+\usepackage[utf8]{inputenc}%Pozwala pisać polskie znaki bezpośrednio.
+\usepackage{latexsym}%Więcej symboli.
+\usepackage{indentfirst}%Sprawia, że jest wcięcie w pierwszym akapicie.
+\frenchspacing%Wyłącza duże odstępy na końcu zdania. Pakiet babel polski robi to samo, ale to jest zabezpieczenie jakibym chciał przestać go używać.
+\usepackage{graphicx}% Pozwala wstawiać grafikę.
+%\usepackage{url}%Pozwala pisać ładnie znak ~.
+\usepackage{textcomp}%Pakiet z dziwnymi symbolami.
+\usepackage{xy}%Pozwala rysować grafy.
+\newcommand{\sgm}{\textrm{sgm}}
+\newcommand{\ad}{\textrm{ad}}
+\newcommand{\Ad}{\textrm{Ad}}
+\newcommand{\cy}{\textrm{cykl}}
+
+\begin{document}
+
+
+\begin{displaymath}
+\begin{split}
+(R^{*}_{\xi}\omega)(V) \,\; &= \,\; (i^{-1}_{G}\circ d_{p}(\ad_{\xi^{-1}}\circ\rho_{p}^{-1}))(V^{|}) = (i^{-1}_{G}\circ(d_{e}\ad_{\xi^{-1}})\circ(d_{e}\rho_{p})^{-1})(V^{|}) \\
+\,\; &= \,\; (\Ad_{\xi^{-1}}\circ i^{-1}_{G}\circ(d_{e}\rho_{p})^{-1})(V^{|})=(\Ad_{\xi^{-1}}\circ\omega_{p})(V)\textrm{.}
+\end{split}
+\end{displaymath}
+
+
+\end{document}

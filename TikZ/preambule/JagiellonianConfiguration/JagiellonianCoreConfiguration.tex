@@ -1,0 +1,41 @@
+% Włączenie numerowania rozdziałów w spisie treści
+\setbeamertemplate{section in toc}[sections numbered]
+% Wybór rodzaju fontu???
+\usefonttheme{serif}
+
+
+
+% ------------------------------
+% Podstawowe paczki (niezwiązane z ustawieniami języka)
+% ------------------------------
+% Ustawienia fontów (może zadziałają)
+\usepackage{fontspec}  % Potrzebne do polskich znaków.
+\setmainfont{TeX Gyre Pagella}
+
+% \usepackage[utf8]{inputenc}  % Włączenie kodowania UTF-8, co daje dostęp
+% \usepackage{tgpagella}  % Włącza fonty TeX Gyre Pagella
+
+% \defaultfontfeatures{Ligatures=TeX}
+% \newfontfeature{Microtype}{protrusion=default;expansion=default;}
+% \usepackage{mathfix}  %
+\usepackage{microtype}  % Twierdzi, że poprawi rozmiar odstępów w tekście.
+
+
+
+\usepackage[polish]{babel}  % Tłumaczy na polski automatyczne teksty LaTeXa
+% i pomaga z typografią.
+\usepackage[MeX]{polski}  % Polonizacja LaTeXa, bez niej będzie pracował
+% w języku angielskim.
+
+
+
+% ------------------------------
+% Podstawowe paczki (niezwiązane z ustawieniami języka)
+% ------------------------------
+
+
+
+% ------------------------------
+% Lepsze wsparcie polskich znaków w takich miejscach jak konspekty PDFa
+% ------------------------------
+\hypersetup{pdfencoding=auto,psdextra}

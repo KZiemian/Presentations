@@ -1,0 +1,91 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+\documentclass{beamer} \mode<presentation>
+\usepackage[utf8]{inputenc}% Pozwala pisać polskie znaki bezpośrednio.
+\usepackage[polish]{babel}
+\usepackage[MeX]{polski}
+\usepackage{amsfonts, amsmath, amscd}% Czcionki matematyczne od American Mathematic Society.
+\usepackage{latexsym}% Więcej symboli.
+\usepackage{epsfig}
+\usepackage{subfigure}
+\usepackage{xcolor}
+\usepackage{graphicx}% Pozwala wstawiać grafikę.
+\usepackage{hyperref}
+\usepackage{verbatim}
+\usepackage{xy}% Pozwala rysować grafy.
+\usepackage{tikz-feynman}
+\usepackage{chemfig}
+\usepackage{skak}
+
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{headline}{}
+\setbeamersize{text margin left=3mm}
+\setbeamersize{text margin right=3mm}
+
+
+\newcommand{\tb}{\textbf}
+\newcommand{\tbs}{\textbackslash}
+
+
+\newcommand{\eps}{\epsilon}
+\newcommand{\veps}{\varepsilon}
+\newcommand{\si}{\sigma}
+
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\D}{\mathcal{D}}
+\newcommand{\RdO}{\mathbb{R}^{ d } \setminus \{ 0 \}}
+\newcommand{\Rd}{\mathbb{R}^{ d }}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\dd}[3]{\frac{ \de^{ #1 } #2 }{ \de #3^{ #1 } } }
+\newcommand{\sd}{\textrm{sd}}
+\newcommand{\Div}{\textrm{div}}
+
+
+
+\title[]{Wstęp do \LaTeX} %Spotkanie pierwsze oby nie ostatnie.
+\subtitle{O~co w~tym wszystkim chodzi?}
+\author{Kamil Ziemian} 
+%\\ \texttt{ziemniakzkosmosu@gmail.com}}
+%\institute{Uniwersytet Jagielloński w Krakowie}
+\date[10 XI 2016]{10 grudnia 2016}
+
+
+
+\begin{document}
+
+
+
+\begin{frame}
+  \frametitle{Kilka rad na~dobry początek}
+
+  \begin{block}{Mądrości programistów}
+    Tworzenie tekstu w~\LaTeX u to trochę jak programowanie, więc
+    warto pamiętać o~kilku mądrościach programistów.
+    \begin{itemize}
+    \item[--] Najtrudniejsza rzecz to skompilować pierwszy tekst do
+      PDFa. Potem jest już z~górki.
+    \item[--] Aby nauczyć~się pisać w~\LaTeX u, trzeba pisać w~\LaTeX
+      u.
+    \item[--] Twój główny wróg na samym początku to literówki, \\
+      np.~\tb{\tbs beign} zamiast \tb{\tbs begin}. Nie zniechęcaj~się
+      tym.
+    \item[--] To jak ,,kody'' \LaTeX a wygląda ma znaczenie. Pisz go tak, by
+      w~jakimś stopniu oddawał logikę tekstu.
+    \end{itemize}
+  \end{block}
+
+  \begin{block}{Przykład}       % C-x C-+
+    Niech będzie nim ten slajd.
+  \end{block}
+  
+\end{frame}
+
+
+
+\begin{frame}\frametitle{Kilka rad na~dobry początek}\begin{block}{Mądrości programistów}Tworzenie tekstu w~\LaTeX u to trochę jak programowanie, więc warto pamiętać o~kilku mądrościach programistów.\begin{itemize}\item[--] Najtrudniejsza rzecz to skompilować pierwszy tekst do PDFa. Potem jest już z~górki.\item[--] Aby nauczyć~się pisać w~\LaTeX u, trzeba pisać w~\LaTeX u.\item[--] Twój główny wróg na samym początku to literówki, \\ np.~\tb{\tbs beign} zamiast \tb{\tbs begin}. Nie zniechęcaj~się tym.\item[--] To jak ,,kody'' \LaTeX a wygląda ma znaczenie. Pisz go tak, by w~jakimś stopniu oddawał logikę tekstu. \end{itemize}\end{block}\begin{block}{Przykład}       % C-x C-+
+    Niech będzie nim ten slajd.\end{block}\end{frame}
+
+
+
+\end{document}
