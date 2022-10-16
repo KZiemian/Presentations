@@ -10,8 +10,16 @@
 *.toc
 *.vrb
 
+# ignore all picture files
+*.jpg
+*.jpeg
+*.png
+
 # ignore Emacs backup files
 *~
 
-# ingnore auto/ cataloges created by Emacs
+# ignore auto/ cataloges created by Emacs
 auto/
+
+# ignore Jupyter auxiliary directories
+.ipynb_checkpoints/
