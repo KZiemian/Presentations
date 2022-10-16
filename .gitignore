@@ -7,6 +7,7 @@
 *.nav
 *.out
 *.snm
+*.svg
 *.toc
 *.vrb
 
