@@ -1,64 +1,79 @@
-% Autor: Kamil Ziemian
-
-% --------------------------------------------------------------------
-% Podstawowe ustawienia Beamera i używane pakiety
-% --------------------------------------------------------------------
-\RequirePackage[l2tabu, orthodox]{nag} % Wykrywa przestarzałe i niewłaściwe
-% sposoby używania LaTeXa. Więcej jest w l2tabu English version.
-
-\documentclass{beamer}  % Klasa dokumentu
-\mode<presentation>  % Rodzaj tworzonych slajdów Beamera
-\usetheme{Warsaw}  % Temat graficzny
-
-\setbeamertemplate{headline}{}  % Usuwa nagłówek
-\setbeamersize{text margin left=3mm}  % Wielkość lewego marginesu
-\setbeamersize{text margin right=3mm}  % Wielkość prawego marginesu
-\setbeamertemplate{navigation symbols}{}  % Usuwa ikony nawigacji w prawym
-% dolnym rogu
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
 
 
 
-\usepackage[polish]{babel}  % Tłumaczy na polski teksty automatyczne LaTeXa
-% i pomaga z typografią.
-\usepackage[MeX]{polski}  % Polonizacja LaTeXa, bez niej będzie pracował
-% w języku angielskim.
-\usepackage[utf8]{inputenc}  % Włączenie kodowania UTF-8, co daje dostęp
-% do polskich znaków.
-\usepackage{lmodern}  % Wprowadza fonty Latin Modern.
-\usepackage[T1]{fontenc}  % Potrzebne do używania fontów Latin Modern.
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
+\fi
 
 
 
-% ----------------------------
-% Pakiety napisane przez użytkownika.
-% Mają być w tym samym katalogu to ten plik .tex
-% ----------------------------
-\usepackage{latexshortcuts}
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoLang=Latin,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
 
 
 
-% ----------------------------
-% Pakiet "hyperref"
-% Polecano by umieszczać go na końcu preambuły.
-% ----------------------------
-\usepackage{hyperref}  % Pozwala tworzyć hiperlinki i zamienia odwołania
-% do bibliografii na hiperlinki.
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
 
 
 
 
 
-% --------------------------------------------------------------------
-\title[]{Star Wars, mythology \\
+
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+\usepackage{mathcommands}
+
+
+
+
+
+% ---------------------------------------
+% Configuration for this particular presentation
+% ---------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Star Wars, mythology \\
   and~psychoanalysis with a~thousand faces}
-\author{Kamil Ziemian} 
+
+\author{Kamil Ziemian}
 
 % \\ \texttt{ziemniakzkosmosu@gmail.com}}
 
 % \institute{II rok, fizyka teoretyczna, studia magisterskie.}
 
 \date{12 May 2014}
-% --------------------------------------------------------------------
+% ---------------------------------------------------------------------
+
+
+
+
+
 
 
 
@@ -69,32 +84,61 @@
 \begin{document}
 % ####################################################################
 
-\maketitle
 
 
-% ##########
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle % Tytuł całego tekstu
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Plan wystąpienia}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
 \begin{frame}
   \frametitle{Introduction}
 
-  % \begin{block}{}
-  %   Connections of Star Wars and mythology are generally known to
-  %   fans of this Universe.
-  % \end{block}
 
-  \begin{block}{I claim that is a connection between}
-    \begin{figure}
-      \centering
+  \begin{figure}
 
-      \includegraphics[height=1.7in, width=1.4in]{Star-Wars-1.jpg}
-      % \uncover<2>{
-      \includegraphics[height=1.7in, width=1.2in]{Sigmund-Freud.jpg}
-      \caption{\textbf{Star Wars}, Sigmund Freud (1856--1939)}
-      % }
-    \end{figure}
-  \end{block}
+    \centering
+
+    \includegraphics[height=1.7in, width=1.4in]{Star-Wars-1.jpg}
+
+    \includegraphics[height=1.7in, width=1.2in]{Sigmund-Freud.jpg}
+
+    \caption{\textbf{Star Wars}, Sigmund Freud (1856--1939)}
+
+  \end{figure}
+
+  I claim that is a connection between them two.
 
 \end{frame}
-% ##########
+% ##################
 
 
 
