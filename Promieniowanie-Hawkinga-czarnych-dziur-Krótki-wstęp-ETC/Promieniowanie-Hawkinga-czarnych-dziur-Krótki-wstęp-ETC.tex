@@ -13,7 +13,7 @@
 
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
-\usetheme[style=\PresentationStyle,logoLang=Latin,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
 
 
 
@@ -28,19 +28,17 @@
 
 
 
-% % ----------------------------
-% % Pakiety napisane przez użytkownika.
-% % Mają być w tym samym katalogu to ten plik .tex
-% % ----------------------------
-% \usepackage{latexshortcuts}
-% \usepackage{mathshortcuts}
 
 
 
-% % --------------------------------------
-% % Komendy do prostszego pisania prezentacji
-% % --------------------------------------
-% % --------------------------------------
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+\usepackage{mathcommands}
 
 
 
@@ -53,7 +51,7 @@
 
 % ---------------------------------------------------------------------
 \title[Promieniowanie Hawkinga]{Promieniowanie Hawkinga czarnych
-  dziur~-- krótki wprowadzenie do~zagadnienia}
+  dziur~-- Krótki wstęp wprowadzenie do~zagadnienia}
 \subtitle{Seminarium Astrofizyki}
 
 \author{Kamil Ziemian \\
@@ -345,6 +343,7 @@
     $\langle \widehat{ T }_{ \mu \nu }( x ) \rangle$ kwantowego
     tensora $\widehat{ T }_{ \mu \nu }( x )$ jest odpowiednio
     regularnym polem tensorowym.
+
   \end{itemize}
 
 \end{frame}
@@ -672,452 +671,474 @@
 
 
 
-% % ##########
-% \begin{frame}
-%   \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
-
-%   \begin{block}{Dwa przedstawienia pola $\widehat{ \phi }( x )$}
-%     Pole $\widehat{ \phi }( x )$ jest określone w~całej
-%     czasoprzestrzeni, jeśli zadana jest jego wartość, wraz
-%     z~pierwszymi pochodnymi na~$\mathcal{J}^{ - }$, lub jednocześnie
-%     na~$H$ i~$\mathcal{J}^{ + }$. Możliwe są więc dwa następujące jego
-%     rozkłady na~mody normalne:
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-17}
-%       \widehat{ \phi }( x )
-%       = \sum_{ i }( f_{ i }( x )\, \widehat{ a }_{ f,\, i }
-%       + \bar{ f }_{ i }( x )\, \widehat{ a }^{ \dagger }_{ f,\, i } ),
-%     \end{equation}
-%     oraz
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-18}
-%       \widehat{ \phi }( x )
-%       = \sum_{ i }( p_{ i }( x )\, \widehat{ b }_{ p,\, i }
-%       + \bar{ p }_{ i }( x )\, \widehat{ b }^{ \dagger }_{ p,\, i }
-%       + q_{ i }( x )\, \widehat{ c }_{ q,\, i }
-%       + \bar{ q }_{ i }( x )\, \widehat{ c }^{ \dagger }_{ q,\, i } ).
-%     \end{equation}
-%     Chcemy policzyć cząstek zaobserwowanych w~$\mathcal{J}^{ + }$,
-%     czyli
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-19}
-%       N = \langle 0_{ - } | \sum_{ i } \widehat{ b }^{ \dagger }_{ p,\, i }
-%       \widehat{ b }_{ p,\, i } | 0_{ - } \rangle.
-%     \end{equation}
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
-
-%   \begin{block}{} % {Zadanie}
-%     Ponieważ wiemy jak $\widehat{ a }_{ f,\, i }^{ \dagger }$,
-%     $\widehat{ a }_{ f,\, i }$ działają na~$| 0_{ - } \rangle$,
-%     problem będzie rozwiązany, jeśli wyrazimy za~ich pomocą
-%     $\widehat{ b }_{ p,\, i }^{ \dagger }$,
-%     $\widehat{ b }_{ p,\, i }$. By~to zrobić, zauważmy,
-%     że~$p_{ i }( x )$ i~$q_{ i }( x )$, możemy znów rozłożyć na
-%     funkcje $f_{ i }( x )$:
-%     \begin{subequations}
-%       \begin{equation}
-%         \label{eq:HawkingPromieniowanie-20a}
-%         p_{ i }( x )
-%         = \sum_{ j }( \alpha_{ i j } f_{ j }( x ) + \beta_{ i j }
-%         \bar{ f }_{ j }( x ) ),
-%       \end{equation}
-%       \begin{equation}
-%         \label{eq:HawkingPromieniowanie-20b}
-%         q_{ i }( x ) = \sum_{ j }( \gamma_{ i j } f_{ j }( x )
-%         + \eta_{ i j } \bar{ f }_{ j }( x ) ).
-%       \end{equation}
-%     \end{subequations}
-%     Podstawiają to~dostajemy
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-21}
-%       \widehat{ \phi }( x )
-%       = \sum_{ i }( p_{ i }( x )\, \widehat{ b }_{ p,\, i }
-%       + \bar{ p }_{ i }( x )\, \widehat{ b }^{ \dagger }_{ p,\, i }
-%       + q_{ i }( x )\, \widehat{ c }_{ q,\, i }
-%       + \bar{ q }_{ i }( x )\, \widehat{ c }^{ \dagger }_{ q,\, i } ),
-%     \end{equation}
-%     skąd
-%     \begin{subequations}
-%       \begin{equation}
-%         \label{eq:HawkingPromieniowanie-22}
-%         \widehat{ b }_{ i } = \sum_{ j }( \bar{ \alpha }_{ i j }\,
-%         \widehat{ a }_{ j } - \bar{ \beta }_{ i j }\,
-%         \widehat{ a }^{ \dagger }_{ j } ).
-%       \end{equation}
-%       % \begin{equation}
-%       %   \label{eq:22b}
-%       %   \widehat{ c }_{ i } = \sum_{ j }( \bar{ \gamma }_{ i j }\,
-%       %   \widehat{ a }_{ j }
-%       %   - \bar{ \eta }_{ i j }\, \widehat{ a }^{ \dagger }_{ j } ).
-%       % \end{equation}
-%     \end{subequations}
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}{Szkic obliczeń}
-%   \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
-
-%   \begin{block}{Wniosek}
-%     Liczba cząstek emitowana w $i$-tym modzie wynosi więc:
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-23}
-%       N_{ i } = \langle 0 | \widehat{ b }^{ \dagger }_{ i } \widehat{ b }_{ i }
-%       | 0 \rangle
-%       = \sum_{ j } | \beta_{ i j } |^{ 2 }.
-%     \end{equation}
-%     W~tym miejscu problem został w~zasadzie zredukowany do~dość
-%     skomplikowanego zagadnienia z~teorii rozpraszania.
-%   \end{block}
-
-%   \begin{block}{Uwagi o~obliczaniu $\beta_{ i j }$}
-%     Ich wyliczenie, wymaga dość żmudnych rachunków, uwzględniających
-%     rozkład na~odpowiednie mody sferyczne, operowania pakietami
-%     falowymi, etc. Dlatego przedstawię tylko konieczne wzory
-%     i~oznaczenia.
-%   \end{block}
-
-%   \begin{block}{Uwaga o~tych rachunkach}
-%     Dodatkowo Hawking skorzystał w~tych rachunkach z~przybliżenia
-%     optyki geometrycznej, czego zasadność bywała krytykowana (zob.
-%     \cite{FredenhagenHaagDerivationOfHawkingRadiation1990}).
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
-
-%   \begin{block}{Rozkład ,,sferyczny''}
-%     We~współrzędnych ,,sferycznych'' zupełny układ funkcji jest dany
-%     przez $f_{ \omega l m }( x )$, ,,numerowanych'' ciągłym
-%     wskaźnikiem częstości $\omega$. Tym samym zmieniają~się też
-%     indeksy współczynników $\alpha_{ \omega l m\, \omega' l' m' }$
-%     i~$\beta_{ \omega l m\, \omega' l' m' }$. Definiujemy
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-24}
-%       p_{ \omega l m }( x )
-%       = \int\limits_{ 0 }^{ +\infty } ( \alpha_{ \omega l m\, \omega' l m }
-%       f_{ \omega' l m }( x ) + \beta_{ \omega l m\, \omega' l m }
-%       \bar{ f }_{ \omega' l m }( x ) )\, \de \omega'.
-%     \end{equation}
-%     Niech $p_{ \omega l m }^{ ( 1 ) }( x )$ oznacza rozwiązanie, które
-%     propaguje~się wstecz w czasie, rozprasza na~statycznej czarnej
-%     dziurze Schwarzchilda i~dociera na~$\mathcal{J}^{ - }$ z~tą samą
-%     częstością~$\omega$. Dokonujemy rozkładu
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-25}
-%       p_{ \omega l m }( x ) = p_{ \omega l m }^{ ( 1 ) }( x ) + p_{
-%         \omega l m }^{ ( 2 ) }( x ).
-%     \end{equation}
-%     % \begin{equation}
-%     %   f_{ \omega' l m } = ( 2 \pi )^{ - \frac{ 1 }{ 2 } } r^{ - 1 }
-%     %   ( \omega' )^{ - \frac{ 1 }{ 2 } } F_{ \omega ' }( r ) e^{ i \omega' v }
-%     %   Y_{ l m }( \theta, \varphi ),
-%     % \end{equation}
-%     % \begin{equation}
-%     %   f_{ \omega' l m } = ( 2 \pi )^{ - \frac{ 1 }{ 2 } }
-%     %   r^{ - 1 } ( \omega' )^{ - \frac{ 1 }{ 2 } } P_{ \omega ' }( r )
-%     %   e^{ i \omega' u } Y_{ l m }( \theta, \varphi ),
-%     % \end{equation}
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
-
-%   \begin{block}{Analogicznie}
-%     \begin{subequations}
-%       \begin{align}
-%         \label{eq:HawkingPromieniowanie-26}
-%         \alpha_{ \omega l m\, \omega' l m }
-%         &= \alpha_{ \omega l m\, \omega' l m }^{ ( 1 ) }
-%           + \alpha_{ \omega l m\, \omega' l m }^{ ( 2 ) }, \\
-%         \beta_{ \omega l m\, \omega' l m }
-%         &= \beta_{ \omega l m\, \omega' l m }^{ ( 1 ) }
-%           + \beta_{ \omega l m\, \omega' l m }^{ ( 2 ) }.
-%       \end{align}
-%     \end{subequations}
-%   \end{block}
-
-%   \begin{block}{Definiujemy nową rodzinę modów}
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-27}
-%       p_{ j n l m }( x )
-%       = \veps^{ -\frac{ 1 }{ 2 } } \int\limits_{ j \veps }^{ ( j + 1 ) \veps }
-%       e^{ -2 \pi i\, \mathrm{n} \omega / \veps } p_{ \omega l m }( x ) \de \omega,
-%       \quad j = 0, 1, 2, \ldots
-%     \end{equation}
-%     gdzie $\veps > 0$. Potrzebujemy jeszcze jednej wielkości
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-28}
-%       \Gamma_{ j n }
-%       = \int\limits_{ 0 }^{ +\infty }
-%       \left( \abso{ \alpha_{ j n \omega' l m }^{ ( 2 ) } }^{ 2 }
-%         - \abso{ \beta_{ j n \omega' l m }^{ ( 2 ) } }^{ 2 } \right)\,
-%       \de \omega'.
-%     \end{equation}
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Końcowy wynik i~jego znaczenie}
-
-%   \begin{block}{} % {Końcowy wynik}
-%     Ilość cząstek wyemitowanych w~modzie $p_{ j n l m }( x )$ wynosi
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-29}
-%       N_{ j n l m } = \Gamma_{ j n }\;
-%       \frac{ 1 }{ e^{  \frac{ 2 \pi }{ \kappa } \omega } - 1 }.
-%     \end{equation}
-%     $\kappa$ to tak zwana grawitacja powierzchniowa (ang.~surface
-%     gravity).
-%   \end{block}
+% ##################
+\begin{frame}
+  \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
+
+
+  Dwa przedstawienia pola $\widehat{ \phi }( x )$ \\
+  Pole $\widehat{ \phi }( x )$ jest określone w~całej czasoprzestrzeni,
+  jeśli zadana jest jego wartość, wraz z~pierwszymi pochodnymi
+  na~$\mathcal{J}^{ - }$, lub jednocześnie
+  na~$H$ i~$\mathcal{J}^{ + }$. Możliwe są więc dwa następujące jego
+  rozkłady na~mody normalne:
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-17}
+    \widehat{ \phi }( x ) =
+    \sum_{ i }( f_{ i }( x )\, \widehat{ a }_{ f,\, i }
+    + \bar{ f }_{ i }( x )\, \widehat{ a }^{ \dagger }_{ f,\, i } ),
+  \end{equation}
+  oraz
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-18}
+    \widehat{ \phi }( x ) =
+    \sum_{ i }( p_{ i }( x )\, \widehat{ b }_{ p,\, i }
+    + \bar{ p }_{ i }( x )\, \widehat{ b }^{ \dagger }_{ p,\, i }
+    + q_{ i }( x )\, \widehat{ c }_{ q,\, i }
+    + \bar{ q }_{ i }( x )\, \widehat{ c }^{ \dagger }_{ q,\, i } ).
+  \end{equation}
+  Chcemy policzyć cząstek zaobserwowanych w~$\mathcal{J}^{ + }$,
+  czyli
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-19}
+    N =
+    \langle 0_{ - } | \sum_{ i } \widehat{ b }^{ \dagger }_{ p,\, i }
+    \widehat{ b }_{ p,\, i } | 0_{ - } \rangle.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
+
+
+  Ponieważ wiemy jak $\widehat{ a }_{ f,\, i }^{ \dagger }$,
+  $\widehat{ a }_{ f,\, i }$ działają na~$| 0_{ - } \rangle$,
+  problem będzie rozwiązany, jeśli wyrazimy za~ich pomocą
+  $\widehat{ b }_{ p,\, i }^{ \dagger }$,
+  $\widehat{ b }_{ p,\, i }$. By~to zrobić, zauważmy,
+  że~$p_{ i }( x )$ i~$q_{ i }( x )$, możemy znów rozłożyć na
+  funkcje $f_{ i }( x )$:
+  \begin{subequations}
+    \begin{equation}
+      \label{eq:Promieniowanie-Hawkinga-20a}
+      p_{ i }( x )
+      = \sum_{ j }( \alpha_{ i j } f_{ j }( x ) + \beta_{ i j }
+      \bar{ f }_{ j }( x ) ),
+    \end{equation}
+    \begin{equation}
+      \label{eq:Promieniowanie-Hawkinga-20b}
+      q_{ i }( x ) = \sum_{ j }( \gamma_{ i j } f_{ j }( x )
+      + \eta_{ i j } \bar{ f }_{ j }( x ) ).
+    \end{equation}
+  \end{subequations}
+  Podstawiają to~dostajemy
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-21}
+    \widehat{ \phi }( x )
+    = \sum_{ i }( p_{ i }( x )\, \widehat{ b }_{ p,\, i }
+    + \bar{ p }_{ i }( x )\, \widehat{ b }^{ \dagger }_{ p,\, i }
+    + q_{ i }( x )\, \widehat{ c }_{ q,\, i }
+    + \bar{ q }_{ i }( x )\, \widehat{ c }^{ \dagger }_{ q,\, i } ),
+  \end{equation}
+  skąd
+  \begin{subequations}
+    \begin{equation}
+      \label{eq:Promieniowanie-Hawkinga-22a}
+      \widehat{ b }_{ i } = \sum_{ j }( \bar{ \alpha }_{ i j }\,
+      \widehat{ a }_{ j } - \bar{ \beta }_{ i j }\,
+      \widehat{ a }^{ \dagger }_{ j } ).
+    \end{equation}
+    \begin{equation}
+      \label{eq:Promieniowanie-Hawkinga-22b}
+      \widehat{ c }_{ i } = \sum_{ j }( \bar{ \gamma }_{ i j }\,
+      \widehat{ a }_{ j }
+      - \bar{ \eta }_{ i j }\, \widehat{ a }^{ \dagger }_{ j } ).
+    \end{equation}
+  \end{subequations}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}{Szkic obliczeń}
+  \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
+
+
+  Wniosek \\
+  Liczba cząstek emitowana w $i$-tym modzie wynosi więc:
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-23}
+    N_{ i } =
+    \langle 0 | \widehat{ b }^{ \dagger }_{ i } \widehat{ b }_{ i } | 0 \rangle
+    = \sum_{ j } | \beta_{ i j } |^{ 2 }.
+  \end{equation}
+  W~tym miejscu problem został w~zasadzie zredukowany do~dość
+  skomplikowanego zagadnienia z~teorii rozpraszania.
+
+  Uwagi o~obliczaniu $\beta_{ i j }$ \\
+  Ich wyliczenie, wymaga dość żmudnych rachunków, uwzględniających
+  rozkład na~odpowiednie mody sferyczne, operowania pakietami
+  falowymi, etc. Dlatego przedstawię tylko konieczne wzory
+  i~oznaczenia.
+
+  Uwaga o~tych rachunkach \\
+  Dodatkowo Hawking skorzystał w~tych rachunkach z~przybliżenia
+  optyki geometrycznej, czego zasadność bywała krytykowana (zob.
+  \cite{FredenhagenHaagDerivationOfHawkingRadiation1990}).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
+
+
+  Rozkład „sferyczny” \\
+  We~współrzędnych „sferycznych” zupełny układ funkcji jest dany
+  przez $f_{ \omega l m }( x )$, ,,numerowanych'' ciągłym
+  wskaźnikiem częstości $\omega$. Tym samym zmieniają~się też
+  indeksy współczynników $\alpha_{ \omega l m\, \omega' l' m' }$
+  i~$\beta_{ \omega l m\, \omega' l' m' }$. Definiujemy
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-24}
+    p_{ \omega l m }( x ) =
+    \int\limits_{ 0 }^{ +\infty } ( \alpha_{ \omega l m\, \omega' l m }
+    f_{ \omega' l m }( x ) + \beta_{ \omega l m\, \omega' l m }
+    \bar{ f }_{ \omega' l m }( x ) ) \, d \omega'.
+  \end{equation}
+  Niech $p_{ \omega l m }^{ ( 1 ) }( x )$ oznacza rozwiązanie, które
+  propaguje~się wstecz w czasie, rozprasza na~statycznej czarnej
+  dziurze Schwarzchilda i~dociera na~$\mathcal{J}^{ - }$ z~tą samą
+  częstością~$\omega$. Dokonujemy rozkładu
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-25}
+    p_{ \omega l m }( x ) =
+    p_{ \omega l m }^{ ( 1 ) }( x ) + p_{ \omega l m }^{ ( 2 ) }( x ).
+  \end{equation}
+  \begin{equation}
+    f_{ \omega' l m } =
+    ( 2 \pi )^{ - \frac{ 1 }{ 2 } } r^{ - 1 }
+    ( \omega' )^{ - \frac{ 1 }{ 2 } } F_{ \omega ' }( r ) e^{ i \omega' v }
+    Y_{ l m }( \theta, \varphi ),
+  \end{equation}
+  \begin{equation}
+    f_{ \omega' l m }
+    = ( 2 \pi )^{ - \frac{ 1 }{ 2 } }
+    r^{ - 1 } ( \omega' )^{ - \frac{ 1 }{ 2 } } P_{ \omega ' }( r )
+    e^{ i \omega' u } Y_{ l m }( \theta, \varphi ),
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Efekt Hawkinga dla~czarnej dziury Schwarzschilda}
 
-%   \begin{block}{Sens}
-%     Po~analizie $\Ga_{ j n }$ okazuje~się, że~ten wzór opisujący
-%     ,,emisję cząstek z~powierzchni czarnej dziury Schwarzschilda'',
-%     jest identyczny jak dla ciała dla którego
-%     $E / k_{ \textrm{B} } T = 2\pi \omega / \kappa$. Biorąc
-%     $E = \hbar \omega$ otrzymujemy
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-30}
-%       T = \frac{ \hbar \kappa }{ 2\pi k_{ \mathrm{B} } }
-%       = \frac{ \hbar }{ 2\pi c } A
-%       \approx 10^{ -6 } \left( \frac{ M_{ \odot } }{ M_{ BH } } \right)
-%       {}^{ \circ } \mathrm{K},
-%     \end{equation}
-%     gdzie $A$ to powierzchnia czarnej dziury. Według Hawkinga podobny
-%     wyniki zachodzi dla pola elektromagnetycznego i~zlinearyzowanej
-%     grawitacji.
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Uwagi końcowe}
-
-%   \begin{block}{}
-%     Od~1975 roku upłynęło dużo czasu i~całkiem sporo~się działo
-%     również jeśli chodzi o~wyprowadzenie oraz~konsekwencje efektu
-%     Hawkinga, poddano krytyce metodę użytą w~oryginalnej pracy, jak
-%     i~pomniejsze jej wyniki oraz~stwierdzenia. Na~dokładniejszą
-%     dyskusję nie ma tu jednak czasu.
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
 
+  Analogicznie
+  \begin{subequations}
+    \begin{align}
+      \label{eq:Promieniowanie-Hawkinga-26}
+      \alpha_{ \omega l m\, \omega' l m }
+      &= \alpha_{ \omega l m\, \omega' l m }^{ ( 1 ) }
+        + \alpha_{ \omega l m\, \omega' l m }^{ ( 2 ) }, \\
+      \beta_{ \omega l m\, \omega' l m }
+      &= \beta_{ \omega l m\, \omega' l m }^{ ( 1 ) }
+        + \beta_{ \omega l m\, \omega' l m }^{ ( 2 ) }.
+    \end{align}
+  \end{subequations}
 
-% % ##########
-% \begin{frame}
+  Definiujemy nową rodzinę modów \\
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-27}
+    p_{ j n l m }( x ) =
+    \varepsilon^{ -\frac{ 1 }{ 2 } } \int\limits_{ j \varepsilon }^{ ( j + 1 ) \varepsilon }
+    e^{ -2 \pi i \, \mathrm{n} \omega / \varepsilon } p_{ \omega l m }( x ) \, d \omega, \quad
+    j = 0, 1, 2, \ldots
+  \end{equation}
+  gdzie $\varepsilon > 0$. Potrzebujemy jeszcze jednej wielkości
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-28}
+    \Gamma_{ j n } =
+    \int\limits_{ 0 }^{ +\infty }
+    \left( \abs{ \alpha_{ j n \omega' l m }^{ ( 2 ) } }^{ 2 }
+      - \abs{ \beta_{ j n \omega' l m }^{ ( 2 ) } }^{ 2 } \right) \,
+    d \omega'.
+  \end{equation}
 
-%   \begin{center}
-%     \LARGE Dziękuję.
-%   \end{center}
+\end{frame}
+% ##################
 
-% \end{frame}
-% % ##########
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Końcowy wynik i~jego znaczenie}
 
-% % ##########
-% \begin{frame}
-%   \frametitle{Bibliografia}
 
-%   \begin{block}{}
-%     \bibliographystyle{plalpha} \bibliography{ArticPhilNatur}{}
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Grawitacja powierzchniowa czarnej dziury}
-
-%   \begin{block}{Założenia}
-%     Rozważmy statyczną, osiowo symetryczną, asymptotycznie płaską
-%     czasoprzestrzeń z~obecną w niej czarną dziurą. To~implikuje
-%     istnienie dwóch pól~Killing'a: $K^{ \mu }$~odpowiedzialne
-%     za~przesunięcie w~czasie i~$\tilde{ K }^{ \mu }$ odpowiedzialne
-%     za~obroty przestrzenne. Istnienie przestrzennopodobnego pola
-%     Killinga $\tilde{ K }^{ \mu }$ pozwala nam wybrać asymptotycznie
-%     płaską hiperpowierzchnię $B$ do~której jest ono styczne i~która
-%     przecina horyzont zdarzeń na~dwie części
-%   \end{block}
+  Ilość cząstek wyemitowanych w~modzie $p_{ j n l m }( x )$ wynosi
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-29}
+    N_{ j n l m } =
+    \Gamma_{ j n } \; \frac{ 1 }{ e^{  \frac{ 2 \pi }{ \kappa } \omega } - 1 }.
+  \end{equation}
+  $\kappa$ to tak zwana grawitacja powierzchniowa (ang.~surface
+  gravity).
 
-% \end{frame}
-% % ##########
+  Sens \\
+  Po~analizie $\Gamma_{ j n }$ okazuje~się, że~ten wzór opisujący
+  „emisję cząstek z~powierzchni czarnej dziury Schwarzschilda”,
+  jest identyczny jak dla ciała dla którego
+  $E / k_{ \textrm{B} } T = 2\pi \omega / \kappa$. Biorąc
+  $E = \hbar \omega$ otrzymujemy
+  \begin{equation}
+    \label{eq:HawkingPromieniowanie-30}
+    T =
+    \frac{ \hbar \kappa }{ 2\pi k_{ \mathrm{B} } } =
+    \frac{ \hbar }{ 2\pi c } A \approx
+    10^{ -6 } \left( \frac{ M_{ \odot } }{ M_{ BH } } \right)
+    {}^{ \circ } \mathrm{K},
+  \end{equation}
+  gdzie $A$ to powierzchnia czarnej dziury. Według Hawkinga podobny
+  wyniki zachodzi dla pola elektromagnetycznego i~zlinearyzowanej
+  grawitacji.
 
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Grawitacja powierzchniowa czarnej dziury}
-
-%   \begin{block}{Trochę więcej pojęć}
-%     Rozważmy parametr $t$ krzywych całkowych pola $K^{ \mu }$ i~wektor
-%     świetlny obliczony na horyzoncie zdarzeń:
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-31}
-%       l^{ \mu } =  \dd{}{ x^{ \mu } }{ t }.
-%     \end{equation}
-%     Wprowadźmy wektor $n^{ \mu }$ styczny do~hiperpowierzchni $B$
-%     i~znormalizowany do
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-32}
-%       l^{ \mu } n_{ \mu } = -1.
-%     \end{equation}
-%     Grawitacja powierzchniowa w~określonym punkcie jest zdefiniowana
-%     jako:
-%     \begin{equation}
-%       \label{eq:HawkingPromieniowanie-33}
-%       \kappa = - \big( \nabla_{ \mu } l_{ \nu } \big) n^{ \mu } l^{ \nu }.
-%     \end{equation}
-%     Dla czarnej dziury Schwarzschilda jest ona stała na~całych
-%     horyzoncie zdarzeń.
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Grawitacja powierzchniowa czarnej dziury}
-
-%   \begin{block}{Sens matematyczno-fizyczny}
-%     $\kappa$ wyraża stopień w jakim $t$ nie jest parametrem
-%     afinicznym.
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Inne prace}
-
-%   \begin{block}{Według mnie interesujący nurt}
-%     Klaus Fredenhagena i~Rudolfa Haaga w~swej pracy
-%     \emph{On~the~derivation~of Hawking radiation associated with
-%       the~formation~of a~black hole} z~1990 roku
-%     (\cite{FredenhagenHaagDerivationOfHawkingRadiation1990}),
-%     kontynuują podejście Hawkinga, opierając je jednak na~inny
-%     sposobie postawieniu problemu w~kwantowej teorii pola: analizie
-%     funkcji Wightmana. Uzyskują dodatkowe wyniki i~potencjalne
-%     ograniczenia dla~zależności pokazanych przez Hawkinga.
-%   \end{block}
-
-%   \begin{block}{Wynik oraz uwagi Fredenhagena i~Haaga}
-%     \begin{itemize}
-%     \item ,,W~kolapsie grawitacyjny promieniowanie Hawkinga dla~dużych
-%       czasów jest ściśle związane z~granicą skalowania na~sferze, gdy
-%       promień gwizdy przechodzi przez promień Schwarzschilda (przy
-%       założeniu, że~zaniedbujemy oddziaływanie promieniowania
-%       na~metrykę).''
-%     \item Dla pola swobodnego, otrzymali wyniki jak Hawking. Analiza
-%       jednak sugeruje, że~raczej nie istnieje żaden prosty,
-%       uniwersalny wzór.
-%     \end{itemize}
-%   \end{block}
-
-% \end{frame}
-% % ##########
-
-
-
-
-
-% % ##########
-% \begin{frame}
-%   \frametitle{Inne podejście do~zagadnienia}
-
-%   \begin{block}{Wynik oraz uwagi Fredenhagena i~Haaga}
-%     \begin{itemize}
-%     \item Praca argumentuje, że~asymptotyczna swoboda QCD może mieć
-%       duże znaczenie dla prawdziwej sytuacji.
-%     \item Wykorzystanie przez Hawkinga w~jego oryginalnej pracy
-%       przybliżenia optyki geometrycznej nie jest w~pełni uzasadnione,
-%       gdyż, mówiąc tym językiem, promień światła będzie musiał
-%       przechodzić przez obszar gdzie ekstremalnie szybko zmienia~się
-%       współczynnik załamania.
-%     \end{itemize}
-%   \end{block}
-
-%   \begin{block}{Promieniowanie Hawkinga w~teorii bez cząstek}
-%     ,,Uczniowie'' Fredenhagena i~Haaga, Valter Moretti oraz~Nicola
-%     Pinamonti kontynuowali te~badania, wyprowadzając efekt Hawkinga
-%     w~podejściu do~teorii pola, które nie wymaga pojęcia cząstki.
-%     Wyniki ich można znaleźć w~pracy Moretti, Pinamonti, \emph{State
-%       independence for~tunneling processes through black hole horizons
-%       and~Hawking radiation}, \cite[]. Na~ten temat nie mogę niestety
-%     wiele powiedzieć.
-%   \end{block}
-
-% \end{frame}
-% % ##########
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uwagi końcowe}
+
+
+  Od~1975 roku upłynęło dużo czasu i~całkiem sporo~się działo
+  również jeśli chodzi o~wyprowadzenie oraz~konsekwencje efektu
+  Hawkinga, poddano krytyce metodę użytą w~oryginalnej pracy, jak
+  i~pomniejsze jej wyniki oraz~stwierdzenia. Na~dokładniejszą
+  dyskusję nie ma tu jednak czasu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Dziękuję! Pytania?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bibliografia}
+
+
+  \bibliographystyle{plalpha}
+
+  \bibliography{ArticPhilNatur}{}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Grawitacja powierzchniowa czarnej dziury}
+
+
+  Założenia \\
+  Rozważmy statyczną, osiowo symetryczną, asymptotycznie płaską
+  czasoprzestrzeń z~obecną w niej czarną dziurą. To~implikuje
+  istnienie dwóch pól~Killing'a: $K^{ \mu }$~odpowiedzialne
+  za~przesunięcie w~czasie i~$\tilde{ K }^{ \mu }$ odpowiedzialne
+  za~obroty przestrzenne. Istnienie przestrzennopodobnego pola
+  Killinga $\tilde{ K }^{ \mu }$ pozwala nam wybrać asymptotycznie
+  płaską hiperpowierzchnię $B$ do~której jest ono styczne i~która
+  przecina horyzont zdarzeń na~dwie części
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Grawitacja powierzchniowa czarnej dziury}
+
+
+  Trochę więcej pojęć \\
+  Rozważmy parametr $t$ krzywych całkowych pola $K^{ \mu }$ i~wektor
+  świetlny obliczony na horyzoncie zdarzeń:
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-31}
+    l^{ \mu } =  \frac{ d x^{ \mu } }{ d t }.
+  \end{equation}
+  Wprowadźmy wektor $n^{ \mu }$ styczny do~hiperpowierzchni $B$
+  i~znormalizowany do
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-32}
+    l^{ \mu } n_{ \mu } = -1.
+  \end{equation}
+  Grawitacja powierzchniowa w~określonym punkcie jest zdefiniowana
+  jako:
+  \begin{equation}
+    \label{eq:Promieniowanie-Hawkinga-33}
+    \kappa = - \big( \nabla_{ \mu } l_{ \nu } \big) n^{ \mu } l^{ \nu }.
+  \end{equation}
+  Dla czarnej dziury Schwarzschilda jest ona stała na~całych
+  horyzoncie zdarzeń.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Grawitacja powierzchniowa czarnej dziury}
+
+
+  Sens matematyczno-fizyczny \\
+  $\kappa$ wyraża stopień w jakim $t$ nie jest parametrem
+  afinicznym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Inne prace}
+
+
+  Według mnie interesujący nurt \\
+  Klaus Fredenhagena i~Rudolfa Haaga w~swej pracy
+  \textit{On~the~derivation~of Hawking radiation associated with
+    the~formation~of a~black hole} z~1990 roku
+  (\cite{FredenhagenHaagDerivationOfHawkingRadiation1990}),
+  kontynuują podejście Hawkinga, opierając je jednak na~inny
+  sposobie postawieniu problemu w~kwantowej teorii pola: analizie
+  funkcji Wightmana. Uzyskują dodatkowe wyniki i~potencjalne
+  ograniczenia dla~zależności pokazanych przez Hawkinga.
+
+  Wynik oraz uwagi Fredenhagena i~Haaga
+  \begin{itemize}
+    \RaggedRight
+
+  \item „W~kolapsie grawitacyjny promieniowanie Hawkinga dla~dużych
+    czasów jest ściśle związane z~granicą skalowania na~sferze, gdy
+    promień gwizdy przechodzi przez promień Schwarzschilda (przy
+    założeniu, że~zaniedbujemy oddziaływanie promieniowania
+    na~metrykę).”
+
+  \item Dla pola swobodnego, otrzymali wyniki jak Hawking. Analiza
+    jednak sugeruje, że~raczej nie istnieje żaden prosty,
+    uniwersalny wzór.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Inne podejście do~zagadnienia}
+
+
+  Wynik oraz uwagi Fredenhagena i~Haaga
+  \begin{itemize}
+    \RaggedRight
+
+  \item Praca argumentuje, że~asymptotyczna swoboda QCD może mieć
+    duże znaczenie dla prawdziwej sytuacji.
+
+  \item Wykorzystanie przez Hawkinga w~jego oryginalnej pracy
+    przybliżenia optyki geometrycznej nie jest w~pełni uzasadnione,
+    gdyż, mówiąc tym językiem, promień światła będzie musiał
+    przechodzić przez obszar gdzie ekstremalnie szybko zmienia~się
+    współczynnik załamania.
+
+  \end{itemize}
+
+  Promieniowanie Hawkinga w~teorii bez cząstek \\
+  „Uczniowie” Fredenhagena i~Haaga, Valter Moretti oraz~Nicola
+  Pinamonti kontynuowali te~badania, wyprowadzając efekt Hawkinga
+  w~podejściu do~teorii pola, które nie wymaga pojęcia cząstki.
+  Wyniki ich można znaleźć w~pracy Moretti, Pinamonti, \textit{State
+    independence for~tunneling processes through black hole horizons
+    and~Hawking radiation}, \cite[]. Na~ten temat nie mogę niestety
+  wiele powiedzieć.
+
+\end{frame}
+% ##################
+
+
+
+
+
 
 
 
