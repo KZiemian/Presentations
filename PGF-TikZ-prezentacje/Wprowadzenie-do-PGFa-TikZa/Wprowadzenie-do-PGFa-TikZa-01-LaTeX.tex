@@ -1,0 +1,352 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+\usepackage{verse}
+\usepackage{chemfig}
+\usepackage{algorithm2e}
+
+
+
+
+
+% ---------------------------------------
+% Configuration for this particular presentation
+% ---------------------------------------
+% \usepackage{latexshortcuts}
+% \usepackage{mathshortcuts}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Wprowadzenie do PGFa i~Ti\textit{k}Za}
+\subtitle{Kilka słów o~\LaTeX a}
+
+\author{Kamil Ziemian \\
+  \texttt{kziemianfvt@gmail.com}}
+
+% \institute{Jagiellonian University in~Cracow}
+% \institute{Uniwersytet Jagielloński w~Krakowie}
+
+% \date[16 March 2020]% {Seminarium astrofizyczne PAU \\
+  % 11 grudnia 2019}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle % Tytuł całego tekstu
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Hello World}
+
+
+  \begin{figure}
+
+    \centering
+
+    \includegraphics[scale=0.69]
+    {./PresentationPictures/Donald_Ervin_Knuth.jpg}
+    \includegraphics[scale=0.5]{./PresentationPictures/Leslie_Lamport.jpg}
+
+
+    \caption{Donald Ervin Knuth (1938--), Leslie Lamport (1941--)}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Enter the master}
+
+
+  W~1977 roku Donald E.~Knuth, legenda informatyki, stwierdził, że~aby
+  w~pełni wykorzystać potencjał, coraz szerzej stosownego wtedy składu
+  cyfrowego oraz przeciwdziałać obniżającej~się jakości typograficznej
+  (wprowadzenie nowej lepszej i~prostszej technologi zwykle obniża
+  jakość wykonania), stworzył własny język programowania i~program
+  do~składu tekstu. Temu programowi nadał nazwę \TeX. Kolejne wersje
+  \TeX a~są zbieżne do $\pi$, obecna to $3.14159265$ (to typowe dla
+  Knutha).
+
+  \TeX{} to zapisana w~alfabecie łacińskim pierwsza sylaba
+  ($\tau\varepsilon\chi$) słowa $\tau\varepsilon\chi\nu\eta$ (techne), od~którego pochodzi słowo technika
+  i~technologia. Po grecku to oznacza czynności takie jak budowa
+  statków, kowalstwo, malowanie, rzeźbienie czy hodowla koni.
+  $\pi o\iota\eta\sigma\iota\zeta$, poiesis = gr.~robić, jest czymś innym, może dlatego,
+  że~jak powiada Sokrates w~pierwszym przykładzie fanowskiego
+  dziennikarstwa muzycznego, pod tytułem „Ion”, poeci nic nie
+  umieją.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Odrobina historia}
+
+  Zapewne dlatego, że~pisanie w~samym \TeX u jest dla wielu zbyt
+  skomplikowane jak~na~tworzenie plików tekstowych, na początku lat 80
+  XX~wieku, Leslie Lamport tworzy nakładkę na~\TeX a, która zajmuje~się
+  za~nas większością \TeX nicznych szczegółów (teraz możecie odetchnąć
+  z~ulgą). Otrzymany w~ten sposób system składu nosi nazwę \LaTeX,
+  obecna wersja to~\LaTeX{} 2$_{ \varepsilon }$.
+
+  \textit{La} jest od Lamporta, stąd powinno~się mówić \textit{la-tech},
+  \textit{lej-tech}, sam Donald Knuth tego nie wie.
+  \LaTeX{} 2$_{ \varepsilon }$ czyta się jako \textit{la-tech dwa~epsilon}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O nadziei: dialog w pytaniach i~odpowiedziach pomiędzy \\
+    A.~Cowleyem i~R.~Crashawem, fragment \\
+    (tłumaczył Stanisław
+    Barańczak)}
+
+  \settowidth{\versewidth}{Zarówno, gdyś spełniona, jak i
+    zawiedziona!} { \tiny
+    \begin{verse}[\versewidth]
+      \setlength{\vrightskip}{-10em} \poemlines{30}
+
+      C o w l e y \\
+      \vin Nadziejo, której kruchy żywot kona \\
+      Zarówno, gdyś spełniona, jak i zawiedziona! \\
+      Ty, którą Zło i Dobro niszczy w równej mierze, \\
+      A Los wiecznie na rogi alternatyw bierze. \\
+      \vin Czczym cieniem jesteś: doszczętnie niknąca \\
+      \vin Tak w noc najgłębszą, jak przy blasku słońca. \\
+      \vin Ze wszelkich błogosławieństw, które Los nam rodzi, \\
+      \vin\vin Żadne cię nie nagrodzi. \\
+      Jeśli sądzić po skutkach wszystko, co istnieje, \\
+      Najbardziej beznadziejne są ludzkie nadzieje. \\!
+
+      C r a s h a w \\
+      \vin Nadziejo! Tyś jest Niebios długiem, Ziemi darem, \\
+      Nie zaistniałych rzeczy realnych wymiarem. \\
+      Najpewniejsza, choć najmniej uchwytna! Zaiste, \\
+      Dzięki tobie Nic nasze jest tak wyraziste. \\
+      \vin Chmuro z ognia, i cieniem i światłem będąca, \\
+      \vin Tyś naszym życiem w śmierci, w nocy -- blaskiem słońca. \\
+      \vin Ze wszelakich nieszczęść, które Los w nadmiarze płodzi, \\
+      \vin\vin Żadne ci nie zaszkodzi. \\
+      Los na twój widok chowa swoje tępe rogi, \\
+      Jak słabowity księżyc w czas poranku błogi. \\!
+
+    \end{verse}
+  }
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}[fragile]
+  \frametitle{Wzory chemiczne}
+
+
+  % \chemfig{H-[:52.24]\lewis{1:3:,O}-[::-104.48]H}
+
+  \chemfig{C(-[:0]H)(-[:90]H)(-[:180]H)(-[:270]H)}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}[fragile]
+  \frametitle{Algorytmy}
+
+
+\begin{algorithm}[H]
+ \KwData{this text}
+ \KwResult{how to write algorithm with \LaTeX2e }
+ initialization\;
+ \While{not at end of this document}{
+  read current\;
+  \eIf{understand}{
+   go to next section\;
+   current section becomes this one\;
+   }{
+   go back to the beginning of current section\;
+  }
+ }
+ \caption{How to write algorithms}
+\end{algorithm}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Typy procesorów tekstu (brr, co za groźne nazwa)}
+
+
+  \begin{itemize}
+    \RaggedRight
+
+  \item WYSIWYG = \textit{what you see is what you get} (to co
+    widzisz, jest tym co~dostaniesz). Przykłady: MS Word,
+    OpenOffice.
+
+  \item WYSIWYM = \textit{what you see is what you mean} (to co
+    widzisz, to jest to o~czym myślałeś). Przykłady: \LaTeX.
+
+  \end{itemize}
+
+  Jeśli zaczynasz pisać w~\LaTeX u, to jest to raczej WYWINWYG =
+  \textit{what you want is not what you get} (to czego chciałeś, to
+  nie jest to co dostałeś). Ale~od tego~są te~warsztaty, aby~ułatwić
+  wam przejście tego trudnego początkowego etapu. Jak w~takim
+  wypadku wygląda plika \LaTeX a?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  Kiedyś trzeba napisać drugą część, która będzie prezentować podstawy
+  używania Ti\textit{k}Za.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Teraz cała przygoda z~Ti\emph{k}Z przed wami}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}
