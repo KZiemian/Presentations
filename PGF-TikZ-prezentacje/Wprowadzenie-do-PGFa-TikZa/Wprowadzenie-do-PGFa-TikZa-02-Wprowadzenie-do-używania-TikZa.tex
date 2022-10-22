@@ -1,38 +1,52 @@
 % ---------------------------------------------------------------------
-% Podstawowe ustawienia Beamera i używane pakiety
+% Basic configuration of Beamera and Jagiellonian
 % ---------------------------------------------------------------------
-\RequirePackage[l2tabu, orthodox]{nag}  % Wykrywa przestarzałe i niewłaściwe
-% sposoby używania LaTeXa. Więcej jest w l2tabu English version.
+\RequirePackage[l2tabu, orthodox]{nag}
 
 
-\ifx\StylWykladu\nieokreslony
-\def\StylWykladu{dark}
+
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
 \fi
 
 
-\documentclass[10pt,t]{beamer}  % Klasa dokumentu
-\mode<presentation>  % Rodzaj tworzonych slajdów Beamera
-\usetheme[style=\StylWykladu,titlefontcolor=light]{jagiellonian}  % Temat
-% graficzny: „light” -- wersja jasna, „dark” -- wersja ciemna
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
 
 
 
-% General configuration of jagiellonian
-\input{./preambule/JagiellonianConfiguration/JagiellonianCoreConfiguration.tex}
-\input{./preambule/JagiellonianCustomization.tex}
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
 
 
 
 
 
-% ------------------------------
-% Paczki, biblioteki i ich ustawienia dla tego pliku
-% ------------------------------
-% \usepackage{./Geometria3DPaczki/Geometria3DTikZPics}
 
-\usepackage{tikz}
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+
+
+
+
+
+% ---------------------------------------
+% Configuration for this particular presentation
+% ---------------------------------------
 \usetikzlibrary{decorations.markings,decorations.pathmorphing}
-% \usetikzlibrary{decorations.markings,decorations.pathmorphing}
 
 \tikzstyle{spring style} = [decoration={aspect=0.7, segment length=1.7mm,
   amplitude=1.3mm,coil},decorate]
@@ -62,14 +76,13 @@
 
 
 % ---------------------------------------------------------------------
-\title{Ti\emph{k}Z ist \emph{kein} Zeichenprogram}
+\title{Wprowadzenie do PGFa i~Ti\textit{k}Za}
+\subtitle{Wprowadzenie do używania Ti\textit{k}Za}
 
 \author{Kamil Ziemian}
 
-\date{}
 
-% \titlegraphic{\hfill\includegraphics[height=2cm]
-%   {./pictures/LogoUJ_monochromatyczne_biale.png}}
+\date{}
 % ---------------------------------------------------------------------
 
 
@@ -88,35 +101,26 @@
 
 
 
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
 % ######################################
 \maketitle
 % ######################################
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Spis treści}
-
-
-%   % \Large
-%   \tableofcontents
-
-% \end{frame}
-% % ##################
 
 
 
 
-
-
-
-
-
-
-% % ######################################
-% \jagielloniansectionwithpicture{Empiryczne modele oświetlenia}
-% % ######################################
 
 
 
@@ -125,20 +129,25 @@
   \frametitle{\textbackslash path \textbackslash draw}
 
 
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}
-      % - -
+
       % \path[draw] (0,0) -- (1,0) -- (1,2) -- (3,4);
 
-      \draw (0,0) -- (0,2) -- (3,0) -- cycle;
+      % \draw (0,0) -- (0,2) -- (3,0) -- cycle;
+
     \end{tikzpicture}
+
 
     \caption{\textbackslash path, \textbackslash draw}
 
   \end{figure}
+  % #############
+
 
   Pamiętajcie o średniku.
 
@@ -148,30 +157,39 @@
 
 
 
+
 % ##################
 \begin{frame}
   \frametitle{Strzałki}
 
-  \tikzstyle{strzalka 1} = [-{Straight Barb[scale=1.2]},line width=1]
 
+  % \tikzstyle{strzalka 1} = [-{Straight Barb[scale=1.2]},line width=1]
+
+
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}
-      \path (0,0) -- (0,2);
+
+      % \path (0,0) -- (0,2);
 
 
-      \draw[-{Straight Barb[scale=1.2]},line width=1] (0,0) -- (3,1);
 
-      \draw[strzalka 1] (0,1) -- (2,-1);
+      % \draw[-{Straight Barb[scale=1.2]},line width=1] (0,0) -- (3,1);
 
-      \draw[strzalka 1] (3,3) -- (0,2);
+      % \draw[strzalka 1] (0,1) -- (2,-1);
+
+      % \draw[strzalka 1] (3,3) -- (0,2);
+
     \end{tikzpicture}
+
 
     \caption{Strzałki}
 
   \end{figure}
+  % #############
 
 \end{frame}
 % ##################
@@ -185,24 +203,28 @@
   \frametitle{Dekoracje}
 
 
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}
-      % decoration={coil},decorate
 
-      \path (0,0) -- (0,3);
+      % \path (0,0) -- (0,3);
 
 
-      \draw[decoration={coil},decorate] (0,0) -- (3,2);
 
-      \draw[spring style] (1,0) -- (4,1);
+      % \draw[decoration={coil},decorate] (0,0) -- (3,2);
+
+      % \draw[spring style] (1,0) -- (4,1);
+
     \end{tikzpicture}
+
 
     \caption{Dekoracje}
 
   \end{figure}
+  % #############
 
 \end{frame}
 % ##################
@@ -216,12 +238,14 @@
   \frametitle{\textbackslash fill}
 
 
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}
-      \filldraw[fill=green,line width=1] (0,0) -- (2,0) -- (3,2) -- cycle;
+
+      % \filldraw[fill=green,line width=1] (0,0) -- (2,0) -- (3,2) -- cycle;
       % \draw[->]
       % \path[fill]
       % \path[fill]
@@ -231,6 +255,7 @@
     \caption{\textbackslash fill}
 
   \end{figure}
+  % #############
 
 \end{frame}
 % ##################
@@ -244,27 +269,31 @@
   \frametitle{Figury}
 
 
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}
+
       % \draw[rotate=30] (0,0) rectangle (3,2);
 
       % \draw (0,0) circle [radius=1];
 
       % \draw[rotate=45] (0,0) ellipse (2 and 0.75);
 
-      \fill[color=red] (0,0) rectangle (3,2);
+      % \fill[color=red] (0,0) rectangle (3,2);
 
-      \fill[color=green] (0,0) circle [radius=1];
+      % \fill[color=green] (0,0) circle [radius=1];
 
-      \fill[color=blue] (0,0) ellipse (2 and 0.5);
+      % \fill[color=blue] (0,0) ellipse (2 and 0.5);
+
     \end{tikzpicture}
 
     \caption{Figury}
 
   \end{figure}
+  % #############
 
 \end{frame}
 % ##################
@@ -278,16 +307,19 @@
   \frametitle{Kolory}
 
 
-  \definecolor{orange}{rgb}{1,0.5,0}
-  % RGB
-  \definecolor{somecolor}{HTML}{445E8D}
-  \colorlet{lightgray}{black!30}
+  % \definecolor{orange}{rgb}{1,0.5,0}
+  % % RGB
+  % \definecolor{somecolor}{HTML}{445E8D}
+  % \colorlet{lightgray}{black!30}
 
+
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}
+
       % \fill[color=red] (0,0) rectangle (3,2);
 
       % \fill[blue] (0,0) rectangle (3,2);
@@ -300,14 +332,18 @@
 
       % \fill[somecolor] (0,0) rectangle (3,2);
 
-      \fill[color=red!50!blue!50!green] (0,0) rectangle (3,2);
+      % \fill[color=red!50!blue!50!green] (0,0) rectangle (3,2);
 
-      \fill[color=lightgray] (0,0) rectangle (3,2);
+      % \fill[color=lightgray] (0,0) rectangle (3,2);
+
     \end{tikzpicture}
+
 
     \caption{Kolory}
 
   \end{figure}
+  % #############
+
 
   Z paczki xcolor. \\
   \textbackslash definecolor\{orange\}\{rgb\}\{1,0.5,0\} \\
@@ -322,25 +358,32 @@
 
 % ##################
 \begin{frame}
-  \frametitle{Zakres (ang. \emph{scope})}
+  \frametitle{Zakres (ang. \textit{scope})}
 
 
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}
+
       \fill[color=red] (0,0) rectangle (3,2);
 
 
       \begin{scope}[xshift=4cm,yshift=-2cm,xscale=0.5]
+
         \fill[color=blue] (0,0) rectangle (3,2);
+
       \end{scope}
+
     \end{tikzpicture}
+
 
     \caption{Figury}
 
   \end{figure}
+  % #############
 
 \end{frame}
 % ##################
@@ -500,32 +543,38 @@
 
 % ##################
 \begin{frame}
-  \frametitle{Pics (od ang. \emph{small PICture})}
+  \frametitle{Pics (od ang. \textit{small PICture})}
 
 
+  % #############
   \begin{figure}
 
     \centering
 
     \begin{tikzpicture}[scale=2]
-      \path (0,0) -- (0,3);
+
+      % \path (0,0) -- (0,3);
 
 
-      \draw[dashed] (0,1) -- (4,1);
 
-      \draw[rotate=45] (0,0) rectangle (1,1);
+      % \draw[dashed] (0,1) -- (4,1);
+
+      % \draw[rotate=45] (0,0) rectangle (1,1);
 
 
-      \pic[rotate=45] at (4,1) {nasz kwadrat};
+      % \pic[rotate=45] at (4,1) {nasz kwadrat};
 
-      \pic[scale=0.5] at (2,2) {nasz kwadrat};
+      % \pic[scale=0.5] at (2,2) {nasz kwadrat};
 
-      \pic[scale=0.5] at (0,2) {nasz kwadrat};
+      % \pic[scale=0.5] at (0,2) {nasz kwadrat};
+
     \end{tikzpicture}
+
 
     \caption{Krzywe}
 
   \end{figure}
+  % #############
 
 \end{frame}
 % ##################
