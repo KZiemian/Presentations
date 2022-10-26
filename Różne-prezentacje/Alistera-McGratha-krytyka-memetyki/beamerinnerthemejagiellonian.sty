@@ -71,9 +71,15 @@
 \def\maketitle{%
 
   \ifbeamer@inframe
+    % \setbeamercolor{background canvas}{bg=red}
     \titlepage
+    % \setbeamercolor{background canvas}{bg=}
   \else
+    % Nie mam pojęcia co to robi, ale działa jak Iwona chciała.
+    \setbeamercolor{background canvas}{bg=JagiellonianUniversityBlue}
     \frame[plain]{\titlepage}
+    \setbeamercolor{background canvas}{bg=jNormalTextBGColor}
+    \setbeamercolor{titlelike}{fg=jNormalTextFGColor}
   \fi
 }
 \def\titlepage{%
@@ -307,7 +313,7 @@
   \begingroup
   \setkeys{beamerframe}{c}
 
-  \setbeamercolor{background canvas}{bg=jFrametitleBGColor}
+  \setbeamercolor{background canvas}{bg=jSpecialSlidesBGColor}
   % \setbeamercolor{foreground canvas}{use=frametitle,fg=jStrongWhite,bg=frametitle.bg}
 }
   \pretocmd{\beamer@reseteecodes}{%

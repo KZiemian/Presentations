@@ -87,19 +87,45 @@
 
 
 % ---------------------------------------
+% Commands for few special slides
+% ---------------------------------------
+\newcommand{\EndingSlide}[1]{%
+  \begin{frame}[standout]
+
+    \begingroup
+
+    \color{jFrametitleFGColor}
+
+    #1
+
+    \endgroup
+
+  \end{frame}
+}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
 % Commands for setting background pictures for some slides
 % ---------------------------------------
 \newcommand{\TitleBackgroundPicture}
-{./PresentationPictures/CommonPictures/Cute_dragon_BG_dark.png}
+{./JagiellonianPictures/Backgrounds/LajkonikDark.png}
 \newcommand{\SectionBackgroundPicture}
-{./PresentationPictures/CommonPictures/Cute_dragon_small_BG_light.png}
+{./JagiellonianPictures/Backgrounds/LajkonikLight.png}
 
 
 
-\newcommand{\TitleSlideWithPicture}{
+\newcommand{\TitleSlideWithPicture}{%
   \begingroup
 
-  \usebackgroundtemplate{ % \hspace*{-11.5em}
+  \usebackgroundtemplate{
     \includegraphics[height=\paperheight]{\TitleBackgroundPicture}}
 
   \maketitle
@@ -114,7 +140,7 @@
 \newcommand{\SectionSlideWithPicture}[1]{%
   \begingroup
 
-  \usebackgroundtemplate{ % \hspace*{-11.5em}
+  \usebackgroundtemplate{%
     \includegraphics[height=\paperheight]{\SectionBackgroundPicture}}
 
   \setbeamercolor{titlelike}{fg=normal text.fg}
@@ -122,22 +148,4 @@
   \section{#1}
 
   \endgroup
-}
-
-
-
-
-
-\newcommand{\EndingSlide}[1]{%
-  \begin{frame}[standout]
-
-    \begingroup
-
-    \color{jFrametitleFGColor}
-
-    #1
-
-    \endgroup
-
-  \end{frame}
 }

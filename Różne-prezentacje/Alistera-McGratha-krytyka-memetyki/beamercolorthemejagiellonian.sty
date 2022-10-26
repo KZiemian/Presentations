@@ -32,22 +32,23 @@
   dark/.code=\jagiellonian@colors@dark,
 }
 \pgfkeys{
-  /jagiellonian/color/titlefontscolor/.cd,
+  /jagiellonian/color/titlefontcolor/.cd,
   .is choice,
-  light/.code=\jagiellonian@colors@setlighttitlefontscolor,
-  dark/.code=\jagiellonian@colors@setdarktitlefontscolor,
+  light/.code=\jagiellonian@colors@setlighttitlefontcolor,
+  dark/.code=\jagiellonian@colors@setdarktitlefontcolor,
 }
 \pgfkeys{
   /jagiellonian/color/titlebackgroundcolor/.cd,
   .is choice,
+  JUcolor/.code=\jagiellonian@colors@setJUcolorastitlebackgroundcolor,
   light/.code=\jagiellonian@colors@setlighttitlebackgroundcolor,
   dark/.code=\jagiellonian@colors@setdarktitlebackgroundcolor,
 }
 \newcommand{\jagiellonian@color@setdefaults}{
   \pgfkeys{/jagiellonian/color/.cd,
     style=light,
-    titlebackgroundcolor=light,
-    titlefontscolor=dark,
+    titlebackgroundcolor=JUcolor,
+    titlefontcolor=light,
     block=transparent,
   }
 }
@@ -55,6 +56,8 @@
 \definecolor{JagiellonianUniversityYellow}{HTML}{FFCC00}
 \definecolor{JagiellonianUniversityRed}{HTML}{FF0019}
 \definecolor{JagiellonianUniversityGold}{HTML}{BFA37C}
+\definecolor{jSpecialSlidesFGColor}{HTML}{0089FF}
+\definecolor{jSpecialSlidesBGColor}{HTML}{0089FF}
 \definecolor{jNormalTextFGStyleLight}{HTML}{7E7E7E}
 \definecolor{jMathTextFGStyleLight}{HTML}{4E4E4E}
 \definecolor{jBackgroundStyleLight}{HTML}{FAFAFA}
@@ -75,6 +78,8 @@
 \colorlet{jMathTextBGColor}{jBackgroundStyleLight}
 \colorlet{jFrametitleFGColor}{jBackgroundStyleLight}
 \colorlet{jFrametitleBGColor}{blue}
+\colorlet{jSpecialSlidesFGColor}{jBackgroundStyleLight}
+\colorlet{jSpecialSlidesBGColor}{JagiellonianUniversityBlue}
 \newcommand{\jagiellonian@colors@setcolorsstylelight}{
   \colorlet{jNormalTextFGColor}{jNormalTextFGStyleLight}
   \colorlet{jNormalTextBGColor}{jBackgroundStyleLight}
@@ -91,13 +96,13 @@
   \colorlet{jFrametitleFGColor}{jBackgroundStyleLight}
   \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
 }
-\newcommand{\jagiellonian@colors@setlighttitlefontscolor}{
+\newcommand{\jagiellonian@colors@setlighttitlefontcolor}{
   \setbeamercolor{titlelike}{fg=jBackgroundStyleLight}
   \setbeamercolor{author}{fg=jBackgroundStyleLight}
   \setbeamercolor{date}{fg=jBackgroundStyleLight}
   \setbeamercolor{institute}{fg=jBackgroundStyleLight}
 }
-\newcommand{\jagiellonian@colors@setdarktitlefontscolor}{
+\newcommand{\jagiellonian@colors@setdarktitlefontcolor}{
   \setbeamercolor{titlelike}{fg=jNormalTextFGStyleLight}
   \setbeamercolor{author}{fg=jNormalTextFGStyleLight}
   \setbeamercolor{date}{fg=jNormalTextFGStyleLight}
@@ -108,6 +113,17 @@
   \setbeamercolor{author}{bg=jBackgroundStyleLight}
   \setbeamercolor{date}{bg=jBackgroundStyleLight}
   \setbeamercolor{institute}{bg=jBackgroundStyleLight}
+}
+\newcommand{\jagiellonian@colors@setJUcolorastitlebackgroundcolor}{
+  \setbeamercolor{titlelike}{bg=JagiellonianUniversityBlue}
+  \setbeamercolor{author}{bg=JagiellonianUniversityBlue}
+  \setbeamercolor{date}{bg=JagiellonianUniversityBlue}
+  \setbeamercolor{institute}{bg=JagiellonianUniversityBlue}
+  % Bez znaczenia i tak nie zmienia tła
+  % \setbeamercolor{titlelike}{bg=red}
+  % \setbeamercolor{author}{bg=red}
+  % \setbeamercolor{date}{bg=red}
+  % \setbeamercolor{institute}{bg=red}
 }
 \newcommand{\jagiellonian@colors@setdarktitlebackgroundcolor}{
   \setbeamercolor{titlelike}{bg=jBackgroundStyleDark}
