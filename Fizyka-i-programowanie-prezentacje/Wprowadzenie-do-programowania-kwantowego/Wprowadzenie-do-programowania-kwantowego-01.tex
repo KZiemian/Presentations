@@ -1,0 +1,341 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+
+
+
+
+
+% ------------------------------
+% Configuration for this particular presentation
+% ------------------------------
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Wprowadzenie do programowania kwantowego, 01}
+
+\author{Kamil Ziemian \\
+ \texttt{kziemianfvt@gmail.com}}
+
+
+\date{}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Najważniejszy punkt wystąpienia}
+
+
+  Plan ten jest bardzo szczegółowy, zawiera wszystkie rzeczy o~których
+  chciałbym powiedzieć i~uznałem za warte zapisania. W~tym sensie jest
+  materiałem pomocniczym dla mnie, bym niczego nie zapomniał. Uważam
+  jednak, że można na jego podstawie zbudować właściwy plan zajęć.
+
+  Plan wciąż podlega zmianom. Usuwam, dodaje i zmieniam kolejność
+  rzeczy. Wszelkie uwagi jak go poprawić są mile widziane.
+
+  Ciężko mi wybrać fragmenty matematyki, które mają zostać krótko
+  przedstawione. Z~jednej strony nie są banalne, z~drugiej bez nich pewne
+  rzeczy zmieniają~się w~czarną magię, a~według mnie nie o~to chodzi.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Pierwsze zajęcia}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pierwsza część zajęć}
+
+
+  \begin{enumerate}
+    \RaggedRight
+
+  \item \textbf{Wprowadzenie.}
+
+    \begin{enumerate}
+      \RaggedRight
+
+    \item \textbf{Krótkie omówienie treści zajęć.} Czym są komputery
+      kwantowe, czym jest mechanika kwantowa. Pokazanie IBM Quantum
+      Circuit Composer i~wyjaśnienie czemu będziemy z niego korzystać.
+      Pytania.
+
+    \item \textbf{Pytania.} Jak znacie logikę 0 i 1, prawdy i~fałszu?
+      Jak znacie rachunek prawdopodobieństwa?
+
+    \end{enumerate}
+
+  \item \textbf{Komputery klasyczne i~kwantowe.} „Trzy stany
+    skupienia” materii a~komputery. Jak działa normalny komputer: bity,
+    bajty i~bramki logiczne (dodawanie liczb typu \texttt{int}).
+    Porównanie komputerów klasycznych i~kwantowych: prawdopodobieństwo
+    (dodawanie liczb), dostępna pamięć, odczytywanie z~pamięci. Kwantowe
+    dyski twarde. Co nam mogą dać komputery kwantowe (Dorobić????)?
+    Kwantowy hardware i~jego wyzwania.
+
+  \item \textbf{Kilka potrzebnych słów o~mechanice kwantowej.} Trzy
+    rodzaje ,,mechaniki'' kwantowej. Otwarte problemy i~różne
+    interpretacje mechaniki kwantowej. Rzeczy których fizyka wciąż nie
+    jest w~stanie zrozumieć.
+
+  \item \textbf{Kwantowa kartka papieru, 1.} Klasyczne kartka papieru
+    leżąca na stole. Gdyby istniała widziana gołym okiem kwantowe kartka
+    papieru to jakby wyglądała po położeniu jej na stole? Kwantowa
+    kartka jako model ubity (kubit, kwbit) (Sprawdzić zapis???). Kartkę
+    zawsze widzimy jako leżącą jedną albo drugą stroną do góry. Kolaps
+    kwantowej kartki papieru. Jak ma się kolaps do obserwacji? Związek
+    tego z~otwartymi problemami i~interpretacjami.
+
+  \item \textbf{Kwantowa kartka papieru, 2.} Notacja Diraca dla stanów
+    kartki $| 0 \rangle$, $| 1 \rangle$. Dodawanie wektorów stanu i~mnożenie ich
+    przez liczbę. Dodawanie wektorów i~zasada superpozycji. Norma
+    wektora i~normowanie wektorów. Jak otrzymać prawdopodobieństwo
+    zobaczenia danej strony kartki znając wektor jej qubitu?
+
+  \end{enumerate}
+
+  Wydaje mi~się, że w~tym momencie należy zrobić przerwę.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Druga część zajęć}
+
+
+  \begin{enumerate}
+    \RaggedRight
+
+  \item \textbf{Obwód kwantowy, przedstawienie.} Pokazanie działania
+    kilku prostych obwodów kwantowych, wyjaśnienie ich działania.
+
+    \begin{enumerate}
+      \RaggedRight
+
+    \item Takiego który nic nie robi z qubitem.
+
+    \item Takiego który odwraca qubit.
+
+    \item Takiego który tworzy stan
+      $| + \rangle = \frac{ 1 }{ \sqrt{ 2 } } ( | 0 \rangle + | 1 \rangle )$.
+
+    \end{enumerate}
+
+  \item \textbf{Kwantowa kartka papieru, 3.} Krótko. Odwracanie kartki,
+    czyli operacja (bramka) $H$. Jeszcze jakaś operacja będzie nam
+      potrzebna.????
+
+    \item \textbf{Budowanie obwodów kwantowych z~uczestnikami.}
+
+      \begin{itemize}
+        \RaggedRight
+
+      \item Obwód nic nie robi z qubitem.
+
+      \item Odwód który odwraca qubit.
+
+      \item Obwód który tworzy stan
+        $| + \rangle = \frac{ 1 }{ \sqrt{ 2 } } ( | 0 \rangle + | 1 \rangle )$.
+
+      \end{itemize}
+
+    \item \textbf{Materiały dla zainteresowanych.} Przedstawienie listy
+      pozycji po które mogą sięgnąć osoby, chcące poszerzyć swoją
+      o~problemie. Materiału wystarczyłoby aż nadto na $50$ spotkań po $2$
+      godziny każde, więc naprawdę zainteresowani i~tak będą musieli
+      doczytać o~masie rzeczy.
+
+    \item \textbf{Zakończenie.} Zakończenie zajęć i~czas na pytania
+      końcowe.
+
+    \end{enumerate}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Drugie zajęcia}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pierwsza część zajęć}
+
+
+  \begin{enumerate}
+    \RaggedRight
+
+  \item \textbf{Wstęp.}
+
+    \begin{enumerate}
+      \RaggedRight
+
+    \item \textbf{Krótkie przypomnienie.} Bity, bajty, kartki kwantowe,
+      notacja przestrzeni wektorowej, kolaps, zasada superpozycji.
+
+    \item \textbf{Pytania.} Czy coś powtórzyć, wyjaśnić? Kto zna albo
+      słyszał o~macierzach?
+
+    \end{enumerate}
+
+  \item \textbf{Przypomnienie. Obwód tworzący stan $| + \rangle$.}
+    Przedstawiamy ponownie jego działa i~uruchamiamy go z~uczestnikami.
+
+  \item \textbf{Krótkie wyjaśnienie formalizmu opisującego ten obwód.}
+    Dlaczego używamy tak skomplikowanej notacji do tak prostych rzeczy?
+    Litery greckie $\psi$, $\varphi$, $\phi$, $\theta$, $\sigma$.
+    Notacja Diraca i~inne notacje. Macierze. Macierze i~bramki kwantowe.
+    Macierz jednostkowa i~macierze unitarne (wystarczy o~tym wspomnieć,
+    ale warto). Przykład z~normalnego: obracanie prostego kija
+    o~$90^{ \circ }$.
+
+  \item \textbf{Analiza wybranych obwodów za~pomocą wprowadzonego
+      formalizmu.} Dopisz konkrety.????
+
+  \end{enumerate}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pierwsza część zajęć}
+
+
+  Muszę jeszcze się zdecydować jakie przykład wybrać.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}

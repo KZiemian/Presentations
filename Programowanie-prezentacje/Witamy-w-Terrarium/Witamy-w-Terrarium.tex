@@ -1,0 +1,425 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+% \usepackage{latexgeneralcommands}
+% \usepackage{mathcommands}
+
+
+
+
+
+% ---------------------------------------
+% Configuration for this particular presentation
+% ---------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title[Terrarium]{NKFowy Grupa Miłośników Python
+  Terrarium}
+\subtitle{Spotkanie pierwsze. Oby nie ostatnie.}
+
+\author{Kamil Ziemian}
+
+
+\institute{Uniwersytet Jagielloński w~Krakowie}
+
+\date[27 III 2014]{27 marca 2014 r.}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle % Tytuł całego tekstu
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Plan prezentacji}
+
+
+  \tableofcontents % Spis treści
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Cel i~plan}
+
+
+  Cel spotkań \\
+  Wspólna nauka języka programowania Python i jego zastosowań do
+  rozwiązywania problemów naukowych symbolicznie i numerycznie, analizy
+  i~wizualizacji danych etc.
+
+  W~planie
+  \begin{itemize}
+    \RaggedRight
+
+  \item Podstawy języka i~podstawowe wiadomości z informatyki.
+
+  \item IPython.
+
+  \item NumPy/SciPy.
+
+  \item MathPlotLib.
+
+  \item Zadania.
+
+  \item Wasze pomysły.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przywitajmy się}
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    \includegraphics[height=1.8in]
+    {./PresentationPictures/Guido-von-Rossum-01.jpeg}
+    \includegraphics[height=1.8in]
+    {./PresentationPictures/Guido-von-Rossum-02.jpg}
+
+
+    \caption{Guido van Rossum (1956--), holender}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego Python?}
+
+
+  \begin{itemize}
+    \RaggedRight
+
+  \item Jest bardzo prostym językiem.
+
+  \item Ma dobrą i~przejrzystą składnie.
+
+  \item Zawiera zaawansowane i dobrze dobrane typy danych.
+
+  \item Jest interpretowany.
+
+  \item Posiada OGROMNY zasób bibliotek.
+
+  \item Powszechnie stosowany.
+
+  \item Dynamicznie rozwijany.
+
+  \item Wieloparadygmatowy.
+
+  \end{itemize}
+
+
+  Problemy
+  \begin{itemize}
+    \RaggedRight
+
+  \item Jest często zbyt wolny.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka ważnych informacji}
+
+
+  Uwagi o Python \\
+  \begin{itemize}
+    \RaggedRight
+
+  \item Jest dwustandardowy: 2.7x, 3.x (3.3.x). Wersje te nie są wstecznie
+    kompatybilne.
+
+  \item „Rzeczy niebezpieczne mają być utrudnione, lecz nie zabronione.”
+
+  \item Doświadczenie z nauki można łatwo przenieść na wiele innych języków.
+
+  \end{itemize}
+
+  Uwagi o~Terrarium \\
+  \begin{itemize}
+    \RaggedRight
+
+  \item Będzie trochę matematyki.
+
+  \item Prowadzący spotkania nie jest najlepszy. Za to ma oddane wsparcie.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ilustracja}
+
+  Python
+  def factorial(n): \\
+  \hspace{5mm} if n > 1: \\
+  \hspace{10mm} return n * factorial(n - 1) \\
+  \hspace{5mm} else: \\
+  \hspace{10mm} return 1 \\
+
+  \vspace{8pt}
+
+  print factorial(4)
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}[fragile]
+  \frametitle{Ilustracja}
+
+
+  C \\
+\begin{verbatim}
+int factorial(int n) {
+  if (n > 1) {
+    return n*factorial(n - 1);
+  } else {
+    return 1;
+  }
+}
+
+int main() {
+  printf("%i\n", factorial(4));
+
+  return 0;
+}
+\end{verbatim}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}[fragile]
+  \frametitle{Ilustracja}
+
+
+  Common Lisp
+\begin{verbatim}
+(defun factorial (x)
+  (if (> x 1)
+    (* x (factorial (- x 1)))
+    1))
+
+(factorial 4)
+\end{verbatim}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Krótka lista innych bibliotek/rozszerzeń}
+
+
+  \begin{itemize}
+
+  \item PyFeyn. (Nie udało mi się uruchomić.)
+
+  \item Biopython.
+
+  \item Astropysics.
+
+  \item PsychoPy.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały}
+
+
+  \begin{itemize}
+
+  \item Oficjalna strona Pythona: http://www.python.org/
+
+  \item Stowarzyszenie Polska Grupa Użytkowników Pythona:
+    http://pl.python.org
+
+  \item Kurs z MIT „Introduction to Computer Science and Programming”.
+    Specjalne podziękowania dla Johna Guttaga, Erica Grimsona i~MIT.
+
+  \item Zanurkuj w Pythonie.
+
+  \item A. B. Downey „Think Python”, „Think Complexity”
+    http://greenteapress.com
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały}
+
+
+  \begin{itemize}
+
+  \item M. Newman „Computational Physics with Python”
+    http://www-personal.umich.edu/~mejn/computational-physics/
+
+  \item E. Ayars „Computational Physics with Python”
+
+  \item Oficjalna grupa dyskusyjna: comp.lang.python
+
+  \item Cała masa innych.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\EndingSlide{Dziękuję. Pytania?}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}

@@ -1,0 +1,747 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+\usetikzlibrary{positioning}
+\usetikzlibrary{trees}
+\usetikzlibrary{graphs}
+\usetikzlibrary{automata}
+\usetikzlibrary{arrows.meta}
+
+
+
+
+
+% ---------------------------------------
+% Configuration for this particular presentation
+% ---------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Rysowanie grafów z~użyciem paczki Ti\textit{k}Z}
+
+\author{Kamil Ziemian}
+
+
+\date{}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rysowanie grafów w~Ti\textit{k}Zie}
+
+
+  Elementy grafu
+  \begin{itemize}
+    \RaggedRight
+
+  \item wierzchołki $\to$ Ti\textit{k}Zowe węzły (ang. \textit{nodes})
+
+  \item krawędzie $\to$ Ti\textit{k}Zowe linie
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Trochę perspektywy}
+
+
+  Licząc oszczędnie, najnowszy manual Ti\textit{k}Za ma około 1 300
+  stron, z~czego
+  \begin{itemize}
+    \RaggedRight
+
+  \item 38 stron omawia są węzły i~stowarzyszone z~nimi krawędzie
+    (ang. \textit{edges}),
+
+  \item 180 stron omawia jest rysowaniu grafów.
+
+  \end{itemize}
+
+  Jest to ogromna ilość materiału, wielokrotnie przekraczająca czas
+  naszego spotkania. To co tutaj prezentuje jest wysoce subiektywny
+  wyborem kilku zagadnień z~tego materiału.
+
+  Nie jestem zadowolony z~obecnego stanu prelekcji, sposób rozłożenia
+  akcentów mógłby być lepiej zbalansowany.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Styl pisania kodu}
+
+
+  Ti\textit{k}Z daje nam dużą swobodę w sposobie zapisu kodu źródłowego.
+  Prezentowana na tym spotkaniu wersja, nie jest w żadnym stopniu
+  kanonicze i~nie należy~się do niego przesadnie przywiązywać.
+
+  Jest to styl, który mojej osobie, przy obecnym stanie mojej wiedzy
+  i~umiejętności wydaje się najbardziej przejrzysty i~wygodny. Jest to
+  jednak odczucie wysoce subiektywne, które wciąż ewoluuje.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Węzeły, nieformalna definicja}
+
+
+  \textbf{Węzeł} (ang. \textit{node}) to fragment rysunku, stworzony po
+  to, by coś zawierać. Może jednak pozostać pusty.
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    \begin{tikzpicture}
+
+      \node at (0,0) {Tutaj};
+
+      \node[rotate=10] at (1,2)
+      {$\displaystyle m \frac{ d^{ 2 } x( t ) }{ d t^{ 2 } } = F$};
+
+      \node[shape=rectangle,draw] at (2,0) {Tam};
+
+      \node[shape=rectangle,draw] at (2,-1) {};
+
+    \end{tikzpicture}
+
+
+    \caption{Węzły}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Węzły a~picsy}
+
+
+  \textbf{Pics} (od ang. \textit{small PICture}) to mały rysunek
+  „wklejany” do większego rysunku (nieformalna definicja).
+
+  Kiedy użyć węzła, a~kiedy picsa?
+
+  Jeśli będziemy wielokrotnie kopiować i~wklejać w nowe miejsca jakiś
+  pomniejszy rysunek niezawierający tekstu, wtedy powinniśmy użyć
+  picsa. Przykładowo, możemy chcieć umieścić w nim rysunek owcy,
+  następnie wkleić 10 owiec do rysunku łąki.
+
+  Jeśli chcemy stworzyć fragment rysunku zawierający tekst, lub gdy
+  ważne są wzajemne relacje między takimi fragmentami, to powinniśmy
+  użyć węzłów.
+
+  \textbf{Ważne.} Istnieją dobre powody, by złamać te zasady. Jeżeli
+  nie jesteś pewien, czy w danym przypadku można je zignorować, zwykle
+  lepiej jest się ich trzymać.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tworzenie węzłów}
+
+
+  \texttt{\textbackslash node at (0,0) \{A\}};
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    \begin{tikzpicture}
+
+      % \node[draw] at (0,0) {A};
+
+      % \node[shape=circle,draw=red,line width=1pt,fill=cyan] at (1,2) {B};
+
+      % \node[draw] at (-1,1) {C};
+
+    \end{tikzpicture}
+
+    \caption{Tworzenie węzłów}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Style}
+
+
+  \textbf{Styl Ti\textit{k}Z} to ciąg komend wykonywany na danym
+  obiekcie Ti\textit{k}Za.
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [grube kolo/.style={shape=circle,very thick,
+    %     draw=blue,fill=white}]
+
+    \begin{tikzpicture}
+
+
+      % \node[grube kolo] at (0,0) {A};
+
+      % \node[grube kolo] at (1,2) {B};
+
+      % \node[grube kolo] at (-1,1) {C};
+
+    \end{tikzpicture}
+
+
+    \caption{Style}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Łączenie węzłów}
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [every node/.style={shape=circle,draw}]
+
+    \begin{tikzpicture}
+
+      % \node (A) at (0,0) {A};
+
+      % \node (B) at (1,2) {B};
+
+      % \node (C) at (-1,1) {C};
+
+
+      % \draw (A) -- (B);
+
+      % \draw[dashed,color=red] (A) -- (C);
+
+
+
+      % \node[shape=rectangle,draw] (D) at (1.4,-0.5) {D};
+
+      % \draw[->] (A) -- (D);
+
+    \end{tikzpicture}
+
+
+    \caption{Łączenie węzłów}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Krawędzie}
+
+
+  Można uważać, że \textbf{krawędź} (ang. \textit{edge}) to linia
+  przypisana do węzła. Ale nie jest to całkiem poprawne stwierdzenie.
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [every node/.style={shape=circle,draw},
+    %   style 1/.style={shape=rectangle}]
+
+    \begin{tikzpicture}
+
+      % \node (A) at (0,0) {A};
+
+      % \node (B) at (1,2) {B};
+
+      % \node (C) at (-1,1) {C};
+
+      % \draw[-{Stealth[scale=2]}] (C) -- (B);
+
+
+      % \node[shape=rectangle,draw] (D) at (1.4,-0.5) {D}
+      % edge [{Straight Barb[scale=2,length=3pt,width=4pt]}-] (A)
+      % edge [<->] node[style 1,auto,swap,scale=0.8] {2} (B)
+      % edge [-{Straight Barb[scale=2]},bend right=25]
+      % node[style 1,auto,swap,scale=0.8] {$1$} (C);
+
+    \end{tikzpicture}
+
+
+    \caption{Krawędzie}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Położenie względne}
+
+
+  Dopisz coś więcej o \texttt{=of}????
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [node distance=0.5cm,
+    %   every node/.style={shape=circle,draw}]
+
+    \begin{tikzpicture}
+
+      % \node (A) {A};
+
+      % =of
+      % \node[right=of A] (B) {B};
+
+      % \node[left=of A] (C) {C};
+
+      % \node[above=of A] (D) {D};
+
+      % \node[below=of A] (E) {E};
+
+      % \node[below right of= B] (F) {F};
+
+    \end{tikzpicture}
+
+
+    \caption{Położenie względne}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Grafy drzewowe}
+
+
+  \texttt{\textbackslash node \{Zawartość węzła\} child \{<kod węzła>\};}
+
+  Biblioteka \texttt{trees}.
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [line width=1pt,
+    %   every node/.style={shape=circle,draw,very thick},
+    %   level 1/.style={sibling distance=2.5cm},
+    %   level 2/.style={sibling distance=1.2cm}]
+
+    \begin{tikzpicture}
+
+      % \node {A}
+      % child { node {B1}
+      %   child { node {C1} }
+      %   child { node {C2} }
+      % }
+      % child { node {B2}
+      %   child { node {C3} }
+      %   child { node {C4} }
+      % };
+
+    \end{tikzpicture}
+
+    %   grow=right
+
+    %   \usetikzlibrary{trees}
+
+    %   level 1/.style={sibling distance=2cm},
+    %   level 2/.style={sibling distance=1cm},
+
+    %   grow cyclic,
+    %   level 1/.style={sibling distance=2cm,sibling angle=180},
+    %   level 2/.style={sibling distance=1cm,sibling angle=90},
+
+
+    \caption{Grafy drzewowe}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{\texttt{\textbackslash graph}}
+
+
+  Musimy dodać do preambuły linię: \\
+  \texttt{\textbackslash usetikzlibrary\{graphs\}}.
+
+  Komenda \texttt{\textbackslash graph} bierze na siebie zarządzanie
+  węzłami i~krawędziami, pozwalając nam krótko zapisać wiele typów
+  grafów.
+
+  \textbackslash usetikzlibrary\{quotes\}
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [every node/.style={shape=circle,draw}]
+
+    \begin{tikzpicture}
+
+      % \graph { a -> {b, c} -> d };
+
+      % \graph {
+      % a -> b -> c;
+      % d -> e -> f;
+      % g -> f;
+      % e -> b;
+      % };
+
+      % \graph { a/A1 -> b/Tu };
+
+      % \graph { a ->[red] b --[line width=1pt] c };
+
+
+
+      % \node (A) at (0,-1) {A};
+
+      % \node (B) at (2,1) {B};
+
+      % \graph { (A) -> (B) };
+
+      % \graph { A -> B };
+
+    \end{tikzpicture}
+
+
+    \caption{\texttt{\textbackslash graph}}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Węzły w~macierzy}
+
+
+  Kiedy potrzeba rozmieścić wierzchołki grafu w skomplikowany sposób,
+  przydatne mogą okazać się ustawienie ich za pomocą składni
+  macierzowej \LaTeX a.
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [node loc/.style={shape=circle,draw}]
+
+    \begin{tikzpicture}
+
+
+      % \matrix[row sep=0.1cm,column sep=0.5cm, ampersand
+      % replacement=\amp] {
+      %   % Pierwszy wiersz
+      %   \amp \amp \node[node loc] (A) {A}; \amp \amp \\
+      %   % Drugi wiersz
+      %   \node[node loc] (B) {B}; \amp \amp \amp \node[node loc] {C}; \amp
+      %   \node {F}; \\
+      %   % Trzeci wiersz
+      %   \amp \node[node loc] (D) {D}; \amp \node[node loc] (E) {E}; \amp \amp \\
+      % };
+
+
+      % \path (A) edge [->] (B);
+
+      % \path (B) edge [<-] (D);
+
+      % \path (D) edge [<-] (E);
+
+    \end{tikzpicture}
+
+
+    \caption{Węzły w~macierzy}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{\texttt{\textbackslash automata}}
+
+
+  Biblioteka do rysowania automatów skończonych.
+
+
+
+
+
+  % #############
+  \begin{figure}
+
+    \centering
+
+    % [shorten >=1pt,node distance=2cm,on grid,auto]
+
+    \begin{tikzpicture}
+
+      % \node[state,initial] (q_0) {$q_{ 0 }$};
+
+      % \node[state] (q_1) [above right=of q_0] {$_{ q_{ 1 } }$};
+
+      % \node[state] (q_2) [below right=of q_0] {$q_2$};
+
+      % \node[state,accepting](q_3) [below right=of q_1] {$q_{ 3 }$};
+
+
+
+      % \path[->] (q_0) edge node {0} (q_1) edge node [swap] {1} (q_2)
+      % (q_1) edge node {1} (q_3) edge [loop above] node {0} () (q_2)
+      % edge node [swap] {0} (q_3) edge [loop below] node {1} ();
+
+    \end{tikzpicture}
+
+
+    \caption{\texttt{\textbackslash automata}}
+
+  \end{figure}
+  % #############
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ##################
+\EndingSlide{Dziękuję za uwagę. Pytania?}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}

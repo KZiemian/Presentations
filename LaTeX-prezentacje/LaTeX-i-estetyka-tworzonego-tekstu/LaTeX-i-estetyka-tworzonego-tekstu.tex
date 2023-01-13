@@ -1,0 +1,515 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+\usepackage{siunitx}
+
+
+
+
+
+% ------------------------------
+% Configuration for this particular presentation
+% ------------------------------
+\newcommand{\ad}{\textrm{ad}}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Warsztaty \LaTeX a 2014}
+\subtitle{\LaTeX{} i~estetyka tworzonego tekstu}
+
+\author{Kamil Ziemian \\
+ \texttt{kziemianfvt@gmail.com}}
+
+
+\date[29.11.2014]{29 listopada 2014 r.}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Najważniejszy punkt wystąpienia}
+
+
+  Człowiek ma tendencje do~tego by się wstydzić, że~popełnił błąd
+  językowy mówiąc rzeczy dobre i~chlubić~się tym, iż~mówi piękną
+  polszczyzną o~rzeczach złych. W~to szaleństwo nie~wolno wpaść.
+
+  W szczególności
+  \begin{itemize}
+    \RaggedRight
+
+  \item Najważniejsza jest wartość merytoryczna tego co napisane.
+
+  \item Tekst zrozumiały, to tekst dobrze napisany.
+
+  \item Tekst dobrze napisany, można zwykle wygładzić i~uczynić
+    ładniejszym.
+
+  \item Przesadnie dbanie o~estetykę to często wynik tego, że~ktoś nie~wie
+    co jest ważne.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Najważniejszy punkt wystąpienia}
+
+
+  W~tym momencie powinniście~się zastanowić czy nie warto wyjść.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O czym warto wiedzieć}
+
+  \LaTeX{} to narzędzie do pisania książek, artykułów, tworzenia
+  prezentacji etc., dające prawie nieograniczone możliwości,
+  mogące przy tym świetnie zarządzać tekstem bez ingerencji piszącego.
+
+  Ponieważ jednak nie widać od razu jaki tekst~się ostatecznie otrzyma,
+  dowolnie wielki błąd może piszącemu umknąć.
+
+  Trzeba też pamiętać o drobnych pułapkach, jakie \LaTeX{} zastawia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podstawowe błędy}
+
+
+  Akapit tworzymy zostawiając jedną pustą linię.
+
+  Ważne. Domyślne ustawienia \LaTeX{}~są dostosowane do reguł składu
+  anglosaskiego, należy więc je zmienić na stosowane w~Polsce.
+
+  Bardzo ważne.  Istnieją specjalne klasy, która uwzględnia polskie reguły
+  składu: \texttt{mwart}, \texttt{mwrep}, \texttt{mwbk}. Informacje o~niej
+  można znaleźć na~stronie
+  \colorhref{http://www.mimuw.edu.pl/~wolinski/mwcls.html}
+  {http://www.mimuw.edu.pl/~wolinski/mwcls.html}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podstawowe błędy}
+
+
+  Podstawowe reguły składu
+  \begin{itemize}
+    \RaggedRight
+
+  \item Duże marginesy % --~\verb+\usepackage{fullpage}+.
+
+  \item Wcieńcia w~pierwszym akapicie
+    % --~\verb+\usepackage{indentfirst}+.
+    % \item[--] Rozmiar pewnych odstępów -- \textbackslash
+    %   frenchspacing.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}[fragile]
+  \frametitle{Podstawowe błędy}
+
+
+  Tryb matematyczny
+  \begin{itemize}
+    \RaggedRight
+
+  \item Zmienne zawsze należy pisać jako „$z$” (\texttt{\$ z \$}),
+    a~nie~„z”.
+
+  \item Jednostki należy pisać jako „$\si{kg}$” (\textbackslash
+    si\{kg\}), a~nie~\textit{kg}. Aby ta komenda działała należy
+    wstawić do preambuły \textbackslash usepackage\{siunitx\}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Akapity}
+
+
+  Jedną z~podstawowych jednostek tekstu jest akapit. Pojedynczy
+  akapit powinien być wyznaczony przez jedną zwartą myśl, bądź temat
+  który omawia. W~przypadku literatury, przez fragment narracji.
+
+  Nie należy więc jednej konkretnej myśli
+
+  ciągną przez dwa akapity.
+
+  Ani wstawiać zbyt wiele do jednego akapitu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zakończenie linii}
+
+
+  \LaTeX{ } z~reguły świetnie organizuje tekst, lecz często źle
+  umieszcza „w”, „z”, „a”, „i”, „że” etc. Wyrazy te nie~powinny się
+  znajdować na końca linii, bo mają one sens tylko w~połączeniu ze słowami
+  występującymi za~nimi.
+
+  Rozwiązanie. Należy zawsze wiązać tez słowa z następującymi po nich twardą
+  spacją \textasciitilde .
+  \begin{itemize}
+    \RaggedRight
+
+  \item i tyle.
+
+  \item i\textasciitilde tyle.
+
+  \item \textbackslash mbox\{i tyle\}.
+
+  \end{itemize}
+
+  Jeżeli zdarzy się, że nie da to dobrego rezultatu, to można zawsze
+  użyć opcji \textbackslash newline i \textbackslash linebreak.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zasady dzielenia zdań}
+
+
+  \begin{itemize}
+    \RaggedRight
+
+  \item Jeżeli wiersz kończy się „.” lub „ , ”, to zdanie zostało
+    poprawnie podzielone. W innych przypadkach warto jednak uważać.
+
+  \item Należy unikać sytuacji, gdy w danym wersie znajduje się
+    tylko początkowe słowo danego zdania. Nie jest to jednak reguła.
+
+  \item Podobnie jest z pojedynczym wyrazem kończącym zdanie.
+
+  \end{itemize}
+
+  Poważniejszym problem to wiersz zawierający pojedynczy
+  znak. \\
+  $a$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O pisaniu samego „kodu”}
+
+
+  Na pierwszy rzut oka.
+  Dla osoby pierwszy raz stykającej się z \LaTeX em, może on
+  przywieść na myśl pisanie kodu w jakimś języku programowania.
+  Jest to prawdą o tyle, że jeśli popełnimy błąd plik
+  \LaTeX a może się nie skompilować i nie dostaniemy pliku
+  z~właściwym tekstem. Zaś znalezienie błędu jest zwykle dość trudne.
+
+  Dlatego myślę, że warto przyjąć, jak w programowaniu, pewne
+  standardy pracy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}[fragile]
+  \frametitle{Przykłady}
+
+
+  Chcemy by było
+  \begin{equation}
+    \begin{split}
+      (R^{*}_{\xi}\omega)(V) \,\;
+      &= \,\; (i^{-1}_{G}\circ d_{p}(\ad_{\xi^{-1}}\circ\rho_{p}^{-1}))(V^{|}) \\
+      &=
+        (i^{-1}_{G}\circ(d_{e}\ad_{\xi^{-1}})\circ(d_{e}\rho_{p})^{-1})(V^{|}).
+    \end{split}
+  \end{equation}
+
+  A widzimy
+\begin{verbatim}
+(R^{*}_{\xi}\omega)(V) \,\; &= \,\; (i^{-1}_{G}
+\circ d_{p}(\ad_{\xi^{-1}}\circ\rho_{p}^{-1}))(V^{|})
+\\ &= (i^{-1}_{G}\circ(d_{e}\ad_{\xi^{-1}})
+\circ(d_{e}\rho_{p})^{-1})(V^{|}).
+\end{verbatim}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O pisaniu samego „kodu”}
+
+
+  Moje prywatne propozycje.
+  \LaTeX{} ignoruje większość białych znaków. Warto z~tego
+  skorzystać by stworzyć „kod” który~się tobie dobrze czyta.
+
+  Potęga komentarzy.
+  \LaTeX{} zwykle informuje nas gdzie jest błąd przerywający
+  kompilacje. Jeśli nie jesteś pewien gdzie się konkretnie
+  znajduje od komentuj podejrzany fragment i zobacz czy teraz działa.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O pisaniu samego „kodu”}
+
+
+  O tworzeniu książki z pomocą \LaTeX a.
+  Książka w naturalny sposób dzieli się na rozdziały. Dlatego,
+  równie naturalne, jest podzielenie samego tekstu na pliki
+  zawierające tylko pojedyncze rozdziały i dopiero komputer łączy je
+  w jeden plik pdf. Jest to jednak temat na osobne wystąpienie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}{Na zakończenie}
+
+
+  Trzy ważne rzeczy o których nie będzie mowy
+  \begin{itemize}
+    \RaggedRight
+
+  \item Gramatyka.
+
+  \item Ortografia.
+
+  \item Interpunkcja.
+
+  \end{itemize}
+
+  Trzy prawdy o komputerach
+  \begin{itemize}
+    \RaggedRight
+
+  \item Odpowiedź na twój problem jest w internecie.
+
+  \item Często nie da się jej zrozumieć.
+
+  \item Zawsze można poprosić o~pomoc kogoś mądrzejszego.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Na zakończenie}
+
+
+  Dla zainteresowanych.
+  Więcej informacji na temat budowania dobrego tekstu można znaleźć
+  w~„Architekturze książki” Andrzeja Tomaszewskiego.
+  % Chciałbym podziękować Aleksandrze Brambor za uświadomienie mnie
+  % o jej istnieniu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ##################
+\EndingSlide{Dziękuję za uwagę. Pytania?}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliografia
+\bibliographystyle{plalpha}
+
+\bibliography{Bibliography}{}
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}

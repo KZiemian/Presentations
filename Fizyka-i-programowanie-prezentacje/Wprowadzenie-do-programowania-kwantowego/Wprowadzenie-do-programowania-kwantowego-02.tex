@@ -1,0 +1,1812 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+\def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% Packages, libraries and their configuration
+% ---------------------------------------
+\usetikzlibrary{positioning}
+\usetikzlibrary{shadings}
+\usetikzlibrary{shapes}
+
+
+
+
+
+% ------------------------------
+% Configuration for this particular presentation
+% ------------------------------
+\definecolor{jNormalTextForegroundBlueGrey}{HTML}{818F9B}
+\definecolor{jNormalTextBackgroundDark}{HTML}{023159}
+\definecolor{MathWhite}{HTML}{D6DEE5}
+\definecolor{jMathTextForegroundGrey}{HTML}{4E4E4E}
+
+
+% \tikzset{
+%   sheetstyle/.style=[draw,rectangle,minimum heigth=4cm,text width=3cm,
+%   fill=black!2,text centered,text color=jMathTextForegroundGrey]
+% }
+\tikzstyle{sheetstyle} = [rectangle,fill=black!2,minimum height=6em,text width=2.5em,text centered]
+
+\tikzstyle{qubitplus} = [circle,minimum size=1.5cm,fill=gray]
+\tikzstyle{qubitupperquater} = [circle,minimum size=1.5cm,top color=gray,
+bottom color=white]
+\tikzstyle{qubitlowerquater} = [circle,minimum size=1.5cm,top color=white,
+bottom color=gray]
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Wprowadzenie do programowania kwantowego, 02}
+
+\author{Kamil Ziemian \\
+ \texttt{kziemianfvt@gmail.com}}
+
+
+\date{}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle % Tytuł całego tekstu
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{????}
+
+
+  \tableofcontents % Spis treści
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Basic information}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego programowanie kwantowe różnych~się \\
+    od dotychczasowego?}
+
+
+  Algorytm albo program komputerowy (w~języku C albo Python) możemy
+  napisać na kartce papieru, nie o to nam jednak chodzi. Chcemy by
+  ostatecznie został on wykonany przez jakiś komputer i~zrobił to
+  czego od niego oczekujemy.
+
+  To jak jest zbudowany i~jak działa komputer wpływa na to jak piszemy
+  programy, choć rozwój komputerów sprawia, że~w~bardzo wielu
+  przypadkach nie musimy już o~tym myśleć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego programowanie kwantowe różnych~się \\
+    od dotychczasowego?}
+
+
+  Przykładowo, kilkadziesiąt lat temu ze względu na niedoskonałość
+  swojej budowy procesory relatywnie często~się myliły w~operacjach
+  arytmetycznych i~potrafiły stwierdzić, że~$2 + 2 = 5$ (może
+  przejaskrawiam). Z~tego powodu informatyków uczono odpowiednich
+  algorytmów korekcyjnych i~sposobów pisania programów, by~wynajdywały
+  oraz~poprawiały tego typu błędy.
+
+  Kiedy jednak hardware stał się lepszy, szansa takich pomyłek zmalała
+  do tego stopnia, że z~bardzo wielu % (może większości)
+  programów studiów informatycznych usunięto naukę tych algorytmów
+  i~ich implementacji.
+
+  W~2018 roku pracownicy IBM podali, że ich komputery kwantowe zmagają
+  się dokładnie z takim samym problemem i~potrzebują opracować
+  analogiczne algorytmy korekcyjne, tylko dostosowane do kwantowych
+  procesorów. To pokazuje na jakim etapie jesteśmy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego programowanie kwantowe różnych~się \\
+    od dotychczasowego?}
+
+
+  Przedmioty jakie widzimy gołym okiem mają zwykle $10^{ 23 }$ (mierzy
+  to liczba Avogadra:
+  $N_{ A } = 6.02\ldots \cdot 10^{ 23 } \si{.mol}^{ -1 }$. Jaka jest więc
+  różnica między jednym atomem, a~zbiorowiskiem $10^{ 23 }$ atomów?
+
+  Nie jest specjalnie trudne podniesienie przedmiotu o~masie
+  $60 \si{.kg}$. Przedmiotu o~masie $10^{ 23 }$ większej nie możemy
+  podnieść, bo nie ma jak. Jest to bowiem masa Ziemi, wszystkiego
+  co~się na niej znajduje i~całej atmosfery (około
+  $5.97 \cdot 10^{ 24 } \si{.kg}$). Nienależny się więc dziwić, że~są
+  różnice między zachowaniem jednego atomu, a~przedmiotów wokół nas.
+  Można, a~nawet należy~się dziwić, jak duże te różnice są.
+
+  Mechanika Newtona wyjaśnię i~opisuje jak poruszają się samochody,
+  długopisy, krzesła, etc. Analogiczna teoria dla małej ilości atomów
+  nosi nazwę mechaniki kwantowej i~dzisiaj nie jest możliwe pracowanie
+  z~komputerem kwantowym bez pewnego jej zrozumienia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego programowanie kwantowe różnych~się \\
+  od dotychczasowego?}
+
+
+  Komputer jest obiektem materialny, więc jego sposób działania jest
+  związany z~prawami przyrody jakie rządzą materiałem z którego jest
+  zbudowany. To niby oczywiste, ale często można o tym zapomnieć.
+
+  Komputery które wszyscy znamy i~używamy, zbudowano z~takich
+  materiałów i~w taki sposób, że~procesor działa zgodnie z~prawami
+  fizyki klasycznej. Taki komputer będziemy określać jako komputer
+  klasyczny, a jego część działającą w~oparciu o te prawa
+  klasycznymi częściami. Np. klasyczny bit.
+
+  Taki którego procesor zbudowano w~taki sposób, by procesor działa
+  zgodnie z~prawami fizyki kwantowej, określamy jako komputer
+  kwantowy (zgodnie z~przyjętymi już zwyczajami). Analogicznie
+  nazywamy jego części.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowy hardware i~jego problemy}
+
+
+  Jeśli mamy klasyczny bit o wartości $0$ albo $1$, to przy
+  dzisiejszym stanie technologi, możemy przyjąć, że możemy go
+  odczytywać nieskończoną ilość razy.
+
+  Dla porównania, w 2018 roku na kwantowym komputerze odczyt
+  kwantowego bitu można wykonać niewielką ilość razy, powiedzmy, że 10. Potem kwantowy bit ulegał rozbiciu (formalnie: de
+  koherencji), informacja była tracona i należało uruchomić mechanizm
+  jego odbudowy.
+
+  Jest to jednak problem doskonałości hardware'u i możemy mieć
+  nadzieję, że wraz z jego rozwojem będą minimalizowane.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowe programowanie i obliczenia}
+
+
+  Nasz obecna wiedza fizyczna pozwala nam stwierdzić następujące
+  rzeczy.
+
+  Jeśli mamy poprawnie działający komputer klasyczny, i każmy mu 10
+  razy dodać 1 do 1 to otrzymamy
+  \begin{align*}
+    2, 2, 2, 2, 2, 2, 2, 2, 2, 2.
+  \end{align*}
+
+  Jeśli mamy poprawnie działający komputer kwantowy, to otrzymamy
+  zapewne jeden z poniższych rezultatów
+  \begin{align*}
+    &2, 1, 2, 2, 2, 3, 2, 2, 2, 2, \\
+    &2, 2, 2, 2, 1, 2, 2, 2, 3, 2, \\
+    &2, 2, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &1, 1, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &\vdots
+  \end{align*}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowe programowanie i obliczenia}
+
+
+  \begin{align*}
+    &2, 1, 2, 2, 2, 3, 2, 2, 2, 2, \\
+    &2, 2, 2, 2, 1, 2, 2, 2, 3, 2, \\
+    &2, 2, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &1, 1, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &\vdots
+  \end{align*}
+  Błędne wyniki \alert{nie} są winną błędów złej konstrukcji
+  kwantowego procesora. Według naszej obecnej wiedzy, jest to
+  konsekwencja zbudowania procesora z materii ,,w stanie kwantowy''
+  i każdy taki procesor musi się tak zachowywać.
+
+  Inaczej mówiąc, to prawa fizyki dyktują to, że nawet idealny
+  procesor kwantowy będzie od czasu do czasu dawał błędny wynik.
+
+  Z drugiej strony widzimy, że zazwyczaj $1 + 1 = 2$ ;).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Trochę perspektywy}
+
+
+  Jeśli ktoś miał magnetyczny dysk twardy o pojemności mierzonej w GB,
+  to praktycznie na pewno był to kwantowy dysk twardy. Przejście od
+  pojemności w MB do tej w GB jest związane z~budowaniem głowic
+  czytników magnetycznych w~oparciu o~opisywane przez mechanikę
+  kwantową zjawisko gigantycznego magnetooporu. Za jego odkrycie
+  Albert Fert i Peter Gr\"{u}nberg otrzymali Nagrodę Nobla w 2007
+  roku, zaś IBM wypuścił dyski komercyjne dyski w~tej technologii w
+  1997 roku.
+
+  Wielu ma nadzieję, że kwantowe procesory zrobią dla szybkości
+  komputera to, co kwantowe dyski twarde zrobiły dla jego pojemności.
+
+  Czemu więc nie przyjęła się nazwa kwantowy dysk twardy? Podejrzewam,
+  że to decyzja działu marketingu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Fizyka klasyczna (w uproszczeniu)}
+
+
+  Stosunkowo najbliższa naszym codziennym doświadczeniom. Przyjmuje,
+  że nie ma efektów kwantowych (o tym więcej później), a światło
+  porusza się z nieskończoną prędkością. Oba te założenia są błędne,
+  ale mimo tego ta część fizyki bardzo dobrze opisuje większość
+  zjawisk widzianych gołym okiem. Most, mechaniczne części samochodów
+  i samolotów, budujemy w oparciu o nią, a jeszcze się żaden nie
+  rozbił z powodów przyjęcia skończonej prędkości światła.
+
+  Do fizyki klasycznej należą między innymi.
+  \begin{itemize}
+    \RaggedRight
+
+  \item mechanika Newtona,
+
+  \item szkolna optyka,
+
+  \item teoria sprężystości i ciał elastycznych (liny, struny
+    instrumentów, etc.),
+
+  \item hydrodynamika (nauka o ruchu cieczy),
+
+  \item aerodynamika,
+
+  \item termodynamika.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Fizyka relatywistyczna (w uproszczeniu)}
+
+
+  Przyjmuje, że nie ma efektów kwantowych, ale prędkość światła jest
+  skończona. Stworzenie ogólnych jej podstaw przyniosło Albertowi
+  Einsteinowi sławę, którą cieszy się do dziś.
+
+
+  Należą do niej między innymi.
+  \begin{itemize}
+    \RaggedRight
+
+  \item elektrodynamika Clerka Maxwella, a na tej niej bazuje nasza
+    elektronika,
+
+  \item szczególna teoria względności, Einstein wniósł w nią wielki
+    wkład,
+
+  \item ogólna teoria względności, stworzona głównie przez Einsteina,
+    najlepsza znana teoria grawitacji.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Stany materii”}
+
+
+  Każdy zna trzy stany skupienia wody: lód, ciesz i parę wodną.
+  Podobnie można powiedzieć, że~otaczająca nas materia może być
+  w~trzech „stanach skupienia”.
+
+  \begin{itemize}
+    \RaggedRight
+
+  \item Stan kwantowy. Będziemy się nim dużo zajmowali.
+
+  \item Stan klasyczny. W~nim jest większość przedmiotów wokół nas.
+
+  \item Stan relatywistyczny. Kiedy prędkość obiektu jest zbliżona do
+    prędkości światła: $c = 3 00 000 \, \frac{ \si{km} }{ \si{s} }$.
+
+  \end{itemize}
+
+  Tak jak z~wodą dany „stan skupienia” jest nie tyle własnością
+  samej materii, co warunków w~których jest. Woda jest tą samą rzeczą
+  w~-20\textcelsius{ } jaki i~w~200\textcelsius, choć wygląda
+  i~zachowuje~się zupełnie inaczej.
+
+  Tak samo otaczająca nas materia może przechodzić między tymi
+  stanami, pozostając cały czas sobą, lecz zmieniając swoje własności.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Klasyczne i~kwantowe bity}
+
+
+  Materiał z~której zbudowany jest normalny procesor znajduje~się
+  w~klasycznym „stanie skupienia”, przez analogię będziemy więc
+  mówili o~klasycznych komputerach, klasycznych bitach, etc.
+
+  Materiał z~którego zbudowany jest kwantowy procesor znajduje~się
+  w~kwantowym „stanie skupienia”, stąd nazwa.
+
+  Kwantowy bit nazywamy \alert{qubitem} (ang. \emph{qubit} od
+  \emph{QUantum BIT}), spotyka się też zapis „kubit”. Ze względów
+  językowych próbowano wprowadzić „kwbit”, od „KWantowy BIT”, ale
+  ta forma jest rzadko używana.
+
+  Klasyczny bit może być tylko w~stanach reprezentujących jedną
+  z~dwóch~wartości: 0, 1. By go reprezentować wystarczy moneta.
+
+  Qubity są pod tym względem zupełnie inne. Oprócz 0 i 1, mogą być
+  w~nieskończenie wielu innych stanach, które istnienie ujawnia się
+  dopiero w~kwantowym stanie materii.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Hardware kwantowy}
+
+
+  W~dzisiejszych komputerach kwantowych jeśli temperatura qubitu
+  będzie większa niż -273\textcelsius{ } (dokładniej, 15 mK), to
+  materiał z~którego jest wykonany przejdzie ze stanu kwantowego do
+  stanu klasycznego, przez co stanie się on bezużyteczny. Trzeba wtedy
+  uruchomić odpowiednią procedurę chłodzenia i~odbudowywania
+  kwantowego „stanu skupienia” materiału. Temperatura nie jest
+  niestety jedną rzeczą, która niszczy kwantową naturę qubitu.
+
+  Zjawisko to w fizyce nosi nazwę dekoherencji, ja będą po prostu
+  mówił, że qubit ulega zniszczeniu i~musi zostać odbudowany.
+
+  Jeśli w~normalnym komputerze zapiszemy zdjęcie w~pamięci komputera,
+  to możemy tworzące je bit odczytywać tyle razy ile chcemy.
+
+  Obecnie informację z qubitu możemy odczytywać tylko niewielką liczbę
+  razy, powiedzmy dla prostoty że 10. Wraz z~rozwoje technologii
+  liczba ta będzie rosła.
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Trzy rodzaje fizyki kwantowej}
+
+
+  Obecnie ludzkość zna trzy główne wersje fizyki kwantowej.
+
+  \begin{itemize}
+    \RaggedRight
+
+  \item \alert{Nierelatywistyczna mechanika kwantowa.} Przyjmuje, że
+    prędkość światła jest nieskończona, dlatego jest w konflikcie ze
+    szczególną teorią względności. Jest mimo tego bardzo użyteczna
+    i~najlepiej zbadana ze wszystkich trzech. A biorąc pod uwagę jak
+    wiele jej elementów wciąż jest niezrozumianych lub budzi
+    kontrowersje i~zażarte dyskusje w środowisku naukowym, to tylko
+    ilustruje ile o tym zjawiskach nie wiem. Wrócimy do tego potem.
+
+  \item Relatywistyczna mechanika kwantowa. Dość ułomne połączenie fizyki
+    kwantowej i~szczególnej teorii względności.
+
+  \item Kwantowa teoria pola. Bardziej udane połączenie fizyki kwantowej
+    i~szczególnej teorii względności. Jednak za słabo zrozumiana, by
+    opracowywać odpowiednie komputery na jej podstawie.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mechanika kwantowa i~jej interpretacje}
+
+
+  Mechanika kwantowa to teoria fizyczna na której opieramy nasze komputery
+  kwantowe. Jest już dość starą teorią, za datę jej narodziny można uznać
+  1925~r. Od tego czasu setki eksperymentów i~wynalazków (dyski
+  twarde) potwierdziły, że~bardzo dobrze wyjaśnia i~opisuje świat.
+  Pomimo tego wciąż na wiele pytań które ona niesie musimy
+  odpowiadać „Nie wiem”.
+
+  Przyczyną ten jest wiele. Do najważniejszych należy to, że
+  eksperymenty które pozwoliłby nam rozwiązać pewne kwestie wciąż są
+  zbyt trudne do wykonania. W~istocie są poważne osoby, które mówią,
+  że~rozwój technologii napędzany przez prace nad komputerami
+  kwantowymi oraz badania ich działania pozwoli nam wreszcie
+  na wiele z~tych pytań odpowiedzieć.
+
+  Niestety, wiele z~tych otwartych pytań dotyczy tego czym będziemy się
+  zajmować. Musimy się więc pogodzić z~tym, że~pewnych rzecz nie rozumiemy.
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mechanika kwantowa i~jej interpretacje}
+
+
+  Podano wiele możliwym rozwiązań tych problemów, po prostu nie umiemy
+  stwierdzić które z~nich są błędne, a~które idą w~dobrą stronę.
+  W~literaturze funkcjonują one pod nazwą „interpretacji mechaniki
+  kwantowej”. Do najważniejszych z~nich należą:
+  \begin{itemize}
+    \RaggedRight
+
+  \item interpretacja kopenhaska,
+
+  \item teoria fali pilotującej De Broglie-Bohma,
+
+  \item teorie kwantowej wiedzy (informacji),
+
+  \item kwantowy bayesianism,
+
+  \item interpretacja statystyczna (stochastyczna),
+
+  \item logika kwantowa,
+
+  \item teoria wieloświatów,
+
+  \item kwantowy darwinizm.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Kwantowa kartka papieru}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Qubity są dziwne}
+
+
+  Chyba każdy kto nie studiował mechaniki kwantowej i dla większości
+  którzy to robili, qubity zachowują się po prostu dziwnie. Złośliwi
+  mówią, że jeśli uważasz, że rozumiesz co tu się dzieje, to nie wiesz
+  o czym mówisz.
+
+  Dlatego teraz zajmiemy się prostym modelem bitu i qubitu w~postaci
+  kartki papieru z 0 na jednej i 1 na drugiej stronie, którą nasz
+  kolega kładzie na stole.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Klasyczna kartka papieru jako klasyczny bit}
+
+
+  Nasz kolega Marian położył kartkę na stole. Podchodzimy do stołu i
+  odczytujemy z kartki liczbę 0 albo 1. Wszystko jest tak proste, że
+  nie trzeba nic tłumaczyć.
+  % Nasz kolega chce nam przekazać informacje, że pewna liczba ma
+  % wartość 0.
+  % Za pomocą tej kartki papieru chcemy zapisać informacje, że pewna
+  % liczba ma wartość 0.
+  % Kładziemy kartkę na stole tak, by strona z 0 była na wierzchu.
+  % Podchodzimy do stołu i~spoglądamy Jeśli potrzebujemy sobie
+  % przypomnieć jaka jest wartość tej liczby, to patrzymy na tą kartkę
+  % i odczytujemy z~niej liczbę 0.
+  % Na kartkę możemy się popatrzeć dowolną ilość razy i kartka się nie
+  % zużywa.
+
+
+
+
+
+  \begin{tikzpicture}[auto]
+
+    \node[sheetstyle] (zero) {\LARGE 0};
+
+    \node[sheetstyle,right=of zero] (one) {\LARGE 1};
+
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  Marian sobie tylko wiadomymi metodami zdobył kartkę papieru w stanie
+  kwantowym i położył ją na stole. Kiedy pochodzimy do stołu i
+  próbujemy odczytać co jest na kartce widzimy jedną z poniższych
+  możliwości.
+
+
+
+
+
+  \begin{tikzpicture}[node distance=0.5cm,auto]
+
+    \node[sheetstyle] (zero) {\LARGE 0};
+
+    \node[qubitlowerquater,right=of zero] (lowerquater) {};
+
+    \node[qubitplus,right=of lowerquater] (qubitplus) {};
+
+    \node[qubitupperquater,right=of qubitplus] (upperquater) {};
+
+    \node[sheetstyle,right=of upperquater] (one) {\LARGE 1};
+
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  \begin{tikzpicture}
+
+    \node[qubitplus] (qubitplus 1) {};
+
+    \node[sheetstyle,right=of qubitplus 1] (zero 1) {\Large 0};
+
+    \node[qubitplus,below=of qubitplus 1] (qubitplus 2) {};
+
+    \node[sheetstyle,right=of qubitplus 2] (zero 2) {\Large 1};
+
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  \begin{tikzpicture}
+
+    \node[qubitplus] (qubitplus 1) {};
+
+    \node[sheetstyle,right=of qubitplus 1] (result 1 1) {\Large 0};
+
+    \node[sheetstyle,right=of result 1 1] (result 1 2) {\Large 0};
+
+    \node[sheetstyle,right=of result 1 2] (result 1 3) {\Large 1};
+
+    \node[sheetstyle,right=of result 1 3] (result 1 4) {\Large 1};
+
+
+    \node[qubitupperquater,below=of qubitplus 1] (qubitupperquater 1)
+    {};
+
+    \node[sheetstyle,right=of qubitupperquater 1] (result 2 1) {\Large
+      0};
+
+    \node[sheetstyle,right=of result 2 1] (result 2 2) {\Large 1};
+
+    \node[sheetstyle,right=of result 2 2] (result 2 3) {\Large 1};
+
+    \node[sheetstyle,right=of result 2 3] (result 2 4) {\Large 1};
+
+
+    \node[qubitlowerquater,below=of qubitupperquater 1]
+    (qubitlowerquater 1) {};
+
+    \node[sheetstyle,right=of qubitlowerquater 1] (result 3 1) {\Large
+      0};
+
+    \node[sheetstyle,right=of result 3 1] (result 3 2) {\Large 0};
+
+    \node[sheetstyle,right=of result 3 2] (result 3 3) {\Large 0};
+
+    \node[sheetstyle,right=of result 3 3] (result 3 4) {\Large 1};
+
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  \begin{tikzpicture}
+
+    \node[sheetstyle] (zero) {\Large 0};
+
+    \node[right=of zero] (ket 1) {\Large $| 0 \rangle =
+      \begin{bmatrix}
+        1 \\
+        0
+      \end{bmatrix}$};
+
+
+    \node[sheetstyle,right=1cm of ket 1] (one) {\Large 1};
+
+    \node[right=of one] (ket 2) {\Large $| 1 \rangle =
+      \begin{bmatrix}
+        0 \\
+        1
+      \end{bmatrix}$};
+
+
+    \node[qubitplus,below=of zero] (qubitplus) {};
+
+    \node[right=of qubitplus] (ket 2) {\Large
+      $| + \rangle = \frac{ 1 }{ \sqrt{ 2 } } | 0 \rangle + \frac{ 1 }{ \sqrt{ 2 }
+      } | 1 \rangle = \frac{ 1 }{ \sqrt{ 2 } }
+      \begin{bmatrix}
+        1 \\
+        1
+      \end{bmatrix}$};
+
+
+    \node[qubitlowerquater,below=of qubitplus] (lowerquater) {};
+
+    \node[right=of lowerquater] (ket 3) {\Large
+      $| \psi \rangle = \frac{ \sqrt{ 3 } }{ 2 } | 0 \rangle + \frac{ 1 }{ 2 } | 1 \rangle
+      = \frac{ 1 }{ \sqrt{ 2 } }
+      \begin{bmatrix}
+        \sqrt{3} \\
+        1
+      \end{bmatrix}$};
+
+
+
+    % \node[sheetstyle,right=of result 1 1] (result 1 2) {\Large 0};
+
+    % \node[sheetstyle,right=of result 1 2] (result 1 3) {\Large 1};
+
+    % \node[sheetstyle,right=of result 1 3] (result 1 4) {\Large 1};
+
+
+    % \node[qubitupperquater,below=of qubitplus 1] (qubitupperquater
+    % 1) {};
+
+    % \node[sheetstyle,right=of qubitupperquater 1] (result 2 1)
+    % {\Large 0};
+
+    % \node[sheetstyle,right=of result 2 1] (result 2 2) {\Large 1};
+
+    % \node[sheetstyle,right=of result 2 2] (result 2 3) {\Large 1};
+
+    % \node[sheetstyle,right=of result 2 3] (result 2 4) {\Large 1};
+
+
+    % \node[qubitlowerquater,below=of qubitupperquater 1]
+    % (qubitlowerquater 1) {};
+
+    % \node[sheetstyle,right=of qubitlowerquater 1] (result 3 1)
+    % {\Large 0};
+
+    % \node[sheetstyle,right=of result 3 1] (result 3 2) {\Large 0};
+
+    % \node[sheetstyle,right=of result 3 2] (result 3 3) {\Large 0};
+
+    % \node[sheetstyle,right=of result 3 3] (result 3 4) {\Large 1};
+
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Prawdopodobieństwo}
+
+
+  Prawdopodobieństwo, że $| + \rangle$ skolapsuje do $| 0 \rangle$ jest równe
+  kwadratowi modułu współczynnika przy $| 0 \rangle$.
+  \begin{align*}
+    &| + \rangle =
+      \frac{ 1 }{ \sqrt{ 2 } } | 0 \rangle + \frac{ 1 }{ \sqrt{ 2 } } | 1 \rangle \\
+    &P_{ | + \rangle }( | 0 \rangle ) = | \frac{ 1 }{ \sqrt{ 2 } } |^{ 2 } =
+      \frac{ 1 }{ 2 }
+  \end{align*}
+
+  Aby to miało sens jako prawdopodobieństwa suma kwadratów modułów
+  współczynników musi wynosić 1.
+  \begin{align*}
+    P_{ | + \rangle }( | 0 \rangle ) + P_{ | + \rangle }( | 1 \rangle ) =
+    | \frac{ 1 }{ \sqrt{ 2 } } |^{ 2 } + | \frac{ 1 }{ \sqrt{ 2 } } |^{ 2 }
+    = \frac{ 1 }{ 2 } + \frac{ 1 }{ 2 }
+  \end{align*}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bramki kwantowe}
+
+
+  \begin{align*}
+    &H =
+    \frac{ 1 }{ \sqrt{ 2 } }
+    \begin{bmatrix}
+      \hphantom{-} 1 & \hphantom{-} 1 \\
+      \hphantom{-} 1 & -1
+    \end{bmatrix} \\
+    &H | 0 \rangle =
+      \frac{ 1 }{ \sqrt{ 2 } }
+    \begin{bmatrix}
+      \hphantom{-} 1 & \hphantom{-} 1 \\
+      \hphantom{-} 1 & -1
+    \end{bmatrix}
+                       \begin{bmatrix}
+                         1 \\
+                         0
+                       \end{bmatrix}
+    =
+    \frac{ 1 }{ \sqrt{ 2 } }
+    \begin{bmatrix}
+      1 \\
+      1
+    \end{bmatrix}
+    =
+    \frac{ 1 }{ \sqrt{ 2 } } | 0 \rangle + \frac{ 1 }{ \sqrt{ 2 } } | 1 \rangle
+    = | + \rangle \\
+        &H | 0 \rangle
+      =
+      \frac{ 1 }{ \sqrt{ 2 } }
+    \begin{bmatrix}
+      \hphantom{-} 1 & \hphantom{-} 1 \\
+      \hphantom{-} 1 & -1
+    \end{bmatrix}
+                       \begin{bmatrix}
+                         0 \\
+                         1
+                       \end{bmatrix}
+    =
+    \frac{ 1 }{ \sqrt{ 2 } }
+    \begin{bmatrix}
+      1 \\
+      -1
+    \end{bmatrix}
+    =
+    \frac{ 1 }{ \sqrt{ 2 } } | 0 \rangle - \frac{ 1 }{ \sqrt{ 2 } } | 1 \rangle
+    = | - \rangle \\
+    &X
+      =
+      \begin{bmatrix}
+        0 & 1 \\
+        1 & 0
+      \end{bmatrix} \\
+    &X | 0 \rangle = | 1 \rangle \quad X | 1 \rangle = | 0 \rangle
+  \end{align*}
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Iloczyn skalarny}
+
+
+  \begin{align*}
+    &z = a + ib \quad \bar{z} = a - ib, \quad i^{ 2 } = -1 \\
+    &| \psi \rangle
+      =
+      \begin{bmatrix}
+        \psi_{ 0 } \\
+        \psi_{ 1 }
+      \end{bmatrix}
+    \quad
+    | \varphi \rangle
+    =
+    \begin{bmatrix}
+      \varphi_{ 0 } \\
+      \varphi_{ 1 }
+    \end{bmatrix} \\
+    &( \psi, \varphi ) = \langle \psi | \varphi \rangle
+      =
+      \overline{ \psi_{ 0 } } \varphi_{ 0 } + \overline{ \psi_{ 1 } } \varphi_{ 1 }
+  \end{align*}
+
+  Prawdopodobieństwo, że zobaczymy wektor $| 0 \rangle$ pokolapsujący z wektora
+  $| \psi \rangle$ wynosi
+  \begin{align*}
+    P_{ | \psi \rangle }( | 0 \rangle ) = | \langle 0 | \psi \rangle |^{ 2 } = | \langle \psi | 0 \rangle |^{ 2 }.
+  \end{align*}
+  Warunek, że suma wszystkich prawdopodobieństw wynosi 1 sprowadza się do
+  tego, że
+  \begin{align*}
+    | \langle \psi | \psi \rangle |^{ 2 } = 1
+  \end{align*}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ogólnie}
+
+
+  Stan układu kwantowego jest opisywany przez wektor z zespolonej
+  przestrzeni Hilberta $\mathcal{H}$. W wypadku qubitu tą przestrzenią jest
+  $\mathbb{C}^{ 2 }$. Wektor na taki nakładamy dwa ograniczenia.
+  \begin{align*}
+    &| \langle \psi | \psi \rangle |^{ 2 } = 1 \\
+    &| \psi \rangle \equiv e^{ i \phi } | \psi \rangle, \quad \psi \in \mathbb{R}
+  \end{align*}
+  Znak $\equiv$ oznacza, że z punktu widzenia fizyki, wektory po obu stronach
+  równości, są identyczne.
+
+  Qubit
+  \begin{align*}
+    \begin{bmatrix}
+      z \\
+      w
+    \end{bmatrix}
+    \to
+    \begin{bmatrix}
+      | z | \\
+      | w | e^{ i \phi }
+    \end{bmatrix}
+    \to
+    \begin{bmatrix}
+      \cos( \frac{ \theta }{ 2 } ) \\
+      \sin( \frac{ \theta }{ 2 } ) e^{ i \phi }
+    \end{bmatrix}
+  \end{align*}
+  Ostatnio przejście zachodzi dlatego, że $| z |^{ 2 } + | w |^{ 2 } = 1$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Zaczynamy podróż}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest komputery kwantowy?}
+
+
+  Można powiedzieć, że~komputer kwantowy to komputer, który mam
+  procesor nowego typu, który jest 1 000 razy szybszy niż te najlepsze
+  standardowe procesory. My jednak potrzebujemy wiedzieć więcej
+  i~dlatego musimy się bardziej zagłębić w~znaczenie słowa
+  ,,kwantowy''.
+
+  Z~codziennego doświadczenia wiemy jak zachowują się otaczające nas
+  przedmioty, które są~zbudowane z~bardzo dużej ilości atomów. Przez
+  dla nas codziennie ma znaczenie tylko zachowanie~się dużych skupisk
+  atomów, nie mamy jednak żadnej intuicji jak zachowuje się jeden
+  atom. Dzięki różnym narzędziom zrozumieliśmy, że~wówczas świat
+  wygląda zupełnie inaczej, można wręcz rzecz, iż dziwacznie.
+
+  \alert{Uwaga.} Wiele rzeczy będę mocno upraszczał.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest komputery kwantowy?}
+
+
+  Przedmioty jakie widzimy gołym okiem mają zwykle $10^{ 23 }$ (mierzy
+  to liczba Avogadra:
+  $N_{ A } = 6.02\ldots \cdot 10^{ 23 } \si{.mol}^{ -1 }$. Jaka jest więc
+  różnica między jednym atomem, a~zbiorowiskiem $10^{ 23 }$ atomów?
+
+  Nie jest specjalnie trudne podniesienie przedmiotu o~masie
+  $60 \si{.kg}$. Przedmiotu o~masie $10^{ 23 }$ większej nie możemy
+  podnieść, bo nie ma jak. Jest to bowiem masa Ziemi, wszystkiego
+  co~się na niej znajduje i~całej atmosfery (około
+  $5.97 \cdot 10^{ 24 } \si{.kg}$). Nienależny się więc dziwić, że~są
+  różnice między zachowaniem jednego atomu, a~przedmiotów wokół nas.
+  Można, a~nawet należy~się dziwić, jak duże te różnice są.
+
+  Mechanika Newtona wyjaśnię i~opisuje jak poruszają się samochody,
+  długopisy, krzesła, etc. Analogiczna teoria dla małej ilości atomów
+  nosi nazwę mechaniki kwantowej i~dzisiaj nie jest możliwe pracowanie
+  z~komputerem kwantowym bez pewnego jej zrozumienia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest komputery kwantowy?}
+
+
+  Komputer kwantowy to komputer którego procesor zbudowany jest w~taki
+  sposób, by~korzystał z~tych nieobserwowalnych przez nas normalnie
+  własności materii opisywane przez mechanikę kwantową. Co pozwoli mu
+  wykonywać obliczenia znacznie szybciej niż tym powszechnie dziś
+  używanym.
+
+  Jednak oznacza to, że musimy nauczyć się pracować z tymi bardzo
+  dziwacznymi własnościami materii.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Trochę perspektywy}
+
+
+  Przejście od magnetycznych dysków twardych o~pojemności mierzone
+  w~MB do tej w GB było związane z~budowaniem ich z~wykorzystaniem
+  kwantowego zjawiska gigantycznego magnetooporu. IBM wypuścił dyski
+  komercyjne dyski korzystające z~niego w 1997 roku, zaś Albert Fert i
+  Peter Gr\"{u}nberg otrzymali za jego odkrycie Nagrodę Nobla w~2007
+  roku.
+
+  Można mieć nadzieję, że~kwantowe procesory osiągną dla szybkości
+  komputera coś podobnego do tego, co kwantowe dyski twarde zrobiły
+  dla jego pojemności.
+
+  Czemu więc nie przyjęła się nazwa kwantowy dysk twardy? Podejrzewam,
+  że było to związane z marketingiem.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czego należy się spodziewać po komputerach kwantowych?}
+
+
+  Jeśli mamy poprawnie działający normalny komputer, i każemy mu 10
+  razy wykonać działanie $1 + 1$ to otrzymamy
+  \begin{align*}
+    2, 2, 2, 2, 2, 2, 2, 2, 2, 2.
+  \end{align*}
+
+  Jeśli mamy poprawnie działający komputer kwantowy, to otrzymamy
+  jeden z~możliwych rezultatów:
+  \begin{align*}
+    &2, 1, 2, 2, 2, 3, 2, 2, 2, 2, \\
+    &2, 2, 2, 2, 1, 2, 2, 2, 3, 2, \\
+    &2, 2, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &1, 1, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &0, 2, 1, 3, 2, 2, 2, 2, 2, 3, \\
+    &\vdots
+  \end{align*}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowe programowanie i obliczenia}
+
+
+  \begin{align*}
+    &2, 1, 2, 2, 2, 3, 2, 2, 2, 2, \\
+    &2, 2, 2, 2, 1, 2, 2, 2, 3, 2, \\
+    &2, 2, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &1, 1, 2, 2, 2, 2, 2, 2, 2, 2, \\
+    &\vdots
+  \end{align*}
+  Błędne wyniki \alert{nie} są winną błędów działania komputera
+  kwantowego. Według naszej obecnej wiedzy, jeśli chcemy korzystać ze
+  zjawisk kwantowych musimy zaakceptować to, że~część wyników jakie
+  otrzymamy będzie błędna.
+
+  Z drugiej strony widzimy, że najczęściej pojawia~się wynik
+  $1 + 1 = 2$. Fizyka zjawisk kwantowych mówi, że~w~takim razie to $2$
+  należy uznać za poprawny wynik i~w~tym przypadku jest to prawda.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Potrzebna w~dalszym ciągu wiedza}
+
+
+  Wszędzie w~dalszym ciągu będziemy się odwoływać do następujących
+  koncepcji matematycznych:
+  \begin{itemize}
+  \item rachunek prawdopodobieństwa,
+
+  \item logika 0 i~1 (prawdy i~fałszu).
+
+\end{itemize}
+Jaka jest ich znajomość wśród was?
+
+Potem pewnie będziemy musieli pomówić o~macierzach i~liczbach zespolonych.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Bity, qubity i~procesory}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bit}
+
+
+  Bit jest wielkością która może przyjmować wartość 0 lub 1. Fizycznie
+  bitem może być kartka papieru na której napiszemy cyfrę 0 lub 1, lub
+  pewien układ elektroniczny w naszym komputerze.
+
+  Historycznie ustalono, że komputery będą pracować nie w oparciu o
+  bity ale o bajt, które są ciągiem $8 = 2^{ 3 }$ bitów. Np.
+  $[ 0, 0, 0, 0, 0, 0, 0, 0 ]$, $[ 0, 0, 0, 0, 0, 0, 0, 1 ]$, etc.
+  Ustawianie bitów w~ośmioelementowe bajty jest podyktowany niczym
+  innym jak wygodą, istniały komputery których bajty miały długość 13
+  bitów.
+
+  Dzisiaj używamy operacji przerabiający mega bajty i giga bajty
+  (oglądanie YouTubea) informacji, zupełnie nie myśląc o~tym jak
+  komputer zarządza bajtami, co jest w RAMie, co na dysku twardym, co
+  przetwarza procesor. I bardzo dobrze, że nie musimy o~tym myśleć.
+
+  Jednak nasz poziom technologiczny wymusza na nas byśmy się ,,cofnęli
+  w~rozwoju'' i~operowali na pojedynczych kwantowych bitach (o~nich
+  później).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bity i~procesor}
+
+
+  Procesor pobiera dane w~postaci odpowiedniej ilości bajtów,
+  następnie przetwarza je wykonując operacje na \alert{pojedynczych}
+  bitach każdego bajtu, dając w wyniku odpowiednią ilość bajtów.
+
+  Część procesora wykonująca ustaloną operację na bitach nazywamy
+  \alert{bramką logiczną}.
+
+  Okazuje, co jest dość niezwykłe, że aby zbudować procesor wykonujący
+  dowolną operację na bajtach wystarczy byśmy umieli zbudować bramki
+  logiczne: {????}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Fizyka, bity i~procesory}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{,,Stany materii''}
+
+
+  Każdy zna trzy stany skupienia wody: lód, ciesz i parę wodną.
+  Podobnie można powiedzieć, że~otaczająca nas materia może być
+  w~trzech ,,stanach skupienia''.
+
+  \begin{itemize}
+  \item Stan kwantowy. Będziemy się nim dużo zajmowali.
+
+  \item Stan klasyczny. W~nim jest większość przedmiotów wokół nas.
+
+  \item Stan relatywistyczny. Kiedy prędkość obiektu jest zbliżona do
+    prędkości światła: $c = 3 00 000 \, \frac{ \si{km} }{ \si{s} }$.
+
+  \end{itemize}
+
+  Tak jak z~wodą dany ,,stan skupienia'' jest nie tyle własnością
+  samej materii, co warunków w~których jest. Woda jest tą samą rzeczą
+  w~-20\textcelsius{ } jaki i~w~200\textcelsius, choć wygląda
+  i~zachowuje~się zupełnie inaczej.
+
+  Tak samo otaczająca nas materia może przechodzić między tymi
+  stanami, pozostając cały czas sobą, lecz zmieniając swoje własności.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Klasyczne i~kwantowe bity}
+
+
+  Materiał z~której zbudowany jest normalny procesor znajduje~się
+  w~klasycznym ,,stanie skupienia'', przez analogię będziemy więc
+  mówili o~klasycznych komputerach, klasycznych bitach, etc.
+
+  Materiał z~którego zbudowany jest kwantowy procesor znajduje~się
+  w~kwantowym ,,stanie skupienia'', stąd nazwa.
+
+  Kwantowy bit nazywamy \alert{qubitem} (ang. \emph{qubit} od
+  \emph{QUantum BIT}), spotyka się też zapis ,,kubit''. Ze względów
+  językowych próbowano wprowadzić ,,kwbit'', od ,,KWantowy BIT'', ale
+  ta forma jest rzadko używana.
+
+  Klasyczny bit może być tylko w~stanach reprezentujących jedną
+  z~dwóch~wartości: 0, 1. By go reprezentować wystarczy moneta.
+
+  Qubity są pod tym względem zupełnie inne. Oprócz 0 i 1, mogą być
+  w~nieskończenie wielu innych stanach, które istnienie ujawnia się
+  dopiero w~kwantowym stanie materii.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Hardware kwantowy}
+
+
+  W~dzisiejszych komputerach kwantowych jeśli temperatura qubitu
+  będzie większa niż -273\textcelsius{ } (dokładniej, 15 mK), to
+  materiał z~którego jest wykonany przejdzie ze stanu kwantowego do
+  stanu klasycznego, przez co stanie się on bezużyteczny. Trzeba wtedy
+  uruchomić odpowiednią procedurę chłodzenia i~odbudowywania
+  kwantowego ,,stanu skupienia'' materiału. Temperatura nie jest
+  niestety jedną rzeczą, która niszczy kwantową naturę qubitu.
+
+  Zjawisko to w fizyce nosi nazwę dekoherencji, ja będą po prostu
+  mówił, że qubit ulega zniszczeniu i~musi zostać odbudowany.
+
+  Jeśli w~normalnym komputerze zapiszemy zdjęcie w~pamięci komputera,
+  to możemy tworzące je bit odczytywać tyle razy ile chcemy.
+
+  Obecnie informację z qubitu możemy odczytywać tylko niewielką liczbę
+  razy, powiedzmy dla prostoty że 10. Wraz z~rozwoje technologii
+  liczba ta będzie rosła.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Nierelatywistyczna mechanika kwantowa}
+
+
+%   Teorią fizyczną na której bazują komputery kwantowe i~o~której
+%   musimy coś powiedzieć jest nierelatywistyczna mechanika kwantowa.
+%   Traktuje ono światło jako poruszające~się z~nieskończoną prędkością
+%   (tak naprawdę jest to bardziej skomplikowane), co nie jest
+%   jak wiemy prawdą. Teoria ta jest tym samym sprzeczna z~szczególną
+%   teorią względności (Poincar\'{e}, Lorent, Einstein).
+
+%   Istnieje sformułowanie mechaniki kwantowej, które jest zgodne
+%   z~szczególną teorią względności. Niestety rozumiemy tą teorię zbyt
+%   słabo, by móc za jej pomocą opisać komputer kwantowy.
+
+%   Na szczęście nierelatywistyczna mechanika kwantowa wystarczy z
+%   nawiązką do potrzeb ludzkości w tej kwestii.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mechanika kwantowa i~jej interpretacje}
+
+
+  Mechanika kwantowa to teoria fizyczna na której opieramy nasze komputery kwantowe. Jest już dość starą teorią, za datę jej narodziny można uznać
+  1925~r. Od tego czasu setki eksperymentów i~wynalazków (dyski
+  twarde) potwierdziły, że~bardzo dobrze wyjaśnia i~opisuje świat.
+  Pomimo tego wciąż na wiele pytań które ona niesie musimy
+  odpowiadać ,,Nie wiem''.
+
+  Przyczyną ten jest wiele. Do najważniejszych należy to, że
+  eksperymenty które pozwoliłby nam rozwiązać pewne kwestie wciąż są
+  zbyt trudne do wykonania. W~istocie są poważne osoby, które mówią,
+  że~rozwój technologii napędzany przez prace nad komputerami
+  kwantowymi oraz badania ich działania pozwoli nam wreszcie
+  na wiele z~tych pytań odpowiedzieć.
+
+  Niestety, wiele z~tych otwartych pytań dotyczy tego czym będziemy się zajmować. Musimy się więc pogodzić z~tym, że~pewnych rzecz nie rozumiemy.
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mechanika kwantowa i~jej interpretacje}
+
+
+  Podano wiele możliwym rozwiązań tych problemów, po prostu nie umiemy stwierdzić które z~nich są błędne, a~które idą w~dobrą stronę. W~literaturze funkcjonują one pod nazwą ,,interpretacji mechaniki kwantowej''. Do najważniejszych z~nich należą:
+  \begin{itemize}
+  \item interpretacja kopenhaska,
+
+    \item teoria fali pilotującej De Broglie-Bohma,
+
+  \item teorie kwantowej wiedzy (informacji),
+
+  \item kwantowy bayesianism,
+
+  \item interpretacja statystyczna (stochastyczna),
+
+  \item logika kwantowa,
+
+  \item teoria wieloświatów,
+
+  \item kwantowy darwinizm.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Kwantowa kartka papieru}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Qubity są dziwne}
+
+
+  Chyba każdy kto nie studiował mechaniki kwantowej i dla większości którzy to robili, qubity zachowują się po prostu dziwnie. Złośliwi mówią, że jeśli uważasz, że rozumiesz co tu się dzieje, to nie wiesz o czym mówisz.
+
+  Dlatego teraz zajmiemy się prostym modelem bitu i qubitu w~postaci kartki papieru z 0 na jednej i 1 na drugiej stronie, którą nasz kolega kładzie na stole.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Klasyczna kartka papieru jako klasyczny bit}
+
+
+  Nasz kolega Marian położył kartkę na stole. Podchodzimy do stołu i odczytujemy z kartki liczbę 0 albo 1. Wszystko jest tak proste, że nie trzeba nic tłumaczyć.
+  % Nasz kolega chce nam przekazać informacje, że pewna liczba ma wartość 0.
+  % Za pomocą tej kartki papieru chcemy zapisać informacje, że pewna liczba ma wartość 0.
+  % Kładziemy kartkę na stole tak, by strona z 0 była na wierzchu. Podchodzimy do stołu i~spoglądamy  Jeśli potrzebujemy sobie przypomnieć jaka jest wartość tej liczby, to patrzymy na tą kartkę i odczytujemy z~niej liczbę 0.
+  % Na kartkę możemy się popatrzeć dowolną ilość razy i kartka się nie zużywa.
+
+
+  \begin{tikzpicture}[auto]
+    \node[sheetstyle] (zero) {\LARGE 0};
+
+    \node[sheetstyle,right=of zero] (one) {\LARGE 1};
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  Marian sobie tylko wiadomymi metodami zdobył kartkę papieru w stanie kwantowym i położył ją na stole. Kiedy pochodzimy do stołu i próbujemy odczytać co jest na kartce widzimy jedną z poniższych możliwości.
+
+
+    \begin{tikzpicture}[node distance=0.5cm,auto]
+      \node[sheetstyle] (zero) {\LARGE 0};
+
+      \node[qubitlowerquater,right=of zero] (lowerquater) {};
+
+      \node[qubitplus,right=of lowerquater] (qubitplus) {};
+
+      \node[qubitupperquater,right=of qubitplus] (upperquater) {};
+
+    \node[sheetstyle,right=of upperquater] (one) {\LARGE 1};
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  \begin{tikzpicture}
+    \node[qubitplus] (qubitplus 1) {};
+
+    \node[sheetstyle,right=of qubitplus 1] (zero 1) {\Large 0};
+
+    \node[qubitplus,below=of qubitplus 1] (qubitplus 2) {};
+
+    \node[sheetstyle,right=of qubitplus 2] (zero 2) {\Large 1};
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  \begin{tikzpicture}
+    \node[qubitplus] (qubitplus 1) {};
+
+    \node[sheetstyle,right=of qubitplus 1] (result 1 1) {\Large 0};
+
+    \node[sheetstyle,right=of result 1 1] (result 1 2) {\Large 0};
+
+    \node[sheetstyle,right=of result 1 2] (result 1 3) {\Large 1};
+
+    \node[sheetstyle,right=of result 1 3] (result 1 4) {\Large 1};
+
+
+    \node[qubitupperquater,below=of qubitplus 1] (qubitupperquater 1) {};
+
+    \node[sheetstyle,right=of qubitupperquater 1] (result 2 1) {\Large 0};
+
+    \node[sheetstyle,right=of result 2 1] (result 2 2) {\Large 1};
+
+    \node[sheetstyle,right=of result 2 2] (result 2 3) {\Large 1};
+
+    \node[sheetstyle,right=of result 2 3] (result 2 4) {\Large 1};
+
+
+    \node[qubitlowerquater,below=of qubitupperquater 1]
+    (qubitlowerquater 1) {};
+
+    \node[sheetstyle,right=of qubitlowerquater 1] (result 3 1) {\Large 0};
+
+    \node[sheetstyle,right=of result 3 1] (result 3 2) {\Large 0};
+
+    \node[sheetstyle,right=of result 3 2] (result 3 3) {\Large 0};
+
+    \node[sheetstyle,right=of result 3 3] (result 3 4) {\Large 1};
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kwantowa kartka papieru}
+
+
+  \begin{tikzpicture}
+  \node[sheetstyle] (zero) {\Large 0};
+
+  \node[right=of zero] (ket 1) {\Large $| 0 \rangle =
+    \begin{bmatrix}
+      1 \\
+      0
+    \end{bmatrix}$};
+
+
+  \node[sheetstyle,right=1cm of ket 1] (one) {\Large 1};
+
+  \node[right=of one] (ket 2) {\Large $| 1 \rangle =
+    \begin{bmatrix}
+      0 \\
+      1
+    \end{bmatrix}$};
+
+
+  \node[qubitplus,below=of zero] (qubitplus) {};
+
+  \node[right=of qubitplus] (ket 2) {\Large $| + \rangle
+    = \frac{ 1 }{ \sqrt{ 2 } } | 0 \rangle + \frac{ 1 }{ \sqrt{ 2 } } | 1 \rangle
+    = \frac{ 1 }{ \sqrt{ 2 } }
+    \begin{bmatrix}
+      1 \\
+      1
+    \end{bmatrix}$};
+
+
+  \node[qubitlowerquater,below=of qubitplus] (lowerquater) {};
+
+  \node[right=of lowerquater] (ket 3) {\Large $| \psi \rangle
+    =
+    \frac{ \sqrt{ 3 } }{ 2 } | 0 \rangle + \frac{ 1 }{ 2 } | 1 \rangle
+    = \frac{ 1 }{ \sqrt{ 2 } }
+    \begin{bmatrix}
+      \sqrt{3} \\
+      1
+    \end{bmatrix}$};
+
+
+
+    % \node[sheetstyle,right=of result 1 1] (result 1 2) {\Large 0};
+
+    % \node[sheetstyle,right=of result 1 2] (result 1 3) {\Large 1};
+
+    % \node[sheetstyle,right=of result 1 3] (result 1 4) {\Large 1};
+
+
+    % \node[qubitupperquater,below=of qubitplus 1] (qubitupperquater 1) {};
+
+    % \node[sheetstyle,right=of qubitupperquater 1] (result 2 1) {\Large 0};
+
+    % \node[sheetstyle,right=of result 2 1] (result 2 2) {\Large 1};
+
+    % \node[sheetstyle,right=of result 2 2] (result 2 3) {\Large 1};
+
+    % \node[sheetstyle,right=of result 2 3] (result 2 4) {\Large 1};
+
+
+    % \node[qubitlowerquater,below=of qubitupperquater 1]
+    % (qubitlowerquater 1) {};
+
+    % \node[sheetstyle,right=of qubitlowerquater 1] (result 3 1) {\Large 0};
+
+    % \node[sheetstyle,right=of result 3 1] (result 3 2) {\Large 0};
+
+    % \node[sheetstyle,right=of result 3 2] (result 3 3) {\Large 0};
+
+    % \node[sheetstyle,right=of result 3 3] (result 3 4) {\Large 1};
+  \end{tikzpicture}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ##################
+\EndingSlide{Pytania? Dziękuję za uwagę.}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliografia
+\bibliographystyle{alpha}
+
+\bibliography{Bibliography}{}
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}

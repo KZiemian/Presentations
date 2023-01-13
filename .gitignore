@@ -24,3 +24,6 @@ auto/
 
 # ignore Jupyter auxiliary directories
 .ipynb_checkpoints/
+
+# ignore directory with Jagiellonia theme default pictures
+JagiellonianPictures-directories
