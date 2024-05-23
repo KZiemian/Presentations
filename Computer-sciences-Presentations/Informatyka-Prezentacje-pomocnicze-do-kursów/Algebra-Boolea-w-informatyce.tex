@@ -1,0 +1,1554 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ---------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in directory
+% "preambule".
+% ---------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+% BibLaTeX
+% ---------------------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{PomocniczePrezentacjeBibliography.bib}
+
+
+
+
+
+% ------------------------------
+% Importing packages, libraries and setting their configuration.
+% ------------------------------
+
+
+
+
+
+% ------------------------------
+% Special configuration for this particular presentation.
+% ------------------------------
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Algebry Boola}
+\subtitle{}
+
+\author{Kamil Ziemian}
+
+
+\date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 13k+,
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Ogólne informacje}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uwaga}
+
+
+  Poniższa prezentacja o~algebrach Boole’a jest przeznaczona dla
+  informatyków, więc co~wpływa na~wybór i~sposób prezentacji materiału.
+  Proszę mieć to na uwagę w~trakcie jej lektury. Staraliśmy~się również,
+  by został on możliwie prosto wyłożony, stąd liczne uproszczenia
+  i~pominięcie wielu subtelności jakie ten temat sobą prezentuje.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kim był Boole?}
+
+
+  \begin{figure}
+
+    \centering
+
+    \includegraphics[scale=0.195]
+    {./PresentationsPictures/George-Boole.jpeg}
+
+    \caption{George Boole (1815--1864), brytyjski matematyk i~filozof.
+      Wprowadził metody algebraiczne do logiki. \textbf{Algebra Boole’a}
+    została nazwana na jego cześć.}
+
+    \label{fig:George-Boole}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebry Boole’a w~informatyce}
+
+
+  Algebra Boole’a może już być Państwu znana pod nazwą „logiki”,
+  „logiki matematycznej”, „rachunku zdań”, etc. Najbardziej poprawną
+  nazwą w~tym kontekście jest \textbf{klasyczny rachunku zdań}, jednak
+  informacje o~nim ograniczymy do niezbędnego minimum. Osoby zainteresowany
+  tym tematem mogą sięgnąć do następujących pozycji.
+  \begin{itemize}
+
+  \item Andrzej Grzegorczyk \textit{Zarys logiki matematycznej}
+    \parencite{Grzegorczyk-Zarys-logiki-matematycznej-Pub-1975}.
+
+
+
+  \item Willard von Ormian Quine \textit{Logika matematyczna}
+    \parencite{Quine-Logika-matematyczna-Pub-1974}.
+
+
+
+  \item Zdzisław Kraszewski \textit{Logika. Nauka rozumowania}
+    \parencite{Kraszewski-Logika-Pub-1984}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebry Boole’a w~informatyce}
+
+
+  Do informatyki algebry Boole’a wprowadził je zapewne Claude E.~Shannon
+  (1916--2001), gdy zrozumiał jakie użyteczne w~projektowaniu układów
+  elektronicznych mogą być idea Boole’a, które poznał na kursie
+  z~filozofii. Obecnie są one powszechnie stosowane tak w~teorii jak
+  i~praktyce informatyki, że~każdy dobry informatyk musi~się umieć nimi
+  posługiwać.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Podstawy algebry Boole’a}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Logiczna prawda i~fałsz}
+
+
+  Dla algebry Boole’a podstawowe są dwie wielkości oznaczające odpowiednio
+  wartość logiczną prawdy i~fałszu. Prawdę logiczną będziemy oznaczać
+  symbolem \texttt{true}, zaś~fałsz symbolem \texttt{false}. Nazywamy
+  jej \textbf{wartościami boolowskimi} (ang. \textit{boolean values})
+  lub \textbf{wartościami logicznymi} (ang. \textit{logical values}).
+
+  W~praktyce istnieje wiele różnych sposobów reprezentowania tych wielkości
+  w~komputerze. W~języku Go są one oznaczane przez \texttt{true}
+  i~\texttt{false}. W~języku Python przez \texttt{True} i~\texttt{False}
+  (proszę zwrócić uwagę na wielkość liter). W~języku C fałsz reprezentuj
+  liczba całkowita równa 0, prawdą jest każda inna liczba całkowita.
+  Domyślnie, choć jest to tylko umowa między użytkownikami języka~C, jako
+  prawdę zwracamy wartość~1. Można również korzystać z~protezy typu
+  boolowskiego jaką daje nam \texttt{stdbool.h}. W~języku C++ sytuacja jest
+  w~zasadzie taka sama jak w~języku~C++.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Logiczna prawda i~fałsz}
+
+
+  W~tej prezentacji będziemy korzystali z~konwencji języka~Go, które są
+  poprawioną wersją tych stosowanych w~języku~C.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zmienne boolowskie}
+
+
+  W~informatyce oprócz wartości logiczny dużą rolę odgrywają
+  \textbf{zmiennymi boolowskimi} \textbf{zmienne logiczne}, zwane też .
+  Są~to zmienne które mogą przechowywać wartości logiczne \texttt{true}
+  i~\texttt{false}. Tak jak w~przypadku sposobu reprezentowania wartości
+  logicznych, również gdy chodzi o~zmienne sprawa ich działania zależy
+  w~dużej mierze od używanego języka.
+
+  Rozpatrzmy przypadek języka~C. Ponieważ wartości logiczne reprezentują
+  w~nim liczby całkowite, więc jako zmiennej logicznej możemy użyć dowolnej
+  zmiennej która przechowuje wartości całkowitoliczbowe. Zmienne tego typu
+  w~języku~C są zwykle typu \texttt{int}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zmienne boolowskie}
+
+
+  Poniżej prezentujemy przykładowy fragment programu napisanego w~języku~Go
+  operujący na zmiennych logicznych. Symbol „\texttt{//}” oznacza, że~tekst
+  na prawo od niego jest komentarzem dla człowieka i~jest zupełnie
+  ignorowany przez komputer.
+
+  \textit{Uwaga.} To jest tylko fragment programu w~języku~Go i~ze względu
+  na brakujące części nie da~się go uruchomić.
+
+  \texttt{// Tworzymy zmienną logiczną "boolVar" i~nadajemy jej} \\
+  \texttt{// wartość "false".} \\
+  \texttt{var boolVar bool = false} \\
+  \vspace{0.8em}
+  \texttt{// Zmieniamy wartość logiczną zmiennej "boolVar" na "true".} \\
+  \texttt{boolVar = true}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenie boolowskie}
+
+
+  \textbf{Wyrażeniem boolowskim} (ang.~\textit{boolean expression}) zwane
+  też \textbf{wyrażeniem logicznym} (ang.~\textit{logical expression})
+  zwane  to dowolne wyrażenie w~wyniku obliczenia którego zostaje zwrócona
+  wartość boolowska \texttt{true} albo \texttt{false}.
+
+  \textit{Ważne.} Wyrażenie jest tylko i~wyłącznie obiekt, który
+  \textit{zwraca} pewną wartość. W~przeciwnym razie mamy do czynienia
+  z~\textbf{poleceniem} (ang. \textit{statement}).
+
+  Przyjmujemy, że~wartości boolowskie \texttt{true} i~\texttt{false}, które
+  zwracają jako swoją wartość same siebie. Nawet jeśli wydaje~się to dziwne
+  i~przekombinowane, to taki sposób myślenia ma swoje zastosowania
+  w~informatyce.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Operatory boolowskie}
+
+
+  Jeśli funkcja o~nazwie \texttt{funBool} zwraca jako wartość zmienną
+  boolowską, to jej wywołanie \\
+  \texttt{funBool(argumenty funkcji)} \\
+  jest wyrażeniem boolowskim. Takie funkcje spotyka~się w~praktyce, jednak
+  częściej wyrażenia boolwskie tworzy~się za pomocą odpowiednich operatorów
+  logicznych.
+
+  \textbf{Operatorem boolowskim} (ang. \textit{boolean operator}) lub
+  \textbf{operatorem logicznym} (ang. \textit{logcial operator})
+  nazywamy symbol reprezentujący \textbf{operacje}, która to operacja
+  pozwala z~dwóch wyrażeń boolowskich utworzyć nowe wyrażenie. Cztery
+  podstawowe, z~punktu widzenia informatyki, operatory boolowskie to:
+  logiczny iloczyn, logiczna suma, logiczna negacja i~operacja porównania.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Operatory boolowskie}
+
+
+  \textbf{Iloczyn logiczny}, zwany też \textbf{koniunkcją logiczną},
+  odpowiada zasadniczo temu co~w~języku polskim oznacza spójnik~„i”. Łączy
+  on parę dwa wyrażenie boolowskie, zwracając logiczną prawdę wtedy i~tylko
+  wtedy gdy wartość pierwszego \textit{i}~drugiego wyrażenia są~prawdziwe.
+  W~przeciwny razie zwraca logiczny fałsz.
+
+  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
+  Język C i~większość najpopularniejszych języków programowania oznacza
+  go za~pomocą symbolu „\texttt{\&\&}”. Proszę zauważyć, że~w~tych językach
+  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
+    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
+  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
+  za pomocą symbolu~„$\wedge$”.
+
+  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Iloczyn logiczny}
+
+
+  Zgodnie z~tym co powiedziano wcześniej, wyrażenie \\
+  \texttt{true \&\& false} \\
+  jest wyrażeniem boolowskim i~zwraca wartość to \texttt{false}.
+
+  Własności iloczynu logicznego można podsumować za pomocą następującej
+  tabeli, gdzie \texttt{boolVar1} i~\texttt{boolVar2} to odpowiednie zmienne
+  boolowskie. Jeśli zmienne \texttt{boolVar1} i~\texttt{boolVar2} mają
+  wartości takie jak w~dwóch pierwszych kolumnach, to wartość iloczynu
+  logicznego tych zmiennych podana jest w~trzeciej kolumnie.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    boolVar1 & boolVar2 & boolVar1 \&\& boolVar2 \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{false} \\
+    \texttt{false} & \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{false} & \texttt{false} \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tabelki operatorów logicznych}
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    boolVar1 & boolVar2 & boolVar1 \&\& boolVar2 \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{false} \\
+    \texttt{false} & \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{false} & \texttt{false} \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+  \vspace{1em}
+
+
+
+
+
+  Choć w~tabeli powyższe występują zmienne boolowskie, to jest ona
+  prawdziwa dla dowolnych wyrażeń boolowskich. Proszę przy tym pamiętać,
+  że~każda zmienna boolowska jest dla nas wyrażeniem boolowskim, ale nie
+  każde wyrażenie boolowskie jest po prostu zmienną boolowską. Niezależnie
+  od tych subtelności, jeśli wartości zwracane przez dwa wyrażenia
+  boolowskie są takie jak w~dwóch pierwszych tabelach, to ich iloczyn
+  logiczny ma wartości wyrażoną w~trzeciej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Suma logiczna}
+
+
+  \textbf{Suma logiczna}, zwana też \textbf{alternatywą logiczną} odpowiada
+  mniej więcej temu, co w~języku polskim oznacza spójnik „lub”. Łączy ona
+  dwa wyrażenia boolowskie dając nową wyrażenie, która wartość \texttt{true}
+  jeśli wartość pierwszego \textit{lub} drugiego jest równa \texttt{true}.
+
+  Podobnie jak dla iloczynu logicznego, język C i~za nim większość
+  najpopularniejszy języków programowania oznacza sumę logiczną symbolem
+  „\texttt{||}”. Ponownie, trzeba mieć na uwagę, że~w~tych językach~symbol
+  „\texttt{|}” posiada osobne znaczenie. W~Pythonie operację tą oznacza
+  symbol „\texttt{or}”. W~matematyce często stosuje~się symbol~„$\vee$”.
+
+  My będziemy go zapisywać za~pomocą symbolu „\texttt{||}”.
+
+  Na podstawie tego co powiedziano powyżej \\
+  \texttt{false || true} \\
+  jest wyrażeniem logicznym i~zwraca wartość \texttt{true}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Suma logiczna}
+
+
+  Podstawowe własności sumy logicznej podaje poniższa tabela.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \texttt{boolVar1} & \texttt{boolVar2}
+    & \texttt{boolVar1 || boolVar2} \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{true}  \\
+    \texttt{false} & \texttt{true}  & \texttt{true}  \\
+    \texttt{false} & \texttt{false} & \texttt{false} \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Negacja logiczna}
+
+
+  \textbf{Negacja logiczna} odpowiada w~przybliżeniu co polskie słowo „nie”.
+  Negacja prawdy logicznej jest fałszem, a~negacja fałszu jest prawdą.
+
+  W~językach programowania negację danego wyrażenia \texttt{expr}, zwykle
+  oznacza~się poprzez poprzedzenie go symbolem~„\texttt{!}” i~my też
+  będziemy korzystać z~tego zapisu. W~matematyce często stosuje~się symbol
+  „\texttt{$\neg$}”. Negację wyrażenia \texttt{expr} zapiszemy więc odpowiednio
+  jako \texttt{!expr} lub \texttt{$\neg$expr}.
+
+  Własności negacji logicznej podsumowuje poniższa tabelka.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|}
+    \hline
+    \texttt{boolVar1} & \texttt{!boolVar1} \\
+    \hline
+    \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{true}  \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Porównanie logiczne}
+
+
+  \textbf{Porównanie logiczne} jest prawdą, wtedy i~tylko wtedy, gdy obie
+  porównywane strony mają tą samą wartość logiczną.
+
+  W~informatyce do porównywania zwykle używamy podwójnego znaku równości
+  „\texttt{==}”, my też z~niego będziemy korzystali. Oczywiście, tutaj też
+  muszą być wyjątki od tej reguły, ale prawdziwe źródło komplikacji
+  leży gdzie indziej. Zanim o~nich powiemy, przytoczymy tabelę
+  podsumowującą własności tej operacji.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \texttt{boolVar1} & \texttt{boolVar2}
+    & \texttt{boolVar1 == boolVar2} \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{false} \\
+    \texttt{false} & \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{false} & \texttt{true}  \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Porównanie logiczne}
+
+
+  Podstawowy problem z~operatorem „\texttt{==}” polega na tym,
+  że~w~większości języków służy nie tylko do porównywania wyrażeń
+  boolowskich, ale do porównywania wszystkich obiektów, których wartości
+  można porównywać. Dostajemy w~ten sposób wyrażenie boolowskie.
+
+  Przykładowo, w~języku C, Go czy w~Pythonie można za~jego pomocą
+  porównywać liczby całkowite, tworząc odpowiednie wyrażenia boolowskie.
+  Tym samym \\
+  \texttt{0 == 1} \\
+  jest w~tych językach wyrażeniem boolowskim, którego wartość logiczna jest
+  równa \texttt{false}. Proszę pamiętać, że~w~każdym z~tych języków
+  wartości logiczne są trochę inaczej reprezentowane.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Porównanie logiczne}
+
+
+  Należy zwrócić uwagę, że~operator „\texttt{==}” zwykle sprawdza równość
+  \textit{wartość} wyrażeń, nie ich \textit{identyczność}. Przykładowo,
+  załóżmy, że~mamy dwie zmienne typu \texttt{int} w~języku~C, niech~się
+  nazywają \texttt{intVar1} i~\texttt{intVar2}. Każda z~nich zawiera pewną
+  wartość i~możemy~się pytać o~równość tych wartości. Możemy~się też
+  zapytać, czy obie zmienne zajmują ten sam obszar pamięci (choćby pamięci
+  \textsc{ram}), wtedy pytamy~się o~ich identyczność.
+
+  Tym samym w~języku~C wyrażenie \\
+  \texttt{intVar1 == intVar2} \\
+  sprawdza, czy \textit{wartość} przechowywane przez obie te
+  zmienne są równe, nie czy te zmienne są identyczne. Powtórzymy,
+  identyczność zmiennych oznacza, że~są one po prostu dwiema różnymi
+  nazwami na~to~samo (ten sam obszar pamięci).
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Parsowanie i~ewalucaja wyrażeń boolowskich}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest „parsowanie”?}
+
+
+  Słowo „parsowanie” (ang.~\textit{parsing}) jest wzięte z~angielskiego
+  i~oznacza, przynajmniej dla nas, tyle co „analiza składniowa wyrażenia”
+  (ang. \textit{syntax analysis~of expression}), czyli ustalenie co dane
+  wyrażenie tak naprawdę znaczy. Można uznać, że~jest to mądrze brzmiące
+  słowo na zrozumienie co dany wzór znaczy.
+
+  Przykładowo, co oznacza następujące wyrażenie arytmetyczne? \\
+  \texttt{1 + 2 * 3} \\
+  Parsowanie tego wyrażenia, które mamy tak wbite do głowy, że~pewnie o~tym
+  nie myślimy, mówi nam, że~najpierw musimy wykonać mnożenie
+  \texttt{2 * 3}, dostając liczbę \texttt{6}, następnie dodajemy do
+  niej liczbę~\texttt{1} dostając w~wyniku~\texttt{7}.
+
+  Teraz omówimy reguły parsowania wyrażeń boolowskich, ale najpierw musimy
+  wyjaśnić co to jest ewaluacja przez krótkie spięcie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \textbf{Ewaluacja} (ang. \textit{evaluation}) oznacza obliczanie wartości
+  danego wyrażenia. Nie potrafię znaleźć lepszego tłumaczenia tego zwrotu
+  na~język polski.
+
+  \textbf{Ewaluacja przez krótkie spięcie} (ang. \textit{short-circut
+    evaluation}) to powszechnie stosowana w~informatyce technika obliczania
+  wyrażeń boolowskich będących ciągiem \texttt{\&\&} lub \texttt{||}.
+  Metody ta jest stosowana w~większości najpopularniejszy języków
+  programowania.
+
+  Rozpatrzmy wyrażenie boolowskie postaci \\
+  \texttt{boolExpr1 \&\& boolExpr2 \&\& boolExpr3 \&\& boolExpr4} \\
+  Można je przepisać jako \\
+  \texttt{boolExpr1 \&\& (boolExpr2 \&\& (boolExpr3 \&\& boolExpr4))} \\
+  Pomimo, że~nie omówiliśmy reguł obliczania tego typu wyrażeń, sens
+  powyższej notacji powinien być jasny poprzez analogię z~arytmetyką.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{boolExpr1 \&\& (boolExpr2 \&\& (boolExpr3 \&\& boolExpr4))}
+
+  Z~własności iloczynu logicznego wynika, że~jeśli co najmniej jedno
+  wyrażenie boolowskie \texttt{boolExpr1}, \texttt{boolExpr2},
+  \texttt{boolExpr3}, \texttt{boolExpr4} zwraca wartość \texttt{false}, to
+  cały iloczyn ma wartość \texttt{false}.
+
+  Wynik ten automatycznie przenosi~się na wyrażenie o~tej samej formie
+  zbudowane z~$N$ wyrażeń boolowskich: \\
+  \texttt{boolExpr1 \&\& boolExpr2 \&\& \ldots{} \&\& boolExprN}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  Rozpatrzmy teraz następujące wyrażenie. \\
+  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
+    (false || \\ }
+  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+
+  Mamy tu trzy wyrażenia w~iloczynie logicznym i~powinno być dość
+  oczywiste, że~obliczenie drugie i~trzeciego z~nich będzie
+  nasz kosztowało trochę pracy. Jednak obliczanie ich jest zupełnie
+  zbytecznie, bo skoro pierwsze wyrażenie ma wartość \texttt{false} to
+  wartość całego wyrażenie jest równa \texttt{false} i~nie musimy obliczać
+  konkretnej wartości dwóch pozostałych wyrażeń. Oszczędza to nam sporo
+  pracy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
+    (false || \\ }
+  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+
+  \textit{Uwaga.} W~rozumowaniu przedstawionym na poprzednim slajdzie
+  przyjęliśmy, że~interesuje nas tylko wartość logiczna \textit{całego}
+  wyrażenie, nie rezultaty zwrócone przez konkretne wyrazy.
+
+  Można napisać kod w~którym wartość zwrócone przez konkretne wyrażenia
+  składowe mają znaczenie, ale pisanie takiego kodu jest bardzo złą
+  praktyką. Dlatego ten przypadek będziemy ignorować.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
+    (false || \\ }
+  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+
+  % \vspace{0.8em}
+
+
+  Regułę ewaluacji przez krótkie spięcie dla iloczynu logicznego można więc
+  opisać w~następujący sposób. Jeśli na najwyższym poziomie analizowane
+  wyrażenie jest ciągiem mniejszych wyrażeń połączonych symbolem
+  \texttt{\&\&} to obliczamy je od lewej do prawej, aż~dojdziemy do końca
+  lub do pierwszego wyrażenia które zwróciło jako swoją wartość
+  \texttt{false}. W~tym ostatnim przypadku zwracamy jako wartość całego
+  wyrażenia \texttt{false} i~nie obliczamy dalszych wyrazów. W~pozostałych
+  przypadkach zwracamy \texttt{true} jako wartość całego wyrażenia.
+
+  Jeśli to wyrażenie jest dla Państwa intuicyjnie zrozumiałe, to jest to
+  ważniejsze, niż ewentualne luki w~jego sformułowaniu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{boolExpr1 || boolExpr2 || boolExpr3 || \ldots{} || boolExprN}
+
+  Analogicznie działa ewaluacja przez krótkie spięcie dla ciągu wyrażeń
+  połączonych operacją \texttt{||}. Tym razem korzystamy z~tego, że~jeśli
+  w~tym ciągu choć jedno wyrażenie ma wartość logiczną \texttt{true} to całe
+  to wyrażenie ma wartość ma wartość \texttt{true}.
+
+  Jeśli więc na najwyższym poziomie analizowane wyrażenie jest ciągiem
+  mniejszych wyrażeń połączonych operatorem \texttt{||} to obliczamy je od
+  lewej do prawej, aż~dojdziemy do końca lub do pierwszego wyrażenia które
+  zwróciło jako swoją wartość \texttt{true}. W~tym ostatnim przypadku
+  zwracamy jako wartość całego wyrażenia \texttt{true} i~nie obliczamy
+  dalszych wyrazów. W~pozostałych przypadkach zwracamy \texttt{false} jako
+  wartość całego wyrażenia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Parsowanie i~ewaluacja wyrażeń boolowskich}
+
+
+  Reguły mówiące w~jakiej kolejności obliczać wyrażenia boolowskie
+  są podane poniżej, przy czym najpierw wykonujemy te o~niższym numerze.
+  Od razu musimy zaznaczyć, że~zasady te obowiązują w~większości języków
+  programowania, acz, bo czemu życie miałoby być tak proste, zdarzają~się
+  wyjątki.
+
+  \begin{itemize}
+
+  \item[1)] Jeżeli na najwyższym poziomie wyrażenie jest ciągiem
+    \texttt{\&\&} albo \texttt{||} to dokonujemy ewaluacji przez krótkie
+    spięcie.
+
+
+
+  \item[2)] Wyrażenie w~nawiasach.
+
+
+
+  \item[2)] Negacja logiczna.
+
+
+
+  \item[3)] Iloczyn logiczny.
+
+
+
+  \item[4)] Suma logiczna.
+
+
+
+  \item[5)] Porównanie logiczne.
+
+  \end{itemize}
+
+  Tutaj ponownie, intuicyjna zrozumiałość jest ważniejsza, niż precyzyjne
+  sformułowanie tych reguł.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~1}
+
+
+  Rozpatrzmy wyrażenie \\
+  \texttt{false || true \&\& (false || !false) || !true \&\& true}
+
+  W~wyniku jego parsowania na podstawie reguł 2--5 dostajemy: \\
+  \texttt{false || (true \&\& (false || (!false))) ||
+    ((!true) \&\& true)} \\
+  Teraz stosujemy ewaluację przez krótkie spięcie. Wyrażenie \texttt{false}
+  ma wartość \texttt{false}, więc przechodzi do drugiego z~nich: \\
+  \texttt{(true \&\& (false || (!false)))} \\
+  Stosując kilkakrotnie regułę~2 dochodzimy do wniosku, że~najpierw musimy
+  obliczyć \\
+  \texttt{!false == true}. \\
+  Mamy więc \\
+  \texttt{(true \&\& (false || true))} \\
+  Znów z~reguły~2 wynika, że~najpierw należy wyliczyć \\
+  \texttt{(false || true) == true}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~1}
+
+
+  Mamy więc \\
+  \texttt{(true \&\& (false || (!false))) == true \&\& true == true}.
+
+  Z~tego wynika, że~drugi wyrażenie w \\
+  \texttt{false || true \&\& (false || !false) || !true \&\& true}, \\
+  ma wartość logiczną \texttt{true}, więc na mocy ewaluacji przez krótkie
+  spięcie, całe to wyrażenie ma wartość logiczną \texttt{true} i~nie
+  ma potrzeby obliczanie wartości trzeciego wyrażenia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~2}
+
+
+  Rozpatrzmy teraz kilka bardzo prostych, ale również bardzo użytecznych
+  w~informatyce wyrażeń boolowskich, ewaluowanych metodą krótkiego spięcia.
+
+  \texttt{boolExpr1 \&\& boolExpr2} \\
+  Załóżmy, że~\texttt{boolExpr1} zwraca nam wartość \texttt{true}. Wówczas
+  wyrażenie przyjmuje postać \\
+  \texttt{true \&\& boolExpr2}. \\
+  W~takiej sytuacji wyrażenie \texttt{boolExpr2} musi zostać obliczone i~na
+  podstawie przytoczonej tabelki dla \texttt{\&\&} możemy~się łatwo
+  przekonać, że~zachodzi zależność \\
+  \texttt{true \&\& boolExpr2 == boolExpr2}.
+
+  Jeśli \texttt{boolExpr1} zwraca wartość \texttt{false}, to~zgodnie
+  z~zasadą ewaluacji przez krótkie spięcie wartość \texttt{boolExpr2}
+  nie zostanie nigdy wyliczona.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data structures}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Each model is based on  a set of vertices}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Each model is based on  a set of vertices}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex attributes}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex attributes}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library (deprecated since ver.~3.1)}
+
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Communication between CPU and GPU}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex transformations (OpenGL nomenclature)}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}[label=Przestrzen-uklad-wspolrzednych-1]
+%   \frametitle{Spaces --~coordinate systems}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Spaces --~coordinate systems}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Fragment operations}
+
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Links}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ##################
+% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

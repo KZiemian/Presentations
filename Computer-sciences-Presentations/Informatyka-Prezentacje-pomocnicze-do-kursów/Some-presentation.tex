@@ -58,15 +58,19 @@
 
 
 
-% ------------------------------------------------------------------------------------------------------------------
-\title{???}
-\subtitle{???}
+% ---------------------------------------------------------------------
+\title{Geometry 3D}
+\subtitle{for Designers of Video Games}
 
-\author{????}
+\author{Paweł Węgrzyn, Ph.D., Assoc. Prof. \\[1em]
+  Institute of Applied Computer Science \\
+  Faculty of Physics, Astronomy \\
+  and Applied Computer Science \\
+  Jagiellonian University, Cracow, Poland}
 
 
 \date{}
-% ------------------------------------------------------------------------------------------------------------------
+% ---------------------------------------------------------------------
 
 
 
@@ -78,7 +82,7 @@
 
 
 % ####################################################################
-% Beginning of the document
+% Beginning of the document.
 \begin{document}
 % ####################################################################
 
@@ -86,11 +90,9 @@
 
 
 
-% ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+,
+% Number of chars: 62k+.
 \RaggedRight
-% ######################################
 
 
 
@@ -123,18 +125,25 @@
 
 
 
-% ######################################
-\section{???}
-% ######################################
+% % ######################################
+% \section{Getting ECTS~points. Requirements}
+% % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Getting ECTS~points for the Course}
 
 
+  \begin{enumerate}
+    \setlength{\itemsep}{1em}
 
+  \item Getting credits for the classes (zaliczenie; pre-examination)
+
+  \item Taking final written examination
+
+  \end{enumerate}
 
 \end{frame}
 % ##################
@@ -145,36 +154,31 @@
 
 % % ##################
 % \begin{frame}
-%   \frametitle{????}
+%   \frametitle{Literature}
 
 
+%   Eric Lengyel, \textit{Mathematics for~3D Game Programming and~Computer
+%     Graphics}.
 
+%   John Flynt, Danny Kodicek, \textit{Mathematics and~Physics
+%     for~Programmers}.
 
-% \end{frame}
-% % ##################
+%   John Flynt, Boris Meltreger, \textit{Beginning Math Concepts for~Game
+%     Developers}.
 
+%   Peter Shirley, Michael Ashikhmin, \textit{Fundamentals of~Computer
+%     Graphics}.
 
+%   Wendy Stahler, Dustin Clingman, Kaveh Kahriz, \textit{Beginning Math
+%     and~Physics for~Game Programmers}.
 
+%   Wendy Stahler, \emph{Fundamentals~of Math and~Physics for~Game
+%     Programmers}.
 
+%   Christopher Tremblay, \emph{Mathematics for~Game Developers}.
 
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
+%   James Van Verth, Lars Bishop, \emph{Essential Mathematics for Games
+%     \&~Interactive Applications: A~Programmer’s Guide}.
 
 % \end{frame}
 % % ##################
@@ -185,10 +189,63 @@
 
 % % ##################
 % \begin{frame}
-%   \frametitle{????}
+%   \frametitle{Literature}
+
+
+%   Fletcher Dunn, Ian Parberry, \emph{3D Math Primer for~Graphics
+%     and~Game Development}.
+
+%   Web resources.
+
+% \end{frame}
+% % ##################
 
 
 
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{\alert{Important information}}
+
+
+%   The slides are only \alert{auxiliary} to these lectures.
+%   To understand all the problems discussed here, please follow the lectures
+%   and literature.
+%   % They can be
+%   % \alert{not enough} to~understand all issues without
+%   % listening to a lecture or reaching for literature.
+
+%   All materials are a work within the meaning of the Act of 4~February
+%   1994~r. on copyright and related rights (OJ~U.~no.~90, pos.~631). These
+%   materials may not be distributed without providing information about the
+%   authors.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kind request to listeners}
+
+
+%   We will be grateful for your opinions on how to improve\\ these lectures.
+
+%   If you spot any unclear phrases, illegible drawings, errors,
+%   typos, etc, please let us know:\\ just provide the lecture’s  title
+%   and a number of the slide.
+
+
+%   % comments and proposals how to make
+%   % lectures better, indication of unclear wording, illegible
+%   % drawings, for~small/too large fonts on~slide,~etc. As well as
+%   % please inform us about found errors, typos, which
+%   % may be present  in these lectures.\\ In this case, we ask
+%   % of giving the title of the lecture and~the number of the slide on~which the error is.
 
 
 % \end{frame}
@@ -204,16 +261,82 @@
 
 
 % % ######################################
-% \section{???}
+% \SectionSlideWithPicture{Graphics pipeline (OpenGL)}
 % % ######################################
 
 
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
 
 
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+%       \node[diagrams block 1] (pobranie wierzcholkow) {Vertex \\Specification};
+
+%       \node[diagrams block 1,below=of pobranie wierzcholkow] (szader
+%       wierzcholkow) {Vertex Shader};
+
+%       \draw[thick connection line] (pobranie wierzcholkow) -- (szader
+%       wierzcholkow);
+
+
+
+%       \node[diagrams block 1,below=of szader wierzcholkow] (szader
+%       sterowania teselacja) {Tessellation Control Shader};
+
+%       \draw[thick connection line] (szader wierzcholkow) -- (szader
+%       sterowania teselacja);
+
+
+
+%       \node[diagrams block 1,right=of szader sterowania teselacja]
+%       (teselacja) {Tessellation};
+
+%       \draw[thick connection line] (szader sterowania teselacja) --
+%       (teselacja);
+
+
+
+%       \node[diagrams block 1,above=of teselacja] (szader wyliczania
+%       teselacji) {Tessellation Evaluation Shader};
+
+%       \draw[thick connection line] (teselacja) -- (szader wyliczania
+%       teselacji);
+
+
+
+%       \node[diagrams block 1,above=of szader wyliczania teselacji]
+%       (szader geometrii) {Geometry Shader};
+
+%       \draw[thick connection line] (szader wyliczania teselacji) --
+%       (szader geometrii);
+
+
+
+%       \node[diagrams block 1,right=of szader geometrii] (rasteryzacja)
+%       {Rasterization};
+
+%       \draw[thick connection line] (szader geometrii) -- (rasteryzacja);
+
+
+
+%       \node[diagrams block 1,below=of rasteryzacja] (szader fragmentow)
+%       {Fragment Shader};
+
+%       \draw[thick connection line] (rasteryzacja) -- (szader fragmentow);
+
+
+
+%       \node[diagrams block 1,below=of szader fragmentow] (bufor ramki)
+%       {Frame buffer\\ Operations};
+
+%       \draw[thick connection line] (szader fragmentow) -- (bufor ramki);
+%     \end{tikzpicture}
+
+%   \end{figure}
 
 % \end{frame}
 % % ##################
@@ -224,9 +347,127 @@
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{About rendering pipeline on
+%     \href{https://www.khronos.org/}{https://www.khronos.org/}}
 
 
+%   \begingroup
+
+%   \footnotesize
+
+%   The~OpenGL rendering pipeline is~initiated when you per- \\
+%   form a~rendering operation. Rendering operations require \\
+%   the~presence~of a~properly-defined vertex array object and \\
+%   a~linked Program Object or~Program Pipeline Object which \\
+%   provides the~shaders for the~programmable pipeline stages.
+
+
+%   Once initiated, the pipeline operates in the following order: \\[0.6em]
+%   Vertex Processing: \vspace{-0.5em}
+%   \begin{enumerate}
+%     \footnotesize
+%   \item Each vertex retrieved from the vertex arrays \\
+%     (as defined by the \textsc{vao}) is acted upon by a Vertex \\
+%     Shader. Each vertex in the stream is processed \\
+%     in turn into an~output vertex.
+
+%   \item Optional primitive tessellation stages.
+
+%   \item Optional Geometry Shader primitive processing. \\
+%     The~output is a sequence of primitives. \\
+%     \ldots
+
+%   \end{enumerate}
+
+%   \endgroup
+
+
+
+
+
+%   \begin{textblock}{9.1}(1,8.3)
+
+%     \begingroup
+
+%     \footnotesize
+
+%     \textbf{The article is continued on:} \\
+%     \colorhref{https://www.khronos.org/opengl/wiki/Rendering\_Pipeline\_Overview}
+%     {https://www.khronos.org/opengl/wiki/Rendering\_Pipeline\_Overview}.
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+
+
+
+%   \begin{textblock}{3.35}(8.8,1.5)
+
+%     \begin{tikzpicture}[node distance=0.6em, block loc/.style =
+%       {rectangle, rounded corners, minimum height=1.75em, text
+%         width=11em, scale=0.8, text centered,
+%         text=jMathTextFGStyleDark}]
+
+
+%       \node[block loc,fill=jAxisBlue] (vertex specification) {Vertex
+%         Specification};
+
+%       \node[block loc,fill=jOrange,below=of vertex specification]
+%       (vertex shader) {Vertex Shader};
+
+%       \draw[thick connection line] (vertex specification) -- (vertex
+%       shader);
+
+
+%       \node[block loc,fill=jOrange,below=of vertex shader]
+%       (tessellation) {Tessellation};
+
+%       \draw[thick connection line] (vertex shader) -- (tessellation);
+
+
+%       \node[block loc,fill=jOrange,below=of tessellation] (geometry
+%       shader) {Geometry Shader};
+
+%       \draw[thick connection line] (tessellation) -- (geometry shader);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of geometry shader] (vertex
+%       post-processing) {Vertex Post-Processing};
+
+%       \draw[thick connection line] (geometry shader) -- (vertex
+%       post-processing);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of vertex post-processing]
+%       (primitive assembly) {Primitive Assembley};
+
+%       \draw[thick connection line] (vertex post-processing) --
+%       (primitive assembly);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of primitive assembly]
+%       (rasterization) {Rasterization};
+
+%       \draw[thick connection line] (primitive assembly) --
+%       (rasterization);
+
+
+%       \node[block loc,fill=jOrange,below=of rasterization]
+%       (fragment shader) {Fragment Shader};
+
+%       \draw[thick connection line] (rasterization) -- (fragment shader);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of fragment shader]
+%       (per-sample operations) {Per-Sample Operations};
+
+%       \draw[thick connection line] (fragment shader) -- (per-sample
+%       operations);
+%     \end{tikzpicture}
+
+%   \end{textblock}
 
 % \end{frame}
 % % ##################
@@ -237,9 +478,24 @@
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
 
 
+%   \begin{itemize}
+%     \setlength{\itemsep}{1em}
+
+%   \item \textbf{Pipelining} --~a technique of building processors for implementing the division of execution  of the program\\ into specialized groups of instructions\\ (execution subsequent stages).
+
+
+%   \item \textbf{Parallelism} --~performing
+%     multiple instructions simultaneously.
+
+
+%   \end{itemize}
+
+
+%   The above assumptions allow   enormous computing efficiency\\
+%   on a graphics processing unit  (\textsc{gpu}).
 
 
 % \end{frame}
@@ -255,16 +511,30 @@
 
 
 % % ######################################
-% \section{?????}
+% \SectionSlideWithPicture{Basic concepts of~computer~graphics}
 % % ######################################
 
 
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Basic concepts of computer graphics}
 
 
+%   \textbf{Model} --~a mathematical representation of an object in the 3D world.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Rendering} --~obtaining a computer image based on the model\\
+%   (displayed by a computer, e.g. on a screen).
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Perspective} --~a drawing technique of a 3D object on a plane;\\ a generated image makes a three-dimensional impression. \\
+%   Perspective is based on the physiology of human vision and optics.\\
+%   Already Plato wrote about the use of perspective in painting.
 
 
 % \end{frame}
@@ -276,9 +546,81 @@
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{A sample scene}
 
 
+%   \begin{textblock}{11}(1,1.65)
+
+%     \includegraphics[scale=0.44]
+%     {./PresentationPictures/Lecture_01/renderowanie01.png}
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1}(3.4,5.1)
+
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     model
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1}(5.5,4.1)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     model
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1}(9.6,3.3)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     model
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1.8}(9.4,1.8)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     lighting
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1.2}(4.7,7.5)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     camera
+
+%     \endgroup
+
+%   \end{textblock}
 
 % \end{frame}
 % % ##################
@@ -289,9 +631,17 @@
 
 % % ##################
 % \begin{frame}
-%   \frametitle{????}
+%   \frametitle{Rendering without perspective}
+
+%   \vspace{-1em}
 
 
+%   \begin{figure}
+
+%     \includegraphics[scale=0.45]
+%     {./PresentationPictures/Lecture_01/renderowanie02.png}
+
+%   \end{figure}
 
 % \end{frame}
 % % ##################

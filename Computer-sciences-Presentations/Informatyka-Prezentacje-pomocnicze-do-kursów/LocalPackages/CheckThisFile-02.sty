@@ -1,0 +1,1814 @@
+% ####################################################################
+% Pakiet napisany dla wykładów z „Geometrii 3D dla projektantów gier
+% wideo”
+% ####################################################################
+\ProvidesPackage{Geometry3DIndices}
+
+
+
+% Paczka dająca nam instrukcje warunkowe operujące na stringach.
+\usepackage{xstring}
+
+\definecolor{TomatoRed}{HTML}{DD5345}
+\colorlet{HomCoorColor}{TomatoRed} % HOMogeneous COORdinates COLOR
+
+
+
+
+
+% ##################
+% Litery greckie z indeksami
+% ##################
+
+% Zrobione
+\newcommand{\alphascript}[1]{
+  \alpha_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\deltascript}[1]{
+  \delta_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\epsilonscript}[1]{
+  \varepsilon_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\etascript}[1]{
+  \eta_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\thetascript}[1]{
+  \theta_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\lambdascript}[1]{
+  \lambda_{%
+    \hspace{0.05em} \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\rhoscript}[1]{
+  \rho_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Phiscript}[1]{
+  \Phi_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\phiscript}[1]{
+  \phi_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+
+
+
+
+
+% ##################
+% Litery łacińskie z indeksami
+% ##################
+
+% Zrobione
+\newcommand{\Ascript}[1]{
+  A_{%
+    \hspace{0.02em} \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\ascript}[1]{
+  a_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Bscript}[1]{
+  \StrLeft{#1}{1}[\firstchar]
+  \IfStrEqCase{\firstchar}{%
+    {x}{%
+      B_{%
+        \hspace{-0.02em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    {y}{%
+      B_{%
+        \hspace{-0.02em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    {z}{%
+      B_{%
+        \hspace{-0.02em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+  }[B_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+
+% Zrobione
+\newcommand{\bscript}[1]{
+  b_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Cscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      C_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        C\hspace{0.07em}'
+      }%
+      {%
+        C_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[C_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+% Zrobione
+\newcommand{\Ctextscript}[2][nil]{%
+  \IfStrEqCase{#1} {
+    {nil}{%
+      C_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$}} }
+    }%
+    {b}{%
+      C_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2},\, b$}} }%
+    }%
+    {g}{%
+      C_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2},\, g$}} }%
+    }%
+    {r}{%
+      C_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2},\, r$}} }%
+    }%
+  }[C_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$}} }]%
+}
+
+% Zrobione
+\newcommand{\cscript}[1]{
+  c_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+\newcommand{\Dscript}[1]{%
+  \StrLeft{#1}{1}[\firstchar]
+  \IfStrEqCase{\firstchar}{%
+    % Jest
+    {b}{ D_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Nie znalazłem
+    {d}{ D_{%
+        \hspace{-0.07em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Jest
+    {g}{ D_{%
+        \hspace{-0.05em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Jest
+    {r}{ D_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+  }[D_{%
+    \hspace{-0.05em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+
+\newcommand{\Dtextscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      % Jest
+      \IfStrEqCase{\firstchar}{%
+        % Jest
+        {a}{ D_{%
+            \hspace{-0.07em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$}} } }%
+        % Jest
+        {d}{ D_{%
+            \hspace{-0.07em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$}} } }%
+      }[D_{%
+        \hspace{-0.05em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$}} }]%
+    }%
+    % Jest
+    {lambda}{ D_{%
+        \hspace{-0.05em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2},\, \lambda$}} }
+    }%
+    {b}{%
+      % Jest
+      D_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2},\, b$}} }%
+    }%
+    {g}{%
+      % Jest
+      D_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2},\, g$}} }%
+    }%
+    {Rscript}{%
+      % Iwona
+      D_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle
+            R_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }$}} }%
+    }%
+    {r}{%
+      % Jest
+      D_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2},\, r$}} }%
+    }%
+  }[D_{%
+    \hspace{-0.07em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$}} }]
+}
+
+% Zrobione
+\newcommand{\dscript}[1]{
+  d_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+\newcommand{\Fscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \IfStrEqCase{\firstchar}{%
+        {a}{ F_{%
+            \hspace{-0.1em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{a}$}} } }%
+        {d}{ F_{%
+            \hspace{-0.1em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{d}$}} } }%
+      }[F_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$} } }]%
+    }%
+    {greek}{%
+      \IfStrEqCase{#2}{%
+        % Jest
+        {lambda}{ F_{%
+            \hspace{-0.05em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \lambda$}} } }
+      }%
+    }%
+  }[F_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$} } }]%
+}
+
+% Zrobione
+\newcommand{\fscript}[1]{%
+  f_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+\newcommand{\Gscript}[1]{%
+  \StrLeft{#1}{1}[\firstchar]
+  \IfStrEqCase{\firstchar}{%
+    {g}{ G_{%
+        \hspace{-0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+  }[G_{%
+    \hspace{-0.03em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+% Zrobione
+\newcommand{\Iscript}[1]{
+  I_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Kscript}[1]{
+  K_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Jest
+\newcommand{\Ktextscript}[1]{%
+  K_{%
+    \hspace{0.05em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#1}$}} }
+}
+
+% Zrobione
+\newcommand{\kscript}[1]{
+  k_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Nscript}[1]{%
+  N_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\nscript}[1]{%
+  n_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Rscript}[2][nil]{%
+  \IfStrEqCase{#1}{%
+    {nil}{%
+      R_{%
+        \hspace{0.02em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }%
+    }%
+    {perp}{%
+      R_{%
+        \hspace{-0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \perp$}} } }
+  }[R_{%
+    \hspace{0.02em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+% Zrobione
+\newcommand{\rtextscript}[1]{%
+  r_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#1}$}} }
+}
+
+% Zrobione
+\newcommand{\Tscript}[1]{%
+  T_{%
+    \hspace{-0.1em} \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Ttextscript}[1]{%
+  T_{%
+    \hspace{-0.05em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#1}$}} }
+}
+% \newcommand{\Ttextscript}[2][nil]{%
+%   T_{%
+%     \hspace{-0.05em}
+%     \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{#2}$}} }
+% }
+
+% Zrobione
+\newcommand{\tscript}[1]{%
+  t_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Uscript}[1]{%
+  U_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\uscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      u_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        u\hspace{0.07em}'
+      }%
+      {%
+        u_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}' }
+    }%
+  }[u_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+% Jest
+\newcommand{\Vscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \IfStrEqCase{\firstchar}{%
+        {x}{%
+          V_{%
+            \hspace{-0.23em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        {y}{%
+          V_{%
+            \hspace{-0.23em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        {z}{%
+          V_{%
+            \hspace{-0.23em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        {1}{%
+          V_{%
+            \hspace{-0.21em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        {2}{%
+          V_{%
+            \hspace{-0.21em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        {3}{%
+          V_{%
+            \hspace{-0.21em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+      }[V_{%
+        \hspace{-0.2em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        V\hspace{0.07em}'
+      }%
+      {%
+        \IfStrEqCase{\firstchar}{%
+          {x}{%
+            V_{%
+              \hspace{-0.23em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+            }\hspace{0em}' }%
+          {y}{%
+            V_{%
+              \hspace{-0.23em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+            }\hspace{0em}' }%
+          {z}{%
+            V_{%
+              \hspace{-0.23em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+            }\hspace{0em}' }%
+        }[V_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}']
+      }%
+    }%
+  }[V_{%
+    \hspace{-0.2em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+% Zrobione
+\newcommand{\vscript}[1]{%
+  v_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\Wscript}[1]{%
+  W_{%
+    \hspace{-0.1em} \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\wscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      w_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        w\hspace{0.07em}'
+      }%
+      {%
+        w_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}' }
+    }%
+  }[w_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+\newcommand{\Xscript}[2][nil]{
+  \IfStrEqCase{#1}{%
+    {nil}{%
+      % Jest
+      X_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    % Nie ma
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        X\hspace{0.07em}'
+      }%
+      {%
+        X_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}
+          }\hspace{0em}' }
+      }%
+    }%
+  }[X_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+\newcommand{\xscript}[2][nil]{
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      % Jest
+      x_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        x\hspace{0.07em}'
+      }%
+      {%
+        \StrLeft{#2}{1}[\firstchar]
+        \IfStrEqCase{\firstchar}{%
+          {i}{ x_{ \hspace{-0.1em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }
+        }[x_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}']% }
+      }%
+    }%
+  }[x_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+% Zrobione
+\newcommand{\yscript}[2][nil]{
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      y_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        y\hspace{0.07em}'
+      }%
+      {%
+        y_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[y_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\zscript}[2][nil]{
+  \IfStrEqCase{#1}{%
+    {nil}{%
+      z_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        z\hspace{0.07em}'
+      }%
+      { z_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}\hspace{0em}' }
+      }%
+    }%
+    {''}{%
+      \IfStrEq{#2}{nil} {%
+        z\hspace{0.07em}''
+      }%
+      {%
+        z_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}''
+      }%
+    }%
+  }[z_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+
+
+
+
+
+% ##################
+% Pogrubione litery łacińskie z indeksami
+% ##################
+
+
+\newcommand{\vecCscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{C}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{C}\hspace{0.07em}'
+      }%
+      {%
+        \bm{C}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{C}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+% Zrobione
+\newcommand{\vecEscript}[1]{%
+  \bm{E}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\vecescript}[1]{%
+  \bm{e}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Zrobione
+\newcommand{\vecFscript}[1]{%
+  \StrLeft{#1}{1}[\firstchar]
+  \IfStrEqCase{\firstchar}{%
+    {1}{%
+      \bm{F}_{%
+        \hspace{-0.05em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+    }%
+  }[\bm{F}_{%
+    \hspace{-0.15em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]
+}
+
+% Zrobione
+\newcommand{\vecfscript}[1]{%
+  \bm{f}_{%
+    \hspace{-0.15em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+\newcommand{\vecGscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \IfStrEqCase{\firstchar}{%
+        {i}{ \bm{G}_{ \hspace{-0.03em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {1}{ \bm{G}_{ \hspace{-0.03em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {2}{ \bm{G}_{ \hspace{-0.03em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {3}{ \bm{G}_{ \hspace{-0.03em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {4}{ \bm{G}_{ \hspace{-0.03em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+      }[\bm{G}_{ \hspace{-0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{G}\hspace{0.07em}'
+      }%
+      {%
+        \IfStrEqCase{\firstchar}{%
+          {i}{ \bm{G}_{ \hspace{-0.07em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+            }\hspace{0em}' }%
+          {1}{ \bm{G}_{ \hspace{-0.07em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+            }\hspace{0em}' }%
+          {2}{ \bm{G}_{ \hspace{-0.07em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+            }\hspace{0em}' }%
+          {3}{ \bm{G}_{ \hspace{-0.07em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+            }\hspace{0em}' }%
+        }[\bm{G}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}']%
+      }%
+    }%
+  }[\bm{G}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+% Zrobione
+\newcommand{\vechscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{h}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{h}\hspace{0.07em}'
+      }%
+      {%
+        \bm{h}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{h}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+
+\newcommand{\veciscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{i}
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{i}\hspace{0.07em}'
+      }%
+      {%
+        \bm{i}_{ \hspace{-0.2em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}'
+      }%
+    }%
+  }[\bm{i}_{ \hspace{-0.2em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\vecjscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{j}
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{j}\hspace{0.07em}'
+      }%
+      {%
+        \bm{j}_{ \hspace{-0.2em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}'
+      }%
+    }%
+  }[\bm{j}_{ \hspace{-0.2em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\veckscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{k}
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{k}\hspace{0.07em}'
+      }%
+      {%
+        \bm{k}_{ \hspace{-0.2em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}'
+      }%
+    }%
+  }[\bm{k}_{ \hspace{-0.2em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+% Zrobione
+\newcommand{\veclscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{l}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{l}\hspace{0.07em}'
+      }%
+      {%
+        \bm{l}_{
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}'
+      }%
+    }%
+  }[\bm{l}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+% Zrobione
+\newcommand{\vecNscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{N}_{ \hspace{-0.05em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{N}\hspace{0.07em}'
+      }%
+      {%
+        \bm{N}_{%
+          \hspace{-0.05em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{N}_{%
+    \hspace{-0.05em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+% Zrobione
+\newcommand{\vecnscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{n}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{n}\hspace{0.07em}'
+      }%
+      {%
+        \bm{n}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+    {''}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{n}\hspace{0.07em}''
+      }%
+      {%
+        \bm{n}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}''
+      }%
+    }%
+  }[\bm{n}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\vecSscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \StrLeft{#2}{1}[\firstchar]
+      \IfStrEqCase{\firstchar} {%
+        % Jest
+        {A}{ \bm{S}_{ \hspace{-0.05em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {1}{ \bm{S}_{
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {2}{ \bm{S}_{
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        {3}{ \bm{S}_{
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+      }%
+    }%
+    {'}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        \bm{S}\hspace{0.07em}'
+      }%
+      {%
+        \bm{S}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{S}_{%
+    \hspace{-0.05em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+% Zrobione
+\newcommand{\vecTscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{T}_{%
+        \hspace{-0.1em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{T}\hspace{0.07em}'
+      }%
+      {%
+        \bm{T}_{%
+          \hspace{-0.1em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+    {''}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{T}\hspace{0.07em}''
+      }%
+      {%
+        \bm{T}_{%
+          \hspace{-0.1em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}''
+      }%
+    }%
+  }[\bm{T}_{%
+    \hspace{-0.1em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+% Zrobione
+\newcommand{\vectscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{t}_{%
+        \hspace{-0.1em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{t}\hspace{0.07em}'
+      }%
+      {%
+        \bm{t}_{%
+          \hspace{-0.1em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{t}_{%
+    \hspace{-0.1em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+% Zrobione
+\newcommand{\vecUscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{U}_{%
+        \hspace{-0.05em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{U}\hspace{0.07em}'
+      }%
+      {%
+        \bm{U}_{%
+          \hspace{-0.05em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{U}_{%
+    \hspace{-0.05em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+\newcommand{\vecuscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{u}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{u}\hspace{0.07em}'
+      }%
+      {%
+        \bm{u}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'%
+      }%
+    }%
+    {''}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{u}\hspace{0.07em}''
+      }%
+      {%
+        \bm{u}_{%
+          \hspace{-0.21em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}''
+      }%
+    }%
+  }[\bm{u}_{%
+    \hspace{-0.2em} \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+
+\newcommand{\vecwscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      % Jest
+      \bm{w}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{w}\hspace{0.07em}'
+      }%
+      {%
+        \bm{w}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{w}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\vecVscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \StrLeft{#2}{1}[\firstchar]
+      \IfStrEqCase{\firstchar}{%
+        % Jest
+        {i}{ \bm{V}_{ \hspace{-0.21em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {1}{ \bm{V}_{ \hspace{-0.19em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {2}{ \bm{V}_{ \hspace{-0.19em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {3}{ \bm{V}_{ \hspace{-0.19em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+      }[\bm{V}_{ \hspace{-0.2em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+    }%
+    {'}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        \bm{V}\hspace{0.07em}'
+      }%
+      {%
+        \IfStrEqCase{\firstchar}{%
+          {i}{ \bm{V}_{ \hspace{-0.21em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          {1}{ \bm{V}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          % Jest
+          {2}{ \bm{V}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          % Jest
+          {3}{ \bm{V}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+        }[\bm{V}_{ \hspace{-0.2em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}']%
+      }%
+    }%
+    {''}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        \bm{V}\hspace{0.07em}''
+      }%
+      {%
+        \bm{V}_{ \hspace{-0.21em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}''
+      }%
+    }%
+  }[\bm{V}_{ \hspace{-0.2em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+% Jest
+\newcommand{\vecvscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{v}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{v}\hspace{0.07em}'
+      }%
+      {%
+        \bm{v}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{v}_{
+      \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\vecWscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \StrLeft{#2}{1}[\firstchar]
+      \IfStrEqCase{\firstchar}{%
+        {i}{ \bm{W}_{ \hspace{-0.21em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {1}{%
+          \bm{W}_{ \hspace{-0.19em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {2}{%
+          \bm{W}_{ \hspace{-0.19em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {3}{%
+          \bm{W}_{ \hspace{-0.19em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+      }[\bm{W}_{ \hspace{-0.2em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{W}\hspace{0.07em}'
+      }%
+      {%
+        \IfStrEqCase{\firstchar}{%
+          {i}{ \bm{W}_{ \hspace{-0.21em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          {1}{ \bm{W}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          {2}{ \bm{W}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          {3}{ \bm{W}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+        }[\bm{W}_{ \hspace{-0.2em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}']%
+      }%
+    }%
+    {''}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{W}\hspace{0.07em}''
+      }%
+      {%
+        \bm{W}_{ \hspace{-0.21em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}''
+      }%
+    }%
+  }[\bm{V}_{ \hspace{-0.2em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\vecXscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{X}_{
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{X}\hspace{0.07em}'
+      }%
+      {%
+        \IfStrEqCase{\firstchar}{%
+          {i}{ \bm{X}_{ \hspace{-0.21em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          {1}{ \bm{X}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          {2}{ \bm{X}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+          {3}{ \bm{X}_{ \hspace{-0.19em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+        }[\bm{X}_{ \hspace{-0.2em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}']%
+      }%
+    }%
+    {''}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{X}\hspace{0.07em}''
+      }%
+      {%
+        \bm{X}_{ \hspace{-0.21em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}''
+      }%
+    }%
+  }[\bm{X}_{ \hspace{-0.2em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+
+
+
+% ########
+% Wektory w przestrzeni jednorodnej
+% ########
+
+
+% Jest
+\newcommand{\vecFhomscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \SetMathTextColor{HomCoorColor}{\bm{F}}_{%
+        \hspace{-0.1em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \color{HomCoorColor}
+            #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \SetMathTextColor{HomCoorColor}{\bm{F}\hspace{0.07em}'}
+      }%
+      {%
+        \SetMathTextColor{HomCoorColor}{\bm{F}}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \color{HomCoorColor}
+              #2$}} }{\color{HomCoorColor}\hspace{0em}'}
+      }%
+    }%
+  }[\SetMathTextColor{HomCoorColor}{\bm{F}}_{%
+    \hspace{-0.1em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+% Jest
+\newcommand{\vecNhomscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \SetMathTextColor{HomCoorColor}{\bm{N}}_{%
+        \hspace{-0.1em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \color{HomCoorColor}
+            #2$}} }
+    }%
+    {'}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        \SetMathTextColor{HomCoorColor}{\bm{N}\hspace{0.07em}'}
+      }%
+      {%
+        \SetMathTextColor{HomCoorColor}{\bm{N}}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle
+              \color{HomCoorColor} #2$}} }\hspace{0em}{\color{HomCoorColor}'}
+      }%
+    }%
+  }[\SetMathTextColor{HomCoorColor}{\bm{N}}_{ \hspace{-0.1em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \color{HomCoorColor}
+        #2$}} }]%
+}
+
+% Jest
+\newcommand{\vecVhomscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \SetMathTextColor{HomCoorColor}{\bm{V}}_{%
+        \hspace{-0.1em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \color{HomCoorColor}
+            #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \SetMathTextColor{HomCoorColor}{\bm{V}\hspace{0.07em}'}
+      }%
+      {%
+        \SetMathTextColor{HomCoorColor}{\bm{V}}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle
+              \color{HomCoorColor} #2$}} }\hspace{0em}{\color{HomCoorColor}'}
+      }%
+    }%
+  }[\SetMathTextColor{HomCoorColor}{\bm{V}}_{%
+    \hspace{-0.1em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \color{HomCoorColor}
+        #2$}} }]%
+}
+
+
+
+
+
+% ########
+% Macierze w przestrzeni jednorodnej
+% ########
+
+% Jest
+\newcommand{\matMhomscript}[1]{%
+  \SetMathTextColor{HomCoorColor}{\bm{M}}_{%
+    \hspace{-0.1em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \color{HomCoorColor} #1$}}
+  }%
+}
+
+
+
+
+
+
+
+
+
+% ##################
+% Punkty
+% ##################
+
+% Jest
+\newcommand{\pointCscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{C}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{C}\hspace{0.07em}'
+      }%
+      {%
+        \bm{C}_{%
+          \hspace{0.1em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{C}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+\newcommand{\pointEscript}[1]{%
+  \bm{E}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+\newcommand{\pointFscript}[1]{%
+  \bm{F}_{%
+    \hspace{-0.05em} \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+% Jest
+\newcommand{\pointOscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{O}_{%
+        \hspace{-0.125em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{O}\hspace{0.07em}'
+      }%
+      {%
+        \bm{O}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[\bm{O}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+% Jest
+\newcommand{\pointPscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \bm{P}_{%
+        \hspace{-0.125em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{#2}{nil} {%
+        \bm{P}\hspace{0.07em}'
+      }%
+      {%
+        \bm{P}_{%
+          \hspace{-0.125em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+    {''}{%
+      \IfStrEq{nil}{#2} {%
+	\bm{P}\hspace{0.07em}''
+      }%
+      {%
+        \bm{P}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}''
+      }%
+    }%
+    {'''}{%
+      \IfStrEq{nil}{#2} {%
+        \bm{P}\hspace{0.07em}'''
+      }%
+      {%
+        \bm{P}_{%
+          \hspace{-0.125em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'''
+      }%
+    }%
+  }[\bm{P}_{%
+    \hspace{-0.125em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+% Jest
+\newcommand{\quascript}[1]{%
+  \bm{q}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+\newcommand{\pointQscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      % Jest
+      \bm{Q}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      % Jest
+      \IfStrEq{nil}{#2} {%
+        \bm{Q}\hspace{0.07em}'
+      }%
+      {%
+        \bm{Q}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+    {''}{%
+      % Jest
+      \IfStrEq{nil}{#2} {%
+	\bm{Q}\hspace{0.07em}''
+      }%
+      {%
+        \bm{Q}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}''
+      }%
+    }%
+    {'''}{%
+      \IfStrEq{nil}{#2} {%
+	\bm{Q}\hspace{0.07em}'''
+      }%
+      {%
+        \bm{Q}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'''
+      }%
+    }%
+  }[\bm{Q}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+\newcommand{\pointSscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      % Jest
+      \bm{S}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {'}{%
+      \IfStrEq{nil}{#2} {%
+        \bm{S}\hspace{0.07em}'
+      }%
+      {%
+        \bm{S}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+    {''}{%
+      \IfStrEq{nil}{#2} {%
+	\bm{S}\hspace{0.07em}''
+      }%
+      {%
+        \bm{S}_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}''
+      }%
+    }%
+  }[\bm{S}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+
+
+
+
+
+
+% ########
+% Punkty w przestrzeni jednorodnej
+% ########
+
+
+\newcommand{\pointPhomscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \IfStrEqCase{\firstchar} {%
+        {i}{ \SetMathTextColor{HomCoorColor}{\bm{P}_{ \hspace{-0.125em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } } }%
+        % Jest
+        {1}{ \SetMathTextColor{HomCoorColor}{\bm{P}_{ \hspace{-0.125em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } } }%
+        % Jest
+        {2}{ \SetMathTextColor{HomCoorColor}{\bm{P}_{ \hspace{-0.125em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }} }%
+      }[\SetMathTextColor{HomCoorColor}{\bm{P}_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }]%
+    }%
+    {'}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        \SetMathTextColor{HomCoorColor}{\bm{P}\hspace{0.07em}'}
+      }%
+      {%
+        \SetMathTextColor{HomCoorColor}{\bm{P}_{%
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+          }\hspace{0em}' }
+      }%
+    }%
+    {''}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        \SetMathTextColor{HomCoorColor}{\bm{P}\hspace{0.07em}''}
+      }%
+      {%
+        \SetMathTextColor{HomCoorColor}{\bm{P}_{%
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+          }\hspace{0em}'' }
+      }%
+    }
+  }[\SetMathTextColor{HomCoorColor}{\bm{P}_{%
+      \hspace{-0.125em}
+      \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }]%
+}
+
+
+\newcommand{\pointShomscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \IfStrEqCase{\firstchar} {%
+        {i}{ \SetMathTextColor{HomCoorColor}{\bm{S}_{ \hspace{-0.125em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } } }%
+        {1}{ \SetMathTextColor{HomCoorColor}{\bm{S}_{ \hspace{-0.125em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } } }%
+        {2}{ \SetMathTextColor{HomCoorColor}{\bm{S}_{ \hspace{-0.125em}
+              \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }} }%
+      }[\SetMathTextColor{HomCoorColor}{\bm{P}_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }]%
+    }%
+    {'}{%
+      % Jest
+      \IfStrEq{#2}{nil} {%
+        \SetMathTextColor{HomCoorColor}{\bm{S}\hspace{0.07em}'}
+      }%
+      {%
+        \SetMathTextColor{HomCoorColor}{\bm{S}_{
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }
+      }%
+    }%
+    {''}{%
+      \IfStrEq{#2}{nil} {%
+        \SetMathTextColor{HomCoorColor}{\bm{S}\hspace{0.07em}''}
+      }%
+      {%
+        \SetMathTextColor{HomCoorColor}{\bm{S}_{%
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+          }\hspace{0em}'' }
+      }%
+    }
+  }[\SetMathTextColor{HomCoorColor}{\bm{S}_{%
+      \hspace{-0.125em}
+      \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }]%
+}
+
+
+
+
+
+
+
+% ##################
+% Współrzędne punktów
+% ##################
+
+
+\newcommand{\Pscript}[2][nil]{%
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \StrLeft{#2}{1}[\firstchar]
+      \IfStrEqCase{\firstchar} {%
+        {i}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}} }%
+        % Jest
+        {u}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {v}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {w}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {x}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {y}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {z}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        {0}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {1}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {2}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {3}{ P_{ \hspace{-0.125em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+      }[P_{
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+  }%
+  {'}{%
+    \StrLeft{#2}{1}[\firstchar]
+    \IfStrEqCase{\firstchar}{%
+      % Jest
+      {w}{ P_{ \hspace{-0.125em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+      % Jest
+      {x}{ P_{ \hspace{-0.125em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+      % Jest
+      {y}{ P_{ \hspace{-0.125em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+      % Jest
+      {z}{ P_{ \hspace{-0.125em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }\hspace{0em}' }%
+      }[P_{
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+    }
+  }[P_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+\newcommand{\Sscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      \IfStrEqCase{\firstchar}{%
+        % Jest
+        {A}{ S_{ \hspace{-0.02em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {x}{ S_{ \hspace{-0.1em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {y}{ S_{ \hspace{-0.1em}
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+        % Jest
+        {z}{ S_{
+            \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} } }%
+      }[S_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+    }%
+    % Jest
+    {'}{%
+      \IfStrEq{nil}{#2} {%
+        S\hspace{0.07em}'
+      }%
+      {%
+        S_{%
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}}
+        }\hspace{0em}'
+      }%
+    }%
+  }[S_{%
+    \hspace{-0.05em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]%
+}
+
+
+% Jest
+\newcommand{\Qscript}[1]{%
+  Q_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+
+
+
+
+
+% ########
+% Współrzędne punktów w przestrzeni jednorodnej
+% ########
+
+% Jest
+\newcommand{\Chomscript}[1]{%
+  {\color{HomCoorColor} C}_{%
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+
+
+
+
+
+% ##################
+% Macierze
+% ##################
+
+
+% ########
+% Macierze 3D
+% ########
+
+% Jest
+\newcommand{\matGscript}[1]{
+  \bm{G}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+\newcommand{\matHscript}[1]{%
+  \IfStrEqCase{#1} {%
+    % Jest
+    {vecn}{%
+      \bm{H}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \bm{n}$}} }
+    }%
+    % Jest
+    {vecN}{%
+      \bm{H}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \bm{N}$}} }
+    }%
+    % Jest
+  }[\bm{H}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }]%
+}
+
+
+% Jest
+\newcommand{\matMscript}[2][nil]{%
+  \StrLeft{#2}{1}[\firstchar]
+  \IfStrEqCase{#1} {%
+    {nil}{%
+      % Jest
+      \bm{M}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }
+    }%
+    {cov}{%
+      % Jest
+      \bm{M}_{%
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle \text{cov}$}} }
+    }%
+  }[\bm{M}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #2$}} }]
+}
+
+
+% Jest
+\newcommand{\matPscript}[1]{%
+  \bm{P}_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+% Jest
+\newcommand{\matRscript}[1]{%
+  \StrLeft{#1}{1}[\firstchar]
+  \IfStrEqCase{\firstchar}{%
+    % Jest
+    {a}{%
+      \bm{R}_{%
+        \hspace{0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Jest
+    {b}{%
+      \bm{R}_{%
+        \hspace{0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Jest
+    {c}{%
+      \bm{R}_{%
+        \hspace{0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Jest
+    {x}{%
+      \bm{R}_{%
+        \hspace{0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Jest
+    {y}{%
+      \bm{R}_{%
+        \hspace{0.05em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+    % Jest
+    {z}{%
+      \bm{R}_{%
+        \hspace{0.03em}
+        \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } }%
+  }[\bm{R}_{%
+    \hspace{0.03em}
+    \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} } ]%
+}
+
+
+% \newcommand{\matHn}{\bm{H}_{ \vecn }}
+
+
+
+
+
+
+
+% ########
+% Elementy macierzy 3D
+% ########
+
+
+\newcommand{\Mscript}[1]{%
+  M_{ \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }
+}
+
+
+
+
+
+
+
+% ########
+% Macierz 4D dla przestrzeni jednorodnej
+% ########
+
+
+\newcommand{\matFhomscript}[1]{%
+  \StrLeft{#1}{1}[\firstchar]
+  \IfStrEqCase{\firstchar}{%
+    % Jest
+    {1}{ \SetMathTextColor{HomCoorColor}{\bm{F}_{
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }} }%
+    % Jest
+    {2}{\SetMathTextColor{HomCoorColor}{\bm{F}_{ \hspace{-0.1em}
+          \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }} }%
+  }[\SetMathTextColor{HomCoorColor}{\bm{F}_{ \hspace{-0.1em}
+      \raisebox{-0.1em}{\scalebox{0.85}{$\scriptstyle #1$}} }}]%
+}
