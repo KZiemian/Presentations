@@ -1,0 +1,2482 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ---------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in directory
+% "preambule".
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------
+% Importing packages, libraries and setting their configuration.
+% ------------------------------
+
+
+
+
+
+% ------------------------------
+% Special configuration for this particular presentation.
+% ------------------------------
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Systemy operacyjne, laboratorium}
+\subtitle{Zdjęcia ilustrujące historię systemów opracyjnych}
+
+\author{Kamil Ziemian}
+
+
+\date{}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document.
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+.
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Ludzie dzięki który powstał system GNU/Linux}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ludzie dzięki którym powstał system GNU/Linux}
+
+
+  \begin{enumerate}
+    \setlength{\itemsep}{1em}
+
+  \item Getting credits for the classes (zaliczenie; pre-examination)
+
+  \item Taking final written examination
+
+  \end{enumerate}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Literature}
+
+
+%   Eric Lengyel, \textit{Mathematics for~3D Game Programming and~Computer
+%     Graphics}.
+
+%   John Flynt, Danny Kodicek, \textit{Mathematics and~Physics
+%     for~Programmers}.
+
+%   John Flynt, Boris Meltreger, \textit{Beginning Math Concepts for~Game
+%     Developers}.
+
+%   Peter Shirley, Michael Ashikhmin, \textit{Fundamentals of~Computer
+%     Graphics}.
+
+%   Wendy Stahler, Dustin Clingman, Kaveh Kahriz, \textit{Beginning Math
+%     and~Physics for~Game Programmers}.
+
+%   Wendy Stahler, \emph{Fundamentals~of Math and~Physics for~Game
+%     Programmers}.
+
+%   Christopher Tremblay, \emph{Mathematics for~Game Developers}.
+
+%   James Van Verth, Lars Bishop, \emph{Essential Mathematics for Games
+%     \&~Interactive Applications: A~Programmer’s Guide}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Literature}
+
+
+%   Fletcher Dunn, Ian Parberry, \emph{3D Math Primer for~Graphics
+%     and~Game Development}.
+
+%   Web resources.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{\alert{Important information}}
+
+
+%   The slides are only \alert{auxiliary} to these lectures.
+%   To understand all the problems discussed here, please follow the lectures
+%   and literature.
+%   % They can be
+%   % \alert{not enough} to~understand all issues without
+%   % listening to a lecture or reaching for literature.
+
+%   All materials are a work within the meaning of the Act of 4~February
+%   1994~r. on copyright and related rights (OJ~U.~no.~90, pos.~631). These
+%   materials may not be distributed without providing information about the
+%   authors.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kind request to listeners}
+
+
+%   We will be grateful for your opinions on how to improve\\ these lectures.
+
+%   If you spot any unclear phrases, illegible drawings, errors,
+%   typos, etc, please let us know:\\ just provide the lecture’s  title
+%   and a number of the slide.
+
+
+%   % comments and proposals how to make
+%   % lectures better, indication of unclear wording, illegible
+%   % drawings, for~small/too large fonts on~slide,~etc. As well as
+%   % please inform us about found errors, typos, which
+%   % may be present  in these lectures.\\ In this case, we ask
+%   % of giving the title of the lecture and~the number of the slide on~which the error is.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Graphics pipeline (OpenGL)}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+%       \node[diagrams block 1] (pobranie wierzcholkow) {Vertex \\Specification};
+
+%       \node[diagrams block 1,below=of pobranie wierzcholkow] (szader
+%       wierzcholkow) {Vertex Shader};
+
+%       \draw[thick connection line] (pobranie wierzcholkow) -- (szader
+%       wierzcholkow);
+
+
+
+%       \node[diagrams block 1,below=of szader wierzcholkow] (szader
+%       sterowania teselacja) {Tessellation Control Shader};
+
+%       \draw[thick connection line] (szader wierzcholkow) -- (szader
+%       sterowania teselacja);
+
+
+
+%       \node[diagrams block 1,right=of szader sterowania teselacja]
+%       (teselacja) {Tessellation};
+
+%       \draw[thick connection line] (szader sterowania teselacja) --
+%       (teselacja);
+
+
+
+%       \node[diagrams block 1,above=of teselacja] (szader wyliczania
+%       teselacji) {Tessellation Evaluation Shader};
+
+%       \draw[thick connection line] (teselacja) -- (szader wyliczania
+%       teselacji);
+
+
+
+%       \node[diagrams block 1,above=of szader wyliczania teselacji]
+%       (szader geometrii) {Geometry Shader};
+
+%       \draw[thick connection line] (szader wyliczania teselacji) --
+%       (szader geometrii);
+
+
+
+%       \node[diagrams block 1,right=of szader geometrii] (rasteryzacja)
+%       {Rasterization};
+
+%       \draw[thick connection line] (szader geometrii) -- (rasteryzacja);
+
+
+
+%       \node[diagrams block 1,below=of rasteryzacja] (szader fragmentow)
+%       {Fragment Shader};
+
+%       \draw[thick connection line] (rasteryzacja) -- (szader fragmentow);
+
+
+
+%       \node[diagrams block 1,below=of szader fragmentow] (bufor ramki)
+%       {Frame buffer\\ Operations};
+
+%       \draw[thick connection line] (szader fragmentow) -- (bufor ramki);
+%     \end{tikzpicture}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{About rendering pipeline on
+%     \href{https://www.khronos.org/}{https://www.khronos.org/}}
+
+
+%   \begingroup
+
+%   \footnotesize
+
+%   The~OpenGL rendering pipeline is~initiated when you per- \\
+%   form a~rendering operation. Rendering operations require \\
+%   the~presence~of a~properly-defined vertex array object and \\
+%   a~linked Program Object or~Program Pipeline Object which \\
+%   provides the~shaders for the~programmable pipeline stages.
+
+
+%   Once initiated, the pipeline operates in the following order: \\[0.6em]
+%   Vertex Processing: \vspace{-0.5em}
+%   \begin{enumerate}
+%     \footnotesize
+%   \item Each vertex retrieved from the vertex arrays \\
+%     (as defined by the \textsc{vao}) is acted upon by a Vertex \\
+%     Shader. Each vertex in the stream is processed \\
+%     in turn into an~output vertex.
+
+%   \item Optional primitive tessellation stages.
+
+%   \item Optional Geometry Shader primitive processing. \\
+%     The~output is a sequence of primitives. \\
+%     \ldots
+
+%   \end{enumerate}
+
+%   \endgroup
+
+
+
+
+
+%   \begin{textblock}{9.1}(1,8.3)
+
+%     \begingroup
+
+%     \footnotesize
+
+%     \textbf{The article is continued on:} \\
+%     \colorhref{https://www.khronos.org/opengl/wiki/Rendering\_Pipeline\_Overview}
+%     {https://www.khronos.org/opengl/wiki/Rendering\_Pipeline\_Overview}.
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+
+
+
+%   \begin{textblock}{3.35}(8.8,1.5)
+
+%     \begin{tikzpicture}[node distance=0.6em, block loc/.style =
+%       {rectangle, rounded corners, minimum height=1.75em, text
+%         width=11em, scale=0.8, text centered,
+%         text=jMathTextFGStyleDark}]
+
+
+%       \node[block loc,fill=jAxisBlue] (vertex specification) {Vertex
+%         Specification};
+
+%       \node[block loc,fill=jOrange,below=of vertex specification]
+%       (vertex shader) {Vertex Shader};
+
+%       \draw[thick connection line] (vertex specification) -- (vertex
+%       shader);
+
+
+%       \node[block loc,fill=jOrange,below=of vertex shader]
+%       (tessellation) {Tessellation};
+
+%       \draw[thick connection line] (vertex shader) -- (tessellation);
+
+
+%       \node[block loc,fill=jOrange,below=of tessellation] (geometry
+%       shader) {Geometry Shader};
+
+%       \draw[thick connection line] (tessellation) -- (geometry shader);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of geometry shader] (vertex
+%       post-processing) {Vertex Post-Processing};
+
+%       \draw[thick connection line] (geometry shader) -- (vertex
+%       post-processing);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of vertex post-processing]
+%       (primitive assembly) {Primitive Assembley};
+
+%       \draw[thick connection line] (vertex post-processing) --
+%       (primitive assembly);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of primitive assembly]
+%       (rasterization) {Rasterization};
+
+%       \draw[thick connection line] (primitive assembly) --
+%       (rasterization);
+
+
+%       \node[block loc,fill=jOrange,below=of rasterization]
+%       (fragment shader) {Fragment Shader};
+
+%       \draw[thick connection line] (rasterization) -- (fragment shader);
+
+
+%       \node[block loc,fill=jAxisBlue,below=of fragment shader]
+%       (per-sample operations) {Per-Sample Operations};
+
+%       \draw[thick connection line] (fragment shader) -- (per-sample
+%       operations);
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+%   \begin{itemize}
+%     \setlength{\itemsep}{1em}
+
+%   \item \textbf{Pipelining} --~a technique of building processors for implementing the division of execution  of the program\\ into specialized groups of instructions\\ (execution subsequent stages).
+
+
+%   \item \textbf{Parallelism} --~performing
+%     multiple instructions simultaneously.
+
+
+%   \end{itemize}
+
+
+%   The above assumptions allow   enormous computing efficiency\\
+%   on a graphics processing unit  (\textsc{gpu}).
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Basic concepts of~computer~graphics}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   \textbf{Model} --~a mathematical representation of an object in the 3D world.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Rendering} --~obtaining a computer image based on the model\\
+%   (displayed by a computer, e.g. on a screen).
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Perspective} --~a drawing technique of a 3D object on a plane;\\ a generated image makes a three-dimensional impression. \\
+%   Perspective is based on the physiology of human vision and optics.\\
+%   Already Plato wrote about the use of perspective in painting.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{A sample scene}
+
+
+%   \begin{textblock}{11}(1,1.65)
+
+%     \includegraphics[scale=0.44]
+%     {./PresentationPictures/Lecture_01/renderowanie01.png}
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1}(3.4,5.1)
+
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     model
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1}(5.5,4.1)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     model
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1}(9.6,3.3)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     model
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1.8}(9.4,1.8)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     lighting
+
+%     \endgroup
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{1.2}(4.7,7.5)
+
+%     \begingroup
+
+%     \color{jBackgroundStyleLight}
+
+%     camera
+
+%     \endgroup
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering without perspective}
+
+%   \vspace{-1em}
+
+
+%   \begin{figure}
+
+%     \includegraphics[scale=0.45]
+%     {./PresentationPictures/Lecture_01/renderowanie02.png}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering with perspective}
+
+%   \vspace{-1em}
+
+
+%   \begin{figure}
+
+%     \includegraphics[scale=0.45]
+%     {./PresentationPictures/Lecture_01/renderowanie03.png}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Another sample scene}
+
+
+%   \begin{textblock}{7.2}(3,1.5)
+
+%     \includegraphics[scale=0.2]
+%     {./PresentationPictures/Lecture_01/LOS_scena_1.png}
+%     % Skrót: Lajkonik, Obwarzanek, Smok
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering without perspective}
+
+
+%   \begin{textblock}{11}(1,2)
+
+%     \includegraphics[scale=0.167,trim=80 0 0 0,clip]
+%     {./PresentationPictures/Lecture_01/LOS_rend_bez_perspektywy.png}
+%     % LOS: Lajkonik, Obwarzanek, Smok
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering with perspective}
+
+
+%   \begin{textblock}{10.9}(1,2)
+
+%     \includegraphics[scale=0.167,trim=90 0 0 0,clip]
+%     {./PresentationPictures/Lecture_01/LOS_rend_z_perspektywa.png}
+%     % LOS: Lajkonik, Obwarzanek, Smok
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+%   \textbf{Point} --~an object in 3D space which has no size.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Pixel} (= \emph{picture}
+%   +~\emph{element}) --~the smallest element of the displayed image on the
+%   screen.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data structures}
+
+
+%   \textbf{Vertex} --~a data structure which stores the information about a point
+%   and data related to this point.\\ A vertex contains the data which describes a point\\
+%   (as part of the model).
+
+%   \textbf{Fragment}  --~a data structure  which stores the information\\
+%   produced by the rasterizer.\\ A fragment contains the data which describes a pixel\\ (as
+%   part of the frame buffer).
+
+%   \vspace{1em}
+
+
+%   point $\to$ vertex \\[0.3em]
+%   pixel $\to$ fragment
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{From vertices to fragments}
+
+
+%   \begin{textblock}{10.5}(1,2)
+
+%     \begin{tikzpicture}
+
+%       \node[scale=0.9] at (-2.3,3.5) {points (vertices)};
+
+
+%       % Układ współrzędnych
+%       \draw[axis arrow,color=jAxisRed] (-3.4,0) -- (-0.65,0);
+
+%       \node[symbol] at (-0.95,-0.4) {$x$};
+
+
+%       \draw[axis arrow,color=jAxisGreen] (-3.4,0) -- (-3.4,2.75);
+
+%       \node[symbol] at (-3,2.45) {$y$};
+
+
+%       \draw[axis arrow,color=jAxisBlue] (-3.4,0,0) -- (-3.4,0,2.75);
+
+%       \node[symbol] at (-4.35,-0.6) {$z$};
+
+
+
+%       \node[scale=0.9] at (-2.3,-2) {continuous space};
+
+
+
+%       % Siatka pikseli
+%       \node[scale=0.9] at (4.1,3.5) {pixels (fragments)};
+
+
+%       \draw[very thin,step=0.25,color=jMathTextFGColor!45!white]
+%       (2.5,-1.5) grid (5.75,1.5);
+
+%       \draw[very thin,color=jMathTextFGColor!45!white] (2.5,-1.5) --
+%       (2.5,1.5);
+
+
+%       \node[scale=0.9] at (4.15,-2) {discrete space};
+
+%       \node[scale=0.9] at (4.15,-2.4) {(granular space)};
+
+
+
+%       % Duża strzałka
+%       \draw[thick connection arrow] (-0.25,0) -- +(2.35,0);
+
+%       \node[scale=0.9,color=jOrange] at (0.72,0.5) {rendering};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   \textbf{Lighting} --~modeling of light sources.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Shading} --~creating the impression of three-dimensionality\\ by
+%   dimming the colors of the drawn images of objects\\ (differentiating the
+%   brightness of pixels of the same color).\\ Shading is based on calculations
+%   related to the emitted, reflected\\ or transmitted light from the
+%   objects to the observer.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Shaders} --~applications that perform shading calculations\\ in
+%   cooperation with graphics hardware, e.g. a graphics card.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Each model is based on  a set of vertices}
+
+
+%   \begin{figure}
+
+%     \includegraphics
+%     {./PresentationPictures/Lecture_01/Malpka_Suzanne_obraz.png}
+
+%     \includegraphics
+%     {./PresentationPictures/Lecture_01/Malpka_Suzanne_opis.png}
+
+%     Suzanne Monkey (Blender) [1]
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Each model is based on  a set of vertices}
+
+
+%   \begin{figure}
+
+%     \includegraphics[scale=0.185]
+%     {./PresentationPictures/Lecture_01/Lajkonik_wierzcholki.png}
+
+%     Lajkonik
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex attributes}
+
+
+%   The data entered by the user on the vertex shader input\\ (the beginning
+%   of the calculation on the graphics card) \\is called vertex  attributes.
+%   The attributes can be scalars,\\ vectors, or matrices, and their values
+%   can be singular\\ or double-precision numbers. In the source code of
+%   a~shader,\\ you can refer to attributes by arbitrarily chosen names.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex attributes}
+
+
+%   The old versions of OpenGL used the following attributes.
+
+%   \vspace{1em}
+
+
+%   \texttt{gl\_Vertex} \hphantom{aaaaaaaaaaa} \hspace{0.45em}
+%   Position (vec4) \\
+%   \texttt{gl\_Normal} \hphantom{aaaaaaaaaaa} \hspace{0.45em}
+%   Normal \hspace{-0.1em} (vec4) \\
+%   \texttt{gl\_Color} \hphantom{aaaaaaaaaaaa} \hspace{0.45em}
+%   Primary color~of vertex (vec4) \\
+%   \texttt{gl\_MultiTexCoord0} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~0 (vec4) \\
+%   \texttt{gl\_MultiTexCoord1} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~1 (vec4) \\
+%   \texttt{gl\_MultiTexCoord2} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~2 (vec4) \\
+%   \texttt{gl\_MultiTexCoord3} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~3 (vec4) \\
+%   \texttt{gl\_MultiTexCoord4} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~4 (vec4) \\
+%   \texttt{gl\_MultiTexCoord5} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~5 (vec4) \\
+%   \texttt{gl\_MultiTexCoord6} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~6 (vec4) \\
+%   \texttt{gl\_MultiTexCoord7} \hphantom{aaaa} Texture coordinate~of
+%   texture unit~7 (vec4) \\
+%   \texttt{gl\_FogCoord} \hphantom{aaaaaaaaa} \hspace{0.45em} Fog Coord
+%   (float)
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   \textbf{Geometric primitives}, also called \textbf{basic objects},\\ are
+%   the basic geometric figures used for building models.
+
+%   In the OpenGL library, primitives are used as patterns to interpret\\ the
+%   vertex stream – with which geometric figure a given fragment\\ of the
+%   stream should be associated.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item Point
+
+%   \item Line
+
+%   \item Line strip
+
+%   \item Line loop
+
+%   \item Triangle
+
+%   \item Triangle strip
+
+%   \item Triangle fan
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+%   Primitives deemed as not recommended in OpenGL 3.0\\ and rejected in OpenGL
+%   3.1.
+
+%   \vspace{-0.5em}
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item Quad
+
+%   \item Quad strip
+
+%   \item Polygon
+
+%   \end{itemize}
+
+%   \vspace{1em}
+
+
+%   OpenGL 3.2 has introduced additional primitives\\ for use   with the
+%   geometry shader: \textsc{gl\_lines\_adjacency}, \\
+%   \textsc{gl\_line\_strip\_adjacency},
+%   \textsc{gl\_triangles\_adjacency}, \\
+%   \textsc{gl\_triangle\_strip\_adjacency}. In OpenGL 4.0,\\ an additional
+%   primitive for tessellation: \textsc{gl\_patches}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}[color=jMathTextFGColor, text color
+%       loc/.style={color=jNormalTextFGColor}]
+
+
+%       % GL_POINTS
+%       \fill (0,0) circle [radius=1pt] node[text color loc,left] {0};
+
+%       \fill (0.3,0.5) circle [radius=1pt] node[text color loc,left]
+%       {1};
+
+%       \fill (0.4,-0.5) circle [radius=1pt] node[text color loc,right]
+%       {2};
+
+%       \fill (1,-0.3) circle [radius=1pt] node[text color loc,right]
+%       {3};
+
+%       \fill (1.1,0.5) circle [radius=1pt] node[text color loc,right]
+%       {4};
+
+%       \node[text color loc] at (0.6,-1.2)
+%       {\textsc{gl}\_\textsc{points}};
+
+
+
+
+
+%       % GL_LINES
+%       \begin{scope}[xshift=4.5cm,yshift=0.5cm]
+
+%         \draw[very thick] (0,0) node[text color loc,left] {0} --
+%         (1,-1) node[text color loc,right] {1};
+
+%         \draw[very thick] (0.2,-0.9) node[text color loc,left] {2} --
+%         (1.7,0) node[text color loc,above left] {3};
+
+%         \draw[very thick] (1.65,-0.8) node[text color loc,below] {4}
+%         -- (2.05,-0.2) node[text color loc,right] {5};
+
+%         \node[text color loc] at (1.05,-1.7)
+%         {\textsc{gl}\_\textsc{lines}};
+
+%       \end{scope}
+
+
+
+
+
+%       % GL_LINE_STRIP
+%       \begin{scope}[xshift=-0.3cm,yshift=-4cm]
+
+%         \draw[very thick] (0,0) node[text color loc,left] {0} --
+%         (0.6,1) node[text color loc,above left] {1} -- (0.75,0)
+%         node[text color loc,left] {2} -- (1.6,0.95) node[text color
+%         loc,above] {3} -- (2.35,0.2) node[text color loc,right] {4} --
+%         (0.95,0.8) node[text color loc,above] {5} -- (1.5,-0.1)
+%         node[text color loc,right] {6};
+
+%         \node[text color loc] at (1.1,-0.8)
+%         {\textsc{gl}\_\textsc{line}\_\textsc{strip}};
+
+%       \end{scope}
+
+
+
+
+
+%       % % GL_LINE_LOOP
+%       \begin{scope}[xshift=4.8cm,yshift=-3.5cm]
+
+%         \draw[very thick] (0,0) node[text color loc,below] {0} --
+%         (-0.05,0.8) node[text color loc,left] {1} -- (1.2,0.7)
+%         node[text color loc,above] {2} -- (1.9,-0.2) node[text color
+%         loc,right] {3} -- (0.8,-0.6) node[text color loc,left] {4} --
+%         (0.75,0.15) node[text color loc,right] {5} -- cycle;
+
+%         \node[text color loc] at (1,-1.3)
+%         {\textsc{gl}\_\textsc{line}\_\textsc{loop}};
+
+%       \end{scope}
+
+%     \end{tikzpicture}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \begin{tikzpicture}[color=jMathTextFGColor,text color
+%       loc/.style={color=jNormalTextFGColor}]
+
+
+%       % GL_TRIANGLES
+%       \fill[color=jMathTextFGColor,opacity=0.45] (0,0) -- (1.1,-0.4) --
+%       (0.6,-1.5) -- cycle;
+
+%       \draw[very thick] (0,0) node[text color loc,left] {0} --
+%       (1.1,-0.4) node[text color loc,right] {1} -- (0.6,-1.5)
+%       node[text color loc,left] {2} -- cycle;
+
+
+%       \fill[color=jMathTextFGColor,opacity=0.45] (2.1,-1.4) -- (2.85,-0.1)
+%       -- (3.6,-1.4) -- cycle;
+
+%       \draw[very thick] (2.1,-1.4) node[text color loc,left] {3} --
+%       (2.85,-0.1) node[text color loc,above] {4} -- (3.6,-1.4)
+%       node[text color loc,right] {5} -- cycle;
+
+
+%       \fill[color=jMathTextFGColor,opacity=0.45] (4.5,-1.8) -- (5.3,-1.8)
+%       -- (4.95,-0.5) -- cycle;
+
+%       \draw[very thick] (4.5,-1.8) node[text color loc,left] {6} --
+%       (5.3,-1.8) node[text color loc,right] {7} -- (4.95,-0.5)
+%       node[text color loc,above] {8} -- cycle;
+
+%       \node[text color loc] at (2.9,-2.5)
+%       {\textsc{gl}\_\textsc{triangles}};
+
+
+
+
+
+%       % GL_TRIANGLE_STRIP
+%       \begin{scope}[xshift=-1.4cm,yshift=-5cm]
+
+%         \fill[color=jMathTextFGColor,opacity=0.45] (0,0) -- (0.8,1.2) --
+%         (2,1) -- (3.3,1) -- (3,-0.3) -- (1,0) -- cycle;
+
+%         \draw[very thick] (0,0) node[text color loc,left] {0} --
+%         (0.8,1.2) node[text color loc,above] {1} -- (2,1) node[text
+%         color loc,above] {3} -- (3.3,1) node[text color loc,right] {5}
+%         -- (3,-0.3) node[right,text color loc] {4} -- (1,0) node[text
+%         color loc,below] {2} -- cycle;
+
+%         % 1 --> 2
+%         \draw[very thick] (0.8,1.2) -- (1,0);
+
+%         % 2 --> 3
+%         \draw[very thick] (1,0) -- (2,1);
+
+%         % 3 -> 4
+%         \draw[very thick] (2,1) -- (3,-0.3);
+
+%         \node[text color loc] at (1.6,-1.2)
+%         {\textsc{gl}\_\textsc{triangle}\_\textsc{strip}};
+
+%       \end{scope}
+
+
+
+
+
+%       % GL_TRIANGLE_FAN
+%       \begin{scope}[xshift=4.9cm,yshift=-5cm]
+
+%         \fill[color=jMathTextFGColor,opacity=0.45] (0,0) -- (-1.5,0.3) --
+%         (-1.1,0.7) -- (0,1.1) -- (1,1.1) -- (1.8,0) -- cycle;
+
+%         \draw[very thick] (0,0) node[text color loc,below] {0} --
+%         (-1.5,0.3) node[text color loc,left] {1} -- (-1.1,0.7)
+%         node[text color loc,above] {2} -- (0,1.1) node[text color
+%         loc,above] {3} -- (1,1.1) node[text color loc,above left] {4}
+%         -- (1.8,0) node[text color loc,right] {5} -- cycle;
+
+%         % 2 --> 0
+%         \draw[very thick] (-1.1,0.7) -- (0,0);
+
+%         % 3 --> 0
+%         \draw[very thick] (0,1.1) -- (0,0);
+
+%         % 4 --> 0
+%         \draw[very thick] (1,1.1) -- (0,0);
+
+%         \node[text color loc] at (0.2,-1.2)
+%         {\textsc{gl}\_\textsc{triangle}\_\textsc{fan}};
+
+%       \end{scope}
+
+%     \end{tikzpicture}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library (deprecated since ver.~3.1)}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}[color=jMathTextFGColor, text color
+%       loc/.style={color=jNormalTextFGColor}]
+
+
+%       % GL POLYGON
+%       \fill[color=jMathTextFGColor,opacity=0.45] (0,0) -- (0.3,0.9) --
+%       (1,0.9) -- (2,-0.1) -- (0.7,0.3) -- cycle;
+
+%       \draw[very thick] (0,0) node[text color loc,left] {0} --
+%       (0.3,0.9) node[text color loc,above] {1} -- (1,0.9) node[text
+%       color loc,above right] {2} -- (2,-0.1) node[text color
+%       loc,below] {3} -- (0.7,0.3) node[text color loc,below] {4} --
+%       cycle;
+
+%       \node[text color loc] at (0.9,-1)
+%       {\textsc{gl}\_\textsc{polygon}};
+
+
+
+
+
+%       % GL_QUADS
+%       \begin{scope}[xshift=4.7cm,yshift=0.9cm]
+
+%         \fill[color=jMathTextFGColor,opacity=0.45] (0,0) -- (0.4,-1) --
+%         (1.2,-0.9) -- (0.8,0.2) -- cycle;
+
+%         \draw[very thick] (0,0) node[text color loc,above] {0} --
+%         (0.4,-1) node[text color loc,below] {1} -- (1.2,-0.9)
+%         node[text color loc,below] {2} -- (0.8,0.2) node[text color
+%         loc,above] {3} -- cycle;
+
+
+%         \fill[color=jMathTextFGColor,opacity=0.45] (1.9,-1) -- (1.9,0.2)
+%         -- (3.4,0.2) -- (2.8,-1) -- cycle;
+
+%         \draw[very thick] (1.9,-1) node[text color loc,below] {4} --
+%         (1.9,0.2) node[text color loc,above] {5} -- (3.4,0.2)
+%         node[text color loc,above] {6} -- (2.8,-1) node[text color
+%         loc,below] {7} -- cycle;
+
+%         \node[text color loc] at (1.6,-1.9)
+%         {\textsc{gl}\_\textsc{quads}};
+%       \end{scope}
+
+
+
+
+
+%       % GL_QUAD_STRIP
+%       \begin{scope}[xshift=2.3cm,yshift=-3.8cm]
+
+%         \fill[color=jMathTextFGColor,opacity=0.45] (0,0) -- (0,0.8) --
+%         (0.5,1.1) -- (1.5,1.1) -- (2.2,0.7) -- (2.2,0.3) -- (1.4,-0.3)
+%         -- (0.5,0) -- cycle;
+
+%         \draw[very thick] (0,0) node[text color loc,left] {0} --
+%         (0,0.8) node[text color loc,left] {1} -- (0.5,1.1) node[text
+%         color loc,above] {3} -- (1.5,1.1) node[text color loc,above]
+%         {5} -- (2.2,0.7) node[text color loc,above right] {7} --
+%         (2.2,0.3) node[text color loc,below right] {6} -- (1.4,-0.3)
+%         node[text color loc,below] {4} -- (0.5,0) node[text color
+%         loc,below] {2} -- cycle;
+
+%         % 3 --> 2
+%         \draw[very thick] (0.5,1.1) -- (0.5,0);
+
+%         % 5 --> 4
+%         \draw[very thick] (1.5,1.1) -- (1.4,-0.3);
+
+%         \node[text color loc] at (1.2,-1.25)
+%         {\textsc{gl}\_\textsc{quad}\_\textsc{strip}};
+%       \end{scope}
+
+%     \end{tikzpicture}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+%   \textbf{Texturing} --~overlaying additional   images (textures) on
+%   surfaces stretched on vertices (faces).
+
+%   \textbf{Blending} --~mixing colors to produce another color.
+
+
+
+
+
+
+%   \begin{textblock}{5.1}(1,3.9)
+
+%     \includegraphics[scale=0.14]
+%     {./PresentationPictures/Lecture_01/Lajkonik_wierzcholki.png}
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{5.1}(6.8,3.9)
+
+%     \includegraphics[scale=0.14]
+%     {./PresentationPictures/Lecture_01/Lajkonik_tekstury.png}
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{2.6}(5.1,6.1)
+
+%     \begin{tikzpicture}
+
+%       \draw[thick connection arrow] (0,0) -- (2.35,0);
+
+%       \node[scale=0.9,color=jOrange] at (0.97,0.5) {rendering};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+%   \begin{textblock}{5.1}(1,2.5)
+
+%     \includegraphics[scale=0.14]
+%     {./PresentationPictures/Lecture_01/LOS_scena_1.png}
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{5.1}(6.8,2.5)
+
+%     \includegraphics[scale=0.14]
+%     {./PresentationPictures/Lecture_01/LOS_scena_2.png}
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{2.6}(5.1,2.9)
+
+%     \begin{tikzpicture}
+
+%       \draw[thick connection arrow] (0,0) -- (2.35,0);
+
+%       \node[scale=0.9,color=jOrange] at (0.97,0.5) {rendering};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Communication between CPU and GPU}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \begin{tikzpicture}[node distance=1.7em, small block loc/.style =
+%       {rectangle, rounded corners, fill=jAxisBlue, text width=4em,
+%         text centered, minimum height=4em,
+%         text=jMathTextFGStyleDark}, block loc/.style = {rectangle,
+%         fill=jAxisBlue, text centered, text width=6em, minimum
+%         height=4em, text=jMathTextFGStyleDark},
+%       block circle loc/.style = {circle, minimum size=3.3em, text
+%         centered, text=jMathTextFGStyleDark}]
+
+
+%       \node[block circle loc,fill=jOrange,scale=1.3] at (0,0) (CPU)
+%       {CPU};
+
+%       \node[small block loc,right=of CPU] (Aplikacja) {Application};
+
+%       \draw[thick connection arrow] (CPU) -- (Aplikacja);
+
+
+
+%       \node[small block loc,right=of Aplikacja] (OpenGL DirectX) {OpenGL
+%         DirectX};
+
+%       \draw[thick connection arrow] (Aplikacja) -- (OpenGL DirectX);
+
+
+
+%       \node[small block loc,align=left,right=of OpenGL DirectX]
+%       (Sterownik)
+%       {{\small Video card \\
+%           driver}};
+
+%       \draw[thick connection arrow] (OpenGL DirectX) -- (Sterownik);
+
+
+
+%       \node[block circle loc,fill=jOrange,scale=1.3,right=of
+%       Sterownik] (GPU) {GPU};
+
+%       \draw[thick connection arrow] (Sterownik) -- (GPU);
+
+
+%       \node[block loc,below=6em of CPU] (Pamiec Operacyjna) {Main Memory};
+
+%       \draw[{Triangle[scale width=0.6,scale
+%         length=0.3]}-{Triangle[scale width=0.6,scale length=0.3]},
+%       line width=7.5,color=jNormalTextFGStyleLight] (CPU) -- (Pamiec
+%       Operacyjna);
+
+
+
+%       \node[block loc,below=6em of GPU] (Pamiec Wideo) {Video Memory};
+
+%       \draw[{Triangle[scale width=0.6,scale
+%         length=0.3]}-{Triangle[scale width=0.6,scale length=0.3]},
+%       line width=7.5,color=jNormalTextFGStyleLight] (GPU) -- (Pamiec
+%       Wideo);
+
+
+%       \draw[thick connection arrow] (Pamiec Operacyjna) -- (Pamiec
+%       Wideo);
+
+%       \node[align=left] at (4.3,-2.7) {vertex data \\
+%         texture data \\
+%         shader parameters};
+
+%     \end{tikzpicture}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%     \setlength{\itemsep}{0.3em}
+
+%   \item Pixel data of the image visible in the viewport --\\
+%     front image buffer
+
+%   \item Pixel data of the image invisible in the viewport --\\
+%     back image buffer
+
+%   \item Data that describes how deep a pixel lies in the image --\\ depth
+%     buffer (also called z-buffer)
+
+%   \item Data  used  to enable or disable drawing
+%     on a per-pixel basis -- stencil buffer
+
+%   \item Vertex data -- vertex buffers
+
+%   \item Texture data -- texture maps
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+%   In the video memory we can store any data, just like in the
+%   \textsc{ram}. Compared to the usual \textsc{ram}, the access to this data is
+%   not through\\ pointers, but through buffers, textures and other objects.
+
+%   Examples of data objects \vspace{-0.5em}
+%   \begin{itemize}
+%     \RaggedRight
+
+%     \setlength{\itemsep}{0.3em}
+
+%   \item Vertex Buffer
+%     Objects
+
+%   \item Pixel Buffer Objects
+
+%   \item Shader Storage
+%     Buffer Objects
+
+%   \item Uniform Buffer
+%     Objects
+
+%   \item Sampler Objects
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \node[diagrams block 1] (pobranie wierzcholkow)
+%       {Vertex \\
+%         Specification};
+
+%       \node[diagrams block 1,below=of pobranie wierzcholkow] (szader
+%       wierzcholkow) {Vertex Shader};
+
+%       \draw[thick connection line] (pobranie wierzcholkow) -- (szader
+%       wierzcholkow);
+
+
+
+%       \node[diagrams block 1,below=of szader wierzcholkow] (szader
+%       sterowania teselacja) {Tessellation Control Shader};
+
+%       \draw[thick connection line] (szader wierzcholkow) -- (szader
+%       sterowania teselacja);
+
+
+
+%       \node[diagrams block 1,right=of szader sterowania teselacja]
+%       (teselacja) {Tessellation};
+
+%       \draw[thick connection line] (szader sterowania teselacja) --
+%       (teselacja);
+
+
+
+%       \node[diagrams block 1,above=of teselacja] (szader wyliczania
+%       teselacji) {Tessellation Evaluation Shader};
+
+%       \draw[thick connection line] (teselacja) -- (szader wyliczania
+%       teselacji);
+
+
+
+%       \node[diagrams block 1,above=of szader wyliczania teselacji]
+%       (szader geometrii) {Geometry Shader};
+
+%       \draw[thick connection line] (szader wyliczania teselacji) --
+%       (szader geometrii);
+
+
+
+%       \node[diagrams block 1,right=of szader geometrii] (rasteryzacja)
+%       {Rasterization};
+
+%       \draw[thick connection line] (szader geometrii) -- (rasteryzacja);
+
+
+
+%       \node[diagrams block 1,below=of rasteryzacja] (szader fragmentow)
+%       {Fragment Shader};
+
+%       \draw[thick connection line] (rasteryzacja) -- (szader fragmentow);
+
+
+
+%       \node[diagrams block 1,below=of szader fragmentow] (bufor ramki)
+%       {Frame buffer \\ Operations};
+
+%       \draw[thick connection line] (szader fragmentow) -- (bufor ramki);
+
+%     \end{tikzpicture}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   The graphics pipeline can be divided into two parts.
+
+%   \begin{itemize}
+%     \setlength{\itemsep}{0.75em}
+
+%   \item \textbf{Front end} --~processing vertices and primitives, creating points, lines and triangles (assembling primitives), up to passing data\\ to rasterization.
+
+%   \item \textbf{Back end} --~pixel processing, depth checking, fragment shading, color blending,  updating the final image.
+
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   \textbf{Vertex shader}~--
+%   a program that runs once for each downloaded\\ vertex or  control point of a patch (if you use tessellation).
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Tessellation control shader}~--   a program that runs once for each  patch. A \textbf{patch} is a high-order primitive.\\ It is accessible only
+%   if we use tessellation.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Tessellation} --~a fixed function transforming patches into smaller and simpler primitives (e.g. triangles).
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Tessellation evaluation shader} --   a program that runs once for each vertex created by the tessellation mechanism.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   \textbf{Geometry shader} --~a program that runs once for each primitive. \\It has access to all vertices of the primitive. It can transform one type of primitives
+%   into another, e.g. points can be transformed to triangles.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Compute shader} --~a program
+%   that runs outside the graphics pipeline. It has no specific
+%   role and can deal with any calculation;  it can have any
+%   input/output. Used in graphics for postprocessing.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Clipping} --~after  creating primitives from the vertices, they are clipped in order to be contained in the visible area.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Viewport} --~a window area,
+%   in which OpenGL renders its image.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex transformations (OpenGL nomenclature)}
+
+
+%   \begin{textblock}{10.8}(1,1.2)
+
+%     \begin{tikzpicture}[node distance=2.6em,scale=0.7, block loc/.style
+%       = {rectangle, rounded corners, fill=jAxisBlue, text width=6em,
+%         text centered, minimum height=4.1em,
+%         text=jMathTextFGStyleDark}]
+
+
+%       \node[block loc] (przestrzen obiektu)
+%       {Object \\[-0.2em]
+%         space};
+
+%       \node[block loc,right=of przestrzen obiektu] (przestrzen swiata)
+%       {World \\[-0.2em]
+%         space};
+
+%       \draw[thick connection arrow] (przestrzen obiektu) -- (przestrzen
+%       swiata);
+
+
+%       \node[block loc,right=of przestrzen swiata] (przestrzen kamery)
+%       {Camera \\[-0.2em]
+%         space};
+
+%       \draw[thick connection arrow] (przestrzen swiata) -- (przestrzen
+%       kamery);
+
+
+%       \node[block loc,below=2.6em of przestrzen kamery] (jednorodna
+%       przestrzen)
+%       {Homogeneous \\[-0.2em]
+%         clip space};
+
+%       \draw[thick connection arrow] (przestrzen kamery) -- (jednorodna
+%       przestrzen);
+
+
+%       \node[block loc,below=2.6em of jednorodna przestrzen] (przestrzen
+%       widoku) {Viewport space};
+
+%       \draw[thick connection arrow] (jednorodna przestrzen) --
+%       (przestrzen widoku);
+
+
+
+%       \draw[thick connection arrow,rounded corners] (przestrzen obiektu)
+%       -- ++(0,2) -| (przestrzen kamery);
+
+%       \node at (4.8,2.65) {\alert{model-view transformation}};
+
+
+%       \node at (11.77,-1.6) (rzutowanie) {\alert{projection}};
+
+
+%       \node[rectangle,align=left] at (12,-5.05) (transformacja okna)
+%       {\alert{viewport} \\[-0.2em]
+%         \alert{transformation}};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}[label=Przestrzen-uklad-wspolrzednych-1]
+%   \frametitle{Spaces --~coordinate systems}
+
+
+%   \begin{textblock}{2.4}(10,1.4)
+
+%     \hyperlink{Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-1}
+%     {\beamergotobutton{Terminological notes}}
+
+%   \end{textblock}
+
+
+%   \vspace{1.8em}
+
+
+%   \textbf{Object space}, or \textbf{model space}, is associated
+%   with the local coordinate system native to the specific model.
+%   In this space, we usually specify the positions of the vertices of the model.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{World space} is 	associated with the global coordinate system\\ native to the scene. In this space, we usually specify the positions\\ and orientations of all models.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Camera space}, or \textbf{eye space}, is associated with the
+%   coordinate\\ system  defined by the camera, the eye or  the screen.\\ The axes
+%   $x$ and ~$y$ lie in the plane of the screen,\\ and the axis ~$z$ is perpendicular
+%   to the screen.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Spaces --~coordinate systems}
+
+
+%   \textbf{Homogeneous clip space} is associated with the coordinate\\ system that has
+%   highlighted visibility area.\\ It is a cube with vertices
+%   in $( -1 \hspace{0.5em} {-1} \hspace{0.5em} {-1} )^{ T }$,
+%   $( 1 \hspace{0.5em} {-1} \hspace{0.5em} {-1} )^{ T }$, \ldots,
+%   $( 1 \hspace{0.5em} 1 \hspace{0.5em} 1 )^{ T }$.\\ Graphic primitives
+%   which do not fit entirely inside the cube\\ are clipped.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Window space}, or \textbf{viewport space}, is
+%   associated with the coordinate system defined by the view window.\\
+%   It contains the information about  pixel coordinates and their depth.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+%   \textbf{Rasterization} --~taking a graphic primitive  and converting it\\ into a raster image.\\ Graphic primitives are obtained after the transformation of
+%   vertices of the model to the window space.\\ A raster image is a series of pixels.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Fragment} --~the information on
+%   the localization of each pixel\\ of any primitive with its depth,
+%   interpolated vertex colors \\
+%   and interpolated texture coordinates.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+%   \begin{textblock}{7.4}(2.7,1.6)
+
+%     \begin{tikzpicture}[node distance=4em]
+%       \draw[thick connection arrow] (-0.8,-0.5) -- (-1.35,-2);
+
+%       \draw[thick connection arrow] (0.825,-0.5) -- (1.4,-2);
+
+
+%       \node[diagrams block 1] (rasteryzacja) {Rasterization};
+
+
+%       \node[diagrams block 1] (selekcja) [above=of rasteryzacja] {Selection\\
+%         visible\\ primitives};
+
+
+%       \draw[thick connection arrow] (selekcja) -- (rasteryzacja);
+
+
+%       \node[diagrams block 1] at (-2.2,-2.8) (cieniowanie) {Fragment shading};
+
+
+%       \node[diagrams block 1] at (2.25,-2.8) (operacje) {Fragment operations};
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Fragment operations}
+
+
+%   \textbf{Pixel ownership test} --~an application that determines
+%   if a fragment lies in the region of the currently visible viewport.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Scissor test} --~an application that may specify a rectangle\\ in
+%   the viewport, to which rendering should be restricted.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Alpha test} --~selective display of pixels based on
+%   transparency \\conditions.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Stencil test} --~selective display of pixels based on the data specified \\in the stencil buffer.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Depth test} --~selective display of pixels based on the data specified\\ in the depth buffer.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Blending} --~determining the final color of a pixel by
+%   mixing  all color components.
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   \textbf{Fragment shader} --~a program that runs once for each fragment\\ of the rendered primitive.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Double buffering} --~a drawing technique of using
+%   two memory buffers for image.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Aliasing} --~a loss of information related to the finite
+%   resolution\\ of image reproduction.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Anti-aliasing} --~a rendering technique with smoothing
+%   edges \\(we distinguish, among others: \textsc{fsaa}, \textsc{msaa},
+%   \textsc{mfaa}, \textsc{csaa}, \textsc{cfaa}, \textsc{mlaa},
+%   \textsc{smaa}, \textsc{hraa}, \textsc{fxaa}, \textsc{txaa},
+%   \textsc{taa}, \textsc{ssaa}).
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{View frustum} --~a visible
+%   area of space.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Links}
+
+
+%   [1] \colorhref{www.blender.org}{www.blender.org}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ##################
+% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Terminological notes}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-1]
+%   \frametitle{The concept of space. Affine and vector space}
+
+
+%   In geometry, we use two kinds of space.\\
+%   \textbf{Vector space} is the corresponding set of vectors.\\
+%   \textbf{Affine space} is a set of points that can be
+%   moved by vectors from some vector space.
+
+%   An example of affine space can be a two-dimensional plane.\\
+%   It has no center, any two points of it can be
+%   connected by a vector,\\ and at any point one can hook a system of
+%   coordinates.
+
+%   An example of a vector space can be the set of all possible
+%   velocities of a point moving in the plane. Such
+%   space has a distinguished\\ element, the zero vector (zero
+%   velocity of the point, the resting point), which can be considered its ``center''.
+
+
+
+
+
+%   \begin{textblock}{2.1}(1,8.7)
+
+%     \hyperlink{Przestrzen-uklad-wspolrzednych-1}
+%     {\beamerreturnbutton{Back to lecture}}
+
+%   \end{textblock}
+
+
+%   \begin{textblock}{2.1}(10,8.7)
+
+%     \hyperlink{Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-2}
+%     {\beamergotobutton{Continued \hspace{3.5em}}}
+
+%   \end{textblock}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-2]
+%   \frametitle{The concept of space. Space and coordinate system}
+
+
+%   In this lecture we use the word ``space'' in both senses,
+%   its exact\\ meaning should be read from the context. For example,
+%   ``scene space'' can mean both the set of all points
+%   forming the scene, i.e. the affine space, as well as the space of
+%   position vectors of the scene points\\ with respect to selected point
+%   $\pointO$, i.e. the vector space.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Coordinate system of vector space} is based on a system of three
+%   linearly independent vectors
+%   $<\! \vecWscript{1}, \vecWscript{2}, \vecWscript{3} \!>$ (other
+%   cases we do not consider). Since
+%   $\vecV = \Vscript{x} \vecWscript{1} + \Vscript{y} \vecWscript{2} +
+%   \Vscript{z} \vecWscript{3}$, this coordinate system allows us to
+%   replace in  calculations any vector $\vecV$ with a column of numbers
+%   $\begin{bmatrix} \Vscript{x} & \Vscript{y} &
+%                                                \Vscript{z} \end{bmatrix}^{ T }$. The numbers $\Vscript{x}$,
+%                                              $\Vscript{y}$, $\Vscript{z}$ we call
+%                                              \textbf{coordinates\\ of vector $\vecV$ in the basis}
+%                                              $<\! \vecWscript{1}, \vecWscript{2}, \vecWscript{3} \!>$.
+%                                              Note that without\\ knowledge of the base, the coordinates of the vector are
+%                                              useless.
+
+
+
+
+%                                              \begin{textblock}{2.1}(1,8.7)
+
+%                                                \hyperlink{Przestrzen-uklad-wspolrzednych-1}
+%                                                {\beamerreturnbutton{Back to lecture}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(4,8.7)
+
+%                                                \hyperlink{Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-1}
+%                                                {\beamerreturnbutton{Previous part \hspace{1em}}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(10,8.7)
+
+%                                                \hyperlink{Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-3}
+%                                                {\beamergotobutton{Continued \hspace{3.5em}}}
+
+%                                              \end{textblock}
+
+%                                            \end{frame}
+%                                            % ##################
+
+
+
+
+
+%                                            % ##################
+%                                            \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-3]
+%                                              \frametitle{The concept of space. Space and coordinate system}
+
+
+%                                              \textbf{Coordinate system of affine space} is point
+%                                              $\pointQ$ of this space\\ and a system of three linearly independent
+%                                              vectors $<\! \vecWscript{1}, \vecWscript{2}, \vecWscript{3} \!>$\\\
+%                                              from the corresponding vector space. The coordinate system
+%                                              is given as
+%                                              $<\! \pointQ; \vecWscript{1}, \vecWscript{2}, \vecWscript{3} \!>$.
+%                                              Since{ } $\pointP = \pointQ + \vecV $
+%                                              $= \pointQ + \Pscript{x} \vecWscript{1} + \Pscript{y} \vecWscript{2}
+%                                              + \Pscript{z} \vecWscript{3}$, \\ this coordinate system allows us to
+%                                              substitute in  calculations any\\ point $\pointP$ with a column
+%                                              $\Big[ \Pscript{x} \hspace{0.6em} \Pscript{y} \hspace{0.6em}
+%                                              \Pscript{z} \Big]^{ T }$.
+%                                              The numbers $\Pscript{x}$, $\Pscript{y}$,
+%                                              $\Pscript{z}$ are called \textbf{coordinates of  point $\pointP$ in the basis
+%                                                $<\! \pointQ; \vecWscript{1}, \vecWscript{2}, \vecWscript{3}
+%                                                \!>$}. \\[0.1em]
+%                                              Note that without knowledge of the base, the coordinates are useless.
+
+%                                              \vspace{0.5em}
+
+
+%                                              \textbf{Homogeneous coordinates} are coordinates in which each
+%                                              point\\ or vector is translated into a column of four
+%                                              coordinates. For a point, the last coordinate determines the positive ``weight'' of the
+%                                              coordinates and for a vector it is equal to $0$. We can
+%                                              define this kind\\ of coordinates for each of the spaces discussed in the lecture.
+
+
+
+
+
+
+%                                              \begin{textblock}{2.1}(1,8.7)
+
+%                                                \hyperlink{Przestrzen-uklad-wspolrzednych-1}
+%                                                {\beamerreturnbutton{Back to lecture}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(4,8.7)
+
+%                                                \hyperlink{Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-2}
+%                                                {\beamerreturnbutton{Previous part \hspace{1em}}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(10,8.7)
+
+%                                                \hyperlink{Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-1}
+%                                                {\beamergotobutton{Continued \hspace{3.5em}}}
+
+%                                              \end{textblock}
+
+%                                            \end{frame}
+%                                            % ##################
+
+
+
+
+
+%                                            % ##################
+%                                            \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-1]
+%                                              \frametitle{Coordinate systems in computer graphics}
+
+
+%                                              \textbf{World (coordinate) system} is a coordinate system
+%                                              hooked\\ permanently to a selected point in space. The word
+%                                              ``coordinate''\\ in the name will often be omitted for convenience, both
+%                                              in this\\ and all subsequent cases.
+
+%                                              Synonyms include: \textbf{scene (coordinate) system}, \textbf{global (coordinate) system}, \textbf{environment (coordinate) system}.
+
+%                                              \vspace{1em}
+
+
+%                                              \textbf{Camera (coordinate) system} is a coordinate system used in computer graphics defined relative to the field
+%                                              of vision (viewing frustum). \\In this system, we perform calculations related to
+%                                              the determination of objects to be rendered.
+
+%                                              Synonyms include: \textbf{eye (coordinate) system}, \textbf{viewing frustum\\ (coordinate) system}, \textbf{observer (coordinate) system}.
+
+
+
+
+
+%                                              \begin{textblock}{2.1}(1,8.7)
+
+%                                                \hyperlink{Przestrzen-uklad-wspolrzednych-1}
+%                                                {\beamerreturnbutton{Back to lecture}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(4,8.7)
+
+%                                                \hyperlink{Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-3}
+%                                                {\beamerreturnbutton{Previous part \hspace{1em}}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(10,8.7)
+
+%                                                \hyperlink{Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-2}
+%                                                {\beamergotobutton{Continued \hspace{3.5em}}}
+
+%                                              \end{textblock}
+
+%                                            \end{frame}
+%                                            % ##################
+
+
+
+
+
+%                                            % ##################
+%                                            \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-2]
+%                                              \frametitle{Coordinate systems in computer graphics}
+
+
+%                                              \textbf{Object (coordinate) system} is a system that is permanently
+%                                              attached to some object that moves around the scene. If
+%                                              this object moves, then along with it moves the origin of the coordinate system. If it rotates, then simultaneously the axes of the
+%                                              coordinate system rotate. Systems of spheres, boxes, etc., are examples here.
+
+%                                              Synonyms include:  \textbf{local (coordinate) system}, \textbf{model (coordinate) system}.
+
+
+
+
+
+
+
+%                                              \begin{textblock}{2.1}(1,8.7)
+
+%                                                \hyperlink{Przestrzen-uklad-wspolrzednych-1}
+%                                                {\beamerreturnbutton{Back to lecture}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(4,8.7)
+
+%                                                \hyperlink{Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-1}
+%                                                {\beamerreturnbutton{Previous part \hspace{1em}}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(10,8.7)
+
+%                                                \hyperlink{Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-3}
+%                                                {\beamergotobutton{Continued \hspace{3.5em}}}
+
+%                                              \end{textblock}
+
+%                                            \end{frame}
+%                                            % ##################
+
+
+
+
+
+%                                            % ##################
+%                                            \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-3]
+%                                              \frametitle{Coordinate systems in computer graphics}
+
+
+%                                              \textbf{Homogeneous clip space}  is the three-dimensional affine space\\ obtained after the transformation of the 3D-projection of the visible field (cf. Lecture 6, S.~35), that is, the projection of three-dimensional space onto a plane
+%                                              (\emph{viewport}) and a line (\emph{depth}).
+
+%                                              \vspace{0.5em}
+
+
+%                                              \textbf{Projective coordinate system} in homogeneous clip space\\ is the homogeneous coordinate system defined for the
+%                                              appropriate\\ 3D-projection transformation image. Usually, it is either
+%                                              perspective or orthographic projection.
+
+%                                              \vspace{0.5em}
+
+
+%                                              \textbf{Normalized device coordinate system} (\textsc{ndc}) are  	three-dimensional coordinates  for a  homogeneous clip space. We obtain
+%                                              them\\ by dividing the first three homogeneous coordinates by the fourth. Coordinates \textsc{ndc} belong to the interval $[-1, 1]$.
+
+
+
+
+
+
+%                                              \begin{textblock}{2.1}(1,8.7)
+
+%                                                \hyperlink{Przestrzen-uklad-wspolrzednych-1}
+%                                                {\beamerreturnbutton{Back to lecture}}
+
+%                                              \end{textblock}
+
+
+%                                              \begin{textblock}{2.1}(4,8.7)
+
+%                                                \hyperlink{Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-2}
+%                                                {\beamerreturnbutton{Previous part \hspace{1em}}}
+
+%                                              \end{textblock}
+
+%                                            \end{frame}
+%                                            % ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+
+% End of the document
+\end{document}

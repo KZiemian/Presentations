@@ -11,6 +11,12 @@
 *.toc
 *.vrb
 
+# ignore auxilliary files created by BibLaTeX and Biber
+*.bbl
+*.bcf
+*.blg
+*.run.xml
+
 # ignore all picture files
 *.jpg
 *.jpeg

@@ -1,0 +1,1124 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ---------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in directory
+% "preambule".
+% ---------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+% BibLaTeX
+% ---------------------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{SystemyOperacyjneBibliography.bib}
+
+
+
+
+
+% ------------------------------
+% Importing packages, libraries and setting their configuration.
+% ------------------------------
+
+
+
+
+
+% ------------------------------
+% Special configuration for this particular presentation.
+% ------------------------------
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{Opinie o~GNU/Linux i~powiązanych sprawach}
+
+\author{Kamil Ziemian}
+
+
+\date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 12k+,
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Krótka historia powstania systemu GNU/Linuxa}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tak to wtedy wyglądało}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie dzięki którym powstał system GNU/Linux}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie dzięki którym powstał system GNU/Linux}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie dzięki którym powstał system GNU/Linux}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Negatywne opinie o~GNU/Linuxie i~powiązanych
+  sprawach}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{\textit{The UNIX HATERS Handbook}}
+
+
+  Jeśli nie podano inaczej, wszystkie cytaty zostały zaczerpnięte z~książki
+  \textit{The UNIX HATERS Handbook} pod redakcją Simsona Garfinkela, Daniela
+  Weise’a i~Stevena Strassmanna
+  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+  Jeśli było to możliwe teksty te zostały przetłumaczone w~sposób swobodny
+  przez Kamil Ziemiana. Jednak~wielu wypadkach, humor i~cięty język cytowany
+  tekstów kazało nam zostawić je w~oryginale.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komputer i~UNIX}
+
+
+  \begin{quote}
+
+    Gdy samochody rozwijały~się tak jak komputery, to dziś Rolls-Royce
+    kosztowałby jakieś 100\$, przejeżdżałaby milion mil na jednym galonie
+    benzyny i~raz do roku eksplodował zabijając wszystkich w~środku.
+    (Tłumaczenie swobodne.) \\
+    Robert Cringely, \textit{InfoWorld}
+
+  \end{quote}
+
+  \vspace{2em}
+
+
+
+
+
+  \begin{quote}
+
+    Dwa produkty z~których Berkeley jest najbardziej znane to \textsc{lsd}
+    i~\textsc{unix}. Wątpię by to był przypadek. \\
+    Anonim
+
+  \end{quote}
+
+  \vspace{2em}
+
+
+
+
+
+  \begin{quote}
+
+    \textsc{unix} is computer-scientology, not computer science. \\
+    Dave Mankins
+
+  \end{quote}
+
+  % \vspace{2em}
+
+
+
+
+
+  % \begin{quote}
+
+  %   Jesteś prawdziwym miłośnikiem ryzyka, jeśli przechowujesz ważne pliki
+  %   na~komputerze z~systemem \textsc{unix}. \\
+  %   Robert E.~Seastrom
+
+  % \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komputer i~UNIX}
+
+
+  % \begin{quote}
+
+  %   Gdy samochody rozwijały~się tak jak komputery, to dziś Rolls-Royce
+  %   kosztowałby jakieś 100\$, przejeżdżałaby milion mil na jednym galonie
+  %   benzyny i~raz do roku eksplodował zabijając wszystkich w~środku.
+  %   (Tłumaczenie swobodne.) \\
+  %   Robert Cringely, \textit{InfoWorld}
+
+  % \end{quote}
+
+  % \vspace{2em}
+
+
+
+
+
+  % \begin{quote}
+
+  %   Dwa produkty z~których Berkeley jest najbardziej znane to \textsc{lsd}
+  %   i~\textsc{unix}. Wątpię by to był przypadek. \\
+  %   Anonim
+
+  % \end{quote}
+
+  % \vspace{2em}
+
+
+
+
+
+  % \begin{quote}
+
+  %   \textsc{unix} is computer-scientology, not computer science. \\
+  %   Dave Mankins
+
+  % \end{quote}
+
+  % \vspace{2em}
+
+
+
+
+
+  \begin{quote}
+
+    Jesteś prawdziwym miłośnikiem ryzyka, jeśli przechowujesz ważne pliki
+    na~komputerze z~systemem \textsc{unix}. \\
+    Robert E.~Seastrom
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Samochód Kena Thompsona}
+
+
+  \begin{quote}
+
+    Ken Thompson ma samochód, który sam pomógł zaprojektować.
+    W~przeciwieństwie do~większość samochodów, nie ma on prędkościomierza,
+    wskaźnika poziomu paliwa, ani żadnej innej spośród wielu idiotycznych
+    lampek, które niczym plaga dręczą dzisiejszych kierowców.
+    W~przeciwieństwie do normalnego samochodu, gdy kierowca jadący nim
+    popełni błąd, na środku deski rozdzielczej pojawia~się
+    gigantyczny znak „?”. „Doświadczony kierowca”, stwierdził Thompson,
+    „zwykle będzie wiedział co zrobił źle”. (Tłumaczenie swobodne.) \\
+    Anonim
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Prawdziwy problem z~UNIXem}
+
+
+  \begin{quote}
+
+    Wiecie jaki jest prawdziwy problem z~\textsc{unix}em? Prawdziwy problem
+    polega na tym, że~stał~się popularny. On nigdy nie miał stać~się
+    popularny. Był przeznaczony dla kilku ludzi pracujących w~swoich
+    laboratoriach, używając wyprodukowanego przez Digital Equipment
+    Corporation starego
+    komputera \textsc{pdp}-11. Miałem kiedyś taki jeden. Wygodna, zajmująca
+    pokój maszyna. Szybka~-- wykonanie instrukcji zajmowało jej mikrosekundę.
+    Z~eleganckim zestawem instrukcji (widzisz, prawdziwi programiści piszą
+    w~assemblerze). Z~przełącznikami na frontowym panelu. Z~lampkami
+    pokazującymi, co jest w~rejestrach. Nie musiałeś~się już więcej męczyć
+    z~programami bootującymi, ale poza tym to był prawdziwy komputer. Nie
+    jak te zabawki które mamy dzisiaj, które nie mają lampek, ani
+    przełączników rejestrów. Nie możesz nawet włączać ich krop po kroku.
+    Zawsze działają na pełnych obrotach. (Tłumaczenie swobodne.) \\
+    Donald A.~Norman, str.~\textsc{xvi}
+    w~\parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{UNIX jest nie na czasie}
+
+
+  \begin{quote}
+
+    \textsc{unix} został zaprojektowany dla ówczesnego środowiska
+    obliczeniowego, nie dla dzisiejszych maszyn. \textsc{unix} przetrwał
+    tylko dlatego, że~wszyscy inni poradzili sobie tak źle.
+    Od~\textsc{unix}a można nauczyć~się wielu wartościowych rzeczy,
+    dlaczego jednak nikt nie wyciągnął z~nich lekcji i~nie zrobił
+    tego lepiej? Czemu nie zaczął od zera i~nie stworzył lepszego,
+    nowoczesnego, graficznego systemu operacyjnego? A~właśnie, czemu nie
+    zrobił też tego co sprawiło, że~\textsc{unix} odniósł sukces: rozdał go
+    światowym uniwersytetom. (Tłumaczenie swobodne.) \\
+    Donald A.~Norman, str.~\textsc{xvi}--\textsc{xvii}
+    w~\parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Od UNIXa można~się wiele nauczyć}
+
+
+  \begin{quote}
+
+    Muszę przyznać, że~mam głęboką relację typu „love-hate”
+    z~\textsc{unix}em.
+    Nieważne jak bardzo próbuję od niego uciec, on wciąż podąża za mną.
+    Naprawdę chciałbym posiąść umiejętność (jak się okazuje, absolutnie
+    niezbędną) pisania długich, egzotycznych poleceń, pełnych
+    niekonsystentnych ustawień flag, rur (potoków), filtrów i~przekierowań.
+    Ciągła
+    popularność \textsc{unix}a pozostaje dla mnie zagadką, nawet gdy
+    wszyscy wiemy, że~niekoniecznie najlepsza technologia jest tą która
+    wygrywa. (Tłumaczenie swobodne.) \\
+    Donald A.~Norman, str.~\textsc{xvii}
+    w~\parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{UNIX, an~un-opearting system}
+
+
+  \begin{quote}
+
+    Modern \textsc{unix} is a~catastrophe. It's the ``Un-Operating System'':
+    unreliable, unintuitive, unforgiving, unhelpful, and underpowered.
+    Little is more frustrating than trying to force Unix to do something
+    useful and~nontrivial. Modern Unix impedes progress in computer
+    science, wasted bilions of dolars, and destroys the common sense of
+    many who seriously use it. An~exaggeration? You won't think so after
+    reading this book. \\
+    Str.~\textsc{xix},
+    \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{UNIX rozwiązał ważny problem}
+
+
+  \begin{quote}
+
+    Oryginalna \textsc{unix} rozwiązał problem i~zrobił to dobrze. Tak samo
+    jako
+    zrobił to rzymski system numeryczny, leczenie syfilisu za pomocą rtęci
+    i~kalka kopiująca. I~jak te technologie, \textsc{unix} zasługuje by
+    odejść do
+    historii. Zostały zaprojektowany dla maszyn z~małą pamięcią, małym
+    dyskiem, bez grafiki, bez sieci i~bez żadnej mocy. W~tych czasach było
+    konieczne podążanie za podejściem które mówi:
+
+    \vspace{-0.3em}
+
+
+
+    \begin{itemize}
+
+    \item „Bycie małym i~prostym jest ważniejsze, niż bycie kompletnym
+      i~poprawnym.
+
+    \item „Musisz rozwiązać tylko 90\% problemu.”
+
+    \item „Wszystko jest strumieniem bajtów.”
+
+    \end{itemize}
+    To podejście nie jest właściwe dla systemu operacyjnego, który zarządza
+    skomplikowanymi aplikacjami, wykonującymi ważną pracę. Może nawet być
+    śmiertelne w~skutkach, gdy \textsc{unix} zostaje użyty przez
+    niewykwalifikowaną
+    osobą do~zadań, gdzie bezpieczeństwo jest najważniejsze.
+    (Tłumaczenie swobodne.) \\
+    Str.~\textsc{xx}
+    \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{???}
+
+
+  \begin{quote}
+
+
+    (Tłumaczenie swobodne.) \\
+    Donald A.~Norman, str.~\textsc{xvii}
+    w~\parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+
+
+  % \vspace{2em}
+
+
+
+
+
+  \begin{quote}
+
+    I have a natural revulsion to any operating system that shows so little
+    plannning as to have to named all of its commands after digestive
+    noises (awk, grep, fsck, nroff). \\
+    Autor nieznany
+
+  \end{quote}
+
+  \vspace{2em}
+
+
+
+
+
+  \begin{quote}
+
+    The ``N'' in NFS stands for Not, or Need, or perhaps Nightmare. \\
+    Henry Spencer
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{???}
+
+
+  \begin{quote}
+
+    Gdyby projektanci systemu X Windows budowali samochody, miałby one nie
+    mniej, niż pięć kierownic ukrytych przy siedzeniu kierowcy, żadne dwa
+    z~nich nie działałby wedle tych samych zasad. Ale za to mógłbyś
+    przełączać biegi za pomocą radia. Co niewątpliwie jest bardzo użyteczną
+    funkcjonalnością. \\
+    Marcus J. Ranum, Digital Equipment Corporation
+
+  \end{quote}
+
+  \vspace{2em}
+
+
+
+
+
+  \begin{quote}
+
+    Q: Where did the names ``C'' and ``C++'' come from? \\
+    A: They were grades. \\
+    Jerry Leichter
+
+  \end{quote}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library (deprecated since ver.~3.1)}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Communication between CPU and GPU}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex transformations (OpenGL nomenclature)}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}[label=Przestrzen-uklad-wspolrzednych-1]
+%   \frametitle{Spaces --~coordinate systems}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Spaces --~coordinate systems}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Fragment operations}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Links}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}
