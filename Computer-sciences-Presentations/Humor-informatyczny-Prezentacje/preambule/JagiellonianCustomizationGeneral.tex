@@ -1,0 +1,53 @@
+% ---------------------------------------
+% Importing TikZ's libraries
+% ---------------------------------------
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{positioning}
+
+
+
+
+
+% % Configuration package "bm" that need for making bold symbols
+\newcommand{\bmmax}{0}
+\newcommand{\hmmax}{0}
+\usepackage{bm}
+
+
+
+
+% ---------------------------------------
+% Packages for scientific texts
+% ---------------------------------------
+% \let\lll\undefined  % Sometimes you must use this line to allow
+% "amsmath" package to works with packages with packages for polish
+% languge imported
+% /preambul/LanguageSettings/JagiellonianPolishLanguageSettings.tex.
+% This comments (probably) removes polish letter Ł.
+\usepackage{amsmath}  % Packages from American Mathematical Society (AMS)
+\usepackage{amssymb}
+\usepackage{amscd}
+\usepackage{amsthm}
+\usepackage{siunitx}  % Package for typsetting SI units.
+\usepackage{upgreek}  % Better looking greek letters.
+% Example of using upgreek: pi = \uppi
+
+
+\usepackage{calrsfs}  % Zmienia czcionkę kaligraficzną w \mathcal
+% na ładniejszą. Może w innych miejscach robi to samo, ale o tym nic
+% nie wiem.
+
+
+
+
+
+
+
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% EVIL STUFF
+\if\JUlogotitle1
+\edef\LogoJUPath{LogoJU_\JUlogoLang/LogoJU_\JUlogoShape_\JUlogoColor.pdf}
+\titlegraphic{\hfill\includegraphics[scale=0.22]
+{./JagiellonianPictures/\LogoJUPath}}
+\fi
