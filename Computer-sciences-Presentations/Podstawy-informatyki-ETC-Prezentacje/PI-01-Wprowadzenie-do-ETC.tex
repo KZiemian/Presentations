@@ -1,6 +1,6 @@
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 % Basic configuration of Beamera class and Jagiellonian theme
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
@@ -18,10 +18,10 @@
 
 
 
-% ---------------------------------------
-% Procesing configuration files of Jagiellonian theme loceted in directory
-% "preambule".
-% ---------------------------------------
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
 
@@ -39,9 +39,9 @@
 
 
 
-% ---------------------------------------
+% ------------------------------------------------------
 % BibLaTeX
-% ---------------------------------------
+% ------------------------------------------------------
 % Package biblatex, with biber as its backend, allow us to handle
 % bibliography entries that use Unicode symbols outside ASCII.
 \usepackage[
@@ -58,17 +58,17 @@ eprint=true,
 
 
 
-% ------------------------------
-% Importing packages, libraries and setting their configuration.
-% ------------------------------
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
 
 
 
 
 
-% ------------------------------
-% Special configuration for this particular presentation.
-% ------------------------------
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+% ------------------------------------------------------
 
 
 
@@ -79,15 +79,15 @@ eprint=true,
 
 
 
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Wprowadzenie do~przedmiotu}
+\subtitle{Wprowadzenie do~kursu}
 
 \author{Kamil Ziemian}
 
 
-\date{}
-% ---------------------------------------------------------------------
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -99,7 +99,7 @@ eprint=true,
 
 
 % ####################################################################
-% Beginning of the document.
+% Beginning of the document
 \begin{document}
 % ####################################################################
 
@@ -166,6 +166,28 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Kilka uwag}
+
+
+  Na tych zajęciach \textit{nie} nauczymy~się jak programować. Jak dobrze
+  pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+  programowanie obejmuje tyle zagadnień i~wymaga tyle praktyki, iż~nie
+  ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
+
+  Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+
+  Ponieważ tematyka którą poruszamy jest niebanalna, więc mnóstwo rzeczy
+  będę musiał bardzo upraszczać. Proszę mieć to na uwadze.
+
+\end{frame}
+% ##################
+
+
+
+
+
 
 
 
@@ -181,6 +203,9 @@ eprint=true,
 \begin{frame}
   \frametitle{Czy informatyka jest trudna?}
 
+
+  Ten przedmiot dotyczy podstaw informatyki w~języku~C, warto~się
+  więc spytać, czy informatyka jest prosta czy trudna w~nauce?
 
   Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
   głęboko, to robi~się naprawdę złożona i~niebanalna. Jednak na stosunkowo
@@ -240,15 +265,15 @@ eprint=true,
   \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
     wyłącznie do~odczytu}. Pamięć komputera której zawartość została
   zapisana przez firmę, która ten fragment pamięci wyprodukowała
-  i~użytkownik nie może zmodyfikować jej zawartości. Przynajmniej nie żadnym
-  normalny sposobem.
+  i~użytkownik nie może zmodyfikować jej teści. Przynajmniej nie w~żaden
+  normalny sposób.
 
   \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
   pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
-  własności, że~jeśli wylosuję dowolny jej element, to czas odczytania
-  informacje z~tego elementu nie będzie zależał od tego, który element
-  został wylosowany. Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci
-  zajmuje tyle samo czasu.
+  własności, że~jeśli będę w~sposób losowy wybierał elementy tej pamięci,
+  to czas odczytania informacje z~każdego jej elementu będzie taki sam.
+  Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci zajmuje tyle samo
+  czasu.
 
   Tak naprawdę czas odczytu zależy od tego, w~jakiś sposób pamięć
   \textsc{ram} jest odczytywana, ale jeszcze długo nie będziemy się musieli
@@ -292,9 +317,9 @@ eprint=true,
 
 
   \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
-  Skrót pochodzi od nazwy technologi ang.~\textit{Complementary
-    Metal-Oxide-Semiconductor}, pl.~\textit{komplementarny półprzewodnik
-    metalowo-tlenkowy}, w~której ta pamięć jest wykonana. Musi być zasilana
+  Skrót pochodzi od angielskiej nazwy technologi \textit{Complementary
+    Metal-Oxide-Semiconductor} (pl.~\textit{komplementarny półprzewodnik
+    metalowo-tlenkowy}), w~której ta pamięć jest wykonana. Musi być zasilana
   prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
   klasyfikowana jest jako nieulotna.
 
@@ -360,7 +385,7 @@ eprint=true,
   \begin{itemize}
 
   \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
-    z~wspomnianej wcześniej listy, aż~znajdzie pierwszy, który zawiera
+    z~wspomnianej wcześniej listy, aż~znajdzie pierwsze, który zawiera
     działający system operacyjny.
 
 
@@ -398,7 +423,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Rasterization and fragment operations}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
 
 
   \begin{itemize}
@@ -465,8 +490,102 @@ eprint=true,
 
 
 % ######################################
-\section{Czym jest informatyka?}
+\section{Informatyka i~programowanie}
 % ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest informatyk?}
+
+
+  \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
+  nauka o~rozwiązywaniu problemów za~pomocą komputera.
+
+  Niektórzy będą silnie oponować przeciw tej definicji, ja jednak uważam,
+  że~dobrze opisuje charakter tych zajęć.
+
+  Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
+  Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
+  przybliżoną wartość pewnej liczby (metody numeryczne), chciałbym
+  pograć w~coś fajnego (gry wideo), etc.
+
+  Zestaw instrukcji, które ma wykonać komputer by rozwiązać pewien problem
+  nazywamy \textbf{programem komputerowym}. Programy tworzymy pisząc je
+  w~odpowiednim języku programowania. Czym jednak jest taki język?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Po co języki programowania?}
+
+
+  Jeśli chcemy by jakiś człowiek coś zrobił, to musimy mu przekazać
+  polecenie tego w~sposób który zrozumie. Czy on to zrobi to już inna
+  sprawa, może będzie wolał zrobić coś innego, np. pograć w~\textit{Manor
+    Lord}.
+
+  Komputer to maszyna, więc on nie będzie protestował (może \textsc{ai} to
+  zmieni, ale nie jestem ekspertem w~tym temacie), że~mu~się nasze polecenie
+  nie podoba, że~woli pograć w~\textit{Hollow Knighta}, etc. Problem jest
+  taki, że~komputer nie mówi po~polsku, czy po~angielsku jak my, więc nie
+  możemy mu po prostu powiedzieć co ma zrobić (znowu, \textsc{ai}).
+
+  W~jakim języku mówi komputer? Na potrzeby niniejszego kursu, przyjmiemy,
+  że~tak jak ludzie mówią naturalnie po polsku czy po angielsku, które są
+  językami z~grup indoeuropejskiej, tak komputer w~sposób naturalny mówi
+  w~językach z~grupy assemblerów, takich jak \textsc{arm} czy x86/Intel.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Języki programowania}
+
+
+  Ze~względu na trudności jakie sprawia nam praca bezpośrednio
+  w~assemblerze, ludzie stworzyli wiele innych języków, które są mniej
+  przystępne dla komputera niż jego rodzimy język (odpowiedni typ
+  assemblera), ale za~to bardziej przystępne dla ludzi.
+
+  Niemniej, choć języki takie jak C~czy Python są bardziej przystępne dla
+  nas niż assembler, nacisk należy kłaść na słowo „bardziej”. Bo~na początku
+  nauki, często trudno dostrzec w~nich cokolwiek co można nazwać
+  „przystępnością”.
+
+  Naukę programowania zwykle zaczyna~się od pisania programu, który
+  wypisuje na ekranie napis „Hello, World!”, więc i~my wykorzystamy go
+  do~pokazania, czym~się różni assembler od języka~C czy Pythona.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze ???}
+
+
+
+\end{frame}
+% ##################
+
+
 
 
 
@@ -483,26 +602,26 @@ eprint=true,
   \begin{enumerate}
     \setlength{\itemsep}{1em}
 
-  \item[1] Mamy problemy który można rozwiązać za pomocą komputera.
+  \item[1)] Mamy problemy który można rozwiązać za pomocą komputera.
 
 
 
-  \item[2] Znajdujemy sposób jako go rozwiązać. To rozwiązanie możemy
+  \item[2)] Znajdujemy sposób jako go rozwiązać. To rozwiązanie możemy
     wymyślić sami, znaleźć w~internecie, zapytać \textsc{ai}, etc.
 
 
 
-  \item[3] Piszemy program komputerowy w~języku~X, który implementuje
+  \item[3)] Piszemy program komputerowy w~języku~X, który implementuje
     dane rozwiązanie.
 
 
 
-  \item[4] Na podstawie napisanego przez nas kodu tworzymy program
+  \item[4)] Na podstawie napisanego przez nas kodu tworzymy program
     w~postaci wykonywalnej, zrozumiałej dla~komputera.
 
 
 
-  \item[5] Uruchamiamy program utworzony w~punkcie~4 na konkretnym
+  \item[5)] Uruchamiamy program utworzony w~punkcie~4 na konkretnym
     komputerze, tak by rozwiązał nasz problem.
 
   \end{enumerate}
@@ -521,18 +640,22 @@ eprint=true,
 
   \begin{itemize}
 
-  \item[1] Mamy 100 000 nazw użytkowników jakiegoś portalu. Potrzebujemy
+  \item[1)] Mamy 100 000 nazw użytkowników jakiegoś portalu. Potrzebujemy
     sprawdzić, czy nazwy zgłaszających~się regularnie nowych użytkowników
     są już zajęta czy nie. Spostrzegamy, że~można to zrobić za pomocą
     odpowiedniego programu komputerowego.
 
-  \item[2] Zauważamy, że~jeśli ustawimy nazwy dotychczasowych użytkowników
+
+
+  \item[2)] Zauważamy, że~jeśli ustawimy nazwy dotychczasowych użytkowników
     w~posortowany ciąg, to możemy sprawdzić czy dana nazwa w~nim jest
     za~pomocą wydajnego przeszukiwania binarnego. Wymyślamy jak można
     zaprowadzić relację porządku w~zbiorze tych nazw, co jest nam potrzebne
     do~ich posortowania.
 
-  \item[3] Piszemy program w~języku~X, który pobierze na wejściu nazwy
+
+
+  \item[3)] Piszemy program w~języku~X, który pobierze na wejściu nazwy
     użytkowników, następnie je posortuje według zadanego przepisu.
     Następnie, jeśli program ten otrzyma nową nazwę, to sprawdzi za pomocą
     przeszukiwania binarnego, czy jest już ona wśród nazw już zajętych.
@@ -553,10 +676,12 @@ eprint=true,
 
   \begin{itemize}
 
-  \item[4] Na~podstawie kodu w~języku~X generujemy odpowiedni program
+  \item[4)] Na~podstawie kodu w~języku~X generujemy odpowiedni program
     w~postaci wykonywalnej.
 
-  \item[5] Uruchamiamy wygenerowany w~punkcie~4 program na~konkretnym
+
+
+  \item[5)] Uruchamiamy wygenerowany w~punkcie~4 program na~konkretnym
     komputerze, by rozwiązał nasz problem.
 
   \end{itemize}
@@ -731,27 +856,13 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
-
-
-
-% \end{frame}
-% % ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
 
 
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1378,14 +1489,7 @@ eprint=true,
 
 
 
-% ##################
-% \begin{frame}
-%   \frametitle{????}
 
-
-
-% \end{frame}
-% ##################
 
 
 
