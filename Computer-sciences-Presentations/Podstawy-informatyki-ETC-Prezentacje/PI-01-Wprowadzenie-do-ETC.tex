@@ -1,0 +1,1402 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ---------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in directory
+% "preambule".
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------
+% BibLaTeX
+% ---------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{PodstawyInformatykiBibliography.bib}
+
+
+
+
+
+% ------------------------------
+% Importing packages, libraries and setting their configuration.
+% ------------------------------
+
+
+
+
+
+% ------------------------------
+% Special configuration for this particular presentation.
+% ------------------------------
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Podstawy informatyki z~językiem~C}
+\subtitle{Wprowadzenie do~przedmiotu}
+
+\author{Kamil Ziemian}
+
+
+\date{}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document.
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 73k+,
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Informacje ogólne}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
+  ale nie widzę sposobu, jak tego uniknąć.
+
+  Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
+  ja tu jestem dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja nie
+  będę Państwa rozliczał z~obecności na zajęciach, tylko z~wiedzy
+  i~umiejętności. Jeśli uważają Państwo, że~są lepsze rzeczy do robienia,
+  niż bycie na tych zajęciach, w~to mi graj.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Czy informatyka jest trudna?}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy informatyka jest trudna?}
+
+
+  Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
+  głęboko, to robi~się naprawdę złożona i~niebanalna. Jednak na stosunkowo
+  płytkim poziomie to czy jest on trudna czy nie, to mocno zależy od~odczuć
+  konkretnej osoby.
+
+  Zadam takie pytanie: czy włączenie komputera jest skomplikowane?
+  Odpowiemy na to pytanie na dwóch poziomach. Pierwszy to poziom normalnego
+  użytkownika, drugi to opis pochodzący z~książki Andrewa S.~Tanenbauma
+  \textit{Systemy operacyjne. Wydanie~III}
+  \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, dotyczący
+  komputera z~systemem Pentium.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+
+
+  \begin{enumerate}
+
+  \item Wciskamy przycisk \texttt{Power}.
+
+
+
+  \item Czekamy minutę albo dłużej.
+
+
+
+  \item Wybieramy użytkownika i~wchodzimy na swoje konto.
+
+  \end{enumerate}
+
+  Co w~tym trudnego?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
+  skomplikowany, że~trzeba wprowadzić trochę pojęć wstępnych.
+
+  \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
+    wyłącznie do~odczytu}. Pamięć komputera której zawartość została
+  zapisana przez firmę, która ten fragment pamięci wyprodukowała
+  i~użytkownik nie może zmodyfikować jej zawartości. Przynajmniej nie żadnym
+  normalny sposobem.
+
+  \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
+  pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
+  własności, że~jeśli wylosuję dowolny jej element, to czas odczytania
+  informacje z~tego elementu nie będzie zależał od tego, który element
+  został wylosowany. Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci
+  zajmuje tyle samo czasu.
+
+  Tak naprawdę czas odczytu zależy od tego, w~jakiś sposób pamięć
+  \textsc{ram} jest odczytywana, ale jeszcze długo nie będziemy się musieli
+  tym przejmować.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
+  zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
+  przykładem takiej pamięci jest \textsc{ram}.
+
+  \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
+  której treść jest zachowana, gdy przez układ przestaje płynąć prąd,
+  typowym przykładem jest dysk \textsc{ssd}.
+
+  Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
+  które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
+  we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
+  komputera z~prądu. Bo~niby czemu życie ma być proste?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
+  Skrót pochodzi od nazwy technologi ang.~\textit{Complementary
+    Metal-Oxide-Semiconductor}, pl.~\textit{komplementarny półprzewodnik
+    metalowo-tlenkowy}, w~której ta pamięć jest wykonana. Musi być zasilana
+  prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
+  klasyfikowana jest jako nieulotna.
+
+  \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
+  \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
+  na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
+  klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[1)] Wciskamy przycisk \texttt{Power}.
+
+
+
+  \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
+    ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
+    klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
+    odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
+    są magistrale \textsc{ISA} (ang. \textit{Industry Standard
+      Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
+      Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
+
+
+
+  \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
+    były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
+    konfigurowane.
+
+
+
+  \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
+    z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
+    system operacyjny. W~przeszłości były nimi dyskietki, płyty
+    \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
+    i~dyski~\textsc{ssd}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
+    z~wspomnianej wcześniej listy, aż~znajdzie pierwszy, który zawiera
+    działający system operacyjny.
+
+
+
+  \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
+    w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
+
+
+
+
+  \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
+    listę partycji, by~ustalić która z~nich jest partycją aktywną.
+    Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
+
+
+
+  \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
+    z~aktywnej partycji i~go uruchamia.
+
+
+
+  \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
+    \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
+    do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
+    z~odpowiedniego źródła.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rasterization and fragment operations}
+
+
+  \begin{itemize}
+
+  \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+    to ładuje je do jądra systemu.
+
+
+
+  \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+    działające w~tle.
+
+
+
+  \item[12)] Uruchamiane jest okno logowania.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bootowanie}
+
+
+  W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
+  \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
+  całej procedury uruchamiania komputer opisanej powyżej, albo tylko
+  stawiania systemu operacyjnego, czyli od kiedy \textsc{bios} wczytał
+  pierwszy jego sektor do pamięci (punkt siedem i~dalej). Acz to pojęcie
+  nie jest specjalnie ostro zdefiniowane.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+
+
+  Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
+  w~informatyce.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Czym jest informatyka?}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Prosty schemat rozwiązywania problemu\ldots}
+
+
+  Poniżej prezentujemy prosty schemat, jak wygląda procedura
+  rozwiązania pewnego problemu za pomocą programu napisanego w~języku
+  programowania~X.
+
+
+  \begin{enumerate}
+    \setlength{\itemsep}{1em}
+
+  \item[1] Mamy problemy który można rozwiązać za pomocą komputera.
+
+
+
+  \item[2] Znajdujemy sposób jako go rozwiązać. To rozwiązanie możemy
+    wymyślić sami, znaleźć w~internecie, zapytać \textsc{ai}, etc.
+
+
+
+  \item[3] Piszemy program komputerowy w~języku~X, który implementuje
+    dane rozwiązanie.
+
+
+
+  \item[4] Na podstawie napisanego przez nas kodu tworzymy program
+    w~postaci wykonywalnej, zrozumiałej dla~komputera.
+
+
+
+  \item[5] Uruchamiamy program utworzony w~punkcie~4 na konkretnym
+    komputerze, tak by rozwiązał nasz problem.
+
+  \end{enumerate}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład}
+
+
+  \begin{itemize}
+
+  \item[1] Mamy 100 000 nazw użytkowników jakiegoś portalu. Potrzebujemy
+    sprawdzić, czy nazwy zgłaszających~się regularnie nowych użytkowników
+    są już zajęta czy nie. Spostrzegamy, że~można to zrobić za pomocą
+    odpowiedniego programu komputerowego.
+
+  \item[2] Zauważamy, że~jeśli ustawimy nazwy dotychczasowych użytkowników
+    w~posortowany ciąg, to możemy sprawdzić czy dana nazwa w~nim jest
+    za~pomocą wydajnego przeszukiwania binarnego. Wymyślamy jak można
+    zaprowadzić relację porządku w~zbiorze tych nazw, co jest nam potrzebne
+    do~ich posortowania.
+
+  \item[3] Piszemy program w~języku~X, który pobierze na wejściu nazwy
+    użytkowników, następnie je posortuje według zadanego przepisu.
+    Następnie, jeśli program ten otrzyma nową nazwę, to sprawdzi za pomocą
+    przeszukiwania binarnego, czy jest już ona wśród nazw już zajętych.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład}
+
+
+  \begin{itemize}
+
+  \item[4] Na~podstawie kodu w~języku~X generujemy odpowiedni program
+    w~postaci wykonywalnej.
+
+  \item[5] Uruchamiamy wygenerowany w~punkcie~4 program na~konkretnym
+    komputerze, by rozwiązał nasz problem.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest implementacja?}
+
+
+  Często znamy ogólną, abstrakcyjną postać rozwiązania danego problemu, czy
+  też sposobu działania konkretnego algorytmu. Przykładowo „program
+  umożliwiający obliczanie średniej arytmetycznej z~miliona liczb.”, to
+  taka ogólny opis programu pewnego programu, który wykonuje potrzebną nam
+  czynność. Jeśli jest to potrzebne, możemy podać jego bardziej precyzyjną
+  formę. „Dany jest milion liczb. Wylicz ich sumę, następnie podziel ją
+  przez liczbę $1 \, 000 \, 000$. Tak otrzymana liczba jest poszukiwanym
+  rezultatem.”
+
+  Takie opis programu jest zrozumiały dla ludzi, ale nie dla komputera,
+  w~sensie hardwaru. Przy czym zasada ta stosuje~się też, choć w~innym
+  zakresie, do~\textsc{ai} i~\textsc{lll}, ale~to temat na osobne dyskusje.
+  Z~tego powodu musimy napisać odpowiedni kod, który będzie zrozumiały dla
+  komputera, dopiero wtedy on będzie mógł go wykonać.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest implementacja?}
+
+
+  Jeśli mamy konkretny kod, albo program, który wykonuje dane zadanie
+  zgodnie z~ogólną idę, metodą albo algorytmem, to mówimy że~taki kod lub
+  program jest \textbf{implementacją} tej idei bądź algorytmu.
+
+  To wyjaśnienie nie jest bardzo precyzyjne, ale też nie musi być.
+  Implementacja nie jest pojęciem ważnym dla komputera, tylko dla ludzi,
+  stąd od precyzyjnej definicji ważniejsze jest zrozumienie ogólnej idei.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład. Postawienie problemu i~metoda rozwiązania}
+
+
+  \textbf{Problem.} Obliczyć średnią arytmetyczną zadanych $100$ liczb.
+
+  \textbf{Metoda rozwiązania.} Oblicz sumę danych $100$ liczb, następnie
+  podziel ją przez $100$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Implementacja w~języku~C}
+
+
+  \texttt{\#include <stdio.h>} \\
+  \vspace{0.8em}
+  /* Zakładamy, że~liczby który średnią arytmetyczną mamy obliczyć są
+  przechowywane w~$100$-elementowej tablicy liczby typu \texttt{double}
+  \hphantom{aa} o~nazwie \texttt{numbersArray}, zdefiniowanej
+  w~dostarczonym nam ze-
+  \hphantom{aa} wnątrz pliku\texttt{numbersProb.h}. Plik ten ma być w~tym
+  samym kata-
+  \hphantom{aa} logu co poniższy program. */ \\
+  \texttt{\#include "numbersProb.h"} \\
+  \vspace{0.8em}
+  \texttt{int main() \{ } \\
+  \hphantom{aaaa} \texttt{int i = 0;} \\
+  \hphantom{aaaa} \texttt{double suma = 0.0;} \\
+  \hphantom{aaaa} \texttt{double sredniaArytmetycza = 0.0;}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Implementacja w~języku~C. Cd.}
+
+
+  \hphantom{aaaa} \texttt{for (i = 0; i < 100; i++) \{ } \\
+  \hphantom{aaaaaaaa} \texttt{suma += numbersArray[i];} \\
+  \hphantom{aaaa} \texttt{ \} } \\
+  \vspace{0.8em}
+  \hphantom{aaaa} \texttt{sredniaArytmetyczna = suma / 100.0;} \\
+  \vspace{0.8em}
+  \hphantom{aaaa} \texttt{prinft("sredniaArytmetyczna =
+    \%.3f.\textbackslash n", \\
+    \hphantom{aaaaaaaaa} sredniaArytmetyczna);} \\
+  \texttt{ \} }
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Implementacje w~języku Python}
+
+
+  \# Zakładamy, że~liczby których średnią arytmetyczną mamy obli- \\
+  \# czyć~są wszystkie typu \texttt{float} i~są przechowywane
+  w~$100$-elementowej \\
+  \# liście o~nazwie \texttt{numbersList}, która znajduje~się w~dostarczonym
+  \# nam module Pythona o~nazwie \texttt{numbersProg}. \\
+  \vspace{0.8em}
+  \texttt{from numbersProg import numbersList} \\
+  \vspace{0.8em}
+  \texttt{suma = 0.0} \\
+  \vspace{0.8em}
+  \texttt{for number in numbersList:} \\
+  \hphantom{aaaa} \texttt{suma += number} \\
+  \vspace{0.8em}
+  \texttt{sredniaArytmetyczna = suma / 100.0} \\
+  \texttt{answer = \textbackslash} \\
+  \hphantom{aaa}
+  \texttt{"sredniaArytmetyczna = \{\}".format(sredniaArytmetyczna)}
+  \\
+  \vspace{0.8em}
+  \texttt{print(answer)}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ##################
+% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Terminological notes}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+%  ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}
