@@ -65,6 +65,14 @@ eprint=true,
 
 
 
+% ------------------------------
+% Local packages
+% ------------------------------
+\usepackage{./Local-packages/auxiliary-commands}
+
+
+
+
 
 % ------------------------------------------------------
 % Special configuration for this particular presentation
@@ -154,11 +162,18 @@ eprint=true,
   ale nie widzę sposobu, jak tego uniknąć.
 
   Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
-  ja tu jestem dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja nie
-  będę Państwa rozliczał z~obecności na zajęciach, tylko z~wiedzy
-  i~umiejętności. Jeśli uważają Państwo, że~są lepsze rzeczy do robienia,
-  niż bycie na tych zajęciach, to Państwo wiedzą najlepiej co jest dla nich
-  dobre.
+  ja jestem tu dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja
+  będę Państwa rozliczał tylko i~wyłącznie z~wiedzy i~umiejętności,
+  z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
+  wiedzą, czemu warto poświęcić swój czas. (Choć jak wiadomo, często po
+  czasie stwierdzamy, że~nasz wybór mógł być jednak lepszy.)
+
+  Na zajęciach nie tylko można, ale i~należy zadawać pytania na dowolne
+  związane z~zajęciami zagadnienia. Nie ma pytań zbyt elementarnych lub
+  zbyt głupich, są~tylko niezadowalające odpowiedzi.
+
+  Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+    Knight}?” musimy jednak zostawić na czas po zajęciach.
 
 \end{frame}
 % ##################
@@ -169,18 +184,164 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Kilka uwag}
+  \frametitle{Informacje wstępne}
 
 
-  Na tych zajęciach \textit{nie} nauczymy~się jak programować. Jak dobrze
+  Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
   pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
-  programowanie obejmuje tyle zagadnień i~wymaga tyle praktyki, iż~nie
-  ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
-
+  programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+  iż~nie ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
   Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
 
   Ponieważ tematyka którą poruszamy jest niebanalna, więc mnóstwo rzeczy
-  będę musiał bardzo upraszczać. Proszę mieć to na uwadze.
+  będę musiał bardzo \alert{upraszczać}. Proszę mieć to na uwadze.
+
+  Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
+  czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
+  semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
+  semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
+  informatyki, który ma położyć fundamenty pod Państwa wiedzę. To nie
+  miejsce by wdawać~się we wszystkie szczegóły. Jeśli jednak ktoś chce~się
+  bardziej zagłębić w~temat, to służę po zajęciach całą moją osobą.
+
+  % Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+  % że~pomimo już pół wieku~(!) na karku, w~2024 roku nasza infrastruktura
+  % informatyczna wciąż stoi na języku~C. Acz ze względów pedagogicznych,
+  % to niekoniecznie jest najlepszy wybór, ale siła wyższa mówi, że~mamy
+  % przy nim pozostać.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  % Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
+  % pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+  % programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+  % iż~nie ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
+  % Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+
+  % Ponieważ tematyka którą poruszamy jest niebanalna, więc mnóstwo rzeczy
+  % będę musiał bardzo \alert{upraszczać}. Proszę mieć to na uwadze.
+
+  % Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
+  % czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
+  % semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
+  % semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
+  % informatyki, który ma położyć fundamenty pod Państwa wiedzę. To nie
+  % miejsce by wdawać~się we wszystkie szczegóły.
+
+  Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+  że~pomimo już pół wieku~(!) na karku, w~2024 roku nasza infrastruktura
+  informatyczna wciąż stoi na języku~C. Acz ze względów pedagogicznych,
+  to niekoniecznie jest najlepszy wybór, ale siła wyższa mówi, że~mamy
+  przy nim pozostać.
+
+  W~internecie można znaleźć wiele artykułów i~blogów jak
+  \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
+      world}}
+  z~czerwca 2024 roku.
+
+  Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
+  popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
+  znacznie lepsze warunki pracy z~językiem~C.
+
+  % \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
+  % zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia
+  % tych zajęć. Naprawdę praktyczne zajęcia z~podstaw informatyki w~języku~C
+  % są trudne do zorganizowania, z~powodów o~których będziemy mówili
+  % później.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  % Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
+  % pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+  % programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+  % iż~nie ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
+  % Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+
+  % Ponieważ tematyka którą poruszamy jest niebanalna, więc mnóstwo rzeczy
+  % będę musiał bardzo \alert{upraszczać}. Proszę mieć to na uwadze.
+
+  % Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
+  % czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
+  % semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
+  % semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
+  % informatyki, który ma położyć fundamenty pod Państwa wiedzę. To nie
+  % miejsce by wdawać~się we wszystkie szczegóły.
+
+  % Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+  % że~pomimo już pół wieku~(!) na karku, w~2024 roku nasza infrastruktura
+  % informatyczna wciąż stoi na języku~C. Acz ze względów pedagogicznych,
+  % to niekoniecznie jest najlepszy wybór, ale siła wyższa mówi, że~mamy
+  % przy nim pozostać.
+
+  % W~internecie można znaleźć wiele artykułów i~blogów jak
+  % \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
+  %     world}}
+  % z~czerwca 2024 roku.
+
+  \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
+  zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia
+  tych zajęć. Naprawdę praktyczne zajęcia z~podstaw informatyki w~języku~C
+  są trudne do zorganizowania, z~powodów o~których będziemy mówili
+  później.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Prezentacje te są dostępne w~formie plików \LaTeX a (kodu źródłowego)
+  na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
+  do internetu może jest zdobyć wpisując \\
+  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+  Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
+
+  Będą też dostępne w~formie PDFów na~Sake, wraz z~innymi materiałami
+  do nauki.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zgłaszanie błędu i~uwag}
+
+
+  W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
+  merytorycznych do zajęć lub dostępnych materiałów proszę pisać pod adres
+  \email. Chcemy by te zajęcia i~towarzyszące im materiały były możliwie
+  proste, łatwe w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć,
+  że~osiągnięcie tego jest trudniejsze niżby~się wydawało.
 
 \end{frame}
 % ##################
@@ -502,47 +663,20 @@ eprint=true,
 
 
   \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
-  nauka o~rozwiązywaniu problemów za~pomocą komputera.
-
-  Niektórzy będą silnie oponować przeciw tej definicji, ja jednak uważam,
-  że~dobrze opisuje charakter tych zajęć.
+  nauka o~rozwiązywaniu problemów za~pomocą komputera. Niektórzy mogą
+  uważać tą definicję, że~obrazę informatyki, według mnie jest bardzo dobra.
 
   Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
   Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
-  przybliżoną wartość pewnej liczby (metody numeryczne), chciałbym
-  pograć w~coś fajnego (gry wideo), etc.
+  przybliżoną wartość pewnej liczby $\pi$ lub $\gamma$ (metody numeryczne),
+  chciałbym pograć w~coś fajnego (gry wideo), etc. Powstaje jednak pytania.
+  Czym~się różni komputer od przykładowo konsoli do gier takiej jak
+  PlayStation? Przecież ona też pozwala nam rozwiązać jeden z~tych
+  problemów.
 
-  Zestaw instrukcji, które ma wykonać komputer by rozwiązać pewien problem
-  nazywamy \textbf{programem komputerowym}. Programy tworzymy pisząc je
-  w~odpowiednim języku programowania. Czym jednak jest taki język?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Po co języki programowania?}
-
-
-  Jeśli chcemy by jakiś człowiek coś zrobił, to musimy mu przekazać
-  polecenie tego w~sposób który zrozumie. Czy on to zrobi to już inna
-  sprawa, może będzie wolał zrobić coś innego, np. pograć w~\textit{Manor
-    Lord}.
-
-  Komputer to maszyna, więc on nie będzie protestował (może \textsc{ai} to
-  zmieni, ale nie jestem ekspertem w~tym temacie), że~mu~się nasze polecenie
-  nie podoba, że~woli pograć w~\textit{Hollow Knighta}, etc. Problem jest
-  taki, że~komputer nie mówi po~polsku, czy po~angielsku jak my, więc nie
-  możemy mu po prostu powiedzieć co ma zrobić (znowu, \textsc{ai}).
-
-  W~jakim języku mówi komputer? Na potrzeby niniejszego kursu, przyjmiemy,
-  że~tak jak ludzie mówią naturalnie po polsku czy po angielsku, które są
-  językami z~grup indoeuropejskiej, tak komputer w~sposób naturalny mówi
-  w~językach z~grupy assemblerów, takich jak \textsc{arm} czy x86/Intel.
+  Komputer to \textbf{programowalne urządzenie elektroniczne},
+  w~przeciwieństwie do PlayStation, która jest urządzeniem elektroniczny,
+  ale \textit{nie} jest programowalna. Co to jednak znaczy?
 
 \end{frame}
 % ##################
@@ -553,22 +687,22 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Języki programowania}
+  \frametitle{Co to znaczy „programowalny”?}
 
 
-  Ze~względu na trudności jakie sprawia nam praca bezpośrednio
-  w~assemblerze, ludzie stworzyli wiele innych języków, które są mniej
-  przystępne dla komputera niż jego rodzimy język (odpowiedni typ
-  assemblera), ale za~to bardziej przystępne dla ludzi.
+  Każde urządzenie elektroniczne działa w~ten sposób, że~gdy płynie przez
+  nie prąd wykonuje pewne instrukcje. To jakie są instrukcje wynika
+  z~tego jak wewnątrz urządzenia „podpięte są kable”. Jeśli jesteśmy
+  w~stanie wywołać dowolną instrukcję jaką dysponuje to urządzenie, to
+  mówimy, że~jest ono \textbf{programowalne}. Jeśli mogę wywołać tylko
+  część możliwych instrukcji, tą część którą udostępnił mi producent
+  urządzenia, to wówczas takie urządzenie \textbf{nie jest programowalne}.
 
-  Niemniej, choć języki takie jak C~czy Python są bardziej przystępne dla
-  nas niż assembler, nacisk należy kłaść na słowo „bardziej”. Bo~na początku
-  nauki, często trudno dostrzec w~nich cokolwiek co można nazwać
-  „przystępnością”.
-
-  Naukę programowania zwykle zaczyna~się od pisania programu, który
-  wypisuje na ekranie napis „Hello, World!”, więc i~my wykorzystamy go
-  do~pokazania, czym~się różni assembler od języka~C czy Pythona.
+  Ta definicja nie jest bardzo prepozycyjna, ale powinna dać nam wyczucie
+  o~co chodzi. Komputer daje nam dostęp do wszystkich swoich instrukcji,
+  co objawia~się choćby tym, że mogę na nim instalować dowolne
+  oprogramowanie, podczas gdy na~PlayStation mogę mieć tylko oprogramowanie
+  jakie uprzednio zainstalowała tam firma \textsc{sony}.
 
 \end{frame}
 % ##################
@@ -579,12 +713,580 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze ???}
+  \frametitle{Programowalne urządzenie elektroniczne}
 
 
+  Przykładowo konsolę \textsc{sony} można zhakować, uzyskując pełną
+  kontrolę nad nią. Jak to zrobić można~się choćby dowiedzieć z~nagrania
+  kanału Low Level Learning
+  \colorhref{https://www.youtube.com/watch?v=7OwdCc81zHo}
+  {\textit{The new PS4 jailbreak is sort of hilarious}}.
+
+  Pomijając ten i~nieskończoną ilość innych niuansów, nie powinno być
+  trudne w~zrozumieniu co to znaczy, że~komputer jest programowalnym
+  urządzeniem elektronicznym.
+
+  \textbf{Program komputerowy} to zestaw instrukcji danego komputera, które
+  przekazujemy mu, by je wykonał. Tutaj pojawia~się potrzeba wprowadzenia
+  języków programowania. Nie będziemy podawać definicji języka
+  programowania, zamiast tego zajmiemy~się tym jak o~nich myśleć.
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest język programowania?}
+
+
+  Dwie metafory które są wygodne w~opisie tego czym jest język
+  programowania i~które ja lubię, to metafora języka właśnie i~skrzynki
+  z~narzędziami.
+
+  Jeśli chcę by człowiek coś zrobił, muszę mu to przekazać w~języku który
+  on rozumiem. Przykładowo ze względu na to jak zbudowany jest język
+  angielski i~język japoński, ich wzajemna nauka dla użytkowników tych
+  języków jest niezwykle trudna. Jeśli więc osobą której chcę zlecić
+  zrobienie czegoś jest Japończyk, może~się zdarzyć, iż będę musiał
+  przekazać mu informację po japońsku.
+
+  Oczywiście człowiek może~się nie zgodzić, wykręcać, etc. Komputer to
+  tępa maszyna więc pewnie ślepo wykona wszystko co mu zleciliśmy. Ktoś
+  może powiedzieć, że~przecież mamy \textsc{ai}, chata\textsc{gpt}, etc.
+  To wszystko są ciekawe sprawy, ale na tym przedmiocie nie mamy
+  możliwości~się nimi zająć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest język programowania?}
+
+
+  Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+  który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+  jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+  że~pierwotnym językiem komputera jest \textbf{język assembler}.
+
+  Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+  hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+  posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
+  czy x86/Intel. Generalnie typ assemblera jest ustalony przez firmę, która
+  wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
+  „podpięte kable” w~rzeczonym procesorze.
+
+  I~tutaj pojawia~się dwa poważne problem.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Assembler, jaki problem?}
+
+
+  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+  A~nawet jeśli ktoś lubi pisać w~assemblerze, to w~praktyce unika~się
+  tego jak tylko~się da, bo w~assemblerze nawet najlepsi zbyt często
+  popełniają błędy, co może prowadzić do tragicznych konsekwencji.
+
+  Wynika to z~tego, że~assembler to język naturalny dla \alert{komputera},
+  ale nie dla człowieka. Ponieważ zaś, nie jest to wielkie odkrycie,
+  człowiek mocno~się różni od komputer, język naturalny dla jednego z~nich
+  jest zupełnie nienaturalny dla drugiego. Dla nas assembler jest bardzo
+  nienaturalny, komputer nie potrafi zaś sobie radzić z~angielskim, czy
+  polskim.
+
+  Żeby nie być gołosłownym, przedstawię teraz przykład programu, który
+  jedyne co robi to wypisuje gdzieś na ekranie tekst „Hello, World!”.
+  Podany zostanie odpowiedni kod w~assemblerze x86 w~wersji Nasm, języku~C
+  i~języku Python.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze x86, Nasm
+    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+  \texttt{org 0x100} \\
+  \vspace{0.8em}
+  \texttt{mov dx, msg} \\
+  \texttt{mov ah, 9} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+  \texttt{mov ah, 0x4c} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~języku~C}
+
+
+  \texttt{\#include <stdio.h>} \\
+  \vspace{0.8em}
+  \texttt{int main() \{ } \\
+  \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \hphantom{aaaa} \texttt{return 0;} \\
+  \texttt{ \} }
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~języku~Python}
+
+
+  \texttt{print("Hello, World!")}
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co z~tego wynika?}
+
+
+  Powinno być teraz dość oczywiste, że~C jest prostszy od~assemblera,
+  a~Python prostszy od~C.
+
+  Czy od tego momentu kursu możemy uznać, że~język assemblera nas nie
+  interesuje? Jeśli ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
+  to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
+
+  Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
+  w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
+  w~Pythonie, ale ja o~tym nie decyduje.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{W~jaki sposób działają~C i~Python?}
+
+
+  Wróćmy do przykładu z~Japończykiem nieznającym angielskiego. Przyjmijmy,
+  że~ja nie znam angielskiego, a~on polskiego (po kiego Japończykowi język
+  polski?). Czy nie ma szans, żeby przekazał mu polecenie? Oczywiście,
+  że~jest. Wystarczy, że~spiszę odpowiednią informację na kartce, użyję
+  translatora by przetłumaczyć ją na japoński i~mu ją dam.
+
+  Tak samo postępujemy z~komputerem. W~teorii języków programowania
+  \textbf{translatorem} nazywamy program który tłumaczy między dwoma
+  \alert{dowolnymi} językami programowania. Mogę więc napisać program
+  w~języku~C następnie użyć odpowiedniego translatora by przetłumaczyć
+  go na assembler, który następnie zostanie wykonany przez komputer.
+
+  Koniec końców każdy język programowania, czy to~C, czy Python,
+  \alert{musi} zostać przetłumaczony na odpowiedni kod assemblera,
+  by~komputer go wykonał. To jednak wykracza poza temat zajęć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Typy translatorów}
+
+
+  Istnieje wiele różnych rodzai translatorów. Przykładowo translatory
+  używane dla języka~C noszą nazwę \textbf{kompilatorów}, zaś te stosowane
+  dla języka Python \textbf{interpreterów}. To jednak bardzo złożona
+  dziedzina informatyki, która od mniej więcej w~roku 2000 roku wkroczył
+  w~nową, wciąż trwającą fazę rozwoju, więc tutaj ciągle~się coś zmienia.
+
+  Na razie wszystko co muszą Państwo wiedzieć o~kompilatorach sprowadza~się
+  do tego jak uruchomić program napisany w~języku~C, co~można ująć w~trzech
+  punktach.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak używać kompilatora?}
+
+
+  Przyjmijmy, że~program napisany w~języku~C znajduje~się w~pliku
+  \texttt{source.c} (od ang. \textit{source code}, kod źródłowy), a~program
+  wynikowy nazywa~się \texttt{progOut} (od ang. \textit{program out},
+  program wyjściowy).
+
+
+
+
+
+  \begin{enumerate}
+
+  \item W~pliku \texttt{source.c} zapisujemy odpowiedni kod w~języku~C.
+
+
+
+  \item Przekazujemy kompilatorowi plik \texttt{source.c}, na podstawie
+    niego tworzy on program \texttt{progOut}.
+
+
+
+  \item Uruchamiamy program wykonywalny \texttt{progOut}.
+
+  \end{enumerate}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak to wygląda w~praktyce?}
+
+
+  Przyjmujemy, że~jesteśmy pod systemem GNU/Linux i~wszystkie potrzebne
+  programy~są zainstalowane.
+
+
+
+
+  \begin{enumerate}
+
+  \item Otwieramy powłokę \textsc{bash}.
+
+
+
+  \item Tworzymy plik \texttt{source.c} za pomocą komendy \\
+    \texttt{\$ gedit source.c \&}
+
+
+
+  \item Zapisujemy odpowiedni kod programu w~pliku \texttt{source.c}.
+
+
+
+  \item Kompilujemy plik \texttt{source.c} przez wpisanie w~terminalu
+    polecenia \\
+    \texttt{\$ gcc -std=c99 -pedantic source.c -o progOut}
+
+
+
+  \item Jeśli wystąpił błąd, poprawiamy kod w~pliku \texttt{source.c}.
+
+
+
+  \item Uruchamiamy program \texttt{progOut} wpisując w~terminalu \\
+    \texttt{\$ ./progOut}
+
+
+
+  \item Jeśli \texttt{progOut} nie działa jak trzeba wracamy do punktu~5.
+
+  \end{enumerate}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Bardzo śmieszne”}
+
+
+  Teraz sobie pewnie niektórzy z~Państwa myślą: „Bardzo śmieszne. Napisał
+  listę siedmiu punktów, z~których każdy brzmi jak magiczne zaklęcia
+  z~>>Harry’ego Pottera”. Ja od trzech godzin siedzę nad piątym i~powoli
+  tracę zmysły, a~kolega obok jeszcze nie ukończył pierwszego.”.
+
+  Tak może być, to zupełnie normalne. Dlatego ja tu jestem by Państwu pomóc
+  zrobić te pierwsze kroki, które prawie zawsze są najtrudniejsze. Dlatego
+  jeśli coś nie działa, proszę mówić, postaram~się pomóc.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Podstawowe informacje o~języku~C}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przesadnie szczegółowa lista featurów języka~C}
+
+
+  \begin{itemize}
+
+  \item[1)] Zmienne.
+
+
+
+  \item[2)] Typy zmiennych: \texttt{char}, \texttt{short int}, \texttt{int},
+    \texttt{long int}, \texttt{float}, \ldots
+
+
+  \item[3)] Operator przypisania: \texttt{=}.
+
+
+  \item[3)] Operator arytmetyczne: \texttt{+}, \texttt{-}, \texttt{*},
+    \texttt{/}, \texttt{\%}.
+    (Jeśli Państwo myślą, że~to banalnie proste, to~się Państwo
+    nieprzyjemnie zdziwią.)
+
+
+
+  \item[4)] Operatory porównania: \texttt{==} (nie pomylić z~operatorem
+    przypisania~\texttt{=}),
+
+
+
+  \item[3)] Instrukcje warunkowe: \texttt{if \ldots else \ldots}, \texttt{switch}.
+
+
+
+  \item[4)] Pętle: \texttt{while}, \texttt{for}, \texttt{do \ldots while}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% ######################################
+\section{Kilka słów ogólnie o~językach programowania}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ile istnieje języków programowania?}
+
+
+  Krótko mówiąc, jest ich tyle, że~chyba nikt na świecie nie jest~się
+  w~stanie wszystkich nauczyć. Dobrze, tylko w~takim razie, na których
+  powinniśmy~się skupić?
+
+  Dobrym miernikiem ważność języka jest indeks \textsc{tiobe}, które
+  stara~się mierzyć popularność wszystkich możliwych języków programowania.
+  Indeks ten jest aktualizowany co miesiąc, sami zaś jego twórcy
+  zastrzegają, iż~zadanie mierzenia popularności języków jest bardzo trudne
+  i~użyte metody pozostawiają duży margines błędu. Niemniej jest to wciąż
+  narzędzie którego warto używać.
+
+  Więcej informacji o~indeksie \textsc{tiobe} można znaleźć na stronie \\
+  \colorhref{https://www.tiobe.com/tiobe-index/}
+  {https://www.tiobe.com/tiobe-index/} i~dostępnych tam odnośnikach.
+  My zaś przyjrzymy~się pierwszej dwudziestce języków i~ich zasięgowi.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{TIOBE indeks, lipiec 2024}
+
+
+  \begin{itemize}
+
+  \item[1)] Python, 16.21\%.
+
+
+
+  \item[2)] C++, 10.34\%.
+
+
+
+  \item[3)] C, 9.48\%.
+
+
+
+  \item[4)] Java, 8.59\%.
+
+
+
+  \item[5)] C\#, 6.72\%.
+
+
+
+
+  \item[6)] JavaScript, 3.79\%.
+
+
+
+
+  \item[7)] Go, 2.19\%.
+
+
+
+
+  \item[8)] Visual Basic, 2.08\%.
+
+
+
+
+  \item[9)] Fortran, 2.05\%.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
 
 
 
@@ -896,72 +1598,6 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{???}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{??????}
-
-
-
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1037,41 +1673,6 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{??????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{???}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1499,9 +2100,17 @@ eprint=true,
 
 
 
-
-
 % ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
 % End of the document
 
 \end{document}
