@@ -109,7 +109,7 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 73k+,
+% Number of chars: 62k+, 15k+,
 \RaggedRight
 % ######################################
 
@@ -178,14 +178,14 @@ eprint=true,
 
 
 % ######################################
-\section{Opinie????}
+\section{O~języku~C}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{Skąd~się wziął język~C}
+  \frametitle{Skąd~się wziął i~czym jest język~C?}
 
 
   \textbf{Uwaga.} Tekst książka Kernighana i~Ritchiego (K\&R) została
@@ -222,7 +222,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?}
+  \frametitle{C, język niskiego czy wysokiego poziomu?}
 
 
   C~jest językiem względnie „niskiego poziomu”. Określenie to nie zawiera
@@ -244,7 +244,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?}
+  \frametitle{Czego w~języku C nie ma?}
 
 
   W~języku~C nie istnieją operacje na~takich obiektach złożonych, jak~ciągi
@@ -260,7 +260,7 @@ eprint=true,
   W~większości instalacji~C występuje sensowny standardowy zestaw takich
   funkcji.
 
-  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI C}, K\&R,
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
   str.~18, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
 
 \end{frame}
@@ -272,38 +272,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Kilka pojęcia}
+  \frametitle{Czego w~języku C nie ma?}
 
 
+  Podobnie, języka~C oferuje jedynie proste, jednościeżkowe konstrukcje
+  sterujące; instrukcje warunkowe, pętle, grupowanie instrukcji
+  i~podprogram; nie zapewnia wieloprogramowości, współbieżności,
+  synchronizacji czy~współprogramów.
 
+  Jakkolwiek brak kilku takich cech można wydawać~się poważną usterką
+  („Sugerujecie, że~dla porównania dwóch ciągów znaków będę musiały wywołać
+  jakąś funkcję?”), to sprowadzenie języka do tak skromnych rozmiarów
+  przyniosło wymierne korzyści. Ponieważ~C jest względnie mały, jego opis
+  zajmuje mało miejsce i~można go szybko przyswoić. Wolno więc rozsądnie
+  założyć, że~programista zna, rozumie i~rzeczywiście regularnie używa
+  pełnej mocy języka.
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~18, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
 
 \end{frame}
 % ##################
@@ -314,10 +300,66 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
+  \frametitle{W~jakim sensie~C jest językiem przenośnym?}
+
+
+  Chociaż język~C odzwierciedla możliwości wielu komputerów, nie jest
+  zależny od architektury żadnej konkretnej maszyny. Dzięki temu~--
+  z~pewną dozą ostrożności~-- łatwo można napisać programy „przenośne”,
+  co znaczy tyle, że~mogą być uruchamiane bez zmian na różnorodnym sprzęcie.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~19, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+\end{frame}
+% ##################
 
 
 
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bardzo ważny problem}
+
+
+  Kompilatory mają ostrzegać o~najczęstszych typach błędów, wyeliminowano
+  także automatyczne przekształcenia danych o~niezgodnych typach.
+  Niemniej jednak język~C zachował swoją zasadniczą filozofię, według
+  której programista wie co robi; wymaga~się jedynie, aby jawnie sformułował
+  swoje zamiary.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~20, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+  % \VerSpaceFour
+
+
+
+
+
+  Dzisiaj przyjmuje~się inne podejście, z~którym ja~się zgadzam. Mianowicie,
+  że~programistę \alert{trzeba} bronić przed nim samym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zdrowa samokrytyka}
+
+
+  Na~koniec~C, jak każdy inny język, ma swoje wady. Kilka operatorów
+  ma~źle określony priorytet; pewne części składni mogłyby być lepsze. Mimo
+  to~C udowodnił, że~jest niezwykle sprawnym i~wyrazistym językiem dla
+  szerokiej gamy zastosowań.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~20, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
 
 \end{frame}
 % ##################
