@@ -13,7 +13,7 @@
 
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
-\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+\usetheme[style=\PresentationStyle]{jagiellonian}
 
 
 
@@ -44,6 +44,13 @@
 
 
 
+% ------------------------------
+% Local packages
+% ------------------------------
+
+
+
+
 
 % ------------------------------
 % Special configuration for this particular presentation.
@@ -58,19 +65,15 @@
 
 
 
-% ---------------------------------------------------------------------
-\title{Geometry 3D}
-\subtitle{for Designers of Video Games}
+% ------------------------------------------------------------------------------------------------------------------
+\title{Algorytmy kompilacji}
+\subtitle{Wprowadzenie}
 
-\author{Paweł Węgrzyn, Ph.D., Assoc. Prof. \\[1em]
-  Institute of Applied Computer Science \\
-  Faculty of Physics, Astronomy \\
-  and Applied Computer Science \\
-  Jagiellonian University, Cracow, Poland}
+\author{Kamil Ziemian}
 
 
-\date{}
-% ---------------------------------------------------------------------
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -90,9 +93,11 @@
 
 
 
+% ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+.
+% Number of chars: 62k+,
 \RaggedRight
+% ######################################
 
 
 
@@ -106,44 +111,12 @@
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Table of contents}
-
-
-%   \tableofcontents
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ######################################
-% \section{Getting ECTS~points. Requirements}
-% % ######################################
-
-
-
 % ##################
 \begin{frame}
-  \frametitle{Getting ECTS~points for the Course}
+  \frametitle{Spis treści}
 
 
-  \begin{enumerate}
-    \setlength{\itemsep}{1em}
-
-  \item Getting credits for the classes (zaliczenie; pre-examination)
-
-  \item Taking final written examination
-
-  \end{enumerate}
+  \tableofcontents
 
 \end{frame}
 % ##################
@@ -152,36 +125,88 @@
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Literature}
+% ######################################
+\section{Czy to jest kurs praktyczny?}
+% ######################################
 
 
-%   Eric Lengyel, \textit{Mathematics for~3D Game Programming and~Computer
-%     Graphics}.
 
-%   John Flynt, Danny Kodicek, \textit{Mathematics and~Physics
-%     for~Programmers}.
 
-%   John Flynt, Boris Meltreger, \textit{Beginning Math Concepts for~Game
-%     Developers}.
 
-%   Peter Shirley, Michael Ashikhmin, \textit{Fundamentals of~Computer
-%     Graphics}.
 
-%   Wendy Stahler, Dustin Clingman, Kaveh Kahriz, \textit{Beginning Math
-%     and~Physics for~Game Programmers}.
 
-%   Wendy Stahler, \emph{Fundamentals~of Math and~Physics for~Game
-%     Programmers}.
+% ######################################
+\section{Spojrzenie na~przedmiot z~lotu ptaka}
+% ######################################
 
-%   Christopher Tremblay, \emph{Mathematics for~Game Developers}.
 
-%   James Van Verth, Lars Bishop, \emph{Essential Mathematics for Games
-%     \&~Interactive Applications: A~Programmer’s Guide}.
 
-% \end{frame}
-% % ##################
+% ##################
+\begin{frame}
+  \frametitle{Czy ten kurs jest praktyczny?}
+
+
+  Jeśli kiedyś napisaliście Państwo i~uruchomili program w~języku C, C++,
+  Fortran, Go, Java, Rust, etc., to na 99\% korzystali Państwo
+  z~kompilatora. W~2024 cała infrastruktura informatyczna stoi
+  na~kodzie napisany w~języku~C, który odpowiednie kompilatory przetworzyły
+  w~programy komputerowe. W~tym sensie kurs ten jest superpraktyczny, bo
+  ktoś te kompilatory musi pisać.
+
+  Jeśli jednak nie mają Państwo zamiaru zajmować~się zawodowo pracą  nad
+  kompilatorami, jak przytłaczająca większość informatyków, to ten kurs nie
+  będzie miał jakiejś szczególnie wielkiej wartości praktycznej dla Państw.
+  Niemniej nawet w~takiej sytuacji mogą Państwo wynieść z~tego kursu jakąś
+  wiedzę, która potencjalnie pozwoli wam później tworzyć bardziej wydajne
+  programy. Jeśli mamy jakieś wyobrażenie na temat tego kompilator
+  działa, to możemy mu ułatwić tworzenie dobrych programów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Krótka i~niezbyt poprawna historia problemu}
+
+
+  Na~przestrzeni tysięcy lat ludzie tworzyli urządzenia, które dziś
+  rozpoznajemy jako prekursorów współczesnych komputerów, wypada wymienić
+  kilku z~nich, którzy działali przed rokiem 1900-nym.
+
+  \textbf{2003 r.} Chris Lattner i~Vikram Adve tworzą system \textsc{llvm}.
+  Możemy przyjąć, że~w~tym momencie zaczyna~się okres rozwoju technik
+  kompilacji w~którym jesteśmy dziś (2024 rok).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co z~tego należy wynieść?}
+
+
+  Współczesna informatyka jest dziedziną bardzo młodą, nie mającą jeszcze
+  100 lat. Nauka ma to do siebie, że~potrafi naprawdę długo~się rozwijać,
+  potrzebując niekiedy dekad jeśli nie wieków, by dokonać realnego postępu.
+  W~informatyce zaś cały czas odkrywamy nowe i~kluczowe dla tej dziedziny
+  rzeczy.
+
+  W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
+  która raczej~się nie skończy już jutro. W~skutek tego cała masa rzeczy~się
+  ciągle zmienia i~to co wczoraj uchodziło za czystą fantazję, dziś jest
+  rzeczywistością wdrażaną do produkcji przemysłowej. Proszę mieć to na
+  uwadze biorąc udział w~zajęciach i~ucząc~się do tego kursu.
+
+\end{frame}
+% ##################
 
 
 
