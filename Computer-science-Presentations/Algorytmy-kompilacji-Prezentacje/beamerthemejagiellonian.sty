@@ -18,14 +18,13 @@
 %% ---------------------------------------------------------------------------
 \NeedsTeXFormat{LaTeX2e}
 \ProvidesPackage{beamerthemejagiellonian}
-  % [2021/11/8 v0.1 Jagiellonian Beamer theme]
 \RequirePackage{etoolbox}
 \RequirePackage{pgfopts}
 \pgfkeys{/jagiellonian/.cd,
   .search also={
     /jagiellonian/inner,
     /jagiellonian/outer,
-    /jagiellonian/color,
+    /jagiellonian/colors,
     /jagiellonian/font,
   }
 }
@@ -75,7 +74,7 @@
 \useoutertheme{jagiellonian}
 \usecolortheme{jagiellonian}
 \usefonttheme{jagiellonian}
-\RequirePackage{beamercommandsjagiellonian}
+\RequirePackage{beamercommandsthemejagiellonian}
 \AtEndPreamble{%
   \@ifpackageloaded{pgfplots}{%
     \RequirePackage{pgfplotsthemetol}

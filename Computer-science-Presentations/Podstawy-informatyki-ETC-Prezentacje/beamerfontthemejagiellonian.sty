@@ -237,7 +237,7 @@
 \patchcmd{\sectionentry}
   {\def\insertsectionhead{#2}}
   {\def\insertsectionhead{\jagiellonian@sectiontitleformat{#2}}}
-  {}
+  {}%
   {\PackageError{beamerfontthemejagiellonian}{Patching section title failed}\@ehc}
 \@tempswafalse
 \patchcmd{\beamer@section}

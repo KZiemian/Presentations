@@ -52,10 +52,15 @@
       }
     },
 }
+\newcommand{\JUlogotitle}{0}
+\newcommand{\JUlogoLang}{Latin}
+\newcommand{\JUlogoShape}{B}
+\newcommand{\JULogoColor}{monochromaticJUwhite}
 \newcommand{\jagiellonian@outer@setdefaults}{
   \pgfkeys{/jagiellonian/outer/.cd,
     numbering=counter,
     progressbar=frametitle,
+    JULogoOnTitleSlide=no,
   }
 }
 \setbeamertemplate{navigation symbols}{}
@@ -89,16 +94,7 @@
 }
 \defbeamertemplate{frametitle}{plain}{%
   \nointerlineskip%
-  \begin{beamercolorbox}[%
-      wd=\paperwidth,%
-      sep=0pt,%
-      leftskip=\jagiellonian@frametitle@padding,%
-      rightskip=\jagiellonian@frametitle@padding,%
-    ]{frametitle}%
-  \jagiellonian@frametitlestrut@start%
-  \insertframetitle%
-  \nolinebreak%
-  \jagiellonian@frametitlestrut@end%
+  \begin{beamercolorbox}{frametitle}%
   \end{beamercolorbox}%
 }
 \setbeamertemplate{frametitle continuation}{%
@@ -130,7 +126,43 @@
       /jagiellonian/outer/.cd,
       numbering=none,
       progressbar=none}
-    }{}{}
+  }{}{}
+}
+\pgfkeys{
+  /jagiellonian/outer/JULogoOnTitleSlide/.cd,
+  .is choice,
+  yes/.code=\renewcommand{\JUlogotitle}{1},
+  no/.code=\renewcommand{\JUlogotitle}{0},
+}
+\pgfkeys{
+  /jagiellonian/outer/LogoLang/.cd,
+  .is choice,
+  PL/.code=\renewcommand{\JULogoLang}{PL},
+  EN/.code=\renewcommand{\JULogoLang}{EN},
+  Latin/.code=\renewcommand{\JULogLang}{Latin},
+}
+\pgfkeys{
+  /jaigellonian/outer/LogoShape/.cd,
+  .is choice,
+  % none/.code=\setbeamertemplate{frame numbering}[none],
+  A/.code=\renewcommand{\JULogoShape}{A},
+  B/.code=\renewcommand{\JULogoShape}{B},
+  C/.code=\renewcommand{\JULogoShape}{C},
+  D/.code=\renewcommand{\JULogoShape}{D},
+}
+\pgfkeys{
+  /jagiellonian/outer/LogoColor/.cd,
+  .is choice,
+  % none/.code=\setbeamertemplate{frame numbering}[none],
+  % white/.code=\renewcommand{\JULogoColor}{white},
+  % blue/.code=\renewcommand{\JULogoColor}{blue},
+  color/.code=\renewcommand{\JULogoColor}{color},
+  monochromaticJUblue/.code={
+    \renewcommand{\JULogoColor}{monochromaticJUblue}
+  }
+  monochromaticJUwhite/.code={%
+    \renewcommand{\JULogoColor}{monochromaticJUwhite}
+  }
 }
 \jagiellonian@outer@setdefaults
 \ProcessPgfPackageOptions{/jagiellonian/outer}

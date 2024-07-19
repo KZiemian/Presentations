@@ -16,13 +16,14 @@
 % Styles for writing nodes in diagram.
 
 \tikzset{
-  % Square node with rounded corners.
+  % Blue square node with rounded corners
   diagram block/.style={rectangle,rounded corners,
     text centered,minimum height=4.5em,text width=7em,
-    fill=jAxisBlue,text=jMathTextFGStyleDark},
+    fill=jAxisBlue,text=jMathTextFGColorOfStyleDark},
+  % ??? rectangle node
   diagram square block/.style={rectangle,
     text centered,minimum height=4.5em,text width=7em,
-    fill=brown,text=jMathTextFGStyleDark},
+    fill=brown,text=jMathTextFGColorOfStyleDark},
 }
 % ############################
 
@@ -35,11 +36,11 @@
 
 % Basic diagram arrow.
 \tikzset{
-  % Strzałka do łączenia wierzchołków diagramów
+  % Arrow for connecting nodes of diagrams
   thick diagram arrow/.style={-{Triangle[scale width=0.6,
-      scale length=0.3]},line width=7.5,color=jNormalTextFGStyleLight},
+      scale length=0.3]},line width=7.5,color=jNormalTextFGColorOfStyleLight},
   % Linia do łączenia wierzchołków w diagramach
   thick diagram line/.style={-,line width=7.5,
-    color=jNormalTextFGStyleLight},
+    color=jNormalTextFGColorOfStyleLight},
 }
 % ############################
