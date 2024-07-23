@@ -52,7 +52,7 @@ url=false,
 eprint=true,
 ]{biblatex}
 
-\addbibresource{Podstawy-Informatyki-ETC-Bibliography}
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
 
 
 
@@ -68,7 +68,7 @@ eprint=true,
 % ------------------------------
 % Local packages
 % ------------------------------
-\usepackage{./Local-packages/auxiliary-commands}
+\usepackage{./Local-packages/local-settings}
 
 
 
@@ -159,18 +159,18 @@ eprint=true,
 
 
   Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
-  ale nie widzę sposobu, jak tego uniknąć.
+  ale nie widzę sposobu, by~tego uniknąć.
 
   Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
   ja jestem tu dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja
-  będę Państwa rozliczał tylko i~wyłącznie z~wiedzy i~umiejętności,
+  będę Państwa rozliczał tylko i~wyłącznie z~umiejętności i~wiedzy,
   z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
   wiedzą, czemu warto poświęcić swój czas. (Choć jak wiadomo, często po
   czasie stwierdzamy, że~nasz wybór mógł być jednak lepszy.)
 
-  Na zajęciach nie tylko można, ale i~należy zadawać pytania na dowolne
-  związane z~zajęciami zagadnienia. Nie ma pytań zbyt elementarnych lub
-  zbyt głupich, są~tylko niezadowalające odpowiedzi.
+  Na zajęciach nie tylko można, ale \alert{trzeba i~należy} zadawać pytania
+  na dowolne związane z~zajęciami zagadnienia. Nie ma tu pytań zbyt
+  elementarnych lub zbyt głupich, są~tylko niezadowalające odpowiedzi.
 
   Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
     Knight}?” musimy jednak zostawić na czas po zajęciach.
@@ -200,15 +200,10 @@ eprint=true,
   czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
   semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
   semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
-  informatyki, który ma położyć fundamenty pod Państwa wiedzę. To nie
-  miejsce by wdawać~się we wszystkie szczegóły. Jeśli jednak ktoś chce~się
-  bardziej zagłębić w~temat, to służę po zajęciach całą moją osobą.
-
-  % Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
-  % że~pomimo już pół wieku~(!) na karku, w~2024 roku nasza infrastruktura
-  % informatyczna wciąż stoi na języku~C. Acz ze względów pedagogicznych,
-  % to niekoniecznie jest najlepszy wybór, ale siła wyższa mówi, że~mamy
-  % przy nim pozostać.
+  informatyki, który ma położyć fundamenty pod Państwa umiejętności
+  i~wiedzę. To nie przedmiot by wdawać~się we wszystkie szczegóły. Jeśli
+  jednak ktoś chce~się bardziej zagłębić w~temat, to służę po zajęciach
+  całą moją osobą.
 
 \end{frame}
 % ##################
@@ -222,42 +217,51 @@ eprint=true,
   \frametitle{Informacje wstępne}
 
 
-  % Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
-  % pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
-  % programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
-  % iż~nie ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
-  % Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
-
-  % Ponieważ tematyka którą poruszamy jest niebanalna, więc mnóstwo rzeczy
-  % będę musiał bardzo \alert{upraszczać}. Proszę mieć to na uwadze.
-
-  % Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
-  % czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
-  % semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
-  % semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
-  % informatyki, który ma położyć fundamenty pod Państwa wiedzę. To nie
-  % miejsce by wdawać~się we wszystkie szczegóły.
-
   Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
   że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
-  nasza infrastruktura informatyczna wciąż stoi na języku~C. Acz ze
-  względów pedagogicznych, to niekoniecznie jest najlepszy wybór, ale siła
-  wyższa mówi, że~mamy przy nim pozostać.
+  nasza infrastruktura informatyczna wciąż stoi na języku~C. Niektórzy
+  mówią, że~C to król wszystkich języków programowania. Jednak patrząc pod
+  kątem względów pedagogicznych, to niekoniecznie jest najlepszy wybór
+  na kurs podstaw informatyki, ale siła wyższa mówi, że~mamy jego używać.
 
   W~internecie można znaleźć wiele artykułów i~blogów jak
   \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
       world}}
-  z~czerwca 2024 roku.
+  z~czerwca 2024 roku, których tytuł mówi sam za siebie
+  \parencite{Scott-C-programming-is-still-ETC-Ver-2024}.
 
   Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
   popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
   znacznie lepsze warunki pracy z~językiem~C.
 
-  % \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
-  % zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia
-  % tych zajęć. Naprawdę praktyczne zajęcia z~podstaw informatyki w~języku~C
-  % są trudne do zorganizowania, z~powodów o~których będziemy mówili
-  % później.
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+  że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
+  nasza infrastruktura informatyczna wciąż stoi na języku~C. Niektórzy
+  mówią, że~C to król wszystkich języków programowania. Jednak patrząc pod
+  kątem względów pedagogicznych, to niekoniecznie jest najlepszy wybór
+  na kurs podstaw informatyki, ale siła wyższa mówi, że~mamy jego używać.
+
+  W~internecie można znaleźć wiele artykułów i~blogów jak
+  \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
+      world}}
+  z~czerwca 2024 roku, których tytuł mówi sam za siebie
+  \parencite{Scott-C-programming-is-still-ETC-Ver-2024}.
+
+  Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
+  popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
+  znacznie lepsze warunki pracy z~językiem~C.
 
 \end{frame}
 % ##################
@@ -296,7 +300,12 @@ eprint=true,
   % W~internecie można znaleźć wiele artykułów i~blogów jak
   % \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
   %     world}}
-  % z~czerwca 2024 roku.
+  %     z~czerwca 2024 roku.
+
+  \alert{Ważne.} Jeśli mają Państwo jakiekolwiek problemy z~systemem
+  GNU/Linux to proszę o~tym \alert{mówić}. Nie przyjmuję założenia,
+  że~Państw mają już być ekspertami, gdy chodzi o~ten często toporny system
+  operacyjny.
 
   \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
   zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia

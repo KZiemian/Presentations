@@ -1,0 +1,1297 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+% ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Podstawy informatyki z~językiem~C}
+\subtitle{Wprowadzenie do~kursu}
+
+\author{Kamil Ziemian}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 15k+,
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Informacje ogólne}
+% ######################################
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka uwag}
+
+
+  Na tych zajęciach \textit{nie} nauczymy~się jak programować. Jak dobrze
+  pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+  programowanie obejmuje tyle zagadnień i~wymaga tyle praktyki, iż~nie
+  ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
+
+  Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+
+  Ponieważ tematyka którą poruszamy jest niebanalna, więc mnóstwo rzeczy
+  będę musiał bardzo upraszczać. Proszę mieć to na uwadze.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{O~języku~C}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Skąd~się wziął i~czym jest język~C?}
+
+
+  \textbf{Uwaga.} Tekst książka Kernighana i~Ritchiego (K\&R) została
+  pochodzi z~roku 1989, od tego czasu wiele~się w~informatyce i~na świecie
+  zmieniło. Proszę mieć to na uwadze.
+
+  \vspace{1em}
+
+
+
+
+
+  Język~C jest językiem ogólnego stosowania. Był on ściśle związany
+  z~systemem Unix, dla którego został opracowany, ponieważ zarówno sam
+  system operacyjny, jak i~większość programów działających pod jego
+  kontrolą napisano w~C. Jednak~C nie jest przywiązany do~żadnego
+  systemu operacyjnego lub maszyny. Wprawdzie nazwano go~„językiem
+  programowania systemowego”, jest bowiem wygodnym narzędziem do
+  konstruowania kompilatorów i~systemów operacyjnych, ale okazał~się,
+  że~nadawał~się równie dobrze do napisania ważniejszych programów
+  z~wielu różnych dziedzin.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI C}, K\&R,
+  str.~17, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+  % \vspace{2em}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{C, język niskiego czy wysokiego poziomu?}
+
+
+  C~jest językiem względnie „niskiego poziomu”. Określenie to nie zawiera
+  w~sobie nic negatywnego; po prostu znaczy tyle, że~C posługuje~się tym
+  rodzajem obiektów, co~większość komputerów, a~więc znakami, liczbami
+  i~adresami. Obiekty te mogą być łączone lub przemieszczane za~pomocą
+  zwykłych operacji arytmetycznych i~logicznych dostępnych na~istniejących
+  maszynach.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI C}, K\&R,
+  str.~18, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czego w~języku C nie ma?}
+
+
+  W~języku~C nie istnieją operacje na~takich obiektach złożonych, jak~ciągi
+  znaków, zbiory, listy czy tablice. Nie ma operacji do~manipulowania całą
+  tablicą czy napisem, chociaż struktury mogą być kopiowane w~całości.
+  Język nie daje innych możliwości przydziału pamięci niż definicja
+  statyczna i~obsługa stosu realizowana przez zmienne lokalne funkcji; nie
+  ma takich pojęć, jak sterta (ang. \textit{heap}) czy odśmiecania
+  (ang. \textit{garbage collection}). I~wreszcie, sam język~C nie dostarcza
+  narzędzi wejścia-wyjścia: nie ma instrukcji READ (czytaj) lub WRITE (pisz)
+  ani wbudowanych metod dostępu do~pliku. Są~to mechanizmy wyższego poziomu
+  i~muszą być wprowadzone do~języka przez jawnie wywoływane funkcje.
+  W~większości instalacji~C występuje sensowny standardowy zestaw takich
+  funkcji.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~18, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czego w~języku C nie ma?}
+
+
+  Podobnie, języka~C oferuje jedynie proste, jednościeżkowe konstrukcje
+  sterujące; instrukcje warunkowe, pętle, grupowanie instrukcji
+  i~podprogram; nie zapewnia wieloprogramowości, współbieżności,
+  synchronizacji czy~współprogramów.
+
+  Jakkolwiek brak kilku takich cech można wydawać~się poważną usterką
+  („Sugerujecie, że~dla porównania dwóch ciągów znaków będę musiały wywołać
+  jakąś funkcję?”), to sprowadzenie języka do tak skromnych rozmiarów
+  przyniosło wymierne korzyści. Ponieważ~C jest względnie mały, jego opis
+  zajmuje mało miejsce i~można go szybko przyswoić. Wolno więc rozsądnie
+  założyć, że~programista zna, rozumie i~rzeczywiście regularnie używa
+  pełnej mocy języka.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~18, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{W~jakim sensie~C jest językiem przenośnym?}
+
+
+  Chociaż język~C odzwierciedla możliwości wielu komputerów, nie jest
+  zależny od architektury żadnej konkretnej maszyny. Dzięki temu~--
+  z~pewną dozą ostrożności~-- łatwo można napisać programy „przenośne”,
+  co znaczy tyle, że~mogą być uruchamiane bez zmian na różnorodnym sprzęcie.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~19, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bardzo ważny problem}
+
+
+  Kompilatory mają ostrzegać o~najczęstszych typach błędów, wyeliminowano
+  także automatyczne przekształcenia danych o~niezgodnych typach.
+  Niemniej jednak język~C zachował swoją zasadniczą filozofię, według
+  której programista wie co robi; wymaga~się jedynie, aby jawnie sformułował
+  swoje zamiary.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~20, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+  % \VerSpaceFour
+
+
+
+
+
+  Dzisiaj przyjmuje~się inne podejście, z~którym ja~się zgadzam. Mianowicie,
+  że~programistę \alert{trzeba} bronić przed nim samym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zdrowa samokrytyka}
+
+
+  Na~koniec~C, jak każdy inny język, ma swoje wady. Kilka operatorów
+  ma~źle określony priorytet; pewne części składni mogłyby być lepsze. Mimo
+  to~C udowodnił, że~jest niezwykle sprawnym i~wyrazistym językiem dla
+  szerokiej gamy zastosowań.
+
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
+  str.~20, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bootowanie}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Informatyka i~programowanie}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest informatyk?}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Po co języki programowania?}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Języki programowania}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze ???}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Prosty schemat rozwiązywania problemu\ldots}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest implementacja?}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest implementacja?}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład. Postawienie problemu i~metoda rozwiązania}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Implementacja w~języku~C}
+
+
+  \texttt{\#include <stdio.h>} \\
+  \vspace{0.8em}
+  /* Zakładamy, że~liczby który średnią arytmetyczną mamy obliczyć są
+  przechowywane w~$100$-elementowej tablicy liczby typu \texttt{double}
+  \hphantom{aa} o~nazwie \texttt{numbersArray}, zdefiniowanej
+  w~dostarczonym nam ze-
+  \hphantom{aa} wnątrz pliku\texttt{numbersProb.h}. Plik ten ma być w~tym
+  samym kata-
+  \hphantom{aa} logu co poniższy program. */ \\
+  \texttt{\#include "numbersProb.h"} \\
+  \vspace{0.8em}
+  \texttt{int main() \{ } \\
+  \hphantom{aaaa} \texttt{int i = 0;} \\
+  \hphantom{aaaa} \texttt{double suma = 0.0;} \\
+  \hphantom{aaaa} \texttt{double sredniaArytmetycza = 0.0;}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Implementacja w~języku~C. Cd.}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Implementacje w~języku Python}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ##################
+% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Terminological notes}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+%  ##################
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}
