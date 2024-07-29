@@ -78,14 +78,6 @@
 \colorlet{jFrametitleBGColor}{blue}
 \colorlet{jSpecialSlidesFGColor}{jBackgroundColorOfStyleLight}
 \colorlet{jSpecialSlidesBGColor}{JagiellonianUniversityBlue}
-\newcommand{\jagiellonian@colors@setcolorsofstylelight}{%
-  \colorlet{jNormalTextFGColor}{jNormalTextFGColorOfStyleLight}
-  \colorlet{jNormalTextBGColor}{jBackgroundColorOfStyleLight}
-  \colorlet{jMathTextFGColor}{jMathTextFGColorOfStyleLight}
-  \colorlet{jMathTextBGColor}{jBackgroundColorOfStyleLight}
-  \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
-  \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
-}
 \newcommand{\jagiellonian@colors@setcolorsofstyledark}{
   \colorlet{jNormalTextFGColor}{jNormalTextFGColorOfStyleDark}
   \colorlet{jNormalTextBGColor}{jBackgroundColorOfStyleDark}
@@ -94,11 +86,13 @@
   \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
   \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
 }
-\newcommand{\jagiellonian@colors@settitlefontcolorsofstylelight}{
-  \setbeamercolor{titlelike}{fg=jBackgroundColorOfStyleLight}
-  \setbeamercolor{author}{fg=jBackgroundColorOfStyleLight}
-  \setbeamercolor{date}{fg=jBackgroundColorOfStyleLight}
-  \setbeamercolor{institute}{fg=jBackgroundColorOfStyleLight}
+\newcommand{\jagiellonian@colors@setcolorsofstylelight}{%
+  \colorlet{jNormalTextFGColor}{jNormalTextFGColorOfStyleLight}
+  \colorlet{jNormalTextBGColor}{jBackgroundColorOfStyleLight}
+  \colorlet{jMathTextFGColor}{jMathTextFGColorOfStyleLight}
+  \colorlet{jMathTextBGColor}{jBackgroundColorOfStyleLight}
+  \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
+  \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
 }
 \newcommand{\jagiellonian@colors@settitlefontcolorsofstyledark}{
   \setbeamercolor{titlelike}{fg=jNormalTextFGColorOfStyleLight}
@@ -106,11 +100,11 @@
   \setbeamercolor{date}{fg=jNormalTextFGColorOfStyleLight}
   \setbeamercolor{institute}{fg=jNormalTextFGColorOfStyleLight}
 }
-\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstylelight}{
-  \setbeamer{titlelike}{bg=jBackgroundColorOfStyleLight}
-  \setbeamer{author}{bg=jBackgroundColorOfStyleLight}
-  \setbeamer{date}{bg=jBackgroundColorOfStyleLight}
-  \setbeamer{institute}{bg=jBackgroundColorOfStyleLight}
+\newcommand{\jagiellonian@colors@settitlefontcolorsofstylelight}{
+  \setbeamercolor{titlelike}{fg=jBackgroundColorOfStyleLight}
+  \setbeamercolor{author}{fg=jBackgroundColorOfStyleLight}
+  \setbeamercolor{date}{fg=jBackgroundColorOfStyleLight}
+  \setbeamercolor{institute}{fg=jBackgroundColorOfStyleLight}
 }
 \newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstyledark}{
   \setbeamercolor{titlelike}{bg=jBackgroundColorOfStyleDark}
@@ -118,6 +112,19 @@
   \setbeamercolor{date}{bg=jBackgroundColorOfStyleDark}
   \setbeamercolor{institute}{bg=jBackgroundColorOfStyleDark}
 }
+\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstyleJU}{
+  \setbeamercolor{titlelike}{bg=JagiellonianUniversityBlue}
+  \setbeamercolor{author}{bg=JagiellonianUniversityBlue}
+  \setbeamercolor{date}{bg=JagiellonianUniversityBlue}
+  \setbeamercolor{institute}{bg=JagiellonianUniversityBlue}
+}
+\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstylelight}{
+  \setbeamer{titlelike}{bg=jBackgroundColorOfStyleLight}
+  \setbeamer{author}{bg=jBackgroundColorOfStyleLight}
+  \setbeamer{date}{bg=jBackgroundColorOfStyleLight}
+  \setbeamer{institute}{bg=jBackgroundColorOfStyleLight}
+}
+
 \newcommand{\jagiellonian@colors@light}{%
   \jagiellonian@colors@setcolorsofstylelight
   %
