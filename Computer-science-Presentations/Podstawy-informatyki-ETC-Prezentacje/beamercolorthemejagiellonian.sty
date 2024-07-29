@@ -22,32 +22,32 @@
 \pgfkeys{
   /jagiellonian/colors/block/.cd,
   .is choice,
-  transparent/.code=\jagiellonian@block@transparent,
   fill/.code=\jagiellonian@block@fill,
+  transparent/.code=\jagiellonian@block@transparent,
 }
 \pgfkeys{
   /jagiellonian/colors/style/.cd,
   .is choice,
-  light/.code=\jagiellonian@colors@light,
   dark/.code=\jagiellonian@colors@dark,
+  light/.code=\jagiellonian@colors@light,
 }
 \pgfkeys{
   /jagiellonian/colors/titlefontcolorstyle/.cd,
   .is choice,
-  light/.code=\jagiellonian@colors@settitlefontcolorstylelight,
-  dark/.code=\jagiellonian@colors@settitlefontcolorstyledark,
+  dark/.code=\jagiellonian@colors@settitlefontcolorsofstyledark,
+  light/.code=\jagiellonian@colors@settitlefontcolorsofstylelight,
 }
 \pgfkeys{
   /jagiellonian/colors/titlebackgroundcolorstyle/.cd,
   .is choice,
-  JUcolors/.code=\jagiellonian@colors@settitlebackgroundcolorstyleJU,
-  light/.code=\jagiellonian@colors@settitlebackgroundcolorstylelight,
-  dark/.code=\jagiellonian@colors@settitlebackgroundcolorstyledark,
+  dark/.code=\jagiellonian@colors@settitlebackgroundcolorsofstyledark,
+  JUcolors/.code=\jagiellonian@colors@settitlebackgroundcolorsofstyleJU,
+  light/.code=\jagiellonian@colors@settitlebackgroundcolorsofstylelight,
 }
 \newcommand{\jagiellonian@colors@setdefaults}{
   \pgfkeys{/jagiellonian/colors/.cd,
-    style=light,
     block=transparent,
+    style=light,
   }
 }
 \definecolor{JagiellonianUniversityGold}{HTML}{BFA37C}
@@ -78,7 +78,7 @@
 \colorlet{jFrametitleBGColor}{blue}
 \colorlet{jSpecialSlidesFGColor}{jBackgroundColorOfStyleLight}
 \colorlet{jSpecialSlidesBGColor}{JagiellonianUniversityBlue}
-\newcommand{\jagiellonian@colors@setcolorstylelight}{%
+\newcommand{\jagiellonian@colors@setcolorsofstylelight}{%
   \colorlet{jNormalTextFGColor}{jNormalTextFGColorOfStyleLight}
   \colorlet{jNormalTextBGColor}{jBackgroundColorOfStyleLight}
   \colorlet{jMathTextFGColor}{jMathTextFGColorOfStyleLight}
@@ -86,7 +86,7 @@
   \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
   \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
 }
-\newcommand{\jagiellonian@colors@setcolorstyledark}{
+\newcommand{\jagiellonian@colors@setcolorsofstyledark}{
   \colorlet{jNormalTextFGColor}{jNormalTextFGColorOfStyleDark}
   \colorlet{jNormalTextBGColor}{jBackgroundColorOfStyleDark}
   \colorlet{jMathTextFGColor}{jMathTextFGColorOfStyleDark}
@@ -94,32 +94,32 @@
   \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
   \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
 }
-\newcommand{\jagiellonian@colors@settitlefontcolorstylelight}{
+\newcommand{\jagiellonian@colors@settitlefontcolorsofstylelight}{
   \setbeamercolor{titlelike}{fg=jBackgroundColorOfStyleLight}
   \setbeamercolor{author}{fg=jBackgroundColorOfStyleLight}
   \setbeamercolor{date}{fg=jBackgroundColorOfStyleLight}
   \setbeamercolor{institute}{fg=jBackgroundColorOfStyleLight}
 }
-\newcommand{\jagiellonian@colors@settitlefontcolorstyledark}{
+\newcommand{\jagiellonian@colors@settitlefontcolorsofstyledark}{
   \setbeamercolor{titlelike}{fg=jNormalTextFGColorOfStyleLight}
   \setbeamercolor{author}{fg=jNormalTextFGColorOfStyleLight}
   \setbeamercolor{date}{fg=jNormalTextFGColorOfStyleLight}
   \setbeamercolor{institute}{fg=jNormalTextFGColorOfStyleLight}
 }
-\newcommand{\jagiellonian@colors@settitlebackgroundcolorstylelight}{
+\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstylelight}{
   \setbeamer{titlelike}{bg=jBackgroundColorOfStyleLight}
   \setbeamer{author}{bg=jBackgroundColorOfStyleLight}
   \setbeamer{date}{bg=jBackgroundColorOfStyleLight}
   \setbeamer{institute}{bg=jBackgroundColorOfStyleLight}
 }
-\newcommand{\jagiellonian@colors@settitlebackgroundcolorstyledark}{
+\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstyledark}{
   \setbeamercolor{titlelike}{bg=jBackgroundColorOfStyleDark}
   \setbeamercolor{author}{bg=jBackgroundColorOfStyleDark}
   \setbeamercolor{date}{bg=jBackgroundColorOfStyleDark}
   \setbeamercolor{institute}{bg=jBackgroundColorOfStyleDark}
 }
 \newcommand{\jagiellonian@colors@light}{%
-  \jagiellonian@colors@setcolorstylelight
+  \jagiellonian@colors@setcolorsofstylelight
   %
   %
   \setbeamercolor{normal text}{%
@@ -140,7 +140,7 @@
   }
 }
 \newcommand{\jagiellonian@colors@dark}{%
-  \jagiellonian@colors@setcolorstyledark
+  \jagiellonian@colors@setcolorsofstyledark
   %
   %
   \usebeamercolor[fg]{normal text}

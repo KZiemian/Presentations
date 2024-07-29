@@ -1,25 +1,28 @@
-% ---------------------------------------------------------------------
-% Basic configuration of Beamera and Jagiellonian
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
 
 \ifx\PresentationStyle\notset
-\def\PresentationStyle{dark}
+  \def\PresentationStyle{dark}
 \fi
 
 
 
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
-\usetheme[style=\PresentationStyle,logoLang=Latin,logoColor=monochromaticJUwhite,JUlogotitle=yes]{jagiellonian}
+\usetheme[style=\PresentationStyle]{jagiellonian}
 
 
 
-% ---------------------------------------
-% Configuration files of Jagiellonian loceted in catalog preambule
-% ---------------------------------------
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
 
@@ -35,6 +38,46 @@
 
 
 
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+
+% Special configuration for this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+% ------------------------------------------------------
+
 % ---------------------------------------
 % Packages, libraries and their configuration
 % ---------------------------------------
@@ -45,22 +88,13 @@
 
 
 
-% ---------------------------------------
-% Configuration for this particular presentation
-% ---------------------------------------
-\newcommand{\DIAG}{\textrm{DIAG}}
-\newcommand{\divDegree}{\textrm{div}}
 
 
 
 
 
 
-
-
-
-
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 \title{Renormalizacja Epsteina-Glasera i~regularyzacja
   wymiarowa w~algebraicznej kwantowej teorii pola na~przestrzeni
   Minkowskiego}
@@ -72,7 +106,7 @@
 \institute{Uniwersytet Jagielloński w~Krakowie}
 
 \date[23 I 2015]{Seminarium Zakładu Teorii Pola, 23 stycznia 2015}
-% --------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -84,7 +118,7 @@
 
 
 % ####################################################################
-% Początek dokumentu
+% Beginning of the document
 \begin{document}
 % ####################################################################
 
@@ -92,16 +126,19 @@
 
 
 
-% Wyrównanie do lewej z łamaniem wyrazów
-
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 73k+,
 \RaggedRight
+% ######################################
 
 
 
 
 
 % ######################################
-\maketitle % Tytuł całego tekstu
+
+\maketitle
 % ######################################
 
 
@@ -853,16 +890,15 @@
 
 % ####################################################################
 % ####################################################################
-% Bibliografia
-\bibliographystyle{plalpha}
+% Bibliography
 
-\bibliography{}{}
+\printbibliography
 
 
 
 
 
 % ############################
+% End of the document
 
-% Koniec dokumentu
 \end{document}
