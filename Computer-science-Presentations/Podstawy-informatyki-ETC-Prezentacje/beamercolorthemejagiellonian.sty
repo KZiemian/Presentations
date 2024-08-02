@@ -32,22 +32,31 @@
   light/.code=\jagiellonian@colors@light,
 }
 \pgfkeys{
-  /jagiellonian/colors/titlefontcolorstyle/.cd,
+  /jagiellonian/colors/fontsontitleframecolorstyle/.cd,
   .is choice,
   dark/.code=\jagiellonian@colors@settitlefontcolorsofstyledark,
   light/.code=\jagiellonian@colors@settitlefontcolorsofstylelight,
 }
 \pgfkeys{
-  /jagiellonian/colors/titlebackgroundcolorstyle/.cd,
+  /jagiellonian/colors/titleframebackgroundcolorstyle/.cd,
   .is choice,
-  dark/.code=\jagiellonian@colors@settitlebackgroundcolorsofstyledark,
-  JUcolors/.code=\jagiellonian@colors@settitlebackgroundcolorsofstyleJU,
-  light/.code=\jagiellonian@colors@settitlebackgroundcolorsofstylelight,
+  dark/.code=\jagiellonian@colors@settitleframebackgroundcolorsofstyledark,
+  JUcolors/.code=\jagiellonian@colors@settitleframebackgroundcolorsofstyleJU,
+  light/.code=\jagiellonian@colors@settitleframebackgroundcolorsofstylelight,
+}
+\pgfkeys{
+  /jagiellonian/colors/frametitlecolorstyle/.cd,
+  .is choice,
+  JUcolors/.code=\jagiellonian@colors@setframetitlecolorstyleJU,
+  general/.code=\jagiellonian@colors@setframetitlecolorstylegeneral,
 }
 \newcommand{\jagiellonian@colors@setdefaults}{
   \pgfkeys{/jagiellonian/colors/.cd,
     block=transparent,
     style=light,
+    titleframebackgroundcolorstyle=JUcolors,
+    fontsontitleframecolorstyle=light,
+    frametitlecolorstyle=JUcolors,
   }
 }
 \definecolor{JagiellonianUniversityGold}{HTML}{BFA37C}
@@ -60,6 +69,7 @@
 \definecolor{jNormalTextFGColorOfStyleDark}{HTML}{818F9B}
 \definecolor{jMathTextFGColorOfStyleDark}{HTML}{D6DEE5}
 \definecolor{jBackgroundColorOfStyleDark}{HTML}{023159}
+\definecolor{jFrametitleBlue}{HTML}{348ED2}
 \definecolor{jSpecialSlideFGColor}{HTML}{0089FF}
 \definecolor{jSpecialSlideBGColor}{HTML}{0089FF}
 \definecolor{jAxisRed}{HTML}{A21C0E}
@@ -75,10 +85,12 @@
 \colorlet{jMathTextFGColor}{jMathTextFGColorOfStyleLight}
 \colorlet{jMathTextBGColor}{jBackgroundColorOfStyleLight}
 \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
-\colorlet{jFrametitleBGColor}{blue}
+\colorlet{jFrametitleBGColor}{jFrametitleBlue}
+\colorlet{jTitleFrameMainFontColor}{jBackgroundColorOfStyleLight}
+\colorlet{jTitleFrameMainBGColor}{jBackgroundColorOfStyleDark}
 \colorlet{jSpecialSlidesFGColor}{jBackgroundColorOfStyleLight}
 \colorlet{jSpecialSlidesBGColor}{JagiellonianUniversityBlue}
-\newcommand{\jagiellonian@colors@setcolorsofstyledark}{
+\newcommand{\jagiellonian@colors@setcolorsofstyledark}{%
   \colorlet{jNormalTextFGColor}{jNormalTextFGColorOfStyleDark}
   \colorlet{jNormalTextBGColor}{jBackgroundColorOfStyleDark}
   \colorlet{jMathTextFGColor}{jMathTextFGColorOfStyleDark}
@@ -94,53 +106,55 @@
   \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
   \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
 }
-\newcommand{\jagiellonian@colors@settitlefontcolorsofstyledark}{
+\newcommand{\jagiellonian@colors@settitlefontcolorsofstyledark}{%
   \setbeamercolor{titlelike}{fg=jNormalTextFGColorOfStyleLight}
   \setbeamercolor{author}{fg=jNormalTextFGColorOfStyleLight}
   \setbeamercolor{date}{fg=jNormalTextFGColorOfStyleLight}
   \setbeamercolor{institute}{fg=jNormalTextFGColorOfStyleLight}
 }
-\newcommand{\jagiellonian@colors@settitlefontcolorsofstylelight}{
+\newcommand{\jagiellonian@colors@settitlefontcolorsofstylelight}{%
   \setbeamercolor{titlelike}{fg=jBackgroundColorOfStyleLight}
   \setbeamercolor{author}{fg=jBackgroundColorOfStyleLight}
   \setbeamercolor{date}{fg=jBackgroundColorOfStyleLight}
   \setbeamercolor{institute}{fg=jBackgroundColorOfStyleLight}
 }
-\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstyledark}{
-  \setbeamercolor{titlelike}{bg=jBackgroundColorOfStyleDark}
-  \setbeamercolor{author}{bg=jBackgroundColorOfStyleDark}
-  \setbeamercolor{date}{bg=jBackgroundColorOfStyleDark}
-  \setbeamercolor{institute}{bg=jBackgroundColorOfStyleDark}
-}
-\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstyleJU}{
-  \setbeamercolor{titlelike}{bg=JagiellonianUniversityBlue}
-  \setbeamercolor{author}{bg=JagiellonianUniversityBlue}
-  \setbeamercolor{date}{bg=JagiellonianUniversityBlue}
-  \setbeamercolor{institute}{bg=JagiellonianUniversityBlue}
-}
-\newcommand{\jagiellonian@colors@settitlebackgroundcolorsofstylelight}{
-  \setbeamer{titlelike}{bg=jBackgroundColorOfStyleLight}
-  \setbeamer{author}{bg=jBackgroundColorOfStyleLight}
-  \setbeamer{date}{bg=jBackgroundColorOfStyleLight}
-  \setbeamer{institute}{bg=jBackgroundColorOfStyleLight}
-}
+\newcommand{\jagiellonian@colors@settitleframebackgroundcolorsofstyledark}{%
+  % \colorlet{jTitleFrameMainBGColor}{jBackgroundColorOfStyleDark}
+  \colorlet{jTitleFrameMainBGColor}{red}
 
-\newcommand{\jagiellonian@colors@light}{%
-  \jagiellonian@colors@setcolorsofstylelight
-  %
-  %
-  \setbeamercolor{normal text}{%
-    fg=jNormalTextFGColor,
-    bg=jNormalTextBGColor,
+  \setbeamercolor{titlelike}{bg=jTitleFrameMainBGColor}
+  \setbeamercolor{author}{bg=jTitleFrameMainBGColor}
+  \setbeamercolor{date}{bg=jTitleFrameMainBGColor}
+  \setbeamercolor{institute}{bg=jTitleFrameMainBGColor}
+}
+\newcommand{\jagiellonian@colors@settitleframebackgroundcolorsofstyleJU}{%
+  % \setbeamercolor{titlelike}{bg=JagiellonianUniversityBlue}
+  % \setbeamercolor{author}{bg=JagiellonianUniversityBlue}
+  % \setbeamercolor{date}{bg=JagiellonianUniversityBlue}
+  % \setbeamercolor{institute}{bg=JagiellonianUniversityBlue}
+  \setbeamercolor{titlelike}{bg=red}
+}
+\newcommand{\jagiellonian@colors@settitleframebackgroundcolorsofstylelight}{%
+
+  % \setbeamer{institute}{bg=jBackgroundColorOfStyleLight}
+  \setbeamer{titlelike}{bg=jTitleFrameMainBGColor}
+  \setbeamer{author}{bg=jTitleFrameMainBGColor}
+  \setbeamer{date}{bg=jTitleFrameMainBGColor}
+  \setbeamer{institute}{bg=jTitleFrameMainBGColor}
+}
+\newcommand{\jagiellonian@colors@setframetitlecolorstyleJU}{%
+  \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
+  \colorlet{jFrametitleBGColor}{JagiellonianUniversityBlue}
+
+  \setbeamercolor{frametitle}{%
+    fg=jFrametitleFGColor,
+    bg=jFrametitleBGColor,
   }
-  %
-  %
-  \setbeamercolor{math text}{%
-    fg=jMathTextFGColor,
-    bg=jMathTextBGColor,
-  }
-  %
-  %
+}
+\newcommand{\jagiellonian@colors@setframetitlecolorstylegeneral}{%
+  \colorlet{jFrametitleFGColor}{jBackgroundColorOfStyleLight}
+  \colorlet{jFrametitleBGColor}{jFrametitleBlue}
+
   \setbeamercolor{frametitle}{%
     fg=jFrametitleFGColor,
     bg=jFrametitleBGColor,
@@ -173,6 +187,27 @@
   %
   %
 }
+\newcommand{\jagiellonian@colors@light}{%
+  \jagiellonian@colors@setcolorsofstylelight
+  %
+  %
+  \setbeamercolor{normal text}{%
+    fg=jNormalTextFGColor,
+    bg=jNormalTextBGColor,
+  }
+  %
+  %
+  \setbeamercolor{math text}{%
+    fg=jMathTextFGColor,
+    bg=jMathTextBGColor,
+  }
+  %
+  %
+  \setbeamercolor{frametitle}{%
+    fg=jFrametitleFGColor,
+    bg=jFrametitleBGColor,
+  }
+}
 \setbeamercolor{institute}{fg=jBackgroundColorOfStyleLight,bg=JagiellonianUniversityBlue}
 \setbeamercolor{alerted text}{%
   fg=jOrange,
@@ -181,7 +216,7 @@
   fg=jGreen,
 }
 \setbeamercolor{structure}{use=normal text, fg=normal text.fg}
-\setbeamercolor{palette primary}{
+\setbeamercolor{palette primary}{%
   fg=jBackgroundColorOfStyleLight,
   bg=blue,
 }
@@ -194,7 +229,7 @@
   fg=alerted text.fg,
   bg=alerted text.fg!50!black!30!white,
 }
-\setbeamercolor{title separator}{
+\setbeamercolor{title separator}{%
   use=progress bar,
   parent=progress bar,
 }
@@ -202,11 +237,11 @@
   use=progress bar,
   parent=progress bar,
 }
-\setbeamercolor{progress bar in section page}{
+\setbeamercolor{progress bar in section page}{%
   use=progress bar,
   parent=progress bar,
 }
-\newcommand{\jagiellonian@block@transparent}{
+\newcommand{\jagiellonian@block@transparent}{%
   \setbeamercolor{block title}{%
     use=normal text,
     fg=normal text.fg,
@@ -216,7 +251,7 @@
     bg=,
   }
 }
-\newcommand{\jagiellonian@block@fill}{
+\newcommand{\jagiellonian@block@fill}{%
   \setbeamercolor{block title}{%
     use=normal text,
     fg=normal text.fg,
@@ -224,7 +259,7 @@
   }
   %
   %
-  \setbeamercolor{block body}{
+  \setbeamercolor{block body}{%
     use={block title, normal text},
     bg=block title.bg!50!normal text.bg
   }

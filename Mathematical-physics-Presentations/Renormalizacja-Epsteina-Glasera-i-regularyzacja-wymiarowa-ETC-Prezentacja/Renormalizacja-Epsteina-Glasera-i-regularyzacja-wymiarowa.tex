@@ -179,8 +179,8 @@ eprint=true,
   \frametitle{Problem mnożenia dystrybucji}
 
 
-  \textbf{Ważna uwaga}
-  Renormalizacja Epsteina-Glaser usuwa tylko rozbieżności w~UV
+  \textbf{Ważna uwaga.}
+  Renormalizacja Epsteina-Glaser usuwa tylko rozbieżności w~\textsc{uv}
   (ultrafiolecie), zagadnienie rozbieżność IR (podczerwnoych)
   \textbf{zupełnie pomijamy}.
 
@@ -190,15 +190,9 @@ eprint=true,
 
 
 
-  \textbf{Mnożenie dystrybucji}
-  \begin{align}
-    \label{eq:Remornalizacja-E-G-01-A}
-    &\delta( x ) \delta( y ) \textrm{ -- dobrze określona dystrybucja na }
-      \Rbb^{ 2 }, \\
-    \label{eq:Remornalizacja-E-G-01-B}
-    &\delta^{ 2 }( x ) \textrm{ -- dobrze określona dystrybucja dla }
-      x \neq 0.
-  \end{align}
+  \textbf{Mnożenie dystrybucji.}
+  $\delta( x ) \delta( y )$ to dobrze określona dystrybucja na $\Rbb^{ 2 }$, \\
+  $\delta( x )^{ 2 } = \delta( x ) \delta( x )$ to dobrze określona dystrybucja dla $x \neq 0$.
 
   \VerSpaceFour
 
@@ -219,84 +213,80 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Przedłużanie dystrybucji}
+% ##################
+\begin{frame}
+  \frametitle{Przedłużanie dystrybucji}
 
 
-%   \textbf{Renormalizacja.} Będziemy przez nią rozumieć przedłużenie
-%   dystrybucji określonej na~$\Dcal\left( ( \Rbb )^{ n } \setminus \DIAG \right)$,
-%   do~dystrybucji na~$\Dcal( ( \Rbb )^{ n } )$
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-02}
-%     \DIAG =
-%     \left\{ ( x_{ 1 }, x_{ 2 }, \ldots, x_{ n } ) \; | \;
-%       \exists\, i \neq j : x_{ i } = x_{ j } \right\}.
-%   \end{equation}
+  \textbf{Renormalizacja.} Będziemy przez nią rozumieć przedłużenie
+  dystrybucji określonej na~$\Dcal\big( \Rbb^{ n } \setminus \DIAG \big)$,
+  do~dystrybucji na~$\Dcal\big( \Rbb^{ n } \big)$ \\
+  $\displaystyle
+  \DIAG =
+  \left\{ ( x_{ 1 }, x_{ 2 }, \ldots, x_{ n } ) \; | \;
+    \exists \, i \neq j : x_{ i } = x_{ j } \right\}$.
 
-%   \vspace{\spaceFour}
-
-
-
-%   \textbf{Kwestia jednoznaczności.}
-%   Jeśli dystrybucja $u \in \Dcal'\left( \Rbb \setminus \{ 0 \} \right)$ ma~rozszerzenie
-%   $\dot{ u } \in \Dcal'\left( \Rbb \right)$, to
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-03}
-%     \dot{ u }' = \dot{ u } + \sum_{ \alpha } \delta^{ ( \alpha ) }, \quad
-%     \alpha = ( \alpha_{ 1 }, \alpha_{ 2 }, \ldots, \alpha_{ d } ),
-%   \end{equation}
-%   też jest rozszerzeniem, przy czym suma jest w~powyższym równaniu
-%   jest skończona. Jest to jedyna swoboda jaka istnieje. Przez
-%   \textbf{regularyzację} będziemy rozumieli wprowadzenie parametru
-%   czyniącego przedłużenie dystrybucji jednoznacznym.
-
-% \end{frame}
-% % ##################
+  \VerSpaceFour
 
 
 
 
 
-% % ##########
-% \begin{frame}
-%   \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+  \textbf{Kwestia jednoznaczności.}
+  Jeśli dystrybucja $u \in \Dcal'\left( \Rbb \setminus \{ 0 \} \right)$ ma~rozszerzenie
+  $\displaystyle \dot{ u } \in \Dcal'\left( \Rbb \right)$, to \\
+  $\displaystyle \dot{ u }' = \dot{ u } + \sum_{ \alpha } \delta^{ ( \alpha ) }$, \quad
+  $\displaystyle \alpha = ( \alpha_{ 1 }, \alpha_{ 2 }, \ldots, \alpha_{ d } )$,
 
+  też jest rozszerzeniem, przy czym suma jest w~powyższym równaniu
+  jest skończona. Jest to jedyna swoboda jaka istnieje. Przez
+  \textbf{regularyzację} będziemy rozumieli wprowadzenie parametru
+  czyniącego przedłużenie dystrybucji jednoznacznym.
 
-%   \textbf{Wykładnik skalowania Steinmanna}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-03}
-%     \sd =
-%     \inf \left\{ s \: : \: \forall \phi \in \Dcal,
-%       \lim_{ \rho \to 0^{ + } } \rho^{ s } \langle u, \rho^{ -d } \phi( \rho^{ -1 } x ) \rangle = 0 \right\}.
-%   \end{equation}
-%   Jest to uogólnienie stopnia jednorodności funkcji rzeczywistej,
-%   pozwala on~na~pewną charakteryzację przedłużeń dystrybucji.
-
-%   \vspace{\spaceFour}
+\end{frame}
+% ##################
 
 
 
-%   \textbf{Własności}
-%   \begin{itemize}
-
-%   \item $\sd( \partial_{ ( \alpha ) } u ) = \sd( u ) + | \alpha |$;
-
-%   \item $\sd( x^{ ( \alpha ) } u ) = \sd( u ) - | \alpha |$.
-
-%   \end{itemize}
-
-%   \vspace{\spaceFour}
 
 
+% ##################
+\begin{frame}
+  \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
 
-%   \textbf{Stopień rozbieżności dystrybucji} \\
-%   \begin{equation}
-%     \divDegree( u ) = \sd( u ) - d.
-%   \end{equation}
 
-% \end{frame}
-% % ##################
+  \textbf{Wykładnik skalowania Steinmanna} \\
+  $\sd =
+  \inf \left\{ s \: : \: \forall \phi \in \Dcal,
+      \lim_{ \rho \to 0^{ + } } \rho^{ s } \langle u, \rho^{ -d } \phi( \rho^{ -1 } x ) \rangle = 0 \right\}.$
+
+  % Jest to uogólnienie stopnia jednorodności funkcji rzeczywistej,
+  % pozwala on~na~pewną charakteryzację przedłużeń dystrybucji.
+
+  % \vspace{\spaceFour}
+
+
+
+  % \textbf{Własności}
+  % \begin{itemize}
+
+  % \item $\sd( \partial_{ ( \alpha ) } u ) = \sd( u ) + | \alpha |$;
+
+  % \item $\sd( x^{ ( \alpha ) } u ) = \sd( u ) - | \alpha |$.
+
+  % \end{itemize}
+
+  % \vspace{\spaceFour}
+
+
+
+  % \textbf{Stopień rozbieżności dystrybucji} \\
+  % \begin{equation}
+  %   \divDegree( u ) = \sd( u ) - d.
+  % \end{equation}
+
+\end{frame}
+% ##################
 
 
 
