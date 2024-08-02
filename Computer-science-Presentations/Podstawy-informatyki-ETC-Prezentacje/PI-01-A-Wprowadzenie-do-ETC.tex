@@ -70,9 +70,12 @@ eprint=true,
 % ------------------------------------------------------
 % Local packages
 % ------------------------------------------------------
-
 % Special configuration for this particular presentation
 \usepackage{./Local-packages/local-settings}
+
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
 
 
 
@@ -257,7 +260,7 @@ eprint=true,
 
   Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
   popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
-  znacznie lepsze warunki pracy z~językiem~C.
+  lepsze warunki do pracy z~językiem~C.
 
 \end{frame}
 % ##################
@@ -270,33 +273,6 @@ eprint=true,
 \begin{frame}
   \frametitle{Informacje wstępne}
 
-
-  % Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
-  % pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
-  % programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
-  % iż~nie ma najmniejszych szans, że~się tego wszystkiego tu nauczymy.
-  % Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
-
-  % Ponieważ tematyka którą poruszamy jest niebanalna, więc mnóstwo rzeczy
-  % będę musiał bardzo \alert{upraszczać}. Proszę mieć to na uwadze.
-
-  % Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
-  % czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
-  % semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
-  % semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
-  % informatyki, który ma położyć fundamenty pod Państwa wiedzę. To nie
-  % miejsce by wdawać~się we wszystkie szczegóły.
-
-  % Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
-  % że~pomimo już pół wieku~(!) na karku, w~2024 roku nasza infrastruktura
-  % informatyczna wciąż stoi na języku~C. Acz ze względów pedagogicznych,
-  % to niekoniecznie jest najlepszy wybór, ale siła wyższa mówi, że~mamy
-  % przy nim pozostać.
-
-  % W~internecie można znaleźć wiele artykułów i~blogów jak
-  % \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
-  %     world}}
-  %     z~czerwca 2024 roku.
 
   \alert{Ważne.} Jeśli mają Państwo jakiekolwiek problemy z~systemem
   GNU/Linux to proszę o~tym \alert{mówić}. Nie przyjmuję założenia,
@@ -667,15 +643,22 @@ eprint=true,
   \frametitle{Podstawowe informacje o~języku~C}
 
 
-  Język~C został stworzony przez D?? (11-??), by ułatwić Kenowi Thompsonowi
-  (11-??), pracę nad systemem operacyjnym \textsc{unix}. Pierwsza jego
-  wersja ukazała~się w~1972 roku.
+  Język~C został stworzony przez Dennis Ritchie (1941--2011), by ułatwić
+  Kenowi Thompsonowi (ur. 1943), pracę nad systemem operacyjnym
+  \textsc{unix}. Pierwsza jego wersja ukazała~się w~1972 roku.
 
   Język~C w 2022 roku obchodził 50 (!) lecie swojego istnienia. Jego wiek
   niestety często czuć, bo wiele funkcjonalności które dziś uważamy
   za~niezbędne w~pracy programisty albo są w~nim nieobecne, albo są,
   ale w~dość koślawej wersji. Niektórych rzeczy nie da~się ładnie
   dodać do języka z~lat 70-tych XX wieku.
+
+  Do tego język~C został pomyślany jako mały język, więc on z~premedytacją
+  \alert{nie} wprowadził pewnych rzeczy znanych już koło 1970 roku. To
+  niestety też nie ułatwia nam życia. Co gorsza, dla początkujących~C i~tak
+  może sprawiać wrażenie ogromnego języka. On jest mały w~porównaniu
+  z~innymi językami, ale to niewiele zmienia, gdy~się dopiera zaczyna swoją
+  przygodę z~informatyką.
 
 \end{frame}
 % ##################
@@ -689,12 +672,20 @@ eprint=true,
   \frametitle{Czy 1972 rok był bardzo dawno temu?}
 
 
-  Język~C został stworzony przez D?? (11-??), by ułatwić Kenowi Thompsonowi
-  (11-??), pracę nad systemem operacyjnym \textsc{unix}. Pierwsza jego
-  wersja ukazała~się w~1972 roku.
+    \begin{figure}
+
+    \centering
 
 
+    \includegraphics[scale=0.3]
+    {./PresentationsPictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
 
+    \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
+      PDP-11.}
+
+    \label{fig:Ritchie-Thompson-PDP-11}
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -767,146 +758,28 @@ eprint=true,
 
 
 
-
-
-
-
-
-% ######################################
-\section{Informatyka i~programowanie}
-% ######################################
-
-
-
 % ##################
 \begin{frame}
-  \frametitle{Czym jest informatyk?}
+  \frametitle{Dlaczego w~ogóle istnieją takie języki jak~C?}
 
-
-  \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
-  nauka o~rozwiązywaniu problemów za~pomocą komputera. Niektórzy mogą
-  uważać tą definicję, że~obrazę informatyki, według mnie jest bardzo dobra.
-
-  Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
-  Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
-  przybliżoną wartość pewnej liczby $\pi$ lub $\gamma$ (metody numeryczne),
-  chciałbym pograć w~coś fajnego (gry wideo), etc. Powstaje jednak pytania.
-  Czym~się różni komputer od przykładowo konsoli do gier takiej jak
-  PlayStation? Przecież ona też pozwala nam rozwiązać jeden z~tych
-  problemów.
-
-  Komputer to \textbf{programowalne urządzenie elektroniczne},
-  w~przeciwieństwie do PlayStation, która jest urządzeniem elektroniczny,
-  ale \textit{nie} jest programowalna. Co to jednak znaczy?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Co to znaczy „programowalny”?}
-
-
-  Każde urządzenie elektroniczne działa w~ten sposób, że~gdy płynie przez
-  nie prąd wykonuje pewne instrukcje. To jakie są instrukcje wynika
-  z~tego jak wewnątrz urządzenia „podpięte są kable”. Jeśli jesteśmy
-  w~stanie wywołać dowolną instrukcję jaką dysponuje to urządzenie, to
-  mówimy, że~jest ono \textbf{programowalne}. Jeśli mogę wywołać tylko
-  część możliwych instrukcji, tą część którą udostępnił mi producent
-  urządzenia, to wówczas takie urządzenie \textbf{nie jest programowalne}.
-
-  Ta definicja nie jest bardzo prepozycyjna, ale powinna dać nam wyczucie
-  o~co chodzi. Komputer daje nam dostęp do wszystkich swoich instrukcji,
-  co objawia~się choćby tym, że mogę na nim instalować dowolne
-  oprogramowanie, podczas gdy na~PlayStation mogę mieć tylko oprogramowanie
-  jakie uprzednio zainstalowała tam firma \textsc{sony}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Programowalne urządzenie elektroniczne}
-
-
-  Przykładowo konsolę \textsc{sony} można zhakować, uzyskując pełną
-  kontrolę nad nią. Jak to zrobić można~się choćby dowiedzieć z~nagrania
-  kanału Low Level Learning
-  \colorhref{https://www.youtube.com/watch?v=7OwdCc81zHo}
-  {\textit{The new PS4 jailbreak is sort of hilarious}}
-  \parencite{Low-Level-Learning-The-new-PS4-jailbreak-ETC-2024}.
-
-  Pomijając ten i~nieskończoną ilość innych niuansów, nie powinno być
-  trudne w~zrozumieniu co to znaczy, że~komputer jest programowalnym
-  urządzeniem elektronicznym.
-
-  \textbf{Program komputerowy} to zestaw instrukcji danego komputera, które
-  przekazujemy mu, by je wykonał. Tutaj pojawia~się potrzeba wprowadzenia
-  języków programowania. Nie będziemy podawać definicji języka
-  programowania, zamiast tego zajmiemy~się tym jak o~nich myśleć.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czym jest język programowania?}
-
-
-  Dwie metafory które są wygodne w~opisie tego czym jest język
-  programowania i~które ja lubię, to metafora języka właśnie i~skrzynki
-  z~narzędziami.
-
-  Jeśli chcę by człowiek coś zrobił, muszę mu to przekazać w~języku który
-  on rozumiem. Przykładowo ze względu na to jak zbudowany jest język
-  angielski i~język japoński, ich wzajemna nauka dla użytkowników tych
-  języków jest niezwykle trudna. Jeśli więc osobą której chcę zlecić
-  zrobienie czegoś jest Japończyk, może~się zdarzyć, iż będę musiał
-  przekazać mu informację po japońsku.
-
-  Oczywiście człowiek może~się nie zgodzić, wykręcać, etc. Komputer to
-  tępa maszyna więc pewnie ślepo wykona wszystko co mu zleciliśmy. Ktoś
-  może powiedzieć, że~przecież mamy \textsc{ai}, chata\textsc{gpt}, etc.
-  To wszystko są ciekawe sprawy, ale na tym przedmiocie nie mamy
-  możliwości~się nimi zająć.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czym jest język programowania?}
+  \pause
 
 
   Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
   który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
   jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-  że~pierwotnym językiem komputera jest \textbf{język assembler}.
+  że~pierwotnym językiem komputera jest \textbf{język assembler}
+  (ang. \textit{assembly language}).
 
   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
   posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
-  czy x86/Intel. Generalnie typ assemblera jest ustalony przez firmę, która
+  czy x86/Intel. Typ assemblera jest ustalony przez firmę, która
   wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
   „podpięte kable” w~rzeczonym procesorze.
 
-  I~tutaj pojawia~się dwa poważne problem.
+  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
+  napisanemu w~dwóch??? rodzajach assemblera, językach C i~Python.
 
 \end{frame}
 % ##################
@@ -917,25 +790,33 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Assembler, jaki problem?}
+  \frametitle{„Hello, World!” w~assemblerze ARM 32,
+    \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
 
-  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
-  A~nawet jeśli ktoś lubi pisać w~assemblerze, to w~praktyce unika~się
-  tego jak tylko~się da, bo w~assemblerze nawet najlepsi zbyt często
-  popełniają błędy, co może prowadzić do tragicznych konsekwencji.
+  \texttt{.global \_start} \\
+  \texttt{.section .text} \\
 
-  Wynika to z~tego, że~assembler to język naturalny dla \alert{komputera},
-  ale nie dla człowieka. Ponieważ zaś, nie jest to wielkie odkrycie,
-  człowiek mocno~się różni od komputer, język naturalny dla jednego z~nich
-  jest zupełnie nienaturalny dla drugiego. Dla nas assembler jest bardzo
-  nienaturalny, komputer nie potrafi zaś sobie radzić z~angielskim, czy
-  polskim.
 
-  Żeby nie być gołosłownym, przedstawię teraz przykład programu, który
-  jedyne co robi to wypisuje gdzieś na ekranie tekst „Hello, World!”.
-  Podany zostanie odpowiedni kod w~assemblerze x86 w~wersji Nasm, języku~C
-  i~języku Python.
+
+  \texttt{\_start:} \\[-0.2em]
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x4} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#1} \\
+  \hphantom{aaaaaaaa} \texttt{ldr r1, =message} \\
+  \hphantom{aaaaaaaa} \texttt{mov r2, \#13} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x1} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#65} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+
+
+  \texttt{.section .data} \\
+  \texttt{message:} \\
+  \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World\textbackslash n"}
 
 \end{frame}
 % ##################
@@ -943,27 +824,28 @@ eprint=true,
 
 
 
-
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze x86, Nasm
+  \frametitle{„Hello, World!” w~assemblerze ARM 32
     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
   \texttt{org 0x100} \\
   \vspace{0.8em}
+
   \texttt{mov dx, msg} \\
   \texttt{mov ah, 9} \\
   \texttt{int 0x21} \\
   \vspace{0.8em}
+
   \texttt{mov ah, 0x4c} \\
   \texttt{int 0x21} \\
   \vspace{0.8em}
+
   \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
 
 \end{frame}
 % ##################
-
 
 
 
@@ -1012,8 +894,10 @@ eprint=true,
   Powinno być teraz dość oczywiste, że~C jest prostszy od~assemblera,
   a~Python prostszy od~C.
 
-  Czy od tego momentu kursu możemy uznać, że~język assemblera nas nie
-  interesuje? Jeśli ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
+  \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
+  assemblera sam w~sobie nas zupełnie nie interesuje?
+
+  Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
   to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
 
   Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
@@ -1029,46 +913,23 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{W~jaki sposób działają~C i~Python?}
+  \frametitle{Problemy z~assemblerem}
 
 
-  Wróćmy do przykładu z~Japończykiem nieznającym angielskiego. Przyjmijmy,
-  że~ja nie znam angielskiego, a~on polskiego (po kiego Japończykowi język
-  polski?). Czy nie ma szans, żeby przekazał mu polecenie? Oczywiście,
-  że~jest. Wystarczy, że~spiszę odpowiednią informację na kartce, użyję
-  translatora by przetłumaczyć ją na japoński i~mu ją dam.
+  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+  Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
+  znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
+  można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
+  danego programu.
 
-  Tak samo postępujemy z~komputerem. W~teorii języków programowania
-  \textbf{translatorem} nazywamy program który tłumaczy między dwoma
-  \alert{dowolnymi} językami programowania. Mogę więc napisać program
-  w~języku~C następnie użyć odpowiedniego translatora by przetłumaczyć
-  go na assembler, który następnie zostanie wykonany przez komputer.
+  Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
+  pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
+  niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
+  wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
 
-  Koniec końców każdy język programowania, czy to~C, czy Python,
-  \alert{musi} zostać przetłumaczony na odpowiedni kod assemblera,
-  by~komputer go wykonał. To jednak wykracza poza temat zajęć.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Typy translatorów}
-
-
-  Istnieje wiele różnych rodzai translatorów. Przykładowo translatory
-  używane dla języka~C noszą nazwę \textbf{kompilatorów}, zaś te stosowane
-  dla języka Python \textbf{interpreterów}. To jednak bardzo złożona
-  dziedzina informatyki, która od mniej więcej w~roku 2000 roku wkroczył
-  w~nową, wciąż trwającą fazę rozwoju, więc tutaj ciągle~się coś zmienia.
-
-  Na razie wszystko co muszą Państwo wiedzieć o~kompilatorach sprowadza~się
-  do tego jak uruchomić program napisany w~języku~C, co~można ująć w~trzech
-  punktach.
+  Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, który
+  następnie odpowiedni program zwany \textbf{kompilatorem} tłumaczy na
+  assembler.
 
 \end{frame}
 % ##################
@@ -1079,127 +940,72 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Jak używać kompilatora?}
+  \frametitle{Komentarz odnośnie diagramów}
 
 
-  Przyjmijmy, że~program napisany w~języku~C znajduje~się w~pliku
-  \texttt{source.c} (od ang. \textit{source code}, kod źródłowy), a~program
-  wynikowy nazywa~się \texttt{progOut} (od ang. \textit{program out},
-  program wyjściowy).
+  \begin{textblock}{2.8}(2,1.5)
 
+    \begin{tikzpicture}
 
+      \node[diagram block] at (0,0) {Coś robi};
 
+    \end{tikzpicture}
 
-
-  \begin{enumerate}
-
-  \item W~pliku \texttt{source.c} zapisujemy odpowiedni kod w~języku~C.
+  \end{textblock}
 
 
 
-  \item Przekazujemy kompilatorowi plik \texttt{source.c}, na podstawie
-    niego tworzy on program \texttt{progOut}.
+  \begin{textblock}{2.8}(8,1.5)
+
+    \begin{tikzpicture}
+
+      \node[diagram square block] at (0,0) {Czymś jest};
+
+    \end{tikzpicture}
+
+  \end{textblock}
 
 
-
-  \item Uruchamiamy program wykonywalny \texttt{progOut}.
-
-  \end{enumerate}
-
-\end{frame}
-% ##################
+  \vspace{6em}
 
 
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Jak to wygląda w~praktyce?}
+  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
+  (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+  taki obiekt który wykonuje jakąś czynność na zadanych obiektach
+  wejściowych. Takim obiektem może być człowiek, komputer, program
+  komputerowy, fragment programu komputerowego, etc.
 
-
-  Przyjmujemy, że~jesteśmy pod systemem GNU/Linux i~wszystkie potrzebne
-  programy~są zainstalowane.
-
-
-
-
-  \begin{enumerate}
-
-  \item Otwieramy powłokę \textsc{bash}.
-
-
-
-  \item Tworzymy plik \texttt{source.c} za pomocą komendy \\
-    \texttt{\$ gedit source.c \&}
-
-
-
-  \item Zapisujemy odpowiedni kod programu w~pliku \texttt{source.c}.
-
-
-
-  \item Kompilujemy plik \texttt{source.c} przez wpisanie w~terminalu
-    polecenia \\
-    \texttt{\$ gcc -std=c99 -pedantic source.c -o progOut}
-
-
-
-  \item Jeśli wystąpił błąd, poprawiamy kod w~pliku \texttt{source.c}.
-
-
-
-  \item Uruchamiamy program \texttt{progOut} wpisując w~terminalu \\
-    \texttt{\$ ./progOut}
-
-
-
-  \item Jeśli \texttt{progOut} nie działa jak trzeba wracamy do punktu~5.
-
-  \end{enumerate}
+  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
+  koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
+  przez aktorów lub przez nich wytwarzane.
 
 \end{frame}
 % ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{„Bardzo śmieszne”}
-
-
-  Teraz sobie pewnie niektórzy z~Państwa myślą: „Bardzo śmieszne. Napisał
-  listę siedmiu punktów, z~których każdy brzmi jak magiczne zaklęcia
-  z~>>Harry’ego Pottera”. Ja od trzech godzin siedzę nad punktem piątym
-  i~powoli tracę zmysły, a~kolega obok jeszcze nie ukończył pierwszego.”.
-
-  Tak może być, to zupełnie normalne. Dlatego ja tu jestem by Państwu pomóc
-  zrobić te pierwsze kroki, które prawie zawsze są najtrudniejsze. Dlatego
-  jeśli coś nie działa, proszę mówić, postaram~się pomóc.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Komentarz odnośnie diagramów}
 
+
+%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+%   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
+%   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
+%   można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
+%   danego programu.
+
+%   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
+%   pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
+%   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
+%   wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
+
+%   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, który
+%   następnie odpowiedni program zwany \textbf{kompilatorem} tłumaczy na
+%   assembler.
 
 % \end{frame}
 % % ##################
@@ -1208,65 +1014,46 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{???}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-% ######################################
-\section{Kilka słów ogólnie o~językach programowania}
-% ######################################
-
-
 % ##################
 \begin{frame}
-  \frametitle{Ile istnieje języków programowania?}
+  \frametitle{Prosty schemat działania kompilatora}
 
 
-  Krótko mówiąc, jest ich tyle, że~chyba nikt na świecie nie jest~się
-  w~stanie wszystkich nauczyć. Dobrze, tylko w~takim razie, na których
-  powinniśmy~się skupić?
+  \begin{figure}
 
-  Dobrym miernikiem ważność języka jest indeks \textsc{tiobe}, które
-  stara~się mierzyć popularność wszystkich możliwych języków programowania.
-  Indeks ten jest aktualizowany co miesiąc, sami zaś jego twórcy
-  zastrzegają, iż~zadanie mierzenia popularności języków jest bardzo trudne
-  i~użyte metody pozostawiają duży margines błędu. Niemniej jest to wciąż
-  narzędzie którego warto używać.
+    \begin{tikzpicture}
 
-  Więcej informacji o~indeksie \textsc{tiobe} można znaleźć na stronie \\
-  \colorhref{https://www.tiobe.com/tiobe-index/}
-  {https://www.tiobe.com/tiobe-index/} i~dostępnych tam odnośnikach.
-  My zaś przyjrzymy~się pierwszej dwudziestce języków i~ich zasięgowi.
+      \path (0,0) -- (-3.5,0);
+
+
+
+      \node[diagram square block] (C source code) at (0,0)
+      {Kod programu w~języku C};
+
+      \node[diagram block] (Compiler) at (0,-2.3) {Kompilator};
+
+      \node[color=jNormalTextFGColor] (Magic) at (3,-2.3) {Magia};
+
+
+      \draw[pointing arrow] (Magic) -- (Compiler);
+
+
+      \draw[thick diagram arrow] (C source code) -- (Compiler);
+
+
+      \node[diagram square block] (Assembly code) at (0,-4.6)
+      {Kod programu w~assemblerze};
+
+
+      \draw[thick diagram arrow] (Compiler) -- (Assembly code);
+
+    \end{tikzpicture}
+
+    \caption{Typowy sposób tworzenia programu w~oparciu o~kod źródłowy
+      napisany w~języku~C.}
+
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -1277,154 +1064,73 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{TIOBE indeks, lipiec 2024}
+  \frametitle{Jakie są inne języki programowania?}
 
+
+  Wymień 20 najpopularniejszych języków programowania według indeksu
+  \textsc{tiobe} (\colorhref{https://www.tiobe.com/tiobe-index/}
+  {https://www.tiobe.com/tiobe-index/}). Poniżej prezentowany jest stan
+  tego indeksu na lipiec 2024. Podane wielkości procentowe przedstawiają
+  wyliczoną przez twórców indeksu część programistów używających danego
+  języka.
 
   \begin{itemize}
 
-  \item[1)] Python, 16.21\%.
-
-
+  \item[1)] Python, 16.12\%.
 
   \item[2)] C++, 10.34\%.
 
-
-
   \item[3)] C, 9.48\%.
-
-
 
   \item[4)] Java, 8.59\%.
 
-
-
   \item[5)] C\#, 6.72\%.
-
-
-
 
   \item[6)] JavaScript, 3.79\%.
 
-
-
-
   \item[7)] Go, 2.19\%.
-
-
-
 
   \item[8)] Visual Basic, 2.08\%.
 
+  \end{itemize}
+
+\end{frame}
+% ##################
 
 
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jakie są inne języki programowania?}
+
+
+  \begin{itemize}
 
   \item[9)] Fortran, 2.05\%.
 
-  \end{itemize}
+  \item[10)] SQL, 2.04\%.
 
-\end{frame}
-% ##################
+  \item[11)] Delphi/Object Pascal, 1.89\%.
 
+  \item[12)] MATLAB, 1.34\%.
 
+  \item[13)] Rust, 1.18\%.
 
+  \item[14)] Ruby, 1.16\%.
 
+  \item[15)] Scratch, 1.15\%.
 
-% % ##################
-% \begin{frame}
-%   \frametitle{???}
+  \item[16)] PHP, 1.15\%.
 
+  \item[17)] Swift, 1.13\%.
 
+  \item[18)] Assembly language, 1.11\%.
 
-% \end{frame}
-% % ##################
+  \item[19)] COBOL, 1.08\%.
 
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Prosty schemat rozwiązywania problemu\ldots}
-
-
-  Poniżej prezentujemy prosty schemat, jak wygląda procedura
-  rozwiązania pewnego problemu za pomocą programu napisanego w~języku
-  programowania~X.
-
-
-  \begin{enumerate}
-    \setlength{\itemsep}{1em}
-
-  \item[1)] Mamy problemy który można rozwiązać za pomocą komputera.
-
-
-
-  \item[2)] Znajdujemy sposób jako go rozwiązać. To rozwiązanie możemy
-    wymyślić sami, znaleźć w~internecie, zapytać \textsc{ai}, etc.
-
-
-
-  \item[3)] Piszemy program komputerowy w~języku~X, który implementuje
-    dane rozwiązanie.
-
-
-
-  \item[4)] Na podstawie napisanego przez nas kodu tworzymy program
-    w~postaci wykonywalnej, zrozumiałej dla~komputera.
-
-
-
-  \item[5)] Uruchamiamy program utworzony w~punkcie~4 na konkretnym
-    komputerze, tak by rozwiązał nasz problem.
-
-  \end{enumerate}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Przykład}
-
-
-  \begin{itemize}
-
-  \item[1)] Mamy 100 000 nazw użytkowników jakiegoś portalu. Potrzebujemy
-    sprawdzić, czy nazwy zgłaszających~się regularnie nowych użytkowników
-    są już zajęta czy nie. Spostrzegamy, że~można to zrobić za pomocą
-    odpowiedniego programu komputerowego.
-
-
-
-  \item[2)] Zauważamy, że~jeśli ustawimy nazwy dotychczasowych użytkowników
-    w~posortowany ciąg, to możemy sprawdzić czy dana nazwa w~nim jest
-    za~pomocą wydajnego przeszukiwania binarnego. Wymyślamy jak można
-    zaprowadzić relację porządku w~zbiorze tych nazw, co jest nam potrzebne
-    do~ich posortowania.
-
-
-
-  \item[3)] Piszemy program w~języku~X, który pobierze na wejściu nazwy
-    użytkowników, następnie je posortuje według zadanego przepisu.
-    Następnie, jeśli program ten otrzyma nową nazwę, to sprawdzi za pomocą
-    przeszukiwania binarnego, czy jest już ona wśród nazw już zajętych.
+  \item[20)] Kotlin, 1.05\%.
 
   \end{itemize}
 
@@ -1435,172 +1141,37 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Przykład}
-
-
-  \begin{itemize}
-
-  \item[4)] Na~podstawie kodu w~języku~X generujemy odpowiedni program
-    w~postaci wykonywalnej.
 
 
 
-  \item[5)] Uruchamiamy wygenerowany w~punkcie~4 program na~konkretnym
-    komputerze, by rozwiązał nasz problem.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
 
 
+% ######################################
+\section{Informatyka i~programowanie}
+% ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{Co to jest implementacja?}
+  \frametitle{Czym jest informatyk?}
 
 
-  Często znamy ogólną, abstrakcyjną postać rozwiązania danego problemu, czy
-  też sposobu działania konkretnego algorytmu. Przykładowo „program
-  umożliwiający obliczanie średniej arytmetycznej z~miliona liczb.”, to
-  taka ogólny opis programu pewnego programu, który wykonuje potrzebną nam
-  czynność. Jeśli jest to potrzebne, możemy podać jego bardziej precyzyjną
-  formę. „Dany jest milion liczb. Wylicz ich sumę, następnie podziel ją
-  przez liczbę $1 \, 000 \, 000$. Tak otrzymana liczba jest poszukiwanym
-  rezultatem.”
+  \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
+  nauka o~rozwiązywaniu problemów za~pomocą komputera. Niektórzy mogą
+  uważać tą definicję, że~obrazę informatyki, według mnie jest bardzo dobra.
 
-  Takie opis programu jest zrozumiały dla ludzi, ale nie dla komputera,
-  w~sensie hardwaru. Przy czym zasada ta stosuje~się też, choć w~innym
-  zakresie, do~\textsc{ai} i~\textsc{lll}, ale~to temat na osobne dyskusje.
-  Z~tego powodu musimy napisać odpowiedni kod, który będzie zrozumiały dla
-  komputera, dopiero wtedy on będzie mógł go wykonać.
+  Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
+  Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
+  przybliżoną wartość pewnej liczby $\pi$ lub $\gamma$ (metody numeryczne),
+  chciałbym pograć w~coś fajnego (gry wideo), etc. Powstaje jednak pytania.
+  Czym~się różni komputer od przykładowo konsoli do gier takiej jak
+  PlayStation? Przecież ona też pozwala nam rozwiązać jeden z~tych
+  problemów.
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Co to jest implementacja?}
-
-
-  Jeśli mamy konkretny kod, albo program, który wykonuje dane zadanie
-  zgodnie z~ogólną idę, metodą albo algorytmem, to mówimy że~taki kod lub
-  program jest \textbf{implementacją} tej idei bądź algorytmu.
-
-  To wyjaśnienie nie jest bardzo precyzyjne, ale też nie musi być.
-  Implementacja nie jest pojęciem ważnym dla komputera, tylko dla ludzi,
-  stąd od precyzyjnej definicji ważniejsze jest zrozumienie ogólnej idei.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Przykład. Postawienie problemu i~metoda rozwiązania}
-
-
-  \textbf{Problem.} Obliczyć średnią arytmetyczną zadanych $100$ liczb.
-
-  \textbf{Metoda rozwiązania.} Oblicz sumę danych $100$ liczb, następnie
-  podziel ją przez $100$.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Implementacja w~języku~C}
-
-
-  \texttt{\#include <stdio.h>} \\
-  \vspace{0.8em}
-  /* Zakładamy, że~liczby który średnią arytmetyczną mamy obliczyć są
-  przechowywane w~$100$-elementowej tablicy liczby typu \texttt{double}
-  \hphantom{aa} o~nazwie \texttt{numbersArray}, zdefiniowanej
-  w~dostarczonym nam ze-
-  \hphantom{aa} wnątrz pliku\texttt{numbersProb.h}. Plik ten ma być w~tym
-  samym kata-
-  \hphantom{aa} logu co poniższy program. */ \\
-  \texttt{\#include "numbersProb.h"} \\
-  \vspace{0.8em}
-  \texttt{int main() \{ } \\
-  \hphantom{aaaa} \texttt{int i = 0;} \\
-  \hphantom{aaaa} \texttt{double suma = 0.0;} \\
-  \hphantom{aaaa} \texttt{double sredniaArytmetycza = 0.0;}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Implementacja w~języku~C. Cd.}
-
-
-  \hphantom{aaaa} \texttt{for (i = 0; i < 100; i++) \{ } \\
-  \hphantom{aaaaaaaa} \texttt{suma += numbersArray[i];} \\
-  \hphantom{aaaa} \texttt{ \} } \\
-  \vspace{0.8em}
-  \hphantom{aaaa} \texttt{sredniaArytmetyczna = suma / 100.0;} \\
-  \vspace{0.8em}
-  \hphantom{aaaa} \texttt{prinft("sredniaArytmetyczna =
-    \%.3f.\textbackslash n", \\
-    \hphantom{aaaaaaaaa} sredniaArytmetyczna);} \\
-  \texttt{ \} }
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Implementacje w~języku Python}
-
-
-  \# Zakładamy, że~liczby których średnią arytmetyczną mamy obli- \\
-  \# czyć~są wszystkie typu \texttt{float} i~są przechowywane
-  w~$100$-elementowej \\
-  \# liście o~nazwie \texttt{numbersList}, która znajduje~się w~dostarczonym
-  \# nam module Pythona o~nazwie \texttt{numbersProg}. \\
-  \vspace{0.8em}
-  \texttt{from numbersProg import numbersList} \\
-  \vspace{0.8em}
-  \texttt{suma = 0.0} \\
-  \vspace{0.8em}
-  \texttt{for number in numbersList:} \\
-  \hphantom{aaaa} \texttt{suma += number} \\
-  \vspace{0.8em}
-  \texttt{sredniaArytmetyczna = suma / 100.0} \\
-  \texttt{answer = \textbackslash} \\
-  \hphantom{aaa}
-  \texttt{"sredniaArytmetyczna = \{\}".format(sredniaArytmetyczna)}
-  \\
-  \vspace{0.8em}
-  \texttt{print(answer)}
+  Komputer to \textbf{programowalne urządzenie elektroniczne},
+  w~przeciwieństwie do PlayStation, która jest urządzeniem elektroniczny,
+  ale \textit{nie} jest programowalna. Co to jednak znaczy?
 
 \end{frame}
 % ##################
@@ -1611,34 +1182,22 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{????}
+%   \frametitle{Co to znaczy „programowalny”?}
 
 
+%   Każde urządzenie elektroniczne działa w~ten sposób, że~gdy płynie przez
+%   nie prąd wykonuje pewne instrukcje. To jakie są instrukcje wynika
+%   z~tego jak wewnątrz urządzenia „podpięte są kable”. Jeśli jesteśmy
+%   w~stanie wywołać dowolną instrukcję jaką dysponuje to urządzenie, to
+%   mówimy, że~jest ono \textbf{programowalne}. Jeśli mogę wywołać tylko
+%   część możliwych instrukcji, tą część którą udostępnił mi producent
+%   urządzenia, to wówczas takie urządzenie \textbf{nie jest programowalne}.
 
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{}
-
-
+%   Ta definicja nie jest bardzo prepozycyjna, ale powinna dać nam wyczucie
+%   o~co chodzi. Komputer daje nam dostęp do wszystkich swoich instrukcji,
+%   co objawia~się choćby tym, że mogę na nim instalować dowolne
+%   oprogramowanie, podczas gdy na~PlayStation mogę mieć tylko oprogramowanie
+%   jakie uprzednio zainstalowała tam firma \textsc{sony}.
 
 % \end{frame}
 % % ##################
@@ -1649,30 +1208,24 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Programowalne urządzenie elektroniczne}
 
 
+%   Przykładowo konsolę \textsc{sony} można zhakować, uzyskując pełną
+%   kontrolę nad nią. Jak to zrobić można~się choćby dowiedzieć z~nagrania
+%   kanału Low Level Learning
+%   \colorhref{https://www.youtube.com/watch?v=7OwdCc81zHo}
+%   {\textit{The new PS4 jailbreak is sort of hilarious}}
+%   \parencite{Low-Level-Learning-The-new-PS4-jailbreak-ETC-2024}.
 
+%   Pomijając ten i~nieskończoną ilość innych niuansów, nie powinno być
+%   trudne w~zrozumieniu co to znaczy, że~komputer jest programowalnym
+%   urządzeniem elektronicznym.
 
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-
+%   \textbf{Program komputerowy} to zestaw instrukcji danego komputera, które
+%   przekazujemy mu, by je wykonał. Tutaj pojawia~się potrzeba wprowadzenia
+%   języków programowania. Nie będziemy podawać definicji języka
+%   programowania, zamiast tego zajmiemy~się tym jak o~nich myśleć.
 
 % \end{frame}
 % % ##################
@@ -1683,37 +1236,25 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Czym jest język programowania?}
 
 
+%   Dwie metafory które są wygodne w~opisie tego czym jest język
+%   programowania i~które ja lubię, to metafora języka właśnie i~skrzynki
+%   z~narzędziami.
 
-% \end{frame}
-% % ##################
+%   Jeśli chcę by człowiek coś zrobił, muszę mu to przekazać w~języku który
+%   on rozumiem. Przykładowo ze względu na to jak zbudowany jest język
+%   angielski i~język japoński, ich wzajemna nauka dla użytkowników tych
+%   języków jest niezwykle trudna. Jeśli więc osobą której chcę zlecić
+%   zrobienie czegoś jest Japończyk, może~się zdarzyć, iż będę musiał
+%   przekazać mu informację po japońsku.
 
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
+%   Oczywiście człowiek może~się nie zgodzić, wykręcać, etc. Komputer to
+%   tępa maszyna więc pewnie ślepo wykona wszystko co mu zleciliśmy. Ktoś
+%   może powiedzieć, że~przecież mamy \textsc{ai}, chata\textsc{gpt}, etc.
+%   To wszystko są ciekawe sprawy, ale na tym przedmiocie nie mamy
+%   możliwości~się nimi zająć.
 
 % \end{frame}
 % % ##################
@@ -1724,30 +1265,22 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{????}
+%   \frametitle{Czym jest język programowania?}
 
 
+%   Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+%   który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+%   jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+%   że~pierwotnym językiem komputera jest \textbf{język assembler}.
 
+%   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+%   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+%   posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
+%   czy x86/Intel. Generalnie typ assemblera jest ustalony przez firmę, która
+%   wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
+%   „podpięte kable” w~rzeczonym procesorze.
 
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
+%   I~tutaj pojawia~się dwa poważne problem.
 
 % \end{frame}
 % % ##################
@@ -1758,36 +1291,25 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Assembler, jaki problem?}
 
 
+%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+%   A~nawet jeśli ktoś lubi pisać w~assemblerze, to w~praktyce unika~się
+%   tego jak tylko~się da, bo w~assemblerze nawet najlepsi zbyt często
+%   popełniają błędy, co może prowadzić do tragicznych konsekwencji.
 
-% \end{frame}
-% % ##################
+%   Wynika to z~tego, że~assembler to język naturalny dla \alert{komputera},
+%   ale nie dla człowieka. Ponieważ zaś, nie jest to wielkie odkrycie,
+%   człowiek mocno~się różni od komputer, język naturalny dla jednego z~nich
+%   jest zupełnie nienaturalny dla drugiego. Dla nas assembler jest bardzo
+%   nienaturalny, komputer nie potrafi zaś sobie radzić z~angielskim, czy
+%   polskim.
 
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
+%   Żeby nie być gołosłownym, przedstawię teraz przykład programu, który
+%   jedyne co robi to wypisuje gdzieś na ekranie tekst „Hello, World!”.
+%   Podany zostanie odpowiedni kod w~assemblerze x86 w~wersji Nasm, języku~C
+%   i~języku Python.
 
 % \end{frame}
 % % ##################
@@ -1798,22 +1320,20 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{??????}
+%   \frametitle{„Hello, World!” w~assemblerze x86, Nasm
+%     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
+%   \texttt{org 0x100} \\
+%   \vspace{0.8em}
+%   \texttt{mov dx, msg} \\
+%   \texttt{mov ah, 9} \\
+%   \texttt{int 0x21} \\
+%   \vspace{0.8em}
+%   \texttt{mov ah, 0x4c} \\
+%   \texttt{int 0x21} \\
+%   \vspace{0.8em}
+%   \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
 
 % \end{frame}
 % % ##################
@@ -1824,22 +1344,19 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{„Hello, World!” w~języku~C}
 
 
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
+%   \texttt{\#include <stdio.h>} \\
+%   \vspace{0.8em}
+%   \texttt{int main() \{ } \\
+%   \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
+%   \vspace{0.8em}
+%   \vspace{0.8em}
+%   \vspace{0.8em}
+%   \vspace{0.8em}
+%   \hphantom{aaaa} \texttt{return 0;} \\
+%   \texttt{ \} }
 
 % \end{frame}
 % % ##################
@@ -1850,9 +1367,32 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{????}
+%   \frametitle{„Hello, World!” w~języku~Python}
 
 
+%   \texttt{print("Hello, World!")}
+
+% \end{frame}
+% % ##################
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Co z~tego wynika?}
+
+
+%   Powinno być teraz dość oczywiste, że~C jest prostszy od~assemblera,
+%   a~Python prostszy od~C.
+
+%   Czy od tego momentu kursu możemy uznać, że~język assemblera nas nie
+%   interesuje? Jeśli ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
+%   to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
+
+%   Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
+%   w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
+%   w~Pythonie, ale ja o~tym nie decyduje.
 
 % \end{frame}
 % % ##################
@@ -1863,36 +1403,24 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{W~jaki sposób działają~C i~Python?}
 
 
+%   Wróćmy do przykładu z~Japończykiem nieznającym angielskiego. Przyjmijmy,
+%   że~ja nie znam angielskiego, a~on polskiego (po kiego Japończykowi język
+%   polski?). Czy nie ma szans, żeby przekazał mu polecenie? Oczywiście,
+%   że~jest. Wystarczy, że~spiszę odpowiednią informację na kartce, użyję
+%   translatora by przetłumaczyć ją na japoński i~mu ją dam.
 
+%   Tak samo postępujemy z~komputerem. W~teorii języków programowania
+%   \textbf{translatorem} nazywamy program który tłumaczy między dwoma
+%   \alert{dowolnymi} językami programowania. Mogę więc napisać program
+%   w~języku~C następnie użyć odpowiedniego translatora by przetłumaczyć
+%   go na assembler, który następnie zostanie wykonany przez komputer.
 
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
+%   Koniec końców każdy język programowania, czy to~C, czy Python,
+%   \alert{musi} zostać przetłumaczony na odpowiedni kod assemblera,
+%   by~komputer go wykonał. To jednak wykracza poza temat zajęć.
 
 % \end{frame}
 % % ##################
@@ -1903,23 +1431,18 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Typy translatorów}
 
 
+%   Istnieje wiele różnych rodzai translatorów. Przykładowo translatory
+%   używane dla języka~C noszą nazwę \textbf{kompilatorów}, zaś te stosowane
+%   dla języka Python \textbf{interpreterów}. To jednak bardzo złożona
+%   dziedzina informatyki, która od mniej więcej w~roku 2000 roku wkroczył
+%   w~nową, wciąż trwającą fazę rozwoju, więc tutaj ciągle~się coś zmienia.
 
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
+%   Na razie wszystko co muszą Państwo wiedzieć o~kompilatorach sprowadza~się
+%   do tego jak uruchomić program napisany w~języku~C, co~można ująć w~trzech
+%   punktach.
 
 % \end{frame}
 % % ##################
@@ -1930,36 +1453,32 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Jak używać kompilatora?}
 
 
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-% \end{frame}
-% % ##################
+%   Przyjmijmy, że~program napisany w~języku~C znajduje~się w~pliku
+%   \texttt{source.c} (od ang. \textit{source code}, kod źródłowy), a~program
+%   wynikowy nazywa~się \texttt{progOut} (od ang. \textit{program out},
+%   program wyjściowy).
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
+%   \begin{enumerate}
+
+%   \item W~pliku \texttt{source.c} zapisujemy odpowiedni kod w~języku~C.
 
 
+
+%   \item Przekazujemy kompilatorowi plik \texttt{source.c}, na podstawie
+%     niego tworzy on program \texttt{progOut}.
+
+
+
+%   \item Uruchamiamy program wykonywalny \texttt{progOut}.
+
+%   \end{enumerate}
 
 % \end{frame}
 % % ##################
@@ -1970,51 +1489,48 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Jak to wygląda w~praktyce?}
 
 
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
+%   Przyjmujemy, że~jesteśmy pod systemem GNU/Linux i~wszystkie potrzebne
+%   programy~są zainstalowane.
 
 
 
 
-% \end{frame}
-% % ##################
+%   \begin{enumerate}
+
+%   \item Otwieramy powłokę \textsc{bash}.
 
 
 
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
+%   \item Tworzymy plik \texttt{source.c} za pomocą komendy \\
+%     \texttt{\$ gedit source.c \&}
 
 
 
-% \end{frame}
-% % ##################
+%   \item Zapisujemy odpowiedni kod programu w~pliku \texttt{source.c}.
 
 
 
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
+%   \item Kompilujemy plik \texttt{source.c} przez wpisanie w~terminalu
+%     polecenia \\
+%     \texttt{\$ gcc -std=c99 -pedantic source.c -o progOut}
 
 
 
+%   \item Jeśli wystąpił błąd, poprawiamy kod w~pliku \texttt{source.c}.
+
+
+
+%   \item Uruchamiamy program \texttt{progOut} wpisując w~terminalu \\
+%     \texttt{\$ ./progOut}
+
+
+
+%   \item Jeśli \texttt{progOut} nie działa jak trzeba wracamy do punktu~5.
+
+%   \end{enumerate}
 
 % \end{frame}
 % % ##################
@@ -2025,24 +1541,17 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{„Bardzo śmieszne”}
 
 
+%   Teraz sobie pewnie niektórzy z~Państwa myślą: „Bardzo śmieszne. Napisał
+%   listę siedmiu punktów, z~których każdy brzmi jak magiczne zaklęcia
+%   z~>>Harry’ego Pottera”. Ja od trzech godzin siedzę nad punktem piątym
+%   i~powoli tracę zmysły, a~kolega obok jeszcze nie ukończył pierwszego.”.
 
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
+%   Tak może być, to zupełnie normalne. Dlatego ja tu jestem by Państwu pomóc
+%   zrobić te pierwsze kroki, które prawie zawsze są najtrudniejsze. Dlatego
+%   jeśli coś nie działa, proszę mówić, postaram~się pomóc.
 
 % \end{frame}
 % % ##################
@@ -2056,22 +1565,30 @@ eprint=true,
 
 
 
-% % ######################################
-% \appendix
-% % ######################################
 
 
-
-
-
-% % ##################
-% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
-% % ##################
 
 
 
 % % % ##################
-% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
 % % % ##################
 
 
@@ -2083,17 +1600,163 @@ eprint=true,
 
 
 
+
+
+
+
+
+
+
+
 % % ######################################
-% \SectionSlideWithPicture{Terminological notes}
+% \section{Kilka słów ogólnie o~językach programowania}
 % % ######################################
 
 
+% % ##################
+% \begin{frame}
+%   \frametitle{Ile istnieje języków programowania?}
+
+
+%   Krótko mówiąc, jest ich tyle, że~chyba nikt na świecie nie jest~się
+%   w~stanie wszystkich nauczyć. Dobrze, tylko w~takim razie, na których
+%   powinniśmy~się skupić?
+
+%   Dobrym miernikiem ważność języka jest indeks \textsc{tiobe}, które
+%   stara~się mierzyć popularność wszystkich możliwych języków programowania.
+%   Indeks ten jest aktualizowany co miesiąc, sami zaś jego twórcy
+%   zastrzegają, iż~zadanie mierzenia popularności języków jest bardzo trudne
+%   i~użyte metody pozostawiają duży margines błędu. Niemniej jest to wciąż
+%   narzędzie którego warto używać.
+
+%   Więcej informacji o~indeksie \textsc{tiobe} można znaleźć na stronie \\
+%   \colorhref{https://www.tiobe.com/tiobe-index/}
+%   {https://www.tiobe.com/tiobe-index/} i~dostępnych tam odnośnikach.
+%   My zaś przyjrzymy~się pierwszej dwudziestce języków i~ich zasięgowi.
+
+% \end{frame}
+% % ##################
+
+
+
+
 
 % % ##################
 % \begin{frame}
-%   \frametitle{??????}
+%   \frametitle{TIOBE indeks, lipiec 2024}
 
 
+%   \begin{itemize}
+
+%   \item[1)] Python, 16.21\%.
+
+
+
+%   \item[2)] C++, 10.34\%.
+
+
+
+%   \item[3)] C, 9.48\%.
+
+
+
+%   \item[4)] Java, 8.59\%.
+
+
+
+%   \item[5)] C\#, 6.72\%.
+
+
+
+
+%   \item[6)] JavaScript, 3.79\%.
+
+
+
+
+%   \item[7)] Go, 2.19\%.
+
+
+
+
+%   \item[8)] Visual Basic, 2.08\%.
+
+
+
+
+%   \item[9)] Fortran, 2.05\%.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{???}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Prosty schemat rozwiązywania problemu\ldots}
+
+
+%   Poniżej prezentujemy prosty schemat, jak wygląda procedura
+%   rozwiązania pewnego problemu za pomocą programu napisanego w~języku
+%   programowania~X.
+
+
+%   \begin{enumerate}
+%     \setlength{\itemsep}{1em}
+
+%   \item[1)] Mamy problemy który można rozwiązać za pomocą komputera.
+
+
+
+%   \item[2)] Znajdujemy sposób jako go rozwiązać. To rozwiązanie możemy
+%     wymyślić sami, znaleźć w~internecie, zapytać \textsc{ai}, etc.
+
+
+
+%   \item[3)] Piszemy program komputerowy w~języku~X, który implementuje
+%     dane rozwiązanie.
+
+
+
+%   \item[4)] Na podstawie napisanego przez nas kodu tworzymy program
+%     w~postaci wykonywalnej, zrozumiałej dla~komputera.
+
+
+
+%   \item[5)] Uruchamiamy program utworzony w~punkcie~4 na konkretnym
+%     komputerze, tak by rozwiązał nasz problem.
+
+%   \end{enumerate}
 
 % \end{frame}
 % % ##################
@@ -2104,51 +1767,745 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Przykład}
 
 
+%   \begin{itemize}
+
+%   \item[1)] Mamy 100 000 nazw użytkowników jakiegoś portalu. Potrzebujemy
+%     sprawdzić, czy nazwy zgłaszających~się regularnie nowych użytkowników
+%     są już zajęta czy nie. Spostrzegamy, że~można to zrobić za pomocą
+%     odpowiedniego programu komputerowego.
+
+
+
+%   \item[2)] Zauważamy, że~jeśli ustawimy nazwy dotychczasowych użytkowników
+%     w~posortowany ciąg, to możemy sprawdzić czy dana nazwa w~nim jest
+%     za~pomocą wydajnego przeszukiwania binarnego. Wymyślamy jak można
+%     zaprowadzić relację porządku w~zbiorze tych nazw, co jest nam potrzebne
+%     do~ich posortowania.
+
+
+
+%   \item[3)] Piszemy program w~języku~X, który pobierze na wejściu nazwy
+%     użytkowników, następnie je posortuje według zadanego przepisu.
+%     Następnie, jeśli program ten otrzyma nową nazwę, to sprawdzi za pomocą
+%     przeszukiwania binarnego, czy jest już ona wśród nazw już zajętych.
+
+%   \end{itemize}
 
 % \end{frame}
-% ##################
+% % ##################
 
 
 
 
 
-% ##################
+% % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Przykład}
 
 
+%   \begin{itemize}
+
+%   \item[4)] Na~podstawie kodu w~języku~X generujemy odpowiedni program
+%     w~postaci wykonywalnej.
+
+
+
+%   \item[5)] Uruchamiamy wygenerowany w~punkcie~4 program na~konkretnym
+%     komputerze, by rozwiązał nasz problem.
+
+%   \end{itemize}
 
 % \end{frame}
-% ##################
+% % ##################
 
 
 
 
 
-% ##################
+% % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Co to jest implementacja?}
 
 
+%   Często znamy ogólną, abstrakcyjną postać rozwiązania danego problemu, czy
+%   też sposobu działania konkretnego algorytmu. Przykładowo „program
+%   umożliwiający obliczanie średniej arytmetycznej z~miliona liczb.”, to
+%   taka ogólny opis programu pewnego programu, który wykonuje potrzebną nam
+%   czynność. Jeśli jest to potrzebne, możemy podać jego bardziej precyzyjną
+%   formę. „Dany jest milion liczb. Wylicz ich sumę, następnie podziel ją
+%   przez liczbę $1 \, 000 \, 000$. Tak otrzymana liczba jest poszukiwanym
+%   rezultatem.”
+
+%   Takie opis programu jest zrozumiały dla ludzi, ale nie dla komputera,
+%   w~sensie hardwaru. Przy czym zasada ta stosuje~się też, choć w~innym
+%   zakresie, do~\textsc{ai} i~\textsc{lll}, ale~to temat na osobne dyskusje.
+%   Z~tego powodu musimy napisać odpowiedni kod, który będzie zrozumiały dla
+%   komputera, dopiero wtedy on będzie mógł go wykonać.
 
 % \end{frame}
-% ##################
+% % ##################
 
 
 
 
 
-% ##################
+% % ##################
 % \begin{frame}
-%   \frametitle{?????}
+%   \frametitle{Co to jest implementacja?}
 
 
+%   Jeśli mamy konkretny kod, albo program, który wykonuje dane zadanie
+%   zgodnie z~ogólną idę, metodą albo algorytmem, to mówimy że~taki kod lub
+%   program jest \textbf{implementacją} tej idei bądź algorytmu.
+
+%   To wyjaśnienie nie jest bardzo precyzyjne, ale też nie musi być.
+%   Implementacja nie jest pojęciem ważnym dla komputera, tylko dla ludzi,
+%   stąd od precyzyjnej definicji ważniejsze jest zrozumienie ogólnej idei.
 
 % \end{frame}
-%  ##################
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Przykład. Postawienie problemu i~metoda rozwiązania}
+
+
+%   \textbf{Problem.} Obliczyć średnią arytmetyczną zadanych $100$ liczb.
+
+%   \textbf{Metoda rozwiązania.} Oblicz sumę danych $100$ liczb, następnie
+%   podziel ją przez $100$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Implementacja w~języku~C}
+
+
+%   \texttt{\#include <stdio.h>} \\
+%   \vspace{0.8em}
+%   /* Zakładamy, że~liczby który średnią arytmetyczną mamy obliczyć są
+%   przechowywane w~$100$-elementowej tablicy liczby typu \texttt{double}
+%   \hphantom{aa} o~nazwie \texttt{numbersArray}, zdefiniowanej
+%   w~dostarczonym nam ze-
+%   \hphantom{aa} wnątrz pliku\texttt{numbersProb.h}. Plik ten ma być w~tym
+%   samym kata-
+%   \hphantom{aa} logu co poniższy program. */ \\
+%   \texttt{\#include "numbersProb.h"} \\
+%   \vspace{0.8em}
+%   \texttt{int main() \{ } \\
+%   \hphantom{aaaa} \texttt{int i = 0;} \\
+%   \hphantom{aaaa} \texttt{double suma = 0.0;} \\
+%   \hphantom{aaaa} \texttt{double sredniaArytmetycza = 0.0;}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Implementacja w~języku~C. Cd.}
+
+
+%   \hphantom{aaaa} \texttt{for (i = 0; i < 100; i++) \{ } \\
+%   \hphantom{aaaaaaaa} \texttt{suma += numbersArray[i];} \\
+%   \hphantom{aaaa} \texttt{ \} } \\
+%   \vspace{0.8em}
+%   \hphantom{aaaa} \texttt{sredniaArytmetyczna = suma / 100.0;} \\
+%   \vspace{0.8em}
+%   \hphantom{aaaa} \texttt{prinft("sredniaArytmetyczna =
+%     \%.3f.\textbackslash n", \\
+%     \hphantom{aaaaaaaaa} sredniaArytmetyczna);} \\
+%   \texttt{ \} }
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Implementacje w~języku Python}
+
+
+%   \# Zakładamy, że~liczby których średnią arytmetyczną mamy obli- \\
+%   \# czyć~są wszystkie typu \texttt{float} i~są przechowywane
+%   w~$100$-elementowej \\
+%   \# liście o~nazwie \texttt{numbersList}, która znajduje~się w~dostarczonym
+%   \# nam module Pythona o~nazwie \texttt{numbersProg}. \\
+%   \vspace{0.8em}
+%   \texttt{from numbersProg import numbersList} \\
+%   \vspace{0.8em}
+%   \texttt{suma = 0.0} \\
+%   \vspace{0.8em}
+%   \texttt{for number in numbersList:} \\
+%   \hphantom{aaaa} \texttt{suma += number} \\
+%   \vspace{0.8em}
+%   \texttt{sredniaArytmetyczna = suma / 100.0} \\
+%   \texttt{answer = \textbackslash} \\
+%   \hphantom{aaa}
+%   \texttt{"sredniaArytmetyczna = \{\}".format(sredniaArytmetyczna)}
+%   \\
+%   \vspace{0.8em}
+%   \texttt{print(answer)}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{??????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \appendix
+% % % ######################################
+
+
+
+
+
+% % % ##################
+% % \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
+% % % ##################
+
+
+
+% % % % ##################
+% % % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \SectionSlideWithPicture{Terminological notes}
+% % % ######################################
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{??????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% %  ##################
 
 
 
