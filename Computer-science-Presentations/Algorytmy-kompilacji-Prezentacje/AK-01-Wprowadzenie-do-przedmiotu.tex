@@ -47,8 +47,11 @@
 % ------------------------------
 % Local packages
 % ------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
 
-
+% Stylef for drawing diagrams
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
 
 
@@ -67,7 +70,7 @@
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Algorytmy kompilacji}
-\subtitle{Wprowadzenie}
+\subtitle{Wprowadzenie do~przedmiotu}
 
 \author{Kamil Ziemian}
 
@@ -126,8 +129,147 @@
 
 
 % ######################################
-\section{Czy to jest kurs praktyczny?}
+\section{Informacje ogólne}
 % ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
+  ale nie widzę sposobu, by~tego uniknąć.
+
+  Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
+  ja jestem tu dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja
+  będę Państwa rozliczał tylko i~wyłącznie z~umiejętności i~wiedzy,
+  z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
+  wiedzą, czemu warto poświęcić swój czas. (Choć jak dobrze wiemy, często
+  po jakimś czasie stwierdzamy, że~może trzeba było wybrać coś innego.)
+
+  Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+  na dowolne związane z~zajęciami zagadnienia. W~szczególności
+  \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
+  jest niejasne. Kompilatory to zagadnienie na którym dobrze zna się jakiś
+  0.1\% informatyków, \alert{nie} zakładamy, że~Państwo należą do tej
+  wąskiej grupy.
+
+  % Proszę to sobie zapamiętać. Gdy chodzi o~tematy związane z~zajęciami
+  % \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+  % niezadowalające odpowiedzi.
+
+  % Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+  % na dowolne związane z~zajęciami zagadnienia. Nie ma tu pytań zbyt
+  % elementarnych lub zbyt głupich, są~tylko niezadowalające odpowiedzi.
+
+  % Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+  %   Knight}?” musimy jednak zostawić na czas po zajęciach.
+
+\end{frame}
+% ##################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  % Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
+  % ale nie widzę sposobu, by~tego uniknąć.
+
+  % Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
+  % ja jestem tu dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja
+  % będę Państwa rozliczał tylko i~wyłącznie z~umiejętności i~wiedzy,
+  % z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
+  % wiedzą, czemu warto poświęcić swój czas. (Choć jak dobrze wiemy, często
+  % po jakimś czasie stwierdzamy, że~może trzeba było wybrać coś innego.)
+
+  % Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+  % na dowolne związane z~zajęciami zagadnienia. W~szczególności
+  % \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
+  % jest niejasne. Kompilatory to zagadnienie na którym dobrze zna się jakiś
+  % 0.1\% informatyków, \alert{nie} zakładamy, że~Państwo należą do tej
+  % wąskiej grupy.
+
+  Proszę to sobie zapamiętać. Gdy chodzi o~tematy związane z~zajęciami
+  \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+  niezadowalające odpowiedzi.
+
+  Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+  na dowolne związane z~zajęciami zagadnienia. Nie ma tu pytań zbyt
+  elementarnych lub zbyt głupich, są~tylko niezadowalające odpowiedzi.
+
+  Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+    Knight}?” musimy jednak zostawić na czas po zajęciach.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uwagi odnośnie treści zajęć}
+
+
+  Ze względu na ramy czasowe wiele rzeczy będę \alert{upraszczał} lub
+  \alet{pomijał}. Proszę o~tym pamiętać podczas uczęszczania na zajęcia
+  i~czytania materiałów do nich.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Prezentacje te są dostępne w~formie plików \LaTeX a (kodu źródłowego)
+  na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
+  do internetu może jest zdobyć wpisując \\
+  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+  Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
+
+  Będą też dostępne w~formie PDFów na~Sake, wraz z~innymi materiałami
+  do nauki.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zgłaszanie błędu i~uwag}
+
+
+  W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
+  merytorycznych do zajęć lub dostępnych materiałów proszę pisać pod adres
+  \email. Chcemy by te zajęcia i~towarzyszące im materiały były możliwie
+  proste, łatwe w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć,
+  że~osiągnięcie tego jest naprawdę trudne.
+
+\end{frame}
+% ##################
+
+
+
+
+% % ######################################
+% \section{Czy to jest kurs praktyczny?}
+% % ######################################
 
 
 
@@ -143,6 +285,33 @@
 
 % ##################
 \begin{frame}
+  \frametitle{Bardzo ważna problem}
+
+
+  Współczesna informatyka jest dziedziną bardzo młodą. Ma sens datowanie
+  jej powstania na rok 1945, gdy technologie komputerowe rozwinięte na
+  potrzeby wojskowe w~czasie II~Wojny Światowej wchodzą do użytku
+  powszechnego, choć z~przyczyn technicznych dostępne są bardzo wąskiej
+  grupie ludzi. To czym się zajmujemy nie ma jeszcze 100~lat. Nauka ma to
+  do siebie, że~potrafi naprawdę długo~się rozwijać, potrzebując niekiedy
+  dekad jeśli nie wieków, by dokonać realnego postępu. W~informatyce zaś
+  cały czas odkrywamy nowe i~kluczowe dla tej dziedziny rzeczy.
+
+  W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
+  która raczej~się nie skończy już jutro. W~skutek tego cała masa rzeczy~się
+  ciągle zmienia i~to co wczoraj uchodziło za czystą fantazję, dziś jest
+  rzeczywistością wdrażaną do produkcji przemysłowej. Proszę mieć to na
+  uwadze biorąc udział w~zajęciach i~ucząc~się do tego kursu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
   \frametitle{Czy ten kurs jest praktyczny?}
 
 
@@ -153,13 +322,13 @@
   w~programy komputerowe. W~tym sensie kurs ten jest superpraktyczny, bo
   ktoś te kompilatory musi pisać.
 
-  Jeśli jednak nie mają Państwo zamiaru zajmować~się zawodowo pracą  nad
+  Jeśli jednak nie mają Państwo zamiaru zajmować~się zawodowo pracą nad
   kompilatorami, jak przytłaczająca większość informatyków, to ten kurs nie
   będzie miał jakiejś szczególnie wielkiej wartości praktycznej dla Państw.
-  Niemniej nawet w~takiej sytuacji mogą Państwo wynieść z~tego kursu jakąś
-  wiedzę, która potencjalnie pozwoli wam później tworzyć bardziej wydajne
-  programy. Jeśli mamy jakieś wyobrażenie na temat tego kompilator
-  działa, to możemy mu ułatwić tworzenie dobrych programów.
+  Niemniej nawet w~takiej sytuacji mogą Państwo wynieść z~niego jakąś
+  wiedzę i~umiejętności, które potencjalnie pozwoli wam później tworzyć
+  bardziej wydajne programy. Jeśli mamy jakieś wyobrażenie na temat tego
+  jak kompilator działa, to możemy mu ułatwić tworzenie wydajny programów.
 
 \end{frame}
 % ##################
@@ -170,16 +339,26 @@
 
 % ##################
 \begin{frame}
-  \frametitle{Krótka i~niezbyt poprawna historia problemu}
+  \frametitle{Dlaczego potrzebujemy kompilatorów?}
+
+  \pause
 
 
-  Na~przestrzeni tysięcy lat ludzie tworzyli urządzenia, które dziś
-  rozpoznajemy jako prekursorów współczesnych komputerów, wypada wymienić
-  kilku z~nich, którzy działali przed rokiem 1900-nym.
+  Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+  który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+  jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+  że~pierwotnym językiem komputera jest \textbf{język assembler}
+  (ang. \textit{assembly language}).
 
-  \textbf{2003 r.} Chris Lattner i~Vikram Adve tworzą system \textsc{llvm}.
-  Możemy przyjąć, że~w~tym momencie zaczyna~się okres rozwoju technik
-  kompilacji w~którym jesteśmy dziś (2024 rok).
+  Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+  hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+  posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
+  czy x86/Intel. Typ assemblera jest ustalony przez firmę, która
+  wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
+  „podpięte kable” w~rzeczonym procesorze.
+
+  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
+  napisanemu w~dwóch??? rodzajach assemblera, językach C i~Python.
 
 \end{frame}
 % ##################
@@ -190,23 +369,288 @@
 
 % ##################
 \begin{frame}
-  \frametitle{Co z~tego należy wynieść?}
+  \frametitle{„Hello, World!” w~assemblerze ARM 32,
+    \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
 
-  Współczesna informatyka jest dziedziną bardzo młodą, nie mającą jeszcze
-  100 lat. Nauka ma to do siebie, że~potrafi naprawdę długo~się rozwijać,
-  potrzebując niekiedy dekad jeśli nie wieków, by dokonać realnego postępu.
-  W~informatyce zaś cały czas odkrywamy nowe i~kluczowe dla tej dziedziny
-  rzeczy.
+  \texttt{.global \_start} \\
+  \texttt{.section .text} \\
 
-  W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
-  która raczej~się nie skończy już jutro. W~skutek tego cała masa rzeczy~się
-  ciągle zmienia i~to co wczoraj uchodziło za czystą fantazję, dziś jest
-  rzeczywistością wdrażaną do produkcji przemysłowej. Proszę mieć to na
-  uwadze biorąc udział w~zajęciach i~ucząc~się do tego kursu.
+
+
+  \texttt{\_start:} \\[-0.2em]
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x4} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#1} \\
+  \hphantom{aaaaaaaa} \texttt{ldr r1, =message} \\
+  \hphantom{aaaaaaaa} \texttt{mov r2, \#13} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x1} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#65} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+
+
+  \texttt{.section .data} \\
+  \texttt{message:} \\
+  \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World\textbackslash n"}
 
 \end{frame}
 % ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze x86
+    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+  \texttt{org 0x100} \\
+  \vspace{0.8em}
+
+  \texttt{mov dx, msg} \\
+  \texttt{mov ah, 9} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{mov ah, 0x4c} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~języku~C}
+
+
+  \texttt{\#include <stdio.h>} \\
+  \vspace{0.8em}
+  \texttt{int main() \{ } \\
+  \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \hphantom{aaaa} \texttt{return 0;} \\
+  \texttt{ \} }
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~języku~Python}
+
+
+  \texttt{print("Hello, World!")}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co z~tego wynika?}
+
+
+  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~assemblera,
+  a~Python prostszy od~C.
+
+  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+  Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
+  znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
+  można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
+  danego programu.
+
+  Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
+  pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
+  niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
+  wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
+
+  Jak rozwiązujemy ten problem dziś? Tworzymy języki takie jak~C czy
+  Python, piszemy w~nich programy, które następnie odpowiedni program zwany
+  \textbf{translator} tłumaczy na język assembler.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% ##################
+
+
+
+
+
+
+
+
+% ######################################
+\section{Podstawowe pojęcia}
+% ######################################
+
+
+
+
+
+% % ##################
+\begin{frame}
+  \frametitle{Konwencja}
+
+
+  \begin{textblock}{2.8}(2,1.5)
+
+    \begin{tikzpicture}
+
+      \node[diagram block] at (0,0) {Coś robi};
+
+    \end{tikzpicture}
+
+  \end{textblock}
+
+
+
+  \begin{textblock}{2.8}(8,1.5)
+
+    \begin{tikzpicture}
+
+      \node[diagram square block] at (0,0) {Czymś jest};
+
+    \end{tikzpicture}
+
+  \end{textblock}
+
+
+  \vspace{6em}
+
+
+
+
+
+  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
+  (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+  taki obiekt który wykonuje jakąś czynność na zadanych obiektach
+  wejściowych. Takim obiektem może być człowiek, komputer, program
+  komputerowy, fragment programu komputerowego, etc.
+
+  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
+  koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
+  przez aktorów lub przez nich wytwarzane.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~assemblerze słów kilka}
+
+
+  Jak mówiliśmy wcześniej, na potrzeby tego kursu będziemy przyjmować,
+  że~naturalnym językiem komputera jest język assembler i~nie będziemy
+  wnikać głębiej w~to co~się tam dzieje.
+
+  Jeśli jednak ktoś chce wniknąć głębiej w~to zagadnienie, to po zajęciach
+  służę całą moją wiedzą w~tym temacie.
+
+  \alert{Uwaga terminologiczna.} W~języku angielskim rozróżnia~się
+  \textbf{język assemblera} (ang. \textit{assembly langauge})
+  i~\textbf{program assembler} (ang. \textit{assembler}), który operuje
+  na~programie napisany w~języku assembler. W~języku polskim „assembler”
+  oznacza często język assembler, co może powodować pewne nieporozumienia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Typowy sposób wykonywania programu}
+
+
+  Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
+  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
+  Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
+  w~jednym pliku napisany w~języku assembler. Proces uruchamiania tej
+  gry pokazuje poniższy diagram.
+
+
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram square block] (Hollow Knight) at (0,0)
+      {„Hollow Knight” (język assembler)};
+
+      \node[diagram block] (Computer) at (3.8,0) {Komputer};
+
+      \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+
+
+      \node[diagram block] (Playable computer) at (7.6,0)
+      {Komputer z~włączoną grą HK};
+
+      \draw[thick diagram arrow] (Computer) -- (Playable computer);
+
+    \end{tikzpicture}
+
+    \caption{Typowy sposób uruchamiania programu na naszym komputerze}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pisanie w~języku assembler?}
+
+
+  Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
+  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
+  Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
+  w~jednym pliku napisany w~języku assembler.
+
+\end{frame}
+% ##################
+
 
 
 
@@ -275,6 +719,31 @@
 
 % \end{frame}
 % % ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Krótka i~niezbyt poprawna historia problemu}
+
+
+  Na~przestrzeni tysięcy lat ludzie tworzyli urządzenia, które dziś
+  rozpoznajemy jako prekursorów współczesnych komputerów, wypada wymienić
+  kilku z~nich, którzy działali przed rokiem 1900-nym.
+
+  \textbf{2003 r.} Chris Lattner i~Vikram Adve tworzą system \textsc{llvm}.
+  Możemy przyjąć, że~w~tym momencie zaczyna~się okres rozwoju technik
+  kompilacji w~którym jesteśmy dziś (2024 rok).
+
+\end{frame}
+% ##################
+
+
+
+
+
+
 
 
 

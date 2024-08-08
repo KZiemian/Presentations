@@ -70,10 +70,13 @@ eprint=true,
 % ------------------------------------------------------
 % Local packages
 % ------------------------------------------------------
-% Special configuration for this particular presentation
+% Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
+% Styles for arrows
 \usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+% Stylef for drawing diagrams
 \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
 
@@ -116,7 +119,7 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 73k+, 43k+,
+% Number of chars: 62k+, 73k+, 43k+, 52k+,
 \RaggedRight
 % ######################################
 
@@ -147,7 +150,7 @@ eprint=true,
 
 
 % ######################################
-\section{Informacje ogólne}
+\section{Informacje wstępne}
 % ######################################
 
 
@@ -164,12 +167,18 @@ eprint=true,
   ja jestem tu dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja
   będę Państwa rozliczał tylko i~wyłącznie z~umiejętności i~wiedzy,
   z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
-  wiedzą, czemu warto poświęcić swój czas. (Choć jak wiadomo, często po
-  czasie stwierdzamy, że~nasz wybór mógł być jednak lepszy.)
+  wiedzą, czemu warto poświęcić swój czas. (Choć jak wiadomo, często potem
+  stwierdzamy, że~nasz wybór mógł być jednak lepszy.)
 
   Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-  na dowolne związane z~zajęciami zagadnienia. Nie ma tu pytań zbyt
-  elementarnych lub zbyt głupich, są~tylko niezadowalające odpowiedzi.
+  na dowolne związane z~zajęciami zagadnienia. W~szczególności
+  \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
+  jest niejasne. To są podstawy informatyki, \alert{nie} zakładamy,
+  że~Państwo mają już wszystko umieć.
+
+  Proszę to sobie zapamiętać. Gdy chodzi o~tematy związane z~zajęciami
+  \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+  niezadowalające odpowiedzi.
 
   Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
     Knight}?” musimy jednak zostawić na czas po zajęciach.
@@ -183,7 +192,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Informacje wstępne}
+  \frametitle{Uwagi odnośnie treści zajęć}
 
 
   Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
@@ -322,7 +331,7 @@ eprint=true,
   merytorycznych do zajęć lub dostępnych materiałów proszę pisać pod adres
   \email. Chcemy by te zajęcia i~towarzyszące im materiały były możliwie
   proste, łatwe w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć,
-  że~osiągnięcie tego jest trudniejsze niżby~się wydawało.
+  że~osiągnięcie tego jest naprawdę trudne.
 
 \end{frame}
 % ##################
@@ -650,8 +659,8 @@ eprint=true,
   Język~C w 2022 roku obchodził 50 (!) lecie swojego istnienia. Jego wiek
   niestety często czuć, bo wiele funkcjonalności które dziś uważamy
   za~niezbędne w~pracy programisty albo są w~nim nieobecne, albo są,
-  ale w~dość koślawej wersji. Niektórych rzeczy nie da~się ładnie
-  dodać do języka z~lat 70-tych XX wieku.
+  ale w~dość koślawej wersji. Niektórych rzeczy nie da~się w~sposób
+  elegancki dodać do języka z~lat 70-tych XX wieku.
 
   Do tego język~C został pomyślany jako mały język, więc on z~premedytacją
   \alert{nie} wprowadził pewnych rzeczy znanych już koło 1970 roku. To
@@ -826,7 +835,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze ARM 32
+  \frametitle{„Hello, World!” w~assemblerze x86
     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
@@ -886,12 +895,13 @@ eprint=true,
 
 
 
+
 % ##################
 \begin{frame}
   \frametitle{Co z~tego wynika?}
 
 
-  Powinno być teraz dość oczywiste, że~C jest prostszy od~assemblera,
+  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~assemblera,
   a~Python prostszy od~C.
 
   \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
@@ -927,9 +937,9 @@ eprint=true,
   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
   wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
 
-  Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, który
-  następnie odpowiedni program zwany \textbf{kompilatorem} tłumaczy na
-  assembler.
+  Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, piszemy
+  w~nich programy, a~następnie odpowiedni program zwany
+  \textbf{kompilatorem} tłumaczy na język assembler.
 
 \end{frame}
 % ##################

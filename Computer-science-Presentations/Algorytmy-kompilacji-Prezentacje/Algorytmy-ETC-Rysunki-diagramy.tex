@@ -193,6 +193,52 @@
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Typowy sposób wykonywania programu}
+
+
+  Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
+  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
+  Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
+  w~jednym pliku napisany w~języku assembler. Proces uruchamiania tej
+  gry pokazuje poniższy diagram.
+
+
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram square block] (Hollow Knight) at (0,0)
+      {„Hollow Knight” (język assembler)};
+
+      \node[diagram block] (Computer) at (3.8,0) {Komputer};
+
+      \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+
+
+      \node[diagram block] (Playable computer) at (7.6,0)
+      {Komputer z~włączoną grą HK};
+
+      \draw[thick diagram arrow] (Computer) -- (Playable computer);
+
+    \end{tikzpicture}
+
+    \caption{Typowy sposób uruchamiania programu na naszym komputerze}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+%       \node[color=jNormalTextFGColor,align=left] at (3.2,-1.9)
+%       {Przesył danych między \\
+%         pamięcią i~procesorem};
 
 % % ##################
 % % !!!!!!!!!!!!!!!!!!!!
