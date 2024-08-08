@@ -193,16 +193,54 @@
 
 
 
+% % ##################
+% \begin{frame}
+%   \frametitle{Typowy sposób wykonywania programu}
+
+
+%   Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
+%   wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
+%   Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
+%   w~jednym pliku napisany w~języku assembler. Proces uruchamiania tej
+%   gry pokazuje poniższy diagram.
+
+
+
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \node[diagram square block] (Hollow Knight) at (0,0)
+%       {„Hollow Knight” (język C++)};
+
+%       \node[diagram block] (Computer) at (3.8,0) {Komputer};
+
+%       \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+
+
+%       \node[diagram block] (Playable computer) at (7.6,0)
+%       {Komputer z~włączoną grą HK};
+
+%       \draw[thick diagram arrow] (Computer) -- (Playable computer);
+
+%     \end{tikzpicture}
+
+%     \caption{Błędny sposób uruchamiania gry „Hollow Knight”}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
 % ##################
 \begin{frame}
-  \frametitle{Typowy sposób wykonywania programu}
+  \frametitle{?????}
 
 
-  Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
-  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
-  Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
-  w~jednym pliku napisany w~języku assembler. Proces uruchamiania tej
-  gry pokazuje poniższy diagram.
+  Jak powiedzieliśmy
 
 
 
@@ -212,8 +250,8 @@
 
     \begin{tikzpicture}
 
-      \node[diagram square block] (Hollow Knight) at (0,0)
-      {„Hollow Knight” (język assembler)};
+      \node[diagram rectangle block] (Hollow Knight) at (0,0)
+      {„Hollow Knight” (język C++)};
 
       \node[diagram block] (Computer) at (3.8,0) {Komputer};
 
@@ -227,7 +265,68 @@
 
     \end{tikzpicture}
 
-    \caption{Typowy sposób uruchamiania programu na naszym komputerze}
+    \caption{Błędny sposób uruchamiania gry „Hollow Knight”}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Inny diagram}
+
+
+%   Czy poniższy diagram jest lepszy czy gorszy od poprzedniego? Zależy
+%   od~tego jakie informacje ma dany diagram przekazywać. Proszę~się więc nie
+%   dziwić, jeśli na danym diagramie czegoś nie ma, a~nawet, że~nie ma czegoś
+%   co było na poprzedniej wersji diagramu. Zawsze trzeba dokonać selekcji co
+%   na diagramie zostanie umieszczone, a~co nie i~ten wybór często zależy
+%   od kontekstu.
+
+%   Jeśli uważają Państwo, że~na diagramie nie ma czegoś, co być powinno,
+%   albo coś innego jest nie w~porządku, \alert{proszę} to mi powiedzieć.
+%   Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
+
+
+
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jeśli myślisz, że~jesteś dobrym programistą???}
+
+
+  Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
+  Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
+  i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
+  mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
+  że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram block] (Man) at (0,0) {Człowiek};
+
+      \node[diagram rectangle block] (Source code) at (3.8,0)
+      {Kod źródłowy w~języku~C};
+
+      \draw[thick diagram arrow] (Man) -- (Source code);
+
+    \end{tikzpicture}
+
+    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
 
 
   \end{figure}

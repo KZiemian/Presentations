@@ -173,6 +173,9 @@
 % ##################
 
 
+
+
+
 % ##################
 \begin{frame}
   \frametitle{Informacje wstępne}
@@ -218,9 +221,39 @@
   \frametitle{Uwagi odnośnie treści zajęć}
 
 
-  Ze względu na ramy czasowe wiele rzeczy będę \alert{upraszczał} lub
-  \alet{pomijał}. Proszę o~tym pamiętać podczas uczęszczania na zajęcia
+  Współczesna informatyka jest dziedziną bardzo młodą. Ma sens datowanie
+  jej powstania na rok 1945, gdy technologie komputerowe rozwinięte na
+  potrzeby wojskowe w~czasie II~Wojny Światowej wchodzą do użytku
+  powszechnego, choć z~przyczyn technicznych dostępne są bardzo wąskiej
+  grupie ludzi. To czym się zajmujemy nie ma jeszcze 100~lat. Nauka ma to
+  do siebie, że~potrafi naprawdę długo~się rozwijać, potrzebując niekiedy
+  dekad jeśli nie wieków, by dokonać realnego postępu. W~informatyce zaś
+  cały czas odkrywamy nowe i~kluczowe dla tej dziedziny rzeczy.
+
+  W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
+  która raczej~się nie skończy już jutro. W~skutek tego cała masa rzeczy~się
+  ciągle zmienia i~to co wczoraj uchodziło za czystą fantazję, dziś jest
+  rzeczywistością wdrażaną do produkcji przemysłowej. Proszę mieć to na
+  uwadze biorąc udział w~zajęciach i~ucząc~się do tego kursu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bardzo ważna kwestia}
+
+
+  Ze względu na ramy czasowe tego wiele rzeczy będę \alert{upraszczał} lub
+  \alert{pomijał}. Proszę o~tym pamiętać podczas uczęszczania na zajęcia
   i~czytania materiałów do nich.
+
+  Jeśli jednak ktoś chce~się zagłębić w~nie bardziej, po zajęciach służę
+  całą moją wiedzą.
 
 \end{frame}
 % ##################
@@ -267,9 +300,166 @@
 
 
 
-% % ######################################
-% \section{Czy to jest kurs praktyczny?}
-% % ######################################
+
+
+
+
+
+
+% ######################################
+\section{Dygresja o~diagramach występujących w~tych
+  prezentacjach}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Konwencja}
+
+
+  \begin{textblock}{2.8}(2,1.5)
+
+    \begin{tikzpicture}
+
+      \node[diagram block] at (0,0) {Coś robi};
+
+    \end{tikzpicture}
+
+  \end{textblock}
+
+
+
+  \begin{textblock}{2.8}(8,1.5)
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] at (0,0) {Czymś jest};
+
+    \end{tikzpicture}
+
+  \end{textblock}
+
+
+  \vspace{6em}
+
+
+
+
+
+  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
+  (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+  taki obiekt który wykonuje jakąś czynność na zadanych obiektach
+  wejściowych. Takim obiektem może być człowiek, komputer, program
+  komputerowy, fragment programu komputerowego, etc.
+
+  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
+  koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
+  przez aktorów lub przez nich wytwarzane.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykładowy diagram}
+
+
+  Konwencję tą ilustruje poniższy, zrobionym z~przymrużeniem oka, diagram.
+  Przedstawia on proces tworzenia przez człowieka za pomocą klawiatury
+  i~komputera programu w~języku programowania~C.
+
+
+
+
+
+  \begin{figure}
+
+    \label{eq:aaaa}
+
+    \begin{tikzpicture}
+
+      \node[diagram block] (Man) at (0,0) {Człowiek};
+
+      \node[diagram block] (Keyboard) at (3.8,0) {Klawiatura};
+
+      \draw[thick diagram arrow] (Man) -- (Keyboard);
+
+
+      \node[diagram block] (Computer) at (7.6,0) {Komputer};
+
+      \draw[thick diagram arrow] (Keyboard) -- (Computer);
+
+      % \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+
+
+      \node[diagram rectangle block] (Source code) at (7.6,-2.5)
+      {Kod źródłowy w~języku~C};
+
+      \draw[thick diagram arrow] (Computer) -- (Source code);
+
+    \end{tikzpicture}
+
+    \caption{Diagram ilustrujący tworzenie kodu w~języku~C.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Inny diagram}
+
+
+  Czy poniższy diagram jest lepszy czy gorszy od poprzedniego? Zależy
+  od~tego jakie informacje ma dany diagram przekazywać. Proszę~się więc nie
+  dziwić, jeśli na danym diagramie czegoś nie ma, a~nawet, że~nie ma czegoś
+  co było na poprzedniej wersji diagramu. Zawsze trzeba dokonać selekcji co
+  na diagramie zostanie umieszczone, a~co nie i~ten wybór często zależy
+  od kontekstu.
+
+  Jeśli uważają Państwo, że~na diagramie nie ma czegoś, co być powinno,
+  albo coś innego jest nie w~porządku, \alert{proszę} to mi powiedzieć.
+  Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
+
+
+
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram block] (Man) at (0,0) {Człowiek};
+
+      \node[diagram rectangle block] (Source code) at (3.8,0)
+      {Kod źródłowy w~języku~C};
+
+      \draw[thick diagram arrow] (Man) -- (Source code);
+
+    \end{tikzpicture}
+
+    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
 
 
 
@@ -280,33 +470,6 @@
 % ######################################
 \section{Spojrzenie na~przedmiot z~lotu ptaka}
 % ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Bardzo ważna problem}
-
-
-  Współczesna informatyka jest dziedziną bardzo młodą. Ma sens datowanie
-  jej powstania na rok 1945, gdy technologie komputerowe rozwinięte na
-  potrzeby wojskowe w~czasie II~Wojny Światowej wchodzą do użytku
-  powszechnego, choć z~przyczyn technicznych dostępne są bardzo wąskiej
-  grupie ludzi. To czym się zajmujemy nie ma jeszcze 100~lat. Nauka ma to
-  do siebie, że~potrafi naprawdę długo~się rozwijać, potrzebując niekiedy
-  dekad jeśli nie wieków, by dokonać realnego postępu. W~informatyce zaś
-  cały czas odkrywamy nowe i~kluczowe dla tej dziedziny rzeczy.
-
-  W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
-  która raczej~się nie skończy już jutro. W~skutek tego cała masa rzeczy~się
-  ciągle zmienia i~to co wczoraj uchodziło za czystą fantazję, dziś jest
-  rzeczywistością wdrażaną do produkcji przemysłowej. Proszę mieć to na
-  uwadze biorąc udział w~zajęciach i~ucząc~się do tego kursu.
-
-\end{frame}
-% ##################
-
-
 
 
 
@@ -347,18 +510,46 @@
   Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
   który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
   jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-  że~pierwotnym językiem komputera jest \textbf{język assembler}
+  że~pierwotnym językiem komputera jest \textbf{język asembler}
   (ang. \textit{assembly language}).
 
   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
-  posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
-  czy x86/Intel. Typ assemblera jest ustalony przez firmę, która
-  wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
-  „podpięte kable” w~rzeczonym procesorze.
+  posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
+  czy x86/Intel. Można też wymienić asemblery  (kto te nazwy
+  wymyśla?).
 
-  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-  napisanemu w~dwóch??? rodzajach assemblera, językach C i~Python.
+  Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
+  poza swoim pierwotnym językiem, może znać kilka innych (angielski,
+  arabski, chiński, farsi, francuski, japoński, niemiecki, polski, etc.).
+  Komputery zwykle rozumieją tak naprawdę tylko \alert{jeden jedyny}
+  język: właściwy mu dialekt asemblera. To stwarza potrzebę tworzenia
+  kompilatorów i~innych tego typu programów.
+
+  % Tutaj pojawia~się pewien problem. Zilustrujemy go pokazują program
+  % „Hello, World!” napisany w~dialektach asemblera napisanemu w~dwóch???
+  % rodzajach asemblera oraz językach C i~Python.
+
+
+  % Dobrze, to
+  % w~takim razie ja możemy uruchomić program napisany w~języku~C czy Python?
+
+  % Wszystkie inne
+  % języki (C, C++, Java, Python, etc.), są dla niego niezrozumiałe. Z~tego
+  % powodu program napisany w~tych językach muszą zostać najpierw
+  % \alert{przetłumaczone} do jego
+
+  % To który dialekt asemblera rozumiem komputer jest ustalony przez firmę,
+  % która wyprodukowała jego procesor. Asembler jest bowiem zakodowany w~tym
+  % jak są „podpięte kable” w~rzeczonym procesorze.
+
+  % Czy ktoś z~Państwa korzystał z~emulatora do gier? Choćby po to by
+  % uruchomić grę \textit{Pokemon Yellow/Red/Blue} przeznaczoną na GameBoya
+  % na swoim PCecie? (To nie jedyny emulator do gier z~którego korzystałem.)
+  % Na tej samej zasadzie działają emulatory asemblerów, pozwalające
+  % uruchomić asemblera x86 na procesorze w~architekturze \textsc{arm}.
+
+
 
 \end{frame}
 % ##################
@@ -369,7 +560,27 @@
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze ARM 32,
+  \frametitle{Dlaczego potrzebujemy kompilatorów?}
+
+
+  By lepiej zrozumieć dlaczego potrzebujemy kompilatorów, przedstawimy
+  teraz jeden program, który wypisuje „Hello, World!” na ekranie, napisany
+  w~dialektach asemblera ??? oraz językach C i~Python.
+
+  Wersje programu napisane w~\textsc{arm} 32,????, językach C i~Pythonie
+  zostały przetestowane przeze mnie i~jeśli są chętni, to możemy je głębiej
+  omówić.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~asemblerze ARM 32,
     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
 
@@ -382,7 +593,7 @@
   \hphantom{aaaaaaaa} \texttt{mov r7, \#0x4} \\
   \hphantom{aaaaaaaa} \texttt{mov r0, \#1} \\
   \hphantom{aaaaaaaa} \texttt{ldr r1, =message} \\
-  \hphantom{aaaaaaaa} \texttt{mov r2, \#13} \\
+  \hphantom{aaaaaaaa} \texttt{mov r2, \#14} \\
 
   \hphantom{aaaaaaaa} \texttt{swi 0} \\
 
@@ -395,7 +606,7 @@
 
   \texttt{.section .data} \\
   \texttt{message:} \\
-  \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World\textbackslash n"}
+  \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World!\textbackslash n"}
 
 \end{frame}
 % ##################
@@ -405,7 +616,7 @@
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze x86
+  \frametitle{„Hello, World!” w~asemblerze x86
     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
@@ -465,32 +676,126 @@
 
 
 
-
 % ##################
 \begin{frame}
-  \frametitle{Co z~tego wynika?}
+  \frametitle{Dlaczego potrzebujemy kompilatorów?}
 
 
-  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~assemblera,
+  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
   a~Python prostszy od~C.
 
-  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
-  można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
+  można tego, by kod napisany przez niego w~asemblerze wszedł w~skład
   danego programu.
 
   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
-  pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
-  niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
-  wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
+  pisząc w~asemblerze, a~pomyłki na jego poziomie są szczególnie
+  niebezpieczne. Jeśli są zainteresowani, to możemy omówić ten temat
+  szerzej, ale tylko po zajęciach. Wykracza on bowiem mocno poza zakres tego
+  przedmiotu.
 
-  Jak rozwiązujemy ten problem dziś? Tworzymy języki takie jak~C czy
-  Python, piszemy w~nich programy, które następnie odpowiedni program zwany
-  \textbf{translator} tłumaczy na język assembler.
+  Dobrze, to co zrobić by uniknąć pisania w~asemblerze? Stwórzmy język
+  programowania taki jak~C czy Python, który jest dla nas prostszy w~użyciu
+  niż asembler i~napiszmy program w~nim. Proszę zwrócić uwagę, że~„prostszy”
+  wcale nie oznacza „prosty”!
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego potrzebujemy kompilatorów?}
+
+  % \pause
+
+
+  % Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+  % który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+  % jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+  % że~pierwotnym językiem komputera jest \textbf{język asembler}
+  % (ang. \textit{assembly language}).
+
+  % Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+  % hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+  % posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
+  % czy x86/Intel. Można też wymienić asemblery  (kto te nazwy
+  % wymyśla?).
+
+  % Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
+  % potrafi znać kilka różnych języków (polski, angielski, francuski,
+  % niemiecki, etc.), ale komputery zwykle rozumieją tak naprawdę tylko
+  % \alert{jeden jedyny} język: właściwy mu (natywny) dialekt asemblera.
+  % Wszystkie inne języki (C, C++, Java, Python, etc.), są dla niego
+  % niezrozumiałe. Z~tego powodu program napisany w~tych językach muszą
+  % zostać najpierw \alert{przetłumaczone} do jego natywnego asemblera.
+
+  To który dialekt asemblera rozumiem komputer jest ustalony przez firmę,
+  która wyprodukowała jego procesor. Asembler jest bowiem zakodowany w~tym
+  jak są „podpięte kable” w~rzeczonym procesorze.
+
+  % Czy ktoś z~Państwa korzystał z~emulatora do gier? Choćby po to by
+  % uruchomić grę \textit{Pokemon Yellow/Red/Blue} przeznaczoną na GameBoya
+  % na swoim PCecie? (To nie jedyny emulator do gier z~którego korzystałem.)
+  % Na tej samej zasadzie działają emulatory asemblerów, pozwalające
+  % uruchomić asemblera x86 na procesorze w~architekturze \textsc{arm}.
+
+  % Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
+  % napisanemu w~dwóch??? rodzajach asemblera, językach C i~Python.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego potrzebujemy kompilatorów?}
+
+  \pause
+
+
+  % Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+  % który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+  % jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+  % że~pierwotnym językiem komputera jest \textbf{język asembler}
+  % (ang. \textit{assembly language}).
+
+  % Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+  % hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+  % posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
+  % czy x86/Intel. Typ asemblera jest ustalony przez firmę, która
+  % wyprodukowała procesor, bowiem asembler jest zdefiniowany przez to jak są
+  % „podpięte kable” w~rzeczonym procesorze.
+
+  \alert{Dygresja.} Czy ktoś z~Państwa korzystał z~emulatora do gier?
+  Choćby po to by uruchomić grę \textit{Pokemon Yellow/Red/Blue}
+  przeznaczoną na GameBoya na swoim PCecie? (To nie jedyny emulator do gier
+  z~którego korzystałem.) Na tej samej zasadzie działają emulatory
+  asemblerów, pozwalające uruchomić asemblera x86 na procesorze
+  w~architekturze \textsc{arm}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -508,82 +813,41 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 % ######################################
-\section{Podstawowe pojęcia}
+\section{Główna idea}
 % ######################################
-
-
-
-
-
-% % ##################
-\begin{frame}
-  \frametitle{Konwencja}
-
-
-  \begin{textblock}{2.8}(2,1.5)
-
-    \begin{tikzpicture}
-
-      \node[diagram block] at (0,0) {Coś robi};
-
-    \end{tikzpicture}
-
-  \end{textblock}
-
-
-
-  \begin{textblock}{2.8}(8,1.5)
-
-    \begin{tikzpicture}
-
-      \node[diagram square block] at (0,0) {Czymś jest};
-
-    \end{tikzpicture}
-
-  \end{textblock}
-
-
-  \vspace{6em}
-
-
-
-
-
-  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
-  (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
-  taki obiekt który wykonuje jakąś czynność na zadanych obiektach
-  wejściowych. Takim obiektem może być człowiek, komputer, program
-  komputerowy, fragment programu komputerowego, etc.
-
-  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
-  koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
-  przez aktorów lub przez nich wytwarzane.
-
-\end{frame}
-% ##################
-
-
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{O~assemblerze słów kilka}
+  \frametitle{O~asemblerze słów kilka}
 
 
   Jak mówiliśmy wcześniej, na potrzeby tego kursu będziemy przyjmować,
-  że~naturalnym językiem komputera jest język assembler i~nie będziemy
+  że~naturalnym językiem komputera jest język asembler i~nie będziemy
   wnikać głębiej w~to co~się tam dzieje.
 
   Jeśli jednak ktoś chce wniknąć głębiej w~to zagadnienie, to po zajęciach
   służę całą moją wiedzą w~tym temacie.
 
   \alert{Uwaga terminologiczna.} W~języku angielskim rozróżnia~się
-  \textbf{język assemblera} (ang. \textit{assembly langauge})
-  i~\textbf{program assembler} (ang. \textit{assembler}), który operuje
-  na~programie napisany w~języku assembler. W~języku polskim „assembler”
-  oznacza często język assembler, co może powodować pewne nieporozumienia.
+  \textbf{język asemblera} (ang. \textit{assembly langauge})
+  i~\textbf{program asembler} (ang. \textit{assembler}), który operuje
+  na~programie napisany w~języku asembler. W~języku polskim „asembler”
+  oznacza często język asembler, co może powodować pewne nieporozumienia.
 
 \end{frame}
 % ##################
@@ -600,7 +864,7 @@
   Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
   wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
   Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
-  w~jednym pliku napisany w~języku assembler. Proces uruchamiania tej
+  w~jednym pliku napisany w~języku asembler. Proces uruchamiania tej
   gry pokazuje poniższy diagram.
 
 
@@ -611,8 +875,8 @@
 
     \begin{tikzpicture}
 
-      \node[diagram square block] (Hollow Knight) at (0,0)
-      {„Hollow Knight” (język assembler)};
+      \node[diagram rectangle block] (Hollow Knight) at (0,0)
+      {„Hollow Knight” (język asembler)};
 
       \node[diagram block] (Computer) at (3.8,0) {Komputer};
 
@@ -640,13 +904,15 @@
 
 % ##################
 \begin{frame}
-  \frametitle{Pisanie w~języku assembler?}
+  \frametitle{Pisanie gier w~języku asembler?}
 
 
-  Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
-  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
-  Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
-  w~jednym pliku napisany w~języku assembler.
+  Jak już wspomnieliśmy, pisanie w~języku asembler to zwykle nie jest
+  dobry pomysł. Znany przykład tego, że~można napisać grę w~języku
+  asembler, jest gra \textit{???} z~1?? roku, którą \textit{w~pojedynkę}
+  napisał w~języku asembler. Niemniej mało jest osób takich ????.
+
+  Wklej tu tego mema.
 
 \end{frame}
 % ##################
@@ -656,42 +922,61 @@
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Literature}
+% ##################
+\begin{frame}
+  \frametitle{?????}
 
 
-%   Fletcher Dunn, Ian Parberry, \emph{3D Math Primer for~Graphics
-%     and~Game Development}.
-
-%   Web resources.
-
-% \end{frame}
-% % ##################
+  Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
+  Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
+  i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
+  mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
+  że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{\alert{Important information}}
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] (Hollow Knight) at (0,0)
+      {„Hollow Knight” (język C++)};
+
+      \node[diagram block] (Computer) at (3.8,0) {Komputer};
+
+      \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
 
 
-%   The slides are only \alert{auxiliary} to these lectures.
-%   To understand all the problems discussed here, please follow the lectures
-%   and literature.
-%   % They can be
-%   % \alert{not enough} to~understand all issues without
-%   % listening to a lecture or reaching for literature.
+      \node[diagram block] (Playable computer) at (7.6,0)
+      {Komputer z~włączoną grą HK};
 
-%   All materials are a work within the meaning of the Act of 4~February
-%   1994~r. on copyright and related rights (OJ~U.~no.~90, pos.~631). These
-%   materials may not be distributed without providing information about the
-%   authors.
+      \draw[thick diagram arrow] (Computer) -- (Playable computer);
 
-% \end{frame}
-% % ##################
+    \end{tikzpicture}
+
+    \caption{Błędny sposób uruchamiania gry „Hollow Knight”}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyjaśnienie }
+
+
+
+
+\end{frame}
+% ##################
 
 
 
@@ -743,6 +1028,10 @@
 
 
 
+
+% % ######################################
+% \section{Czy to jest kurs praktyczny?}
+% % ######################################
 
 
 
@@ -1010,29 +1299,7 @@
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
 
-
-%   \textbf{Model} --~a mathematical representation of an object in the 3D world.
-
-%   \vspace{0.5em}
-
-
-%   \textbf{Rendering} --~obtaining a computer image based on the model\\
-%   (displayed by a computer, e.g. on a screen).
-
-%   \vspace{0.5em}
-
-
-%   \textbf{Perspective} --~a drawing technique of a 3D object on a plane;\\ a generated image makes a three-dimensional impression. \\
-%   Perspective is based on the physiology of human vision and optics.\\
-%   Already Plato wrote about the use of perspective in painting.
-
-
-% \end{frame}
-% % ##################
 
 
 
