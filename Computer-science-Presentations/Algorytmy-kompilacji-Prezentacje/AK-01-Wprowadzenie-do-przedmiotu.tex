@@ -158,17 +158,6 @@
   0.1\% informatyków, \alert{nie} zakładamy, że~Państwo należą do tej
   wąskiej grupy.
 
-  % Proszę to sobie zapamiętać. Gdy chodzi o~tematy związane z~zajęciami
-  % \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
-  % niezadowalające odpowiedzi.
-
-  % Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-  % na dowolne związane z~zajęciami zagadnienia. Nie ma tu pytań zbyt
-  % elementarnych lub zbyt głupich, są~tylko niezadowalające odpowiedzi.
-
-  % Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
-  %   Knight}?” musimy jednak zostawić na czas po zajęciach.
-
 \end{frame}
 % ##################
 
@@ -181,24 +170,7 @@
   \frametitle{Informacje wstępne}
 
 
-  % Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
-  % ale nie widzę sposobu, by~tego uniknąć.
-
-  % Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
-  % ja jestem tu dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja
-  % będę Państwa rozliczał tylko i~wyłącznie z~umiejętności i~wiedzy,
-  % z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
-  % wiedzą, czemu warto poświęcić swój czas. (Choć jak dobrze wiemy, często
-  % po jakimś czasie stwierdzamy, że~może trzeba było wybrać coś innego.)
-
-  % Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-  % na dowolne związane z~zajęciami zagadnienia. W~szczególności
-  % \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
-  % jest niejasne. Kompilatory to zagadnienie na którym dobrze zna się jakiś
-  % 0.1\% informatyków, \alert{nie} zakładamy, że~Państwo należą do tej
-  % wąskiej grupy.
-
-  Proszę to sobie zapamiętać. Gdy chodzi o~tematy związane z~zajęciami
+  Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
   \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
   niezadowalające odpowiedzi.
 
@@ -379,7 +351,7 @@
 
   \begin{figure}
 
-    \label{eq:aaaa}
+    \label{fig:Creating-code-in-C}
 
     \begin{tikzpicture}
 
@@ -438,6 +410,8 @@
 
 
   \begin{figure}
+
+    \label{fig:Also-creating-code-in-C}
 
     \begin{tikzpicture}
 
@@ -516,8 +490,9 @@
   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
   posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
-  czy x86/Intel. Można też wymienić asemblery  (kto te nazwy
-  wymyśla?).
+  czy x86/Intel. Można też wymienić dialekty asemblera \textsc{gas},
+  \textsc{fasm}, \textsc{masm}, \textsc{nasm}, \textsc{yasm} (kto wymyśla
+  te nazwy?).
 
   Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
   poza swoim pierwotnym językiem, może znać kilka innych (angielski,
@@ -525,19 +500,6 @@
   Komputery zwykle rozumieją tak naprawdę tylko \alert{jeden jedyny}
   język: właściwy mu dialekt asemblera. To stwarza potrzebę tworzenia
   kompilatorów i~innych tego typu programów.
-
-  % Tutaj pojawia~się pewien problem. Zilustrujemy go pokazują program
-  % „Hello, World!” napisany w~dialektach asemblera napisanemu w~dwóch???
-  % rodzajach asemblera oraz językach C i~Python.
-
-
-  % Dobrze, to
-  % w~takim razie ja możemy uruchomić program napisany w~języku~C czy Python?
-
-  % Wszystkie inne
-  % języki (C, C++, Java, Python, etc.), są dla niego niezrozumiałe. Z~tego
-  % powodu program napisany w~tych językach muszą zostać najpierw
-  % \alert{przetłumaczone} do jego
 
   % To który dialekt asemblera rozumiem komputer jest ustalony przez firmę,
   % która wyprodukowała jego procesor. Asembler jest bowiem zakodowany w~tym
@@ -682,7 +644,8 @@
 
 
   Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
-  a~Python prostszy od~C.
+  a~Python prostszy od~C. Dlaczego tak jest, to niestety temat na inny
+  przedmiot, acz o~kilka elementów tego zagadnienia uda nam~się zahaczyć.
 
   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
@@ -696,11 +659,6 @@
   szerzej, ale tylko po zajęciach. Wykracza on bowiem mocno poza zakres tego
   przedmiotu.
 
-  Dobrze, to co zrobić by uniknąć pisania w~asemblerze? Stwórzmy język
-  programowania taki jak~C czy Python, który jest dla nas prostszy w~użyciu
-  niż asembler i~napiszmy program w~nim. Proszę zwrócić uwagę, że~„prostszy”
-  wcale nie oznacza „prosty”!
-
 \end{frame}
 % ##################
 
@@ -712,20 +670,48 @@
 \begin{frame}
   \frametitle{Dlaczego potrzebujemy kompilatorów?}
 
-  % \pause
+
+  Co więc należy zrobić by uniknąć pisania kodu w~języku asemblera? Stwórzmy
+  język programowania taki jak~C czy Python, który jest dla nas prostszy
+  w~użyciu niż asembler i~napiszmy program w~nim. Proszę zwrócić uwagę,
+  że~„prostszy” wcale nie oznacza \alert{„prosty”}!
+
+  Dobrze, ale komputer dalej rozumie tylko język asembler, a~nie~C czy
+  Pytona, co więc musimy zrobić, by uruchomić programy napisany w~jednym
+  z~tych języków? Potrzebny jest nam program komputerowy zwany
+  \textbf{translatorem}, który \alert{przetłumaczy} kod napisany,
+  przykładowo w~C na asemblera.
 
 
-  % Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
-  % który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
-  % jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-  % że~pierwotnym językiem komputera jest \textbf{język asembler}
-  % (ang. \textit{assembly language}).
 
-  % Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
-  % hiszpański, japoński, niemiecki, polski, etc., tak komputer również
-  % posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
-  % czy x86/Intel. Można też wymienić asemblery  (kto te nazwy
-  % wymyśla?).
+
+
+  \begin{figure}
+
+    \label{fig:Translator-01}
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] (Source code in C) at (0,0)
+      {Kod programu (język C)};
+
+      \node[diagram block] (Translator) at (3.8,0) {Translator};
+
+      \draw[thick diagram arrow] (Source code in C) -- (Translator);
+
+
+      \node[diagram rectangle block] (Code in assembly) at (7.6,0)
+      {Kod programu (język asemblera)};
+
+      \draw[thick diagram arrow] (Translator) -- (Code in assembly);
+
+    \end{tikzpicture}
+
+    \caption{Ilustracja działania translatora}
+
+
+  \end{figure}
+
 
   % Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
   % potrafi znać kilka różnych języków (polski, angielski, francuski,
@@ -734,10 +720,6 @@
   % Wszystkie inne języki (C, C++, Java, Python, etc.), są dla niego
   % niezrozumiałe. Z~tego powodu program napisany w~tych językach muszą
   % zostać najpierw \alert{przetłumaczone} do jego natywnego asemblera.
-
-  To który dialekt asemblera rozumiem komputer jest ustalony przez firmę,
-  która wyprodukowała jego procesor. Asembler jest bowiem zakodowany w~tym
-  jak są „podpięte kable” w~rzeczonym procesorze.
 
   % Czy ktoś z~Państwa korzystał z~emulatora do gier? Choćby po to by
   % uruchomić grę \textit{Pokemon Yellow/Red/Blue} przeznaczoną na GameBoya
@@ -757,45 +739,20 @@
 
 % ##################
 \begin{frame}
-  \frametitle{Dlaczego potrzebujemy kompilatorów?}
+  \frametitle{Kilka uwag końcowych}
 
-  \pause
-
-
-  % Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
-  % który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
-  % jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-  % że~pierwotnym językiem komputera jest \textbf{język asembler}
-  % (ang. \textit{assembly language}).
-
-  % Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
-  % hiszpański, japoński, niemiecki, polski, etc., tak komputer również
-  % posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
-  % czy x86/Intel. Typ asemblera jest ustalony przez firmę, która
-  % wyprodukowała procesor, bowiem asembler jest zdefiniowany przez to jak są
-  % „podpięte kable” w~rzeczonym procesorze.
 
   \alert{Dygresja.} Czy ktoś z~Państwa korzystał z~emulatora do gier?
   Choćby po to by uruchomić grę \textit{Pokemon Yellow/Red/Blue}
   przeznaczoną na GameBoya na swoim PCecie? (To nie jedyny emulator do gier
   z~którego korzystałem.) Na tej samej zasadzie działają emulatory
   asemblerów, pozwalające uruchomić asemblera x86 na procesorze
-  w~architekturze \textsc{arm}.
+  zbudowanym w~architekturze \textsc{arm}.
+
+
 
 \end{frame}
 % ##################
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -826,14 +783,14 @@
 
 
 % ######################################
-\section{Główna idea}
+\section{Praktyczny problem}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{O~asemblerze słów kilka}
+  \frametitle{Kilka słów przypomnienia}
 
 
   Jak mówiliśmy wcześniej, na potrzeby tego kursu będziemy przyjmować,
@@ -862,10 +819,10 @@
 
 
   Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
-  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra „Hollow
-  Knight” (nie gorszy przykład programu niż dowolny inny), zawiera~się
-  w~jednym pliku napisany w~języku asembler. Proces uruchamiania tej
-  gry pokazuje poniższy diagram.
+  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra
+  \textit{Hollow Knight} (nie gorszy przykład programu niż dowolny inny),
+  zawiera~się w~jednym pliku napisany w~języku asembler. Proces
+  uruchamiania tej gry pokazuje poniższy diagram.
 
 
 
@@ -873,10 +830,12 @@
 
   \begin{figure}
 
+    \label{fig:Running-Hollow-Knight-bad}
+
     \begin{tikzpicture}
 
       \node[diagram rectangle block] (Hollow Knight) at (0,0)
-      {„Hollow Knight” (język asembler)};
+      {\textit{Hollow Knight} (język asemblera)};
 
       \node[diagram block] (Computer) at (3.8,0) {Komputer};
 
@@ -884,7 +843,7 @@
 
 
       \node[diagram block] (Playable computer) at (7.6,0)
-      {Komputer z~włączoną grą HK};
+      {Komputer z~włączoną grą \textit{HK}};
 
       \draw[thick diagram arrow] (Computer) -- (Playable computer);
 
@@ -907,10 +866,11 @@
   \frametitle{Pisanie gier w~języku asembler?}
 
 
-  Jak już wspomnieliśmy, pisanie w~języku asembler to zwykle nie jest
-  dobry pomysł. Znany przykład tego, że~można napisać grę w~języku
-  asembler, jest gra \textit{???} z~1?? roku, którą \textit{w~pojedynkę}
-  napisał w~języku asembler. Niemniej mało jest osób takich ????.
+  Jak już wspomnieliśmy, pisanie czegokolwiek, w~tym gier, w~języku
+  asembler to zwykle nie jest dobry pomysł. Znanym przykładem tego, że~jest
+  to możliwe, jest gra \textit{???} z~1?? roku, którą ??? napisał
+  \textit{w~pojedynkę}. Dzięki czemu stał~się bohaterem popularnego
+  w~środowisku informatyków mema.
 
   Wklej tu tego mema.
 
@@ -939,10 +899,12 @@
 
   \begin{figure}
 
+    \label{fig:Running-Hollow-Knight-good}
+
     \begin{tikzpicture}
 
       \node[diagram rectangle block] (Hollow Knight) at (0,0)
-      {„Hollow Knight” (język C++)};
+      {\textit{Hollow Knight} (język C++)};
 
       \node[diagram block] (Computer) at (3.8,0) {Komputer};
 
@@ -950,7 +912,7 @@
 
 
       \node[diagram block] (Playable computer) at (7.6,0)
-      {Komputer z~włączoną grą HK};
+      {Komputer z~włączoną grą \textit{HK}};
 
       \draw[thick diagram arrow] (Computer) -- (Playable computer);
 
@@ -970,9 +932,199 @@
 
 % ##################
 \begin{frame}
-  \frametitle{Wyjaśnienie }
+  \frametitle{??? }
 
 
+  Komputer jako taki nie rozumie języka~C++, więc nie jest w~stanie
+  uruchomić gry napisanej w~takim języku. Aby ją uruchomić, translator
+  musi najpierw przetłumaczyć ją na język asemblera.
+
+
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] (Hollow Knight in C++) at (0,0)
+      {\textit{Hollow Knight} (język C++)};
+
+      \node[diagram block] (Translator) at (3.8,0) {Translator};
+
+      \draw[thick diagram arrow]
+      (Hollow Knight in C++) -- (Translator);
+
+
+      \node[diagram rectangle block] (Hollow Knight in assembly) at (7.6,0)
+      {\textit{Hollow Knight} (język asemblera)};
+
+      \draw[thick diagram arrow] (Translator) -- (Hollow Knight in assembly);
+
+
+      \node[diagram block] (Computer) at (7.6,-2.5) {Komputer};
+
+      \draw[thick diagram arrow] (Hollow Knight in assembly) -- (Computer);
+
+
+      \node[diagram block] (Computer running Hollow Knight) at (3.8,-2.5)
+      {Komputer z~włączoną grą \textit{HK}};
+
+      \draw[thick diagram arrow]
+      (Computer) -- (Computer running Hollow Knight);
+
+    \end{tikzpicture}
+
+    \caption{Poprawny sposób włączania gry \textit{Hollow Knight}}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy to znaczy\ldots}
+
+
+  Mogą~się Państwu nasunąć taka myśl.
+
+  „Ja coś słyszałem, że~jest oprogramowanie o~otwarty kodzie, jak system
+  GNU/Linux i~o~zamkniętym kodzie, takie jak Windows. Każdy może przeczytać
+  kod źródłowy otwartego oprogramowania, ale tego o~zamkniętym kodzie tylko
+  ci którzy pracują dla takich firm jak Microsoft. A~Pan tu twierdzi,
+  że~program który dostaję na moim komputerze jest napisany w~języku
+  assemblera, więc jeśli tylko otworzę ten program i~zrozumiem asemblera
+  wewnątrz niego, to tak jakby miał on otwarty kod. Po co więc to całe
+  rozróżnienie na kod otwarty i~zamknięty?”
+
+  Wszystko to prawda. Haczyk tkwi w~zdaniu „zrozumiem asemblera wewnątrz
+  niego”. Zrozumienie działania kodu źródłowego w~języku~C, czy~Python jest
+  często nieznośnie trudne, a~asembler czyni to zadanie jeszcze
+  trudniejszym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Proszę~się nie poddawać}
+
+
+  Proszę~się jednak nie poddawać i~pamiętać, że~„każdy program ma otwarty
+  kod, jeśli potrafisz wykonać jego inżynierię odwrotną” (org.
+  \textit{everything is open source, if you can reverse enginerring it},
+  parencite{???}) ;).
+
+  \vspace{1.5em}
+
+
+
+
+
+  \texttt{.global \_start} \\
+  \texttt{.section .text} \\
+
+
+
+  \texttt{\_start:} \\[-0.2em]
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x4} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#1} \\
+  \hphantom{aaaaaaaa} \texttt{ldr r1, =message} \\
+  \hphantom{aaaaaaaa} \texttt{mov r2, \#14} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x1} \\
+  \hspace{5em} \vdots
+  % \hphantom{aaaaaaaa} \texttt{mov r0, \#65} \\
+
+  % \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+
+
+  % \texttt{.section .data} \\
+  % \texttt{message:} \\
+  % \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World!\textbackslash n"}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Translatory, kompilatory i~interpretery}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Translatory}
+
+
+  W~tym momencie już mam nadzieję wszyscy rozumiemy, czemu potrzebujemy
+  kompilatorów. Zanim jednak przejdziemy dalej, potrzebujemy, choć to może
+  być dość nudne, wprowadzić trochę pojęć i~terminologi.
+
+  \textbf{Translator} to dowolny obiekt który tłumaczy tekst z~języka~A,
+  na odpowiedni tekst w~języku~B. Wedle tej definicji człowiek tłumaczący
+  z~polskiego na angielski też jest translatorem. To nie jest bug definicji,
+  to jest feature.
+
+
+
+  \begin{figure}
+
+    \label{fig:Translator-02}
+
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] (Text in language A) at (0,0)
+      {Tekst w~języku~A};
+
+      \node[diagram block] (Translator) at (3.8,0) {Translator};
+
+      \draw[thick diagram arrow] (Text in language A) -- (Translator);
+
+
+      \node[diagram rectangle block] (Text in language B) at (7.6,0)
+      {Tekst w~języku~B};
+
+      \draw[thick diagram arrow] (Translator) -- (Text in language B);
+
+    \end{tikzpicture}
+
+    \caption{Błędny sposób uruchamiania gry „Hollow Knight”}
+
+
+  \end{figure}
 
 
 \end{frame}
@@ -982,28 +1134,7 @@
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Kind request to listeners}
 
-
-%   We will be grateful for your opinions on how to improve\\ these lectures.
-
-%   If you spot any unclear phrases, illegible drawings, errors,
-%   typos, etc, please let us know:\\ just provide the lecture’s  title
-%   and a number of the slide.
-
-
-%   % comments and proposals how to make
-%   % lectures better, indication of unclear wording, illegible
-%   % drawings, for~small/too large fonts on~slide,~etc. As well as
-%   % please inform us about found errors, typos, which
-%   % may be present  in these lectures.\\ In this case, we ask
-%   % of giving the title of the lecture and~the number of the slide on~which the error is.
-
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1029,9 +1160,7 @@
 
 
 
-% % ######################################
-% \section{Czy to jest kurs praktyczny?}
-% % ######################################
+
 
 
 
@@ -1049,80 +1178,6 @@
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Graphics pipeline (rendering pipeline)}
-
-
-%   \begin{figure}
-
-%     \begin{tikzpicture}
-%       \node[diagrams block 1] (pobranie wierzcholkow) {Vertex \\Specification};
-
-%       \node[diagrams block 1,below=of pobranie wierzcholkow] (szader
-%       wierzcholkow) {Vertex Shader};
-
-%       \draw[thick connection line] (pobranie wierzcholkow) -- (szader
-%       wierzcholkow);
-
-
-
-%       \node[diagrams block 1,below=of szader wierzcholkow] (szader
-%       sterowania teselacja) {Tessellation Control Shader};
-
-%       \draw[thick connection line] (szader wierzcholkow) -- (szader
-%       sterowania teselacja);
-
-
-
-%       \node[diagrams block 1,right=of szader sterowania teselacja]
-%       (teselacja) {Tessellation};
-
-%       \draw[thick connection line] (szader sterowania teselacja) --
-%       (teselacja);
-
-
-
-%       \node[diagrams block 1,above=of teselacja] (szader wyliczania
-%       teselacji) {Tessellation Evaluation Shader};
-
-%       \draw[thick connection line] (teselacja) -- (szader wyliczania
-%       teselacji);
-
-
-
-%       \node[diagrams block 1,above=of szader wyliczania teselacji]
-%       (szader geometrii) {Geometry Shader};
-
-%       \draw[thick connection line] (szader wyliczania teselacji) --
-%       (szader geometrii);
-
-
-
-%       \node[diagrams block 1,right=of szader geometrii] (rasteryzacja)
-%       {Rasterization};
-
-%       \draw[thick connection line] (szader geometrii) -- (rasteryzacja);
-
-
-
-%       \node[diagrams block 1,below=of rasteryzacja] (szader fragmentow)
-%       {Fragment Shader};
-
-%       \draw[thick connection line] (rasteryzacja) -- (szader fragmentow);
-
-
-
-%       \node[diagrams block 1,below=of szader fragmentow] (bufor ramki)
-%       {Frame buffer\\ Operations};
-
-%       \draw[thick connection line] (szader fragmentow) -- (bufor ramki);
-%     \end{tikzpicture}
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1259,30 +1314,20 @@
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Graphics pipeline (rendering pipeline)}
 
 
-%   \begin{itemize}
-%     \setlength{\itemsep}{1em}
 
-%   \item \textbf{Pipelining} --~a technique of building processors for implementing the division of execution  of the program\\ into specialized groups of instructions\\ (execution subsequent stages).
 
 
-%   \item \textbf{Parallelism} --~performing
-%     multiple instructions simultaneously.
 
 
-%   \end{itemize}
 
 
-%   The above assumptions allow   enormous computing efficiency\\
-%   on a graphics processing unit  (\textsc{gpu}).
 
 
-% \end{frame}
-% % ##################
+% ######################################
+\section{Informacje dodatkowe}
+% ######################################
 
 
 
@@ -1292,99 +1337,20 @@
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{?????}
 
-% % ######################################
-% \SectionSlideWithPicture{Basic concepts of~computer~graphics}
-% % ######################################
 
+  To który dialekt asemblera rozumiem komputer jest ustalony przez firmę,
+  która wyprodukowała jego procesor. Asembler jest bowiem zakodowany w~tym
+  jak są „podpięte kable” w~rzeczonym procesorze.
 
 
+\textbf{Translator}
 
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{A sample scene}
-
-
-%   \begin{textblock}{11}(1,1.65)
-
-%     \includegraphics[scale=0.44]
-%     {./PresentationPictures/Lecture_01/renderowanie01.png}
-
-%   \end{textblock}
-
-
-%   \begin{textblock}{1}(3.4,5.1)
-
-
-%     \begingroup
-
-%     \color{jBackgroundStyleLight}
-
-%     model
-
-%     \endgroup
-
-%   \end{textblock}
-
-
-%   \begin{textblock}{1}(5.5,4.1)
-
-%     \begingroup
-
-%     \color{jBackgroundStyleLight}
-
-%     model
-
-%     \endgroup
-
-%   \end{textblock}
-
-
-%   \begin{textblock}{1}(9.6,3.3)
-
-%     \begingroup
-
-%     \color{jBackgroundStyleLight}
-
-%     model
-
-%     \endgroup
-
-%   \end{textblock}
-
-
-%   \begin{textblock}{1.8}(9.4,1.8)
-
-%     \begingroup
-
-%     \color{jBackgroundStyleLight}
-
-%     lighting
-
-%     \endgroup
-
-%   \end{textblock}
-
-
-%   \begin{textblock}{1.2}(4.7,7.5)
-
-%     \begingroup
-
-%     \color{jBackgroundStyleLight}
-
-%     camera
-
-%     \endgroup
-
-%   \end{textblock}
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
