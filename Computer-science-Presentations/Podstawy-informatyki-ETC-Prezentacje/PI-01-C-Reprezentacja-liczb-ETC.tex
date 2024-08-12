@@ -1,0 +1,3260 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,frametitlecolorstyle=general,titleframebackgroundcolorstyle=dark]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% Styles for arrows
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+% Stylef for drawing diagrams
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Podstawy informatyki z~językiem~C}
+\subtitle{Podstawowe wiadomości o~języku~C i~system pozycyjny}
+
+\author{Kamil Ziemian}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 73k+, 43k+, 52k+, 69k+,
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Reprezentacja liczb w~komputerze}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reprezentacja liczb}
+
+
+  Zagadnienie reprezentacji liczb w~komputerze, które teraz krótko omówimy
+  nie dotyczy tylko języka~C. Jest to rzecz tak fundamentalna dla
+  informatyki, że~jest taka sama dla (prawie) wszystkich języków
+  programowania.
+
+  Ponieważ komputery są oparte na systemie dwójkowym, na początku
+  przyjrzyjmy~się tym potęgom dwójki, które odgrywają w~informatyce
+  dużą rolę.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Potęgi liczby~$2$}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Inny diagram}
+
+
+  Czy poniższy diagram jest lepszy czy gorszy od poprzedniego? Zależy
+  od~tego jakie informacje ma dany diagram przekazywać. Proszę~się więc nie
+  dziwić, jeśli na danym diagramie czegoś nie ma, a~nawet, że~nie ma czegoś
+  co było na poprzedniej wersji diagramu. Zawsze trzeba dokonać selekcji co
+  na diagramie zostanie umieszczone, a~co nie i~ten wybór często zależy
+  od kontekstu.
+
+  Jeśli uważają Państwo, że~na diagramie nie ma czegoś, co być powinno,
+  albo coś innego jest nie w~porządku, \alert{proszę} to mi powiedzieć.
+  Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
+
+
+
+
+
+
+  \begin{figure}
+
+    \label{fig:Also-creating-code-in-C}
+
+    \begin{tikzpicture}
+
+      \node[diagram block] (Man) at (0,0) {Człowiek};
+
+      \node[diagram rectangle block] (Source code) at (3.8,0)
+      {Kod źródłowy w~języku~C};
+
+      \draw[thick diagram arrow] (Man) -- (Source code);
+
+    \end{tikzpicture}
+
+    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Podstawowe informacje o~języku~C}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podstawowe informacje o~języku~C}
+
+
+  Język~C został stworzony przez Dennis Ritchie (1941--2011), by ułatwić
+  Kenowi Thompsonowi (ur. 1943), pracę nad systemem operacyjnym
+  \textsc{unix}. Pierwsza jego wersja ukazała~się w~1972 roku.
+
+  Język~C w 2022 roku obchodził 50 (!) lecie swojego istnienia. Jego wiek
+  niestety często czuć, bo wiele funkcjonalności które dziś uważamy
+  za~niezbędne w~pracy programisty albo są w~nim nieobecne, albo są,
+  ale w~dość koślawej wersji. Niektórych rzeczy nie da~się w~sposób
+  elegancki dodać do języka z~lat 70-tych XX wieku.
+
+  Do tego język~C został pomyślany jako mały język, więc on z~premedytacją
+  \alert{nie} wprowadził pewnych rzeczy znanych już koło 1970 roku. To
+  niestety też nie ułatwia nam życia. Co gorsza, dla początkujących~C i~tak
+  może sprawiać wrażenie ogromnego języka. On jest mały w~porównaniu
+  z~innymi językami, ale to niewiele zmienia, gdy~się dopiera zaczyna swoją
+  przygodę z~informatyką.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy 1972 rok był bardzo dawno temu?}
+
+
+    \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./PresentationsPictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
+
+    \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
+      PDP-11 firmy Digital Equipment Corporation.}
+
+    \label{fig:Ritchie-Thompson-PDP-11}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przesadnie pedantyczna lista featurów języka~C}
+
+
+  \begin{itemize}
+
+  \item[1)] Zmienne.
+
+  \item[2)] Typy zmiennych: \texttt{char}, \texttt{short int}, \texttt{int},
+    \texttt{long int}, \texttt{float}, \ldots
+
+  \item[3)] Operator przypisania: \texttt{=}.
+
+  \item[4)] Operator arytmetyczne: \texttt{+}, \texttt{-}, \texttt{*},
+    \texttt{/}, \texttt{\%}.
+    (Jeśli Państwo myślą, że~to banalnie proste, to~się Państwo
+    nieprzyjemnie zdziwią.)
+
+  \item[5)] Operatory porównania: \texttt{==} (nie pomylić z~operatorem
+    przypisania~\texttt{=}),
+
+
+
+  \item[6)] Instrukcje warunkowe: \texttt{if \ldots{} else \ldots}, \texttt{switch}.
+
+
+
+  \item[7)] Pętle: \texttt{while}, \texttt{for}, \texttt{do \ldots{} while}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Nie potrafię teraz powiedzieć, czy zdążymy, choćby bardzo pobieżnie,
+  przerobić \alert{wszystkie} featury języka~C. Proszę pamiętać, że~to jest
+  kurs \alert{podstaw informatyki}, więc nie należy~się spodziewać,
+  że~nauczymy~się tu wszystkiego. Nawet o~podstawach informatyki.
+
+  Lubię myśleć o~języku programowania jako o~skrzynce z~narzędziami.
+  Im lepiej znasz swoją skrzynkę, tym prościej ci wykonać dane zadanie.
+  Przykładowo, można wyciągnąć śrubę ze~ściany obcęgami, ale lepiej
+  wiedzieć, że w~skrzynce jest śrubokręt.
+
+  Tak samo proszę myśleć o~naszej nauce języka~C. Na początku będziemy
+  poznawali pojedyncze „narzędzia” jakie są w~tej „skrzynce” są, co niestety
+  dla wielu osób jest nudne. Dopiero jednak jak będziemy znali ich
+  odpowiednią ilość ma sens zabieranie~się
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zalety języka~C}
+
+
+  \begin{itemize}
+
+  \item Pozwala tworzyć bardzo szybkie programy.
+
+  \item Jeśli poznamy~C, to nauka języka który na nim bazuje będzie
+    już prostsza. A~60\% najważniejszych języków jakie istnieją, w~jakimś
+    stopniu bazuje na~C.
+
+  \item Na świecie jest tyle kodu napisanego w~języku~C, że~jeśli umie~się
+    go dobrze, można znaleźć naprawdę dobrze płatną pracę.
+
+  \item Pozwala lepiej poznać jak komputer działa na niskim poziomie.
+    (Można dyskutować, czy to zaleta, czy wada.)
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wady języka~C}
+
+
+  \begin{itemize}
+
+  \item Pisane w~C nie jest wcale proste.
+
+  \item C oferuje nam bardzo mało zabezpieczeń przed nami samymi, co
+    skutkuje tym, że~bardzo łatwo stworzyć kod w~którym kryją~się
+    koszmarnie niebezpieczne rzeczy. To jednak temat na inny przedmiot.
+
+  \item Trudne do zapamiętania nazewnictwo. Czasem jest zwyczajnie głupie.
+
+  \item Metody operowania na stringach (a~raczej brak takich metod).
+
+  \item Brak normalnego typu boolowskiego.
+
+  \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
+    programowania (1972 rok był dawno temu).
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jaki jest związek między C a~C++?}
+
+
+  Taki jak między krzesłem, a~krzesłem elektrycznym. To są jednak dwa
+  bardzo różne języki programowania, które ze~względów historycznych mają
+  pewne wspólne cechy.
+
+  Mówiłem Państwu, że~C to taka skrzynka z~narzędziami. C++ to cały Leroy
+  Merlin. Naprawdę, ogarnięcie wszystkich featurów jest zupełnie nie do
+  ogarnięcia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Dlaczego istnieją języki takie jak~C?}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego w~ogóle istnieją takie języki jak~C?}
+
+  \pause
+
+
+  Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+  który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+  jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+  że~pierwotnym językiem komputera jest \textbf{język asembler}
+  (ang. \textit{assembly language}).
+
+  Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+  hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+  posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
+  czy x86/Intel. Typ asemblera jest ustalony przez firmę, która
+  wyprodukowała procesor, bowiem asembler jest zdefiniowany przez to jak są
+  „podpięte kable” w~rzeczonym procesorze.
+
+  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
+  napisanemu w~dwóch??? rodzajach asemblera, językach C i~Python.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~asemblerze ARM 32,
+    \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
+
+
+  \texttt{.global \_start} \\
+  \texttt{.section .text} \\
+
+
+
+  \texttt{\_start:} \\[-0.2em]
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x4} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#1} \\
+  \hphantom{aaaaaaaa} \texttt{ldr r1, =message} \\
+  \hphantom{aaaaaaaa} \texttt{mov r2, \#13} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x1} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#65} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+
+
+  \texttt{.section .data} \\
+  \texttt{message:} \\
+  \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World\textbackslash n"}
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze x86
+    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+  \texttt{org 0x100} \\
+  \vspace{0.8em}
+
+  \texttt{mov dx, msg} \\
+  \texttt{mov ah, 9} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{mov ah, 0x4c} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~języku~C}
+
+
+  \texttt{\#include <stdio.h>} \\
+  \vspace{0.8em}
+  \texttt{int main() \{ } \\
+  \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \vspace{0.8em}
+  \hphantom{aaaa} \texttt{return 0;} \\
+  \texttt{ \} }
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~języku~Python}
+
+
+  \texttt{print("Hello, World!")}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co z~tego wynika?}
+
+
+  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
+  a~Python prostszy od~C.
+
+  \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
+  asemblera sam w~sobie nas zupełnie nie interesuje?
+
+  Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~asemblerze,
+  to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
+
+  Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
+  w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
+  w~Pythonie, ale ja o~tym nie decyduje.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~asemblerem}
+
+
+  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
+  Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
+  znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
+  można tego, by kod napisany przez niego w~asemblerze wszedł w~skład
+  danego programu.
+
+  Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
+  pisząc w~asemblerze, a~pomyłki na jego poziomie są szczególnie
+  niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
+  wykład. W~skrócie, błędy w~asemblerze to raj dla hakerów.
+
+  Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, piszemy
+  w~nich programy, a~następnie odpowiedni program zwany
+  \textbf{kompilatorem} tłumaczy ten program na język asembler.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Prosty schemat działania kompilatora}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \path (0,0) -- (-3.5,0);
+
+
+
+      \node[diagram rectangle block] (C source code) at (0,0)
+      {Kod programu w~języku C};
+
+      \node[diagram block] (Compiler) at (0,-2.3) {Kompilator};
+
+      \node[color=jNormalTextFGColor] (Magic) at (3,-2.3) {Magia};
+
+
+      \draw[pointing arrow orange] (Magic) -- (Compiler);
+
+
+      \draw[thick diagram arrow] (C source code) -- (Compiler);
+
+
+      \node[diagram rectangle block] (Assembly code) at (0,-4.6)
+      {Kod programu w~asemblerze};
+
+
+      \draw[thick diagram arrow] (Compiler) -- (Assembly code);
+
+    \end{tikzpicture}
+
+    \caption{Typowy sposób tworzenia programu w~oparciu o~kod źródłowy
+      napisany w~języku~C.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jakie są inne języki programowania?}
+
+
+  Wymień 20 najpopularniejszych języków programowania według indeksu
+  \textsc{tiobe} (\colorhref{https://www.tiobe.com/tiobe-index/}
+  {https://www.tiobe.com/tiobe-index/}). Poniżej prezentowany jest stan
+  tego indeksu na lipiec 2024. Podane wielkości procentowe przedstawiają
+  wyliczoną przez twórców indeksu część programistów używających danego
+  języka.
+
+  \begin{itemize}
+
+  \item[1)] Python, 16.12\%.
+
+  \item[2)] C++, 10.34\%.
+
+  \item[3)] C, 9.48\%.
+
+  \item[4)] Java, 8.59\%.
+
+  \item[5)] C\#, 6.72\%.
+
+  \item[6)] JavaScript, 3.79\%.
+
+  \item[7)] Go, 2.19\%.
+
+  \item[8)] Visual Basic, 2.08\%.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jakie są inne języki programowania?}
+
+
+  \begin{itemize}
+
+  \item[9)] Fortran, 2.05\%.
+
+  \item[10)] SQL, 2.04\%.
+
+  \item[11)] Delphi/Object Pascal, 1.89\%.
+
+  \item[12)] MATLAB, 1.34\%.
+
+  \item[13)] Rust, 1.18\%.
+
+  \item[14)] Ruby, 1.16\%.
+
+  \item[15)] Scratch, 1.15\%.
+
+  \item[16)] PHP, 1.15\%.
+
+  \item[17)] Swift, 1.13\%.
+
+  \item[18)] Assembly language, 1.11\%.
+
+  \item[19)] COBOL, 1.08\%.
+
+  \item[20)] Kotlin, 1.05\%.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Systemy pozycyjny do zapisu liczb}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System pozycyjny}
+
+
+  Proszę powiedzieć, czy to jest na tyle dobrze znane, że możemy to pominąć
+  czy nie?
+
+  Żeby stosować systemu pozycyjny musimy ustalić kierunek w~którym czytamy
+  i~piszemy. W~naszym kręgu kulturowym piszemy poziom od lewej do prawej,
+  ludy semickie często piszą poziomo, ale od prawej do lewej. Z~kolei
+  w~wschodniej Euroazji często pisze~się pionowo i~od góry do dołu.
+  Nie wnikając w~te zawiłości, przedstawimy system pozycyjny który
+  dostosowany jest do czytania od lewej do prawej. Zresztą, w~komputerach
+  zwykle nie używa~się innego.
+
+  Zaczniemy od systemu pozycyjnego służącego do~zapisu liczb
+  naturalnych: $1, 2, 3, 4, \ldots$ Każdy system pozycyjny musi posiadać
+  wyróżnioną liczbę naturalną, różną od~zera i~jeden, którą nazywamy
+  \textbf{podstawą systemu}. Historycznie ludzie korzystali z~systemów
+  o~różnej podstawie, ale obecnie normalni ludzie chyba wszędzie używają
+  systemu o~podstawie dziesięć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System pozycyjny}
+
+
+  Wybór jako podstawy systemu liczby dziesięć wynika pewnie z~tego,
+  że~naturalnie człowiek ma dziesięć palców u~rąk.
+
+  \alert{Ciekawostka.} Angielskie słowo oznaczające cyfrę to \textit{digit}.
+  Pochodzi ono stąd, że~po łacinie \textit{digitus} znaczy tyle co „palec”.
+  Czy więc słowo „digitalizacja” powinno~się tłumaczyć jako „upalcowienie”?
+  ;)
+
+  Polskie słowo „cyfra” ma pochodzić od arabskiego słowa wymawianego jako
+  „sifr”, które oznacza zero. Ale nie jest ekspertem, gdy chodzi
+  o~etymologię.
+
+  Oznaczmy teraz liczbę dziesięć symbolem $A$. Wówczas możemy odczytać
+  wartość liczby $1234$ jako: \\
+  $\displaystyle
+  1234 = 4 \cdot A^{ 0 } + 3 \cdot A^{ 1 } + 2 \cdot A^{ 2 } + 1 \cdot A^{ 3 }.$
+
+  Podstawiając $A = 10$ łatwo sprawdzamy, że~jest to prawda. \\
+  $\displaystyle
+  4 \cdot A^{ 0 } + 3 \cdot A^{ 1 } + 2 \cdot A^{ 2 } + 1 \cdot A^{ 3 } =
+  4 \cdot 10^{ 0 } + 3 \cdot 10^{ 1 } + 2 \cdot 10^{ 2 } + 1 \cdot 10^{ 3 } =$ \\
+  $\displaystyle
+  = 4 \cdot 1 + 3 \cdot 10 + 2 \cdot 100 + 1 \cdot 1 000 = 1234$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Istota systemu pozycyjnego}
+
+
+  Na tym przykładzie mogliśmy zobaczyć istotę systemu pozycyjnego. Dany
+  system pozycyjny jest zdefiniowany przez wybraną liczbę naturalną $n$
+  i~$n$ symboli reprezentujących liczby od~$0$ do~$n - 1$. Dla systemu
+  dziesiętnego te symbole to doskonale nam wszystkim znane $0$, $1$, $2$,
+  $3$, $4$, $5$, $6$, $7$, $8$, $9$.
+
+  Liczbę $n$ będziemy nazywali \textbf{podstawą systemu}, zaś zbiór $n$
+  symboli $c_{ 1 }, c_{ 2 }, c_{ 3 }, \ldots, c_{ n }$ będziemy nazywali
+  \textbf{cyframi}
+  danego systemu pozycyjnego, które reprezentują liczby $0, 1, 2, \ldots, n - 1$.
+
+  Dowolną liczbę naturalną możemy teraz w~systemie o~podstawie $n$ możemy
+  zapisać jako ciąg cyfr. By podkreślić, że~dana liczba jest zapisany
+  w~systemie o~podstawie~$n$ często używa~się następującej notacji. \\
+  $\displaystyle
+  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n },$ \\
+  gdzie~$k$ to pewna liczba naturalna większa lub równa~$1$: $k \geq 1$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Istota systemu pozycyjnego}
+
+
+  Wartość liczby $( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n }$ zapisanej
+  w~danym systemie pozycyjnym zawsze odczytujemy w~ten sam sposób: \\
+  $\displaystyle
+  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n } =
+  a_{ 0 } \cdot n^{ 0 } + a_{ 1 } \cdot n^{ 1 } + a_{ 2 } \cdot n^{ 2 } + \ldots +
+  a_{ k - 2 } \cdot n^{ k - 2 } + a_{ k - 1 } \cdot n^{ k - 1 }.$
+
+  Proszę zwrócić uwagę, że~jest to w~100\% zgodne z~tym, co widzieliśmy
+  wcześniej: $1234 = 4 + 3 \cdot 10 + 2 \cdot 100 + 1 \cdot 1000$.
+
+  System o~podstawie dziesięć nie jest w~żaden sposób wyróżniony przez
+  matematykę, ale~ponieważ jest to jedyny system jaki normalny człowiek
+  używam dzisiaj (Pytanie filozoficzne: czy informatyk to normalny
+  człowiek?), jest dla każdego z~nas najbardziej naturalny ze
+  wszystkich. Dlatego jeśli nie jest podane w~jakim systemie zapisana
+  jest dana liczba, ani nie wynika to w~żaden sposób z~kontekstu, to
+  proszę przyjąć, iż~jest zapisana w~systemie dziesiętnym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Różne systemy pozycyjne}
+
+
+  Proszę zwrócić uwagę, że~w~systemie dziesiętnym nie ma \textit{cyfry}
+  na oznaczenie liczby~$10$. Oznaczamy ją za pomocą ciągu dwóch cyfr: $1$
+  i~$0$. Tak samo w~skład systemu o~podstawie~$2$, nie wchodzi cyfra „$2$”.
+  Liczbę dwa zapisujemy w~nim jako: \\
+  $(10)_{ 2 } = 2.$ \\
+  Ogólnie w~systemie o~podstawie $n$, liczbę $n$ zapisujemy jako
+  $(10)_{ n }$. Nie powinno być trudne zrozumienie czemu tak jest.
+
+  Jak powszechnie wiadomo, informatyka bazuje na systemie dwójkowym
+  o~podstawie~$2$. Dlaczego akurat~$2$? Wydaje~się, że~przyczyna jest
+  czysto technologiczna. Doskonałe zrozumienie systemów o~podstawach
+  różnych od~$10$, w~tym tego o~podstawie~$2$, znajdujemy najpóźniej
+  w~pismach Gottfrieda Wilhelma Leibniza, który żył w~latach 1646--1716.
+  W~czasach gdy zaczęto budować współczesne komputery po 1900 roku, nie
+  była więc to żadna nowość.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Różne systemy pozycyjne}
+
+
+  Dla pierwszych komputerów rozważano systemy pozycyjne o~bardzo różnych
+  podstawach, takich jak $10$ czy~$5$. Po rozważeniu takich problemów jak
+  to, jaka będzie stabilność urządzenia elektronicznego (komputer
+  \alert{jest} urządzeniem elektronicznym), zbudowanego by obsługiwać
+  liczby o~danej podstawie, ile prądu będzie zużywać, etc., stwierdzona,
+  że~system o~podstawie~$2$, powinien być optymalny. I~tak już zostało.
+
+  Poza tym, system o~podstawie~$2$, tak samo jak ten o~podstawie $10$, nie
+  jest niczym wyróżniony przez matematykę. Kiedy jednak za podstawowy
+  system obierzemy ten o~podstawie $2$, pewne inne systemy stają~się
+  naturalnie wyróżnione. W~informatyce dwa systemy pochodne w~stosunku do
+  tego systemu pojawiają~się szczególnie często: system ósemkowy
+  o~podstawie~$8 = 2^{ 3 }$ i~szesnastkowy o~podstawie~$16 = 2^{ 4 }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Terminologia}
+
+
+  Analogicznie, dla systemu o~podstawie $10$ wyróżnione są te o podstawie
+  $100$, $1000$, etc. Proszę zwrócić uwagę na zachowanie języka polskiego.
+  Liczba $99$ to „dziewięćdziesiąt dziewięć”, ale $100$ to „sto”,
+  $999$ to „dziewięćset dziewięćdziesiąt dziewięć”, a~$1000$ to „tysiąc”.
+  Natomiast język francuski nosi mocne ślady systemu o~podstawie $12$, które
+  jakoś zachowały~się jeszcze jakoś w~języku polskim, gdzie $12$ to „tuzin”,
+  a~$60 = 5 \cdot 12$ to „kopa”. Po francusku $71$ to \textit{soixante et onze},
+  dosłownie „$60$ i~$11$”.
+
+  Łacińskie słowo \textit{binarius} oznacza „złożony z~dwóch części”, stąd
+  w~języku angielskim określamy system dwójkowy jako \textit{binary system},
+  a~po polsku istnieje zwrot \textit{system binarny}. Co ważniejsze,
+  pochodzi od~tego stosowany często w~informatyce zapis liczby w~systemie
+  dwójkowym nie jako $(111)_{ 2 }$, lecz jako $0\text{b}111$. Łatwo
+  sprawdzić, że \\
+  $\displaystyle
+  0\text{b}111 = 1 \cdot 2^{ 2 } + 1 \cdot 2^{ 1 } + 1 \cdot 2^{ 0 } = 7.$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Terminologia}
+
+
+  System o~podstawie $8$ po angielsku to \textit{octal system}, od
+  greckiego słowa na~liczbę $8$, czyli \textit{okto} (przybliżony zapis
+  fonetyczny). Stąd w~informatyce często liczby w~tym systemie są
+  zapisywane nie $(321)_{ 8 }$, lecz $0\text{o}321$. Symbol $\text{o}$ to
+  mała litera „o”. Łatwo sprawdzić, że \\
+  $\displaystyle
+  0\text{o}321 = 3 \cdot 8^{ 2 } + 2 \cdot 8^{ 1 } + 1 \cdot 8^{ 0 } =
+  3 \cdot 64 + 2 \cdot 8 + 1 = 192 + 16 + 1 = 209.$
+
+  Po angielsku system szesnastkowy to \textit{hexadecimal system}, od
+  greckiego słowa oznaczającego $16$: \textit{hekkaideka} (przybliżony
+  zapis fonetyczny). Dlatego również w~polskim możne~się spotkać
+  ze słowem „heksadekacymalny”. Od słowa \textit{heXadecimal} pochodzi też
+  zwyczaj zapisywania liczb w~tym systemie nie jako $(321)_{ 16 }$,
+  ale~$0\text{x}321$. Łatwo sprawdzić, że \\
+  $0\text{x}321 = 3 \cdot 16^{ 2 } + 2 \cdot 16 + 1 = 3 \cdot  256 + 32 + 1 =
+  768 + 32 + 1 = 801.$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Ponieważ $16$ jest większe od $10$ (wielkiego odkrycie nie poczyniliśmy),
+  więc potrzebujemy wprowadzić sześć nowych symboli, by móc zapisać
+  wszystkie $16$ cyfry tego systemu. Standardowy wybór polega na przyjęciu
+  początkowych liter alfabetu łacińskiego: $A = 10$, $B = 11$,
+  $C = 12$, $D = 13$, $E = 14$ i~$F = 15$. Nie będę ukrywał,
+  że~zapamiętanie co te nowe cyfry znaczą, może być dość trudne.
+
+  Zgody do tego, czy to mają być duże litery, czy małe, czy jedne i~drugie,
+  nie ma. Ja będę używał konwencji, w~której stosujemy duże litery
+  łacińskie.
+
+  Dla ćwiczeń, spróbujmy wyliczyć w~systemie dziesiętnym wartość liczby
+  $0\text{xBAD}$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+% % ######################################
+% \section{Informatyka i~programowanie}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest informatyk?}
+
+
+%   \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
+%   nauka o~rozwiązywaniu problemów za~pomocą komputera. Niektórzy mogą
+%   uważać tą definicję, że~obrazę informatyki, według mnie jest bardzo dobra.
+
+%   Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
+%   Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
+%   przybliżoną wartość pewnej liczby $\pi$ lub $\gamma$ (metody numeryczne),
+%   chciałbym pograć w~coś fajnego (gry wideo), etc. Powstaje jednak pytania.
+%   Czym~się różni komputer od przykładowo konsoli do gier takiej jak
+%   PlayStation? Przecież ona też pozwala nam rozwiązać jeden z~tych
+%   problemów.
+
+%   Komputer to \textbf{programowalne urządzenie elektroniczne},
+%   w~przeciwieństwie do PlayStation, która jest urządzeniem elektroniczny,
+%   ale \textit{nie} jest programowalna. Co to jednak znaczy?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Co to znaczy „programowalny”?}
+
+
+%   Każde urządzenie elektroniczne działa w~ten sposób, że~gdy płynie przez
+%   nie prąd wykonuje pewne instrukcje. To jakie są instrukcje wynika
+%   z~tego jak wewnątrz urządzenia „podpięte są kable”. Jeśli jesteśmy
+%   w~stanie wywołać dowolną instrukcję jaką dysponuje to urządzenie, to
+%   mówimy, że~jest ono \textbf{programowalne}. Jeśli mogę wywołać tylko
+%   część możliwych instrukcji, tą część którą udostępnił mi producent
+%   urządzenia, to wówczas takie urządzenie \textbf{nie jest programowalne}.
+
+%   Ta definicja nie jest bardzo prepozycyjna, ale powinna dać nam wyczucie
+%   o~co chodzi. Komputer daje nam dostęp do wszystkich swoich instrukcji,
+%   co objawia~się choćby tym, że mogę na nim instalować dowolne
+%   oprogramowanie, podczas gdy na~PlayStation mogę mieć tylko oprogramowanie
+%   jakie uprzednio zainstalowała tam firma \textsc{sony}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Programowalne urządzenie elektroniczne}
+
+
+%   Przykładowo konsolę \textsc{sony} można zhakować, uzyskując pełną
+%   kontrolę nad nią. Jak to zrobić można~się choćby dowiedzieć z~nagrania
+%   kanału Low Level Learning
+%   \colorhref{https://www.youtube.com/watch?v=7OwdCc81zHo}
+%   {\textit{The new PS4 jailbreak is sort of hilarious}}
+%   \parencite{Low-Level-Learning-The-new-PS4-jailbreak-ETC-2024}.
+
+%   Pomijając ten i~nieskończoną ilość innych niuansów, nie powinno być
+%   trudne w~zrozumieniu co to znaczy, że~komputer jest programowalnym
+%   urządzeniem elektronicznym.
+
+%   \textbf{Program komputerowy} to zestaw instrukcji danego komputera, które
+%   przekazujemy mu, by je wykonał. Tutaj pojawia~się potrzeba wprowadzenia
+%   języków programowania. Nie będziemy podawać definicji języka
+%   programowania, zamiast tego zajmiemy~się tym jak o~nich myśleć.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest język programowania?}
+
+
+%   Dwie metafory które są wygodne w~opisie tego czym jest język
+%   programowania i~które ja lubię, to metafora języka właśnie i~skrzynki
+%   z~narzędziami.
+
+%   Jeśli chcę by człowiek coś zrobił, muszę mu to przekazać w~języku który
+%   on rozumiem. Przykładowo ze względu na to jak zbudowany jest język
+%   angielski i~język japoński, ich wzajemna nauka dla użytkowników tych
+%   języków jest niezwykle trudna. Jeśli więc osobą której chcę zlecić
+%   zrobienie czegoś jest Japończyk, może~się zdarzyć, iż będę musiał
+%   przekazać mu informację po japońsku.
+
+%   Oczywiście człowiek może~się nie zgodzić, wykręcać, etc. Komputer to
+%   tępa maszyna więc pewnie ślepo wykona wszystko co mu zleciliśmy. Ktoś
+%   może powiedzieć, że~przecież mamy \textsc{ai}, chata\textsc{gpt}, etc.
+%   To wszystko są ciekawe sprawy, ale na tym przedmiocie nie mamy
+%   możliwości~się nimi zająć.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest język programowania?}
+
+
+%   Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+%   który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+%   jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+%   że~pierwotnym językiem komputera jest \textbf{język assembler}.
+
+%   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+%   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+%   posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
+%   czy x86/Intel. Generalnie typ assemblera jest ustalony przez firmę, która
+%   wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
+%   „podpięte kable” w~rzeczonym procesorze.
+
+%   I~tutaj pojawia~się dwa poważne problem.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Assembler, jaki problem?}
+
+
+%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+%   A~nawet jeśli ktoś lubi pisać w~assemblerze, to w~praktyce unika~się
+%   tego jak tylko~się da, bo w~assemblerze nawet najlepsi zbyt często
+%   popełniają błędy, co może prowadzić do tragicznych konsekwencji.
+
+%   Wynika to z~tego, że~assembler to język naturalny dla \alert{komputera},
+%   ale nie dla człowieka. Ponieważ zaś, nie jest to wielkie odkrycie,
+%   człowiek mocno~się różni od komputer, język naturalny dla jednego z~nich
+%   jest zupełnie nienaturalny dla drugiego. Dla nas assembler jest bardzo
+%   nienaturalny, komputer nie potrafi zaś sobie radzić z~angielskim, czy
+%   polskim.
+
+%   Żeby nie być gołosłownym, przedstawię teraz przykład programu, który
+%   jedyne co robi to wypisuje gdzieś na ekranie tekst „Hello, World!”.
+%   Podany zostanie odpowiedni kod w~assemblerze x86 w~wersji Nasm, języku~C
+%   i~języku Python.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{W~jaki sposób działają~C i~Python?}
+
+
+%   Wróćmy do przykładu z~Japończykiem nieznającym angielskiego. Przyjmijmy,
+%   że~ja nie znam angielskiego, a~on polskiego (po kiego Japończykowi język
+%   polski?). Czy nie ma szans, żeby przekazał mu polecenie? Oczywiście,
+%   że~jest. Wystarczy, że~spiszę odpowiednią informację na kartce, użyję
+%   translatora by przetłumaczyć ją na japoński i~mu ją dam.
+
+%   Tak samo postępujemy z~komputerem. W~teorii języków programowania
+%   \textbf{translatorem} nazywamy program który tłumaczy między dwoma
+%   \alert{dowolnymi} językami programowania. Mogę więc napisać program
+%   w~języku~C następnie użyć odpowiedniego translatora by przetłumaczyć
+%   go na assembler, który następnie zostanie wykonany przez komputer.
+
+%   Koniec końców każdy język programowania, czy to~C, czy Python,
+%   \alert{musi} zostać przetłumaczony na odpowiedni kod assemblera,
+%   by~komputer go wykonał. To jednak wykracza poza temat zajęć.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Typy translatorów}
+
+
+%   Istnieje wiele różnych rodzai translatorów. Przykładowo translatory
+%   używane dla języka~C noszą nazwę \textbf{kompilatorów}, zaś te stosowane
+%   dla języka Python \textbf{interpreterów}. To jednak bardzo złożona
+%   dziedzina informatyki, która od mniej więcej w~roku 2000 roku wkroczył
+%   w~nową, wciąż trwającą fazę rozwoju, więc tutaj ciągle~się coś zmienia.
+
+%   Na razie wszystko co muszą Państwo wiedzieć o~kompilatorach sprowadza~się
+%   do tego jak uruchomić program napisany w~języku~C, co~można ująć w~trzech
+%   punktach.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jak używać kompilatora?}
+
+
+%   Przyjmijmy, że~program napisany w~języku~C znajduje~się w~pliku
+%   \texttt{source.c} (od ang. \textit{source code}, kod źródłowy), a~program
+%   wynikowy nazywa~się \texttt{progOut} (od ang. \textit{program out},
+%   program wyjściowy).
+
+
+
+
+
+%   \begin{enumerate}
+
+%   \item W~pliku \texttt{source.c} zapisujemy odpowiedni kod w~języku~C.
+
+
+
+%   \item Przekazujemy kompilatorowi plik \texttt{source.c}, na podstawie
+%     niego tworzy on program \texttt{progOut}.
+
+
+
+%   \item Uruchamiamy program wykonywalny \texttt{progOut}.
+
+%   \end{enumerate}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jak to wygląda w~praktyce?}
+
+
+%   Przyjmujemy, że~jesteśmy pod systemem GNU/Linux i~wszystkie potrzebne
+%   programy~są zainstalowane.
+
+
+
+
+%   \begin{enumerate}
+
+%   \item Otwieramy powłokę \textsc{bash}.
+
+
+
+%   \item Tworzymy plik \texttt{source.c} za pomocą komendy \\
+%     \texttt{\$ gedit source.c \&}
+
+
+
+%   \item Zapisujemy odpowiedni kod programu w~pliku \texttt{source.c}.
+
+
+
+%   \item Kompilujemy plik \texttt{source.c} przez wpisanie w~terminalu
+%     polecenia \\
+%     \texttt{\$ gcc -std=c99 -pedantic source.c -o progOut}
+
+
+
+%   \item Jeśli wystąpił błąd, poprawiamy kod w~pliku \texttt{source.c}.
+
+
+
+%   \item Uruchamiamy program \texttt{progOut} wpisując w~terminalu \\
+%     \texttt{\$ ./progOut}
+
+
+
+%   \item Jeśli \texttt{progOut} nie działa jak trzeba wracamy do punktu~5.
+
+%   \end{enumerate}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{„Bardzo śmieszne”}
+
+
+%   Teraz sobie pewnie niektórzy z~Państwa myślą: „Bardzo śmieszne. Napisał
+%   listę siedmiu punktów, z~których każdy brzmi jak magiczne zaklęcia
+%   z~>>Harry’ego Pottera”. Ja od trzech godzin siedzę nad punktem piątym
+%   i~powoli tracę zmysły, a~kolega obok jeszcze nie ukończył pierwszego.”.
+
+%   Tak może być, to zupełnie normalne. Dlatego ja tu jestem by Państwu pomóc
+%   zrobić te pierwsze kroki, które prawie zawsze są najtrudniejsze. Dlatego
+%   jeśli coś nie działa, proszę mówić, postaram~się pomóc.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komentarz odnośnie diagramów}
+
+
+%   \begin{textblock}{2.8}(2,1.5)
+
+%     \begin{tikzpicture}
+
+%       \node[diagram block] at (0,0) {Coś robi};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+
+
+%   \begin{textblock}{2.8}(8,1.5)
+
+%     \begin{tikzpicture}
+
+%       \node[diagram rectangle block] at (0,0) {Czymś jest};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+
+%   \vspace{6em}
+
+
+
+
+
+%   Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
+%   (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+%   taki obiekt który wykonuje jakąś czynność na zadanych obiektach
+%   wejściowych. Takim obiektem może być człowiek, komputer, program
+%   komputerowy, fragment programu komputerowego, etc.
+
+%   Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
+%   koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
+%   przez aktorów lub przez nich wytwarzane.
+
+% \end{frame}
+% % ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komentarz odnośnie diagramów}
+
+
+%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+%   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
+%   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
+%   można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
+%   danego programu.
+
+%   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
+%   pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
+%   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
+%   wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
+
+%   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, który
+%   następnie odpowiedni program zwany \textbf{kompilatorem} tłumaczy na
+%   assembler.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Kilka słów ogólnie o~językach programowania}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ile istnieje języków programowania?}
+
+
+%   Krótko mówiąc, jest ich tyle, że~chyba nikt na świecie nie jest~się
+%   w~stanie wszystkich nauczyć. Dobrze, tylko w~takim razie, na których
+%   powinniśmy~się skupić?
+
+%   Dobrym miernikiem ważność języka jest indeks \textsc{tiobe}, które
+%   stara~się mierzyć popularność wszystkich możliwych języków programowania.
+%   Indeks ten jest aktualizowany co miesiąc, sami zaś jego twórcy
+%   zastrzegają, iż~zadanie mierzenia popularności języków jest bardzo trudne
+%   i~użyte metody pozostawiają duży margines błędu. Niemniej jest to wciąż
+%   narzędzie którego warto używać.
+
+%   Więcej informacji o~indeksie \textsc{tiobe} można znaleźć na stronie \\
+%   \colorhref{https://www.tiobe.com/tiobe-index/}
+%   {https://www.tiobe.com/tiobe-index/} i~dostępnych tam odnośnikach.
+%   My zaś przyjrzymy~się pierwszej dwudziestce języków i~ich zasięgowi.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{TIOBE indeks, lipiec 2024}
+
+
+%   \begin{itemize}
+
+%   \item[1)] Python, 16.21\%.
+
+
+
+%   \item[2)] C++, 10.34\%.
+
+
+
+%   \item[3)] C, 9.48\%.
+
+
+
+%   \item[4)] Java, 8.59\%.
+
+
+
+%   \item[5)] C\#, 6.72\%.
+
+
+
+
+%   \item[6)] JavaScript, 3.79\%.
+
+
+
+
+%   \item[7)] Go, 2.19\%.
+
+
+
+
+%   \item[8)] Visual Basic, 2.08\%.
+
+
+
+
+%   \item[9)] Fortran, 2.05\%.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{???}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Prosty schemat rozwiązywania problemu\ldots}
+
+
+%   Poniżej prezentujemy prosty schemat, jak wygląda procedura
+%   rozwiązania pewnego problemu za pomocą programu napisanego w~języku
+%   programowania~X.
+
+
+%   \begin{enumerate}
+%     \setlength{\itemsep}{1em}
+
+%   \item[1)] Mamy problemy który można rozwiązać za pomocą komputera.
+
+
+
+%   \item[2)] Znajdujemy sposób jako go rozwiązać. To rozwiązanie możemy
+%     wymyślić sami, znaleźć w~internecie, zapytać \textsc{ai}, etc.
+
+
+
+%   \item[3)] Piszemy program komputerowy w~języku~X, który implementuje
+%     dane rozwiązanie.
+
+
+
+%   \item[4)] Na podstawie napisanego przez nas kodu tworzymy program
+%     w~postaci wykonywalnej, zrozumiałej dla~komputera.
+
+
+
+%   \item[5)] Uruchamiamy program utworzony w~punkcie~4 na konkretnym
+%     komputerze, tak by rozwiązał nasz problem.
+
+%   \end{enumerate}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Przykład}
+
+
+%   \begin{itemize}
+
+%   \item[1)] Mamy 100 000 nazw użytkowników jakiegoś portalu. Potrzebujemy
+%     sprawdzić, czy nazwy zgłaszających~się regularnie nowych użytkowników
+%     są już zajęta czy nie. Spostrzegamy, że~można to zrobić za pomocą
+%     odpowiedniego programu komputerowego.
+
+
+
+%   \item[2)] Zauważamy, że~jeśli ustawimy nazwy dotychczasowych użytkowników
+%     w~posortowany ciąg, to możemy sprawdzić czy dana nazwa w~nim jest
+%     za~pomocą wydajnego przeszukiwania binarnego. Wymyślamy jak można
+%     zaprowadzić relację porządku w~zbiorze tych nazw, co jest nam potrzebne
+%     do~ich posortowania.
+
+
+
+%   \item[3)] Piszemy program w~języku~X, który pobierze na wejściu nazwy
+%     użytkowników, następnie je posortuje według zadanego przepisu.
+%     Następnie, jeśli program ten otrzyma nową nazwę, to sprawdzi za pomocą
+%     przeszukiwania binarnego, czy jest już ona wśród nazw już zajętych.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Przykład}
+
+
+%   \begin{itemize}
+
+%   \item[4)] Na~podstawie kodu w~języku~X generujemy odpowiedni program
+%     w~postaci wykonywalnej.
+
+
+
+%   \item[5)] Uruchamiamy wygenerowany w~punkcie~4 program na~konkretnym
+%     komputerze, by rozwiązał nasz problem.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Co to jest implementacja?}
+
+
+%   Często znamy ogólną, abstrakcyjną postać rozwiązania danego problemu, czy
+%   też sposobu działania konkretnego algorytmu. Przykładowo „program
+%   umożliwiający obliczanie średniej arytmetycznej z~miliona liczb.”, to
+%   taka ogólny opis programu pewnego programu, który wykonuje potrzebną nam
+%   czynność. Jeśli jest to potrzebne, możemy podać jego bardziej precyzyjną
+%   formę. „Dany jest milion liczb. Wylicz ich sumę, następnie podziel ją
+%   przez liczbę $1 \, 000 \, 000$. Tak otrzymana liczba jest poszukiwanym
+%   rezultatem.”
+
+%   Takie opis programu jest zrozumiały dla ludzi, ale nie dla komputera,
+%   w~sensie hardwaru. Przy czym zasada ta stosuje~się też, choć w~innym
+%   zakresie, do~\textsc{ai} i~\textsc{lll}, ale~to temat na osobne dyskusje.
+%   Z~tego powodu musimy napisać odpowiedni kod, który będzie zrozumiały dla
+%   komputera, dopiero wtedy on będzie mógł go wykonać.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Co to jest implementacja?}
+
+
+%   Jeśli mamy konkretny kod, albo program, który wykonuje dane zadanie
+%   zgodnie z~ogólną idę, metodą albo algorytmem, to mówimy że~taki kod lub
+%   program jest \textbf{implementacją} tej idei bądź algorytmu.
+
+%   To wyjaśnienie nie jest bardzo precyzyjne, ale też nie musi być.
+%   Implementacja nie jest pojęciem ważnym dla komputera, tylko dla ludzi,
+%   stąd od precyzyjnej definicji ważniejsze jest zrozumienie ogólnej idei.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Przykład. Postawienie problemu i~metoda rozwiązania}
+
+
+%   \textbf{Problem.} Obliczyć średnią arytmetyczną zadanych $100$ liczb.
+
+%   \textbf{Metoda rozwiązania.} Oblicz sumę danych $100$ liczb, następnie
+%   podziel ją przez $100$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Implementacja w~języku~C}
+
+
+%   \texttt{\#include <stdio.h>} \\
+%   \vspace{0.8em}
+%   /* Zakładamy, że~liczby który średnią arytmetyczną mamy obliczyć są
+%   przechowywane w~$100$-elementowej tablicy liczby typu \texttt{double}
+%   \hphantom{aa} o~nazwie \texttt{numbersArray}, zdefiniowanej
+%   w~dostarczonym nam ze-
+%   \hphantom{aa} wnątrz pliku\texttt{numbersProb.h}. Plik ten ma być w~tym
+%   samym kata-
+%   \hphantom{aa} logu co poniższy program. */ \\
+%   \texttt{\#include "numbersProb.h"} \\
+%   \vspace{0.8em}
+%   \texttt{int main() \{ } \\
+%   \hphantom{aaaa} \texttt{int i = 0;} \\
+%   \hphantom{aaaa} \texttt{double suma = 0.0;} \\
+%   \hphantom{aaaa} \texttt{double sredniaArytmetycza = 0.0;}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Implementacja w~języku~C. Cd.}
+
+
+%   \hphantom{aaaa} \texttt{for (i = 0; i < 100; i++) \{ } \\
+%   \hphantom{aaaaaaaa} \texttt{suma += numbersArray[i];} \\
+%   \hphantom{aaaa} \texttt{ \} } \\
+%   \vspace{0.8em}
+%   \hphantom{aaaa} \texttt{sredniaArytmetyczna = suma / 100.0;} \\
+%   \vspace{0.8em}
+%   \hphantom{aaaa} \texttt{prinft("sredniaArytmetyczna =
+%     \%.3f.\textbackslash n", \\
+%     \hphantom{aaaaaaaaa} sredniaArytmetyczna);} \\
+%   \texttt{ \} }
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Implementacje w~języku Python}
+
+
+%   \# Zakładamy, że~liczby których średnią arytmetyczną mamy obli- \\
+%   \# czyć~są wszystkie typu \texttt{float} i~są przechowywane
+%   w~$100$-elementowej \\
+%   \# liście o~nazwie \texttt{numbersList}, która znajduje~się w~dostarczonym
+%   \# nam module Pythona o~nazwie \texttt{numbersProg}. \\
+%   \vspace{0.8em}
+%   \texttt{from numbersProg import numbersList} \\
+%   \vspace{0.8em}
+%   \texttt{suma = 0.0} \\
+%   \vspace{0.8em}
+%   \texttt{for number in numbersList:} \\
+%   \hphantom{aaaa} \texttt{suma += number} \\
+%   \vspace{0.8em}
+%   \texttt{sredniaArytmetyczna = suma / 100.0} \\
+%   \texttt{answer = \textbackslash} \\
+%   \hphantom{aaa}
+%   \texttt{"sredniaArytmetyczna = \{\}".format(sredniaArytmetyczna)}
+%   \\
+%   \vspace{0.8em}
+%   \texttt{print(answer)}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{??????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{????}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \appendix
+% % % ######################################
+
+
+
+
+
+% % % ##################
+% % \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
+% % % ##################
+
+
+
+% % % % ##################
+% % % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \SectionSlideWithPicture{Terminological notes}
+% % % ######################################
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{??????}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% % \begin{frame}
+% %   \frametitle{?????}
+
+
+
+% % \end{frame}
+% %  ##################
+
+
+
+
+
+
+
+% % ######################################
+% \section{Informacje wstępne}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
+%   ale nie widzę sposobu, by~tego uniknąć.
+
+%   Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
+%   ja jestem tu dla Państwa, a~nie Państwo dla mnie. Jestem tu po to, by
+%   pomóc Państwu stawiać pierwsze kroki w~programowaniu w~języku~C.
+%   W~związku z~tym, ja będę Państwa rozliczał tylko i~wyłącznie
+%   z~umiejętności i~wiedzy, z~niczego innego. Wychodzę bowiem z~założenia,
+%   że~Państwo sami najlepiej wiedzą, czemu warto poświęcić swój czas. (Choć
+%   jak wiadomo, nie jeden raz potem stwierdzamy, że~nasz wybór mógł być
+%   jednak lepszy.)
+
+%   Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+%   na dowolne związane z~zajęciami zagadnienia. W~szczególności
+%   \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
+%   jest niejasne. To są podstawy informatyki, \alert{nie} zakładamy,
+%   że~Państwo mają już wszystko umieć. Byłoby to bardzo niewłaściwe
+%   założenie.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
+%   \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+%   niezadowalające odpowiedzi na pytania.
+
+%   Jestem tutaj by Państwu pomóc w~nauce programowania w~C, pytania
+%   z~Państwa strony bardzo mi to ułatwiają. Zadawania pytań nie traktuję
+%   jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się czegoś
+%   nauczyć.
+
+%   Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+%     Knight}?” musimy jednak zostawić na czas po zajęciach.
+
+%   % Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
+%   % pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+%   % programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+%   % iż~nie ma najmniejszych szans, że~uda nam~się to wszystko zrobić.
+
+%   % Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+%   % Mogą~się Państwo wręcz czuć przytłoczeni ile tego jest. Proszę mi jednak
+%   % uwierzyć, że~większość tego nie jest taka trudna, jak~się wydaje na
+%   % pierwszy rzut oka.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   % Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
+%   % \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+%   % niezadowalające odpowiedzi na pytania.
+
+%   % Jestem tutaj by Państwu pomóc w~nauce programowania w~C, pytania
+%   % z~Państwa strony bardzo mi to ułatwiają. Zadawania pytań nie traktuję
+%   % jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się czegoś
+%   % nauczyć.
+
+%   % Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+%   %   Knight}?” musimy jednak zostawić na czas po zajęciach.
+
+%   Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
+%   pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+%   programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+%   iż~nie ma najmniejszych szans, że~uda nam~się to wszystko zrobić.
+
+%   Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+%   Mogą~się Państwo wręcz czuć przytłoczeni ile tego jest. Proszę mi jednak
+%   uwierzyć, że~większość tego nie jest taka trudna, jak~się wydaje na
+%   pierwszy rzut oka.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uwagi odnośnie treści zajęć}
+
+
+%   Ponieważ tematyka którą poruszamy jest mimo wszystko niebanalna, więc
+%   mnóstwo rzeczy będę musiał bardzo \alert{upraszczać}. Proszę mieć to na
+%   uwadze w~trakcie zajęć i~studiując materiały dla Państwa przygotowane.
+
+%   Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
+%   czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
+%   semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
+%   semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
+%   informatyki, który ma położyć fundamenty pod Państwa umiejętności
+%   i~wiedzę. To nie przedmiot na którym należy wnikać we wszystkie detale,
+%   szczegóły, drugie, trzecie i~czwarte dno problemu.
+
+%   Jeśli jednak ktoś chce~się bardziej zagłębić w~te temat, to służę po
+%   zajęciach całą swoją osobą.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+%   że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
+%   nasza infrastruktura informatyczna wciąż stoi na napisanym w~właśnie
+%   w~nim. W~internecie mogą Państwo znaleźć wiele artykułów i~blogów takich
+%   jak
+%   \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
+%       world}} \parencite{Scott-C-programming-is-still-ETC-Ver-2024}
+%   z~czerwca 2024 roku. Jego tytuł mówi sam za siebie.
+
+%   Niektórzy mówią, że~C to król wszystkich języków programowania.
+%   Inni, bardzo szacowni programiści, twierdzą, że każdy szanujący
+%   programista musi znać~C (cf. str. ?? \parencite{Assembler}).
+
+%   A~jak to jest w~praktyce? Na tych zajęcia potrafią uczęszczać ludzie,
+%   którzy pracują zawodowo jako programiści i~nie mają pojęcia jak napisać
+%   program w~języku~C. Proszę samemu wyciągnąć z~tego wnioski.
+
+%   % Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
+%   % popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
+%   % lepsze warunki do pracy z~językiem~C.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego język~C?}
+
+
+%   % Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+%   % że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
+%   % nasza infrastruktura informatyczna wciąż stoi na języku~C. Niektórzy
+%   % mówią, że~C to król wszystkich języków programowania. Inni mówią, że~każdy
+
+%   % W~internecie mogą Państwo znaleźć wiele artykułów i~blogów takich jak
+%   % \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
+%   %     world}}
+%   % z~czerwca 2024 roku, których tytuł mówi sam za siebie
+%   % \parencite{Scott-C-programming-is-still-ETC-Ver-2024}.
+
+%   Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
+%   popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
+%   znacznie lepsze warunki pracy z~językiem~C.
+
+%   \alert{Ważne.} Jeśli mają Państwo jakiekolwiek problemy z~systemem
+%   GNU/Linux to proszę o~tym \alert{mówić}. Nie przyjmujemy założenia,
+%   że~Państw mają już teraz być ekspertami, w~kwestii używania tego, co by
+%   tu nie mówić, często bardzo topornego systemu operacyjnego.
+
+%   \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
+%   zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia
+%   tych zajęć, bo obecna jest daleka od naszych pragnień. Naprawdę
+%   praktyczne zajęcia z~podstaw informatyki w~języku~C są trudne do
+%   zorganizowania, z~powodów o~których będziemy mówili później.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{O~uzyskaniu zaliczenia}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zaliczenie zaoczne}
+
+
+%   Zaliczenie zaoczne można jak najbardziej uzyskać, np.~przedstawiając
+%   swój prywatny projekt jakiegoś programu czy aplikacji. Projekt ten
+%   \alert{nie musi} być napisany w~języku~C, może być w~Pythonie albo
+%   JavaScripcie. Z~powodów które powinny być dla wszystkich oczywiste,
+%   preferowane są jednak te stworzone w~języku C. (W~trochę mniejszym
+%   stopniu, w~C++).
+
+%   Każdy kto chce uzyskać zaliczenie zaoczne, niech zgłosi~się do mnie po
+%   zajęciach lub napisze na maila \email.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uwagi odnośnie treści zajęć}
+
+
+%   Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   Państwo odpowiednią ocenę.
+
+%   \begin{itemize}
+
+%   \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   \end{itemize}
+
+%   W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   wartość zależy od zdobytej oceny. Za projekt można zdobyć do 30 pkt.
+%   Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Punktacja testów}
+
+
+%   % Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   % Państwo odpowiednią ocenę.
+
+%   % \begin{itemize}
+
+%   % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   % \end{itemize}
+
+%   % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
+%   % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+%   W~tym semestrze każdy test będzie zawierał 10 pytań jednokrotnego wyboru.
+%   Progi ocen są jak dla całego przedmiotu i~regułą zaokrąglania (raczej nie
+%   będzie trzeba jej używać) działa jak poprzednio.
+
+%   \begin{itemize}
+
+%   \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   \end{itemize}
+
+%   Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
+%   (mniej niż $41\%$), lub $2 \cdot \text{ocena}$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Punktacja testów}
+
+
+%   % Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   % Państwo odpowiednią ocenę.
+
+%   % \begin{itemize}
+
+%   % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   % \end{itemize}
+
+%   % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
+%   % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+%   Ilość punktów do końcowej uzyskanych w~zależności od wyniku testu.
+
+%   \begin{itemize}
+
+%   \item $0\%\text{--}40\%$ -- $0$ pkt.
+
+%   \item $41\%\text{--}50\%$ -- $6$ pkt.
+
+%   \item $51\%\text{--}60\%$ -- $7$ pkt.
+
+%   \item $61\%\text{--}70\%$ -- $8$ pkt.
+
+%   \item $71\%\text{--}80\%$ -- $9$ pkt.
+
+%   \item $81\%\text{--}100\%$ -- $10$ pkt.
+
+%   \end{itemize}
+
+%   % Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
+%   % (mniej niż $40\%$), lub $2 \cdot \text{ocena}$ (czyli jeśli ma się $3.0$ lub
+%   % więcej, to dostaje się tyle punktów, ile poprawnych odpowiedzi
+%   % na~pytania~się udzieliło).
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Materiały do nauki}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Materiały do nauki}
+
+
+%   Prezentacje te są dostępne w~formie plików \LaTeX a (kodu źródłowego)
+%   na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
+%   do internetu może jest zdobyć wpisując \\
+%   \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+%   Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
+
+%   Będą też dostępne w~formie \textsc{pdfów} na~Sake, wraz z~innymi
+%   materiałami. Dostępna tam będzie również lista zagadnień do opanowania
+%   z~tego przedmiotu, która będzie główny punktem odniesieniem przy
+%   tworzeniu pytań testowych. Jak również dwa listy materiałów do nauki.
+%   Jedna lista normalna, druga dla osób ambitnych.
+
+%   Proszę zwrócić uwagę, że~ze względu na charakter tych zajęć, wystarczające
+%   jest, żeby o~pewnych rzeczach wymienionych na liście zagadnień mieli
+%   Państwo bardzo ogólne i~podstawowe pojęcie. Nawet w~sytuacji, gdy na
+%   kursie było o~danym zagadnieniu powiedziane znacznie więcej.
+%   % Dotyczy to nawet rzeczy, które,
+%   % w~zależności od tego jak pójdą nam zajęcia, będą omawiane bardziej
+%   % szczegółowo, ale nie należą do tematów, które są kluczowe dla tego kursu.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Punktacja testów}
+
+
+
+%   Przykładowo, jest wystarczające, żeby Państwo wiedzieli, że~kompilator
+%   języka~C jest to program, który przetwarza kod napisany w~języku~C
+%   w~program, który jest napisany w~języku zrozumiałym dla komputera.
+%   Nawet jeśli na zajęciach wspomnimy czym są takie części kompilatora
+%   jak lekser czy parser, nie jest wymagane by Państwo po tym kursie
+%   wiedzieli o~ich istnieniu, nie mówiąc już o~znajomości tego co robią.
+
+%   Na liście zagadnień postaramy~się wyróżnić tego typu pytania w~specjalny
+%   sposób. Dodać należy, że~gdy chodzi o~pozostałe pytania, wymagana jest
+%   dobra znajomość na \alert{poziomie tego co było prezentowane na kursie},
+%   nie zaś taka jaka jest zawarta w~standardzie??? języka~C. Bądźmy poważni,
+%   to jest tylko kurs podstaw informatyki.
+
+
+%   % Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   % Państwo odpowiednią ocenę.
+
+%   % \begin{itemize}
+
+%   % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   % \end{itemize}
+
+%   % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
+%   % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+%   % Ilość punktów do końcowej uzyskanych w~zależności od wyniku testu.
+
+%   % \begin{itemize}
+
+%   % \item $0\%\text{--}40\%$ -- $0$ pkt.
+
+%   % \item $41\%\text{--}50\%$ -- $6$ pkt.
+
+%   % \item $51\%\text{--}60\%$ -- $7$ pkt.
+
+%   % \item $61\%\text{--}70\%$ -- $8$ pkt.
+
+%   % \item $71\%\text{--}80\%$ -- $9$ pkt.
+
+%   % \item $81\%\text{--}100\%$ -- $10$ pkt.
+
+%   % \end{itemize}
+
+%   % Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
+%   % (mniej niż $40\%$), lub $2 \cdot \text{ocena}$ (czyli jeśli ma się $3.0$ lub
+%   % więcej, to dostaje się tyle punktów, ile poprawnych odpowiedzi
+%   % na~pytania~się udzieliło).
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zgłaszanie błędu i~uwag}
+
+
+%   W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
+%   merytorycznych do zajęć lub dostępnych materiałów proszę zgłaszać to
+%   przed lub po zajęciach lub też pisać pod adres \email. Chcemy by te
+%   zajęcia i~towarzyszące im materiały były możliwie proste, łatwe
+%   w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć, że~osiągnięcie
+%   tego jest naprawdę trudne.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Czy informatyka jest trudna?}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czy informatyka jest trudna?}
+
+
+%   Ten przedmiot dotyczy podstaw informatyki w~języku~C, warto~się
+%   więc spytać, czy informatyka jest prosta czy trudna w~nauce?
+
+%   Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
+%   głęboko, to robi~się naprawdę złożona i~niebanalna. Jednak na stosunkowo
+%   płytkim poziomie to czy jest on trudna czy nie, to mocno zależy od~odczuć
+%   konkretnej osoby.
+
+%   Zadam takie pytanie: czy włączenie komputera jest skomplikowane?
+%   Odpowiemy na to pytanie na dwóch poziomach. Pierwszy to poziom normalnego
+%   użytkownika, drugi to opis pochodzący z~książki Andrewa S.~Tanenbauma
+%   \textit{Systemy operacyjne. Wydanie~III}
+%   \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, dotyczący
+%   komputera z~systemem Pentium.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+
+
+%   \begin{enumerate}
+
+%   \item Wciskamy przycisk \texttt{Power}.
+
+
+
+%   \item Czekamy minutę albo dłużej.
+
+
+
+%   \item Wybieramy użytkownika i~wchodzimy na swoje konto.
+
+%   \end{enumerate}
+
+%   Co w~tym trudnego?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
+%   skomplikowany, że~trzeba wprowadzić trochę pojęć wstępnych.
+
+%   \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
+%     wyłącznie do~odczytu}. Pamięć komputera której zawartość została
+%   zapisana przez firmę, która ten fragment pamięci wyprodukowała
+%   i~użytkownik nie może zmodyfikować jej teści. Przynajmniej nie w~żaden
+%   normalny sposób.
+
+%   \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
+%   pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
+%   własności, że~jeśli będę w~sposób losowy wybierał elementy tej pamięci,
+%   to czas odczytania informacje z~każdego jej elementu będzie taki sam.
+%   Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci zajmuje tyle samo
+%   czasu.
+
+%   Tak naprawdę czas odczytu zależy od tego, w~jakiś sposób pamięć
+%   \textsc{ram} jest odczytywana, ale jeszcze długo nie będziemy się musieli
+%   tym przejmować.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
+%   zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
+%   przykładem takiej pamięci jest \textsc{ram}.
+
+%   \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
+%   której treść jest zachowana, gdy przez układ przestaje płynąć prąd,
+%   typowym przykładem jest dysk \textsc{ssd}.
+
+%   Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
+%   które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
+%   we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
+%   komputera z~prądu. Bo~niby czemu życie ma być proste?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
+%   Skrót pochodzi od angielskiej nazwy technologi \textit{Complementary
+%     Metal-Oxide-Semiconductor} (pl.~\textit{komplementarny półprzewodnik
+%     metalowo-tlenkowy}), w~której ta pamięć jest wykonana. Musi być zasilana
+%   prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
+%   klasyfikowana jest jako nieulotna.
+
+%   \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
+%   \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
+%   na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
+%   klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[1)] Wciskamy przycisk \texttt{Power}.
+
+
+
+%   \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
+%     ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
+%     klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
+%     odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
+%     są magistrale \textsc{isa} (ang. \textit{Industry Standard
+%       Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
+%       Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
+
+
+
+%   \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
+%     były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
+%     konfigurowane.
+
+
+
+%   \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
+%     z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
+%     system operacyjny. W~przeszłości były nimi dyskietki, płyty
+%     \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
+%     i~dyski~\textsc{ssd}.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
+%     z~wspomnianej wcześniej listy, aż~znajdzie pierwsze, który zawiera
+%     działający system operacyjny.
+
+
+
+%   \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
+%     w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
+
+
+
+
+%   \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
+%     listę partycji, by~ustalić która z~nich jest partycją aktywną.
+%     Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
+
+
+
+%   \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
+%     z~aktywnej partycji i~go uruchamia.
+
+
+
+%   \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
+%     \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
+%     do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
+%     z~odpowiedniego źródła.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+%     to ładuje je do jądra systemu.
+
+
+
+%   \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+%     działające w~tle.
+
+
+
+%   \item[12)] Uruchamiane jest okno logowania.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bootowanie}
+
+
+%   W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
+%   \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
+%   całej procedury uruchamiania komputer opisanej powyżej, albo tylko
+%   stawiania systemu operacyjnego, czyli od kiedy \textsc{bios} wczytał
+%   pierwszy jego sektor do pamięci (punkt siedem i~dalej). Acz to pojęcie
+%   nie jest specjalnie ostro zdefiniowane.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}
