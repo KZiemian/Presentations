@@ -91,7 +91,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Wprowadzenie do~kursu}
+\subtitle{Podstawowe wiadomości o~języku~C i~system pozycyjny}
 
 \author{Kamil Ziemian}
 
@@ -307,6 +307,14 @@ eprint=true,
 
 
 
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
 
 
 
@@ -423,6 +431,16 @@ eprint=true,
   kurs \alert{podstaw informatyki}, więc nie należy~się spodziewać,
   że~nauczymy~się tu wszystkiego. Nawet o~podstawach informatyki.
 
+  Lubię myśleć o~języku programowania jako o~skrzynce z~narzędziami.
+  Im lepiej znasz swoją skrzynkę, tym prościej ci wykonać dane zadanie.
+  Przykładowo, można wyciągnąć śrubę ze~ściany obcęgami, ale lepiej
+  wiedzieć, że w~skrzynce jest śrubokręt.
+
+  Tak samo proszę myśleć o~naszej nauce języka~C. Na początku będziemy
+  poznawali pojedyncze „narzędzia” jakie są w~tej „skrzynce” są, co niestety
+  dla wielu osób jest nudne. Dopiero jednak jak będziemy znali ich
+  odpowiednią ilość ma sens zabieranie~się
+
 \end{frame}
 % ##################
 
@@ -481,6 +499,26 @@ eprint=true,
     programowania (1972 rok był dawno temu).
 
   \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jaki jest związek między C a~C++?}
+
+
+  Taki jak między krzesłem, a~krzesłem elektrycznym. To są jednak dwa
+  bardzo różne języki programowania, które ze~względów historycznych mają
+  pewne wspólne cechy.
+
+  Mówiłem Państwu, że~C to taka skrzynka z~narzędziami. C++ to cały Leroy
+  Merlin. Naprawdę, ogarnięcie wszystkich featurów jest zupełnie nie do
+  ogarnięcia.
 
 \end{frame}
 % ##################
@@ -682,82 +720,6 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Komentarz odnośnie diagramów}
-
-
-%   \begin{textblock}{2.8}(2,1.5)
-
-%     \begin{tikzpicture}
-
-%       \node[diagram block] at (0,0) {Coś robi};
-
-%     \end{tikzpicture}
-
-%   \end{textblock}
-
-
-
-%   \begin{textblock}{2.8}(8,1.5)
-
-%     \begin{tikzpicture}
-
-%       \node[diagram rectangle block] at (0,0) {Czymś jest};
-
-%     \end{tikzpicture}
-
-%   \end{textblock}
-
-
-%   \vspace{6em}
-
-
-
-
-
-%   Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
-%   (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
-%   taki obiekt który wykonuje jakąś czynność na zadanych obiektach
-%   wejściowych. Takim obiektem może być człowiek, komputer, program
-%   komputerowy, fragment programu komputerowego, etc.
-
-%   Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
-%   koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
-%   przez aktorów lub przez nich wytwarzane.
-
-% \end{frame}
-% % ##################
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Komentarz odnośnie diagramów}
-
-
-%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
-%   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
-%   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
-%   można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
-%   danego programu.
-
-%   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
-%   pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
-%   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
-%   wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
-
-%   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, który
-%   następnie odpowiedni program zwany \textbf{kompilatorem} tłumaczy na
-%   assembler.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
 % ##################
 \begin{frame}
   \frametitle{Prosty schemat działania kompilatora}
@@ -885,40 +847,328 @@ eprint=true,
 
 
 
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
 
 
 
 
 
 % ######################################
-\section{Informatyka i~programowanie}
+\section{Systemy pozycyjny do zapisu liczb}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{Czym jest informatyk?}
+  \frametitle{System pozycyjny}
 
 
-  \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
-  nauka o~rozwiązywaniu problemów za~pomocą komputera. Niektórzy mogą
-  uważać tą definicję, że~obrazę informatyki, według mnie jest bardzo dobra.
+  Proszę powiedzieć, czy to jest na tyle dobrze znane, że możemy to pominąć
+  czy nie?
 
-  Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
-  Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
-  przybliżoną wartość pewnej liczby $\pi$ lub $\gamma$ (metody numeryczne),
-  chciałbym pograć w~coś fajnego (gry wideo), etc. Powstaje jednak pytania.
-  Czym~się różni komputer od przykładowo konsoli do gier takiej jak
-  PlayStation? Przecież ona też pozwala nam rozwiązać jeden z~tych
-  problemów.
+  Żeby stosować systemu pozycyjny musimy ustalić kierunek w~którym czytamy
+  i~piszemy. W~naszym kręgu kulturowym piszemy poziom od lewej do prawej,
+  ludy semickie często piszą poziomo, ale od prawej do lewej. Z~kolei
+  w~wschodniej Euroazji często pisze~się pionowo i~od góry do dołu.
+  Nie wnikając w~te zawiłości, przedstawimy system pozycyjny który
+  dostosowany jest do czytania od lewej do prawej. Zresztą, w~komputerach
+  zwykle nie używa~się innego.
 
-  Komputer to \textbf{programowalne urządzenie elektroniczne},
-  w~przeciwieństwie do PlayStation, która jest urządzeniem elektroniczny,
-  ale \textit{nie} jest programowalna. Co to jednak znaczy?
+  Zaczniemy od systemu pozycyjnego służącego do~zapisu liczb
+  naturalnych: $1, 2, 3, 4, \ldots$ Każdy system pozycyjny musi posiadać
+  wyróżnioną liczbę naturalną, różną od~zera i~jeden, którą nazywamy
+  \textbf{podstawą systemu}. Historycznie ludzie korzystali z~systemów
+  o~różnej podstawie, ale obecnie normalni ludzie chyba wszędzie używają
+  systemu o~podstawie dziesięć.
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System pozycyjny}
+
+
+  Wybór jako podstawy systemu liczby dziesięć wynika pewnie z~tego,
+  że~naturalnie człowiek ma dziesięć palców u~rąk.
+
+  \alert{Ciekawostka.} Angielskie słowo oznaczające cyfrę to \textit{digit}.
+  Pochodzi ono stąd, że~po łacinie \textit{digitus} znaczy tyle co „palec”.
+  Czy więc słowo „digitalizacja” powinno~się tłumaczyć jako „upalcowienie”?
+  ;)
+
+  Polskie słowo „cyfra” ma pochodzić od arabskiego słowa wymawianego jako
+  „sifr”, które oznacza zero. Ale nie jest ekspertem, gdy chodzi
+  o~etymologię.
+
+  Oznaczmy teraz liczbę dziesięć symbolem $A$. Wówczas możemy odczytać
+  wartość liczby $1234$ jako: \\
+  $\displaystyle
+  1234 = 4 \cdot A^{ 0 } + 3 \cdot A^{ 1 } + 2 \cdot A^{ 2 } + 1 \cdot A^{ 3 }.$
+
+  Podstawiając $A = 10$ łatwo sprawdzamy, że~jest to prawda. \\
+  $\displaystyle
+  4 \cdot A^{ 0 } + 3 \cdot A^{ 1 } + 2 \cdot A^{ 2 } + 1 \cdot A^{ 3 } =
+  4 \cdot 10^{ 0 } + 3 \cdot 10^{ 1 } + 2 \cdot 10^{ 2 } + 1 \cdot 10^{ 3 } =$ \\
+  $\displaystyle
+  = 4 \cdot 1 + 3 \cdot 10 + 2 \cdot 100 + 1 \cdot 1 000 = 1234$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Istota systemu pozycyjnego}
+
+
+  Na tym przykładzie mogliśmy zobaczyć istotę systemu pozycyjnego. Dany
+  system pozycyjny jest zdefiniowany przez wybraną liczbę naturalną $n$
+  i~$n$ symboli reprezentujących liczby od~$0$ do~$n - 1$. Dla systemu
+  dziesiętnego te symbole to doskonale nam wszystkim znane $0$, $1$, $2$,
+  $3$, $4$, $5$, $6$, $7$, $8$, $9$.
+
+  Liczbę $n$ będziemy nazywali \textbf{podstawą systemu}, zaś zbiór $n$
+  symboli $c_{ 1 }, c_{ 2 }, c_{ 3 }, \ldots, c_{ n }$ będziemy nazywali
+  \textbf{cyframi}
+  danego systemu pozycyjnego, które reprezentują liczby $0, 1, 2, \ldots, n - 1$.
+
+  Dowolną liczbę naturalną możemy teraz w~systemie o~podstawie $n$ możemy
+  zapisać jako ciąg cyfr. By podkreślić, że~dana liczba jest zapisany
+  w~systemie o~podstawie~$n$ często używa~się następującej notacji. \\
+  $\displaystyle
+  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n },$ \\
+  gdzie~$k$ to pewna liczba naturalna większa lub równa~$1$: $k \geq 1$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Istota systemu pozycyjnego}
+
+
+  Wartość liczby $( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n }$ zapisanej
+  w~danym systemie pozycyjnym zawsze odczytujemy w~ten sam sposób: \\
+  $\displaystyle
+  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n } =
+  a_{ 0 } \cdot n^{ 0 } + a_{ 1 } \cdot n^{ 1 } + a_{ 2 } \cdot n^{ 2 } + \ldots +
+  a_{ k - 2 } \cdot n^{ k - 2 } + a_{ k - 1 } \cdot n^{ k - 1 }.$
+
+  Proszę zwrócić uwagę, że~jest to w~100\% zgodne z~tym, co widzieliśmy
+  wcześniej: $1234 = 4 + 3 \cdot 10 + 2 \cdot 100 + 1 \cdot 1000$.
+
+  System o~podstawie dziesięć nie jest w~żaden sposób wyróżniony przez
+  matematykę, ale~ponieważ jest to jedyny system jaki normalny człowiek
+  używam dzisiaj (Pytanie filozoficzne: czy informatyk to normalny
+  człowiek?), jest dla każdego z~nas najbardziej naturalny ze
+  wszystkich. Dlatego jeśli nie jest podane w~jakim systemie zapisana
+  jest dana liczba, ani nie wynika to w~żaden sposób z~kontekstu, to
+  proszę przyjąć, iż~jest zapisana w~systemie dziesiętnym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Różne systemy pozycyjne}
+
+
+  Proszę zwrócić uwagę, że~w~systemie dziesiętnym nie ma \textit{cyfry}
+  na oznaczenie liczby~$10$. Oznaczamy ją za pomocą ciągu dwóch cyfr: $1$
+  i~$0$. Tak samo w~skład systemu o~podstawie~$2$, nie wchodzi cyfra „$2$”.
+  Liczbę dwa zapisujemy w~nim jako: \\
+  $(10)_{ 2 } = 2.$ \\
+  Ogólnie w~systemie o~podstawie $n$, liczbę $n$ zapisujemy jako
+  $(10)_{ n }$. Nie powinno być trudne zrozumienie czemu tak jest.
+
+  Jak powszechnie wiadomo, informatyka bazuje na systemie dwójkowym
+  o~podstawie~$2$. Dlaczego akurat~$2$? Wydaje~się, że~przyczyna jest
+  czysto technologiczna. Doskonałe zrozumienie systemów o~podstawach
+  różnych od~$10$, w~tym tego o~podstawie~$2$, znajdujemy najpóźniej
+  w~pismach Gottfrieda Wilhelma Leibniza, który żył w~latach 1646--1716.
+  W~czasach gdy zaczęto budować współczesne komputery po 1900 roku, nie
+  była więc to żadna nowość.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Różne systemy pozycyjne}
+
+
+  Dla pierwszych komputerów rozważano systemy pozycyjne o~bardzo różnych
+  podstawach, takich jak $10$ czy~$5$. Po rozważeniu takich problemów jak
+  to, jaka będzie stabilność urządzenia elektronicznego (komputer
+  \alert{jest} urządzeniem elektronicznym), zbudowanego by obsługiwać
+  liczby o~danej podstawie, ile prądu będzie zużywać, etc., stwierdzona,
+  że~system o~podstawie~$2$, powinien być optymalny. I~tak już zostało.
+
+  Poza tym, system o~podstawie~$2$, tak samo jak ten o~podstawie $10$, nie
+  jest niczym wyróżniony przez matematykę. Kiedy jednak za podstawowy
+  system obierzemy ten o~podstawie $2$, pewne inne systemy stają~się
+  naturalnie wyróżnione. W~informatyce dwa systemy pochodne w~stosunku do
+  tego systemu pojawiają~się szczególnie często: system ósemkowy
+  o~podstawie~$8 = 2^{ 3 }$ i~szesnastkowy o~podstawie~$16 = 2^{ 4 }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Terminologia}
+
+
+  Analogicznie, dla systemu o~podstawie $10$ wyróżnione są te o podstawie
+  $100$, $1000$, etc. Proszę zwrócić uwagę na zachowanie języka polskiego.
+  Liczba $99$ to „dziewięćdziesiąt dziewięć”, ale $100$ to „sto”,
+  $999$ to „dziewięćset dziewięćdziesiąt dziewięć”, a~$1000$ to „tysiąc”.
+  Natomiast język francuski nosi mocne ślady systemu o~podstawie $12$, które
+  jakoś zachowały~się jeszcze jakoś w~języku polskim, gdzie $12$ to „tuzin”,
+  a~$60 = 5 \cdot 12$ to „kopa”. Po francusku $71$ to \textit{soixante et onze},
+  dosłownie „$60$ i~$11$”.
+
+  Łacińskie słowo \textit{binarius} oznacza „złożony z~dwóch części”, stąd
+  w~języku angielskim określamy system dwójkowy jako \textit{binary system},
+  a~po polsku istnieje zwrot \textit{system binarny}. Co ważniejsze,
+  pochodzi od~tego stosowany często w~informatyce zapis liczby w~systemie
+  dwójkowym nie jako $(111)_{ 2 }$, lecz jako $0\text{b}111$. Łatwo
+  sprawdzić, że \\
+  $\displaystyle
+  0\text{b}111 = 1 \cdot 2^{ 2 } + 1 \cdot 2^{ 1 } + 1 \cdot 2^{ 0 } = 7.$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Terminologia}
+
+
+  System o~podstawie $8$ po angielsku to \textit{octal system}, od
+  greckiego słowa na~liczbę $8$, czyli \textit{okto} (przybliżony zapis
+  fonetyczny). Stąd w~informatyce często liczby w~tym systemie są
+  zapisywane nie $(321)_{ 8 }$, lecz $0\text{o}321$. Symbol $\text{o}$ to
+  mała litera „o”. Łatwo sprawdzić, że \\
+  $\displaystyle
+  0\text{o}321 = 3 \cdot 8^{ 2 } + 2 \cdot 8^{ 1 } + 1 \cdot 8^{ 0 } =
+  3 \cdot 64 + 2 \cdot 8 + 1 = 192 + 16 + 1 = 209.$
+
+  Po angielsku system szesnastkowy to \textit{hexadecimal system}, od
+  greckiego słowa oznaczającego $16$: \textit{hekkaideka} (przybliżony
+  zapis fonetyczny). Dlatego również w~polskim możne~się spotkać
+  ze słowem „heksadekacymalny”. Od słowa \textit{heXadecimal} pochodzi też
+  zwyczaj zapisywania liczb w~tym systemie nie jako $(321)_{ 16 }$,
+  ale~$0\text{x}321$. Łatwo sprawdzić, że \\
+  $0\text{x}321 = 3 \cdot 16^{ 2 } + 2 \cdot 16 + 1 = 3 \cdot  256 + 32 + 1 =
+  768 + 32 + 1 = 801.$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Ponieważ $16$ jest większe od $10$ (wielkiego odkrycie nie poczyniliśmy),
+  więc potrzebujemy wprowadzić sześć nowych symboli, by móc zapisać
+  wszystkie $16$ cyfry tego systemu. Standardowy wybór polega na przyjęciu
+  początkowych liter alfabetu łacińskiego: $A = 10$, $B = 11$,
+  $C = 12$, $D = 13$, $E = 14$ i~$F = 15$. Nie będę ukrywał,
+  że~zapamiętanie co te nowe cyfry znaczą, może być dość trudne.
+
+  Zgody do tego, czy to mają być duże litery, czy małe, czy jedne i~drugie,
+  nie ma. Ja będę używał konwencji, w~której stosujemy duże litery
+  łacińskie.
+
+  Dla ćwiczeń, spróbujmy wyliczyć w~systemie dziesiętnym wartość liczby
+  $0\text{xBAD}$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+% % ######################################
+% \section{Informatyka i~programowanie}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest informatyk?}
+
+
+%   \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
+%   nauka o~rozwiązywaniu problemów za~pomocą komputera. Niektórzy mogą
+%   uważać tą definicję, że~obrazę informatyki, według mnie jest bardzo dobra.
+
+%   Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
+%   Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
+%   przybliżoną wartość pewnej liczby $\pi$ lub $\gamma$ (metody numeryczne),
+%   chciałbym pograć w~coś fajnego (gry wideo), etc. Powstaje jednak pytania.
+%   Czym~się różni komputer od przykładowo konsoli do gier takiej jak
+%   PlayStation? Przecież ona też pozwala nam rozwiązać jeden z~tych
+%   problemów.
+
+%   Komputer to \textbf{programowalne urządzenie elektroniczne},
+%   w~przeciwieństwie do PlayStation, która jest urządzeniem elektroniczny,
+%   ale \textit{nie} jest programowalna. Co to jednak znaczy?
+
+% \end{frame}
+% % ##################
 
 
 
@@ -1062,84 +1312,12 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~assemblerze x86, Nasm
-%     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
-
-
-%   \texttt{org 0x100} \\
-%   \vspace{0.8em}
-%   \texttt{mov dx, msg} \\
-%   \texttt{mov ah, 9} \\
-%   \texttt{int 0x21} \\
-%   \vspace{0.8em}
-%   \texttt{mov ah, 0x4c} \\
-%   \texttt{int 0x21} \\
-%   \vspace{0.8em}
-%   \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
-
-% \end{frame}
-% % ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~języku~C}
 
-
-%   \texttt{\#include <stdio.h>} \\
-%   \vspace{0.8em}
-%   \texttt{int main() \{ } \\
-%   \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \hphantom{aaaa} \texttt{return 0;} \\
-%   \texttt{ \} }
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~języku~Python}
-
-
-%   \texttt{print("Hello, World!")}
-
-% \end{frame}
-% % ##################
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Co z~tego wynika?}
-
-
-%   Powinno być teraz dość oczywiste, że~C jest prostszy od~assemblera,
-%   a~Python prostszy od~C.
-
-%   Czy od tego momentu kursu możemy uznać, że~język assemblera nas nie
-%   interesuje? Jeśli ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
-%   to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
-
-%   Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
-%   w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
-%   w~Pythonie, ale ja o~tym nie decyduje.
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1314,27 +1492,90 @@ eprint=true,
 
 
 
-% % % ##################
-% % \begin{frame}
-% %   \frametitle{?????}
-
-
-% % \end{frame}
-% % % ##################
 
 
 
 
 
-% % % ##################
-% % \begin{frame}
-% %   \frametitle{}
 
 
 
-% % \end{frame}
-% % % ##################
 
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komentarz odnośnie diagramów}
+
+
+%   \begin{textblock}{2.8}(2,1.5)
+
+%     \begin{tikzpicture}
+
+%       \node[diagram block] at (0,0) {Coś robi};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+
+
+%   \begin{textblock}{2.8}(8,1.5)
+
+%     \begin{tikzpicture}
+
+%       \node[diagram rectangle block] at (0,0) {Czymś jest};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
+
+
+%   \vspace{6em}
+
+
+
+
+
+%   Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
+%   (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+%   taki obiekt który wykonuje jakąś czynność na zadanych obiektach
+%   wejściowych. Takim obiektem może być człowiek, komputer, program
+%   komputerowy, fragment programu komputerowego, etc.
+
+%   Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
+%   koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
+%   przez aktorów lub przez nich wytwarzane.
+
+% \end{frame}
+% % ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komentarz odnośnie diagramów}
+
+
+%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+%   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
+%   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
+%   można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
+%   danego programu.
+
+%   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
+%   pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
+%   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
+%   wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
+
+%   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, który
+%   następnie odpowiedni program zwany \textbf{kompilatorem} tłumaczy na
+%   assembler.
+
+% \end{frame}
+% % ##################
 
 
 
@@ -1744,28 +1985,7 @@ eprint=true,
 
 
 
-% % % ##################
-% % \begin{frame}
-% %   \frametitle{}
 
-
-
-% % \end{frame}
-% % % ##################
-
-
-
-
-
-% % % ##################
-% % \begin{frame}
-% %   \frametitle{?????}
-
-
-
-
-% % \end{frame}
-% % % ##################
 
 
 
@@ -3082,16 +3302,7 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
 
-
-%   Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
-%   w~informatyce.
-
-% \end{frame}
-% % ##################
 
 
 
