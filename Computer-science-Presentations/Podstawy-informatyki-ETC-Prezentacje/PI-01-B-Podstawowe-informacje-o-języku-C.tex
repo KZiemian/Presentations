@@ -119,7 +119,7 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 73k+, 43k+, 52k+,
+% Number of chars: 62k+, 73k+, 43k+, 52k+, 69k+,
 \RaggedRight
 % ######################################
 
@@ -150,68 +150,55 @@ eprint=true,
 
 
 % ######################################
-\section{Informacje wstępne}
+\section{Dygresja o~diagramach występujących w~tych
+  prezentacjach}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{Informacje wstępne}
+  \frametitle{Konwencja}
 
 
-  Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
-  ale nie widzę sposobu, by~tego uniknąć.
+  \begin{textblock}{2.8}(2,1.5)
 
-  Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
-  ja jestem tu dla Państwa, a~nie Państwo dla mnie. Jestem tu po to, by
-  pomóc Państwu stawiać pierwsze kroki w~programowaniu w~języku~C.
-  W~związku z~tym, ja będę Państwa rozliczał tylko i~wyłącznie
-  z~umiejętności i~wiedzy, z~niczego innego. Wychodzę bowiem z~założenia,
-  że~Państwo sami najlepiej wiedzą, czemu warto poświęcić swój czas. (Choć
-  jak wiadomo, nie jeden raz potem stwierdzamy, że~nasz wybór mógł być
-  jednak lepszy.)
+    \begin{tikzpicture}
 
-  Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-  na dowolne związane z~zajęciami zagadnienia. W~szczególności
-  \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
-  jest niejasne. To są podstawy informatyki, \alert{nie} zakładamy,
-  że~Państwo mają już wszystko umieć. Byłoby to bardzo niewłaściwe
-  założenie.
+      \node[diagram block] at (0,0) {Coś robi};
 
-\end{frame}
-% ##################
+    \end{tikzpicture}
+
+  \end{textblock}
 
 
 
+  \begin{textblock}{2.8}(8,1.5)
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] at (0,0) {Czymś jest};
+
+    \end{tikzpicture}
+
+  \end{textblock}
 
 
-% ##################
-\begin{frame}
-  \frametitle{Informacje wstępne}
+  \vspace{6em}
 
 
-  Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
-  \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
-  niezadowalające odpowiedzi na pytania.
 
-  Jestem tutaj by Państwu pomóc w~nauce programowania w~C, pytania
-  z~Państwa strony bardzo mi to ułatwiają. Zadawania pytań nie traktuję
-  jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się czegoś
-  nauczyć.
 
-  Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
-    Knight}?” musimy jednak zostawić na czas po zajęciach.
 
-  % Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
-  % pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
-  % programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
-  % iż~nie ma najmniejszych szans, że~uda nam~się to wszystko zrobić.
+  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
+  (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+  taki obiekt który wykonuje jakąś czynność na zadanych obiektach
+  wejściowych. Takim obiektem może być człowiek, komputer, program
+  komputerowy, fragment programu komputerowego, etc.
 
-  % Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
-  % Mogą~się Państwo wręcz czuć przytłoczeni ile tego jest. Proszę mi jednak
-  % uwierzyć, że~większość tego nie jest taka trudna, jak~się wydaje na
-  % pierwszy rzut oka.
+  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
+  koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
+  przez aktorów lub przez nich wytwarzane.
 
 \end{frame}
 % ##################
@@ -222,57 +209,48 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Informacje wstępne}
+  \frametitle{Przykładowy diagram}
 
 
-  % Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
-  % \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
-  % niezadowalające odpowiedzi na pytania.
-
-  % Jestem tutaj by Państwu pomóc w~nauce programowania w~C, pytania
-  % z~Państwa strony bardzo mi to ułatwiają. Zadawania pytań nie traktuję
-  % jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się czegoś
-  % nauczyć.
-
-  % Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
-  %   Knight}?” musimy jednak zostawić na czas po zajęciach.
-
-  Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
-  pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
-  programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
-  iż~nie ma najmniejszych szans, że~uda nam~się to wszystko zrobić.
-
-  Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
-  Mogą~się Państwo wręcz czuć przytłoczeni ile tego jest. Proszę mi jednak
-  uwierzyć, że~większość tego nie jest taka trudna, jak~się wydaje na
-  pierwszy rzut oka.
-
-\end{frame}
-% ##################
+  Konwencję tą ilustruje poniższy, zrobionym z~przymrużeniem oka, diagram.
+  Przedstawia on proces tworzenia przez człowieka za pomocą klawiatury
+  i~komputera programu w~języku programowania~C.
 
 
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Uwagi odnośnie treści zajęć}
+  \begin{figure}
+
+    \label{fig:Creating-code-in-C}
+
+    \begin{tikzpicture}
+
+      \node[diagram block] (Man) at (0,0) {Człowiek};
+
+      \node[diagram block] (Keyboard) at (3.8,0) {Klawiatura};
+
+      \draw[thick diagram arrow] (Man) -- (Keyboard);
 
 
-  Ponieważ tematyka którą poruszamy jest mimo wszystko niebanalna, więc
-  mnóstwo rzeczy będę musiał bardzo \alert{upraszczać}. Proszę mieć to na
-  uwadze w~trakcie zajęć i~studiując materiały dla Państwa przygotowane.
+      \node[diagram block] (Computer) at (7.6,0) {Komputer};
 
-  Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
-  czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
-  semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
-  semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
-  informatyki, który ma położyć fundamenty pod Państwa umiejętności
-  i~wiedzę. To nie przedmiot na którym należy wnikać we wszystkie detale,
-  szczegóły, drugie, trzecie i~czwarte dno problemu.
+      \draw[thick diagram arrow] (Keyboard) -- (Computer);
 
-  Jeśli jednak ktoś chce~się bardziej zagłębić w~te temat, to służę po
-  zajęciach całą swoją osobą.
+      % \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+
+
+      \node[diagram rectangle block] (Source code) at (7.6,-2.5)
+      {Kod źródłowy w~języku~C};
+
+      \draw[thick diagram arrow] (Computer) -- (Source code);
+
+    \end{tikzpicture}
+
+    \caption{Diagram ilustrujący tworzenie kodu w~języku~C.}
+
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -283,730 +261,44 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Informacje wstępne}
+  \frametitle{Inny diagram}
 
 
-  Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
-  że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
-  nasza infrastruktura informatyczna wciąż stoi na napisanym w~właśnie
-  w~nim. W~internecie mogą Państwo znaleźć wiele artykułów i~blogów takich
-  jak
-  \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
-      world}} \parencite{Scott-C-programming-is-still-ETC-Ver-2024}
-  z~czerwca 2024 roku. Jego tytuł mówi sam za siebie.
+  Czy poniższy diagram jest lepszy czy gorszy od poprzedniego? Zależy
+  od~tego jakie informacje ma dany diagram przekazywać. Proszę~się więc nie
+  dziwić, jeśli na danym diagramie czegoś nie ma, a~nawet, że~nie ma czegoś
+  co było na poprzedniej wersji diagramu. Zawsze trzeba dokonać selekcji co
+  na diagramie zostanie umieszczone, a~co nie i~ten wybór często zależy
+  od kontekstu.
 
-  Niektórzy mówią, że~C to król wszystkich języków programowania.
-  Inni, bardzo szacowni programiści, twierdzą, że każdy szanujący
-  programista musi znać~C (cf. str. ?? \parencite{Assembler}).
+  Jeśli uważają Państwo, że~na diagramie nie ma czegoś, co być powinno,
+  albo coś innego jest nie w~porządku, \alert{proszę} to mi powiedzieć.
+  Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
 
-  A~jak to jest w~praktyce? Na tych zajęcia potrafią uczęszczać ludzie,
-  którzy pracują zawodowo jako programiści i~nie mają pojęcia jak napisać
-  program w~języku~C. Proszę samemu wyciągnąć z~tego wnioski.
 
-  % Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
-  % popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
-  % lepsze warunki do pracy z~językiem~C.
 
-\end{frame}
-% ##################
 
 
 
+  \begin{figure}
 
+    \label{fig:Also-creating-code-in-C}
 
-% ##################
-\begin{frame}
-  \frametitle{Dlaczego język~C?}
+    \begin{tikzpicture}
 
+      \node[diagram block] (Man) at (0,0) {Człowiek};
 
-  % Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
-  % że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
-  % nasza infrastruktura informatyczna wciąż stoi na języku~C. Niektórzy
-  % mówią, że~C to król wszystkich języków programowania. Inni mówią, że~każdy
+      \node[diagram rectangle block] (Source code) at (3.8,0)
+      {Kod źródłowy w~języku~C};
 
-  % W~internecie mogą Państwo znaleźć wiele artykułów i~blogów takich jak
-  % \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
-  %     world}}
-  % z~czerwca 2024 roku, których tytuł mówi sam za siebie
-  % \parencite{Scott-C-programming-is-still-ETC-Ver-2024}.
+      \draw[thick diagram arrow] (Man) -- (Source code);
 
-  Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
-  popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
-  znacznie lepsze warunki pracy z~językiem~C.
+    \end{tikzpicture}
 
-  \alert{Ważne.} Jeśli mają Państwo jakiekolwiek problemy z~systemem
-  GNU/Linux to proszę o~tym \alert{mówić}. Nie przyjmujemy założenia,
-  że~Państw mają już teraz być ekspertami, w~kwestii używania tego, co by
-  tu nie mówić, często bardzo topornego systemu operacyjnego.
+    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
 
-  \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
-  zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia
-  tych zajęć, bo obecna jest daleka od naszych pragnień. Naprawdę
-  praktyczne zajęcia z~podstaw informatyki w~języku~C są trudne do
-  zorganizowania, z~powodów o~których będziemy mówili później.
 
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{O~uzyskaniu zaliczenia}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zaliczenie zaoczne}
-
-
-  Zaliczenie zaoczne można jak najbardziej uzyskać, np.~przedstawiając
-  swój prywatny projekt jakiegoś programu czy aplikacji. Projekt ten
-  \alert{nie musi} być napisany w~języku~C, może być w~Pythonie albo
-  JavaScripcie. Z~powodów które powinny być dla wszystkich oczywiste,
-  preferowane są jednak te stworzone w~języku C. (W~trochę mniejszym
-  stopniu, w~C++).
-
-  Każdy kto chce uzyskać zaliczenie zaoczne, niech zgłosi~się do mnie po
-  zajęciach lub napisze na maila \email.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uzyskanie zaliczenia}
-
-
-  Zaliczenie i~ocenę uzyskują Państwo na podstawie trzech rzeczy.
-
-  \begin{itemize}
-
-  \item Zadania domowe.
-
-  \item Dwa testy jednokrotnego wyboru.
-
-  \item Jeden większy projekt.
-
-  \end{itemize}
-
-  Za każdy z~tych rzeczy przyznawana jest pewna ilość punktów. Niestety
-  system przyznawania punktów wciąż jest daleki od ideału, ale mam nadzieję,
-  że~nie będzie to dla Państwa zbyt wielkim obciążeniem.
-
-  Jeśli ktoś ma uwagi do tego systemu, co można zmienić, co poprawić, to
-  proszę powiedzieć to mi po zajęciach lub napisać pod adres \email.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uwagi odnośnie treści zajęć}
-
-
-  Pod koniec semestru podliczane są wszystkie punkty jakie były do
-  zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
-  Państwo odpowiednią ocenę.
-
-  \begin{itemize}
-
-  \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
-
-  \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
-
-  \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
-
-  \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
-
-  \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
-
-  \end{itemize}
-
-  W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
-  Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
-
-  Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
-  konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
-  wartość zależy od zdobytej oceny. Za projekt można zdobyć do 30 pkt.
-  Ilość punktów za projekt jest tym, co obecnie najmniej mnie
-  satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Punktacja testów}
-
-
-  % Pod koniec semestru podliczane są wszystkie punkty jakie były do
-  % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
-  % Państwo odpowiednią ocenę.
-
-  % \begin{itemize}
-
-  % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
-
-  % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
-
-  % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
-
-  % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
-
-  % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
-
-  % \end{itemize}
-
-  % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
-  % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
-
-  % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
-  % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
-  % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
-  % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
-  % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
-
-  W~tym semestrze każdy test będzie zawierał 10 pytań jednokrotnego wyboru.
-  Progi ocen są jak dla całego przedmiotu i~regułą zaokrąglania (raczej nie
-  będzie trzeba jej używać) działa jak poprzednio.
-
-  \begin{itemize}
-
-  \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
-
-  \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
-
-  \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
-
-  \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
-
-  \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
-
-  \end{itemize}
-
-  Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
-  (mniej niż $41\%$), lub $2 \cdot \text{ocena}$.
-
-\end{frame}
-% ##################
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Punktacja testów}
-
-
-  % Pod koniec semestru podliczane są wszystkie punkty jakie były do
-  % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
-  % Państwo odpowiednią ocenę.
-
-  % \begin{itemize}
-
-  % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
-
-  % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
-
-  % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
-
-  % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
-
-  % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
-
-  % \end{itemize}
-
-  % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
-  % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
-
-  % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
-  % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
-  % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
-  % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
-  % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
-
-  Ilość punktów do końcowej uzyskanych w~zależności od wyniku testu.
-
-  \begin{itemize}
-
-  \item $0\%\text{--}40\%$ -- $0$ pkt.
-
-  \item $41\%\text{--}50\%$ -- $6$ pkt.
-
-  \item $51\%\text{--}60\%$ -- $7$ pkt.
-
-  \item $61\%\text{--}70\%$ -- $8$ pkt.
-
-  \item $71\%\text{--}80\%$ -- $9$ pkt.
-
-  \item $81\%\text{--}100\%$ -- $10$ pkt.
-
-  \end{itemize}
-
-  % Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
-  % (mniej niż $40\%$), lub $2 \cdot \text{ocena}$ (czyli jeśli ma się $3.0$ lub
-  % więcej, to dostaje się tyle punktów, ile poprawnych odpowiedzi
-  % na~pytania~się udzieliło).
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Materiały do nauki}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Prezentacje te są dostępne w~formie plików \LaTeX a (kodu źródłowego)
-  na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
-  do internetu może jest zdobyć wpisując \\
-  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
-  Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
-
-  Będą też dostępne w~formie \textsc{pdfów} na~Sake, wraz z~innymi
-  materiałami. Dostępna tam będzie również lista zagadnień do opanowania
-  z~tego przedmiotu, która będzie główny punktem odniesieniem przy
-  tworzeniu pytań testowych. Jak również dwa listy materiałów do nauki.
-  Jedna lista normalna, druga dla osób ambitnych.
-
-  Proszę zwrócić uwagę, że~ze względu na charakter tych zajęć, wystarczające
-  jest, żeby o~pewnych rzeczach wymienionych na liście zagadnień mieli
-  Państwo bardzo ogólne i~podstawowe pojęcie. Nawet w~sytuacji, gdy na
-  kursie było o~danym zagadnieniu powiedziane znacznie więcej.
-  % Dotyczy to nawet rzeczy, które,
-  % w~zależności od tego jak pójdą nam zajęcia, będą omawiane bardziej
-  % szczegółowo, ale nie należą do tematów, które są kluczowe dla tego kursu.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Punktacja testów}
-
-
-
-  Przykładowo, jest wystarczające, żeby Państwo wiedzieli, że~kompilator
-  języka~C jest to program, który przetwarza kod napisany w~języku~C
-  w~program, który jest napisany w~języku zrozumiałym dla komputera.
-  Nawet jeśli na zajęciach wspomnimy czym są takie części kompilatora
-  jak lekser czy parser, nie jest wymagane by Państwo po tym kursie
-  wiedzieli o~ich istnieniu, nie mówiąc już o~znajomości tego co robią.
-
-  Na liście zagadnień postaramy~się wyróżnić tego typu pytania w~specjalny
-  sposób. Dodać należy, że~gdy chodzi o~pozostałe pytania, wymagana jest
-  dobra znajomość na \alert{poziomie tego co było prezentowane na kursie},
-  nie zaś taka jaka jest zawarta w~standardzie??? języka~C. Bądźmy poważni,
-  to jest tylko kurs podstaw informatyki.
-
-
-  % Pod koniec semestru podliczane są wszystkie punkty jakie były do
-  % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
-  % Państwo odpowiednią ocenę.
-
-  % \begin{itemize}
-
-  % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
-
-  % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
-
-  % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
-
-  % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
-
-  % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
-
-  % \end{itemize}
-
-  % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
-  % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
-
-  % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
-  % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
-  % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
-  % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
-  % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
-
-  % Ilość punktów do końcowej uzyskanych w~zależności od wyniku testu.
-
-  % \begin{itemize}
-
-  % \item $0\%\text{--}40\%$ -- $0$ pkt.
-
-  % \item $41\%\text{--}50\%$ -- $6$ pkt.
-
-  % \item $51\%\text{--}60\%$ -- $7$ pkt.
-
-  % \item $61\%\text{--}70\%$ -- $8$ pkt.
-
-  % \item $71\%\text{--}80\%$ -- $9$ pkt.
-
-  % \item $81\%\text{--}100\%$ -- $10$ pkt.
-
-  % \end{itemize}
-
-  % Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
-  % (mniej niż $40\%$), lub $2 \cdot \text{ocena}$ (czyli jeśli ma się $3.0$ lub
-  % więcej, to dostaje się tyle punktów, ile poprawnych odpowiedzi
-  % na~pytania~się udzieliło).
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zgłaszanie błędu i~uwag}
-
-
-  W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
-  merytorycznych do zajęć lub dostępnych materiałów proszę zgłaszać to
-  przed lub po zajęciach lub też pisać pod adres \email. Chcemy by te
-  zajęcia i~towarzyszące im materiały były możliwie proste, łatwe
-  w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć, że~osiągnięcie
-  tego jest naprawdę trudne.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Czy informatyka jest trudna?}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czy informatyka jest trudna?}
-
-
-  Ten przedmiot dotyczy podstaw informatyki w~języku~C, warto~się
-  więc spytać, czy informatyka jest prosta czy trudna w~nauce?
-
-  Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
-  głęboko, to robi~się naprawdę złożona i~niebanalna. Jednak na stosunkowo
-  płytkim poziomie to czy jest on trudna czy nie, to mocno zależy od~odczuć
-  konkretnej osoby.
-
-  Zadam takie pytanie: czy włączenie komputera jest skomplikowane?
-  Odpowiemy na to pytanie na dwóch poziomach. Pierwszy to poziom normalnego
-  użytkownika, drugi to opis pochodzący z~książki Andrewa S.~Tanenbauma
-  \textit{Systemy operacyjne. Wydanie~III}
-  \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, dotyczący
-  komputera z~systemem Pentium.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Włączanie komputera, poziom normalnego użytkownika}
-
-
-  \begin{enumerate}
-
-  \item Wciskamy przycisk \texttt{Power}.
-
-
-
-  \item Czekamy minutę albo dłużej.
-
-
-
-  \item Wybieramy użytkownika i~wchodzimy na swoje konto.
-
-  \end{enumerate}
-
-  Co w~tym trudnego?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
-  skomplikowany, że~trzeba wprowadzić trochę pojęć wstępnych.
-
-  \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
-    wyłącznie do~odczytu}. Pamięć komputera której zawartość została
-  zapisana przez firmę, która ten fragment pamięci wyprodukowała
-  i~użytkownik nie może zmodyfikować jej teści. Przynajmniej nie w~żaden
-  normalny sposób.
-
-  \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
-  pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
-  własności, że~jeśli będę w~sposób losowy wybierał elementy tej pamięci,
-  to czas odczytania informacje z~każdego jej elementu będzie taki sam.
-  Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci zajmuje tyle samo
-  czasu.
-
-  Tak naprawdę czas odczytu zależy od tego, w~jakiś sposób pamięć
-  \textsc{ram} jest odczytywana, ale jeszcze długo nie będziemy się musieli
-  tym przejmować.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
-  zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
-  przykładem takiej pamięci jest \textsc{ram}.
-
-  \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
-  której treść jest zachowana, gdy przez układ przestaje płynąć prąd,
-  typowym przykładem jest dysk \textsc{ssd}.
-
-  Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
-  które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
-  we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
-  komputera z~prądu. Bo~niby czemu życie ma być proste?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
-  Skrót pochodzi od angielskiej nazwy technologi \textit{Complementary
-    Metal-Oxide-Semiconductor} (pl.~\textit{komplementarny półprzewodnik
-    metalowo-tlenkowy}), w~której ta pamięć jest wykonana. Musi być zasilana
-  prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
-  klasyfikowana jest jako nieulotna.
-
-  \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
-  \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
-  na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
-  klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
-
-
-  \begin{itemize}
-
-  \item[1)] Wciskamy przycisk \texttt{Power}.
-
-
-
-  \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
-    ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
-    klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
-    odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
-    są magistrale \textsc{isa} (ang. \textit{Industry Standard
-      Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
-      Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
-
-
-
-  \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
-    były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
-    konfigurowane.
-
-
-
-  \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
-    z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
-    system operacyjny. W~przeszłości były nimi dyskietki, płyty
-    \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
-    i~dyski~\textsc{ssd}.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
-
-
-  \begin{itemize}
-
-  \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
-    z~wspomnianej wcześniej listy, aż~znajdzie pierwsze, który zawiera
-    działający system operacyjny.
-
-
-
-  \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
-    w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
-
-
-
-
-  \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
-    listę partycji, by~ustalić która z~nich jest partycją aktywną.
-    Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
-
-
-
-  \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
-    z~aktywnej partycji i~go uruchamia.
-
-
-
-  \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
-    \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
-    do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
-    z~odpowiedniego źródła.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
-
-
-  \begin{itemize}
-
-  \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
-    to ładuje je do jądra systemu.
-
-
-
-  \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
-    działające w~tle.
-
-
-
-  \item[12)] Uruchamiane jest okno logowania.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Bootowanie}
-
-
-  W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
-  \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
-  całej procedury uruchamiania komputer opisanej powyżej, albo tylko
-  stawiania systemu operacyjnego, czyli od kiedy \textsc{bios} wczytał
-  pierwszy jego sektor do pamięci (punkt siedem i~dalej). Acz to pojęcie
-  nie jest specjalnie ostro zdefiniowane.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
-
-
-  Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
-  w~informatyce.
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -1069,7 +361,7 @@ eprint=true,
     {./PresentationsPictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
 
     \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
-      PDP-11.}
+      PDP-11 firmy Digital Equipment Corporation.}
 
     \label{fig:Ritchie-Thompson-PDP-11}
 
@@ -1084,41 +376,33 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Przesadnie szczegółowa lista featurów języka~C}
+  \frametitle{Przesadnie pedantyczna lista featurów języka~C}
 
 
   \begin{itemize}
 
   \item[1)] Zmienne.
 
-
-
   \item[2)] Typy zmiennych: \texttt{char}, \texttt{short int}, \texttt{int},
     \texttt{long int}, \texttt{float}, \ldots
 
-
-
   \item[3)] Operator przypisania: \texttt{=}.
 
-
-
-  \item[3)] Operator arytmetyczne: \texttt{+}, \texttt{-}, \texttt{*},
+  \item[4)] Operator arytmetyczne: \texttt{+}, \texttt{-}, \texttt{*},
     \texttt{/}, \texttt{\%}.
     (Jeśli Państwo myślą, że~to banalnie proste, to~się Państwo
     nieprzyjemnie zdziwią.)
 
-
-
-  \item[4)] Operatory porównania: \texttt{==} (nie pomylić z~operatorem
+  \item[5)] Operatory porównania: \texttt{==} (nie pomylić z~operatorem
     przypisania~\texttt{=}),
 
 
 
-  \item[3)] Instrukcje warunkowe: \texttt{if \ldots{} else \ldots}, \texttt{switch}.
+  \item[6)] Instrukcje warunkowe: \texttt{if \ldots{} else \ldots}, \texttt{switch}.
 
 
 
-  \item[4)] Pętle: \texttt{while}, \texttt{for}, \texttt{do \ldots{} while}.
+  \item[7)] Pętle: \texttt{while}, \texttt{for}, \texttt{do \ldots{} while}.
 
   \end{itemize}
 
@@ -1148,26 +432,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Dlaczego w~ogóle istnieją takie języki jak~C?}
-
-  \pause
+  \frametitle{Zalety języka~C}
 
 
-  Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
-  który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
-  jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-  że~pierwotnym językiem komputera jest \textbf{język assembler}
-  (ang. \textit{assembly language}).
+  \begin{itemize}
 
-  Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
-  hiszpański, japoński, niemiecki, polski, etc., tak komputer również
-  posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
-  czy x86/Intel. Typ assemblera jest ustalony przez firmę, która
-  wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
-  „podpięte kable” w~rzeczonym procesorze.
+  \item Pozwala tworzyć bardzo szybkie programy.
 
-  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-  napisanemu w~dwóch??? rodzajach assemblera, językach C i~Python.
+  \item Jeśli poznamy~C, to nauka języka który na nim bazuje będzie
+    już prostsza. A~60\% najważniejszych języków jakie istnieją, w~jakimś
+    stopniu bazuje na~C.
+
+  \item Na świecie jest tyle kodu napisanego w~języku~C, że~jeśli umie~się
+    go dobrze, można znaleźć naprawdę dobrze płatną pracę.
+
+  \item Pozwala lepiej poznać jak komputer działa na niskim poziomie.
+    (Można dyskutować, czy to zaleta, czy wada.)
+
+  \end{itemize}
 
 \end{frame}
 % ##################
@@ -1178,7 +460,79 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze ARM 32,
+  \frametitle{Wady języka~C}
+
+
+  \begin{itemize}
+
+  \item Pisane w~C nie jest wcale proste.
+
+  \item C oferuje nam bardzo mało zabezpieczeń przed nami samymi, co
+    skutkuje tym, że~bardzo łatwo stworzyć kod w~którym kryją~się
+    koszmarnie niebezpieczne rzeczy. To jednak temat na inny przedmiot.
+
+  \item Trudne do zapamiętania nazewnictwo. Czasem jest zwyczajnie głupie.
+
+  \item Metody operowania na stringach (a~raczej brak takich metod).
+
+  \item Brak normalnego typu boolowskiego.
+
+  \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
+    programowania (1972 rok był dawno temu).
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Dlaczego istnieją języki takie jak~C?}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego w~ogóle istnieją takie języki jak~C?}
+
+  \pause
+
+
+  Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
+  który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
+  jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
+  że~pierwotnym językiem komputera jest \textbf{język asembler}
+  (ang. \textit{assembly language}).
+
+  Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
+  hiszpański, japoński, niemiecki, polski, etc., tak komputer również
+  posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
+  czy x86/Intel. Typ asemblera jest ustalony przez firmę, która
+  wyprodukowała procesor, bowiem asembler jest zdefiniowany przez to jak są
+  „podpięte kable” w~rzeczonym procesorze.
+
+  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
+  napisanemu w~dwóch??? rodzajach asemblera, językach C i~Python.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~asemblerze ARM 32,
     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
 
@@ -1238,6 +592,7 @@ eprint=true,
 
 
 
+
 % ##################
 \begin{frame}
   \frametitle{„Hello, World!” w~języku~C}
@@ -1280,13 +635,13 @@ eprint=true,
   \frametitle{Co z~tego wynika?}
 
 
-  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~assemblera,
+  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
   a~Python prostszy od~C.
 
   \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
-  assemblera sam w~sobie nas zupełnie nie interesuje?
+  asemblera sam w~sobie nas zupełnie nie interesuje?
 
-  Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
+  Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~asemblerze,
   to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
 
   Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
@@ -1302,23 +657,23 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Problemy z~assemblerem}
+  \frametitle{Problemy z~asemblerem}
 
 
-  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
+  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
-  można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
+  można tego, by kod napisany przez niego w~asemblerze wszedł w~skład
   danego programu.
 
   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
-  pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
+  pisząc w~asemblerze, a~pomyłki na jego poziomie są szczególnie
   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
-  wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
+  wykład. W~skrócie, błędy w~asemblerze to raj dla hakerów.
 
   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, piszemy
   w~nich programy, a~następnie odpowiedni program zwany
-  \textbf{kompilatorem} tłumaczy na język assembler.
+  \textbf{kompilatorem} tłumaczy ten program na język asembler.
 
 \end{frame}
 % ##################
@@ -1327,52 +682,52 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Komentarz odnośnie diagramów}
+% % ##################
+% \begin{frame}
+%   \frametitle{Komentarz odnośnie diagramów}
 
 
-  \begin{textblock}{2.8}(2,1.5)
+%   \begin{textblock}{2.8}(2,1.5)
 
-    \begin{tikzpicture}
+%     \begin{tikzpicture}
 
-      \node[diagram block] at (0,0) {Coś robi};
+%       \node[diagram block] at (0,0) {Coś robi};
 
-    \end{tikzpicture}
+%     \end{tikzpicture}
 
-  \end{textblock}
-
-
-
-  \begin{textblock}{2.8}(8,1.5)
-
-    \begin{tikzpicture}
-
-      \node[diagram rectangle block] at (0,0) {Czymś jest};
-
-    \end{tikzpicture}
-
-  \end{textblock}
-
-
-  \vspace{6em}
+%   \end{textblock}
 
 
 
+%   \begin{textblock}{2.8}(8,1.5)
+
+%     \begin{tikzpicture}
+
+%       \node[diagram rectangle block] at (0,0) {Czymś jest};
+
+%     \end{tikzpicture}
+
+%   \end{textblock}
 
 
-  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
-  (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
-  taki obiekt który wykonuje jakąś czynność na zadanych obiektach
-  wejściowych. Takim obiektem może być człowiek, komputer, program
-  komputerowy, fragment programu komputerowego, etc.
+%   \vspace{6em}
 
-  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
-  koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
-  przez aktorów lub przez nich wytwarzane.
 
-\end{frame}
-% ##################
+
+
+
+%   Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
+%   (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+%   taki obiekt który wykonuje jakąś czynność na zadanych obiektach
+%   wejściowych. Takim obiektem może być człowiek, komputer, program
+%   komputerowy, fragment programu komputerowego, etc.
+
+%   Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
+%   koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
+%   przez aktorów lub przez nich wytwarzane.
+
+% \end{frame}
+% % ##################
 
 
 
@@ -1424,14 +779,14 @@ eprint=true,
       \node[color=jNormalTextFGColor] (Magic) at (3,-2.3) {Magia};
 
 
-      \draw[pointing arrow] (Magic) -- (Compiler);
+      \draw[pointing arrow orange] (Magic) -- (Compiler);
 
 
       \draw[thick diagram arrow] (C source code) -- (Compiler);
 
 
       \node[diagram rectangle block] (Assembly code) at (0,-4.6)
-      {Kod programu w~assemblerze};
+      {Kod programu w~asemblerze};
 
 
       \draw[thick diagram arrow] (Compiler) -- (Assembly code);
@@ -2899,6 +2254,844 @@ eprint=true,
 
 
 
+
+
+
+% % ######################################
+% \section{Informacje wstępne}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
+%   ale nie widzę sposobu, by~tego uniknąć.
+
+%   Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
+%   ja jestem tu dla Państwa, a~nie Państwo dla mnie. Jestem tu po to, by
+%   pomóc Państwu stawiać pierwsze kroki w~programowaniu w~języku~C.
+%   W~związku z~tym, ja będę Państwa rozliczał tylko i~wyłącznie
+%   z~umiejętności i~wiedzy, z~niczego innego. Wychodzę bowiem z~założenia,
+%   że~Państwo sami najlepiej wiedzą, czemu warto poświęcić swój czas. (Choć
+%   jak wiadomo, nie jeden raz potem stwierdzamy, że~nasz wybór mógł być
+%   jednak lepszy.)
+
+%   Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+%   na dowolne związane z~zajęciami zagadnienia. W~szczególności
+%   \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
+%   jest niejasne. To są podstawy informatyki, \alert{nie} zakładamy,
+%   że~Państwo mają już wszystko umieć. Byłoby to bardzo niewłaściwe
+%   założenie.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
+%   \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+%   niezadowalające odpowiedzi na pytania.
+
+%   Jestem tutaj by Państwu pomóc w~nauce programowania w~C, pytania
+%   z~Państwa strony bardzo mi to ułatwiają. Zadawania pytań nie traktuję
+%   jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się czegoś
+%   nauczyć.
+
+%   Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+%     Knight}?” musimy jednak zostawić na czas po zajęciach.
+
+%   % Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
+%   % pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+%   % programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+%   % iż~nie ma najmniejszych szans, że~uda nam~się to wszystko zrobić.
+
+%   % Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+%   % Mogą~się Państwo wręcz czuć przytłoczeni ile tego jest. Proszę mi jednak
+%   % uwierzyć, że~większość tego nie jest taka trudna, jak~się wydaje na
+%   % pierwszy rzut oka.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   % Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
+%   % \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+%   % niezadowalające odpowiedzi na pytania.
+
+%   % Jestem tutaj by Państwu pomóc w~nauce programowania w~C, pytania
+%   % z~Państwa strony bardzo mi to ułatwiają. Zadawania pytań nie traktuję
+%   % jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się czegoś
+%   % nauczyć.
+
+%   % Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+%   %   Knight}?” musimy jednak zostawić na czas po zajęciach.
+
+%   Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
+%   pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+%   programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+%   iż~nie ma najmniejszych szans, że~uda nam~się to wszystko zrobić.
+
+%   Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+%   Mogą~się Państwo wręcz czuć przytłoczeni ile tego jest. Proszę mi jednak
+%   uwierzyć, że~większość tego nie jest taka trudna, jak~się wydaje na
+%   pierwszy rzut oka.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uwagi odnośnie treści zajęć}
+
+
+%   Ponieważ tematyka którą poruszamy jest mimo wszystko niebanalna, więc
+%   mnóstwo rzeczy będę musiał bardzo \alert{upraszczać}. Proszę mieć to na
+%   uwadze w~trakcie zajęć i~studiując materiały dla Państwa przygotowane.
+
+%   Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
+%   czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
+%   semestralnego kursu. (Co gorsza, wiele z~nich \alert{jest} tematem
+%   semestralnych kursów.) Po drugie, to jest kurs \alert{podstaw}
+%   informatyki, który ma położyć fundamenty pod Państwa umiejętności
+%   i~wiedzę. To nie przedmiot na którym należy wnikać we wszystkie detale,
+%   szczegóły, drugie, trzecie i~czwarte dno problemu.
+
+%   Jeśli jednak ktoś chce~się bardziej zagłębić w~te temat, to służę po
+%   zajęciach całą swoją osobą.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Informacje wstępne}
+
+
+%   Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+%   że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
+%   nasza infrastruktura informatyczna wciąż stoi na napisanym w~właśnie
+%   w~nim. W~internecie mogą Państwo znaleźć wiele artykułów i~blogów takich
+%   jak
+%   \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
+%       world}} \parencite{Scott-C-programming-is-still-ETC-Ver-2024}
+%   z~czerwca 2024 roku. Jego tytuł mówi sam za siebie.
+
+%   Niektórzy mówią, że~C to król wszystkich języków programowania.
+%   Inni, bardzo szacowni programiści, twierdzą, że każdy szanujący
+%   programista musi znać~C (cf. str. ?? \parencite{Assembler}).
+
+%   A~jak to jest w~praktyce? Na tych zajęcia potrafią uczęszczać ludzie,
+%   którzy pracują zawodowo jako programiści i~nie mają pojęcia jak napisać
+%   program w~języku~C. Proszę samemu wyciągnąć z~tego wnioski.
+
+%   % Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
+%   % popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
+%   % lepsze warunki do pracy z~językiem~C.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego język~C?}
+
+
+%   % Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+%   % że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
+%   % nasza infrastruktura informatyczna wciąż stoi na języku~C. Niektórzy
+%   % mówią, że~C to król wszystkich języków programowania. Inni mówią, że~każdy
+
+%   % W~internecie mogą Państwo znaleźć wiele artykułów i~blogów takich jak
+%   % \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}{\textit{C~programming is still running the
+%   %     world}}
+%   % z~czerwca 2024 roku, których tytuł mówi sam za siebie
+%   % \parencite{Scott-C-programming-is-still-ETC-Ver-2024}.
+
+%   Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
+%   popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
+%   znacznie lepsze warunki pracy z~językiem~C.
+
+%   \alert{Ważne.} Jeśli mają Państwo jakiekolwiek problemy z~systemem
+%   GNU/Linux to proszę o~tym \alert{mówić}. Nie przyjmujemy założenia,
+%   że~Państw mają już teraz być ekspertami, w~kwestii używania tego, co by
+%   tu nie mówić, często bardzo topornego systemu operacyjnego.
+
+%   \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
+%   zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia
+%   tych zajęć, bo obecna jest daleka od naszych pragnień. Naprawdę
+%   praktyczne zajęcia z~podstaw informatyki w~języku~C są trudne do
+%   zorganizowania, z~powodów o~których będziemy mówili później.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{O~uzyskaniu zaliczenia}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zaliczenie zaoczne}
+
+
+%   Zaliczenie zaoczne można jak najbardziej uzyskać, np.~przedstawiając
+%   swój prywatny projekt jakiegoś programu czy aplikacji. Projekt ten
+%   \alert{nie musi} być napisany w~języku~C, może być w~Pythonie albo
+%   JavaScripcie. Z~powodów które powinny być dla wszystkich oczywiste,
+%   preferowane są jednak te stworzone w~języku C. (W~trochę mniejszym
+%   stopniu, w~C++).
+
+%   Każdy kto chce uzyskać zaliczenie zaoczne, niech zgłosi~się do mnie po
+%   zajęciach lub napisze na maila \email.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uwagi odnośnie treści zajęć}
+
+
+%   Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   Państwo odpowiednią ocenę.
+
+%   \begin{itemize}
+
+%   \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   \end{itemize}
+
+%   W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   wartość zależy od zdobytej oceny. Za projekt można zdobyć do 30 pkt.
+%   Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Punktacja testów}
+
+
+%   % Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   % Państwo odpowiednią ocenę.
+
+%   % \begin{itemize}
+
+%   % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   % \end{itemize}
+
+%   % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
+%   % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+%   W~tym semestrze każdy test będzie zawierał 10 pytań jednokrotnego wyboru.
+%   Progi ocen są jak dla całego przedmiotu i~regułą zaokrąglania (raczej nie
+%   będzie trzeba jej używać) działa jak poprzednio.
+
+%   \begin{itemize}
+
+%   \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   \end{itemize}
+
+%   Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
+%   (mniej niż $41\%$), lub $2 \cdot \text{ocena}$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Punktacja testów}
+
+
+%   % Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   % Państwo odpowiednią ocenę.
+
+%   % \begin{itemize}
+
+%   % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   % \end{itemize}
+
+%   % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
+%   % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+%   Ilość punktów do końcowej uzyskanych w~zależności od wyniku testu.
+
+%   \begin{itemize}
+
+%   \item $0\%\text{--}40\%$ -- $0$ pkt.
+
+%   \item $41\%\text{--}50\%$ -- $6$ pkt.
+
+%   \item $51\%\text{--}60\%$ -- $7$ pkt.
+
+%   \item $61\%\text{--}70\%$ -- $8$ pkt.
+
+%   \item $71\%\text{--}80\%$ -- $9$ pkt.
+
+%   \item $81\%\text{--}100\%$ -- $10$ pkt.
+
+%   \end{itemize}
+
+%   % Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
+%   % (mniej niż $40\%$), lub $2 \cdot \text{ocena}$ (czyli jeśli ma się $3.0$ lub
+%   % więcej, to dostaje się tyle punktów, ile poprawnych odpowiedzi
+%   % na~pytania~się udzieliło).
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Materiały do nauki}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Materiały do nauki}
+
+
+%   Prezentacje te są dostępne w~formie plików \LaTeX a (kodu źródłowego)
+%   na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
+%   do internetu może jest zdobyć wpisując \\
+%   \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+%   Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
+
+%   Będą też dostępne w~formie \textsc{pdfów} na~Sake, wraz z~innymi
+%   materiałami. Dostępna tam będzie również lista zagadnień do opanowania
+%   z~tego przedmiotu, która będzie główny punktem odniesieniem przy
+%   tworzeniu pytań testowych. Jak również dwa listy materiałów do nauki.
+%   Jedna lista normalna, druga dla osób ambitnych.
+
+%   Proszę zwrócić uwagę, że~ze względu na charakter tych zajęć, wystarczające
+%   jest, żeby o~pewnych rzeczach wymienionych na liście zagadnień mieli
+%   Państwo bardzo ogólne i~podstawowe pojęcie. Nawet w~sytuacji, gdy na
+%   kursie było o~danym zagadnieniu powiedziane znacznie więcej.
+%   % Dotyczy to nawet rzeczy, które,
+%   % w~zależności od tego jak pójdą nam zajęcia, będą omawiane bardziej
+%   % szczegółowo, ale nie należą do tematów, które są kluczowe dla tego kursu.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Punktacja testów}
+
+
+
+%   Przykładowo, jest wystarczające, żeby Państwo wiedzieli, że~kompilator
+%   języka~C jest to program, który przetwarza kod napisany w~języku~C
+%   w~program, który jest napisany w~języku zrozumiałym dla komputera.
+%   Nawet jeśli na zajęciach wspomnimy czym są takie części kompilatora
+%   jak lekser czy parser, nie jest wymagane by Państwo po tym kursie
+%   wiedzieli o~ich istnieniu, nie mówiąc już o~znajomości tego co robią.
+
+%   Na liście zagadnień postaramy~się wyróżnić tego typu pytania w~specjalny
+%   sposób. Dodać należy, że~gdy chodzi o~pozostałe pytania, wymagana jest
+%   dobra znajomość na \alert{poziomie tego co było prezentowane na kursie},
+%   nie zaś taka jaka jest zawarta w~standardzie??? języka~C. Bądźmy poważni,
+%   to jest tylko kurs podstaw informatyki.
+
+
+%   % Pod koniec semestru podliczane są wszystkie punkty jakie były do
+%   % zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+%   % Państwo odpowiednią ocenę.
+
+%   % \begin{itemize}
+
+%   % \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+%   % \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   % \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   % \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   % \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   % \end{itemize}
+
+%   % W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+%   % Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+%   % Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+%   % konkretnym zadaniu domowym. Za jeden test można zdobyć 10 pkt., konkretna
+%   % wartość zależy od zdobytej oceny. Za projekt można zdobyć 20 pkt.
+%   % Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+%   % satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+
+%   % Ilość punktów do końcowej uzyskanych w~zależności od wyniku testu.
+
+%   % \begin{itemize}
+
+%   % \item $0\%\text{--}40\%$ -- $0$ pkt.
+
+%   % \item $41\%\text{--}50\%$ -- $6$ pkt.
+
+%   % \item $51\%\text{--}60\%$ -- $7$ pkt.
+
+%   % \item $61\%\text{--}70\%$ -- $8$ pkt.
+
+%   % \item $71\%\text{--}80\%$ -- $9$ pkt.
+
+%   % \item $81\%\text{--}100\%$ -- $10$ pkt.
+
+%   % \end{itemize}
+
+%   % Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
+%   % (mniej niż $40\%$), lub $2 \cdot \text{ocena}$ (czyli jeśli ma się $3.0$ lub
+%   % więcej, to dostaje się tyle punktów, ile poprawnych odpowiedzi
+%   % na~pytania~się udzieliło).
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zgłaszanie błędu i~uwag}
+
+
+%   W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
+%   merytorycznych do zajęć lub dostępnych materiałów proszę zgłaszać to
+%   przed lub po zajęciach lub też pisać pod adres \email. Chcemy by te
+%   zajęcia i~towarzyszące im materiały były możliwie proste, łatwe
+%   w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć, że~osiągnięcie
+%   tego jest naprawdę trudne.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Czy informatyka jest trudna?}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czy informatyka jest trudna?}
+
+
+%   Ten przedmiot dotyczy podstaw informatyki w~języku~C, warto~się
+%   więc spytać, czy informatyka jest prosta czy trudna w~nauce?
+
+%   Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
+%   głęboko, to robi~się naprawdę złożona i~niebanalna. Jednak na stosunkowo
+%   płytkim poziomie to czy jest on trudna czy nie, to mocno zależy od~odczuć
+%   konkretnej osoby.
+
+%   Zadam takie pytanie: czy włączenie komputera jest skomplikowane?
+%   Odpowiemy na to pytanie na dwóch poziomach. Pierwszy to poziom normalnego
+%   użytkownika, drugi to opis pochodzący z~książki Andrewa S.~Tanenbauma
+%   \textit{Systemy operacyjne. Wydanie~III}
+%   \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, dotyczący
+%   komputera z~systemem Pentium.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+
+
+%   \begin{enumerate}
+
+%   \item Wciskamy przycisk \texttt{Power}.
+
+
+
+%   \item Czekamy minutę albo dłużej.
+
+
+
+%   \item Wybieramy użytkownika i~wchodzimy na swoje konto.
+
+%   \end{enumerate}
+
+%   Co w~tym trudnego?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
+%   skomplikowany, że~trzeba wprowadzić trochę pojęć wstępnych.
+
+%   \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
+%     wyłącznie do~odczytu}. Pamięć komputera której zawartość została
+%   zapisana przez firmę, która ten fragment pamięci wyprodukowała
+%   i~użytkownik nie może zmodyfikować jej teści. Przynajmniej nie w~żaden
+%   normalny sposób.
+
+%   \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
+%   pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
+%   własności, że~jeśli będę w~sposób losowy wybierał elementy tej pamięci,
+%   to czas odczytania informacje z~każdego jej elementu będzie taki sam.
+%   Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci zajmuje tyle samo
+%   czasu.
+
+%   Tak naprawdę czas odczytu zależy od tego, w~jakiś sposób pamięć
+%   \textsc{ram} jest odczytywana, ale jeszcze długo nie będziemy się musieli
+%   tym przejmować.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
+%   zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
+%   przykładem takiej pamięci jest \textsc{ram}.
+
+%   \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
+%   której treść jest zachowana, gdy przez układ przestaje płynąć prąd,
+%   typowym przykładem jest dysk \textsc{ssd}.
+
+%   Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
+%   które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
+%   we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
+%   komputera z~prądu. Bo~niby czemu życie ma być proste?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
+%   Skrót pochodzi od angielskiej nazwy technologi \textit{Complementary
+%     Metal-Oxide-Semiconductor} (pl.~\textit{komplementarny półprzewodnik
+%     metalowo-tlenkowy}), w~której ta pamięć jest wykonana. Musi być zasilana
+%   prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
+%   klasyfikowana jest jako nieulotna.
+
+%   \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
+%   \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
+%   na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
+%   klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[1)] Wciskamy przycisk \texttt{Power}.
+
+
+
+%   \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
+%     ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
+%     klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
+%     odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
+%     są magistrale \textsc{isa} (ang. \textit{Industry Standard
+%       Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
+%       Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
+
+
+
+%   \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
+%     były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
+%     konfigurowane.
+
+
+
+%   \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
+%     z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
+%     system operacyjny. W~przeszłości były nimi dyskietki, płyty
+%     \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
+%     i~dyski~\textsc{ssd}.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
+%     z~wspomnianej wcześniej listy, aż~znajdzie pierwsze, który zawiera
+%     działający system operacyjny.
+
+
+
+%   \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
+%     w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
+
+
+
+
+%   \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
+%     listę partycji, by~ustalić która z~nich jest partycją aktywną.
+%     Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
+
+
+
+%   \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
+%     z~aktywnej partycji i~go uruchamia.
+
+
+
+%   \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
+%     \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
+%     do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
+%     z~odpowiedniego źródła.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+%     to ładuje je do jądra systemu.
+
+
+
+%   \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+%     działające w~tle.
+
+
+
+%   \item[12)] Uruchamiane jest okno logowania.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bootowanie}
+
+
+%   W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
+%   \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
+%   całej procedury uruchamiania komputer opisanej powyżej, albo tylko
+%   stawiania systemu operacyjnego, czyli od kiedy \textsc{bios} wczytał
+%   pierwszy jego sektor do pamięci (punkt siedem i~dalej). Acz to pojęcie
+%   nie jest specjalnie ostro zdefiniowane.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+
+
+%   Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
+%   w~informatyce.
+
+% \end{frame}
+% % ##################
 
 
 
