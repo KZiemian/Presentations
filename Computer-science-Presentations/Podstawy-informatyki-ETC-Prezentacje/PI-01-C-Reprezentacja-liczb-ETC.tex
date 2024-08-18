@@ -73,11 +73,14 @@ eprint=true,
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
+% Package containing various command useful for working with a text
+\usepackage{./Local-packages/general-commands}
+
 % Styles for arrows
-\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+% \usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
 
 % Stylef for drawing diagrams
-\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+% \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
 
 
@@ -91,7 +94,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Podstawowe wiadomości o~języku~C i~system pozycyjny}
+\subtitle{Reprezentacja liczb w~komputerze}
 
 \author{Kamil Ziemian}
 
@@ -144,651 +147,6 @@ eprint=true,
 
 \end{frame}
 % ##################
-
-
-
-
-
-% ######################################
-\section{Reprezentacja liczb w~komputerze}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Reprezentacja liczb}
-
-
-  Zagadnienie reprezentacji liczb w~komputerze, które teraz krótko omówimy
-  nie dotyczy tylko języka~C. Jest to rzecz tak fundamentalna dla
-  informatyki, że~jest taka sama dla (prawie) wszystkich języków
-  programowania.
-
-  Ponieważ komputery są oparte na systemie dwójkowym, na początku
-  przyjrzyjmy~się tym potęgom dwójki, które odgrywają w~informatyce
-  dużą rolę.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Potęgi liczby~$2$}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Inny diagram}
-
-
-  Czy poniższy diagram jest lepszy czy gorszy od poprzedniego? Zależy
-  od~tego jakie informacje ma dany diagram przekazywać. Proszę~się więc nie
-  dziwić, jeśli na danym diagramie czegoś nie ma, a~nawet, że~nie ma czegoś
-  co było na poprzedniej wersji diagramu. Zawsze trzeba dokonać selekcji co
-  na diagramie zostanie umieszczone, a~co nie i~ten wybór często zależy
-  od kontekstu.
-
-  Jeśli uważają Państwo, że~na diagramie nie ma czegoś, co być powinno,
-  albo coś innego jest nie w~porządku, \alert{proszę} to mi powiedzieć.
-  Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
-
-
-
-
-
-
-  \begin{figure}
-
-    \label{fig:Also-creating-code-in-C}
-
-    \begin{tikzpicture}
-
-      \node[diagram block] (Man) at (0,0) {Człowiek};
-
-      \node[diagram rectangle block] (Source code) at (3.8,0)
-      {Kod źródłowy w~języku~C};
-
-      \draw[thick diagram arrow] (Man) -- (Source code);
-
-    \end{tikzpicture}
-
-    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
-
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% % ##################
-% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Podstawowe informacje o~języku~C}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Podstawowe informacje o~języku~C}
-
-
-  Język~C został stworzony przez Dennis Ritchie (1941--2011), by ułatwić
-  Kenowi Thompsonowi (ur. 1943), pracę nad systemem operacyjnym
-  \textsc{unix}. Pierwsza jego wersja ukazała~się w~1972 roku.
-
-  Język~C w 2022 roku obchodził 50 (!) lecie swojego istnienia. Jego wiek
-  niestety często czuć, bo wiele funkcjonalności które dziś uważamy
-  za~niezbędne w~pracy programisty albo są w~nim nieobecne, albo są,
-  ale w~dość koślawej wersji. Niektórych rzeczy nie da~się w~sposób
-  elegancki dodać do języka z~lat 70-tych XX wieku.
-
-  Do tego język~C został pomyślany jako mały język, więc on z~premedytacją
-  \alert{nie} wprowadził pewnych rzeczy znanych już koło 1970 roku. To
-  niestety też nie ułatwia nam życia. Co gorsza, dla początkujących~C i~tak
-  może sprawiać wrażenie ogromnego języka. On jest mały w~porównaniu
-  z~innymi językami, ale to niewiele zmienia, gdy~się dopiera zaczyna swoją
-  przygodę z~informatyką.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czy 1972 rok był bardzo dawno temu?}
-
-
-    \begin{figure}
-
-    \centering
-
-
-    \includegraphics[scale=0.3]
-    {./PresentationsPictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
-
-    \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
-      PDP-11 firmy Digital Equipment Corporation.}
-
-    \label{fig:Ritchie-Thompson-PDP-11}
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Przesadnie pedantyczna lista featurów języka~C}
-
-
-  \begin{itemize}
-
-  \item[1)] Zmienne.
-
-  \item[2)] Typy zmiennych: \texttt{char}, \texttt{short int}, \texttt{int},
-    \texttt{long int}, \texttt{float}, \ldots
-
-  \item[3)] Operator przypisania: \texttt{=}.
-
-  \item[4)] Operator arytmetyczne: \texttt{+}, \texttt{-}, \texttt{*},
-    \texttt{/}, \texttt{\%}.
-    (Jeśli Państwo myślą, że~to banalnie proste, to~się Państwo
-    nieprzyjemnie zdziwią.)
-
-  \item[5)] Operatory porównania: \texttt{==} (nie pomylić z~operatorem
-    przypisania~\texttt{=}),
-
-
-
-  \item[6)] Instrukcje warunkowe: \texttt{if \ldots{} else \ldots}, \texttt{switch}.
-
-
-
-  \item[7)] Pętle: \texttt{while}, \texttt{for}, \texttt{do \ldots{} while}.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{?????}
-
-
-  Nie potrafię teraz powiedzieć, czy zdążymy, choćby bardzo pobieżnie,
-  przerobić \alert{wszystkie} featury języka~C. Proszę pamiętać, że~to jest
-  kurs \alert{podstaw informatyki}, więc nie należy~się spodziewać,
-  że~nauczymy~się tu wszystkiego. Nawet o~podstawach informatyki.
-
-  Lubię myśleć o~języku programowania jako o~skrzynce z~narzędziami.
-  Im lepiej znasz swoją skrzynkę, tym prościej ci wykonać dane zadanie.
-  Przykładowo, można wyciągnąć śrubę ze~ściany obcęgami, ale lepiej
-  wiedzieć, że w~skrzynce jest śrubokręt.
-
-  Tak samo proszę myśleć o~naszej nauce języka~C. Na początku będziemy
-  poznawali pojedyncze „narzędzia” jakie są w~tej „skrzynce” są, co niestety
-  dla wielu osób jest nudne. Dopiero jednak jak będziemy znali ich
-  odpowiednią ilość ma sens zabieranie~się
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zalety języka~C}
-
-
-  \begin{itemize}
-
-  \item Pozwala tworzyć bardzo szybkie programy.
-
-  \item Jeśli poznamy~C, to nauka języka który na nim bazuje będzie
-    już prostsza. A~60\% najważniejszych języków jakie istnieją, w~jakimś
-    stopniu bazuje na~C.
-
-  \item Na świecie jest tyle kodu napisanego w~języku~C, że~jeśli umie~się
-    go dobrze, można znaleźć naprawdę dobrze płatną pracę.
-
-  \item Pozwala lepiej poznać jak komputer działa na niskim poziomie.
-    (Można dyskutować, czy to zaleta, czy wada.)
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Wady języka~C}
-
-
-  \begin{itemize}
-
-  \item Pisane w~C nie jest wcale proste.
-
-  \item C oferuje nam bardzo mało zabezpieczeń przed nami samymi, co
-    skutkuje tym, że~bardzo łatwo stworzyć kod w~którym kryją~się
-    koszmarnie niebezpieczne rzeczy. To jednak temat na inny przedmiot.
-
-  \item Trudne do zapamiętania nazewnictwo. Czasem jest zwyczajnie głupie.
-
-  \item Metody operowania na stringach (a~raczej brak takich metod).
-
-  \item Brak normalnego typu boolowskiego.
-
-  \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
-    programowania (1972 rok był dawno temu).
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Jaki jest związek między C a~C++?}
-
-
-  Taki jak między krzesłem, a~krzesłem elektrycznym. To są jednak dwa
-  bardzo różne języki programowania, które ze~względów historycznych mają
-  pewne wspólne cechy.
-
-  Mówiłem Państwu, że~C to taka skrzynka z~narzędziami. C++ to cały Leroy
-  Merlin. Naprawdę, ogarnięcie wszystkich featurów jest zupełnie nie do
-  ogarnięcia.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Dlaczego istnieją języki takie jak~C?}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Dlaczego w~ogóle istnieją takie języki jak~C?}
-
-  \pause
-
-
-  Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
-  który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
-  jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-  że~pierwotnym językiem komputera jest \textbf{język asembler}
-  (ang. \textit{assembly language}).
-
-  Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
-  hiszpański, japoński, niemiecki, polski, etc., tak komputer również
-  posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
-  czy x86/Intel. Typ asemblera jest ustalony przez firmę, która
-  wyprodukowała procesor, bowiem asembler jest zdefiniowany przez to jak są
-  „podpięte kable” w~rzeczonym procesorze.
-
-  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-  napisanemu w~dwóch??? rodzajach asemblera, językach C i~Python.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze ARM 32,
-    \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
-
-
-  \texttt{.global \_start} \\
-  \texttt{.section .text} \\
-
-
-
-  \texttt{\_start:} \\[-0.2em]
-  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x4} \\
-  \hphantom{aaaaaaaa} \texttt{mov r0, \#1} \\
-  \hphantom{aaaaaaaa} \texttt{ldr r1, =message} \\
-  \hphantom{aaaaaaaa} \texttt{mov r2, \#13} \\
-
-  \hphantom{aaaaaaaa} \texttt{swi 0} \\
-
-  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x1} \\
-  \hphantom{aaaaaaaa} \texttt{mov r0, \#65} \\
-
-  \hphantom{aaaaaaaa} \texttt{swi 0} \\
-
-
-
-  \texttt{.section .data} \\
-  \texttt{message:} \\
-  \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World\textbackslash n"}
-
-\end{frame}
-% ##################
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze x86
-    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
-
-
-  \texttt{org 0x100} \\
-  \vspace{0.8em}
-
-  \texttt{mov dx, msg} \\
-  \texttt{mov ah, 9} \\
-  \texttt{int 0x21} \\
-  \vspace{0.8em}
-
-  \texttt{mov ah, 0x4c} \\
-  \texttt{int 0x21} \\
-  \vspace{0.8em}
-
-  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{„Hello, World!” w~języku~C}
-
-
-  \texttt{\#include <stdio.h>} \\
-  \vspace{0.8em}
-  \texttt{int main() \{ } \\
-  \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
-  \vspace{0.8em}
-  \vspace{0.8em}
-  \vspace{0.8em}
-  \vspace{0.8em}
-  \hphantom{aaaa} \texttt{return 0;} \\
-  \texttt{ \} }
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{„Hello, World!” w~języku~Python}
-
-
-  \texttt{print("Hello, World!")}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Co z~tego wynika?}
-
-
-  Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
-  a~Python prostszy od~C.
-
-  \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
-  asemblera sam w~sobie nas zupełnie nie interesuje?
-
-  Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~asemblerze,
-  to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
-
-  Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
-  w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
-  w~Pythonie, ale ja o~tym nie decyduje.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Problemy z~asemblerem}
-
-
-  Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
-  Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
-  znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
-  można tego, by kod napisany przez niego w~asemblerze wszedł w~skład
-  danego programu.
-
-  Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
-  pisząc w~asemblerze, a~pomyłki na jego poziomie są szczególnie
-  niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
-  wykład. W~skrócie, błędy w~asemblerze to raj dla hakerów.
-
-  Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, piszemy
-  w~nich programy, a~następnie odpowiedni program zwany
-  \textbf{kompilatorem} tłumaczy ten program na język asembler.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Prosty schemat działania kompilatora}
-
-
-  \begin{figure}
-
-    \begin{tikzpicture}
-
-      \path (0,0) -- (-3.5,0);
-
-
-
-      \node[diagram rectangle block] (C source code) at (0,0)
-      {Kod programu w~języku C};
-
-      \node[diagram block] (Compiler) at (0,-2.3) {Kompilator};
-
-      \node[color=jNormalTextFGColor] (Magic) at (3,-2.3) {Magia};
-
-
-      \draw[pointing arrow orange] (Magic) -- (Compiler);
-
-
-      \draw[thick diagram arrow] (C source code) -- (Compiler);
-
-
-      \node[diagram rectangle block] (Assembly code) at (0,-4.6)
-      {Kod programu w~asemblerze};
-
-
-      \draw[thick diagram arrow] (Compiler) -- (Assembly code);
-
-    \end{tikzpicture}
-
-    \caption{Typowy sposób tworzenia programu w~oparciu o~kod źródłowy
-      napisany w~języku~C.}
-
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Jakie są inne języki programowania?}
-
-
-  Wymień 20 najpopularniejszych języków programowania według indeksu
-  \textsc{tiobe} (\colorhref{https://www.tiobe.com/tiobe-index/}
-  {https://www.tiobe.com/tiobe-index/}). Poniżej prezentowany jest stan
-  tego indeksu na lipiec 2024. Podane wielkości procentowe przedstawiają
-  wyliczoną przez twórców indeksu część programistów używających danego
-  języka.
-
-  \begin{itemize}
-
-  \item[1)] Python, 16.12\%.
-
-  \item[2)] C++, 10.34\%.
-
-  \item[3)] C, 9.48\%.
-
-  \item[4)] Java, 8.59\%.
-
-  \item[5)] C\#, 6.72\%.
-
-  \item[6)] JavaScript, 3.79\%.
-
-  \item[7)] Go, 2.19\%.
-
-  \item[8)] Visual Basic, 2.08\%.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Jakie są inne języki programowania?}
-
-
-  \begin{itemize}
-
-  \item[9)] Fortran, 2.05\%.
-
-  \item[10)] SQL, 2.04\%.
-
-  \item[11)] Delphi/Object Pascal, 1.89\%.
-
-  \item[12)] MATLAB, 1.34\%.
-
-  \item[13)] Rust, 1.18\%.
-
-  \item[14)] Ruby, 1.16\%.
-
-  \item[15)] Scratch, 1.15\%.
-
-  \item[16)] PHP, 1.15\%.
-
-  \item[17)] Swift, 1.13\%.
-
-  \item[18)] Assembly language, 1.11\%.
-
-  \item[19)] COBOL, 1.08\%.
-
-  \item[20)] Kotlin, 1.05\%.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% % ##################
-% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
-% % ##################
-
-
-
-
-
-
-
-
 
 
 % ######################################
@@ -1058,6 +416,561 @@ eprint=true,
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Największa liczba do zapisania\ldots}
+
+
+  Korzystając z~wzoru na sumę szeregu geometrycznego, łatwo pokazać,
+  że~największa liczba naturalna jaką możemy zapisać w~systemie o~podstawie
+  $n$ na za~pomocą $N$ cyfr wynosi: \\
+  $\text{max\_number}_{ \HorSpaceOne n, \, N } = n^{ N } - 1.$
+
+  Mają dwie cyfry w~systemie dziesiętnym największą liczbą jaką możemy
+  zapisać jest $10^{ 2 } - 1 = 99$. W~systemie binarnym
+  $2^{ 2 } - 1 = 3 = 0\text{b}11$, w~systemie ósemkowym $8^{ 2 } - 1 =
+  63 = 0\text{o}77$, a~w~szesnastkowym $16^{ 2 } - 1 = 255 = 0\text{xFF}$.
+
+  \alert{Pytanie.} Czy mamy to przeliczyć jawnie?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Reprezentacja liczb w~komputerze}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reprezentacja liczb}
+
+
+  Zagadnienie reprezentacji liczb w~komputerze, które teraz krótko omówimy
+  nie dotyczy tylko języka~C. Jest to rzecz tak fundamentalna dla
+  informatyki, że~jest taka sama dla (prawie) wszystkich języków
+  programowania.
+
+  Ponieważ komputery są oparte na systemie dwójkowym, na początku
+  przyjrzyjmy~się tym potęgom dwójki, które odgrywają w~informatyce
+  dużą rolę.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ 0 } = 1$     \\[0.1em]
+  $2^{ 1 } = 2$     \\[0.1em]
+  $2^{ 2 } = 4$     \\[0.1em]
+  $2^{ 3 } = 8$     \\[0.1em]
+  $2^{ 4 } = 16$    \\[0.1em]
+  $2^{ 5 } = 32$    \\[0.1em]
+  $2^{ 6 } = 64$    \\[0.1em]
+  $2^{ 7 } = 128$   \\[0.1em]
+  $2^{ 8 } = 256$   \\[0.1em]
+  $2^{ 9 } = 512$   \\[0.1em]
+  $2^{ 10 } = 1024$ \\[0.1em]
+  $2^{ 11 } = 2048$ \\[0.1em]
+  $2^{ 12 } = 4096$ \\[0.1em]
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ 15 } = 32 \, 768$ \\[0.1em]
+  $2^{ 16 } = 65 \, 536$ \\[0.1em]
+  $2^{ 31 } = 2 \, 147 \, 483 \, 648$ \\[0.1em]
+  $2^{ 32 } = 4 \, 294 \, 967 \, 296$
+
+  \VerSpaceThree
+
+
+
+
+
+  $2^{ 63 } = 9 \, 223 \, 372 \, 036 \, 854 \, 775 \, 808 \approx
+  9 \cdot 10^{ 18 }$ \\
+  Słownie: dziewięć trylionów, dwieście dwadzieścia trzy biliardy, trzysta
+  siedemdziesiąt dwa biliony, trzydzieści sześć miliardów, osiemset
+  pięćdziesiąt cztery miliony, siedemset siedemdziesiąt pięć tysięcy,
+  osiemset osiem. \\
+  Prościej: $9$~trylionów, $223$~biliardy, $372$~biliony,
+  $36$~miliardy, $854$~miliony, $775$~tysięcy, $808$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ 63 } = 9 \, 223 \, 372 \, 036 \, 854 \, 775 \, 808 \approx
+  9 \cdot 10^{ 18 }$
+
+  $2^{ 64 } = 18 \, 446 \, 744 \, 073 \, 709 \, 551 \, 616 \approx
+  18 \cdot 10^{ 18 }$ \\
+  Słownie: osiemnaście trylionów, czterysta czterdzieści sześć biliardów,
+  siedemset czterdzieści cztery biliony, siedemdziesiąt trzy miliardy,
+  siedemset dziewięć milionów, pięćset pięćdziesiąt jeden milionów,
+  sześćset szesnaście. \\
+  Prościej: 18 trylionów, 446 biliardów, 744 biliony, 73 miliardy,
+  709 milionów, 551 tysięcy, 616.
+
+  Jak ktoś~się tej liczby nauczy na pamięć, to zasługuje na $5$~dodatkowych
+  punktów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reprezentacja liczb naturalnych}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czy 1972 rok był bardzo dawno temu?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Przesadnie pedantyczna lista featurów języka~C}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zalety języka~C}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Wady języka~C}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jaki jest związek między C a~C++?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Podstawowe informacje o~języku~C}
+% % ######################################
+
+
+
+% % ######################################
+% \section{Dlaczego istnieją języki takie jak~C?}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego w~ogóle istnieją takie języki jak~C?}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{„Hello, World!” w~asemblerze ARM 32,
+%     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{„Hello, World!” w~assemblerze x86
+%     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{„Hello, World!” w~języku~C}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{„Hello, World!” w~języku~Python}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Co z~tego wynika?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Problemy z~asemblerem}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Prosty schemat działania kompilatora}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jakie są inne języki programowania?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jakie są inne języki programowania?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Systemy pozycyjny do zapisu liczb}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System pozycyjny}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System pozycyjny}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Istota systemu pozycyjnego}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Istota systemu pozycyjnego}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Różne systemy pozycyjne}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Różne systemy pozycyjne}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Terminologia}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Terminologia}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
 
 
 

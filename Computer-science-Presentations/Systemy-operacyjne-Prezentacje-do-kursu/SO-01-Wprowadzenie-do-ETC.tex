@@ -11,6 +11,7 @@
 
 
 
+% Options: t - align frame text to the top.
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
 \usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
@@ -19,8 +20,8 @@
 
 
 % ------------------------------------------------------------------------------------
-% Procesing configuration files of Jagiellonian theme loceted in
-% the directory "preambule"
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
 % ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
@@ -52,7 +53,7 @@ url=false,
 eprint=true,
 ]{biblatex}
 
-\addbibresource{SystemyOperacyjneBibliography.bib}
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
 
 
 
@@ -67,7 +68,7 @@ eprint=true,
 
 
 % ------------------------------------------------------
-% Special configuration for this particular presentation
+% Local packages
 % ------------------------------------------------------
 
 
@@ -109,8 +110,8 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 12k+, 20k+, 27k+, 24k+,
 \RaggedRight
+% Number of chars: 62k+, 12k+, 20k+, 27k+, 24k+,
 % ######################################
 
 
@@ -151,15 +152,18 @@ eprint=true,
 
 
   Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
-  ale nie widzę sposobu, jak tego uniknąć.
+  ale nie widzę sposobu, by~tego uniknąć.
 
   Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
-  ja tu jestem dla Państwa, a~nie Państwo dla mnie. W~związku z~tym, ja nie
-  będę Państwa rozliczał z~obecności na zajęciach, tylko z~wiedzy
-  i~umiejętności. Jeśli uważają Państwo, że~są lepsze rzeczy do robienia,
-  niż bycie na tych zajęciach, w~to mi graj.
+  ja jestem tu dla Państwa, a~nie Państwo dla mnie. Jestem tu po to, by
+  pomóc Państwu pomóc zaznajomić~się z~pracą z~bardzo potężny, ale też
+  nie raz bardzo topornym, systemem operacyjnym GNU/Linux. W~związku z~tym,
+  ja będę Państwa rozliczał tylko i~wyłącznie z~umiejętności i~wiedzy,
+  z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
+  wiedzą, czemu warto poświęcić swój czas. (Choć jak wiadomo, nie jeden raz
+  potem stwierdzamy, że~nasz wybór mógł być jednak lepszy.)
 
-  \textbf{Pytanie.} Kto z~Państwa \textit{nie} używa na codzień systemu
+  \textbf{Pytanie.} Kto z~Państwa \alert{nie} używa na codzień systemu
   operacyjnego GNU/Linux?
 
 \end{frame}
@@ -174,8 +178,28 @@ eprint=true,
   \frametitle{Bardzo ważne}
 
 
+  Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+  na dowolne związane z~zajęciami zagadnienia. W~szczególności
+  \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
+  jest niejasne. Ten kurs ma być wstępem do systemu operacyjnego GNU/Linux,
+  \alert{nie} zakładamy, że~są Państwo doświadczonymi administratorami tego
+  systemu. Byłoby to bardzo niewłaściwe założenie.
+
+  Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
+  \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+  niezadowalające odpowiedzi na~Państwa pytania.
+
+  Jestem tutaj by Państwu pomóc w~zaznajomieni~się z~pracą z~systemem
+  operacyjnym na poziomie głębszym, niż ma normalny użytkownik.
+  Pytania z~Państwa strony bardzo mi ułatwiają to zadanie. Zadawania pytań
+  nie traktuję jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się
+  czegoś nauczyć.
+
+  Pytania typu „Czy \textit{Max Payne 3} to dobra gra?” musimy jednak
+  zostawić na~czas po zajęciach.
+
   Ten kurs jest tylko \textit{wstępem} do~systemów operacyjnych. Ze~względu
-  na rozmiar i~poziom skomplikowania tej dziedziny, wielką ilość rzeczy
+  na rozmiar i~poziom skomplikowania tej dziedziny, dużą liczbę rzeczy
   będę musiał \textit{upraszczać}. Proszę więc pamiętać, że~choć staram~się
   przekazywać rzetelną wiedzę, to to co mówię będzie w~wielu wypadkach
   bardzo mocny uproszczeniem rzeczywistości.

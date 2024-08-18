@@ -21,8 +21,8 @@
 
 
 % ------------------------------------------------------------------------------------
-% Procesing configuration files of Jagiellonian theme located in
-% the directory "preambule"
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
 % ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
@@ -112,8 +112,8 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 73k+, 43k+, 52k+,
 \RaggedRight
+% Number of chars: 62k+, 73k+, 43k+, 52k+, 47k+,
 % ######################################
 
 
@@ -849,511 +849,43 @@ eprint=true,
 
 
 
-% % ######################################
-% \section{Podstawowe informacje o~języku~C}
-% % ######################################
+% ######################################
+\section{Uwagi dla początkujących}
+% ######################################
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Podstawowe informacje o~języku~C}
+% ##################
+\begin{frame}
+  \frametitle{Uwagi dla początkujący}
 
 
-%   Język~C został stworzony przez Dennis Ritchie (1941--2011), by ułatwić
-%   Kenowi Thompsonowi (ur. 1943), pracę nad systemem operacyjnym
-%   \textsc{unix}. Pierwsza jego wersja ukazała~się w~1972 roku.
+  Rozszerzenie pliku (kropka i~to co po niej w~jego nazwie) informuje
+  programy z~jakim typem pliku mają do czynienia, dlatego każdy język
+  programowania w~jakim języku mają do czynienia. Z~tego powodu każdy
+  język programowania ma \alert{własne} rozszerzenie. Pliki napisane
+  w~języku~C mają mieć rozszerzenie \texttt{.c}.
 
-%   Język~C w 2022 roku obchodził 50 (!) lecie swojego istnienia. Jego wiek
-%   niestety często czuć, bo wiele funkcjonalności które dziś uważamy
-%   za~niezbędne w~pracy programisty albo są w~nim nieobecne, albo są,
-%   ale w~dość koślawej wersji. Niektórych rzeczy nie da~się w~sposób
-%   elegancki dodać do języka z~lat 70-tych XX wieku.
+  Jak ktoś mi napisze program w~języku~C, który \alert{nie} ma
+  rozszerzenia~\texttt{.c}, będzie to musiał przy mnie poprawić.
+  (Chyba, że~będę musiał od razu biec do kogoś innego. Ale proszę nie
+  liczyć, że~zapomnę o~tej zniewadze. ;))
 
-%   Do tego język~C został pomyślany jako mały język, więc on z~premedytacją
-%   \alert{nie} wprowadził pewnych rzeczy znanych już koło 1970 roku. To
-%   niestety też nie ułatwia nam życia. Co gorsza, dla początkujących~C i~tak
-%   może sprawiać wrażenie ogromnego języka. On jest mały w~porównaniu
-%   z~innymi językami, ale to niewiele zmienia, gdy~się dopiera zaczyna swoją
-%   przygodę z~informatyką.
+  Brak tego rozszerzenia sprawia, że~możemy zostać pozbawienie części
+  wsparcia w~pracy z~C, jakie dają nam przeróżne programy. A~do tego
+  \alert{nie} możemy dopuścić.
 
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Czy 1972 rok był bardzo dawno temu?}
 
 
-%     \begin{figure}
 
-%     \centering
 
-
-%     \includegraphics[scale=0.3]
-%     {./PresentationsPictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
-
-%     \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
-%       PDP-11.}
-
-%     \label{fig:Ritchie-Thompson-PDP-11}
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Przesadnie szczegółowa lista featurów języka~C}
-
-
-%   \begin{itemize}
-
-%   \item[1)] Zmienne.
-
-
-
-%   \item[2)] Typy zmiennych: \texttt{char}, \texttt{short int}, \texttt{int},
-%     \texttt{long int}, \texttt{float}, \ldots
-
-
-
-%   \item[3)] Operator przypisania: \texttt{=}.
-
-
-
-%   \item[3)] Operator arytmetyczne: \texttt{+}, \texttt{-}, \texttt{*},
-%     \texttt{/}, \texttt{\%}.
-%     (Jeśli Państwo myślą, że~to banalnie proste, to~się Państwo
-%     nieprzyjemnie zdziwią.)
-
-
-
-%   \item[4)] Operatory porównania: \texttt{==} (nie pomylić z~operatorem
-%     przypisania~\texttt{=}),
-
-
-
-%   \item[3)] Instrukcje warunkowe: \texttt{if \ldots{} else \ldots}, \texttt{switch}.
-
-
-
-%   \item[4)] Pętle: \texttt{while}, \texttt{for}, \texttt{do \ldots{} while}.
-
-%   \end{itemize}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-%   Nie potrafię teraz powiedzieć, czy zdążymy, choćby bardzo pobieżnie,
-%   przerobić \alert{wszystkie} featury języka~C. Proszę pamiętać, że~to jest
-%   kurs \alert{podstaw informatyki}, więc nie należy~się spodziewać,
-%   że~nauczymy~się tu wszystkiego. Nawet o~podstawach informatyki.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Dlaczego w~ogóle istnieją takie języki jak~C?}
-
-%   \pause
-
-
-%   Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
-%   który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
-%   jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-%   że~pierwotnym językiem komputera jest \textbf{język assembler}
-%   (ang. \textit{assembly language}).
-
-%   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
-%   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
-%   posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
-%   czy x86/Intel. Typ assemblera jest ustalony przez firmę, która
-%   wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
-%   „podpięte kable” w~rzeczonym procesorze.
-
-%   Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-%   napisanemu w~dwóch??? rodzajach assemblera, językach C i~Python.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~assemblerze ARM 32,
-%     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
-
-
-%   \texttt{.global \_start} \\
-%   \texttt{.section .text} \\
-
-
-
-%   \texttt{\_start:} \\[-0.2em]
-%   \hphantom{aaaaaaaa} \texttt{mov r7, \#0x4} \\
-%   \hphantom{aaaaaaaa} \texttt{mov r0, \#1} \\
-%   \hphantom{aaaaaaaa} \texttt{ldr r1, =message} \\
-%   \hphantom{aaaaaaaa} \texttt{mov r2, \#13} \\
-
-%   \hphantom{aaaaaaaa} \texttt{swi 0} \\
-
-%   \hphantom{aaaaaaaa} \texttt{mov r7, \#0x1} \\
-%   \hphantom{aaaaaaaa} \texttt{mov r0, \#65} \\
-
-%   \hphantom{aaaaaaaa} \texttt{swi 0} \\
-
-
-
-%   \texttt{.section .data} \\
-%   \texttt{message:} \\
-%   \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World\textbackslash n"}
-
-% \end{frame}
-% % ##################
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~assemblerze x86
-%     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
-
-
-%   \texttt{org 0x100} \\
-%   \vspace{0.8em}
-
-%   \texttt{mov dx, msg} \\
-%   \texttt{mov ah, 9} \\
-%   \texttt{int 0x21} \\
-%   \vspace{0.8em}
-
-%   \texttt{mov ah, 0x4c} \\
-%   \texttt{int 0x21} \\
-%   \vspace{0.8em}
-
-%   \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
-
-% \end{frame}
-% % ##################
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~języku~C}
-
-
-%   \texttt{\#include <stdio.h>} \\
-%   \vspace{0.8em}
-%   \texttt{int main() \{ } \\
-%   \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \hphantom{aaaa} \texttt{return 0;} \\
-%   \texttt{ \} }
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~języku~Python}
-
-
-%   \texttt{print("Hello, World!")}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Co z~tego wynika?}
-
-
-%   Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~assemblera,
-%   a~Python prostszy od~C.
-
-%   \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
-%   assemblera sam w~sobie nas zupełnie nie interesuje?
-
-%   Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
-%   to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
-
-%   Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
-%   w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
-%   w~Pythonie, ale ja o~tym nie decyduje.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Problemy z~assemblerem}
-
-
-%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
-%   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
-%   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
-%   można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
-%   danego programu.
-
-%   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
-%   pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
-%   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
-%   wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
-
-%   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, piszemy
-%   w~nich programy, a~następnie odpowiedni program zwany
-%   \textbf{kompilatorem} tłumaczy na język assembler.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Komentarz odnośnie diagramów}
-
-
-%   \begin{textblock}{2.8}(2,1.5)
-
-%     \begin{tikzpicture}
-
-%       \node[diagram block] at (0,0) {Coś robi};
-
-%     \end{tikzpicture}
-
-%   \end{textblock}
-
-
-
-%   \begin{textblock}{2.8}(8,1.5)
-
-%     \begin{tikzpicture}
-
-%       \node[diagram rectangle block] at (0,0) {Czymś jest};
-
-%     \end{tikzpicture}
-
-%   \end{textblock}
-
-
-%   \vspace{6em}
-
-
-
-
-
-%   Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
-%   (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
-%   taki obiekt który wykonuje jakąś czynność na zadanych obiektach
-%   wejściowych. Takim obiektem może być człowiek, komputer, program
-%   komputerowy, fragment programu komputerowego, etc.
-
-%   Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
-%   koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
-%   przez aktorów lub przez nich wytwarzane.
-
-% \end{frame}
-% % ##################
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Komentarz odnośnie diagramów}
-
-
-%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
-%   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
-%   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
-%   można tego, by kod napisany przez niego w~assemblerze wszedł w~skład
-%   danego programu.
-
-%   Jest tak dlatego, że~nawet najlepsi programiści zbyt łatwo mylą~się
-%   pisząc w~assemblerze, a~pomyłki na jego poziomie są szczególnie
-%   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
-%   wykład. W~skrócie, błędy w~assemblerze to raj dla hakerów.
-
-%   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, który
-%   następnie odpowiedni program zwany \textbf{kompilatorem} tłumaczy na
-%   assembler.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Prosty schemat działania kompilatora}
-
-
-%   \begin{figure}
-
-%     \begin{tikzpicture}
-
-%       \path (0,0) -- (-3.5,0);
-
-
-
-%       \node[diagram rectangle block] (C source code) at (0,0)
-%       {Kod programu w~języku C};
-
-%       \node[diagram block] (Compiler) at (0,-2.3) {Kompilator};
-
-%       \node[color=jNormalTextFGColor] (Magic) at (3,-2.3) {Magia};
-
-
-%       \draw[pointing arrow] (Magic) -- (Compiler);
-
-
-%       \draw[thick diagram arrow] (C source code) -- (Compiler);
-
-
-%       \node[diagram rectangle block] (Assembly code) at (0,-4.6)
-%       {Kod programu w~assemblerze};
-
-
-%       \draw[thick diagram arrow] (Compiler) -- (Assembly code);
-
-%     \end{tikzpicture}
-
-%     \caption{Typowy sposób tworzenia programu w~oparciu o~kod źródłowy
-%       napisany w~języku~C.}
-
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Jakie są inne języki programowania?}
-
-
-%   Wymień 20 najpopularniejszych języków programowania według indeksu
-%   \textsc{tiobe} (\colorhref{https://www.tiobe.com/tiobe-index/}
-%   {https://www.tiobe.com/tiobe-index/}). Poniżej prezentowany jest stan
-%   tego indeksu na lipiec 2024. Podane wielkości procentowe przedstawiają
-%   wyliczoną przez twórców indeksu część programistów używających danego
-%   języka.
-
-%   \begin{itemize}
-
-%   \item[1)] Python, 16.12\%.
-
-%   \item[2)] C++, 10.34\%.
-
-%   \item[3)] C, 9.48\%.
-
-%   \item[4)] Java, 8.59\%.
-
-%   \item[5)] C\#, 6.72\%.
-
-%   \item[6)] JavaScript, 3.79\%.
-
-%   \item[7)] Go, 2.19\%.
-
-%   \item[8)] Visual Basic, 2.08\%.
-
-%   \end{itemize}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Jakie są inne języki programowania?}
-
-
-%   \begin{itemize}
-
-%   \item[9)] Fortran, 2.05\%.
-
-%   \item[10)] SQL, 2.04\%.
-
-%   \item[11)] Delphi/Object Pascal, 1.89\%.
-
-%   \item[12)] MATLAB, 1.34\%.
-
-%   \item[13)] Rust, 1.18\%.
-
-%   \item[14)] Ruby, 1.16\%.
-
-%   \item[15)] Scratch, 1.15\%.
-
-%   \item[16)] PHP, 1.15\%.
-
-%   \item[17)] Swift, 1.13\%.
-
-%   \item[18)] Assembly language, 1.11\%.
-
-%   \item[19)] COBOL, 1.08\%.
-
-%   \item[20)] Kotlin, 1.05\%.
-
-%   \end{itemize}
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1536,62 +1068,7 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~assemblerze x86, Nasm
-%     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
-
-%   \texttt{org 0x100} \\
-%   \vspace{0.8em}
-%   \texttt{mov dx, msg} \\
-%   \texttt{mov ah, 9} \\
-%   \texttt{int 0x21} \\
-%   \vspace{0.8em}
-%   \texttt{mov ah, 0x4c} \\
-%   \texttt{int 0x21} \\
-%   \vspace{0.8em}
-%   \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~języku~C}
-
-
-%   \texttt{\#include <stdio.h>} \\
-%   \vspace{0.8em}
-%   \texttt{int main() \{ } \\
-%   \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \vspace{0.8em}
-%   \hphantom{aaaa} \texttt{return 0;} \\
-%   \texttt{ \} }
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~języku~Python}
-
-
-%   \texttt{print("Hello, World!")}
-
-% \end{frame}
-% % ##################
 
 
 
