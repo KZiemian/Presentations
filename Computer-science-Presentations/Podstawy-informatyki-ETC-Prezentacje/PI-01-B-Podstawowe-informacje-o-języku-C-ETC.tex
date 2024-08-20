@@ -441,7 +441,7 @@ eprint=true,
   Tak samo proszę myśleć o~naszej nauce języka~C. Na początku będziemy
   poznawali pojedyncze „narzędzia” jakie są w~tej „skrzynce” są, co niestety
   dla wielu osób jest nudne. Dopiero jednak jak będziemy znali ich
-  odpowiednią ilość ma sens zabieranie~się
+  odpowiednią liczbę ma sens zabieranie~się
 
 \end{frame}
 % ##################
@@ -467,7 +467,7 @@ eprint=true,
     go dobrze, można znaleźć naprawdę dobrze płatną pracę.
 
   \item Pozwala lepiej poznać jak komputer działa na niskim poziomie.
-    (Można dyskutować, czy to zaleta, czy wada.)
+    (Kwestią dyskusyjną jest to, czy to zaleta, czy raczej wada?)
 
   \end{itemize}
 
@@ -491,15 +491,45 @@ eprint=true,
     skutkuje tym, że~bardzo łatwo stworzyć kod w~którym kryją~się
     koszmarnie niebezpieczne rzeczy. To jednak temat na inny przedmiot.
 
-  \item Metody operowania na stringach (a~raczej brak takich metod).
+  \item Metody operowania na stringach. A~raczej brak takich metod.
 
   \item Wiele standardowych funkcji języka~C \alert{nie} powinno być
     używane. Powtarzam, wielu standardowych funkcji dostępnych w~języku~C
     \alert{nie należy} używać pod żadnym pozorem.
 
-  \item Trudne do zapamiętania nazewnictwo. Czasem jest zwyczajnie głupie.
+  \item Trudne do zapamiętania nazewnictwo. Czasem nazwy w~C są zwyczajnie
+    głupie, jak \texttt{unsigned char} (pl.~\textit{znak bez znaku}) na
+    oznaczenie pojedynczego bajtu.
 
-  \item Brak normalnego typu boolowskiego.
+  \item Brak normalnego typu boolowskiego. Nawet \texttt{stdbool.h} nie
+    rozwiązuje tej sprawy.
+
+  % \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
+  %   programowania (1972 rok był dawno temu).
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wady języka~C}
+
+
+  \begin{itemize}
+
+  \item Domyślna konwersja typów. To naprawdę nie pasuje do takiego
+    języka jak~C.
+
+  \item Toporny i~niewygodny model kompilacji: pliki nagłówkowe,
+    preprocesor, etc.
+
+  \item Brak modułowości.
 
   \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
     programowania (1972 rok był dawno temu).
@@ -556,7 +586,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{C ma ponad 50~lat, co dalej?}
 
 
   Jak powiedział amerykański filozof i~bejsbolista Yogi Berra
@@ -583,7 +613,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+  \frametitle{Nie należy liczyć, że}
 
 
   Przez ponad pół wieku~(!) w~C napisano niewiarygodne ilość rewelacyjnie
@@ -619,7 +649,8 @@ eprint=true,
   Dobrze, ale co z~kodem napisanym w~C, który chcemy zastąpić nowym oraz
   nowo tworzonym kodem? Czy tutaj język~C jest dalej niezastąpiony? Krótka
   i~bardzo uproszczona odpowiedź jest taka: C~jest tam już zastępowany
-  nowymi językami, acz sprawa toczy~się stosunkowo wolno.
+  nowymi językami, acz sprawa toczy~się stosunkowo wolno. W~tym momencie
+  powiedziałbym, że~C wciąż ma przyszłość.
 
   Patrząc trochę w~przyszłość, moja opinia na dzień dzisiejszy jest taka,
   że~języka~C \alert{nie} zastąpi jeden język, tylko kilka. Każdy z~nich
@@ -730,7 +761,7 @@ eprint=true,
   „podpięte kable” w~rzeczonym procesorze.
 
   Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-  napisanemu w~typach języka asembler \textsc{arm}, AArch64, ????
+  napisanemu w~typach języka asembler \textsc{arm}, AArch64,
   i~\textsc{nasm} oraz językach C i~Python.
 
 \end{frame}
@@ -932,9 +963,9 @@ eprint=true,
   Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~asemblerze,
   to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
 
-  Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
-  w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
-  w~Pythonie, ale ja o~tym nie decyduje.
+  Może zadają sobie Państwo pytanie. Czemu w~takim wypadku ten kurs jest
+  prowadzony w~C, a~nie w~Pythonie? Gdybym ja miał na to wpływ, to może
+  byłby prowadzony w~Pythonie, ale ja o~tym nie decyduje.
 
 \end{frame}
 % ##################
@@ -1054,7 +1085,7 @@ eprint=true,
   \hphantom{aaaaa} \texttt{.type} \hphantom{aaa}
   \texttt{main, @function} \\
   \texttt{main:} \\
-  \texttt{.LFB0} \\
+  \texttt{.LFB0:} \\
   \hphantom{aaaaa} \texttt{.cfi\_startproc} \\
   \hphantom{aaaaa} \texttt{endbr64} \\
   \hphantom{aaaaa} \texttt{pushq} \hphantom{aaa} \texttt{\%rbp} \\
@@ -1170,7 +1201,9 @@ eprint=true,
   \hphantom{aaaaa} \texttt{.long} \hphantom{aaa} \texttt{3f - 2f} \\
   \texttt{2:} \\
   \hphantom{aaaaa} \texttt{.long} \hphantom{aaa} \texttt{0x3} \\
-
+  \texttt{3:} \\
+  \hphantom{aaaaa} \texttt{.align 8} \\
+  \texttt{4:}
 
 \end{frame}
 % ##################
@@ -1184,7 +1217,7 @@ eprint=true,
   \frametitle{Jakie są inne języki programowania?}
 
 
-  Wymień 20 najpopularniejszych języków programowania według indeksu
+  Wymieńmy 20 najpopularniejszych języków programowania według indeksu
   \textsc{tiobe} (\colorhref{https://www.tiobe.com/tiobe-index/}
   {https://www.tiobe.com/tiobe-index/}). Poniżej prezentowany jest stan
   tego indeksu na lipiec 2024. Podane wielkości procentowe przedstawiają
