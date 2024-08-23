@@ -1,0 +1,518 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align text to the top of the frame
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text
+% \usepackage{./Local-packages/general-commands}
+
+% Package containing commands and other code useful for working with
+% mathematical text
+% \usepackage{./Local-packages/math-commands}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Wprowadzenie do~asemblera NASM}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \institute{}
+
+% \date[]{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% Number of chars: 22k+,
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Plan prezentacji}
+
+
+  \tableofcontents
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Przedłużanie dystrybucji}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problem mnożenia dystrybucji}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{???}
+
+
+  Język asemblera (ang. \textit{assembly}), program asembler (ang.
+  \textit{assembler}).
+
+  \textsc{nasm} to akronimy od \textit{Netwide Assembler}, co na polski
+  przetłumaczyłbym jako „powszechnie dostępny asembler”. Na swoim
+  repozytorium
+  \colorhref{https://github.com/netwide-assembler/nasm}{GitHubowym} tłumaczą,
+  że~termin \textit{netwide} ma ilustrować, że~jest to assembler
+  rozpowszechniony, przenośny, elastyczny w~użyciu, wraz z~narzędziami
+  wspierającymi wiele formatów wyjściowych. To właśnie ma oznaczać
+  \textit{netwide}, co Google translator tłumaczy jako „[dostępny ] w~całej
+  sieci”.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dowód}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dowód}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dowód}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Regularyzacja wymiarowa w~przestrzeni położeń}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Regularyzacja wymiarowa dla~$d$~nieparzystego}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Regularyzacja wymiarowa dla~$d$~parzystego}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Regularyzacja wymiarowa}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Procedura indukcyjna Epsteina-Glasera}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   \begin{subequations}
+%     \begin{align}
+%       \label{eq:Epstein-Glaser-28-A}
+%       &A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
+%         A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ), \\
+%       \label{eq:Epstein-Glaser-28-B}
+%       &\dot{ A }_{ \Gamma }' =
+%         \dot{ A }_{ \Gamma }
+%         + \sum\limits_{ \alpha \leq \textrm{div}( u ) } C_{ \alpha } \delta^{ ( \alpha ) }, \quad
+%         \sd( A_{ \Gamma } ) > d.
+%     \end{align}
+%   \end{subequations}
+
+%   \textbf{Scaling expansion (Hollands, Wald)} \\
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-29}
+%     \prod_{ l = 1 }^{ k } \Delta_{ F }^{ m,\, \mu,\, \xi }( x_{ i }, y_{ i } ) =
+%     \sum_{ s_{ k } = 0 }^{ \infty } ( m^{ 2 } )^{ s_{ k } }
+%     \Delta_{ F }^{ \vec{ s }_{ k }, \mu, \xi }( x_{ 1 }, y_{ 1 }, \ldots,
+%     x_{ k }, y_{ k } ),
+%   \end{equation}
+%   przy czym,
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-30}
+%     \sd( \Delta_{ F }^{ \vec{ s }_{ k },\, \mu,\, \xi } ) =
+%     d + \Real( \xi ) - 2 - 2 s_{ k }.
+%   \end{equation}
+
+%   \textbf{Grupa renormalizacji} \\
+%   Swoboda dobierania stałych $C_{ \alpha }$ przy
+%   $\delta^{ ( \alpha ) }$ jest opisana grupą renormalizacji.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bibliografia}
+
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item K. J. Keller, \textit{Dimensional Regularization in~Position
+%       Space and~a~Forest Formula for Regularized Epstein\dywiz Glaser
+%       Renormalization}, arXiv:~1006.2148v1.
+
+%   \item H. Epstein, V. Glaser, \textit{The~role~of locality
+%       in~perturbation theory}, Ann. Inst. H. Poincar\'{e} A
+%     \textbf{19} (1973) 211.
+
+%   \item R. Brunetti, K. Fredenhagen [BF00], \textit{Microlocal
+%       Analysis and~Interacting Quantum Field Theories: Renormalization
+%       on~Physical Backgrounds}, Commun.Math.Phys, \textbf{208} (2000)
+%     623-661, arXiv:~9903.028.
+
+%   \item G. Scharf, \textit{Finite quantum electrodynamics}, Springer,
+%     1995.
+
+%   \item R. Brunetti, K. Fredenhagen, \textit{Quantum Field
+%       Theory\linebreak on~Curved Backgrounds}, Proceedings of the
+%     Kompaktkurs \emph{Quantenfeldtheorie auf gekruemmten
+%       Raumzeiten}
+%     held at~Universitaet Potsdam, Germany, in~8--12.10.2007,
+%     arXiv:
+%     0901.2063.
+
+%   \item M. D\"{u}etsch, K. Fredenhagen, K. J.
+%     Keller, K.~Rejzner, \textit{Dimensional Regularization in~Position
+%       Space, and~a Forest Formula for Epstein-Glaser Renormalization},
+%     arXiv: 1311.5424, [DFKR13].
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}

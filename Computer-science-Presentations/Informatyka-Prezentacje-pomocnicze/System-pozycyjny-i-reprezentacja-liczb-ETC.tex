@@ -164,15 +164,15 @@ eprint=true,
   czy nie?
 
   Żeby stosować systemu pozycyjny musimy ustalić kierunek w~którym czytamy
-  i~piszemy. W~naszym kręgu kulturowym piszemy poziom od lewej do prawej,
+  i~piszemy. W~naszym kręgu kulturowym piszemy poziom i~od lewej do prawej,
   ludy semickie często piszą poziomo, ale od prawej do lewej. Z~kolei
   w~wschodniej Euroazji często pisze~się pionowo i~od góry do dołu.
   Nie wnikając w~te zawiłości, przedstawimy system pozycyjny który
-  dostosowany jest do czytania od lewej do prawej. Zresztą, w~komputerach
-  zwykle nie używa~się innego.
+  dostosowany jest do pisania poziomo od lewej do prawej. Zresztą,
+  w~komputerach zwykle nie używa~się żadnego innego.
 
   Zaczniemy od systemu pozycyjnego służącego do~zapisu liczb
-  naturalnych: $1, 2, 3, 4, \ldots$ Każdy system pozycyjny musi posiadać
+  naturalnych: $0, 1, 2, 3, 4, \ldots$ Każdy system pozycyjny musi posiadać
   wyróżnioną liczbę naturalną, różną od~zera i~jeden, którą nazywamy
   \textbf{podstawą systemu}. Historycznie ludzie korzystali z~systemów
   o~różnej podstawie, ale obecnie normalni ludzie chyba wszędzie używają
@@ -196,9 +196,7 @@ eprint=true,
   \alert{Ciekawostka.} Angielskie słowo oznaczające cyfrę to \textit{digit}.
   Pochodzi ono stąd, że~po łacinie \textit{digitus} znaczy tyle co „palec”.
   Czy więc słowo „digitalizacja” powinno~się tłumaczyć jako „upalcowienie”?
-  ;)
-
-  Polskie słowo „cyfra” ma pochodzić od arabskiego słowa wymawianego jako
+  ;) Polskie słowo „cyfra” ma pochodzić od arabskiego słowa wymawianego jako
   „sifr”, które oznacza zero. Ale nie jest ekspertem, gdy chodzi
   o~etymologię.
 
@@ -227,21 +225,22 @@ eprint=true,
 
 
   Na tym przykładzie mogliśmy zobaczyć istotę systemu pozycyjnego. Dany
-  system pozycyjny jest zdefiniowany przez wybraną liczbę naturalną $n$
-  i~$n$ symboli reprezentujących liczby od~$0$ do~$n - 1$. Dla systemu
-  dziesiętnego te symbole to doskonale nam wszystkim znane $0$, $1$, $2$,
-  $3$, $4$, $5$, $6$, $7$, $8$, $9$.
+  system pozycyjny jest zdefiniowany przez wybraną liczbę naturalną $b$
+  (po angielsku podstawa systemu to \textit{system base}) i~$b$ symboli
+  reprezentujących liczby od~$0$ do~$b - 1$. Dla systemu dziesiętnego te
+  symbole to doskonale nam wszystkim znane $0$, $1$, $2$, $3$, $4$, $5$,
+  $6$, $7$, $8$, $9$.
 
-  Liczbę $n$ będziemy nazywali \textbf{podstawą systemu}, zaś zbiór $n$
-  symboli $c_{ 1 }, c_{ 2 }, c_{ 3 }, \ldots, c_{ n }$ będziemy nazywali
+  Liczbę $n$ będziemy nazywali \textbf{podstawą systemu}, zaś zbiór $b$
+  symboli $c_{ 1 }, c_{ 2 }, c_{ 3 }, \ldots, c_{ b }$ będziemy nazywali
   \textbf{cyframi}
-  danego systemu pozycyjnego, które reprezentują liczby $0, 1, 2, \ldots, n - 1$.
+  danego systemu pozycyjnego, które reprezentują liczby $0, 1, 2, \ldots, b - 1$.
 
-  Dowolną liczbę naturalną możemy teraz w~systemie o~podstawie $n$ możemy
+  Dowolną liczbę naturalną możemy teraz w~systemie o~podstawie $b$ możemy
   zapisać jako ciąg cyfr. By podkreślić, że~dana liczba jest zapisany
   w~systemie o~podstawie~$n$ często używa~się następującej notacji. \\
   $\displaystyle
-  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n },$ \\
+  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ b },$ \\
   gdzie~$k$ to pewna liczba naturalna większa lub równa~$1$: $k \geq 1$.
 
 \end{frame}
@@ -256,12 +255,12 @@ eprint=true,
   \frametitle{Istota systemu pozycyjnego}
 
 
-  Wartość liczby $( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n }$ zapisanej
+  Wartość liczby $( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ b }$ zapisanej
   w~danym systemie pozycyjnym zawsze odczytujemy w~ten sam sposób: \\
   $\displaystyle
-  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ n } =
-  a_{ 0 } \cdot n^{ 0 } + a_{ 1 } \cdot n^{ 1 } + a_{ 2 } \cdot n^{ 2 } + \ldots +
-  a_{ k - 2 } \cdot n^{ k - 2 } + a_{ k - 1 } \cdot n^{ k - 1 }.$
+  ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ b } =
+  a_{ 0 } \cdot b^{ 0 } + a_{ 1 } \cdot b^{ 1 } + a_{ 2 } \cdot b^{ 2 } + \ldots +
+  a_{ k - 2 } \cdot b^{ k - 2 } + a_{ k - 1 } \cdot b^{ k - 1 }.$
 
   Proszę zwrócić uwagę, że~jest to w~100\% zgodne z~tym, co widzieliśmy
   wcześniej: $1234 = 4 + 3 \cdot 10 + 2 \cdot 100 + 1 \cdot 1000$.
@@ -291,16 +290,16 @@ eprint=true,
   i~$0$. Tak samo w~skład systemu o~podstawie~$2$, nie wchodzi cyfra „$2$”.
   Liczbę dwa zapisujemy w~nim jako: \\
   $(10)_{ 2 } = 2.$ \\
-  Ogólnie w~systemie o~podstawie $n$, liczbę $n$ zapisujemy jako
+  Ogólnie w~systemie o~podstawie $n$, samą liczbę $n$~zawsze zapisujemy jako
   $(10)_{ n }$. Nie powinno być trudne zrozumienie czemu tak jest.
 
-  Jak powszechnie wiadomo, informatyka bazuje na systemie dwójkowym
-  o~podstawie~$2$. Dlaczego akurat~$2$? Wydaje~się, że~przyczyna jest
-  czysto technologiczna. Doskonałe zrozumienie systemów o~podstawach
-  różnych od~$10$, w~tym tego o~podstawie~$2$, znajdujemy najpóźniej
-  w~pismach Gottfrieda Wilhelma Leibniza, który żył w~latach 1646--1716.
-  W~czasach gdy zaczęto budować współczesne komputery po 1900 roku, nie
-  była więc to żadna nowość.
+  % Jak powszechnie wiadomo, informatyka bazuje na systemie dwójkowym
+  % o~podstawie~$2$. Dlaczego akurat~$2$? Wydaje~się, że~przyczyna jest
+  % czysto technologiczna. Doskonałe zrozumienie systemów o~podstawach
+  % różnych od~$10$, w~tym tego o~podstawie~$2$, znajdujemy najpóźniej
+  % w~pismach Gottfrieda Wilhelma Leibniza, który żył w~latach
+  % $1646\text{--}1716$. W~czasach gdy zaczęto budować współczesne komputery
+  % po $1900$ roku, nie była więc to żadna nowość.
 
 \end{frame}
 % ##################
@@ -314,16 +313,45 @@ eprint=true,
   \frametitle{Różne systemy pozycyjne}
 
 
+  % Proszę zwrócić uwagę, że~w~systemie dziesiętnym nie ma \textit{cyfry}
+  % na oznaczenie liczby~$10$. Oznaczamy ją za pomocą ciągu dwóch cyfr: $1$
+  % i~$0$. Tak samo w~skład systemu o~podstawie~$2$, nie wchodzi cyfra „$2$”.
+  % Liczbę dwa zapisujemy w~nim jako: \\
+  % $(10)_{ 2 } = 2.$ \\
+  % Ogólnie w~systemie o~podstawie $n$, samą liczbę $n$~zawsze zapisujemy jako
+  % $(10)_{ n }$. Nie powinno być trudne zrozumienie czemu tak jest.
+
+  Jak powszechnie wiadomo, informatyka bazuje na systemie dwójkowym
+  o~podstawie~$2$. Dlaczego akurat~$2$? Wydaje~się, że~przyczyna jest
+  czysto technologiczna. Doskonałe zrozumienie systemów o~podstawach
+  różnych od~$10$, w~tym tego o~podstawie~$2$, znajdujemy najpóźniej
+  w~pismach Gottfrieda Wilhelma Leibniza, który żył w~latach
+  $1646\text{--}1716$. W~czasach gdy zaczęto budować współczesne komputery
+  po $1900$ roku, nie była więc to żadna nowość.
+
   Dla pierwszych komputerów rozważano systemy pozycyjne o~bardzo różnych
   podstawach, takich jak $10$ czy~$5$. Po rozważeniu takich problemów jak
-  to, jaka będzie stabilność urządzenia elektronicznego (komputer
-  \alert{jest} urządzeniem elektronicznym), zbudowanego by obsługiwać
-  liczby o~danej podstawie, ile prądu będzie zużywać, etc., stwierdzona,
-  że~system o~podstawie~$2$, powinien być optymalny. I~tak już zostało.
+  to, jaka produkcja konkretnych elektronicznych części (komputer
+  \alert{jest} urządzeniem elektronicznym), stabilność urządzenia
+  obsługującego liczby o~danej podstawie, prądu będzie zużywać, etc.,
+  stwierdzona, że~system o~podstawie~$2$, powinien być optymalny. I~tak już
+  zostało.
 
-  Poza tym, system o~podstawie~$2$, tak samo jak ten o~podstawie $10$, nie
-  jest niczym wyróżniony przez matematykę. Kiedy jednak za podstawowy
-  system obierzemy ten o~podstawie $2$, pewne inne systemy stają~się
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Różne systemy pozycyjne}
+
+
+  Tak samo jak system o~podstawie~$10$, tak ten o~podstawie~$2$, nie
+  jest niczym wyróżniony przez matematykę. Kiedy jednak za punkt odniesienia
+  weźmiemy system o~podstawie $2$, pewne inne systemy stają~się
   naturalnie wyróżnione. W~informatyce dwa systemy pochodne w~stosunku do
   tego systemu pojawiają~się szczególnie często: system ósemkowy
   o~podstawie~$8 = 2^{ 3 }$ i~szesnastkowy o~podstawie~$16 = 2^{ 4 }$.
@@ -356,7 +384,7 @@ eprint=true,
   dwójkowym nie jako $(111)_{ 2 }$, lecz jako $0\text{b}111$. Łatwo
   sprawdzić, że \\
   $\displaystyle
-  0\text{b}111 = 1 \cdot 2^{ 2 } + 1 \cdot 2^{ 1 } + 1 \cdot 2^{ 0 } = 7.$
+  0\text{b}111 = 1 \cdot 2^{ 0 } + 1 \cdot 2^{ 1 } + 1 \cdot 2^{ 2 } = 7.$
 
 \end{frame}
 % ##################
@@ -376,8 +404,8 @@ eprint=true,
   zapisywane nie $(321)_{ 8 }$, lecz $0\text{o}321$. Symbol $\text{o}$ to
   mała litera „o”. Łatwo sprawdzić, że \\
   $\displaystyle
-  0\text{o}321 = 3 \cdot 8^{ 2 } + 2 \cdot 8^{ 1 } + 1 \cdot 8^{ 0 } =
-  3 \cdot 64 + 2 \cdot 8 + 1 = 192 + 16 + 1 = 209.$
+  0\text{o}321 = 1 \cdot 8^{ 0 } + 2 \cdot 8^{ 1 } + 3 \cdot 8^{ 2 } =
+  1 + 2 \cdot 8 + 3 \cdot 64 = 1 + 16 + 192 = 209.$
 
   Po angielsku system szesnastkowy to \textit{hexadecimal system}, od
   greckiego słowa oznaczającego $16$: \textit{hekkaideka} (przybliżony
@@ -385,8 +413,8 @@ eprint=true,
   ze słowem „heksadekacymalny”. Od słowa \textit{heXadecimal} pochodzi też
   zwyczaj zapisywania liczb w~tym systemie nie jako $(321)_{ 16 }$,
   ale~$0\text{x}321$. Łatwo sprawdzić, że \\
-  $0\text{x}321 = 3 \cdot 16^{ 2 } + 2 \cdot 16 + 1 = 3 \cdot  256 + 32 + 1 =
-  768 + 32 + 1 = 801.$
+  $0\text{x}321 = 1 + 2 \cdot 16 + 3 \cdot 16^{ 2 } = 1 + 32 + 3 \cdot 256 =
+  1 + 32 + 768 = 801.$
 
 \end{frame}
 % ##################
@@ -428,8 +456,8 @@ eprint=true,
 
   Korzystając z~wzoru na sumę szeregu geometrycznego, łatwo pokazać,
   że~największa liczba naturalna jaką możemy zapisać w~systemie o~podstawie
-  $n$ na za~pomocą $N$ cyfr wynosi: \\
-  $\text{max\_number}_{ \HorSpaceOne n, \, N } = n^{ N } - 1.$
+  $b$ na za~pomocą $n$ cyfr wynosi: \\
+  $\text{maxNumber}( b, n ) = b^{ \HorSpaceTwo n } - 1.$
 
   Mają dwie cyfry w~systemie dziesiętnym największą liczbą jaką możemy
   zapisać jest $10^{ 2 } - 1 = 99$. W~systemie binarnym
@@ -734,15 +762,34 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{„Hello, World!” w~języku~C}
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~języku~C}
 
+  Początkowe liczby naturalne zapisane w~systemie dwójkowym. \\
+  $0\text{b}0 = 0$, $0\text{b}1 = 1$, $0\text{b}10 = 2$, $0\text{b}11 = 3$,
+  $0\text{b}100 = 4$, $0\text{b}101 = 5$, $0\text{b}110 = 6$,
+  $0\text{b}111 = 7$, $0\text{b}1000 = 8$, $0\text{b}1001 = 9$,
+  $0\text{b}1010 = 10$, $0\text{b}1011 = 11$, $0\text{b}1100 = 12$,
+  $0\text{b}1101 = 13$, $0\text{b}1110 = 14$, $0\text{b}1111 = 15$,
+  $0\text{b}10000 = 16$.
 
+  Początkowe liczby naturalne zapisane w~systemie ósemkowym. \\
+  $0\text{o}0 = 0$, $0\text{o}1 = 1$, $0\text{o}2 = 2$, $0\text{o}3 = 3$,
+  $0\text{o}4 = 4$, $0\text{o}5 = 5$, $0\text{o}6 = 6$, $0\text{o}7 = 7$,
+  $0\text{o}10 = 8$, $0\text{o}11 = 9$, $0\text{o}12 = 10$,
+  $0\text{o}13 = 11$, $0\text{o}14 = 12$, $0\text{o}15 = 13$,
+  $0\text{o}16 = 14$, $0\text{o}17 = 15$, $0\text{o}20 = 16$.
 
+  Początkowe liczby naturalne zapisane w~systemie szesnastkowym. \\
+  $0\text{x}0 = 0$, $0\text{x}1 = 1$, $0\text{x}2 = 2$, $0\text{x}3 = 3$,
+  $0\text{x}4 = 4$, $0\text{x}5 = 5$, $0\text{x}6 = 6$, $0\text{x}7 = 7$,
+  $0\text{x}8 = 8$, $0\text{x}9 = 9$, $0\text{xA} = 10$,
+  $0\text{xB} = 11$, $0\text{xC} = 12$, $0\text{xD} = 13$,
+  $0\text{xE} = 14$, $0\text{xF} = 15$, $0\text{x}10 = 16$.
 
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
