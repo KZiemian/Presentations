@@ -18,9 +18,9 @@
 *.run.xml
 
 # ignore all picture files
-*.jpg
-*.jpeg
-*.png
+#*.jpg
+#*.jpeg
+#*.png
 
 # ignore Emacs backup files
 *~

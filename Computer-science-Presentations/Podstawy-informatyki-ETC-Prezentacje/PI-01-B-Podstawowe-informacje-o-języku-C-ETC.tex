@@ -63,6 +63,8 @@ eprint=true,
 % ------------------------------------------------------
 % Importing packages, libraries and setting their configuration
 % ------------------------------------------------------
+\usetikzlibrary{positioning}
+
 
 
 
@@ -230,19 +232,19 @@ eprint=true,
 
       \node[diagram block] (Man) at (0,0) {Człowiek};
 
-      \node[diagram block] (Keyboard) at (3.8,0) {Klawiatura};
+      \node[diagram block,right=of Man] (Keyboard) {Klawiatura};
 
       \draw[thick diagram arrow] (Man) -- (Keyboard);
 
 
 
-      \node[diagram block] (Computer) at (7.6,0) {Komputer};
+      \node[diagram block,right=of Keyboard] (Computer) {Komputer};
 
       \draw[thick diagram arrow] (Keyboard) -- (Computer);
 
 
 
-      \node[diagram rectangle block] (Source code) at (7.6,-2.5)
+      \node[diagram rectangle block,below=of Computer] (Source code)
       {Kod źródłowy w~języku~C};
 
       \draw[thick diagram arrow] (Computer) -- (Source code);
@@ -291,7 +293,7 @@ eprint=true,
 
       \node[diagram block] (Man) at (0,0) {Człowiek};
 
-      \node[diagram rectangle block] (Source code) at (3.8,0)
+      \node[diagram rectangle block,right=of Man] (Source code)
       {Kod źródłowy w~języku~C};
 
       \draw[thick diagram arrow] (Man) -- (Source code);
@@ -1005,7 +1007,7 @@ eprint=true,
 
   \begin{figure}
 
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0.7]
 
       \path (0,0) -- (-3.5,0);
 
@@ -1014,9 +1016,9 @@ eprint=true,
       \node[diagram rectangle block] (C source code) at (0,0)
       {Kod programu w~języku C};
 
-      \node[diagram block] (Compiler) at (0,-2.3) {Kompilator};
+      \node[diagram block,below=of C source code] (Compiler) {Kompilator};
 
-      \node[color=jNormalTextFGColor] (Magic) at (3,-2.3) {Magia};
+      \node[color=jNormalTextFGColor,right=of Compiler] (Magic) {Magia};
 
 
       \draw[pointing arrow orange] (Magic) -- (Compiler);
@@ -1025,7 +1027,7 @@ eprint=true,
       \draw[thick diagram arrow] (C source code) -- (Compiler);
 
 
-      \node[diagram rectangle block] (Assembly code) at (0,-4.6)
+      \node[diagram rectangle block,below=of Compiler] (Assembly code)
       {Kod programu w~asemblerze};
 
 

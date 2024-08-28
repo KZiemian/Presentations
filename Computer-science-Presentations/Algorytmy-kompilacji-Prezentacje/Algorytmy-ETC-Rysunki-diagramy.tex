@@ -1,6 +1,6 @@
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 % Basic configuration of Beamera class and Jagiellonian theme
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
@@ -18,10 +18,10 @@
 
 
 
-% ---------------------------------------
-% Procesing configuration files of Jagiellonian theme loceted in directory
-% "preambule".
-% ---------------------------------------
+% ------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in directory
+% "preambule"
+% ------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
 
@@ -37,25 +37,30 @@
 
 
 
-% ------------------------------
+% ------------------------------------------------------
 % Packages, libraries and their settings
-% ------------------------------
+% ------------------------------------------------------
+\usetikzlibrary{positioning}
 
 
 
 
-% ------------------------------
+
+% ------------------------------------------------------
 % Local packages
-% ------------------------------
+% ------------------------------------------------------
 \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
+% For drawing bits and bytes in PGF/TikZ
+\usepackage{./Local-packages/PGF-TikZ-Graphs-styles}
 
 
 
 
-% ------------------------------
+
+% ------------------------------------------------------
 % Special configuration for this particular presentation.
-% ------------------------------
+% ------------------------------------------------------
 
 
 
@@ -235,43 +240,51 @@
 % \end{frame}
 % % ##################
 
-% ##################
-\begin{frame}
-  \frametitle{?????}
-
-
-  Jak powiedzieliśmy
 
 
 
 
-
-  \begin{figure}
-
-    \begin{tikzpicture}
-
-      \node[diagram rectangle block] (Hollow Knight) at (0,0)
-      {„Hollow Knight” (język C++)};
-
-      \node[diagram block] (Computer) at (3.8,0) {Komputer};
-
-      \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
 
 
-      \node[diagram block] (Playable computer) at (7.6,0)
-      {Komputer z~włączoną grą HK};
-
-      \draw[thick diagram arrow] (Computer) -- (Playable computer);
-
-    \end{tikzpicture}
-
-    \caption{Błędny sposób uruchamiania gry „Hollow Knight”}
+%   Jak powiedzieliśmy
 
 
-  \end{figure}
 
-\end{frame}
-% ##################
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \node[diagram rectangle block] (Hollow Knight) at (0,0)
+%       {„Hollow Knight” (język C++)};
+
+%       \node[diagram block] (Computer) at (3.8,0) {Komputer};
+
+%       \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+
+
+%       \node[diagram block] (Playable computer) at (7.6,0)
+%       {Komputer z~włączoną grą HK};
+
+%       \draw[thick diagram arrow] (Computer) -- (Playable computer);
+
+%     \end{tikzpicture}
+
+%     \caption{Błędny sposób uruchamiania gry „Hollow Knight”}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
 
 % % ##################
 % \begin{frame}
@@ -300,39 +313,39 @@
 % % ##################
 
 
-% ##################
-\begin{frame}
-  \frametitle{Jeśli myślisz, że~jesteś dobrym programistą???}
+% % ##################
+% \begin{frame}
+%   \frametitle{Jeśli myślisz, że~jesteś dobrym programistą???}
 
 
-  Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
-  Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
-  i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
-  mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
-  że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
+%   Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
+%   Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
+%   i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
+%   mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
+%   że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
 
 
 
-  \begin{figure}
+%   \begin{figure}
 
-    \begin{tikzpicture}
+%     \begin{tikzpicture}
 
-      \node[diagram block] (Man) at (0,0) {Człowiek};
+%       \node[diagram block] (Man) at (0,0) {Człowiek};
 
-      \node[diagram rectangle block] (Source code) at (3.8,0)
-      {Kod źródłowy w~języku~C};
+%       \node[diagram rectangle block] (Source code) at (3.8,0)
+%       {Kod źródłowy w~języku~C};
 
-      \draw[thick diagram arrow] (Man) -- (Source code);
+%       \draw[thick diagram arrow] (Man) -- (Source code);
 
-    \end{tikzpicture}
+%     \end{tikzpicture}
 
-    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
+%     \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
 
 
-  \end{figure}
+%   \end{figure}
 
-\end{frame}
-% ##################
+% \end{frame}
+% % ##################
 
 
 %       \node[color=jNormalTextFGColor,align=left] at (3.2,-1.9)
@@ -438,7 +451,56 @@
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Jeśli myślisz, że~jesteś dobrym programistą???}
 
+
+  Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
+  Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
+  i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
+  mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
+  że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
+
+  \tikz{ \node[bit node] (bit 0 power) at (0,0) {1}; }
+  \tikz{ \node[bit node] (bit 0 power) at (0,0) {0}; }
+
+  \begin{tikzpicture}
+    [node distance=\bitsDistance]
+
+    \node[bit node] (bit 0 power) at (0,0) {$1$};
+
+    \node[bit node,left=of bit 0 power] (bit 1 power) {$0$};
+
+    \node[bit node,right=of bit 0 power] {$.$};
+
+    \node[special bit node,left=of bit 1 power] (bit 2 power) {$1$};
+
+    \node[scale=\nodeScaleBigger,left=of bit 2 power] {$2 =$};
+
+  \end{tikzpicture}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram block] (Man) at (0,0) {Człowiek};
+
+      \node[diagram rectangle block] (Source code) at (3.8,0)
+      {Kod źródłowy w~języku~C};
+
+      \draw[thick diagram arrow] (Man) -- (Source code);
+
+    \end{tikzpicture}
+
+    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
 
 
 

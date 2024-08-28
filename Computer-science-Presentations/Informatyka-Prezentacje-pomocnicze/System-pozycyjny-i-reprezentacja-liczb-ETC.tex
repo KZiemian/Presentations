@@ -238,7 +238,7 @@ eprint=true,
 
   Dowolną liczbę naturalną możemy teraz w~systemie o~podstawie $b$ możemy
   zapisać jako ciąg cyfr. By podkreślić, że~dana liczba jest zapisany
-  w~systemie o~podstawie~$n$ często używa~się następującej notacji. \\
+  w~systemie o~podstawie~$b$ często używa~się następującej notacji. \\
   $\displaystyle
   ( a_{ k - 1 } a_{ k - 2 } \ldots a_{ 1 } a_{ 0 } )_{ b },$ \\
   gdzie~$k$ to pewna liczba naturalna większa lub równa~$1$: $k \geq 1$.
@@ -289,9 +289,10 @@ eprint=true,
   na oznaczenie liczby~$10$. Oznaczamy ją za pomocą ciągu dwóch cyfr: $1$
   i~$0$. Tak samo w~skład systemu o~podstawie~$2$, nie wchodzi cyfra „$2$”.
   Liczbę dwa zapisujemy w~nim jako: \\
-  $(10)_{ 2 } = 2.$ \\
-  Ogólnie w~systemie o~podstawie $n$, samą liczbę $n$~zawsze zapisujemy jako
-  $(10)_{ n }$. Nie powinno być trudne zrozumienie czemu tak jest.
+  $(10)_{ 2 } = 2.$
+
+  Ogólnie w~systemie o~podstawie $b$, samą liczbę $b$~zawsze zapisujemy jako
+  $(10)_{ b }$. Nie powinno być trudne zrozumienie czemu tak jest.
 
   % Jak powszechnie wiadomo, informatyka bazuje na systemie dwójkowym
   % o~podstawie~$2$. Dlaczego akurat~$2$? Wydaje~się, że~przyczyna jest
@@ -331,8 +332,8 @@ eprint=true,
 
   Dla pierwszych komputerów rozważano systemy pozycyjne o~bardzo różnych
   podstawach, takich jak $10$ czy~$5$. Po rozważeniu takich problemów jak
-  to, jaka produkcja konkretnych elektronicznych części (komputer
-  \alert{jest} urządzeniem elektronicznym), stabilność urządzenia
+  to, jaka produkcja konkretnych elektronicznych części obsługujących
+  operacje w~systemie z~zadaną podstawą, stabilność urządzenia
   obsługującego liczby o~danej podstawie, prądu będzie zużywać, etc.,
   stwierdzona, że~system o~podstawie~$2$, powinien być optymalny. I~tak już
   zostało.
@@ -764,7 +765,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~języku~C}
+  \frametitle{????}
 
   Początkowe liczby naturalne zapisane w~systemie dwójkowym. \\
   $0\text{b}0 = 0$, $0\text{b}1 = 1$, $0\text{b}10 = 2$, $0\text{b}11 = 3$,
@@ -898,15 +899,26 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{System pozycyjny}
+% ##################
+\begin{frame}
+  \frametitle{System pozycyjny}
 
 
+  \begin{center}
 
+    \begin{tabular}{|c|c|c|}
+      \hline
+      Binary & Dec & Hex \\
+      \hline
+      $0\text{b}0$ & $0$ & $0\text{x}0$ \\
+      $0\text{b}1$ & $1$ & $0\text{x}1$ \\
+      \hline
+    \end{tabular}
 
-% \end{frame}
-% % ##################
+  \end{center}
+
+\end{frame}
+% ##################
 
 
 
