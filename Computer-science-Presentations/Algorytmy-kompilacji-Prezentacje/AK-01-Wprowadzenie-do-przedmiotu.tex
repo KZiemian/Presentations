@@ -11,10 +11,11 @@
 
 
 
-% Options: t - align frame text to the top.
+% Options: t -- align text to the top of the frame
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
 \usetheme[style=\PresentationStyle]{jagiellonian}
+
 
 
 
@@ -41,6 +42,9 @@
 % ------------------------------------------------------
 % Packages, libraries and their settings
 % ------------------------------------------------------
+% Library improving positioning of nodes in graphs
+\usetikzlibrary{positioning}
+
 
 
 
@@ -242,20 +246,6 @@
   \frametitle{Bardzo ważne}
 
 
-  % Ze względu na ramy czasowe tego wiele rzeczy będę \alert{upraszczał} lub
-  % \alert{pomijał}. Proszę o~tym pamiętać podczas uczęszczania na zajęcia
-  % i~czytania materiałów z~nich.
-
-  % Jeśli jednak ktoś chce~się zagłębić w~nie bardziej, po zajęciach służę
-  % całą moją wiedzą.
-
-  % Z~mojego doświadczenia wynika, że~ustalanie jednego terminu na konsultacje
-  % to nie jest dobry pomysł. W~zasadzie nikt wtedy nie przychodzi, a~ja
-  % wyznaję zasadę, że~konsultacje są dla Państwa, nie dla mnie. Jeśli
-  % Państwo chcą bym ustalił konkretne terminy na konsultacje, to proszę jako
-  % grupa wybrać jeden taki i~poinformować mnie o~tym mailowo, pisząc na
-  % adres \email.
-
   W~przeciwnym razie, jeśli ktoś z~Państwa ma problem i~chce zasięgnąć
   mojej pomocy, proszę do mnie napisać, na wspomniany już adres \email,
   kiedy, gdzie i~w~jakiej formie chcą Państwo uczestniczyć w konsultacjach.
@@ -402,11 +392,11 @@
       \draw[thick diagram arrow] (Man) -- (Keyboard);
 
 
+
       \node[diagram block] (Computer) at (7.6,0) {Komputer};
 
       \draw[thick diagram arrow] (Keyboard) -- (Computer);
 
-      % \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
 
 
       \node[diagram rectangle block] (Source code) at (7.6,-2.5)
@@ -531,27 +521,14 @@
   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
   posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
   czy x86/Intel. Można też wymienić dialekty asemblera \textsc{gas},
-  \textsc{fasm}, \textsc{masm}, \textsc{nasm}, \textsc{yasm} (kto wymyśla
+  \textsc{fasm}, \textsc{masm}, \textsc{nasm}, \textsc{yasm} (Kto wymyśla
   te nazwy?).
 
   Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
   poza swoim pierwotnym językiem, może znać kilka innych (angielski,
   arabski, chiński, farsi, francuski, japoński, niemiecki, polski, etc.).
   Komputery zwykle rozumieją tak naprawdę tylko \alert{jeden jedyny}
-  język: właściwy mu dialekt asemblera. To stwarza potrzebę tworzenia
-  kompilatorów i~innych tego typu programów.
-
-  % To który dialekt asemblera rozumiem komputer jest ustalony przez firmę,
-  % która wyprodukowała jego procesor. Asembler jest bowiem zakodowany w~tym
-  % jak są „podpięte kable” w~rzeczonym procesorze.
-
-  % Czy ktoś z~Państwa korzystał z~emulatora do gier? Choćby po to by
-  % uruchomić grę \textit{Pokemon Yellow/Red/Blue} przeznaczoną na GameBoya
-  % na swoim PCecie? (To nie jedyny emulator do gier z~którego korzystałem.)
-  % Na tej samej zasadzie działają emulatory asemblerów, pozwalające
-  % uruchomić asemblera x86 na procesorze w~architekturze \textsc{arm}.
-
-
+  język: właściwy mu dialekt asemblera.
 
 \end{frame}
 % ##################
@@ -564,6 +541,10 @@
 \begin{frame}
   \frametitle{Dlaczego potrzebujemy kompilatorów?}
 
+
+  To który dialekt asemblera rozumiem komputer jest ustalony przez firmę,
+  która wyprodukowała jego procesor. Asembler jest bowiem zakodowany w~tym
+  jak są „podpięte kable” w~danym procesorze.
 
   By lepiej zrozumieć dlaczego potrzebujemy kompilatorów, przedstawimy
   teraz jeden program, który wypisuje „Hello, World!” na ekranie, napisany
@@ -582,7 +563,7 @@
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze ARM 32,
+  \frametitle{„Hello, World!” w~asemblerze ARM~32,
     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
 
@@ -616,9 +597,47 @@
 
 
 
+
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze x86
+  \frametitle{„Hello, World!” w~asemblerze AArch64,
+    \parencite{Low-Level-Learning-You-Can-Learn-AArch64-ETC-Ver-2020}}
+
+
+  \texttt{.global \_start} \\
+  \texttt{.section .text} \\
+
+
+
+  \texttt{\_start:} \\[-0.2em]
+  \hphantom{aaaaaaaa} \texttt{mov x8, \#64} \\
+  \hphantom{aaaaaaaa} \texttt{mov x0, \#1} \\
+  \hphantom{aaaaaaaa} \texttt{ldr x1, =message} \\
+  \hphantom{aaaaaaaa} \texttt{mov x2, \#14} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+  \hphantom{aaaaaaaa} \texttt{mov r7, \#0x1} \\
+  \hphantom{aaaaaaaa} \texttt{mov r0, \#65} \\
+
+  \hphantom{aaaaaaaa} \texttt{swi 0} \\
+
+
+
+  \texttt{.section .data} \\
+  \texttt{message:} \\
+  \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World!\textbackslash n"}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~asemblerze x86/Intel
     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
@@ -638,6 +657,7 @@
 
 \end{frame}
 % ##################
+
 
 
 

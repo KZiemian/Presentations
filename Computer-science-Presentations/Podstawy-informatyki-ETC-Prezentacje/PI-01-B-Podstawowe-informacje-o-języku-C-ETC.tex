@@ -63,6 +63,7 @@ eprint=true,
 % ------------------------------------------------------
 % Importing packages, libraries and setting their configuration
 % ------------------------------------------------------
+% Library improving positioning of nodes in graphs
 \usetikzlibrary{positioning}
 
 
@@ -760,8 +761,8 @@ eprint=true,
   „podpięte kable” w~rzeczonym procesorze.
 
   Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-  napisanemu w~typach języka asembler \textsc{arm}, AArch64,
-  i~\textsc{nasm} oraz językach C i~Python.
+  napisanemu w~typach języka asembler \textsc{arm}~32, AArch64, x86/Intel,
+  \textsc{risc-v} i~\textsc{nasm} oraz językach C i~Python.
 
 \end{frame}
 % ##################
@@ -772,7 +773,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze ARM,
+  \frametitle{„Hello, World!” w~asemblerze ARM 32,
     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
 
@@ -846,7 +847,39 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze x86
+  \frametitle{„Hello, World!” w~assemblerze RISC-V
+    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+  \texttt{.global \_start} \\
+  \texttt{\_start:} \\
+  \hphantom{aaaa} \texttt{addi a7, zero, 64} \\
+  \hphantom{aaaa} \texttt{addi a0, zero, 1} \\
+  \hphantom{aaaa} \texttt{la a1, helloworld} \\
+  \texttt{org 0x100} \\
+  \vspace{0.8em}
+
+  \texttt{mov dx, msg} \\
+  \texttt{mov ah, 9} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{mov ah, 0x4c} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze x86/Intel
     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 

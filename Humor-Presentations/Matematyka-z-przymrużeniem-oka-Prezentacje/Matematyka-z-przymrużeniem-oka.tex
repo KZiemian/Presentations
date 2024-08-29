@@ -1,0 +1,1064 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align text to the top of the frame
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in directory
+% "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% Packages, libraries and their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Configuration for this particular presentation
+% ------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Matematyka z~przymrużeniem oka}
+
+\author{Autorzy tych żartów}
+
+
+% \institute{Uniwersytet Jagielloński w~Krakowie}
+
+% \date[11 December 2018]{Seminarium astrofizyczne PAU \\
+%   11 grudnia 2019}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% Number of chars: 41k+,
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Table of contents}
+
+
+%   \tableofcontents % Spis treści
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+% \section{Różne żarty}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Musimy o~tym pamiętać}
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.15]
+    {./Presentations-pictures/Reading-mathematicals-mems-ETC.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~arytmetyką}
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.15]
+    {./Presentations-pictures/Problems-with-simple-arithmetics-01.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{LLVM and all of that}
+
+
+%   \begin{figure}
+
+%     \includegraphics[scale=0.16]{./PresentationPictures/LLVM_logo.png}
+
+
+%     \caption{LLVM logo}
+
+%   \end{figure}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Aims of Julia (partialy by Alan Edelman)}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Why not use Julia?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Why not use Julia?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Why use Julia?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Why use Julia?}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{There are lies, big lies and benchmarks}
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.29]
+%     {./PresentationPictures/Julia_micro_benchmarks.png}
+
+
+%     \caption{\textbf{Warning!} Python code use numpy libraries that
+%       is~written 52.8\% in C (state of GitHub repository at~4
+%       January~2019)}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Why use Julia?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bad code is~\alert{slow}, good code is~\alert{mostly}
+%     fast}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{What make Julia code good?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Who use Julia?}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.27]
+%     {./PresentationPictures/Big_players_using_Julia.png}
+
+
+%     \caption{From \colorhref{https://juliacomputing.com/}{Julia
+%         Computing} page}
+
+%   \end{figure}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Celeste.jl}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Celeste.jl}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Gamedev in Julia is almost not existing}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.17]{./PresentationPictures/Paddle_Battle.png}
+
+%   \end{figure}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Live coding in Julia}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Lies, big lies and~PDE benchmarks}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Solving Kuramoto-Sivashinsky PDE
+%     in~$\MathTextFrametitleFGColor{1 + 1}$ dimensions}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Solving Kuramoto-Sivashinsky PDE
+%     in~$\MathTextFrametitleFGColor{1 + 1}$ dimensions}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Solving Kuramoto-Sivashinsky PDE
+%     in~$\MathTextFrametitleFGColor{1 + 1}$ dimensions}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Solving Kuramoto-Sivashinsky PDE
+%     in~$\MathTextFrametitleFGColor{1 + 1}$ dimensions}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.22]{./PresentationPictures/KS_result.png}
+
+
+%     \caption{Kuramoto-Sivashinsky heat evolution in~1~dimension}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Chart with linear scale}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.22]
+%     {./PresentationPictures/JFG_benchmarks_linear_scale.png}
+
+
+%     \caption{Results for $N_{ x }$ points on $x$ axis, CPU time in
+%       seconds}
+
+%   \end{figure}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Chart with logarithmic scale}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.22]
+%     {./PresentationPictures/JFG_benchmarks_logarithm_scale_01.png}
+
+
+%     \caption{Results for $N_{ x }$ points on $x$ axis, CPU time in
+%       seconds}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Time for maximal
+%     $\MathTextFrametitleFGColor{N_{ x } = 2^{ 17 } = 131072}$ used
+%     in~computation}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Time over~line~of code}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.22]
+%     {./PresentationPictures/JFG_time_over_code.png}
+
+
+%     \caption{Compression~of time and~lines~of code}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Speed/lines~of code}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.22]
+%     {./PresentationPictures/JFG_speed_over_code_01.png}
+
+
+%     \caption{Compression~of ratio~of speed to the lines~of code}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Live coding with JuliaDiffEq}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Closing remarks}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Is someone doing\ldots}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Reflections}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Remember}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ##################
+% \EndingSlide{Thank you. Questions?}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Bibliography and~resources}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Relevant articles}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Netography}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Netography}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Mentioned projects and articles}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Additional information}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Some statistics}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Julia source code}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Gamedev in Julia is almost not existing}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.17]{./PresentationPictures/Paddle_Battle.png}
+
+%   \end{figure}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Packages and projects}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Things that are important or~promising}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Things that are important or~promising}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Lies, big lies and benchmarks from 2017}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.7]{./PresentationPictures/benchmarks_QO.pdf}
+
+%     \caption{QuTiP~-- Quantum Toolbox in Python}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basics learning materials}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basics learning materials}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Practical introductions to many different topics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{More theoretical, less practical materials}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{More theoretical, less practical materials}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Additional information and topics}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Cxx.jl (probably still broken in~1.x)}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Mentioned projects and articles}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Thank you! Questions?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+% \bibliographystyle{plalpha}
+
+% \bibliography{}{}
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}
