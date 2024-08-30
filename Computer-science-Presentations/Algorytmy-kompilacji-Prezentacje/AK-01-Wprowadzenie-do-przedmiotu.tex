@@ -99,7 +99,7 @@
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% Number of chars: 62k+, 80k+, 41k+, 36k+,
+% Number of chars: 62k+, 80k+, 41k+, 36k+, 40k+,
 % ######################################
 
 
@@ -181,6 +181,10 @@
   Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
     Knight}?” musimy jednak zostawić na czas po zajęciach.
 
+  Jeśli coś jest dla Państwa tak proste, że~mówienie o~tym to marnowanie
+  Państwa czasu, proszę również o~tym powiedzieć. Przeskoczymy wtedy
+  do~następnej części materiału.
+
 \end{frame}
 % ##################
 
@@ -196,17 +200,20 @@
   Współczesna informatyka jest dziedziną bardzo młodą. Ma sens datowanie
   jej powstania na rok 1945, gdy technologie komputerowe rozwinięte na
   potrzeby wojskowe w~czasie II~Wojny Światowej wchodzą do użytku
-  powszechnego, choć z~przyczyn technicznych dostępne są bardzo wąskiej
-  grupie ludzi. To czym się zajmujemy nie ma jeszcze 100~lat. Nauka ma to
-  do siebie, że~potrafi naprawdę długo~się rozwijać, potrzebując niekiedy
-  dekad jeśli nie wieków, by dokonać realnego postępu. W~informatyce zaś
-  cały czas odkrywamy nowe i~kluczowe dla tej dziedziny rzeczy.
+  powszechnego, choć z~przyczyn czysto technicznych (koszt, rozmiar,
+  zużycie energii, etc.) dostępne są tylko bardzo wąskiej
+  grupie ludzi. Dziedzina o~której jest ten przedmiot nie ma jeszcze
+  100~lat. Nauka ma to do siebie, że~potrafi naprawdę długo~się rozwijać,
+  potrzebując niekiedy dekad jeśli nie wieków, by dokonać realnego postępu.
+  W~informatyce zaś cały czas odkrywamy nowe i~kluczowe dla tej dziedziny
+  rzeczy.
 
   W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
   która raczej~się nie skończy już jutro. W~skutek tego cała masa rzeczy~się
   ciągle zmienia i~to co wczoraj uchodziło za czystą fantazję, dziś jest
-  rzeczywistością wdrażaną do produkcji przemysłowej. Proszę mieć to na
-  uwadze biorąc udział w~zajęciach i~ucząc~się do tego kursu.
+  rzeczywistością wdrażaną do produkcji przemysłowej (może trochę
+  przesadzam, ale nie tak bardzo). Proszę mieć to na uwadze biorąc udział
+  w~zajęciach i~ucząc~się do tego kursu.
 
 \end{frame}
 % ##################
@@ -220,9 +227,9 @@
   \frametitle{Bardzo ważne}
 
 
-  Ze względu na ramy czasowe tego wiele rzeczy będę \alert{upraszczał} lub
-  \alert{pomijał}. Proszę o~tym pamiętać podczas uczęszczania na zajęcia
-  i~czytania materiałów z~nich.
+  Ze względu na ramy czasowe tego kursu wiele rzeczy będę
+  \alert{upraszczał} lub \alert{pomijał}. Proszę o~tym pamiętać podczas
+  uczęszczania na zajęcia i~czytania materiałów z~nich.
 
   Jeśli jednak ktoś chce~się zagłębić w~nie bardziej, po zajęciach służę
   całą moją wiedzą.
@@ -349,15 +356,18 @@
 
 
 
-  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami
-  (zwykle~są koloru niebieskiego) oznaczają \textbf{aktorów}, czyli
+  Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami,
+  zwykle~są koloru niebieskiego, oznaczają \textbf{aktorów}, czyli
   taki obiekt który wykonuje jakąś czynność na zadanych obiektach
-  wejściowych. Takim obiektem może być człowiek, komputer, program
-  komputerowy, fragment programu komputerowego, etc.
+  wejściowych, tworząc obiekty wyjściowe. Takim obiektem może być człowiek,
+  komputer, program komputerowy, fragment programu komputerowego,~etc.
 
-  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami (zwykle~są
-  koloru karmelowego), przedstawiają rzeczy które są pobierane na~wejście
-  przez aktorów lub przez nich wytwarzane.
+  Bloki diagramu które mają kształt prostokąta z~ostrymi rogami, zwykle~są
+  koloru karmelowego (czy to jest kolor karmelowy?), przedstawiają
+  \textbf{obiekty} które są pobierane na~wejście przez aktorów lub przez
+  nich wytwarzane i~zwracane na wyjście. Jeśli aktorem jest kucharz to na
+  wejście może pobierać jaka, mąkę, etc., a~na wyjściu zwracać naleśniki
+  z~truskawkami.
 
 \end{frame}
 % ##################
@@ -431,8 +441,8 @@
   od kontekstu.
 
   Jeśli uważają Państwo, że~na diagramie nie ma czegoś, co być powinno,
-  albo coś innego jest nie w~porządku, \alert{proszę} to mi powiedzieć.
-  Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
+  albo coś innego jest nie w~porządku, \alert{proszę} mi zwrócić na to
+  uwagę. Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
 
 
 
@@ -483,7 +493,7 @@
 
 
   Jeśli kiedyś napisaliście Państwo i~uruchomili program w~języku C, C++,
-  Fortran, Go, Java, Rust, etc., to na 99\% korzystali Państwo
+  Fortran, Go, Java, Rust, etc., to na $99\%$ korzystali Państwo
   z~kompilatora. W~2024 cała infrastruktura informatyczna stoi
   na~kodzie napisany w~języku~C, który odpowiednie kompilatory przetworzyły
   w~programy komputerowe. W~tym sensie kurs ten jest superpraktyczny, bo
@@ -514,7 +524,7 @@
   Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
   który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
   jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-  że~pierwotnym językiem komputera jest \textbf{język asembler}
+  że~pierwotnym językiem komputera jest \textbf{język asemblera}
   (ang. \textit{assembly language}).
 
   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
@@ -548,11 +558,13 @@
 
   By lepiej zrozumieć dlaczego potrzebujemy kompilatorów, przedstawimy
   teraz jeden program, który wypisuje „Hello, World!” na ekranie, napisany
-  w~dialektach asemblera ??? oraz językach C i~Python.
+  w~dialektach asemblera \textsc{arm~32}, AArch64, \textsc{risc-v},
+  \textsc{nasm} i~x86/Intel oraz językach C i~Python.
 
-  Wersje programu napisane w~\textsc{arm} 32,????, językach C i~Pythonie
-  zostały przetestowane przeze mnie i~jeśli są chętni, to możemy je głębiej
-  omówić.
+  Poza wersją programu w~języku asemblera x86/Intel, wszystkie te programy
+  przetestowałem na~moim komputerze pod systemem GNU/Linux Ubuntu
+  22.04~\textsc{lts}, więc jeśli są chętni, to możemy je~głębiej omówić
+  po~zajęciach.
 
 \end{frame}
 % ##################
@@ -627,6 +639,76 @@
   \texttt{.section .data} \\
   \texttt{message:} \\
   \hphantom{aaaaaaaa} \texttt{.ascii "Hello, World!\textbackslash n"}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze RISC-V
+    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+  \texttt{.global \_start} \\
+  \texttt{\_start:} \\
+  \hphantom{aaaa} \texttt{addi a7, zero, 64} \\
+  \hphantom{aaaa} \texttt{addi a0, zero, 1} \\
+  \hphantom{aaaa} \texttt{la a1, helloworld} \\
+  \hphantom{aaaa} \texttt{addi a2, zero, 14} \\
+  \hphantom{aaaa} \texttt{ecall}
+  \vspace{0.8em}
+
+  \hphantom{aaaa} \texttt{a7, zero, 93} \\
+  \hphantom{aaaa} \texttt{a0, zero, 13} \\
+  \hphantom{aaaa} \texttt{ecall}
+  \vspace{0.8em}
+
+  \texttt{helloworld:} \\
+  \hphantom{aaaa} \texttt{.ascii "Hello, World!\textbackslash n"}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze NASM
+    \parencite{Toal-NASM-Tutorial-Ver-2024}}
+
+
+  \hphantom{aaaaaaaaa} \texttt{global} \hphantom{aa} \texttt{\_start} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{section} \hphantom{a} \texttt{.text} \\
+  \texttt{\_start:} \hphantom{a} \texttt{mov} \hphantom{aaaaaa}
+  \texttt{rax, 1} \\
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdi, 1} \\
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa}
+  \texttt{rsi, message} \\
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdx, 14} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{syscall} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 60} \\
+  \hphantom{aaaaaaaaa} \texttt{xor} \hphantom{aaaaaa} \texttt{rdi, rdi} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{syscall} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{section .data} \\
+  \vspace{0.8em}
+
+  \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10}
 
 \end{frame}
 % ##################
@@ -1843,8 +1925,90 @@
 
 
 
+% ######################################
+% \section{Dodatkowe informacje}
+% ######################################
 
 
+
+% ##################
+\begin{frame}
+  \frametitle{Historia języków asemblera}
+
+
+  W~$1978$ roku firma Intel (od ang.~\textit{INTegrated ELectronic})
+  wypuszcza procesor $8086$, który rozpoczyna rodzinę procesorów
+  $\text{x}86$. Nazwa „$\text{x}86$” wywodzie~się od tego, że~liczby
+  będące nazwami procesorów miały~się kończyć na „$86$”, więc symbol
+  „$\text{x}$” oznacza pozostałą część tej liczby. W~następny latach
+  pojawiły~się procesory $80186$, $80286$ i~$80386$. Z~powodu praw
+  autorskich i~spraw pokrewnych, procesor który powinien~się nazywać
+  $80586$ został przemianowany na Pentium. I~tak dalej. Język asembler
+  stworzony dla tych procesorów nosi nazwę \alert{x86}, używa~się również
+  bardziej precyzyjnego określenia \alert{x86/Intel}.
+
+  Jeśli~się Państwo zastanawiają „Skąd oni biorą te nazwy dla procesorów?”,
+  to powiem, że~też chciałbym wiedzieć.
+
+  W~$2003$ roku firma \textsc{amd} (od ang.~\textit{Advanced Micro Devices})
+  wypuszcza 64-bitowy procesor Athlon~64 z~językiem asemblera o~nazwie
+  \textsc{amd}64, wzorowanym na języku x86/Intel.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{???}
+
+
+  Zbiorczą nazwą stosowną dla 64-bitowych asemblerów \textsc{amd} i~Intela
+  jest \alert{x86-64} lub \alert{x64}. Niektórzy używają również nazwy
+  \alert{\textsc{amd}64}.
+
+  W~1983 roku firma Acorn Computers Ltd. zaczyna pracę nad procesorem który
+  zostanie nazwany \alert{\textsc{arm}} (od ang.~\textit{Acorn \textsc{risc}
+    Machine}). Jednym z~wyników tego projektu jest opracowanie zbiru
+  instrukcji architektury \textsc{risc} (ang.~\textit{Reduced Instruction
+    Set Computing}). Pierwszym wyprodukowanym przed nich procesorem jest
+  32-bitowy \textsc{arm1}. Dla tych procesorów utworzono język asembler
+  \alert{\textsc{arm}}.
+
+  W~1990 roku z~Acorn Computers Ltd. wydzieliła~się firma znana dziś jako
+  Arm~Holdings~pcl.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{Coordinate systems in computer graphics}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{Coordinate systems in computer graphics}
+
+
+
+% \end{frame}
+% ##################
 
 
 
@@ -1895,40 +2059,7 @@
 
 
 
-% ##################
-% \begin{frame}[label=]
-%   \frametitle{Coordinate systems in computer graphics}
 
-
-
-% \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-% \begin{frame}
-%   \frametitle{Coordinate systems in computer graphics}
-
-
-
-% \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-% \begin{frame}
-%   \frametitle{Coordinate systems in computer graphics}
-
-
-
-% \end{frame}
-% ##################
 
 
 

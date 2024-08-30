@@ -504,9 +504,6 @@ eprint=true,
   \item Brak normalnego typu boolowskiego. Nawet \texttt{stdbool.h} nie
     rozwiązuje tej sprawy.
 
-  % \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
-  %   programowania (1972 rok był dawno temu).
-
   \end{itemize}
 
 \end{frame}
@@ -550,11 +547,11 @@ eprint=true,
 
   Taki jak między krzesłem, a~krzesłem elektrycznym. Lub mechaniką
   i~mechaniką kwantową. To są jednak dwa bardzo różne języki programowania,
-  które ze~względów historycznych mają pewne wspólne cechy.
+  które ze~względów historycznych mają pewnie wspólny rdzeń.
 
   Mówiłem Państwu, że~C to taka skrzynka z~narzędziami. C++ to cały Leroy
-  Merlin. Naprawdę, ogarnięcie wszystkich featurów jest zupełnie nie do
-  ogarnięcia.
+  Merlin. Naprawdę, ogarnięcie wszystkich featurów C++, jest zupełnie nie do
+  ogarnięcia. A~przynajmniej ja w~osiągnięcie tego nie wierzę.
 
   Języki takie jak C\#, to osobna dyskusja.
 
@@ -595,10 +592,10 @@ eprint=true,
   Dlatego muszę zastrzec, że~to co mówią odnośnie przyszłości, są to moje
   osobiste refleksje. Nie mogę dać żadnej gwarancji, że~się sprawdzą.
 
-  Język~C stworzony w~1972 roku, ma już ponad 50 lat, więc to jasne,
+  Język~C stworzony w~$1972$ roku, ma już ponad $50$~lat, więc to jasne,
   że~pojawiają~się pomysły na języki które mają go zastąpić. W~pewnym sensie
   C++ jest takim językiem. Jednak od momentu pojawienia~się C++, za taką
-  datę możemy przyjąć 1985~rok, minęło sporo czasu, zamiast zastąpić~C,
+  datę możemy przyjąć $1985$~rok, minęło sporo czasu, zamiast zastąpić~C,
   język ten żyje obok niego. Ale to bardziej temat na zajęcia o~C++.
 
   Proszę pamiętać, że~relacja między~C, a~C++, jest jak między krzesłem,
@@ -613,7 +610,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Nie należy liczyć, że}
+  \frametitle{C~nie będzie wieczny, ale\ldots}
 
 
   Przez ponad pół wieku~(!) w~C napisano niewiarygodne ilość rewelacyjnie
@@ -621,7 +618,7 @@ eprint=true,
   i~wad). Ponieważ utrzymywanie starego kodu jest zwykle prostsze niż
   pisanie nowego, który robi to samo, więc część z~tego kody będzie
   utrzymywana tak długo jak tylko~się będzie dało. Przykładowo, jądro
-  systemu operacyjnego Linux jest napisane w~98\% w~języku~C (zobacz
+  systemu operacyjnego Linux jest napisane w~$98\%$ w~języku~C (zobacz
   statystki jego \colorhref{https://github.com/torvalds/linux}{repozytorium}
   na~GitHubie). A~bez tego jądra internet pewnie~się zawali.
 
@@ -701,34 +698,6 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Uruchamianie komputera z~systemem Pentium}
-
-
-%   \begin{itemize}
-
-%   \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
-%     to ładuje je do jądra systemu.
-
-
-
-%   \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
-%     działające w~tle.
-
-
-
-%   \item[12)] Uruchamiane jest okno logowania.
-
-%   \end{itemize}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
 
 
 
@@ -773,7 +742,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze ARM 32,
+  \frametitle{„Hello, World!” w~asemblerze ARM~32,
     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
 
@@ -848,7 +817,7 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{„Hello, World!” w~assemblerze RISC-V
-    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+    \parencite{Low-Level-Learning-You-Can-Learn-RISC-V-ETC-Ver-2021}}
 
 
   \texttt{.global \_start} \\
@@ -856,31 +825,7 @@ eprint=true,
   \hphantom{aaaa} \texttt{addi a7, zero, 64} \\
   \hphantom{aaaa} \texttt{addi a0, zero, 1} \\
   \hphantom{aaaa} \texttt{la a1, helloworld} \\
-  \texttt{org 0x100} \\
-  \vspace{0.8em}
 
-  \texttt{mov dx, msg} \\
-  \texttt{mov ah, 9} \\
-  \texttt{int 0x21} \\
-  \vspace{0.8em}
-
-  \texttt{mov ah, 0x4c} \\
-  \texttt{int 0x21} \\
-  \vspace{0.8em}
-
-  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze x86/Intel
-    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
   \texttt{org 0x100} \\
@@ -936,6 +881,33 @@ eprint=true,
   \vspace{0.8em}
 
   \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze x86/Intel
+    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+  \texttt{org 0x100} \\
+  \vspace{0.8em}
+
+  \texttt{mov dx, msg} \\
+  \texttt{mov ah, 9} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{mov ah, 0x4c} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
 
 \end{frame}
 % ##################
@@ -1318,6 +1290,34 @@ eprint=true,
 
 \end{frame}
 % ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+%     to ładuje je do jądra systemu.
+
+
+
+%   \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+%     działające w~tle.
+
+
+
+%   \item[12)] Uruchamiane jest okno logowania.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
 
 
 
