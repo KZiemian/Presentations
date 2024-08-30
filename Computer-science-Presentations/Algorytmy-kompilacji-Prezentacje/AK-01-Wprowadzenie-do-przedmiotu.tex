@@ -282,8 +282,8 @@
   \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
   Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
 
-  Będą też dostępne w~formie PDFów na~Sake, wraz z~innymi materiałami
-  do nauki.
+  Będą też dostępne w~formie \textsc{pdf}ów na~Sake, wraz z~innymi
+  materiałami do nauki.
 
 \end{frame}
 % ##################
@@ -536,9 +536,9 @@
 
   Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
   poza swoim pierwotnym językiem, może znać kilka innych (angielski,
-  arabski, chiński, farsi, francuski, japoński, niemiecki, polski, etc.).
-  Komputery zwykle rozumieją tak naprawdę tylko \alert{jeden jedyny}
-  język: właściwy mu dialekt asemblera.
+  arabski, chiński, farsi, francuski, hiszpański, japoński, niemiecki,
+  polski, etc.). Komputery zwykle rozumieją tak naprawdę tylko
+  \alert{jeden jedyny} język: właściwy mu dialekt asemblera.
 
 \end{frame}
 % ##################
@@ -813,16 +813,16 @@
   \frametitle{Dlaczego potrzebujemy kompilatorów?}
 
 
-  Co więc należy zrobić by uniknąć pisania kodu w~języku asemblera? Stwórzmy
+  Co więc robimy by uniknąć pisania kodu w~języku asemblera? Tworzymy
   język programowania taki jak~C czy Python, który jest dla nas prostszy
-  w~użyciu niż asembler i~napiszmy program w~nim. Proszę zwrócić uwagę,
-  że~„prostszy” wcale nie oznacza \alert{„prosty”}!
+  w~użyciu, niż dany dialekt asemblera i~piszemy program w~nim. Proszę
+  zwrócić uwagę, że~słowo „prostszy” wcale nie oznacza \alert{„prosty”}!
 
   Dobrze, ale komputer dalej rozumie tylko język asembler, a~nie~C czy
   Pytona, co więc musimy zrobić, by uruchomić programy napisany w~jednym
   z~tych języków? Potrzebny jest nam program komputerowy zwany
   \textbf{translatorem}, który \alert{przetłumaczy} kod napisany,
-  przykładowo z~języka~C na asemblera.
+  przykładowo z~języka~C na język asemblera.
 
 
 
@@ -832,45 +832,29 @@
 
     \label{fig:Translator-01}
 
-    \begin{tikzpicture}
+    \begin{tikzpicture}% [node distance=0.8]
 
       \node[diagram rectangle block] (Source code in C) at (0,0)
       {Kod programu (język C)};
 
-      \node[diagram block] (Translator) at (3.8,0) {Translator};
+      \node[diagram block,right=of Source code in C] (Translator)
+      {Translator};
 
       \draw[thick diagram arrow] (Source code in C) -- (Translator);
 
 
-      \node[diagram rectangle block] (Code in assembly) at (7.6,0)
+
+      \node[diagram rectangle block,right=of Translator] (Code in assembly)
       {Kod programu (język asemblera)};
 
       \draw[thick diagram arrow] (Translator) -- (Code in assembly);
 
     \end{tikzpicture}
 
-    \caption{Ilustracja działania translatora}
+    \caption{Ilustracja działania translatora.}
 
 
   \end{figure}
-
-
-  % Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
-  % potrafi znać kilka różnych języków (polski, angielski, francuski,
-  % niemiecki, etc.), ale komputery zwykle rozumieją tak naprawdę tylko
-  % \alert{jeden jedyny} język: właściwy mu (natywny) dialekt asemblera.
-  % Wszystkie inne języki (C, C++, Java, Python, etc.), są dla niego
-  % niezrozumiałe. Z~tego powodu program napisany w~tych językach muszą
-  % zostać najpierw \alert{przetłumaczone} do jego natywnego asemblera.
-
-  % Czy ktoś z~Państwa korzystał z~emulatora do gier? Choćby po to by
-  % uruchomić grę \textit{Pokemon Yellow/Red/Blue} przeznaczoną na GameBoya
-  % na swoim PCecie? (To nie jedyny emulator do gier z~którego korzystałem.)
-  % Na tej samej zasadzie działają emulatory asemblerów, pozwalające
-  % uruchomić asemblera x86 na procesorze w~architekturze \textsc{arm}.
-
-  % Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-  % napisanemu w~dwóch??? rodzajach asemblera, językach C i~Python.
 
 \end{frame}
 % ##################
@@ -890,8 +874,6 @@
   z~którego korzystałem.) Na tej samej zasadzie działają emulatory
   asemblerów, pozwalające uruchomić asemblera x86 na procesorze
   zbudowanym w~architekturze \textsc{arm}.
-
-
 
 \end{frame}
 % ##################
@@ -937,16 +919,16 @@
 
   Jak mówiliśmy wcześniej, na potrzeby tego kursu będziemy przyjmować,
   że~naturalnym językiem komputera jest język asembler i~nie będziemy
-  wnikać głębiej w~to co~się tam dzieje.
-
-  Jeśli jednak ktoś chce wniknąć głębiej w~to zagadnienie, to po zajęciach
-  służę całą moją wiedzą w~tym temacie.
+  wnikać głębiej w~to co~się tam dzieje. Jeśli jednak ktoś chce wniknąć
+  głębiej w~to zagadnienie, to po zajęciach służę całą moją wiedzą w~tym
+  temacie.
 
   \alert{Uwaga terminologiczna.} W~języku angielskim rozróżnia~się
   \textbf{język asemblera} (ang. \textit{assembly langauge})
   i~\textbf{program asembler} (ang. \textit{assembler}), który operuje
-  na~programie napisany w~języku asembler. W~języku polskim „asembler”
-  oznacza często język asembler, co może powodować pewne nieporozumienia.
+  na~programie napisany w~języku danego asemblera. W~języku polskim
+  „asembler” oznacza często język asembler, co może powodować pewne
+  nieporozumienia.
 
 \end{frame}
 % ##################
@@ -960,11 +942,11 @@
   \frametitle{Typowy sposób wykonywania programu}
 
 
-  Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu muszę
-  wprowadzić pewną dozę uproszczeń. Przyjmijmy po pierwsze, że~gra
-  \textit{Hollow Knight} (nie gorszy przykład programu niż dowolny inny),
-  zawiera~się w~jednym pliku napisany w~języku asembler. Proces
-  uruchamiania tej gry pokazuje poniższy diagram.
+  Aby opisać jak z~grubsza wygląda wykonanie dowolnego programu na
+  komputerze muszę wprowadzić pewną dozę uproszczeń. Po~pierwsze
+  przyjmijmy, że~gra \textit{Hollow Knight} (nie gorszy przykład programu,
+  niż dowolny inny), zawiera~się w~jednym pliku napisany w~języku asembler.
+  Proces uruchamiania tej gry pokazuje poniższy diagram.
 
 
 
@@ -979,19 +961,19 @@
       \node[diagram rectangle block] (Hollow Knight) at (0,0)
       {\textit{Hollow Knight} (język asemblera)};
 
-      \node[diagram block] (Computer) at (3.8,0) {Komputer};
+      \node[diagram block,right=of Hollow Knight] (Computer) {Komputer};
 
       \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
 
 
-      \node[diagram block] (Playable computer) at (7.6,0)
+      \node[diagram block,right=of Computer] (Playable computer)
       {Komputer z~włączoną grą \textit{HK}};
 
       \draw[thick diagram arrow] (Computer) -- (Playable computer);
 
     \end{tikzpicture}
 
-    \caption{Typowy sposób uruchamiania programu na naszym komputerze}
+    \caption{Typowy sposób uruchamiania programu na~komputerze.}
 
 
   \end{figure}
@@ -1008,13 +990,26 @@
   \frametitle{Pisanie gier w~języku asembler?}
 
 
-  Jak już wspomnieliśmy, pisanie czegokolwiek, w~tym gier, w~języku
-  asembler to zwykle nie jest dobry pomysł. Znanym przykładem tego, że~jest
-  to możliwe, jest gra \textit{???} z~1?? roku, którą ??? napisał
-  \textit{w~pojedynkę}. Dzięki czemu stał~się bohaterem popularnego
-  w~środowisku informatyków mema.
+  Jak już wspomnieliśmy, pisanie czegokolwiek, w~tym gier wideo, w~języku
+  asemblera to zwykle nie jest dobry pomysł. Znanym przykładem tego, że~jest
+  to możliwe, jest gra \textit{RollerCoaster Tycoon} z~1999 roku, którą
+  napisał \alert{w~pojedynkę} Chris Sawyer.
 
-  Wklej tu tego mema.
+
+
+
+
+  \begin{figure}
+
+    \label{fig:Feel-even-worse}
+
+    \centering
+
+
+    \includegraphics[scale=0.275]
+    {./Presentations-pictures/Feel-even-worse.jpg}
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -1029,11 +1024,15 @@
   \frametitle{?????}
 
 
-  Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
-  Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
-  i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
-  mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
-  że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
+  Dzisiaj gry często tworzy~się środowiskach takich jak
+  \colorhref{https://www.unrealengine.com/en-US}{Unreal Engine},
+  \colorhref{https://unity.com/}{Unity} czy
+  \colorhref{https://godotengine.org/}{Godot}, nie zaś pisze kod źródłowy
+  od zera. Unreal Engine i~Godot są napisane w~większości w~języku C++,
+  Unity w~języku C\#. W~tym momencie nie mam pewności, w~czym został
+  napisany \textit{Hollow Knight}, ale mędrcy internetu twierdzą,
+  że~głównie w~języku C\#, bo został napisany w~Unity. Dlaczego jednak
+  poniższy diagram jest błędny?
 
 
 
@@ -1046,21 +1045,22 @@
     \begin{tikzpicture}
 
       \node[diagram rectangle block] (Hollow Knight) at (0,0)
-      {\textit{Hollow Knight} (język C++)};
+      {\textit{Hollow Knight} (język C\#)};
 
-      \node[diagram block] (Computer) at (3.8,0) {Komputer};
+      \node[diagram block,right=of Hollow Knight] (Computer) {Komputer};
 
       \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
 
 
-      \node[diagram block] (Playable computer) at (7.6,0)
+
+      \node[diagram block,right=of Computer] (Playable computer)
       {Komputer z~włączoną grą \textit{HK}};
 
       \draw[thick diagram arrow] (Computer) -- (Playable computer);
 
     \end{tikzpicture}
 
-    \caption{Błędny sposób uruchamiania gry „Hollow Knight”}
+    \caption{Błędny sposób uruchamiania gry \textit{Hollow Knight}}
 
 
   \end{figure}
@@ -1077,7 +1077,7 @@
   \frametitle{??? }
 
 
-  Komputer jako taki nie rozumie języka~C++, więc nie jest w~stanie
+  Komputer jako taki nie rozumie języka~C\#, więc nie jest w~stanie
   uruchomić gry napisanej w~takim języku. Aby ją uruchomić, translator
   musi najpierw przetłumaczyć ją na język asemblera.
 
@@ -1089,13 +1089,13 @@
 
     \begin{tikzpicture}
 
-      \node[diagram rectangle block] (Hollow Knight in C++) at (0,0)
-      {\textit{Hollow Knight} (język C++)};
+      \node[diagram rectangle block] (Hollow Knight in C-sharp) at (0,0)
+      {\textit{Hollow Knight} (język C\#)};
 
-      \node[diagram block] (Translator) at (3.8,0) {Translator};
+      \node[diagram block,right=of Hollow Knight in C-sharp] (Translator)
+      {Translator};
 
-      \draw[thick diagram arrow]
-      (Hollow Knight in C++) -- (Translator);
+      \draw[thick diagram arrow] (Hollow Knight in C-sharp) -- (Translator);
 
 
       \node[diagram rectangle block] (Hollow Knight in assembly) at (7.6,0)
@@ -1117,7 +1117,7 @@
 
     \end{tikzpicture}
 
-    \caption{Poprawny sposób włączania gry \textit{Hollow Knight}}
+    \caption{Poprawny sposób włączania gry \textit{Hollow Knight}.}
 
 
   \end{figure}
@@ -1136,19 +1136,19 @@
 
   Mogą~się Państwu nasunąć taka myśl.
 
-  „Ja coś słyszałem, że~jest oprogramowanie o~otwarty kodzie, jak system
-  GNU/Linux i~o~zamkniętym kodzie, takie jak Windows. Każdy może przeczytać
-  kod źródłowy otwartego oprogramowania, ale tego o~zamkniętym kodzie tylko
-  ci którzy pracują dla takich firm jak Microsoft. A~Pan tu twierdzi,
-  że~program który dostaję na moim komputerze jest napisany w~języku
-  assemblera, więc jeśli tylko otworzę ten program i~zrozumiem asemblera
-  wewnątrz niego, to tak jakby miał on otwarty kod. Po co więc to całe
-  rozróżnienie na kod otwarty i~zamknięty?”
+  „Ja coś słyszałem, że~istnieje oprogramowanie o~otwarty kodzie, jak
+  system operacyjny GNU/Linux i~o~zamkniętym kodzie, takie jak system
+  Windows. Każdy może przeczytać kod źródłowy otwartego oprogramowania,
+  ale tego o~zamkniętym kodzie tylko ci którzy pracują dla takich firm jak
+  Microsoft. A~Pan tu twierdzi, że~program który dostaję na moim komputerze
+  jest napisany w~języku assemblera, więc jeśli tylko otworzę ten program
+  i~zrozumiem asemblera wewnątrz niego, to tak jakby miał on otwarty kod.
+  Po co więc całe to rozróżnienie na kod otwarty i~zamknięty?”
 
-  Wszystko to prawda. Haczyk tkwi w~zdaniu „zrozumiem asemblera wewnątrz
-  niego”. Zrozumienie działania kodu źródłowego w~języku~C, czy~Python jest
-  często nieznośnie trudne, a~asembler czyni to zadanie jeszcze
-  trudniejszym.
+  Wszystko to prawda. Haczyk tkwi w~stwierdzeniu \alert{„zrozumiem asemblera
+    wewnątrz niego”}. Zrozumienie działania kodu źródłowego w~języku~C,
+  czy~Python jest często nieznośnie trudne, a~język asembler czyni to
+  zadanie jeszcze trudniejszym.
 
 \end{frame}
 % ##################
@@ -1163,9 +1163,9 @@
 
 
   Proszę~się jednak nie poddawać i~pamiętać, że~„każdy program ma otwarty
-  kod, jeśli potrafisz wykonać jego inżynierię odwrotną” (org.
+  kod, jeśli potrafisz przeprowadzić jego inżynierię wsteczną” (ang.
   \textit{everything is open source, if you can reverse enginerring it},
-  parencite{???}) ;).
+  \parencite{???}) ;).
 
   \vspace{1.5em}
 
@@ -1972,7 +1972,7 @@
 
   W~1983 roku firma Acorn Computers Ltd. zaczyna pracę nad procesorem który
   zostanie nazwany \alert{\textsc{arm}} (od ang.~\textit{Acorn \textsc{risc}
-    Machine}). Jednym z~wyników tego projektu jest opracowanie zbiru
+    Machine}). Jednym z~wyników tego projektu jest opracowanie zbioru
   instrukcji architektury \textsc{risc} (ang.~\textit{Reduced Instruction
     Set Computing}). Pierwszym wyprodukowanym przed nich procesorem jest
   32-bitowy \textsc{arm1}. Dla tych procesorów utworzono język asembler

@@ -825,22 +825,17 @@ eprint=true,
   \hphantom{aaaa} \texttt{addi a7, zero, 64} \\
   \hphantom{aaaa} \texttt{addi a0, zero, 1} \\
   \hphantom{aaaa} \texttt{la a1, helloworld} \\
-
-
-
-  \texttt{org 0x100} \\
+  \hphantom{aaaa} \texttt{addi a2, zero, 14} \\
+  \hphantom{aaaa} \texttt{ecall}
   \vspace{0.8em}
 
-  \texttt{mov dx, msg} \\
-  \texttt{mov ah, 9} \\
-  \texttt{int 0x21} \\
+  \hphantom{aaaa} \texttt{a7, zero, 93} \\
+  \hphantom{aaaa} \texttt{a0, zero, 13} \\
+  \hphantom{aaaa} \texttt{ecall}
   \vspace{0.8em}
 
-  \texttt{mov ah, 0x4c} \\
-  \texttt{int 0x21} \\
-  \vspace{0.8em}
-
-  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
+  \texttt{helloworld:} \\
+  \hphantom{aaaa} \texttt{.ascii "Hello, World!\textbackslash n"}
 
 \end{frame}
 % ##################
