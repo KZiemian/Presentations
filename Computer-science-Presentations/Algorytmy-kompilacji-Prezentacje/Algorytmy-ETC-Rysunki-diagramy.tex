@@ -451,56 +451,199 @@
 
 
 
+
 % ##################
 \begin{frame}
-  \frametitle{Jeśli myślisz, że~jesteś dobrym programistą???}
-
-
-  Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
-  Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
-  i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
-  mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
-  że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
-
-  \tikz{ \node[bit node] (bit 0 power) at (0,0) {1}; }
-  \tikz{ \node[bit node] (bit 0 power) at (0,0) {0}; }
-
-  \begin{tikzpicture}
-    [node distance=\bitsDistance]
-
-    \node[bit node] (bit 0 power) at (0,0) {$1$};
-
-    \node[bit node,left=of bit 0 power] (bit 1 power) {$0$};
-
-    \node[bit node,right=of bit 0 power] {$.$};
-
-    \node[special bit node,left=of bit 1 power] (bit 2 power) {$1$};
-
-    \node[scale=\nodeScaleBigger,left=of bit 2 power] {$2 =$};
-
-  \end{tikzpicture}
+  \frametitle{??}
 
 
   \begin{figure}
 
-    \begin{tikzpicture}
+    \begin{tikzpicture}[node distance=0.5]
 
-      \node[diagram block] (Man) at (0,0) {Człowiek};
+      \node[diagram rectangle block] (Source code) at (0,0) {Kod źródłowy};
 
-      \node[diagram rectangle block] (Source code) at (3.8,0)
-      {Kod źródłowy w~języku~C};
+      \node[diagram block,below=of Source code] (Compiler) {Kompilator};
 
-      \draw[thick diagram arrow] (Man) -- (Source code);
+      \draw[thick diagram arrow] (Source code) -- (Compiler);
+
+
+
+      \node[diagram rectangle block,below=of Compiler] (Target program)
+      {Program wynikowy};
+
+      \draw[thick diagram arrow] (Compiler) -- (Target program);
+
+
+
+      \node[below=0.1em of Target program] {a) Faza kompilacji};
+
+
+
+
+
+
+      \begin{scope}[xshift=5cm]
+
+
+        \node[diagram rectangle block] (Input) at (0,0) {Wejście};
+
+        \node[diagram block,below=of Input] (Running target program)
+        {Uruchomiony program wynikowy};
+
+        \draw[thick diagram arrow] (Input) -- (Running target program);
+
+
+
+        \node[diagram rectangle block,below=of Running target program]
+        (Results) {Wyniki działania programu};
+
+        \draw[thick diagram arrow] (Running target program) --
+        (Results);
+
+
+
+        \node[below=0.1em of Results] {b) Faza wykonania};
+
+      \end{scope}
 
     \end{tikzpicture}
 
-    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
+    \caption{Ilustracja podziału na fazę kompilacji i~wykonania
+      danego programu}
 
 
   \end{figure}
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Interpreter}
+
+
+  \textbf{Interpreter} to translator, który tłumaczy polecenia zawarte
+  w~kodzie źródłowym na operacje kodu wynikowego i~natychmiast je wykonuje.
+  Interpreter \alert{nie} tworzy obiektu zawierającego program wynikowy.
+  Wszystkie rezultaty jego działania idą bezpośrednio na procesor i~tam
+  znikają (zostają nadpisane przez nadchodzące dane).
+
+
+
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] (Source code) at (0,0) {Kod źródłowy};
+
+      \node[diagram block,right=of Source code] (Interpreter)
+      {Interpreter};
+
+      \draw[thick diagram arrow] (Source code) -- (Interpreter);
+
+
+
+      \node[diagram rectangle block,above=1.5em of Interpreter] (Input)
+      {Wejście};
+
+      \draw[thick diagram arrow] (Input) -- (Interpreter);
+
+
+
+      \node[diagram rectangle block,right=of Interpreter] (Results)
+      {Wynik działania programu};
+
+      \draw[thick diagram arrow] (Interpreter) -- (Results);
+
+      %   \node[diagram block,below=of Input] (Running target program)
+      %   {Uruchomiony program wynikowy};
+
+      %   \draw[thick diagram arrow] (Input) -- (Running target program);
+
+
+
+      %   \node[diagram rectangle block,below=of Running target program]
+      %   (Results) {Wyniki działania programu};
+
+      %   \draw[thick diagram arrow] (Running target program) --
+      %   (Results);
+
+
+
+      %   \node[below=0.1em of Results] {b) Faza wykonania};
+
+      % \end{scope}
+
+    \end{tikzpicture}
+
+    \caption{Ilustracja działania interpretera}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jeśli myślisz, że~jesteś dobrym programistą???}
+
+
+%   Dzisiaj gry często tworzy~się środowiskach takich jak Unreal Engine,
+%   Unity czy Godot, nie zaś pisze kod źródłowy od zera. Unreal Engine
+%   i~Godot są napisane w~języku C++, Unity w~języku C\#. W~tym momencie nie
+%   mam jak sprawdzić, w~czym został napisany „Hollow Knight” więc przyjmijmy,
+%   że~języku~C++. Dlaczego jednak poniższy diagram jest błędny?
+
+%   \tikz{ \node[bit node] (bit 0 power) at (0,0) {1}; }
+%   \tikz{ \node[bit node] (bit 0 power) at (0,0) {0}; }
+
+%   \begin{tikzpicture}
+%     [node distance=\bitsDistance]
+
+%     \node[bit node] (bit 0 power) at (0,0) {$1$};
+
+%     \node[bit node,left=of bit 0 power] (bit 1 power) {$0$};
+
+%     \node[bit node,right=of bit 0 power] {$.$};
+
+%     \node[special bit node,left=of bit 1 power] (bit 2 power) {$1$};
+
+%     \node[scale=\nodeScaleBigger,left=of bit 2 power] {$2 =$};
+
+%   \end{tikzpicture}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \node[diagram block] (Man) at (0,0) {Człowiek};
+
+%       \node[diagram rectangle block] (Source code) at (3.8,0)
+%       {Kod źródłowy w~języku~C};
+
+%       \draw[thick diagram arrow] (Man) -- (Source code);
+
+%     \end{tikzpicture}
+
+%     \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
 
 
 
@@ -520,7 +663,19 @@
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Kompilator}
 
+
+  \textbf{Kompilator} to translator, który analizuje kod źródłowy programu
+  jako całość i~tworzy odpowiedni program wykonywalny w~języku asemblera,
+  jako rezultat swojego działania. Typowe języki kompilowane to C i~C++.
+
+  \textbf{Interpreter} to translator, który
+
+\end{frame}
+% ##################
 
 
 
