@@ -1530,10 +1530,11 @@ eprint=true,
 
   \textbf{Kompilator} to translator, który analizuje program w~języku
   źródłowym i~tworzy obiekt zawierający program w~języku wynikowym.
-  Kompilator dokonuje \alert{tylko} przekładu z~jednego języka na drugi,
-  \alert{nie} uruchamia jednak tego programu. Używając prostego
-  przykładu, kompilator przetłumaczy „Eat the soup.” na „Zjedz zupę.”, ale
-  nie mówi nikomu, że~ma zjeść zupę.
+  Kompilator \alert{tylko} przekłada kod z~jednego języka na drugi
+  i~zapisuje wynik w~odpowiednim pliku, ale \alert{nie} uruchamia
+  otrzymanego programu. Używając prostego przykładu, kompilator
+  przetłumaczy „Eat the soup.” na „Zjedz zupę.”, ale nie powie nikomu,
+  że~ma zjeść zupę.
 
 \end{frame}
 % ##################
@@ -1701,6 +1702,9 @@ eprint=true,
   Interpreter \alert{nie} tworzy obiektu zawierającego program wynikowy.
   Wszystkie rezultaty jego działania idą bezpośrednio na procesor i~tam
   znikają (zostają nadpisane przez nadchodzące dane).
+
+  Używając poprzedniego przykładu, gdy interpreter dostaje string „Eat
+  soup.”, natychmiast mówi komuś „Zjedz zupę.” i~ta osoba zaczyna jeść.
 
 
 

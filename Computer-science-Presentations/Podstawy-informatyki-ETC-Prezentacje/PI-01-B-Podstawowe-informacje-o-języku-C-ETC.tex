@@ -670,7 +670,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
+  \frametitle{????}
 
 
   Jeśli ktoś chce rozszerzyć swoją wiedzę o~jeden z~wymienionych wcześniej
@@ -729,9 +729,10 @@ eprint=true,
   wyprodukowała procesor, bowiem asembler jest zdefiniowany przez to jak są
   „podpięte kable” w~rzeczonym procesorze.
 
-  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz jednemu programowi
-  napisanemu w~typach języka asembler \textsc{arm}~32, AArch64, x86/Intel,
-  \textsc{risc-v} i~\textsc{nasm} oraz językach C i~Python.
+  Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz programowi
+  „Hello, World!” napisanemu w~dialektach asemblera \textsc{arm}~32,
+  AArch64, \textsc{risc-v}, x86/Intel i~\textsc{nasm} oraz językach~C
+  i~Python.
 
 \end{frame}
 % ##################
@@ -956,28 +957,6 @@ eprint=true,
   Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
   a~Python prostszy od~C.
 
-  \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
-  asemblera sam w~sobie nas zupełnie nie interesuje?
-
-  Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~asemblerze,
-  to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
-
-  Może zadają sobie Państwo pytanie. Czemu w~takim wypadku ten kurs jest
-  prowadzony w~C, a~nie w~Pythonie? Gdybym ja miał na to wpływ, to może
-  byłby prowadzony w~Pythonie, ale ja o~tym nie decyduje.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Problemy z~asemblerem}
-
-
   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
   znajdzie~się człowieka, który lubi w~nim pisać, to unika~się jak tylko
@@ -988,6 +967,30 @@ eprint=true,
   pisząc w~asemblerze, a~pomyłki na jego poziomie są szczególnie
   niebezpieczne. Niestety, wyjaśnienie czemu tak jest, to temat na osobny
   wykład. W~skrócie, błędy w~asemblerze to raj dla hakerów.
+
+  \alert{Ważne.} Czy od tego momentu kursu możemy uznać, że~język
+  asemblera sam w~sobie nas zupełnie nie interesuje?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak sobie z~tym poradzić?}
+
+
+  Jeśli jednak ktoś z~Państwa chce~się dowiedzieć więcej o~asemblerze,
+  to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
+  Wtedy służę Państwu całą moją wiedzą.
+
+  Może zadają sobie Państwo następujące pytanie. Jeśli Python jest prostszy
+  od~C, to czemu kurs \textit{Podstawy informatyki w~języku~C} jest
+  prowadzony w~C, a~nie w~Pythonie? Gdybym ja miał na to wpływ, to może
+  byłby prowadzony w~Pythonie, ale nie ja o~tym decyduje.
 
   Jak rozwiązujemy ten problem dziś? Tworzymy język taki jak~C, piszemy
   w~nich programy, a~następnie odpowiedni program zwany
@@ -1009,34 +1012,24 @@ eprint=true,
 
     \begin{tikzpicture}[node distance=0.7]
 
-      \path (0,0) -- (-3.5,0);
-
-
-
       \node[diagram rectangle block] (C source code) at (0,0)
       {Kod programu w~języku C};
 
-      \node[diagram block,below=of C source code] (Compiler) {Kompilator};
-
-      \node[color=jNormalTextFGColor,right=of Compiler] (Magic) {Magia};
-
-
-      \draw[pointing arrow orange] (Magic) -- (Compiler);
-
+      \node[diagram block,below=of C source code] (Compiler)
+      {Magia (kompilator)};
 
       \draw[thick diagram arrow] (C source code) -- (Compiler);
+
 
 
       \node[diagram rectangle block,below=of Compiler] (Assembly code)
       {Kod programu w~asemblerze};
 
-
       \draw[thick diagram arrow] (Compiler) -- (Assembly code);
 
     \end{tikzpicture}
 
-    \caption{Typowy sposób tworzenia programu w~oparciu o~kod źródłowy
-      napisany w~języku~C.}
+    \caption{Ilustracja działania kompilatora~;).}
 
 
   \end{figure}
@@ -1053,9 +1046,15 @@ eprint=true,
   \frametitle{Program „Hello, World!” skompilowany z~C\ldots}
 
 
+  Kompilator tłumaczy kod w~języku źródłowym, w~naszym przypadku jest nim
+  język~C, na kod w~języku wynikowym, u~nas jest to odpowiedni dialekt
+  asemblera. Kompilator którego będziemy używać, to~\texttt{gcc}, akronim
+  od~angielskiego \textit{\textsc{gnu} Compiler Collection}, „zbiór
+  kompilatorów projektu \textsc{gnu}”.
+
   Żeby zobaczyć jaki kod w~języku asembler tworzy kompilator \texttt{gcc}
-  należy uruchomić komendę: \\
-  \texttt{\$ gcc -S program.c -o program-w-jezyku-asembler.asm}
+  należy wywołać polecenie: \\
+  \texttt{\$ gcc -S program.c -o program-w-jezyku-asemblera.asm}
 
   Kod języka asemblera jaki zostanie utworzony zależy od miliarda rzeczy
   (typu procesora, wersji kompilatora, etc.). W~każdym razie na moim
@@ -1068,9 +1067,10 @@ eprint=true,
 
 
 
+
 % ##################
 \begin{frame}
-  \frametitle{Program „Hello, World!” skompilowany z~C\ldots}
+  \frametitle{Z~C do~asemblera, część~I}
 
 
   \hphantom{aaaaa} \texttt{.file} \hphantom{aaa}
@@ -1100,7 +1100,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Program „Hello, World!” skompilowany z~C\ldots}
+  \frametitle{Z~C do~asemblera, część~II}
 
 
   \hphantom{aaaaa} \texttt{movq} \hphantom{aaa} \texttt{\%rsp, \%rbp} \\
@@ -1132,7 +1132,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Program „Hello, World!” skompilowany z~C\ldots}
+  \frametitle{Z~C do~asemblera, część~III}
 
 
   \hphantom{aaaaa} \texttt{.align 8} \\
@@ -1156,6 +1156,353 @@ eprint=true,
 
 
 
+
+
+% ##################
+\begin{frame}
+  \frametitle{Program „Hello, World!” skompilowany z~C\ldots}
+
+
+  \alert{Ważne.} Czy od tego momentu, możemy przyjąć, że~nie interesuje
+  nas jak dokładnie kompilator działa?
+
+  Jeśli jednak ktoś jest bardziej zainteresowany tą tematyką, to po
+  zajęciach służę całą moją wiedzą.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Fazy uruchamiania programu w~języku~C}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  By stworzyć program w~języku~C musimy przejść trzy fazy.
+
+  \begin{enumerate}
+
+  \item Faza pisania programu.
+
+  \item Faza kompilacji.
+
+  \item Faza wykonywania.
+
+  \end{enumerate}
+
+
+
+  \alert{Faza pisania programu.} Jest dość oczywista. Otwieramy plik
+  z~kodem źródłowym poleceniem: \\
+  \texttt{\$ gedit helloWorld.c \&} \\
+  wpisujemy w~nim \\
+  \texttt{\#include <stdio.h>} \\
+  \texttt{int main() \{ } \\
+  \hphantom{aaaa} \texttt{printf("Hello, World!\textbackslash n");} \\
+  \hphantom{aaaa} \texttt{return 0;} \\
+  \texttt{ \} } \\
+  Następnie zapisujemy plik na~dysku (\texttt{Ctrl-s}). Koniec.
+
+
+
+  % \begin{figure}
+
+  %   \label{fig:Translator-04}
+
+  %   \begin{tikzpicture}
+
+  %     \node[diagram rectangle block] (Source program) at (0,0)
+  %     {Program źródłowy (język~C)};
+
+  %     \node[diagram block,right=of Source program] (Compiler)
+  %     {Kompilator};
+
+  %     \draw[thick diagram arrow] (Source program) -- (Compiler);
+
+
+
+  %     \node[diagram rectangle block,right=of Compiler]
+  %     (Target program)
+  %     {Program wynikowy (dia. asemblera)};
+
+  %     \draw[thick diagram arrow] (Translator) -- (Target program);
+
+  %   \end{tikzpicture}
+
+  %   \caption{Translator jako czarna skrzynka}
+
+
+  % \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Faza kompilacji}
+
+
+  \alert{Faza kompilacji.} Kompilator analizuj niezrozumiały dla komputera
+  kod w~języku~C, następnie tłumaczy go na zrozumiał dla danej maszyny kod
+  w~odpowiedni dialekcie asemblera. Wynik tego tłumaczenia jest zapisywany
+  w~osobnym pliku.
+
+  Kompilator \alert{tylko} przekłada kod z~jednego języka na drugi
+  i~zapisuje wynik w~odpowiednim pliku, ale \alert{nie} uruchamia
+  otrzymanego programu. Używając prostego przykładu, kompilator
+  przetłumaczy „Eat the soup.” na „Zjedz zupę.”, ale nie powie nikomu,
+  że~ma zjeść zupę. Kompilator dokonuje \alert{tylko} przekładu z~jednego
+  języka na drugi i~jego zapisu do pliku, \alert{nie} uruchamia jednak tego
+  programu. Używając prostego przykładu, kompilator przetłumaczy „Eat the
+  soup.” na „Zjedz zupę.”, ale nie powie nikomu, że~ma zjeść zupę.
+
+  % Przez wywołanie polecenia \\
+  % \texttt{\$ gcc --std=c99 -pedantic helloWorld.c -o outProg} \\
+  % wykonujemy fazę kompilacji kodu źródłowego \texttt{helloWorld.c}
+  % dostając w~rezultacie program wynikowy \texttt{outProg}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak to wygląda w~praktyce?}
+
+
+  Przez wywołanie polecenia \\
+  \texttt{\$ gcc --std=c99 -pedantic helloWorld.c -o outProg} \\
+  wykonujemy fazę kompilacji kodu źródłowego \texttt{helloWorld.c}
+  dostając w~rezultacie program wynikowy \texttt{outProg}.
+
+  By bardziej to zobrazować wywołajmy teraz polecenie \\
+  \texttt{\$ file helloWorld.c} \\
+  Zakładając, że~na dysku istnieje już plik \texttt{outProg}, wprowadźmy
+  podobne do poprzedniego polecenie: \\
+  \texttt{\$ file outProg} \\
+  Można się czuć zagubionym wśród \textsc{elf}ów, ciast (\textsc{pie})
+  i~tym podobnych tworów, ale da~się z~tym żyć.
+
+  % \alert{Faza wykonania.} Otrzymany program uruchamiamy wywołując
+  % polecenie \\
+  % \texttt{\$ ./outProg}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak to wygląda w~praktyce?}
+
+
+  % Przez wywołanie polecenia \\
+  % \texttt{\$ gcc --std=c99 -pedantic helloWorld.c -o outProg} \\
+  % wykonujemy fazę kompilacji kodu źródłowego \texttt{helloWorld.c}
+  % dostając w~rezultacie program wynikowy \texttt{outProg}.
+
+  % By bardziej to zobrazować wywołajmy teraz polecenie \\
+  % \texttt{\$ file helloWorld.c} \\
+  % Zakładając, że~na dysku istnieje już plik \texttt{outProg}, wprowadźmy
+  % podobne do poprzedniego polecenie: \\
+  % \texttt{\$ file outProg} \\
+  % Można się czuć zagubionym wśród \textsc{elf}ów, ciast (\textsc{pie})
+  % i~tym podobnych tworów, ale da~się z~tym żyć.
+
+  \alert{Faza wykonania.} Wkraczamy w~nią uruchamiając otrzymany w~fazie
+  kompilacji program \texttt{outProg} za pomocą polecenia \\
+  \texttt{\$ ./outProg} \\
+  W~jego rezultacie system operacyjny przekierowuje kod asemblera
+  zawarty w~pliku \texttt{outProg} na procesor, który następnie go wykonuje
+  i~w~rezultacie na ekranie widzimy napis „Hello, World!”.
+
+  Jeśli komuś brak jeszcze mocnych wrażeń albo chce mocno odlecieć, niech
+  wywoła polecenie \\
+  \texttt{\$ xxd outProg outProg\_hex.txt} \\
+  a~następnie otworzy plik \texttt{outProg\_hex.txt} wywołując \\
+  \texttt{\$ gedit outProg\_hex.txt}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Faza kompilacji i~faza wykonania}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.5]
+
+      \node[diagram rectangle block] (Source code) at (0,0) {Kod źródłowy};
+
+      \node[diagram block,below=of Source code] (Compiler) {Kompilator};
+
+      \draw[thick diagram arrow] (Source code) -- (Compiler);
+
+
+
+      \node[diagram rectangle block,below=of Compiler] (Target program)
+      {Program wynikowy};
+
+      \draw[thick diagram arrow] (Compiler) -- (Target program);
+
+
+
+      \node[below=0.1em of Target program] {a) Faza kompilacji};
+
+
+
+
+
+
+      \begin{scope}[xshift=5cm]
+
+
+        \node[diagram rectangle block] (Input) at (0,0) {Wejście};
+
+        \node[diagram block,below=of Input] (Running target program)
+        {Uruchomiony program wynikowy};
+
+        \draw[thick diagram arrow] (Input) -- (Running target program);
+
+
+
+        \node[diagram rectangle block,below=of Running target program]
+        (Results) {Wyniki działania programu};
+
+        \draw[thick diagram arrow] (Running target program) --
+        (Results);
+
+
+
+        \node[below=0.1em of Results] {b) Faza wykonania};
+
+      \end{scope}
+
+    \end{tikzpicture}
+
+    \caption{Ilustracja podziału na fazę kompilacji i~wykonania programu}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{W~naszym wypadku}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.5]
+
+      \node[diagram rectangle block] (Source code) at (0,0)
+      {\texttt{helloWorld.c}};
+
+      \node[diagram block,below=of Source code] (Compiler)
+      {Kompilator \texttt{gcc}};
+
+      \draw[thick diagram arrow] (Source code) -- (Compiler);
+
+
+
+      \node[diagram rectangle block,below=of Compiler] (Target program)
+      {\texttt{outProg}};
+
+      \draw[thick diagram arrow] (Compiler) -- (Target program);
+
+
+
+      \node[below=0.1em of Target program] {a) Faza kompilacji};
+
+
+
+
+
+
+      \begin{scope}[xshift=5cm]
+
+
+        \node[diagram rectangle block] (Input) at (0,0)
+        {\texttt{outProg}};
+
+        \node[diagram block,below=of Input] (Running target program)
+        {\texttt{\$ ./outProg}};
+
+        \draw[thick diagram arrow] (Input) -- (Running target program);
+
+
+
+        \node[diagram rectangle block,below=of Running target program]
+        (Results) {Hello, World!};
+
+        \draw[thick diagram arrow] (Running target program) --
+        (Results);
+
+
+
+        \node[below=0.1em of Results] {b) Faza wykonania};
+
+      \end{scope}
+
+    \end{tikzpicture}
+
+    \caption{Kompilacja i~wykonanie programu „Hello, World!”.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Jakie są inne języki programowania?}
+% ######################################
 
 
 % ##################
@@ -1235,15 +1582,7 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Uruchamianie komputera z~systemem Pentium}
 
-
-
-
-% \end{frame}
-% % ##################
 
 
 
