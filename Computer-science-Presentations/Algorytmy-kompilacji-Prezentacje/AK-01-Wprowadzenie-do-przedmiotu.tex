@@ -1099,7 +1099,8 @@ eprint=true,
 
   Komputer jako taki nie rozumie języka~C\#, więc nie jest w~stanie
   uruchomić gry napisanej w~takim języku. Aby ją uruchomić, translator
-  musi najpierw przetłumaczyć ją na język asemblera.
+  musi najpierw przetłumaczyć ją na język asemblera. To co kupuje nabywając
+  \textit{Hollow Knight}, to jest właśnie kod w~języku asemblera.
 
 
 
@@ -1159,7 +1160,7 @@ eprint=true,
   \frametitle{Czy to znaczy\ldots}
 
 
-  Mogą~się Państwu nasunąć taka myśl.
+  Może~się Państwu nasunąć taka myśl.
 
   „Ja coś słyszałem, że~istnieje oprogramowanie o~otwarty kodzie, jak
   system operacyjny GNU/Linux i~o~zamkniętym kodzie, takie jak system
@@ -1171,9 +1172,9 @@ eprint=true,
   Po co więc całe to rozróżnienie na kod otwarty i~zamknięty?”
 
   Wszystko to prawda. Haczyk tkwi w~stwierdzeniu \alert{„zrozumiem asemblera
-    wewnątrz niego”}. Zrozumienie działania kodu źródłowego w~języku~C,
-  czy~Python jest często nieznośnie trudne, a~język asembler czyni to
-  zadanie jeszcze mniej przyjemnym.
+    wewnątrz [tego pliku]”}. Zrozumienie działania kodu źródłowego
+  w~języku~C, czy~Python jest często nieznośnie trudne, a~język asembler
+  czyni to zadanie jeszcze mniej przyjemnym.
 
 \end{frame}
 % ##################
@@ -1674,11 +1675,13 @@ eprint=true,
   \frametitle{Jak to wygląda w~praktyce?}
 
 
-  Załóżmy, że~pracuję na komputerze z~systemem operacyjny GNU/Linux i~mam
-  kod źródłowy w~języku~C o~nazwie \texttt{helloWorld.c}. Polecenie \\
+  Załóżmy, że~pracuję na komputerze z~systemem operacyjny GNU/Linux
+  wyposażonym w~standardowy zespół narzędzi programistycznym oraz plik
+  z~kodem źródłowy w~języku~C o~nazwie \texttt{helloWorld.c}. Fazę
+  kompilacji kodu źródłowego \texttt{helloWorld.c} rozpoczynamy wywołując
+  polecenie \\
   \texttt{\$ gcc --std=c99 -pedantic helloWorld.c -o outProg} \\
-  wykonuje fazę kompilacji kodu źródłowego \texttt{helloWorld.c}
-  dając w~rezultacie program wynikowy \texttt{outProg}.
+  W~rezultacie dostajemy program wynikowy \texttt{outProg}.
 
   Faza wykonania polega na wywołaniu polecenia \\
   \texttt{\$ ./outProg} \\
@@ -1703,8 +1706,8 @@ eprint=true,
   Wszystkie rezultaty jego działania idą bezpośrednio na procesor i~tam
   znikają (zostają nadpisane przez nadchodzące dane).
 
-  Używając poprzedniego przykładu, gdy interpreter dostaje string „Eat
-  soup.”, natychmiast mówi komuś „Zjedz zupę.” i~ta osoba zaczyna jeść.
+  % Używając poprzedniego przykładu, gdy interpreter dostaje string „Eat
+  % soup.”, natychmiast mówi komuś „Zjedz zupę.” i~ta osoba zaczyna jeść.
 
 
 
@@ -1749,9 +1752,91 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Interpreter}
+
+
+  % \textbf{Interpreter} to translator, który tłumaczy polecenia zawarte
+  % w~kodzie źródłowym na operacje kodu wynikowego i~natychmiast je wykonuje.
+  % Interpreter \alert{nie} tworzy obiektu zawierającego program wynikowy.
+  % Wszystkie rezultaty jego działania idą bezpośrednio na procesor i~tam
+  % znikają (zostają nadpisane przez nadchodzące dane).
+
+  Wracając do poprzedniego przykładu, gdy interpreter dostaje string „Eat
+  soup.”, natychmiast mówi komuś „Zjedz zupę.” i~ta osoba zaczyna ją jeść.
+
+
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \node[diagram rectangle block] (Source code) at (0,0) {Kod źródłowy};
+
+      \node[diagram block,right=of Source code] (Interpreter)
+      {Interpreter};
+
+      \draw[thick diagram arrow] (Source code) -- (Interpreter);
+
+
+
+      \node[diagram rectangle block,above=1.5em of Interpreter] (Input)
+      {Wejście};
+
+      \draw[thick diagram arrow] (Input) -- (Interpreter);
+
+
+
+      \node[diagram rectangle block,right=of Interpreter] (Results)
+      {Wynik działania programu};
+
+      \draw[thick diagram arrow] (Interpreter) -- (Results);
+
+    \end{tikzpicture}
+
+    \caption{Ilustracja działania interpretera}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Cechy kompilatorów i~interpreterów}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kompilacja vs interpretacja programu}
+
+
+  Zacznijmy od rozpatrzenia następującego kodu.
+
+\end{frame}
+% ##################
+
+
+
+
+
 % % ##################
 % \begin{frame}
-%   \frametitle{}
+%   \frametitle{Vertex attributes}
 
 
 
@@ -1763,47 +1848,70 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{?????}
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
 
 
-  Dwa najważniejsze dzisiaj zbiory instrukcji architektury to
-  \alert{\textsc{cisc}} i~\alert{\textsc{risc}}.
 
-  Akronim \textsc{cisc} pochodzi od angielskiego \textit{Complex
-    Instruction Set Computing}, czyli „obliczenia za pomocą zbioru
-  złożonych instrukcji”. Architektura ta charakteryzuje~się dużą ilością
-  instrukcji wykonujących złożone (stąd nazwa) operacje, które wykonanie
-  może zajmować wiele cykli procesora.
 
-  Natomiast nazwa \textsc{risc} jest od \textit{Reduced Instruction Set
-    Computing}, czyli „obliczenia za pomocą zbioru zredukowanych
-  instrukcji”. W~architekturze tej dominują małe instrukcje, które są
-  wykonywane w~jednym lub kilku cyklach procesora. Nazwa wzięła~się
-  stąd, że~instrukcje w~niej stosowane, miały~się być zredukowaną wersją
-  instrukcji architektury \textsc{cisc}.
-
-\end{frame}
-% ##################
+% \end{frame}
+% % ##################
 
 
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{????}
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
 
 
-  W~praktyce trudno wskazać procesor który byłby czystą realizacją
-  \textsc{cisc} albo \textsc{risc}. Jednak w~dobrym przybliżeniu procesor
-  x86/Intel to \textsc{cisc}, zaś \textsc{arm} to \textsc{risc}. Od~2021
-  roku dużo szumu jest wokół architektury \textsc{risc-v}, ale to temat na
-  inne zajęcia.
 
-\end{frame}
-% ##################
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
 
 
 
@@ -1993,84 +2101,7 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Vertex attributes}
 
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-
-% \end{frame}
-% % ##################
 
 
 
@@ -2341,9 +2372,9 @@ eprint=true,
 
 
 
-% % ######################################
-% \appendix
-% % ######################################
+% ######################################
+\appendix
+% ######################################
 
 
 
@@ -2406,14 +2437,14 @@ eprint=true,
 
   Zbiorczą nazwą stosowną dla 64-bitowych asemblerów \textsc{amd} i~Intela
   jest \alert{x86-64} lub \alert{x64}. Niektórzy używają również nazwy
-  \alert{\textsc{amd}64}.
+  \alert{\textsc{amd}64}, a~także paru innych.
 
   W~1983 roku firma Acorn Computers Ltd. zaczyna pracę nad procesorem który
   zostanie nazwany \alert{\textsc{arm}} (od ang.~\textit{Acorn \textsc{risc}
     Machine}). Jednym z~wyników tego projektu jest opracowanie zbioru
   instrukcji architektury \textsc{risc} (ang.~\textit{Reduced Instruction
     Set Computing}). Pierwszym wyprodukowanym przed nich procesorem jest
-  32-bitowy \textsc{arm1}. Dla tych procesorów utworzono język asembler
+  32-bitowy \textsc{arm1}. Dla tych procesorów utworzono język asemblera
   \alert{\textsc{arm}}.
 
   W~1990 roku z~Acorn Computers Ltd. wydzieliła~się firma znana dziś jako
@@ -2424,6 +2455,49 @@ eprint=true,
 
 
 
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Dwa najważniejsze dzisiaj zbiory instrukcji architektury to
+  \alert{\textsc{cisc}} i~\alert{\textsc{risc}}.
+
+  Akronim \textsc{cisc} pochodzi od angielskiego \textit{Complex
+    Instruction Set Computing}, czyli „obliczenia za pomocą zbioru
+  złożonych instrukcji”. Architektura ta charakteryzuje~się dużą ilością
+  instrukcji wykonujących złożone (stąd nazwa) operacje, które wykonanie
+  może zajmować wiele cykli procesora.
+
+  Natomiast nazwa \textsc{risc} jest od \textit{Reduced Instruction Set
+    Computing}, czyli „obliczenia za pomocą zbioru zredukowanych
+  instrukcji”. W~architekturze tej dominują małe instrukcje, które są
+  wykonywane w~jednym lub kilku cyklach procesora. Nazwa wzięła~się
+  stąd, że~instrukcje w~niej stosowane, miały~się być zredukowaną wersją
+  instrukcji architektury \textsc{cisc}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  W~praktyce trudno wskazać procesor który byłby czystą realizacją
+  \textsc{cisc} albo \textsc{risc}. Jednak w~dobrym przybliżeniu procesor
+  x86/Intel to \textsc{cisc}, zaś \textsc{arm} to \textsc{risc}. Od~2021
+  roku dużo szumu jest wokół architektury \textsc{risc-v}, ale to temat na
+  inne zajęcia.
+
+\end{frame}
+% ##################
 
 
 % ##################
