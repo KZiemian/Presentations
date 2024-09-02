@@ -1,0 +1,1003 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align text to the top of the frame
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in directory
+% "preambule"
+% ------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Programowanie i~ChatGPT}
+\subtitle{I~inne podobne sprawy}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 12k+,
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Table of contents}
+
+
+%   \tableofcontents
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{?????}
+% % ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  GPT \textit{Generative Pre-tranined Transformer} generatywny wstępnie
+  wytrenowany transformer.
+
+  LLM \textit{Large Language Model} duży model językowy.
+
+  NLP \textit{Natural Language Processing}, przetwarzanie języka
+  naturalnego.
+
+  DL \textit{deep learning}, głębokie uczenie.
+
+  Sztuczne sieci neuronowe.
+
+  \textit{Prompt} - monit.
+
+  \textit{$n$-gram}, $n$-gram
+
+  RNN \textit{Recurrent Neural Networ} rekurencyjna (powracająca? recurrent)
+  sieć neuronowa.
+
+  LSTM \textit{Long Short-Term Memory} długa pamięć krótkokresowa.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Mechanizm uwagi, uwaga krzyżowa i~samouwaga.
+
+  GPU \textit{Graphics Processing Unit},
+
+  osadzenia
+
+  BERT \textit{Bilateral Encoder Representations from Transformers}
+  dwustronne reprezentacje kodera z~transformerów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Graphics pipeline (OpenGL)}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{About rendering pipeline on
+%     \href{https://www.khronos.org/}{https://www.khronos.org/}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Basic concepts of~computer~graphics}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{A sample scene}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering without perspective}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering with perspective}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Another sample scene}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering without perspective}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rendering with perspective}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data structures}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{From vertices to fragments}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Each model is based on  a set of vertices}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Each model is based on  a set of vertices}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex attributes}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex attributes}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library (deprecated since ver.~3.1)}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Texturing and blending}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Communication between CPU and GPU}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Data stored in the video memory}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Graphics pipeline (rendering pipeline)}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Vertex transformations (OpenGL nomenclature)}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}[label=Przestrzen-uklad-wspolrzednych-1]
+%   \frametitle{Spaces --~coordinate systems}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Spaces --~coordinate systems}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Fragment operations}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Basic concepts of computer graphics}
+
+
+%   \textbf{Fragment shader} --~a program that runs once for each fragment\\ of the rendered primitive.
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Double buffering} --~a drawing technique of using
+%   two memory buffers for image.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Aliasing} --~a loss of information related to the finite
+%   resolution\\ of image reproduction.
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{Anti-aliasing} --~a rendering technique with smoothing
+%   edges \\(we distinguish, among others: \textsc{fsaa}, \textsc{msaa},
+%   \textsc{mfaa}, \textsc{csaa}, \textsc{cfaa}, \textsc{mlaa},
+%   \textsc{smaa}, \textsc{hraa}, \textsc{fxaa}, \textsc{txaa},
+%   \textsc{taa}, \textsc{ssaa}).
+
+
+%   \vspace{0.5em}
+
+
+%   \textbf{View frustum} --~a visible
+%   area of space.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Links}
+
+
+%   [1] \colorhref{www.blender.org}{www.blender.org}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ##################
+% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \SectionSlideWithPicture{Terminological notes}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-1]
+%   \frametitle{The concept of space. Affine and vector space}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-2]
+%   \frametitle{The concept of space. Space and coordinate system}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-3]
+%   \frametitle{The concept of space. Space and coordinate system}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-1]
+%   \frametitle{Coordinate systems in computer graphics}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-2]
+%   \frametitle{Coordinate systems in computer graphics}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-3]
+%   \frametitle{Coordinate systems in computer graphics}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+
+% End of the document
+\end{document}
