@@ -17,7 +17,7 @@
 *.blg
 *.run.xml
 
-# ignore all picture files
+# ignore all picture files of these types
 #*.jpg
 #*.jpeg
 #*.png
