@@ -48,11 +48,11 @@
   \iffontsavailable{TeX Gyre Pagella}{
     \setmainfont{TeX Gyre Pagella}
     \usefonttheme{serif}
-    \PackageWarning{beamerthemejagiellonian}{%
+    \PackageWarning{beamerthememetropolis}{%
       LuaLaTeX%
     }%
   }{%
-    \PackageWarning{beamerthemejagiellonian}{%
+    \PackageWarning{beamerthememetropolis}{%
       Could not find \TeX{} Gyre Pagella fonts%
     }%
   }%
@@ -63,13 +63,13 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{mathpazo}
 \usefonttheme{serif}
-\PackageWarning{beamerthemejagiellonian}{%
+\PackageWarning{beamerthememetropolis}{%
   Kod trzeba poprawić%
 }%
 \else
-\PackageWarning{beamerthemejagiellonian}{%
+\PackageWarning{beamerthememetropolis}{%
   None of three supported compiler is used.%
-  Jagiellionian supports Lua\LaTeX{} or pdf\TeX{}????
+  Jaaagiellionian supports Lua\LaTeX{} or pdf\TeX{}????
 }%
 \fi
 \fi
@@ -237,7 +237,7 @@
 \patchcmd{\sectionentry}
   {\def\insertsectionhead{#2}}
   {\def\insertsectionhead{\jagiellonian@sectiontitleformat{#2}}}
-  {}%
+  {}
   {\PackageError{beamerfontthemejagiellonian}{Patching section title failed}\@ehc}
 \@tempswafalse
 \patchcmd{\beamer@section}

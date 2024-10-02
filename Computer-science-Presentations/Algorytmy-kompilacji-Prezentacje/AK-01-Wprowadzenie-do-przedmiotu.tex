@@ -189,14 +189,6 @@ eprint=true,
   \frametitle{Informacje wstępne}
 
 
-  Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
-  \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
-  niezadowalające odpowiedzi.
-
-  Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-  na dowolne związane z~zajęciami zagadnienia. Nie ma tu pytań zbyt
-  elementarnych lub zbyt głupich, są~tylko niezadowalające odpowiedzi.
-
   Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
     Knight}?” musimy jednak zostawić na czas po zajęciach.
 
@@ -221,11 +213,10 @@ eprint=true,
   potrzeby wojskowe w~czasie II~Wojny Światowej wchodzą do użytku
   powszechnego, choć z~przyczyn czysto technicznych (koszt, rozmiar,
   zużycie energii, etc.) dostępne są tylko bardzo wąskiej
-  grupie ludzi. Dziedzina o~której jest ten przedmiot nie ma jeszcze
-  100~lat. Nauka ma to do siebie, że~potrafi naprawdę długo~się rozwijać,
-  potrzebując niekiedy dekad jeśli nie wieków, by dokonać realnego postępu.
-  W~informatyce zaś cały czas odkrywamy nowe i~kluczowe dla tej dziedziny
-  rzeczy.
+  grupie ludzi.Nauka ma to do siebie, że~potrafi naprawdę długo~się
+  rozwijać, potrzebując niekiedy dekad jeśli nie wieków, by dokonać
+  realnego postępu. W~informatyce zaś cały czas odkrywamy nowe i~kluczowe
+  dla tej dziedziny rzeczy.
 
   W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
   która raczej~się nie skończy już jutro. W~skutek tego cała masa rzeczy~się
@@ -277,7 +268,7 @@ eprint=true,
   kiedy, gdzie i~w~jakiej formie chcą Państwo uczestniczyć w konsultacjach.
 
   Mogą one być zarówno w~świecie rzeczywistym (niekoniecznie w~budynku
-  \textsc{wsz}i\textsc{B}u}), online lub telefonicznie.
+  \textsc{wsz}i\textsc{b}u), online lub telefonicznie.
 
   Będę wdzięczny za napisanie w~mailu z~czym konkretnie mają Państwo
   problem, rozumiem jedna, że~często wskazanie czy nazwanie tego jest
@@ -286,26 +277,6 @@ eprint=true,
 \end{frame}
 % ##################
 
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Prezentacje te są dostępne w~formie plików \LaTeX a (kodu źródłowego)
-  na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
-  do internetu może jest zdobyć wpisując \\
-  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
-  Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
-
-  Będą też dostępne w~formie \textsc{pdf}ów na~Sake, wraz z~innymi
-  materiałami do nauki.
-
-\end{frame}
-% ##################
 
 
 
@@ -329,6 +300,38 @@ eprint=true,
   Poza tym, na~pewno nie wyjdzie mi to dobrze, bo jestem roztrzepany.
   Swoje uwagi w~tej sprawie proszę kierować do ludzi odpowiedzialnych
   za~sprawy studenckie na \textsc{wsz}i\textsc{b}ie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Wymagania i~materiały do nauki}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Prezentacje te są dostępne w~formie plików \LaTeX a (kodu źródłowego)
+  na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
+  do internetu może jest zdobyć wpisując \\
+  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+  Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
+
+  Będą też dostępne w~formie \textsc{pdf}ów na~Sake, wraz z~innymi
+  materiałami do nauki.
 
 \end{frame}
 % ##################
@@ -438,6 +441,7 @@ eprint=true,
 
     \label{fig:Creating-code-in-C}
 
+
     \begin{tikzpicture}
 
       \node[diagram block] (Man) at (0,0) {Człowiek};
@@ -497,6 +501,7 @@ eprint=true,
   \begin{figure}
 
     \label{fig:Also-creating-code-in-C}
+
 
     \begin{tikzpicture}
 
@@ -575,7 +580,7 @@ eprint=true,
   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
   posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
-  czy x86/Intel. Można też wymienić dialekty asemblera \textsc{gas},
+  czy x86. Można też wymienić dialekty asemblera \textsc{gas},
   \textsc{fasm}, \textsc{masm}, \textsc{nasm}, \textsc{yasm} (Kto wymyśla
   te nazwy?).
 
@@ -604,12 +609,11 @@ eprint=true,
   By lepiej zrozumieć dlaczego potrzebujemy kompilatorów, przedstawimy
   teraz jeden program, który wypisuje „Hello, World!” na ekranie, napisany
   w~dialektach asemblera \textsc{arm~32}, AArch64, \textsc{risc-v},
-  \textsc{nasm} i~x86/Intel oraz językach C i~Python.
+  \textsc{nasm} i~x86 oraz językach C i~Python.
 
-  Poza wersją programu w~języku asemblera x86/Intel, wszystkie te programy
-  przetestowałem na~moim komputerze pod systemem GNU/Linux Ubuntu
-  22.04~\textsc{lts}, więc jeśli są chętni, to możemy je~głębiej omówić
-  po~zajęciach.
+  Wszystkie te programy przetestowałem na~moim komputerze pod systemem
+  GNU/Linux Ubuntu 22.04~\textsc{lts}, więc jeśli są chętni, to możemy
+  je~głębiej omówić po~zajęciach.
 
 \end{frame}
 % ##################
@@ -623,6 +627,8 @@ eprint=true,
   \frametitle{„Hello, World!” w~asemblerze ARM~32,
     \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
 
+
+  \# ARM~32
 
   \texttt{.global \_start} \\
   \texttt{.section .text} \\
@@ -661,6 +667,8 @@ eprint=true,
     \parencite{Low-Level-Learning-You-Can-Learn-AArch64-ETC-Ver-2020}}
 
 
+  \# AArch64
+
   \texttt{.global \_start} \\
   \texttt{.section .text} \\
 
@@ -698,6 +706,8 @@ eprint=true,
     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
+  \# RISC-V
+
   \texttt{.global \_start} \\
   \texttt{\_start:} \\
   \hphantom{aaaa} \texttt{addi a7, zero, 64} \\
@@ -727,6 +737,8 @@ eprint=true,
   \frametitle{„Hello, World!” w~assemblerze NASM
     \parencite{Toal-NASM-Tutorial-Ver-2024}}
 
+
+  \# NASM
 
   \hphantom{aaaaaaaaa} \texttt{global} \hphantom{aa} \texttt{\_start} \\
   \vspace{0.8em}
@@ -764,23 +776,28 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze x86/Intel
-    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+  \frametitle{„Hello, World!” w~asemblerze x86
+    \parencite{Low-Level-You-Can-Learn-Assembly-in-10-Minutes-ETC-Ver-2020}}
 
 
-  \texttt{org 0x100} \\
-  \vspace{0.8em}
+  \# x86
 
-  \texttt{mov dx, msg} \\
-  \texttt{mov ah, 9} \\
-  \texttt{int 0x21} \\
-  \vspace{0.8em}
+  \texttt{.global \_start} \\
+  \texttt{.intel\_syntax} \\
+  \texttt{.section .text}
 
-  \texttt{mov ah, 0x4c} \\
-  \texttt{int 0x21} \\
-  \vspace{0.8em}
-
-  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
+  \texttt{\_start:} \\
+  \hphantom{aaaa} \texttt{mov \%eax, 4} \\
+  \hphantom{aaaa} \texttt{mov \%ebx, 1} \\
+  \hphantom{aaaa} \texttt{mov \%ecx, [message]} \\
+  \hphantom{aaaa} \texttt{mov \%edx, 14} \\
+  \hphantom{aaaa} \texttt{int 0x80} \\
+  \hphantom{aaaa} \texttt{mov \%eax, 1} \\
+  \hphantom{aaaa} \texttt{mov \%ebc, 65} \\
+  \hphantom{aaaa} \texttt{int 0x80} \\
+  \texttt{.section .dat} \\
+  \texttt{message:} \\
+  \hphantom{aaaa} \texttt{.ascii "Hello, World!\textbackslash n"}
 
 \end{frame}
 % ##################
@@ -793,6 +810,8 @@ eprint=true,
 \begin{frame}
   \frametitle{„Hello, World!” w~języku~C}
 
+
+  \# Język C
 
   \texttt{\#include <stdio.h>} \\
   \vspace{0.8em}
@@ -816,6 +835,8 @@ eprint=true,
 \begin{frame}
   \frametitle{„Hello, World!” w~języku~Python}
 
+
+  \# Python
 
   \texttt{print("Hello, World!")}
 
@@ -964,8 +985,8 @@ eprint=true,
 
   Jak mówiliśmy wcześniej, na potrzeby tego kursu będziemy przyjmować,
   że~naturalnym językiem komputera jest język asembler i~nie będziemy
-  wnikać głębiej w~to co~się tam dzieje. Jeśli jednak ktoś chce wniknąć
-  głębiej w~to zagadnienie, to po zajęciach służę całą moją wiedzą w~tym
+  wnikać głębiej w~to co~się tam dzieje. Jeśli jednak ktoś chce
+  dowiedzieć~się czegoś więcej, to po zajęciach służę całą moją wiedzą w~tym
   temacie.
 
   \alert{Uwaga terminologiczna.} W~języku angielskim rozróżnia~się
@@ -1851,7 +1872,18 @@ eprint=true,
   \frametitle{Kompilacja vs interpretacja programu}
 
 
-  Zacznijmy od rozpatrzenia następującego kodu.
+  Zacznijmy od rozpatrzenia następującego pseudokodu.
+
+  \texttt{sum = 0} \\
+
+  \texttt{for i in (1, ..., 100)} \\
+  \hphantom{aaaa} \texttt{sum += i} \\
+
+  \texttt{print("sum = ", sum)}
+
+  Program ten wylicza wartość sumy $1 + 2 + \ldots + 100$ i~wyświetla ją na
+  ekranie. Przeanalizujemy teraz jak taki program prawdopodobnie wykonałby
+  interpreter, a~jak kompilator
 
 \end{frame}
 % ##################
@@ -1860,89 +1892,31 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Vertex attributes}
+% ##################
+\begin{frame}
+  \frametitle{Przykład pracy interpretera}
 
 
+  \texttt{sum = 0} \\
 
+  \texttt{for i in (1, ..., 100)} \\
+  \hphantom{aaaa} \texttt{sum += i} \\
 
-% \end{frame}
-% % ##################
+  \texttt{print("sum = ", sum)}
 
+  Typowy interpreter wykona zapewne następującą procedurę.
 
+  1)~Tworzymy zmienną \texttt{$\text{sum}$} i~nadajemy jej wartość~$0$. \\
+  2) Wchodzimy do pętli \texttt{for}. \\
+  2.1) Dodajemy do \texttt{sum} wartość $1$. Teraz $\text{sum} = 1$. \\
+  2.2) Dodajemy do \texttt{sum} wartość $2$. Teraz $\text{sum} = 2$. \\
+  \hphantom{aaa} $\vdots$ \\
+  2.2) Dodajemy do \texttt{sum} wartość $100$. Teraz
+  \texttt{$\text{sum} = 5050$}. \\
+  3) Wypisujemy na ekranie \texttt{$\text{sum} = 1$}.
 
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
+\end{frame}
+% ##################
 
 
 
@@ -1951,16 +1925,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Krótka i~niezbyt poprawna historia problemu}
+  \frametitle{Basic concepts of computer graphics}
 
 
-  Na~przestrzeni tysięcy lat ludzie tworzyli urządzenia, które dziś
-  rozpoznajemy jako prekursorów współczesnych komputerów, wypada wymienić
-  kilku z~nich, którzy działali przed rokiem 1900-nym.
+  \texttt{sum = 0} \\
 
-  \textbf{2003 r.} Chris Lattner i~Vikram Adve tworzą system \textsc{llvm}.
-  Możemy przyjąć, że~w~tym momencie zaczyna~się okres rozwoju technik
-  kompilacji w~którym jesteśmy dziś (2024 rok).
+  \texttt{for i in (1, ..., 100)} \\
+  \hphantom{aaaa} \texttt{sum += i} \\
+
+  \texttt{print("sum = ", sum)}
+
+  Dobry kompilator wykona następującą procedurę.
+
+  1) Analiza powyższego programu pod względem treści, ale \alert{bez}
+  wykonywania żadnych obliczeń. To trochę tak jak przeczytanie przepisu
+  kucharskiego, ale bez wykonania zawartym w~nim kroków. \\
+  2) W~trakcie tej analizy kompilator wykryje, że~to co chcemy
+  zrobić to wyliczyć sumę $1 + 2 + \ldots + 100$. Tak, współczesne kompilatory
+  potrafią wykrywać takie rzeczy i~wiele innych. \\
 
 \end{frame}
 % ##################
@@ -1969,18 +1951,72 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Primitives in the OpenGL library}
+
+
+  \texttt{sum = 0} \\
+
+  \texttt{for i in (1, ..., 100)} \\
+  \hphantom{aaaa} \texttt{sum += i} \\
+
+  \texttt{print("sum = ", sum)}
+
+  3) Kompilator korzysta ze wzoru: \\[0.3em]
+  $\displaystyle \sum_{ i = 1 }^{ n } i = \frac{ n ( n + 1 ) }{ 2 }$. \\[0.5em]
+  Na jego mocy \\[0.3em]
+  $\displaystyle \sum_{ i = 1 }^{ 100 } i = \frac{ 100 \cdot 101 }{ 2 } = 5050$.
+  \\[0.5em]
+  4) Tworzony jest program, który składa~się z~jednej instrukcji: \\
+  \texttt{print("sum = ", 5050)}
+
+  To oczywiście wielkie uproszczenie tego co naprawdę~się dzieje,
+  ale powinno wyjaśnić, czemu kompilatory są takie ważne.
+
+\end{frame}
+% ##################
 
 
 
 
 
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
 
 
 
 
 
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
 
 
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Primitives in the OpenGL library}
+
+
+
+
+% \end{frame}
+% % ##################
 
 
 
@@ -2044,7 +2080,21 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Krótka i~niezbyt poprawna historia problemu}
 
+
+  Na~przestrzeni tysięcy lat ludzie tworzyli urządzenia, które dziś
+  rozpoznajemy jako prekursorów współczesnych komputerów, wypada wymienić
+  kilku z~nich, którzy działali przed rokiem 1900-nym.
+
+  \textbf{2003 r.} Chris Lattner i~Vikram Adve tworzą system \textsc{llvm}.
+  Możemy przyjąć, że~w~tym momencie zaczyna~się okres rozwoju technik
+  kompilacji w~którym jesteśmy dziś (2024 rok).
+
+\end{frame}
+% ##################
 
 
 
