@@ -87,7 +87,7 @@ eprint=true,
 
 
 % ------------------------------------------------------------------------------------------------------------------
-\title{Algorytmy kompilacji}
+\title{Wybrane algorytmy kompilacji}
 \subtitle{Wprowadzenie do~przedmiotu}
 
 \author{Kamil Ziemian \\
@@ -118,7 +118,7 @@ eprint=true,
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% Number of chars: 62k+, 80k+, 41k+, 36k+, 40k+,
+% Number of chars: 62k+, 80k+, 41k+, 36k+, 40k+, 56k+, 53k+,
 % ######################################
 
 
@@ -314,6 +314,54 @@ eprint=true,
 
 
 % ######################################
+\section{O~uzyskaniu zaliczenia}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaliczenie zaoczne}
+
+
+  Zaliczenie zaoczne można jak najbardziej uzyskać, przez oddanie
+  odpowiedniego projektu lub ustną dyskusję ze mną na temat algorytmów
+  kompilacji. Ta ostania musi~się odbyć na żywo, by uniknąć wątpliwości
+  co do źródła wiedzy zdającego.
+
+  Każdy kto chce uzyskać zaliczenie zaoczne, niech zgłosi~się do mnie po
+  zajęciach lub napisze na maila \email.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Warunki zaliczenia}
+
+
+  Na dzień dzisiejszy zaliczenie uzyskuje~się przez oddanie jednego zestawu
+  zadań domowych i~napisanie jednego sprawdzianu na żywo.
+
+  W~przyszłym tygodniu potwierdzę ostatecznie te zasady lub prześlę Państwu
+  zmodyfikowaną wersję.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+% ######################################
 \section{Wymagania i~materiały do nauki}
 % ######################################
 
@@ -350,6 +398,10 @@ eprint=true,
   \email. Chcemy by te zajęcia i~towarzyszące im materiały były możliwie
   proste, łatwe w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć,
   że~osiągnięcie tego jest naprawdę trudne.
+
+  Tak samo proszę zgłaszać wszystkie uwagi odnośnie treści przedmiotu.
+  Wciąż próbujemy znaleźć optymalną jego formę, co nie jest wcale sprawą
+  prostą.
 
 \end{frame}
 % ##################
@@ -962,16 +1014,6 @@ eprint=true,
 
 
 
-
-
-
-
-
-
-
-
-
-
 % ######################################
 \section{Praktyczny problem}
 % ######################################
@@ -1141,7 +1183,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{??? }
+  \frametitle{????}
 
 
   Komputer jako taki nie rozumie języka~C\#, więc nie jest w~stanie
@@ -1308,12 +1350,6 @@ eprint=true,
   (ang.~\textit{source language}), a~język~B \textbf{językiem wynikowym}
   (ang.~\textit{target language}).
 
-  % W~kontekście języków programowania, słowo „tekst” będzie dla nas
-  % równoważne słowu „program”, choć intuicyjnie przez „program” rozumiemy
-  % obiekt, który można uruchomić w~komputerze. Wedle tej definicji niektórych
-  % programów nie da się uruchomić, bez użycia na nich translatora, ale~to
-  % nie powinno stwarzać prawdziwych problemów.
-
 
 
 
@@ -1359,16 +1395,6 @@ eprint=true,
   \frametitle{Translatory}
 
 
-  % W~tym momencie już mam nadzieję wszyscy rozumiemy, czemu potrzebujemy
-  % kompilatorów. Zanim jednak przejdziemy dalej, potrzebujemy, choć to może
-  % być dość nudne, wprowadzić trochę nowych pojęć i~doprecyzować odrobinę
-  % terminologię.
-
-  % \textbf{Translator} to dowolny obiekt który tłumaczy tekst z~języka~A,
-  % na odpowiedni tekst w~języku~B. Wedle tej definicji człowiek tłumaczący
-  % z~polskiego na angielski też jest translatorem. To nie jest bug tej
-  % definicji, to jest jej feature.
-
   W~kontekście języków programowania, słowo „tekst” będzie dla nas
   równoważne słowo „kod” i~„program”, choć intuicyjnie przez „program”
   rozumiemy obiekt, który można od razu uruchomić na~komputerze. Jednak nie
@@ -1381,34 +1407,9 @@ eprint=true,
   Będziemy więc mówić o~„kodzie źródłowym” (ang. \textit{source code})
   i~„kodzie wynikowym” (ang. \textit{target code}).
 
-  % \begin{figure}
-
-  %   \label{fig:Translator-01}
 
 
-  %   \begin{tikzpicture}
 
-  %     \node[diagram rectangle block] (Text in language A) at (0,0)
-  %     {Tekst w~języku~A};
-
-  %     \node[diagram block,right=of Text in language A] (Translator)
-  %     {Translator};
-
-  %     \draw[thick diagram arrow] (Text in language A) -- (Translator);
-
-
-  %     \node[diagram rectangle block,right=of Translator]
-  %     (Text in language B)
-  %     {Tekst w~języku~B};
-
-  %     \draw[thick diagram arrow] (Translator) -- (Text in language B);
-
-  %   \end{tikzpicture}
-
-  %   \caption{Sposób działania translatora}
-
-
-  % \end{figure}
 
   \begin{figure}
 
@@ -1459,15 +1460,17 @@ eprint=true,
   na~polski, czy~z~C na~dialekt asemblera i~dokładne wyjaśnienie wykracza
   poza zakres tego przedmiotu. Ogólnie rzecz biorąc korzystamy tu
   z~koncepcji czarnej skrzynki: programy są równoważne, jeśli przy tych
-  samych danych wejściowych dają te same dane wyjściowe.%  Co jest w~środku
-  % danego programu (czarnej skrzynki) nas nie obchodzi. Może tam być i~smok
-  % wykonujący odpowiednia działania, byleby tylko rezultat był poprawny.
+  samych danych wejściowych dają te same dane wyjściowe.
+
+
+
 
 
 
   \begin{figure}
 
     \label{fig:Translator-03}
+
 
     \begin{tikzpicture}
 
@@ -1506,14 +1509,6 @@ eprint=true,
   \frametitle{Translatory}
 
 
-  % W~definicji translatora jest powiedziane, że~tłumaczy on tekst
-  % w~języku~A, na \alert{odpowiedni} tekst w~języku~B. Co jednak znaczy
-  % słowo „odpowiedni”? Odpowiedź na to pytanie jest zaskakująco trudna
-  % i~złożona, zarówno jeśli chodzi o~tłumaczenie z~języka angielskiego
-  % na~polski, czy~z~C na~dialekt asemblera i~dokładne wyjaśnienie wykracza
-  % poza zakres tego przedmiotu. Ogólnie rzecz biorąc korzystamy tu
-  % z~koncepcji czarnej skrzynki: programy są równoważne, jeśli przy tych
-  % samych danych wejściowych dają te same dane wyjściowe.
   Co jest w~środku danego programu (czarnej skrzynki) nas nie obchodzi.
   Może tam być i~smok wykonujący odpowiednia działania, byleby tylko
   na zadane dane wejściowa, dawał poprawną odpowiedź na wyjściu.
@@ -1528,6 +1523,7 @@ eprint=true,
   \begin{figure}
 
     \label{fig:Translator-04}
+
 
     \begin{tikzpicture}
 
@@ -1616,6 +1612,7 @@ eprint=true,
 
     \label{fig:Translator-04}
 
+
     \begin{tikzpicture}
 
       \node[diagram rectangle block] (Source program) at (0,0)
@@ -1655,6 +1652,9 @@ eprint=true,
 
   \begin{figure}
 
+    \label{fig:Translator-05}
+
+
     \begin{tikzpicture}[node distance=0.5]
 
       \node[diagram rectangle block] (Source code) at (0,0) {Kod źródłowy};
@@ -1673,7 +1673,6 @@ eprint=true,
 
 
       \node[below=0.1em of Target program] {a) Faza kompilacji};
-
 
 
 
@@ -1753,9 +1752,6 @@ eprint=true,
   Wszystkie rezultaty jego działania idą bezpośrednio na procesor i~tam
   znikają (zostają nadpisane przez nadchodzące dane).
 
-  % Używając poprzedniego przykładu, gdy interpreter dostaje string „Eat
-  % soup.”, natychmiast mówi komuś „Zjedz zupę.” i~ta osoba zaczyna jeść.
-
 
 
 
@@ -1803,12 +1799,6 @@ eprint=true,
 \begin{frame}
   \frametitle{Interpreter}
 
-
-  % \textbf{Interpreter} to translator, który tłumaczy polecenia zawarte
-  % w~kodzie źródłowym na operacje kodu wynikowego i~natychmiast je wykonuje.
-  % Interpreter \alert{nie} tworzy obiektu zawierającego program wynikowy.
-  % Wszystkie rezultaty jego działania idą bezpośrednio na procesor i~tam
-  % znikają (zostają nadpisane przez nadchodzące dane).
 
   Wracając do poprzedniego przykładu, gdy interpreter dostaje string „Eat
   soup.”, natychmiast mówi komuś „Zjedz zupę.” i~ta osoba zaczyna ją jeść.
@@ -1876,7 +1866,7 @@ eprint=true,
 
   \texttt{sum = 0} \\
 
-  \texttt{for i in (1, ..., 100)} \\
+  \texttt{for i in (1, 2, ..., 100)} \\
   \hphantom{aaaa} \texttt{sum += i} \\
 
   \texttt{print("sum = ", sum)}
@@ -1899,7 +1889,7 @@ eprint=true,
 
   \texttt{sum = 0} \\
 
-  \texttt{for i in (1, ..., 100)} \\
+  \texttt{for i in (1, 2, ..., 100)} \\
   \hphantom{aaaa} \texttt{sum += i} \\
 
   \texttt{print("sum = ", sum)}
@@ -1911,9 +1901,9 @@ eprint=true,
   2.1) Dodajemy do \texttt{sum} wartość $1$. Teraz $\text{sum} = 1$. \\
   2.2) Dodajemy do \texttt{sum} wartość $2$. Teraz $\text{sum} = 2$. \\
   \hphantom{aaa} $\vdots$ \\
-  2.2) Dodajemy do \texttt{sum} wartość $100$. Teraz
+  2.100) Dodajemy do \texttt{sum} wartość $100$. Teraz
   \texttt{$\text{sum} = 5050$}. \\
-  3) Wypisujemy na ekranie \texttt{$\text{sum} = 1$}.
+  3) Wypisujemy na ekranie \texttt{$\text{sum} = 5050$}.
 
 \end{frame}
 % ##################
@@ -1925,12 +1915,12 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Basic concepts of computer graphics}
+  \frametitle{????}
 
 
   \texttt{sum = 0} \\
 
-  \texttt{for i in (1, ..., 100)} \\
+  \texttt{for i in (1, 2, ..., 100)} \\
   \hphantom{aaaa} \texttt{sum += i} \\
 
   \texttt{print("sum = ", sum)}
@@ -1938,11 +1928,12 @@ eprint=true,
   Dobry kompilator wykona następującą procedurę.
 
   1) Analiza powyższego programu pod względem treści, ale \alert{bez}
-  wykonywania żadnych obliczeń. To trochę tak jak przeczytanie przepisu
-  kucharskiego, ale bez wykonania zawartym w~nim kroków. \\
+  wykonywania żadnych instrukcji. To trochę tak jak przeczytanie przepisu
+  kucharskiego, ale bez wykonania zawartym w~nim instrukcji, takich
+  jak zdobycie dwóch kilogramów mąki, etc. \\
   2) W~trakcie tej analizy kompilator wykryje, że~to co chcemy
   zrobić to wyliczyć sumę $1 + 2 + \ldots + 100$. Tak, współczesne kompilatory
-  potrafią wykrywać takie rzeczy i~wiele innych. \\
+  potrafią wykrywać takie rzeczy i~wiele innych.
 
 \end{frame}
 % ##################
@@ -1953,12 +1944,12 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Primitives in the OpenGL library}
+  \frametitle{?????}
 
 
   \texttt{sum = 0} \\
 
-  \texttt{for i in (1, ..., 100)} \\
+  \texttt{for i in (1, 2, ..., 100)} \\
   \hphantom{aaaa} \texttt{sum += i} \\
 
   \texttt{print("sum = ", sum)}
@@ -1981,50 +1972,118 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
+% ##################
+\begin{frame}
+  \frametitle{?????}
 
 
+  Poprzedni przykład ilustruje jedną z~podstawowych zasad działania
+  kompilatora, wspominaną już zasadę czarnej skrzynki. Nie interesuje nas
+  jak będzie działa program wytworzony przez kompilator, jeśli będzie dawał
+  poprawny wynik i~będzie działa możliwie szybko.
 
+  Z~naszego punktu widzenia w~środku programu może być smok, który używa
+  jakiś smoczych trików by otrzymać wyniki, pod warunkiem, że~wynik jest
+  poprawny i~smok działa szybko.
 
-% \end{frame}
-% % ##################
+  Ja szacuję, że~98\% programistów myśli o~działaniu programu komputerowego
+  w~taki sposób, jakby był on wykonywany przez interpreter, nawet gdy
+  chodzi o~język „silnie” kompilowany. Prawie zawsze uczymy informatyków
+  myśleć o~działaniu programów w~taki właśnie sposób, więc nie możemy
+  kręcić na to nosem. Jak Państwo widzą, to wcale nie musi mieć wiele
+  wspólnego z~tym jak \alert{naprawdę} będzie działa \alert{rzeczywisty}
+  program.
 
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Tego jednak nie należy uważać za problem. Program działa poprawnie? Jeśli
+  tak, to czym~się mamy przejmować? A~nauka programowania jest wystarczająco
+  trudna bez wchodzenia w~to jak naprawdę działa program po dokonaniu
+  kompilacji. To zresztą dopiero pierwsze drugie dno całej sprawy, a jest
+  jeszcze drugie drugie dno i~trzecie drugie dno, etc.
+
+  A~nawet jeśli w~jakimś wyjątkowym przypadku, to byłby problem,
+  że~prawdziwy program działa inaczej niż myślimy, to w~większości
+  przypadków będzie to nasz najmniejszy problem. Poza dziedziną
+  cyberbezpieczeństwa nie widzę kiedy to mogłoby mieć miejsce. A~to już jest
+  temat na osobny przedmiot.
+
+  Teraz przejdziemy do kilku praktycznych kwestii, które ponownie ilustruje
+  poprzedni przykład.
+
+\end{frame}
+% ##################
 
 
 
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  \texttt{sum = 0} \\
+
+  \texttt{for i in (1, 2, ..., 100)} \\
+  \hphantom{aaaa} \texttt{sum += i} \\
+
+  \texttt{print("sum = ", sum)}
+
+  Program w~języku interpretowanym tępo wykonuje obliczenia, ten
+  w~języku kompilowanym oblicza wynik stosując sprytny trik. Współczesne
+  kompilatory znają setki takich trików, dzięki czemu programy w~językach
+  kompilowanych są \alert{dużo} szybsze, niż równoważne programy napisane
+  w~języku interpretowanym. Tutaj spokojnie można mówić o~czynniku~$100$.
+
+  Jednocześnie języki interpretowane są często bardziej „user friendly”.
+  Rozpatrzmy jeden przykład: informacje o~błędach. Jeśli interpreter
+  znajdzie błąd, to doskonale wie w~którym miejscu programu go znalazł
+  i~nam o~tym powie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Oczywiście, życie nie może\ldots}
+
+
+  W~przypadku języka kompilowanego, błąd może zostać znaleziony dopiero
+  w~momencie, gdy program został przekształcony do formy, która
+  nie ma już nic wspólnego z~kodem który napisaliśmy. Skutkiem tego,
+  kompilatory potrafią zwracać błędu, które są niezrozumiałe dla normalnego
+  programisty.
+
+  Oczywiście, życie nie może być takie proste i~w~praktyce coraz rzadziej
+  mamy do czynienia z~czystymi językami interpretowanymi oraz kompilowanymi.
+  Ale o~tym będziemy mówić, tylko jeśli zostanie nam trochę czasu pod
+  koniec kursu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
 
 
 % % ######################################
@@ -2040,15 +2099,9 @@ eprint=true,
 
 
 
-
-
-
-
-
-
-
-
-
+% ######################################
+\appendix
+% ######################################
 
 
 
@@ -2100,371 +2153,18 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Rendering without perspective}
 
 
 
 
-% \end{frame}
-% % ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Rendering with perspective}
 
 
 
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Data structures}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{From vertices to fragments}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library (deprecated since ver.~3.1)}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Texturing and blending}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Texturing and blending}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Communication between CPU and GPU}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Data stored in the video memory}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Data stored in the video memory}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Graphics pipeline (rendering pipeline)}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Vertex transformations (OpenGL nomenclature)}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}[label=Przestrzen-uklad-wspolrzednych-1]
-%   \frametitle{Spaces --~coordinate systems}
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Spaces --~coordinate systems}
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Rasterization and fragment operations}
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Fragment operations}
-
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Links}
-
-
-%   [1] \colorhref{www.blender.org}{www.blender.org}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\appendix
-% ######################################
-
-
-
-
-
-% % ##################
-% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
-% % ##################
-
-
-
-% % % ##################
-% % \jagiellonianendslide{Dziękuję za~uwagę.}
-% % % ##################
 
 
 
@@ -2576,72 +2276,6 @@ eprint=true,
 % ##################
 
 
-% ##################
-% \begin{frame}
-%   \frametitle{Coordinate systems in computer graphics}
-
-
-
-% \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-% \begin{frame}
-%   \frametitle{Coordinate systems in computer graphics}
-
-
-
-% \end{frame}
-% ##################
-
-
-
-% % ######################################
-% \SectionSlideWithPicture{Terminological notes}
-% % ######################################
-
-
-
-% ##################
-% \begin{frame}[label=]
-%   \frametitle{}
-
-
-
-
-% \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-% \begin{frame}[label=]
-%   \frametitle{}
-
-
-
-
-% \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-3]
-%   \frametitle{The concept of space. Space and coordinate system}
-
-
-
-% \end{frame}
-% ##################
 
 
 
