@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -379,7 +379,8 @@ eprint=true,
   na serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp
   do internetu może jest zdobyć wpisując \\
   \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
-  Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
+  Znajdują~się one w~katalogu: \\
+  \texttt{Wybrane-algorytmy-kompilacji-ETC-Prezentacje}.
 
   Będą też dostępne w~formie \textsc{pdf}ów na~Sake, wraz z~innymi
   materiałami do nauki.
@@ -397,12 +398,13 @@ eprint=true,
 
 
   W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
-  merytorycznych do zajęć lub dostępnych materiałów proszę pisać pod adres
-  \email. Chcemy by te zajęcia i~towarzyszące im materiały były możliwie
-  proste, łatwe w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć,
-  że~osiągnięcie tego jest naprawdę trudne.
+  merytorycznych do zajęć lub towarzyszącym ich materiałów proszę pisać pod
+  adres \email lub zgłaszać je mi po zajęciach. Chcemy by te zajęcia
+  i~towarzyszące im materiały były możliwie proste, łatwe w~zrozumieniu
+  i~pozbawione błędów. Proszę jednak uwierzyć, że~osiągnięcie tego jest
+  naprawdę dużym wyzwaniem.
 
-  Tak samo proszę zgłaszać wszystkie uwagi odnośnie treści przedmiotu.
+  W~szczególności uwagi odnośnie treści przedmiotu są mile widziane.
   Wciąż próbujemy znaleźć optymalną jego formę, co nie jest wcale sprawą
   prostą.
 
@@ -462,14 +464,14 @@ eprint=true,
   Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami,
   zwykle~są koloru niebieskiego, oznaczają \textbf{aktorów}, czyli
   taki obiekt który wykonuje jakąś czynność na zadanych obiektach
-  wejściowych, tworząc obiekty wyjściowe. Takim obiektem może być człowiek,
-  komputer, program komputerowy, fragment programu komputerowego,~etc.
+  wejściowych, tworząc obiekty wyjściowe. Takim obiektem może być kucharz,
+  komputer, program komputerowy,~etc.
 
   Bloki diagramu które mają kształt prostokąta z~ostrymi rogami, zwykle~są
   koloru karmelowego (czy to jest kolor karmelowy?), przedstawiają
   \textbf{obiekty} które są pobierane na~wejście przez aktorów lub przez
   nich wytwarzane i~zwracane na wyjście. Jeśli aktorem jest kucharz to na
-  wejście może pobierać jaka, mąkę, etc., a~na wyjściu zwracać naleśniki
+  wejście może pobierać jajka, mąkę, etc., a~na wyjściu zwracać naleśniki
   z~truskawkami.
 
 \end{frame}
@@ -540,13 +542,13 @@ eprint=true,
   Czy poniższy diagram jest lepszy czy gorszy od poprzedniego? Zależy
   od~tego jakie informacje ma dany diagram przekazywać. Proszę~się więc nie
   dziwić, jeśli na danym diagramie czegoś nie ma, a~nawet, że~nie ma czegoś
-  co było na poprzedniej wersji diagramu. Zawsze trzeba dokonać selekcji co
-  na diagramie zostanie umieszczone, a~co nie i~ten wybór często zależy
-  od kontekstu.
+  co było na poprzedniej wersji diagramu. Zawsze trzeba dokonać selekcji
+  tego co na diagramie zostanie umieszczone, a~co nie i~ten wybór często
+  zależy od kontekstu.
 
   Jeśli uważają Państwo, że~na diagramie nie ma czegoś, co być powinno,
   albo coś innego jest nie w~porządku, \alert{proszę} mi zwrócić na to
-  uwagę. Całkiem możliwe, że~popełniłem błąd rysując dany diagram.
+  uwagę. Całkiem możliwe, że~popełniłem błąd rysując ten konkretny diagram.
 
 
 
@@ -610,7 +612,7 @@ eprint=true,
   Niemniej nawet w~takiej sytuacji mogą Państwo wynieść z~niego jakąś
   wiedzę i~umiejętności, które potencjalnie pozwoli wam później tworzyć
   bardziej wydajne programy. Jeśli mamy jakieś wyobrażenie na temat tego
-  jak kompilator działa, to możemy mu ułatwić tworzenie wydajny programów.
+  jak kompilator działa, to możemy mu ułatwić tworzenie dobrych programów.
 
 \end{frame}
 % ##################
@@ -636,8 +638,8 @@ eprint=true,
   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
   posługują~się różnymi rodzajami języka asembler, takimi jak \textsc{arm}
   czy x86. Można też wymienić dialekty asemblera \textsc{gas},
-  \textsc{fasm}, \textsc{masm}, \textsc{nasm}, \textsc{yasm} (Kto wymyśla
-  te nazwy?).
+  \textsc{fasm}, \textsc{masm}, \textsc{nasm}, \textsc{yasm}. (Kto wymyśla
+  te nazwy?)
 
   Różnica między komputerem, a~człowiekiem jest taka, że~pojedynczy człowiek
   poza swoim pierwotnym językiem, może znać kilka innych (angielski,
@@ -668,7 +670,7 @@ eprint=true,
 
   Wszystkie te programy przetestowałem na~moim komputerze pod systemem
   GNU/Linux Ubuntu 22.04~\textsc{lts}, więc jeśli są chętni, to możemy
-  je~głębiej omówić po~zajęciach.
+  je~bardziej szczegółowo omówić po~zajęciach.
 
 \end{frame}
 % ##################
@@ -799,8 +801,8 @@ eprint=true,
   \vspace{0.8em}
 
   \hphantom{aaaaaaaaa} \texttt{section} \hphantom{a} \texttt{.text} \\
-  \texttt{\_start:} \hphantom{a} \texttt{mov} \hphantom{aaaaaa}
-  \texttt{rax, 1} \\
+  \texttt{\_start:} \hphantom{a} \hspace{-0.14em}
+  \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 1} \\
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdi, 1} \\
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa}
   \texttt{rsi, message} \\
@@ -908,7 +910,7 @@ eprint=true,
 
   Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
   a~Python prostszy od~C. Dlaczego tak jest, to niestety temat na inny
-  przedmiot, acz o~kilka elementów tego zagadnienia uda nam~się zahaczyć.
+  przedmiot, acz o~kilku powodach wspomnimy potem.
 
   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
@@ -936,8 +938,9 @@ eprint=true,
 
   Co więc robimy by uniknąć pisania kodu w~języku asemblera? Tworzymy
   język programowania taki jak~C czy Python, który jest dla nas prostszy
-  w~użyciu, niż dany dialekt asemblera i~piszemy program w~nim. Proszę
-  zwrócić uwagę, że~słowo „prostszy” wcale nie oznacza \alert{„prosty”}!
+  w~użyciu, niż dany dialekt asemblera i~piszemy program w~takim właśnie
+  języku. Proszę zwrócić uwagę, że~słowo „prostszy” wcale nie oznacza
+  \alert{„prosty”}!
 
   Dobrze, ale komputer dalej rozumie tylko język asembler, a~nie~C czy
   Pytona, co więc musimy zrobić, by uruchomić programy napisany w~jednym
@@ -991,9 +994,9 @@ eprint=true,
 
   \alert{Dygresja.} Czy ktoś z~Państwa korzystał z~emulatora do gier?
   Choćby po to by uruchomić grę \textit{Pokemon Yellow/Red/Blue}
-  przeznaczoną na GameBoya na swoim PCecie? (To nie jedyny emulator do gier
-  z~którego korzystałem.) Na tej samej zasadzie działają emulatory
-  asemblerów, pozwalające uruchomić asemblera x86 na procesorze
+  przeznaczoną na GameBoya na swoim \textsc{pc}ecie? (To nie jedyny
+  emulator do gier z~którego korzystałem.) Na tej samej zasadzie działają
+  emulatory asemblerów, pozwalające uruchomić asemblera x86 na procesorze
   zbudowanym w~architekturze \textsc{arm}.
 
 \end{frame}
@@ -1037,9 +1040,10 @@ eprint=true,
   \alert{Uwaga terminologiczna.} W~języku angielskim rozróżnia~się
   \textbf{język asemblera} (ang. \textit{assembly langauge})
   i~\textbf{program asembler} (ang. \textit{assembler}), który operuje
-  na~programie napisany w~języku danego asemblera. W~języku polskim
+  na~kodzie źródłowym napisany w~języku danego asemblera. W~języku polskim
   „asembler” oznacza często język asembler, co może powodować pewne
-  nieporozumienia.
+  nieporozumienia. Będę~się starał rozróżniać te pojęcia, acz na pewno
+  gdzieś przeoczę tę subtelność.
 
 \end{frame}
 % ##################
@@ -1136,15 +1140,15 @@ eprint=true,
   \frametitle{?????}
 
 
-  Dzisiaj gry często tworzy~się środowiskach takich jak
+  Dzisiaj gry zwykle tworzy~się w~środowiskach takich jak
   \colorhref{https://www.unrealengine.com/en-US}{Unreal Engine},
   \colorhref{https://unity.com/}{Unity} czy
   \colorhref{https://godotengine.org/}{Godot}, nie zaś pisze kod źródłowy
   od zera. Unreal Engine i~Godot są napisane w~większości w~języku C++,
   Unity w~języku C\#. W~tym momencie nie mam pewności, w~czym został
-  napisany \textit{Hollow Knight}, ale mędrcy internetu twierdzą,
-  że~głównie w~języku C\#, bo został napisany w~Unity. Dlaczego jednak
-  poniższy diagram jest błędny?
+  napisany \textit{Hollow Knight}, ale mędrcy internetu twierdzą, że~został
+  stworzony w~Unity, więc w~języku C\#. Dlaczego jednak poniższy diagram
+  jest błędny?
 
 
 
@@ -1191,8 +1195,8 @@ eprint=true,
 
   Komputer jako taki nie rozumie języka~C\#, więc nie jest w~stanie
   uruchomić gry napisanej w~takim języku. Aby ją uruchomić, translator
-  musi najpierw przetłumaczyć ją na język asemblera. To co kupuje nabywając
-  \textit{Hollow Knight}, to jest właśnie kod w~języku asemblera.
+  musi najpierw przetłumaczyć ją na język asemblera. To co kupujemy
+  nabywając \textit{Hollow Knight}, to jest właśnie kod w~języku asemblera.
 
 
 
@@ -1282,7 +1286,8 @@ eprint=true,
 
   Proszę~się jednak nie poddawać i~pamiętać, że~„wszystko ma otwarty
   kod, jeśli potrafisz przeprowadzić jego inżynierię wsteczną”
-  (org.~„Everything is open source, if you can reverse engineering it.”,
+  (org.~\textit{Everything is open source, if you can reverse engineering
+    it.},
   \parencite{Low-Level-Learning-Everything-is-open-source-if-ETC-Ver-2023})~;).
 
   \vspace{1.5em}
@@ -1399,7 +1404,7 @@ eprint=true,
 
 
   W~kontekście języków programowania, słowo „tekst” będzie dla nas
-  równoważne słowo „kod” i~„program”, choć intuicyjnie przez „program”
+  równoważne słowom „kod” i~„program”, choć intuicyjnie przez „program”
   rozumiemy obiekt, który można od razu uruchomić na~komputerze. Jednak nie
   możemy tak po prostu uruchomić programu (tekstu kodu źródłowego)
   napisanego w~języku~C, bo komputer rozumie tylko swój dialekt języka
@@ -1636,7 +1641,7 @@ eprint=true,
 
     \end{tikzpicture}
 
-    \caption{Translator jako czarna skrzynka}
+    \caption{Kompilacja programu w~języku~C}
 
 
   \end{figure}
@@ -1726,15 +1731,17 @@ eprint=true,
 
   Załóżmy, że~pracuję na komputerze z~systemem operacyjny GNU/Linux
   wyposażonym w~standardowy zespół narzędzi programistycznym oraz plik
-  z~kodem źródłowy w~języku~C o~nazwie \texttt{helloWorld.c}. Fazę
-  kompilacji kodu źródłowego \texttt{helloWorld.c} rozpoczynamy wywołując
-  polecenie \\
+  z~kodem źródłowy w~języku~C o~nazwie \texttt{helloWorld.c}.
+
+  Faza kompilacji kodu źródłowego \texttt{helloWorld.c} polega na
+  wywołaniu polecenie \\
   \texttt{\$ gcc --std=c99 -pedantic helloWorld.c -o outProg} \\
   W~rezultacie dostajemy program wynikowy \texttt{outProg}.
 
   Faza wykonania polega na wywołaniu polecenia \\
   \texttt{\$ ./outProg} \\
-  w~wyniku którego na ekranie zobaczymy napis \texttt{Hello, World!}.
+  w~wyniku którego uruchomiony zostanie program \texttt{outProg}, który
+  wypisze na ekranie zdanie \texttt{Hello, World!}.
 
 \end{frame}
 % ##################
@@ -1855,7 +1862,7 @@ eprint=true,
 
 
 % ######################################
-\section{Cechy kompilatorów i~interpreterów}
+\section{Działanie interpreterów i~kompilatorów}
 % ######################################
 
 
@@ -1876,7 +1883,7 @@ eprint=true,
 
   Program ten wylicza wartość sumy $1 + 2 + \ldots + 100$ i~wyświetla ją na
   ekranie. Przeanalizujemy teraz jak taki program prawdopodobnie wykonałby
-  interpreter, a~jak kompilator
+  interpreter, a~jak kompilator.
 
 \end{frame}
 % ##################
@@ -1901,11 +1908,14 @@ eprint=true,
 
   1)~Tworzymy zmienną \texttt{$\text{sum}$} i~nadajemy jej wartość~$0$. \\
   2) Wchodzimy do pętli \texttt{for}. \\
-  2.1) Dodajemy do \texttt{sum} wartość $1$. Teraz $\text{sum} = 1$. \\
-  2.2) Dodajemy do \texttt{sum} wartość $2$. Teraz $\text{sum} = 2$. \\
+  2.1) Dodajemy do wartości zmiennej \texttt{$\text{sum}$} liczbę $1$. Teraz
+  \texttt{$\text{sum} = 1$}. \\
+  2.2) Dodajemy do wartości zmiennej \texttt{$\text{sum}$} liczbę $2$.
+  Teraz \texttt{$\text{sum} = 3$}. \\
   \hphantom{aaa} $\vdots$ \\
-  2.100) Dodajemy do \texttt{sum} wartość $100$. Teraz
-  \texttt{$\text{sum} = 5050$}. \\
+  2.100) Dodajemy do wartości zmiennej \texttt{$\text{sum}$} wartość
+  $100$. \\
+  Teraz \texttt{$\text{sum} = 5050$}. \\
   3) Wypisujemy na ekranie \texttt{$\text{sum} = 5050$}.
 
 \end{frame}
@@ -1931,8 +1941,8 @@ eprint=true,
   Dobry kompilator wykona następującą procedurę.
 
   1) Analiza powyższego programu pod względem treści, ale \alert{bez}
-  wykonywania żadnych instrukcji. To trochę tak jak przeczytanie przepisu
-  kucharskiego, ale bez wykonania zawartym w~nim instrukcji, takich
+  wykonywania żadnej z~podanych instrukcji. To jak przeczytanie
+  przepisu kucharskiego, ale bez wykonania zawartym w~nim instrukcji, takich
   jak zdobycie dwóch kilogramów mąki, etc. \\
   2) W~trakcie tej analizy kompilator wykryje, że~to co chcemy
   zrobić to wyliczyć sumę $1 + 2 + \ldots + 100$. Tak, współczesne kompilatory
@@ -1957,7 +1967,8 @@ eprint=true,
 
   \texttt{print("sum = ", sum)}
 
-  3) Kompilator korzysta ze wzoru: \\[0.3em]
+  3) Wiedząc, że~chcemy obliczyć sumę $1 + 2 + \ldots + 100$ kompilator korzysta
+  ze wzoru: \\[0.3em]
   $\displaystyle \sum_{ i = 1 }^{ n } i = \frac{ n ( n + 1 ) }{ 2 }$. \\[0.5em]
   Na jego mocy \\[0.3em]
   $\displaystyle \sum_{ i = 1 }^{ 100 } i = \frac{ 100 \cdot 101 }{ 2 } = 5050$.
@@ -1965,8 +1976,31 @@ eprint=true,
   4) Tworzony jest program, który składa~się z~jednej instrukcji: \\
   \texttt{print("sum = ", 5050)}
 
-  To oczywiście wielkie uproszczenie tego co naprawdę~się dzieje,
-  ale powinno wyjaśnić, czemu kompilatory są takie ważne.
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Przedstawiony przykład jest oczywiście bardzo uproszczoną wersją tego
+  jak działa interpreter i~kompilator, ale już on pozwala zrozumieć kilka
+  ważnych rzeczy.
+
+  Przede wszystkim kompilator korzysta z~zasady czarnej skrzynki. Nie
+  interesuje nas jak będzie działa program wytworzony przez kompilator,
+  jeśli będzie dawał poprawny wynik i~będzie działa możliwie szybko.
+
+  Nie jest więc ważne, czy program pracowicie będzie liczył
+  $1 + 2 + 3 + \ldots$, czy wyliczy $100 \cdot 101 / 2$.
+  Z~naszego punktu widzenia w~środku programu może być smok, który wykonuje
+  odpowiednie obliczenia matematyczne, byleby tylko ten smok zwracał
+  poprawną odpowiedź i~to możliwie szybko.
 
 \end{frame}
 % ##################
@@ -1980,34 +2014,12 @@ eprint=true,
   \frametitle{?????}
 
 
-  Poprzedni przykład ilustruje jedną z~podstawowych zasad działania
-  kompilatora, wspominaną już zasadę czarnej skrzynki. Nie interesuje nas
-  jak będzie działa program wytworzony przez kompilator, jeśli będzie dawał
-  poprawny wynik i~będzie działa możliwie szybko.
-
-  Z~naszego punktu widzenia w~środku programu może być smok, który używa
-  jakiś smoczych trików by otrzymać wyniki, pod warunkiem, że~wynik jest
-  poprawny i~smok działa szybko.
-
-  Ja szacuję, że~98\% programistów myśli o~działaniu programu komputerowego
-  w~taki sposób, jakby był on wykonywany przez interpreter, nawet gdy
-  chodzi o~język „silnie” kompilowany. Prawie zawsze uczymy informatyków
-  myśleć o~działaniu programów w~taki właśnie sposób, więc nie możemy
-  kręcić na to nosem. Jak Państwo widzą, to wcale nie musi mieć wiele
-  wspólnego z~tym jak \alert{naprawdę} będzie działa \alert{rzeczywisty}
-  program.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{?????}
-
+  Ja szacuję, że~98\% programistów myśli o~działaniu programów nad którymi
+  pracują w~taki sposób, jakby był on wykonywany przez interpreter, nawet
+  gdy chodzi o~język „silnie” kompilowany. Mnie tak nauczono myśleć
+  o~programach i~tak uczymy dziś większość informatyków. Jak Państwo widzą,
+  to wcale nie musi mieć wiele wspólnego z~tym jak \alert{naprawdę} będzie
+  działa \alert{rzeczywisty} program.
 
   Tego jednak nie należy uważać za problem. Program działa poprawnie? Jeśli
   tak, to czym~się mamy przejmować? A~nauka programowania jest wystarczająco
@@ -2015,14 +2027,48 @@ eprint=true,
   kompilacji. To zresztą dopiero pierwsze drugie dno całej sprawy, a jest
   jeszcze drugie drugie dno i~trzecie drugie dno, etc.
 
+  % A~nawet jeśli w~jakimś wyjątkowym przypadku, to byłby problem,
+  % że~prawdziwy program działa inaczej niż myślimy, to w~większości
+  % przypadków będzie to nasz najmniejszy problem. Poza dziedziną
+  % cyberbezpieczeństwa nie widzę kiedy to mogłoby mieć miejsce. A~to już jest
+  % temat na osobny przedmiot.
+
+  % Teraz przejdziemy do kilku praktycznych kwestii, które ponownie ilustruje
+  % poprzedni przykład.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  % Ja szacuję, że~98\% programistów myśli o~działaniu programów nad którymi
+  % pracują w~taki sposób, jakby był on wykonywany przez interpreter, nawet
+  % gdy chodzi o~język „silnie” kompilowany. Mnie tak nauczono myśleć
+  % o~programach i~tak uczymy dziś większość informatyków. Jak Państwo widzą,
+  % to wcale nie musi mieć wiele wspólnego z~tym jak \alert{naprawdę} będzie
+  % działa \alert{rzeczywisty} program.
+
+  % Tego jednak nie należy uważać za problem. Program działa poprawnie? Jeśli
+  % tak, to czym~się mamy przejmować? A~nauka programowania jest wystarczająco
+  % trudna bez wchodzenia w~to jak naprawdę działa program po dokonaniu
+  % kompilacji. To zresztą dopiero pierwsze drugie dno całej sprawy, a jest
+  % jeszcze drugie drugie dno i~trzecie drugie dno, etc.
+
   A~nawet jeśli w~jakimś wyjątkowym przypadku, to byłby problem,
   że~prawdziwy program działa inaczej niż myślimy, to w~większości
   przypadków będzie to nasz najmniejszy problem. Poza dziedziną
   cyberbezpieczeństwa nie widzę kiedy to mogłoby mieć miejsce. A~to już jest
   temat na osobny przedmiot.
 
-  Teraz przejdziemy do kilku praktycznych kwestii, które ponownie ilustruje
-  poprzedni przykład.
+  Teraz przejdziemy do kilku praktycznych kwestii, które pozwoli nam
+  zilustrować poprzedni przykład.
 
 \end{frame}
 % ##################
@@ -2068,8 +2114,8 @@ eprint=true,
 
   W~przypadku języka kompilowanego, błąd może zostać znaleziony dopiero
   w~momencie, gdy program został przekształcony do formy, która
-  nie ma już nic wspólnego z~kodem który napisaliśmy. Skutkiem tego,
-  kompilatory potrafią zwracać błędu, które są niezrozumiałe dla normalnego
+  nie ma już nic wspólnego z~kodem, który napisaliśmy. Skutkiem tego,
+  kompilatory potrafią zwracać błędy, które są niezrozumiałe dla normalnego
   programisty.
 
   Oczywiście, życie nie może być takie proste i~w~praktyce coraz rzadziej
@@ -2105,178 +2151,6 @@ eprint=true,
 % ######################################
 \appendix
 % ######################################
-
-
-
-
-
-% ######################################
-\section{Informacje dodatkowe}
-% ######################################
-
-
-
-
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{?????}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Krótka i~niezbyt poprawna historia problemu}
-
-
-  Na~przestrzeni tysięcy lat ludzie tworzyli urządzenia, które dziś
-  rozpoznajemy jako prekursorów współczesnych komputerów, wypada wymienić
-  kilku z~nich, którzy działali przed rokiem 1900-nym.
-
-  \textbf{2003 r.} Chris Lattner i~Vikram Adve tworzą system \textsc{llvm}.
-  Możemy przyjąć, że~w~tym momencie zaczyna~się okres rozwoju technik
-  kompilacji w~którym jesteśmy dziś (2024 rok).
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% ######################################
-% \section{Dodatkowe informacje}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Historia języków asemblera}
-
-
-  W~$1978$ roku firma Intel (od ang.~\textit{INTegrated ELectronic})
-  wypuszcza procesor $8086$, który rozpoczyna rodzinę procesorów
-  $\text{x}86$. Nazwa „$\text{x}86$” wywodzie~się od tego, że~liczby
-  będące nazwami procesorów miały~się kończyć na „$86$”, więc symbol
-  „$\text{x}$” oznacza pozostałą część tej liczby. W~następny latach
-  pojawiły~się procesory $80186$, $80286$ i~$80386$. Z~powodu praw
-  autorskich i~spraw pokrewnych, procesor który powinien~się nazywać
-  $80586$ został przemianowany na Pentium. I~tak dalej. Język asembler
-  stworzony dla tych procesorów nosi nazwę \alert{x86}, używa~się również
-  bardziej precyzyjnego określenia \alert{x86/Intel}.
-
-  Jeśli~się Państwo zastanawiają „Skąd oni biorą te nazwy dla procesorów?”,
-  to powiem, że~też chciałbym wiedzieć.
-
-  W~$2003$ roku firma \textsc{amd} (od ang.~\textit{Advanced Micro Devices})
-  wypuszcza 64-bitowy procesor Athlon~64 z~językiem asemblera o~nazwie
-  \textsc{amd}64, wzorowanym na języku x86/Intel.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{???}
-
-
-  Zbiorczą nazwą stosowną dla 64-bitowych asemblerów \textsc{amd} i~Intela
-  jest \alert{x86-64} lub \alert{x64}. Niektórzy używają również nazwy
-  \alert{\textsc{amd}64}, a~także paru innych.
-
-  W~1983 roku firma Acorn Computers Ltd. zaczyna pracę nad procesorem który
-  zostanie nazwany \alert{\textsc{arm}} (od ang.~\textit{Acorn \textsc{risc}
-    Machine}). Jednym z~wyników tego projektu jest opracowanie zbioru
-  instrukcji architektury \textsc{risc} (ang.~\textit{Reduced Instruction
-    Set Computing}). Pierwszym wyprodukowanym przed nich procesorem jest
-  32-bitowy \textsc{arm1}. Dla tych procesorów utworzono język asemblera
-  \alert{\textsc{arm}}.
-
-  W~1990 roku z~Acorn Computers Ltd. wydzieliła~się firma znana dziś jako
-  Arm~Holdings~pcl.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{?????}
-
-
-  Dwa najważniejsze dzisiaj zbiory instrukcji architektury to
-  \alert{\textsc{cisc}} i~\alert{\textsc{risc}}.
-
-  Akronim \textsc{cisc} pochodzi od angielskiego \textit{Complex
-    Instruction Set Computing}, czyli „obliczenia za pomocą zbioru
-  złożonych instrukcji”. Architektura ta charakteryzuje~się dużą ilością
-  instrukcji wykonujących złożone (stąd nazwa) operacje, które wykonanie
-  może zajmować wiele cykli procesora.
-
-  Natomiast nazwa \textsc{risc} jest od \textit{Reduced Instruction Set
-    Computing}, czyli „obliczenia za pomocą zbioru zredukowanych
-  instrukcji”. W~architekturze tej dominują małe instrukcje, które są
-  wykonywane w~jednym lub kilku cyklach procesora. Nazwa wzięła~się
-  stąd, że~instrukcje w~niej stosowane, miały~się być zredukowaną wersją
-  instrukcji architektury \textsc{cisc}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{????}
-
-
-  W~praktyce trudno wskazać procesor który byłby czystą realizacją
-  \textsc{cisc} albo \textsc{risc}. Jednak w~dobrym przybliżeniu procesor
-  x86/Intel to \textsc{cisc}, zaś \textsc{arm} to \textsc{risc}. Od~2021
-  roku dużo szumu jest wokół architektury \textsc{risc-v}, ale to temat na
-  inne zajęcia.
-
-\end{frame}
-% ##################
 
 
 

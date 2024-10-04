@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -74,8 +74,8 @@ eprint=true,
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
-% Stylef for drawing diagrams
-% \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+% Additional colors
+\usepackage{./Local-packages/jagiellonian-theme-additional-colors}
 
 
 
@@ -153,9 +153,11 @@ eprint=true,
 
 
 
-% % ######################################
-% \section{Getting ECTS~points. Requirements}
-% % ######################################
+% ######################################
+\section{Podstawy budowy procesora}
+% ######################################
+
+
 
 
 
@@ -164,7 +166,20 @@ eprint=true,
   \frametitle{?????}
 
 
+  \alert{Ważne.} Znajomość treści tego rozdziału nie będziemy od Państwa
+  wymagać. Jest on częścią wykładu, żeby ułatwić Państwu zrozumienie o~co w
+  tym wszystkim chodzi (i~może Państwa postraszyć jak to wszystko jest
+  skomplikowane). Jeśli uważają Państwo tą wiedzę za niepotrzebną do
+  zrozumienia przedmiotu, to nie muszą~się Państwo tego uczyć.
 
+  Ponieważ kompilator przetwarza kod w~języku takim jak~C do języka
+  asemblera, musimy coś sobie powiedzieć o~tym jak działa ten język. Będę
+  mówił o~języku \textsc{nasm} z~tego prostego powodu, że~ten dialekt
+  asemblera znam najlepiej. Proszę jednak nie przeceniać mojej wiedzy w~tym
+  zakresie.
+
+  Żeby zrozumieć język asemblera musimy coś sobie powiedzieć o~budowie
+  procesora i~tym czym są jego rejestry.
 
 \end{frame}
 % ##################
@@ -173,57 +188,429 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Literature}
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  \begin{figure}
+
+    \label{fig:aaaa}
+
+
+    \begin{tikzpicture}
+
+      \fill[rounded corners,fill=metalicGray] (-3,-3) rectangle (3,3);
+
+
+      \draw[color=black,dashed] (2.05,2.1) rectangle (2.65,2.7);
+
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,2.4) {R0};
+
+
+
+      \draw[color=black,dashed] (2.05,1.2) rectangle (2.65,1.8);
+
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,1.5) {R1};
+
+
+
+      \draw[color=black,dashed] (2.05,0.3) rectangle (2.65,0.9);
+
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,0.6) {R2};
+
+
+
+      \draw[color=black,dashed] (2.05,-0.6) rectangle (2.65,0);
+
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-0.3) {R3};
+
+
+
+      \draw[color=black,dashed] (2.05,-1.5) rectangle (2.65,-0.9);
+
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-1.2) {R4};
+
+
+
+      \draw[color=black,dashed] (2.05,-2.4) rectangle (2.65,-1.8);
+
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-2.1) {R5};
+
+    \end{tikzpicture}
+
+    \caption{Prosty schemat procesora (wymaga dokończenia)}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
 
 
 
 
-% \end{frame}
-% % ##################
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  \textbf{Rejestr} (ang. \textit{register}) to obszar pamięci będący
+  \alert{wewnętrzną} częścią procesora. Wykonany jest z~tego samego
+  materiały i~w~tej samej technologii co procesor, co gwarantuje,
+  że~ładowanie danych z~rejestru do procesora jest tak samo szybkie jak
+  procesor. \alert{To jest niezwykle ważne.}
+
+  Od $1990$ roku zmagamy~się z~problemem, że~transport danych
+  z~\textsc{ram}u do procesora zajmuje około $100$ cykli jego obliczeń.
+  Czyli $99$ cykli~się marnuje, bo procesor czeka na dane do przetworzenia!
+  Może obecny postęp w~rozwoju \textsc{ram}u pozwoli nam ten problem
+  rozwiązać, ale to jest dyskusja na inny dzień.
+
+  Problem z~rejestrami jest taki, że~powierzchnia procesora którą zajmują
+  jest niezwykle droga, więc mamy \alert{bardzo mało} rejestrów.
+  Przykładowo w~języku asemblera \textsc{nams} mamy $16$ (!) rejestrów
+  na liczy całkowite, po $64$-bity każdy! Jedno zdjęcie na moim smartfonie
+  zajmuje pamięć równoważną ponad $500 \, 000$ takich rejestrów.
+
+\end{frame}
+% ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Literature}
+% ##################
+\begin{frame}
+  \frametitle{Rola rejestrów}
 
 
+  Choć \textsc{nasm} posiada inne rejestry niż te całkowitoliczbowe, to nie
+  będziemy~się tym zajmować. Zaprowadziłoby to nas zbyt daleko od właściwej
+  treści tego przedmiotu.
 
+  Możemy przyjąć, że~każdy z~$16$ rejestr odpowiada za konkretne zadanie.
+  Umieszczając w~nim liczbę całkowitą o~odpowiedniej wartości przekazujemy
+  procesorowi informację o~tym co ma zrobić.
 
-% \end{frame}
-% % ##################
+  Przypomnijmy, że~jeden rejestr dialektu \textsc{nams} składa~się z~$64$
+  bitów, pozwala więc zapisać liczby całkowite od~$0$
+  do~$18 \, 446 \, 744 \, 073 \, 709 \, 551 \, 616 \approx 1.8 \cdot 10^{ 19 }$.
+  W~skrócie, dużo liczb.
 
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{\alert{Important information}}
-
-
-
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Kind request to listeners}
+% ##################
+\begin{frame}
+  \frametitle{Nazwy rejestrów dialektu \textsc{nams}}
+
+
+  Osiem pierwszych rejestrów \textsc{nams} obok nazwy głównej posiada
+  alternatywną nazwę, którą podajemy w~nawiasie okrągłym. Skąd pochodzą te
+  nazwy, nie mam pojęcia.
 
 
 
 
-% \end{frame}
-% % ##################
+
+  \begin{center}
+
+    \begin{tabular}{|c|c|}
+      \hline
+      \multicolumn{2}{|c|}{Nazwa rejestru \textsc{nams}} \\
+      \hline
+      \texttt{R0} (\texttt{RAX}) & \texttt{R8}\hphantom{0} \\
+      \texttt{R1} (RCX) & R9  \\
+      \texttt{R2} (RDX) & R10 \\
+      R3 (RBX) & R11 \\
+      R4 (RSP) & R12 \\
+      R5 (RBP) & R13 \\
+      R6 (RSI) & R14 \\
+      R7 (RDI) & R15 \\
+      \hline
+    \end{tabular}
+
+  \end{center}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Instrukcje dialektu NASM}
+
+
+  \texttt{mov nazwa-rejestru, wartość}~-- nadaje liczbie przechowywanej
+  w~podanym rejestrze zadaną wartość. Ta historyczna nazwa pochodzi zapewne
+  stąd, że~instrukcja ta przenosi (ang. \textit{move}) odpowiednią wartość
+  do~rejestru.
+
+  \texttt{syscall}~-- wywołanie systemowe (ang. \textit{system call}).
+  Instrukcja przesłana do systemu operacyjnego, by w~tym miejscu wykonał
+  odpowiednią instrukcję.
+
+  \texttt{xor nazwa-rejestru, wartość}~-- każe wykonać bitową alternatywą
+  wykluczającą (ang. \textit{bit eXclusive OR}) na zawartości rejestru
+  i~podanej wartości, następnie umieścić jej rezultat w~tymże rejestrze.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Objaśnienie „Hello, World!” w~asem. NASM
+    \parencite{Toal-NASM-Tutorial-Ver-2024}}
+
+
+  \# NASM
+
+  \hphantom{aaaaaaaaa} \texttt{global} \hphantom{aa} \texttt{\_start} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{section} \hphantom{a} \texttt{.text} \\
+  \texttt{\_start:} \hphantom{a} \hspace{-0.14em}
+  \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 1} \\
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdi, 1} \\
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa}
+  \texttt{rsi, message} \\
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdx, 14} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{syscall} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 60} \\
+  \hphantom{aaaaaaaaa} \texttt{xor} \hphantom{aaaaaa} \texttt{rdi, rdi} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{syscall} \\
+  \vspace{0.8em}
+
+  \hphantom{aaaaaaaaa} \texttt{section .data} \\
+  \vspace{0.8em}
+
+  \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Objaśnienia „Hello, World!” w~asem. NASM
+    \parencite{Toal-NASM-Tutorial-Ver-2024}}
+
+
+  \# NASM
+
+  \# Definiujemy globalny symbol \texttt{\_start}, który posłuży nam
+  za~etykietę.
+  \hphantom{aaaaaaaaa} \texttt{global} \hphantom{aa} \texttt{\_start} \\
+  \vspace{0.8em}
+
+  \# Rozpoczynamy sekcję \texttt{.text}, która zawiera wykonywalne \\
+  \# polecenia języka asemblera. \\
+  \hphantom{aaaaaaaaa} \texttt{section} \hphantom{a} \texttt{.text}
+
+  \# Etykieta \texttt{start} informuje procesor o~miejscu rozpoczęcia \\
+  \# programu. \\
+  \texttt{\_start:} \hphantom{a} \hspace{-0.14em}
+  \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 1} \\
+  \# Radzę teraz zapiąć pasy. Umieszczamy w~rejestrze \texttt{RAX}
+  liczbę~$1$. Jest \\
+  \# to informacja dla komputera, że~chcemy wypisać jakiś tekst. \\
+  \# Tak, w~języku asembler przekazujemy komputerowi polecenia, \\
+  \# poprzez ręczne wpisywanie określonych liczb do odpowiednich \\
+  \# rejestrów. Lub inne równie „proste” operacje.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdi, 1} \\
+  \# W rejestrze \texttt{RDI} umieszczamy liczbę $1$, co oznacza, że~tekst
+  ma zostać
+  \# wypisany na standardowe wyjście (\textsc{stdout}, ang.
+  \textit{standard output}). \\
+  \# $\text{\textsc{stdout}} \mapsto 1$
+
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa}
+  \texttt{rsi, message} \\
+  \# W~rejestrze \texttt{RSI} umieszczamy liczbę oznaczaną
+  symbolem \texttt{message}, \\
+  \# który przedstawia adres miejsca, gdzie zaczyna~się string \\
+  \# \texttt{"Hello, World!\textbackslash n"}.
+
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdx, 14} \\
+  \# Rejestr \texttt{RDX} musi zawierać długość w~bajtach stringa, którego
+  chcemy \\
+  \# wypisać na ekranie.
+
+  \hphantom{aaaaaaaaa} \texttt{syscall} \\
+  \# Wywołujemy system operacyjny, by wypisał nam string \\
+  \# \texttt{"Hello, World!\textbackslash n"} na standardowym
+  wyjściu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 60} \\
+  \# Musimy poprosić system operacyjny o~zamknięcie tego programu. \\
+  \# Robimy to przez umieszczenie liczby $60$ w~rejestrze \texttt{RAX}.
+
+  \hphantom{aaaaaaaaa} \texttt{xor} \hphantom{aaaaaa} \texttt{rdi, rdi} \\
+  \# To jest taki trik asemblerzystów. Potrzebujemy ustawić kod wyjścia \\
+  \# programu (w~C jest to \texttt{return 0;}) na $0$, przez umieszczenie \\
+  \# w~rejestrze \texttt{rdi} tej liczby. Robimy to przez wywołanie
+  instrukcji \texttt{xor}, \\
+  \# czyli bitowej alternatywy wykluczającej.
+
+  \# Nie jestem na tyle dobry w~asemblerze by powiedzieć, czemu oni \\
+  \# to robią przez \texttt{xor rdi, rdi}. Podejrzewam jednak, że~chodzi \\
+  \# o~szybkość wykonania tej instrukcji.
+
+  \# Jeśli nie próbujesz wycisnąć z~komputera każdej nanosekundy, to po \\
+  \# co piszesz w~asemblerze? Jest C, C++, Go, Python, etc.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{??????}
+
+
+  \hphantom{aaaaaaaaa} \texttt{syscall} \\
+  \# Wywołujemy system operacyjny, by zamknąć nasz program.
+
+  \# Rozpoczynamy sekcję \texttt{data}, która zawiera odpowiednie
+  dane. \\
+  \# Obiektów zdefiniowanych w~tej sekcji nie można wywoływać, można
+  \# je jednak modyfikować w~trakcie działania programu. \\
+  \hphantom{aaaaaaaaa} \texttt{section .data} \\
+  \vspace{0.8em}
+
+  \# Definiujemy string \texttt{"Hello, World!\textbackslash n"}. \\
+  \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10}
+
+  \# Myślą Państwo, że~to koniec? Chciałbym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{??????}
+
+
+  \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10}
+
+  \# String „\texttt{"Hello, World!", 10}” zawiera $14$ (!) znaków.
+  Pierwsze $13$ \\
+  \# to „\texttt{H}”, „\texttt{e}”, „\texttt{l}”, „\texttt{l}”,
+  „\texttt{o}”, „\texttt{,}”, „\texttt{ }” (znak spacji), „\texttt{W}”,
+  „\texttt{o}”, „\texttt{r}”, „\texttt{l}”, \\
+  \# „\texttt{d}”, „\texttt{!}”.
+
+  \# A gdzie $14$-sty znak? W~stringu „\texttt{"Hello, World!", 10}”
+  odpowiada \\
+  \# za niego liczba $10$ na końcu. W~kodowaniu \textsc{ascii} pod liczbą
+  dziesięć, \\
+  \# kryje~się „line feed”, czyli po ludzku znak nowej linii. Ten zapis \\
+  \# oznacza więc, że do końca stringu dodany jest znak nowej linii.
+
+  \# Dlaczego życie nie może być proste?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  Znając życie, większość z~Państwa nie chce już nigdy w~życiu mieć
+  do czynienia z~językiem asemblera. Całkowicie naturalne i~zrozumiałe.
+  Bardzo~się jednak ucieszę, jeśli znajdzie~się ktoś, kto chce~się
+  tym zajmować.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Rzut oka na kompilatory}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -235,14 +622,26 @@ eprint=true,
 
 
 % % ######################################
-% \SectionSlideWithPicture{Graphics pipeline (OpenGL)}
+% \section{??????}
 % % ######################################
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 % % ##################
 % \begin{frame}
-%   \frametitle{Graphics pipeline (rendering pipeline)}
+%   \frametitle{?????}
 
 
 
@@ -255,8 +654,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{About rendering pipeline on
-%     \href{https://www.khronos.org/}{https://www.khronos.org/}}
+%   \frametitle{??????}
 
 
 
@@ -269,32 +667,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Graphics pipeline (rendering pipeline)}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ######################################
-% \SectionSlideWithPicture{Basic concepts of~computer~graphics}
-% % ######################################
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
+%   \frametitle{?????}
 
 
 
@@ -308,46 +681,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{A sample scene}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Rendering without perspective}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Rendering with perspective}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Another sample scene}
+%   \frametitle{??????}
 
 
 
@@ -361,7 +695,20 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Rendering without perspective}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???????}
 
 
 
@@ -375,20 +722,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Rendering with perspective}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
+%   \frametitle{?????}
 
 
 
@@ -402,21 +736,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Data structures}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{From vertices to fragments}
+%   \frametitle{?????}
 
 
 
@@ -430,7 +750,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
+%   \frametitle{?????}
 
 
 
@@ -444,7 +764,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Each model is based on  a set of vertices}
+%   \frametitle{?????}
 
 
 
@@ -458,7 +778,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Each model is based on  a set of vertices}
+%   \frametitle{??????}
 
 
 
@@ -471,48 +791,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Vertex attributes}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Vertex attributes}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
+%   \frametitle{??????}
 
 
 
@@ -526,7 +805,21 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
+%   \frametitle{???????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
 
 
 
@@ -539,85 +832,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Primitives in the OpenGL library (deprecated since ver.~3.1)}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Texturing and blending}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Texturing and blending}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Communication between CPU and GPU}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Data stored in the video memory}
+%   \frametitle{??????}
 
 
 
@@ -631,7 +846,98 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Data stored in the video memory}
+%   \frametitle{???????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -645,7 +951,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Graphics pipeline (rendering pipeline)}
+%   \frametitle{??????}
 
 
 
@@ -659,7 +965,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
+%   \frametitle{?????}
 
 
 
@@ -673,7 +979,21 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -688,7 +1008,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
+%   \frametitle{?????}
 
 
 
@@ -703,7 +1023,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Vertex transformations (OpenGL nomenclature)}
+%   \frametitle{?????}
 
 
 
@@ -716,8 +1036,8 @@ eprint=true,
 
 
 % % ##################
-% \begin{frame}[label=Przestrzen-uklad-wspolrzednych-1]
-%   \frametitle{Spaces --~coordinate systems}
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -732,7 +1052,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Spaces --~coordinate systems}
+%   \frametitle{?????}
 
 
 
@@ -747,7 +1067,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Rasterization and fragment operations}
+%   \frametitle{??????}
 
 
 
@@ -762,7 +1082,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Rasterization and fragment operations}
+%   \frametitle{??????}
 
 
 
@@ -776,7 +1096,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Fragment operations}
+%   \frametitle{????}
 
 
 
@@ -792,7 +1112,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Basic concepts of computer graphics}
+%   \frametitle{?????}
 
 
 
@@ -807,7 +1127,7 @@ eprint=true,
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Links}
+%   \frametitle{????}
 
 
 
@@ -832,11 +1152,6 @@ eprint=true,
 
 
 
-% % ##################
-% \GeometryThreeDTwoSpecialEndingSlidesEN{Questions? Thank you for your attention.}
-% % ##################
-
-
 
 % % % ##################
 % % \jagiellonianendslide{Dziękuję za~uwagę.}
@@ -852,14 +1167,14 @@ eprint=true,
 
 
 % % ######################################
-% \SectionSlideWithPicture{Terminological notes}
+% \section{?????}
 % % ######################################
 
 
 
 % % ##################
-% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-1]
-%   \frametitle{The concept of space. Affine and vector space}
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -872,8 +1187,8 @@ eprint=true,
 
 
 % ##################
-% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-2]
-%   \frametitle{The concept of space. Space and coordinate system}
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -886,8 +1201,8 @@ eprint=true,
 
 
 % ##################
-% \begin{frame}[label=Uwagi-pojecie-przestrzeni-Przestrzen-afiniczna-i-wektorowa-3]
-%   \frametitle{The concept of space. Space and coordinate system}
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -900,8 +1215,8 @@ eprint=true,
 
 
 % ##################
-% \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-1]
-%   \frametitle{Coordinate systems in computer graphics}
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -914,8 +1229,8 @@ eprint=true,
 
 
 % ##################
-% \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-2]
-%   \frametitle{Coordinate systems in computer graphics}
+% \begin{frame}
+%   \frametitle{?????}
 
 
 
@@ -927,8 +1242,8 @@ eprint=true,
 
 
 % #################
-% \begin{frame}[label=Uwagi-uklady-wspolrzednych-w-przestrzeni-Rodzaje-ukladow-3]
-%   \frametitle{Coordinate systems in computer graphics}
+% \begin{frame}
+%   \frametitle{??????}
 
 
 
