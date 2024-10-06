@@ -79,9 +79,11 @@ eprint=true,
 % Styles for arrows
 \usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
 
-% Stylef for drawing diagrams
+% Styles for drawing diagrams
 \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
+% Jagiellonian theme's colros
+\usepackage{./Local-packages/jagiellonian-theme-colors}
 
 
 
@@ -94,7 +96,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Podstawowe wiadomości o~języku~C i~?????}
+\subtitle{Podstawowe wiadomości o~języku~C, etc.}
 
 \author{Kamil Ziemian \\
   \email}
@@ -372,7 +374,7 @@ eprint=true,
 
 
     \includegraphics[scale=0.3]
-    {./PresentationsPictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
+    {./Presentations-pictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
 
     \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
       PDP-11 firmy Digital Equipment Corporation.}
@@ -630,7 +632,7 @@ eprint=true,
 
   Tutaj pojawia~się pewien problem. Przyjrzyjmy~się teraz programowi
   „Hello, World!” napisanemu w~dialektach asemblera \textsc{arm}~32,
-  AArch64, \textsc{risc-v}, x86/Intel i~\textsc{nasm} oraz językach~C
+  AArch64, \textsc{risc-v}, x86 i~\textsc{nasm} oraz językach~C
   i~Python.
 
 \end{frame}
@@ -729,8 +731,8 @@ eprint=true,
   \hphantom{aaaa} \texttt{ecall}
   \vspace{0.8em}
 
-  \hphantom{aaaa} \texttt{a7, zero, 93} \\
-  \hphantom{aaaa} \texttt{a0, zero, 13} \\
+  \hphantom{aaaa} \texttt{addi a7, zero, 93} \\
+  \hphantom{aaaa} \texttt{addi a0, zero, 13} \\
   \hphantom{aaaa} \texttt{ecall}
   \vspace{0.8em}
 
@@ -754,8 +756,8 @@ eprint=true,
   \vspace{0.8em}
 
   \hphantom{aaaaaaaaa} \texttt{section} \hphantom{a} \texttt{.text} \\
-  \texttt{\_start:} \hphantom{a} \texttt{mov} \hphantom{aaaaaa}
-  \texttt{rax, 1} \\
+  \texttt{\_start:} \hphantom{a} \hspace{-0.15em}
+  \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 1} \\
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdi, 1} \\
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa}
   \texttt{rsi, message} \\
@@ -786,7 +788,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~assemblerze x86/Intel
+  \frametitle{„Hello, World!” w~assemblerze x86
     \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
 
 
@@ -1088,7 +1090,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{????}
+  \frametitle{Trzy fazy tworzenie programu w~języku~C}
 
 
   By stworzyć program w~języku~C musimy przejść trzy fazy.
@@ -1156,7 +1158,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Faza kompilacji}
+  \frametitle{Faza kompilacji i~wykonania}
 
 
   \alert{Faza kompilacji.} Kompilator analizuj niezrozumiały dla komputera
@@ -1168,10 +1170,10 @@ eprint=true,
   i~zapisuje wynik w~odpowiednim pliku, ale \alert{nie} uruchamia
   otrzymanego programu. Używając prostego przykładu, kompilator
   przetłumaczy „Eat the soup.” na „Zjedz zupę.”, ale nie powie nikomu,
-  że~ma zjeść zupę. Kompilator dokonuje \alert{tylko} przekładu z~jednego
-  języka na drugi i~jego zapisu do pliku, \alert{nie} uruchamia jednak tego
-  programu. Używając prostego przykładu, kompilator przetłumaczy „Eat the
-  soup.” na „Zjedz zupę.”, ale nie powie nikomu, że~ma zjeść zupę.
+  że~ma zjeść zupę.%  Kompilator dokonuje \alert{tylko} przekładu z~jednego
+  % języka na drugi i~jego zapisu do pliku, \alert{nie} uruchamia jednak tego
+  % programu. Używając prostego przykładu, kompilator przetłumaczy „Eat the
+  % soup.” na „Zjedz zupę.”, ale nie powie nikomu, że~ma zjeść zupę.
 
   % Przez wywołanie polecenia \\
   % \texttt{\$ gcc --std=c99 -pedantic helloWorld.c -o outProg} \\
