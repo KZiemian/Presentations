@@ -39,6 +39,25 @@
 
 
 
+% ------------------------------------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------------------------------------
+
+% ------------------------------------------------------
+% Packages for scientific papers
+% ------------------------------------------------------
+% Switching off \lll symbol, that I guess is representing letter ``Ł''.
+% It collide with `amsmath' package's command with the same name
+% \let\lll\undefined
+% Basic package from American Mathematical Society (AMS)
+% \usepackage[intlimits]{amsmath}
+% Equations are numbered separately in every section.
+% \numberwithin{equation}{section}
+
+
+
+
+
 % ------------------------------------------------------
 % BibLaTeX
 % ------------------------------------------------------
@@ -52,14 +71,22 @@ url=false,
 eprint=true,
 ]{biblatex}
 
-\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+\addbibresource{Herdegens-approach-and-two-quasi-delta-ETC-Bibliography.bib}
+
 
 
 
 
 % ------------------------------------------------------
-% Importing packages, libraries and setting their configuration
+% Wonderful package PGF/TikZ
 % ------------------------------------------------------
+
+% Styles for arrows
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+% Node and pics for drawing charts
+\usepackage{./Local-packages/PGF-TikZ-Chart-nodes-and-pics}
+
 
 
 
@@ -166,10 +193,8 @@ eprint=true,
 
 
   If you have any question about the topic, please interrupt me during
-  the~talk.
-
-  I~will be grateful for suggestion how this talk can be improved and for
-  pointing any mistakes found in it.
+  the~talk. I~will be also grateful for suggestion how this talk can be
+  improved and for pointing any mistakes found in it.
 
 \end{frame}
 % ##################
@@ -195,10 +220,129 @@ eprint=true,
 
 
   In the year 1948 Hendrik Brught Gerhard Casimir publish only three pages
-  long article, in which he predicted that two neutral plates in the cubic
-  cavity will attract each other due to strange relation between
-  ``zero-point energy'' of the electromagnetic field with different boundary
-  conditions.
+  long article \textit{On~the~Attraction Between Two Perfectly Conducting
+    Plates} \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}, in which
+  he predicted that two electrical neutral plates put inside the cubic cavity
+  will attract each other due to strange relation between ``zero-point
+  energy'' of the~electromagnetic field with different boundary conditions.
+
+  As it is well known, see for example book by Peskin and Schroeder
+  \parencite{Peskin-Schroeder-An-Introduction-to-Quantum-Field-Theory-Pub-1995},
+  procedure known as canonical quantisation applied to classical
+  electromagnetic field, produce ``infinite constant'' in the~expression
+  for energy, which his refer to as ``zero-point energy''. Casimir claims
+  was that since boundary conditions change ``value of infinite constant'',
+  their difference should manifest itself as finite force.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zero-point energies used by Casimir}
+
+
+  Casimir considered zero-point energy of empty cavity, that is expressed
+  by formula:
+  \begin{equation}
+    \label{eq:Herdegens-approach-01}
+    % \begin{split}
+    \frac{ 1 }{ 2 } \left( \sum \hbar \omega \right)_{ \text{II} } =
+    \frac{ \hbar c a \HorSpaceFive L^{ 2 } }{ 2 \pi^{ 2 } }
+    \int\limits_{ 0 }^{ \infty } \int\limits_{ 0 }^{ \infty } \kappa
+    \sqrt{ k_{ \HorSpaceOne z }^{ \,\, 2 } + \kappa^{ 2 } } \, d\kappa \,
+    dk_{ \HorSpaceTwo z }.
+    % \end{split}
+  \end{equation}
+  Notation used here is taken from original paper.
+
+  On the other hand, zero-point energy in the situation when additional
+  plate, that produce Dirichlet boundary conditions, is inserted at the
+  distance $a$ is given by:
+  \begin{equation}
+    \label{eq:Herdegens-approach-02}
+    \frac{ 1 }{ 2 } \left( \sum \hbar \omega \right)_{ \text{I} } =
+    \frac{ \hbar c \HorSpaceFive L^{ 2 } }{ 2 \pi }
+    \sum_{ n = ( 0 ), \, 1 }^{ \infty } \, \int\limits_{ 0 }^{ \infty } \kappa
+    \sqrt{ \left( n^{ 2 } \frac{ \pi^{ 2 } }{ a^{ 2 } } \right)
+      + \kappa^{ 2 } } \, d\kappa.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Introduction of cutoff}
+
+
+  To obtain finite result from
+  $\delta E = \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{I} } -
+  \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{II} }$ Casimir need to introduce
+  cutoff function $f$, with cutoff parameter $k_{ \HorSpaceThree m }$.
+  After doing that regularized energy difference of zero-point energies is
+  given by
+  \begin{equation}
+    \label{eq:Oryginalna-praca-ETC-05}
+    \begin{split}
+      \delta E
+      &=
+        \frac{ \hbar c \HorSpaceFive L^{ 2 } \pi^{ 2 } }{ 4 a^{ 3 } } \!
+        \left( \, \sum_{ ( 0 ), \, 1 }^{ \infty } \,
+        \int\limits_{ 0 }^{ \infty } \! d\kappa \, \sqrt{ n^{ 2 } \! + \! u } \,
+        f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{ a k_{ \HorSpaceTwo m } }
+        \right) \right. \, - \\
+      &\left. \;\;\;
+        - \int\limits_{ 0 }^{ \infty } \! \int\limits_{ 0 }^{ \infty } \! du \, dn \,
+        \sqrt{ n^{ \, 2 } \! + \! u } \,
+        f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{
+        a k_{ \HorSpaceTwo m } } \right) \right).
+    \end{split}
+  \end{equation}
+
+  By expanding this expression into a series and taking only zero order term
+  Casimir arrives at now famous formula:
+  \begin{equation}
+    \label{eq:Oryginalna-praca-ETC-06}
+    \frac{ \delta E }{ L^{ 2 } } =
+    -\hbar c \frac{ \pi^{ 2 } }{ 720 } \frac{ 1 }{ a^{ 3 } }.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Review of Casimir approach}
+
+
+  Casimir method of computation is still present in current literature in
+  more or less refined form. In my humble opinion, it cannot be judge as
+  satisfactory in $2024$.
+
+  First of all, it use of zero-point energy, which according to
+  original~(!) Casimir paper is itself nonphysical, is hard to explain.
+  It worth noticing that for over $700$ pages of Peskin and Schroeder book,
+  zero-point energy is considered as physically irrelevant, to suddenly be
+  considered physically important in the context of Casimir effect.
+  The authors seems to be dissatisfied by this state of affair.
+
+  Second, it not introduce physical properties of materials at the beginning,
+  but as auxiliary tool for removing ill defined mathematical quantities.
+
+  For both these reasons, alternative approaches should be welcome.
 
 \end{frame}
 % ##################
@@ -212,130 +356,203 @@ eprint=true,
 
 
 
+% ######################################
+\section{Overview of Herdegen's approach to Casimir effect}
+% ######################################
+
+
+
 % ##################
 \begin{frame}
-  \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+  \frametitle{Introduction to Herdegen's approach}
+
+
+  Approach to Casimir force that we will be discussing, was first announced
+  in short paper of Andrzej Herdegen \textit{No-nonsens Casimir force}
+  \parencite{Herdegen-Nononsens-Casimir-force-Pub-2001} and fully presented
+  in the two part article \textit{Quantum backreaction (Casimir) effect}
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005},
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-II-Pub-2006}. Casimir
+  effect in this approach is interpreted as backreaction of quantum system
+  to adiabatic changes in macroscopic system and apparatus of algebraic
+  quantum field theory (\textsc{aqft}) is used to allow us for rigorous
+  analysis of physical properties of the system.
+
+  We need to put special attention to how Casimir effect is interpreted
+  in this formalism. According to it, this effect is present in the system
+  having quantum part $Q$ and macroscopic part $M$. In the standard example
+  quantum part is quantum electromagnetic field and macroscopic contains
+  two meta, electric neutral plates. When $M$ change \alert{adiabaticaly}
+  there is backreaction on the part of subsystem $Q$, that give rise to
+  particular force.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Element of Herdegen's approach}
+
+
+  According to my reading of experimental literature on the subject,
+  this assumption of adiabatic movement of macroscopic subsystem fits
+  well with the way how true experiments are done.
+
+  We now want to give short summary of algebraic quantum field theory.
+  The~two main pillars of it can be summarized in somewhat simplified way as
+  follow.
+  \begin{itemize}
+
+  \item For quantum observables the most important relations are of
+    algebraic nature.
+
+  \item Physical measurements are localized in bounded regions in of
+    spacetime.
+
+  \end{itemize}
+  Due to time constrains we can only sketch how this quite sophisticated
+  formalism works. We first try to explain, what is the idea laying behind
+  the~first point.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebraic nature of observables}
+
+
+  In standard curse of non-relativistic quantum mechanics, assuming
+  one dimensional problem, the position and
+  momentum operators are given as,
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-01}
+    X = x, \quad
+    P = -i \, \hbar \frac{ d }{ dx },
+  \end{equation}
+  and both of this operator act on space of physical state that is equal
+  to $L^{ 2 }( \Rbb, d\mu( x ) )$. From this we can, glossing over some
+  mathematical problems, derive relation
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-02}
+    [ X, P ] = i \, \hbar \, \id.
+  \end{equation}
+  In \textsc{aqft} we interpreted equation
+  \eqref{eq:Overview-of-Herdegens-approach-ETC-02} as being fundamental
+  relation between observables of algebraic nature. More precisely, given
+  physical system, we attach to it $C^{ * }$ algebra $\Acal$, representing
+  physical quantities that can be measured inside it.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebraic nature of observables}
+
+
+  For technical reasons, we replace relation $[ X, P ] = i \, \hbar \, \id$
+  with it Weyl form:
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-03}
+    e^{ i P s } e^{ i X t } = e^{ i X t } e^{ i P s } e^{ i s t }.
+  \end{equation}
+
+  We can assume that our algebra $\Acal$ have a~neutral element $\UnitAlg$.
+  While element of algebra $\Acal$ represents measurable physical
+  quantities, the states are represented by class of the elements of space
+  dual to $\Acal$: $\omega \in \Acal^{ \text{d} }$. Such $\omega$ to be considered state,
+  must fulfill two requirements:
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-04}
+    \omega( A^{ * } A ) \geq 0, \; \forall A \in \Acal, \quad
+    \omega( \UnitAlg ) = 1.
+  \end{equation}
+
+  We can now talk about localization of physical event in the Minkowski
+  spacetime.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Picture of Minkowski spacetime}
 
 
   \begin{figure}
 
-    \label{aaa:bbb}
-
-
     \centering
+
 
     \begin{tikzpicture}
 
+      % x axis
+      \draw[axis arrow] (-5,0) -- (5,0);
 
-      \fill[color=blue] (5.75,1.85) -- (5.75,3.15) -- (1.5,3.15) --
-      (1.5,1.85) -- cycle;
-
-      \fill[color=green] (1.5,4) -- (1,4) -- (1,1) -- (1.5,1) -- cycle;
-
-      \fill[color=brown] (1,3.75) -- (0.84,3.75) -- (0.84,1.25) --
-      (1,1.25) -- cycle;
+      \pic at (5,0) {x mark for horizontal axis 1};
 
 
-      \draw[color=black,line width=0.7] (1.7,3.15) -- (2,1.85);
+      % t axis
+      \draw[axis arrow] (0,-2.5) -- (0,4);
 
-      \draw[color=black,line width=0.7] (2.3,3.15) -- (2.6,1.85);
-
-      \draw[color=black,line width=0.7] (2.9,3.15) -- (3.2,1.85);
-
-      \draw[color=black,line width=0.7] (3.5,3.15) -- (3.8,1.85);
-
-      \draw[color=black,line width=0.7] (4.1,3.15) -- (4.4,1.85);
-
-      \draw[color=black,line width=0.7] (4.7,3.15) -- (5,1.85);
-
-      \draw[color=black,line width=0.7] (5.3,3.15) -- (5.6,1.85);
-
-
-      \fill[color=gray] (-5,-0.5) -- (5,-0.5) -- (5,5) -- (4.5,5) --
-      (4.5,0) -- (-5,0) -- cycle;
+      \pic at (0,4) {t mark for vertical axis 1};
 
 
 
+      % Light cone
+      \fill[color=blue,opacity=0.4] (0,0) -- (3.5,3.5) -- (-3.5,3.5) -- cycle;
+
+      \fill[color=blue,opacity=0.4] (0,0) -- (2.2,-2.2) -- (-2.2,-2.2) --
+      cycle;
+
+      \draw[dashed] (2.2,-2.2) -- (-3.5,3.5);
+
+      \draw[dashed] (-2.2,-2.2) -- (3.5,3.5);
 
 
 
+      % Region number 1
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (1.2,0) (3,-1) (3.5,1.4) (2.5,1.2) };
 
-      \fill[color=brown] (-0.08,0) rectangle (0.08,2.5);
-
-      % % y axis
-      % \draw[axis arrow] (0,-1.3) -- (0,1.5);
-
-      % % x axis
-      % \draw[axis arrow] (-0.3,0) -- (10,0);
+      \node[scale=1.3] at (2.3,0.3) {$\Ocal_{ 1 }$};
 
 
-      % \node[number on the right and below] at (0,0) {$0$};
+      % Region number 2
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (0.8,0) (2.9,-1.5) (4.2,1.8) (1,3) };
+
+      \node[scale=1.3] at (2.7,1.8) {$\Ocal_{ 2 }$};
 
 
+      % Region number 3
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (-1,-0.2) (-2,1.2) (-3,0.3) (-2,-1) };
 
-      % % Thicks on x axis
-      % \pic at (0.5,0) {tick x axis thin 1};
-
-      % \node[number below x axis] at (0.5,0) {$0.5$};
-
-
-      % \pic at (1,0) {tick x axis thin};
-
-      % \node[number below x axis] at (1,0) {$1$};
-
-
-      % \pic at (1.5,0) {tick x axis thin 1};
-
-      % \node[number below x axis] at (1.5,0) {$1.5$};
-
-
-      % \pic at (2,0) {tick x axis thin};
-
-      % \pic at (2.5,0) {tick x axis thin};
-
-      % \pic at (3,0) {tick x axis thin};
-
-
-      % % Ticks on y axis
-      % \pic at (0,-1) {tick y axis thin};
-
-      % \node[number on the left of y axis] at (0,-1) {$-1$};
-
-
-      % \pic at (0,-0.5) {tick y axis thin 1};
-
-      % \node[number on the left of y axis] at (0,-0.5) {$-0.5$};
-
-
-      % \pic at (0,0.5) {tick y axis thin 1};
-
-      % \pic at (0,1) {tick y axis thin};
-
-
-
-
-      % % Graph of sin function
-      % \draw[color=blue] (0,0) -- (0.05,0.049) -- (0.1,0.099) -- (0.15,0.149) --
-      % (0.2,0.198) -- (0.25,0.247) -- (0.3,0.295) -- (0.35,0.342) --
-      % (0.4,0.389) -- (0.45,0.434) -- (0.5,0.479) -- (0.55,0.522) --
-      % (0.6,0.564) -- (0.65,0.605) -- (0.7,0.644) -- (0.75,0.681) --
-      % (0.8,0.717) -- (0.85,0.751) -- (0.9,0.783) -- (0.95,0.813) --
-      % (1,0.841) -- (1.05,0.867) -- (1.1,0.891) -- (1.15,0.912) -- (1.2,0.932) --
-      % (1.25,0.948) -- (1.3,0.963) -- (1.35,0.975) -- (1.4,0.985) --
-      % (1.45,0.992) -- (1.5,0.997) -- (1.55,0.999) -- (1.6,0.999) --
-      % (1.65,0.996) -- (1.7,0.991) -- (1.75,0.983) -- (1.8,0.973) --
-      % (1.85,0.961) -- (1.9,0.946) -- (1.95,0.928) -- (2.0,0.909) --
-      % (2.05,0.887) -- (2.1,0.863) -- (2.15,0.836) -- (2.2,0.808) --
-      % (2.25,0.778) -- (2.3,0.745) -- (2.35,0.711) -- (2.4,0.675) --
-      % (2.45,0.637) -- (2.5,0.598) -- (2.55,0.557) -- (2.6,0.515) --
-      % (2.65,0.472) -- (2.7,0.427) -- (2.75,0.381) -- (2.8,0.334) --
-      % (2.85,0.287) -- (2.9,0.239) -- (2.95,0.19) -- (3,0.141) --
-      % (3.05,0.091) -- (3.1,0.041) -- (10,0);
-
+      \node[scale=1.3] at (-2,0.5) {$\Ocal_{ 3 }$};
 
     \end{tikzpicture}
 
-    \caption{Funkcja $\sin$}
+    \caption{Picture of spacetime with few bounded regions marked.}
+
 
   \end{figure}
 
@@ -346,466 +563,146 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+% ##################
+\begin{frame}
+  \frametitle{Localization of algebras}
 
 
-%   \textbf{Brunetti, Fredenhagen [BF00]} \\
-%   Niech $u \in \Dcal'( \Rbb^{ d } \setminus \{ 0 \} )$. Jeśli:
-%   \begin{itemize}
+  Previously we will just talking about algebras, but in \textsc{aqft}
+  every algebra is localized in particular open region of spacetime
+  with compact closure. We will denote algebra of region $\Ocal_{ 1 }$
+  as $\Acal( \Ocal_{ 1 } )$. This algebra represents all quantities
+  that can be measured in such region. You can imagine that it represent
+  size of experimental aperture and span of time when it's working.
 
-%   \item $\sd( u ) < d$, to~istnieje jednoznaczne przedłużenie
-%     takie, że $\sd( u ) = \sd( \dot{ u } )$;
+  Family of all such localized algebras we will call \textbf{net of
+    algebras}. Since regions from previous picture obeys relation
+  $\Ocal_{ 1 } \subset \Ocal_{ 2 }$ we require that
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-05}
+    \Acal( \Ocal_{ 1 } ) \subset \Acal( \Ocal_{ 2 } ),
+  \end{equation}
+  which have natural interpretation. It simple says that every quantity
+  that can be measured in particular region is also measurable in any
+  region that extend the first one.
 
-%   \item $d \leq \sd( u ) < \infty$,
-%     $\sd( u ) = \sd( \dot{ u } ) = \sd( \dot{ u }' )$ to
-%     \begin{equation}
-%       \label{eq:Epstein-Glaser-04}
-%       \dot{ u }' =
-%       \dot{ u } + \sum\limits_{ | \alpha | \leq \divDegree( u ) } C_{ \alpha } \delta^{ ( \alpha ) };
-%     \end{equation}
-
-%   \item $\sd( u ) = \infty$
-%     (np.~$u( f ) = \int e^{ \frac{ 1 }{ x } } f( x ) \, dx$),
-%     to~rozszerzenie nie istnieje.
-
-%   \end{itemize}
-
-%   \vspace{\spaceFour}
-
-
-
-%   \textbf{Zauważmy}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-05}
-%     \sd( \delta^{ ( \alpha ) } ) = d + | \alpha |.
-%   \end{equation}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Dowód}
-
-
-%   \textbf{Przypadek} $\sd( u ) < d$ \\
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-06}
-%     \dot{ u } = \lim\limits_{ \rho \to +\infty } \eta( \rho x ) u,
-%   \end{equation}
-%   $\eta( x ) \in \Ccal^{ \infty }( \Rbb^{ d } )$, $\eta( x ) = 0$, jeśli $| x | < 1$,
-%   $\eta( x ) = 1$, jeśli $| x | > 2$.
-
-%   \vspace{\spaceFour}
-
-
-
-%   \textbf{Przypadek} $\sd( u ) \geq d$ \\
-%   Aby~sprowadzić do~poprzedniego przypadku definiujemy przestrzeń
-%   funkcji gładkich znikających do~rzędu
-%   $\lambda = \divDegree( u ) = \sd( u ) - d$:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-07}
-%     \Dcal_{ \lambda }( \Rbb^{ d } ) =
-%     \{ \, f \in \Dcal( \Rbb^{ d } ) : \partial_{ \alpha } f( 0 ) = 0, \quad
-%     | \alpha | = \lambda \}.
-%   \end{equation}
-%   Korzystając z~odpowiedniej postaci reszty we~wzorze Taylora
-%   otrzymujemy:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-08}
-%     f( x ) = \sum_{ | \alpha | = [ \lambda ] + 1 } x^{ \alpha }
-%     g_{ \alpha }( x ).
-%   \end{equation}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Dowód}
-
-
-%   \textbf{Przypadek} $\sd( u ) \geq d$ \\
-%   \begin{subequations}
-%     \begin{align}
-%       \label{eq:Epstein-Glaser-08-A}
-%       \Dcal_{ \lambda }( \Rbb^{ d } )
-%       &= \{ f \in \Dcal( \Rbb^{ d } ) : \partial_{ \alpha } f( 0 ) = 0, \quad | \alpha | = \lambda \}, \\
-%       \label{eq:EpsteinGlaser-08-B}
-%       f( x ) &= \sum_{ | \alpha | = [ \lambda ] + 1 } x^{ \alpha } g_{ \alpha }( x ), \\
-%       \label{eq:EpsteinGlaser-08-C}
-%       \sd( x^{ \alpha } u ) &= \sd( u ) - | \alpha |.
-%     \end{align}
-%   \end{subequations}
-
-%   \textbf{Zauważmy} \\
-%   Jeśli $\divDegree( u ) < | \alpha |$, to~$\sd( u ) - | \alpha | < d$.
-
-%   \vspace{\spaceFour}
-
-
-
-%   \textbf{Idea} \\
-%   Należy z~każdej funkcji wyciąć część która za~słabo gaśnie w~0.
-%   Jednak taka operacja nie jest jednoznaczna.
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-09}
-%     \dot{ u }' = \dot{ u } + \sum\limits_{ | \alpha | \leq \textrm{div}( u ) }
-%     C_{ \alpha } \delta^{ ( \alpha ) };
-%   \end{equation}
-%   $f \in \Dcal_{ \lambda }( \Rbb^{ d } )$. Ponieważ
-%   $\sd( u ) - ( [ \lambda ] + 1 ) < \sd( u ) - ( \sd( u ) - d ) = d$,
-%   więc możemy określić:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-10}
-%     \langle \dot{ u }, f \rangle = \sum \langle x^{ \alpha } u, g_{ \alpha } \rangle.
-%   \end{equation}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Dowód}
-
-
-%   \textbf{Pomysł.}
-%   Aby zdefiniować $\dot{ u }$ na dowolnym $f \in \Dcal( \Rbb^{ d } )$ należy
-%   wyciąć z~$f$ człony nieznikające w~0.
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-11}
-%     f_{ \textrm{cut} }( x ) =
-%     f( x ) - \sum f^{ ( \alpha ) }( 0 ) w_{ \alpha }( x ),
-%   \end{equation}
-%   gdzie $w_{ \alpha } \in \Dcal( \Rbb^{ d } )$ jest rodziną funkcji
-%   „wycinających”:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-12}
-%     \partial_{ \alpha } w_{ \beta }( 0 ) = \delta^{ \alpha }_{ \beta }.
-%   \end{equation}
-
-%   \vspace{\spaceFour}
-
-
-
-%   \textbf{Koniec dowodu}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-13}
-%     \langle \dot{ u }, f \rangle =
-%     \langle u, f_{ \textrm{cut} } \rangle
-%     + \sum\limits_{ | \alpha | \leq \divDegree( u ) }
-%     \langle \dot{ u }, w_{ \alpha } \rangle \delta^{ \alpha }.
-%   \end{equation}
-%   Ta~równość \textbf{definiuje} $\langle \dot{ u }, w_{ \alpha } \rangle$.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ######################################
-% \section{Regularyzacja wymiarowa w~przestrzeni położeń}
-% % ######################################
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Regularyzacja wymiarowa dla~$d$~nieparzystego}
-
-
-%   \textbf{Propagator Feynmana}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-14}
-%     \Delta_{ F }( x ) =
-%     \theta( x^{ 0 } ) H^{ \nu }( x ) + \theta( -x^{ 0 } ) H^{ \nu }( -x ) + f( x ),
-%   \end{equation}
-%   gdzie $H^{ \nu }$ jest funkcją Hadamarda,
-%   $\nu = \frac{ d }{ 2 } - 1$, $f( x )$ jest gładką funkcją.
-
-%   \vspace{\spaceThree}
-
-
-
-%   \textbf{Przestrzenna część funkcji Hadamarda}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-15}
-%     H^{ \nu }( x ) =
-%     \frac{ ( 2 \pi )^{ 2 - \nu } m^{ \nu } }{ 4 \sin( \nu \pi ) }
-%     \left( -x^{ 2 } \right)^{ -\frac{ \nu }{ 2 } }
-%     I_{ -\nu }( \sqrt{ -m^{ 2 } x^{ 2 } } ), \, x^{ 2 } < 0,
-%   \end{equation}
-%   gdzie $I_{ \nu }$ i~$I_{ -\nu }$ to~funkcje Bessela pierwszego rodzaju.
-%   Używając metod analizy zespolonej można otrzymać stąd rozwiązanie
-%   dla~dowolnego wektora~$x$.
-
-%   \vspace{\spaceFour}
-
-
-
-%   Wzór powyższy ma~sens póki $\sin( \nu \pi ) \neq 0$,
-%   czyli~$\nu \in \Cbb \setminus \Nbb_{ 0 }$. Sugeruje
-%   to~naturalne uogólnienie procedury regularyzacji wymiarowej.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Regularyzacja wymiarowa dla~$d$~parzystego}
-
-
-%   \textbf{Przyjmujemy} \\
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-16}
-%     \nu = \frac{ d + \xi }{ 2 } - 1.
-%   \end{equation}
-
-%   \vspace{\spaceThree}
-
-
-
-%   \textbf{Regularyzacji wymiarowa funkcji Hadamarda}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-17}
-%     \begin{split}
-%       H^{ \mu, \xi }( z )
-%       &= ( 2 \pi )^{ -\frac{ d }{ 2 } } m^{ -d }
-%         \left( m \sqrt{ -z^{ 2 } } \right)^{ 1 - \frac{ d + \xi }{ 2 } }
-%         \left[ \left( \frac{ m }{ \mu } \right) K_{ \frac{ d + \xi }{ 2 }
-%         - 1 }\left( m \sqrt{ -z^{ 2 } } \right) \, + \right. \\
-%       &\hphantom{=} + \, \left. ( -1 )^{ \frac{ d }{ 2 } - 1 } \frac{ \pi }{ 2
-%           \sin\left( \xi \frac{ \pi }{ 2 } \right) } \left\{ \left(
-%             \frac{ m }{ \mu } \right)^{ \xi } - 1 \right\} I_{ \frac{
-%             d + \xi }{ 2 } - 1 }\left( m\sqrt{ -z^{ 2 } } \right) \right].
-%     \end{split}
-%   \end{equation}
-%   Z~funkcji tej trzeba jeszcze wziąć wartość brzegową.
-
-%   Ze~względów wymiarowych do~formuły tej został wprowadzony parametr
-%   $\mu$ o~wymiarze masy.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Regularyzacja wymiarowa}
-
-
-%   \textbf{Istnieje granica}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-18}
-%     \lim\limits_{ \xi \to 0 } \Delta_{ F }^{ \mu, \xi }( x, y ) \to
-%     \Delta_{ F }^{ \mu }( x, y ),
-%   \end{equation}
-%   i~daje dystrybucję na~$\Dcal\big( ( \Rbb^{ 2 } )^{ 2 } \big)$.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ######################################
-% \section{Procedura indukcyjna Epsteina-Glasera}
-% % ######################################
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
-
-
-%   \textbf{Nieprzyjemna cecha rzeczywistości.}
-%   Ponieważ $\Delta_{ F }( x_{ 1 }, x_{ 2 } )$ jest dystrybucją, więc~sens
-%   ma~tylko jego całka z~odpowiednią „funkcją poprawiającą”
-%   $g( x ) \in \Scal( \Rbb^{ d } )$:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-19}
-%     A( x_{ 1 }, x_{ 4 } ) =
-%     \int d x_{ 2 }^{ 4 } \, d x_{ 3 }^{ 4 } \; \Delta_{ F }( x_{ 1 }, x_{ 2 } )
-%     \Delta_{ F }( x_{ 2 }, x_{ 3 } ) \Delta_{ F }( x_{ 3 }, x_{ 4 } )
-%     g( x_{ 2 } ) g( x_{ 3 } ).
-%   \end{equation}
-%   Funkcja poprawiająca nie~ma sensu fizycznego dlatego też należy
-%   wziąć granicę $g( x ) \to 1$.
-
-%   \vspace{\spaceThree}
-
-
-
-%   \textbf{Problem.}
-%   Wzięcie granicy $g( x ) \to 1$ w~sposób spójny i~dający sensowny
-%   wynik, oznaczałoby rozwiązanie problemów podczerwonych. Funkcja
-%   $g( x )$ obcina oddziaływania na~„skończonej odległości”,
-%   eliminując ogony podczerwone.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
-
-
-%   \textbf{Notacja} \\
-%   $E( \Gamma )$ oznaczać będzie zbiór linii grafu $\Gamma$,
-%   $V( \Gamma )$ --~zbiór wierzchołków, $\absOne{ V( \Gamma ) }$ --~liczbę
-%   wierzchołków.
-
-%   \textbf{Wymiarowo zregularyzowany propagator Feynmana} \\
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-20}
-%     \Delta_{ F }^{ m,\, \mu,\, \xi }( x, y ) =
-%     \theta( x^{ 0 } ) H^{ m,\, \mu,\, \xi }( x ) + \theta( -x^{ 0 } )
-%     H^{ m,\, \mu,\, \xi }( -x ),
-%   \end{equation}
-%   zaznaczyliśmy tu~jawnie zależność od~masy.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
-
-
-%   \textbf{Macierz $S$.}
-%   Jest sumą iloczynów wyrażeń „algebraicznych” i~dystrybucji:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-21}
-%     \widetilde{S}_{ \Gamma }^{ \mu,\, \xi } =
-%     \prod\limits_{ e \in E( \Gamma ) } \Delta_{ F }^{ m,\, \mu,\, \xi }( x_{ e }, y_{ e } ).
-%   \end{equation}
-%   $\widetilde{S}_{ \Gamma }^{ \mu,\, \xi }$ jest dystrybucją tylko
-%   na~$\Dcal( \Rbb^{ d | V( \Gamma ) | } \setminus \DIAG )$
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-22}
-%     \DIAG =
-%     \{ ( x_{ 1 }, x_{ 2 }, \ldots, x_{ n } ) \; | \; \exists\, i \neq j : x_{ i } = x_{ j } \}.
-%   \end{equation}
-%   Nie~jest więc określone co~się dzieje, gdy~dwa wierzchołki~się
-%   zetkną.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
-
-
-%   Od~tej chwili interesujące nas grafy $\Gamma$ zawierają tylko wierzchołki
-%   i~linie je łączące.
-
-%   \textbf{Warunek przyczynowości.}
-%   Jeżeli wielkość zależna od~grafu
-%   $A_{ \Gamma }( g _{ 1 } + g_{ 2 } )$, zależy od~funkcji takich,
-%   że~nośniki $g_{ i }$~są przyczynowo odseparowane, to~musi zachodzić:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-23}
-%     A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
-%     A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ),
-%   \end{equation}
-%   jako mnożenie liczb.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
-
-
-%   \begin{subequations}
-%     \begin{align}
-%       \label{eq:Epstein-Glaser-24-A}
-%       &A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
-%         A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ), \\
-%       \label{eq:Epstein-Glaser-24-B}
-%       &\dot{ A }_{ \Gamma }' =
-%         \dot{ A }_{ \Gamma }
-%         + \sum\limits_{ \alpha \leq \textrm{div}( u ) } C_{ \alpha } \delta^{ ( \alpha ) }, \quad
-%         \sd( A_{ \Gamma } ) > d.
-%     \end{align}
-%   \end{subequations}
-
-%   \textbf{Dwa wierzchołki}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-25}
-%     A_{ \Gamma }^{ \mu,\, \xi } =
-%     \Delta_{ F }^{ m,\, \mu,\, \xi }( x - y, y - x ) \Delta_{ F }^{ m,\, \mu,\, \xi }( x - y, y - x ),
-%   \end{equation}
-%   dystrybucja ta~jest określona
-%   na~$\Dcal( \Rbb^{ 2 d } \setminus \{ ( x, x ) \} )$. Używając
-%   niezmienniczości translacyjnej problemu dostajemy dystrybucję
-%   $\widetilde{ A }_{ \Gamma }^{ \mu,\, \xi }$ określoną
-%   na~$\Dcal( \Rbb^{ d } \setminus \{ 0 \} )$.
-
-%   \textbf{Renormalizacja}
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-26}
-%     \widetilde{ A }_{ \Gamma }^{ \mu } =
-%     \lim\limits_{ \xi \to 0 } ( \Delta_{ F }^{ m,\, \mu,\, \xi } )^{ 2 } ( 2 ( x - y ), 0 )
-%     + \sum_{ \alpha } C_{ \alpha } \delta^{ ( \alpha ) }.
-%   \end{equation}
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Causality and problems with construction}
+
+
+  Analogously, since there is not causal link between $\Ocal_{ 1 }$ and
+  $\Ocal_{ 3 }$, we require that measurements of all physical quantities
+  are independent. Algebraically this mean that
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-06}
+    [ A, B ] = 0, \quad
+    \forall A \in \Acal( \Ocal_{ 1 } ), B \in \Acal( \Ocal_{ 3 } ).
+  \end{equation}
+  This and other requirements that we won't mention, that nets of algebras
+  need to obey, should be viewed as axioms in the spirit of axiomatic
+  quantum field theory.
+
+  Construction of model fulfilling any such scheme is notoriously hard, see
+  \parencite{Summers-Prespective-on-Constructive-ETC-Ver-2016} for the
+  account. According to my knowledge at this moment no
+  model of quantum field theory in $1 + 3$ dimension interacting with
+  itself or other quantum field was explicit constructed. Fortunately,
+  theory of quantum field weakly interacting with classical object
+  were constructed and are general enough to allow us to handle Casimir
+  effect in variety of cases.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{AQFT for Casimir effect}
+
+
+  Herdegen's paper
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}
+  constrains set of axioms tailored for discussion of Casimir effect.
+  Here we can only mention few of them.
+
+  We start from assumption that quantum subsystem $Q$ is defined by its
+  algebra $\Acal$ and representation $\pi$ of this algebra of bounded
+  operators on Hilbert space $\Hcal$.
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-07}
+    \Acal \ni A \mapsto \pi( A ) \in \Bcal( \Acal ).
+  \end{equation}
+  Algebra $\Acal$ is localized on hyperplane $t = \const$, which due to
+  assumption of adiabatic changes inside system, pose no problem to
+  the~formalism.
+
+  Time evolution on algebra $\Acal$ is given by family of automorphism
+  $\alpha_{ \HorSpaceThree t }$ and translate to unitary evolution on $\Hcal$:
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-07}
+    \pi( \alpha_{ \HorSpaceThree t } \, A ) \mapsto U( t ) \pi( A ) U^{ * }( t ), \quad
+    U( t ) = \exp( i t H ).
+  \end{equation}
+  This relation define hamiltonian operator of the free quantum system.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  \begin{subequations}
+    \begin{align}
+      \label{eq:Epstein-Glaser-24-A}
+      &A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
+        A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ), \\
+      \label{eq:Epstein-Glaser-24-B}
+      &\dot{ A }_{ \Gamma }' =
+        \dot{ A }_{ \Gamma }
+        + \sum\limits_{ \alpha \leq \textrm{div}( u ) } C_{ \alpha } \delta^{ ( \alpha ) }, \quad
+        \sd( A_{ \Gamma } ) > d.
+    \end{align}
+  \end{subequations}
+
+  \textbf{Dwa wierzchołki}
+  \begin{equation}
+    \label{eq:Epstein-Glaser-25}
+    A_{ \Gamma }^{ \mu,\, \xi } =
+    \Delta_{ F }^{ m,\, \mu,\, \xi }( x - y, y - x ) \Delta_{ F }^{ m,\, \mu,\, \xi }( x - y, y - x ),
+  \end{equation}
+  dystrybucja ta~jest określona
+  na~$\Dcal( \Rbb^{ 2 d } \setminus \{ ( x, x ) \} )$. Używając
+  niezmienniczości translacyjnej problemu dostajemy dystrybucję
+  $\widetilde{ A }_{ \Gamma }^{ \mu,\, \xi }$ określoną
+  na~$\Dcal( \Rbb^{ d } \setminus \{ 0 \} )$.
+
+  \textbf{Renormalizacja}
+  \begin{equation}
+    \label{eq:Epstein-Glaser-26}
+    \widetilde{ A }_{ \Gamma }^{ \mu } =
+    \lim\limits_{ \xi \to 0 } ( \Delta_{ F }^{ m,\, \mu,\, \xi } )^{ 2 } ( 2 ( x - y ), 0 )
+    + \sum_{ \alpha } C_{ \alpha } \delta^{ ( \alpha ) }.
+  \end{equation}
+
+\end{frame}
+% ##################
 
 
 
@@ -886,50 +783,228 @@ eprint=true,
 % % ##################
 
 
+% % ##################
+% \begin{frame}
+%   \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+
+
+%   \begin{figure}
+
+%     \label{aaa:bbb}
+
+
+%     \centering
+
+%     \begin{tikzpicture}
+
+
+%       \fill[color=blue] (5.75,1.85) -- (5.75,3.15) -- (1.5,3.15) --
+%       (1.5,1.85) -- cycle;
+
+%       \fill[color=green] (1.5,4) -- (1,4) -- (1,1) -- (1.5,1) -- cycle;
+
+%       \fill[color=brown] (1,3.75) -- (0.84,3.75) -- (0.84,1.25) --
+%       (1,1.25) -- cycle;
+
+
+%       \draw[color=black,line width=0.7] (1.7,3.15) -- (2,1.85);
+
+%       \draw[color=black,line width=0.7] (2.3,3.15) -- (2.6,1.85);
+
+%       \draw[color=black,line width=0.7] (2.9,3.15) -- (3.2,1.85);
+
+%       \draw[color=black,line width=0.7] (3.5,3.15) -- (3.8,1.85);
+
+%       \draw[color=black,line width=0.7] (4.1,3.15) -- (4.4,1.85);
+
+%       \draw[color=black,line width=0.7] (4.7,3.15) -- (5,1.85);
+
+%       \draw[color=black,line width=0.7] (5.3,3.15) -- (5.6,1.85);
+
+
+%       \fill[color=gray] (-5,-0.5) -- (5,-0.5) -- (5,5) -- (4.5,5) --
+%       (4.5,0) -- (-5,0) -- cycle;
+
+
+
+
+
+
+
+%       \fill[color=brown] (-0.08,0) rectangle (0.08,2.5);
+
+%       % % y axis
+%       % \draw[axis arrow] (0,-1.3) -- (0,1.5);
+
+%       % % x axis
+%       % \draw[axis arrow] (-0.3,0) -- (10,0);
+
+
+%       % \node[number on the right and below] at (0,0) {$0$};
+
+
+
+%       % % Thicks on x axis
+%       % \pic at (0.5,0) {tick x axis thin 1};
+
+%       % \node[number below x axis] at (0.5,0) {$0.5$};
+
+
+%       % \pic at (1,0) {tick x axis thin};
+
+%       % \node[number below x axis] at (1,0) {$1$};
+
+
+%       % \pic at (1.5,0) {tick x axis thin 1};
+
+%       % \node[number below x axis] at (1.5,0) {$1.5$};
+
+
+%       % \pic at (2,0) {tick x axis thin};
+
+%       % \pic at (2.5,0) {tick x axis thin};
+
+%       % \pic at (3,0) {tick x axis thin};
+
+
+%       % % Ticks on y axis
+%       % \pic at (0,-1) {tick y axis thin};
+
+%       % \node[number on the left of y axis] at (0,-1) {$-1$};
+
+
+%       % \pic at (0,-0.5) {tick y axis thin 1};
+
+%       % \node[number on the left of y axis] at (0,-0.5) {$-0.5$};
+
+
+%       % \pic at (0,0.5) {tick y axis thin 1};
+
+%       % \pic at (0,1) {tick y axis thin};
+
+
+
+
+%       % % Graph of sin function
+%       % \draw[color=blue] (0,0) -- (0.05,0.049) -- (0.1,0.099) -- (0.15,0.149) --
+%       % (0.2,0.198) -- (0.25,0.247) -- (0.3,0.295) -- (0.35,0.342) --
+%       % (0.4,0.389) -- (0.45,0.434) -- (0.5,0.479) -- (0.55,0.522) --
+%       % (0.6,0.564) -- (0.65,0.605) -- (0.7,0.644) -- (0.75,0.681) --
+%       % (0.8,0.717) -- (0.85,0.751) -- (0.9,0.783) -- (0.95,0.813) --
+%       % (1,0.841) -- (1.05,0.867) -- (1.1,0.891) -- (1.15,0.912) -- (1.2,0.932) --
+%       % (1.25,0.948) -- (1.3,0.963) -- (1.35,0.975) -- (1.4,0.985) --
+%       % (1.45,0.992) -- (1.5,0.997) -- (1.55,0.999) -- (1.6,0.999) --
+%       % (1.65,0.996) -- (1.7,0.991) -- (1.75,0.983) -- (1.8,0.973) --
+%       % (1.85,0.961) -- (1.9,0.946) -- (1.95,0.928) -- (2.0,0.909) --
+%       % (2.05,0.887) -- (2.1,0.863) -- (2.15,0.836) -- (2.2,0.808) --
+%       % (2.25,0.778) -- (2.3,0.745) -- (2.35,0.711) -- (2.4,0.675) --
+%       % (2.45,0.637) -- (2.5,0.598) -- (2.55,0.557) -- (2.6,0.515) --
+%       % (2.65,0.472) -- (2.7,0.427) -- (2.75,0.381) -- (2.8,0.334) --
+%       % (2.85,0.287) -- (2.9,0.239) -- (2.95,0.19) -- (3,0.141) --
+%       % (3.05,0.091) -- (3.1,0.041) -- (10,0);
+
+
+%     \end{tikzpicture}
+
+%     \caption{Funkcja $\sin$}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Regularyzacja wymiarowa w~przestrzeni położeń}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Procedura indukcyjna Epsteina-Glasera}
+% % ######################################
+
+
+
+
+
+
 
 
 
 % % ##################
 % \begin{frame}
-%   \frametitle{Bibliografia}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
 
 
-%   \begin{itemize}
-%     \RaggedRight
+%   Od~tej chwili interesujące nas grafy $\Gamma$ zawierają tylko wierzchołki
+%   i~linie je łączące.
 
-%   \item K. J. Keller, \textit{Dimensional Regularization in~Position
-%       Space and~a~Forest Formula for Regularized Epstein\dywiz Glaser
-%       Renormalization}, arXiv:~1006.2148v1.
-
-%   \item H. Epstein, V. Glaser, \textit{The~role~of locality
-%       in~perturbation theory}, Ann. Inst. H. Poincar\'{e} A
-%     \textbf{19} (1973) 211.
-
-%   \item R. Brunetti, K. Fredenhagen [BF00], \textit{Microlocal
-%       Analysis and~Interacting Quantum Field Theories: Renormalization
-%       on~Physical Backgrounds}, Commun.Math.Phys, \textbf{208} (2000)
-%     623-661, arXiv:~9903.028.
-
-%   \item G. Scharf, \textit{Finite quantum electrodynamics}, Springer,
-%     1995.
-
-%   \item R. Brunetti, K. Fredenhagen, \textit{Quantum Field
-%       Theory\linebreak on~Curved Backgrounds}, Proceedings of the
-%     Kompaktkurs \emph{Quantenfeldtheorie auf gekruemmten
-%       Raumzeiten}
-%     held at~Universitaet Potsdam, Germany, in~8--12.10.2007,
-%     arXiv:
-%     0901.2063.
-
-%   \item M. D\"{u}etsch, K. Fredenhagen, K. J.
-%     Keller, K.~Rejzner, \textit{Dimensional Regularization in~Position
-%       Space, and~a Forest Formula for Epstein-Glaser Renormalization},
-%     arXiv: 1311.5424, [DFKR13].
-
-%   \end{itemize}
+%   \textbf{Warunek przyczynowości.}
+%   Jeżeli wielkość zależna od~grafu
+%   $A_{ \Gamma }( g _{ 1 } + g_{ 2 } )$, zależy od~funkcji takich,
+%   że~nośniki $g_{ i }$~są przyczynowo odseparowane, to~musi zachodzić:
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-23}
+%     A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
+%     A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ),
+%   \end{equation}
+%   jako mnożenie liczb.
 
 % \end{frame}
 % % ##################
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
