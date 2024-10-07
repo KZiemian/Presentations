@@ -1,0 +1,971 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align frame text to the top
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianEnglishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------------------------------------
+
+% ------------------------------------------------------
+% Packages for scientific papers
+% ------------------------------------------------------
+% Switching off \lll symbol, that I guess is representing letter ``Ł''.
+% It collide with `amsmath' package's command with the same name
+% \let\lll\undefined
+% Basic package from American Mathematical Society (AMS)
+% \usepackage[intlimits]{amsmath}
+% Equations are numbered separately in every section.
+% \numberwithin{equation}{section}
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Herdegens-approach-and-two-quasi-delta-ETC-Bibliography.bib}
+
+
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text
+\usepackage{./Local-packages/general-commands}
+
+% Package containing commands and other code useful for working with
+% mathematical text
+\usepackage{./Local-packages/math-commands}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Heredegen's approach to Casimir effect in application the
+  two quasi-delta system}
+
+\author{Kamil Ziemian \\
+  \texttt{kziemianfvt@gmail.com}}
+
+
+% \institute{Uniwersytet Jagielloński w~Krakowie}
+
+\date[13 X 2024]{Seminary of Field Theory Departament,
+  13 October 2024}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 73k+, 25k+,
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Table of contents}
+
+
+  \tableofcontents % Spis treści
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{General information about the talk}
+% % ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{General information about the talk}
+
+
+  If you have any question about the topic, please interrupt me during
+  the~talk. I~will be also grateful for suggestion how this talk can be
+  improved and for pointing any mistakes found in it.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Short history of Casimir effect}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Casimir paper from 1948}
+
+
+  In the year 1948 Hendrik Brught Gerhard Casimir publish only three pages
+  long article \textit{On~the~Attraction Between Two Perfectly Conducting
+    Plates} \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}, in which
+  he predicted that two electrical neutral plates put inside the cubic cavity
+  will attract each other due to strange relation between ``zero-point
+  energy'' of the~electromagnetic field with different boundary conditions.
+
+  As it is well known, see for example book by Peskin and Schroeder
+  \parencite{Peskin-Schroeder-An-Introduction-to-Quantum-Field-Theory-Pub-1995},
+  procedure known as canonical quantisation applied to classical
+  electromagnetic field, produce ``infinite constant'' in the~expression
+  for energy, which his refer to as ``zero-point energy''. Casimir claims
+  was that since boundary conditions change ``value of infinite constant'',
+  their difference should manifest itself as finite force.
+
+  % It worth noticing that for over $700$ pages of Peskin and Schroeder book,
+  % zero-point energy is considered as physically irrelevant, to suddenly be
+  % considered physically important in the context of Casimir effect.
+  % The authors seems to be dissatisfied by this state of affair.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zero-point energies used by Casimir}
+
+
+  Casimir considered zero-point energy of empty cavity, that is expressed
+  by formula:
+  \begin{equation}
+    \label{eq:Herdegens-approach-01}
+    % \begin{split}
+    \frac{ 1 }{ 2 } \left( \sum \hbar \omega \right)_{ \text{II} } =
+    \frac{ \hbar c a \HorSpaceFive L^{ 2 } }{ 2 \pi^{ 2 } }
+    \int\limits_{ 0 }^{ \infty } \int\limits_{ 0 }^{ \infty } \kappa
+    \sqrt{ k_{ \HorSpaceOne z }^{ \,\, 2 } + \kappa^{ 2 } } \, d\kappa \,
+    dk_{ \HorSpaceTwo z }.
+    % \end{split}
+  \end{equation}
+  Notation used here is taken from original paper.
+
+  On the other hand, zero-point energy in the situation when additional
+  plate, that produce Dirichlet boundary conditions, is inserted at the
+  distance $a$ is given by:
+  \begin{equation}
+    \label{eq:Herdegens-approach-02}
+    \frac{ 1 }{ 2 } \left( \sum \hbar \omega \right)_{ \text{I} } =
+    \frac{ \hbar c \HorSpaceFive L^{ 2 } }{ 2 \pi }
+    \sum_{ n = ( 0 ), \, 1 }^{ \infty } \, \int\limits_{ 0 }^{ \infty } \kappa
+    \sqrt{ \left( n^{ 2 } \frac{ \pi^{ 2 } }{ a^{ 2 } } \right)
+      + \kappa^{ 2 } } \, d\kappa.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Casimir view of zero-point energy}
+
+
+  Casimir view of his own procedure is quite striking and it worth quoting
+  verbatim.
+
+  \textit{In both cases the expressions $\frac{ 1 }{ 2 } \sum \hbar \, \omega$ where
+    the~summation extendes over all possible resonance frequencies~of
+    the~cavities are divergent and devoid~of physical meaning but
+    the~\textit{difference} between these sums in the two situations,
+    $\frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{I} } -
+    \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{II} }$, will be shown to have
+    a~well defined value and this value will be~interpreted as
+    the~interaction between the~plate and the~$xy$ face.} Cf. p.~793 in
+  \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}.
+
+  Casimir statement that zero-point energy is non-physical, but
+  difference~of \alert{two} such quantities is, should give our a~pause.
+  My personal opinion is that we should avoid using such types of energies
+  wherever it is possible.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Introduction of cutoff}
+
+
+  To attain fine result from
+  $\delta E = \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{I} } -
+  \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{II} }$ Casimir need to introduce
+  cutoff function $f$, with cutoff parameter $k_{ \HorSpaceThree m }$. He
+  justified it presence in the~following way.
+
+  \textit{In~order to obtain a finite result it~is necessary to multiply
+    the~integrands by a~function $f( k / k_{ \HorSpaceThree m } )$ which is
+    unity for $k \ll k_{ \HorSpaceThree m }$, but tends to zero sufficiently
+    rapidly for $( k / k_{ \HorSpaceThree m } ) \to \infty$, where
+    $k_{ \HorSpaceThree m }$ may be defined by~$f( 1 ) = \frac{ 1 }{ 2 }$.
+    The~physical meaning is obvious: for very short waves ($X$-rays e.g.)
+    our plate is hardly an~obstacle at all and~therefore the~zero point
+    energy of these waves will not be~influenced by the~position~of this
+    plate.} Cf. p.~794 in
+  \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}.
+
+  I~would say that Casimir approach start from the wrong end. It should
+  introduce physical properties at the beginning of calculation, not at
+  the moment where there are needed to make sense of ill defined expressions.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Final result}
+
+
+  Regularized energy difference of zero-point energies is now given as
+  \begin{equation}
+    \label{eq:Oryginalna-praca-ETC-05}
+    \begin{split}
+      \delta E
+      &=
+      \frac{ \hbar c \HorSpaceFive L^{ 2 } \pi^{ 2 } }{ 4 a^{ 3 } } \!
+      \left( \, \sum_{ ( 0 ), \, 1 }^{ \infty } \,
+      \int_{ 0 }^{ \infty } \! d\kappa \, \sqrt{ n^{ 2 } \! + \! u } \,
+      f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{ a k_{ \HorSpaceTwo m } }
+      \right) \right. \, - \\
+      &\left. \;\;\;
+        - \int_{ 0 }^{ \infty } \! \int_{ 0 }^{ \infty } \! du \, dn \,
+      \sqrt{ n^{ \, 2 } \! + \! u } \,
+      f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{
+      a k_{ \HorSpaceTwo m } } \right) \right).
+      \end{split}
+    \end{equation}
+  By expanding this expression into a series and taking only zero order term
+  Casimir arrives at now famous formula:
+  \begin{equation}
+    \label{eq:Oryginalna-praca-ETC-06}
+    \frac{ \delta E }{ L^{ 2 } } =
+    -\hbar c \frac{ \pi^{ 2 } }{ 720 } \frac{ 1 }{ a^{ 3 } },
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+
+
+  In the $1955$ E.M. Lifshitz (strangely, Landua is not coauthor of this work
+  ;)) publish paper on in which show how to compute Casimir effect taking
+  into account temperature and properties of the material of plates.
+  I~used English version of this article published in $1956$ as
+  \textit{The~theory~of molecular attractive forces between solids}
+  \parencite{Lifshitz-The-theory-of-molecular-ETC-Pub-1956}.
+  It is very important work, since most experiments compare their results
+  to prediction of some variants of Lifshitz theory.
+
+  In $1958$ M.J. Sparnaay publish results of his experiments in which he
+  tried to measure force predicted by original Casimir paper. He
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   \textbf{Nieprzyjemna cecha rzeczywistości.}
+%   Ponieważ $\Delta_{ F }( x_{ 1 }, x_{ 2 } )$ jest dystrybucją, więc~sens
+%   ma~tylko jego całka z~odpowiednią „funkcją poprawiającą”
+%   $g( x ) \in \Scal( \Rbb^{ d } )$:
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-19}
+%     A( x_{ 1 }, x_{ 4 } ) =
+%     \int d x_{ 2 }^{ 4 } \, d x_{ 3 }^{ 4 } \; \Delta_{ F }( x_{ 1 }, x_{ 2 } )
+%     \Delta_{ F }( x_{ 2 }, x_{ 3 } ) \Delta_{ F }( x_{ 3 }, x_{ 4 } )
+%     g( x_{ 2 } ) g( x_{ 3 } ).
+%   \end{equation}
+%   Funkcja poprawiająca nie~ma sensu fizycznego dlatego też należy
+%   wziąć granicę $g( x ) \to 1$.
+
+%   \vspace{\spaceThree}
+
+
+
+%   \textbf{Problem.}
+%   Wzięcie granicy $g( x ) \to 1$ w~sposób spójny i~dający sensowny
+%   wynik, oznaczałoby rozwiązanie problemów podczerwonych. Funkcja
+%   $g( x )$ obcina oddziaływania na~„skończonej odległości”,
+%   eliminując ogony podczerwone.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   \textbf{Notacja} \\
+%   $E( \Gamma )$ oznaczać będzie zbiór linii grafu $\Gamma$,
+%   $V( \Gamma )$ --~zbiór wierzchołków, $\absOne{ V( \Gamma ) }$ --~liczbę
+%   wierzchołków.
+
+%   \textbf{Wymiarowo zregularyzowany propagator Feynmana} \\
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-20}
+%     \Delta_{ F }^{ m,\, \mu,\, \xi }( x, y ) =
+%     \theta( x^{ 0 } ) H^{ m,\, \mu,\, \xi }( x ) + \theta( -x^{ 0 } )
+%     H^{ m,\, \mu,\, \xi }( -x ),
+%   \end{equation}
+%   zaznaczyliśmy tu~jawnie zależność od~masy.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   \textbf{Macierz $S$.}
+%   Jest sumą iloczynów wyrażeń „algebraicznych” i~dystrybucji:
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-21}
+%     \widetilde{S}_{ \Gamma }^{ \mu,\, \xi } =
+%     \prod\limits_{ e \in E( \Gamma ) } \Delta_{ F }^{ m,\, \mu,\, \xi }( x_{ e }, y_{ e } ).
+%   \end{equation}
+%   $\widetilde{S}_{ \Gamma }^{ \mu,\, \xi }$ jest dystrybucją tylko
+%   na~$\Dcal( \Rbb^{ d | V( \Gamma ) | } \setminus \DIAG )$
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-22}
+%     \DIAG =
+%     \{ ( x_{ 1 }, x_{ 2 }, \ldots, x_{ n } ) \; | \; \exists\, i \neq j : x_{ i } = x_{ j } \}.
+%   \end{equation}
+%   Nie~jest więc określone co~się dzieje, gdy~dwa wierzchołki~się
+%   zetkną.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+
+
+  \begin{figure}
+
+    \label{aaa:bbb}
+
+
+    \centering
+
+    \begin{tikzpicture}
+
+
+      \fill[color=blue] (5.75,1.85) -- (5.75,3.15) -- (1.5,3.15) --
+      (1.5,1.85) -- cycle;
+
+      \fill[color=green] (1.5,4) -- (1,4) -- (1,1) -- (1.5,1) -- cycle;
+
+      \fill[color=brown] (1,3.75) -- (0.84,3.75) -- (0.84,1.25) --
+      (1,1.25) -- cycle;
+
+
+      \draw[color=black,line width=0.7] (1.7,3.15) -- (2,1.85);
+
+      \draw[color=black,line width=0.7] (2.3,3.15) -- (2.6,1.85);
+
+      \draw[color=black,line width=0.7] (2.9,3.15) -- (3.2,1.85);
+
+      \draw[color=black,line width=0.7] (3.5,3.15) -- (3.8,1.85);
+
+      \draw[color=black,line width=0.7] (4.1,3.15) -- (4.4,1.85);
+
+      \draw[color=black,line width=0.7] (4.7,3.15) -- (5,1.85);
+
+      \draw[color=black,line width=0.7] (5.3,3.15) -- (5.6,1.85);
+
+
+      \fill[color=gray] (-5,-0.5) -- (5,-0.5) -- (5,5) -- (4.5,5) --
+      (4.5,0) -- (-5,0) -- cycle;
+
+
+
+
+
+
+
+      \fill[color=brown] (-0.08,0) rectangle (0.08,2.5);
+
+      % % y axis
+      % \draw[axis arrow] (0,-1.3) -- (0,1.5);
+
+      % % x axis
+      % \draw[axis arrow] (-0.3,0) -- (10,0);
+
+
+      % \node[number on the right and below] at (0,0) {$0$};
+
+
+
+      % % Thicks on x axis
+      % \pic at (0.5,0) {tick x axis thin 1};
+
+      % \node[number below x axis] at (0.5,0) {$0.5$};
+
+
+      % \pic at (1,0) {tick x axis thin};
+
+      % \node[number below x axis] at (1,0) {$1$};
+
+
+      % \pic at (1.5,0) {tick x axis thin 1};
+
+      % \node[number below x axis] at (1.5,0) {$1.5$};
+
+
+      % \pic at (2,0) {tick x axis thin};
+
+      % \pic at (2.5,0) {tick x axis thin};
+
+      % \pic at (3,0) {tick x axis thin};
+
+
+      % % Ticks on y axis
+      % \pic at (0,-1) {tick y axis thin};
+
+      % \node[number on the left of y axis] at (0,-1) {$-1$};
+
+
+      % \pic at (0,-0.5) {tick y axis thin 1};
+
+      % \node[number on the left of y axis] at (0,-0.5) {$-0.5$};
+
+
+      % \pic at (0,0.5) {tick y axis thin 1};
+
+      % \pic at (0,1) {tick y axis thin};
+
+
+
+
+      % % Graph of sin function
+      % \draw[color=blue] (0,0) -- (0.05,0.049) -- (0.1,0.099) -- (0.15,0.149) --
+      % (0.2,0.198) -- (0.25,0.247) -- (0.3,0.295) -- (0.35,0.342) --
+      % (0.4,0.389) -- (0.45,0.434) -- (0.5,0.479) -- (0.55,0.522) --
+      % (0.6,0.564) -- (0.65,0.605) -- (0.7,0.644) -- (0.75,0.681) --
+      % (0.8,0.717) -- (0.85,0.751) -- (0.9,0.783) -- (0.95,0.813) --
+      % (1,0.841) -- (1.05,0.867) -- (1.1,0.891) -- (1.15,0.912) -- (1.2,0.932) --
+      % (1.25,0.948) -- (1.3,0.963) -- (1.35,0.975) -- (1.4,0.985) --
+      % (1.45,0.992) -- (1.5,0.997) -- (1.55,0.999) -- (1.6,0.999) --
+      % (1.65,0.996) -- (1.7,0.991) -- (1.75,0.983) -- (1.8,0.973) --
+      % (1.85,0.961) -- (1.9,0.946) -- (1.95,0.928) -- (2.0,0.909) --
+      % (2.05,0.887) -- (2.1,0.863) -- (2.15,0.836) -- (2.2,0.808) --
+      % (2.25,0.778) -- (2.3,0.745) -- (2.35,0.711) -- (2.4,0.675) --
+      % (2.45,0.637) -- (2.5,0.598) -- (2.55,0.557) -- (2.6,0.515) --
+      % (2.65,0.472) -- (2.7,0.427) -- (2.75,0.381) -- (2.8,0.334) --
+      % (2.85,0.287) -- (2.9,0.239) -- (2.95,0.19) -- (3,0.141) --
+      % (3.05,0.091) -- (3.1,0.041) -- (10,0);
+
+
+    \end{tikzpicture}
+
+    \caption{Funkcja $\sin$}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dowód}
+
+
+%   \textbf{Przypadek} $\sd( u ) < d$ \\
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-06}
+%     \dot{ u } = \lim\limits_{ \rho \to +\infty } \eta( \rho x ) u,
+%   \end{equation}
+%   $\eta( x ) \in \Ccal^{ \infty }( \Rbb^{ d } )$, $\eta( x ) = 0$, jeśli $| x | < 1$,
+%   $\eta( x ) = 1$, jeśli $| x | > 2$.
+
+%   \vspace{\spaceFour}
+
+
+
+%   \textbf{Przypadek} $\sd( u ) \geq d$ \\
+%   Aby~sprowadzić do~poprzedniego przypadku definiujemy przestrzeń
+%   funkcji gładkich znikających do~rzędu
+%   $\lambda = \divDegree( u ) = \sd( u ) - d$:
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-07}
+%     \Dcal_{ \lambda }( \Rbb^{ d } ) =
+%     \{ \, f \in \Dcal( \Rbb^{ d } ) : \partial_{ \alpha } f( 0 ) = 0, \quad
+%     | \alpha | = \lambda \}.
+%   \end{equation}
+%   Korzystając z~odpowiedniej postaci reszty we~wzorze Taylora
+%   otrzymujemy:
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-08}
+%     f( x ) = \sum_{ | \alpha | = [ \lambda ] + 1 } x^{ \alpha }
+%     g_{ \alpha }( x ).
+%   \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dowód}
+
+
+%   \textbf{Pomysł.}
+%   Aby zdefiniować $\dot{ u }$ na dowolnym $f \in \Dcal( \Rbb^{ d } )$ należy
+%   wyciąć z~$f$ człony nieznikające w~0.
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-11}
+%     f_{ \textrm{cut} }( x ) =
+%     f( x ) - \sum f^{ ( \alpha ) }( 0 ) w_{ \alpha }( x ),
+%   \end{equation}
+%   gdzie $w_{ \alpha } \in \Dcal( \Rbb^{ d } )$ jest rodziną funkcji
+%   „wycinających”:
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-12}
+%     \partial_{ \alpha } w_{ \beta }( 0 ) = \delta^{ \alpha }_{ \beta }.
+%   \end{equation}
+
+%   \vspace{\spaceFour}
+
+
+
+%   \textbf{Koniec dowodu}
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-13}
+%     \langle \dot{ u }, f \rangle =
+%     \langle u, f_{ \textrm{cut} } \rangle
+%     + \sum\limits_{ | \alpha | \leq \divDegree( u ) }
+%     \langle \dot{ u }, w_{ \alpha } \rangle \delta^{ \alpha }.
+%   \end{equation}
+%   Ta~równość \textbf{definiuje} $\langle \dot{ u }, w_{ \alpha } \rangle$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Regularyzacja wymiarowa w~przestrzeni położeń}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Procedura indukcyjna Epsteina-Glasera}
+% % ######################################
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   Od~tej chwili interesujące nas grafy $\Gamma$ zawierają tylko wierzchołki
+%   i~linie je łączące.
+
+%   \textbf{Warunek przyczynowości.}
+%   Jeżeli wielkość zależna od~grafu
+%   $A_{ \Gamma }( g _{ 1 } + g_{ 2 } )$, zależy od~funkcji takich,
+%   że~nośniki $g_{ i }$~są przyczynowo odseparowane, to~musi zachodzić:
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-23}
+%     A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
+%     A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ),
+%   \end{equation}
+%   jako mnożenie liczb.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   \begin{subequations}
+%     \begin{align}
+%       \label{eq:Epstein-Glaser-24-A}
+%       &A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
+%         A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ), \\
+%       \label{eq:Epstein-Glaser-24-B}
+%       &\dot{ A }_{ \Gamma }' =
+%         \dot{ A }_{ \Gamma }
+%         + \sum\limits_{ \alpha \leq \textrm{div}( u ) } C_{ \alpha } \delta^{ ( \alpha ) }, \quad
+%         \sd( A_{ \Gamma } ) > d.
+%     \end{align}
+%   \end{subequations}
+
+%   \textbf{Dwa wierzchołki}
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-25}
+%     A_{ \Gamma }^{ \mu,\, \xi } =
+%     \Delta_{ F }^{ m,\, \mu,\, \xi }( x - y, y - x ) \Delta_{ F }^{ m,\, \mu,\, \xi }( x - y, y - x ),
+%   \end{equation}
+%   dystrybucja ta~jest określona
+%   na~$\Dcal( \Rbb^{ 2 d } \setminus \{ ( x, x ) \} )$. Używając
+%   niezmienniczości translacyjnej problemu dostajemy dystrybucję
+%   $\widetilde{ A }_{ \Gamma }^{ \mu,\, \xi }$ określoną
+%   na~$\Dcal( \Rbb^{ d } \setminus \{ 0 \} )$.
+
+%   \textbf{Renormalizacja}
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-26}
+%     \widetilde{ A }_{ \Gamma }^{ \mu } =
+%     \lim\limits_{ \xi \to 0 } ( \Delta_{ F }^{ m,\, \mu,\, \xi } )^{ 2 } ( 2 ( x - y ), 0 )
+%     + \sum_{ \alpha } C_{ \alpha } \delta^{ ( \alpha ) }.
+%   \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   \textbf{Warunek przyczynowości}
+%   \begin{subequations}
+%     \begin{align}
+%       \label{eq:Epstein-Glaser-27-A}
+%       &A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
+%         A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ), \\
+%       \label{eq:Epstein-Glaser-27-B}
+%       &\dot{ A }_{ \Gamma }' =
+%         \dot{ A }_{ \Gamma }
+%         + \sum\limits_{ \alpha \leq \textrm{div}( u ) } C_{ \alpha } \delta^{ ( \alpha ) }, \quad
+%         \sd( A_{ \Gamma } ) > d.
+%     \end{align}
+%   \end{subequations}
+
+
+%   \textbf{Trzy wierzchołki.}
+%   Umiemy już zetknąć dwa wierzchołki, niezdefiniowana jest operacja na
+%   trzech. Jednak warunek przyczynowości którym rozbijamy graf na
+%   iloczyn dwu- i~jednowierzchołkowego, prowadzi to do redukcji
+%   dystrybucji na $\Dcal( \Rbb^{ 3 d } \setminus \{ ( x, x, x ) \} )$ do
+%   dystrybucji na $\Dcal( \Rbb^{ 2 d } \setminus \{ 0 \} )$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Procedura indukcyjna Epsteina-Glasera}
+
+
+%   \begin{subequations}
+%     \begin{align}
+%       \label{eq:Epstein-Glaser-28-A}
+%       &A_{ \Gamma }( g _{ 1 } + g_{ 2 } ) =
+%         A_{ \Gamma_{ 1 } }( g _{ 1 } ) A_{ \Gamma_{ 2 } }( g_{ 2 } ), \\
+%       \label{eq:Epstein-Glaser-28-B}
+%       &\dot{ A }_{ \Gamma }' =
+%         \dot{ A }_{ \Gamma }
+%         + \sum\limits_{ \alpha \leq \textrm{div}( u ) } C_{ \alpha } \delta^{ ( \alpha ) }, \quad
+%         \sd( A_{ \Gamma } ) > d.
+%     \end{align}
+%   \end{subequations}
+
+%   \textbf{Scaling expansion (Hollands, Wald)} \\
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-29}
+%     \prod_{ l = 1 }^{ k } \Delta_{ F }^{ m,\, \mu,\, \xi }( x_{ i }, y_{ i } ) =
+%     \sum_{ s_{ k } = 0 }^{ \infty } ( m^{ 2 } )^{ s_{ k } }
+%     \Delta_{ F }^{ \vec{ s }_{ k }, \mu, \xi }( x_{ 1 }, y_{ 1 }, \ldots,
+%     x_{ k }, y_{ k } ),
+%   \end{equation}
+%   przy czym,
+%   \begin{equation}
+%     \label{eq:Epstein-Glaser-30}
+%     \sd( \Delta_{ F }^{ \vec{ s }_{ k },\, \mu,\, \xi } ) =
+%     d + \Real( \xi ) - 2 - 2 s_{ k }.
+%   \end{equation}
+
+%   \textbf{Grupa renormalizacji} \\
+%   Swoboda dobierania stałych $C_{ \alpha }$ przy
+%   $\delta^{ ( \alpha ) }$ jest opisana grupą renormalizacji.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bibliografia}
+
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item K. J. Keller, \textit{Dimensional Regularization in~Position
+%       Space and~a~Forest Formula for Regularized Epstein\dywiz Glaser
+%       Renormalization}, arXiv:~1006.2148v1.
+
+%   \item H. Epstein, V. Glaser, \textit{The~role~of locality
+%       in~perturbation theory}, Ann. Inst. H. Poincar\'{e} A
+%     \textbf{19} (1973) 211.
+
+%   \item R. Brunetti, K. Fredenhagen [BF00], \textit{Microlocal
+%       Analysis and~Interacting Quantum Field Theories: Renormalization
+%       on~Physical Backgrounds}, Commun.Math.Phys, \textbf{208} (2000)
+%     623-661, arXiv:~9903.028.
+
+%   \item G. Scharf, \textit{Finite quantum electrodynamics}, Springer,
+%     1995.
+
+%   \item R. Brunetti, K. Fredenhagen, \textit{Quantum Field
+%       Theory\linebreak on~Curved Backgrounds}, Proceedings of the
+%     Kompaktkurs \emph{Quantenfeldtheorie auf gekruemmten
+%       Raumzeiten}
+%     held at~Universitaet Potsdam, Germany, in~8--12.10.2007,
+%     arXiv:
+%     0901.2063.
+
+%   \item M. D\"{u}etsch, K. Fredenhagen, K. J.
+%     Keller, K.~Rejzner, \textit{Dimensional Regularization in~Position
+%       Space, and~a Forest Formula for Epstein-Glaser Renormalization},
+%     arXiv: 1311.5424, [DFKR13].
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}
