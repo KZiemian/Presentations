@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -151,7 +151,7 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 73k+, 25k+, 51k+,
+% Number of chars: 62k+, 73k+, 25k+, 51k+, 71k+,
 \RaggedRight
 % ######################################
 
@@ -268,7 +268,6 @@ eprint=true,
     \int\limits_{ 0 }^{ \infty } \int\limits_{ 0 }^{ \infty } \kappa
     \sqrt{ k_{ \HorSpaceOne z }^{ \,\, 2 } + \kappa^{ 2 } } \, d\kappa \,
     dk_{ \HorSpaceTwo z }.
-    % \end{split}
   \end{equation}
   Notation used here is taken from the original paper.
 
@@ -342,7 +341,7 @@ eprint=true,
   \frametitle{Review of Casimir approach}
 
 
-  We need to stress that in his article Casimir provide physical
+  We need to stress that in his article Casimir provides physical
   justification for presence of function $f$ and parameter $k_{ m }$.
   Namely that metal is becoming more transparent to electromagnetic
   radiation, when energy of radiation grows.
@@ -589,7 +588,7 @@ eprint=true,
     E_{ \HorSpaceOne a } \HorSpaceFive \psi_{ \HorSpaceOne a }.
   \end{equation}
   In particular, in the presence of $M$ the ground state of the subsystem
-  $Q$ became a~function of $a$. We will denote it by $\Omega_{ a }$.
+  $Q$ becomes a~function of $a$. We will denote it by $\Omega_{ a }$.
 
 \end{frame}
 % ##################
@@ -605,7 +604,7 @@ eprint=true,
 
   We now switch to Schr\"{o}dinger picture of interaction. If movement of
   $M$ is given by function $a( t )$, then according to adiabatic
-  approximation we have following evolution of physical state:
+  approximation we have the following evolution of physical state:
   \begin{equation}
     \label{eq:Overview-of-Herdegens-approach-ETC-04}
     \psi( t ) =
@@ -632,7 +631,7 @@ eprint=true,
   \frametitle{AQFT suited for Casimir effect}
 
 
-  Casimir energy is now defined as exception value of  hamiltonian of
+  Casimir energy is now defined as expectation value of  hamiltonian of
   \alert{free} subsystem $Q$ in the ground state $\Omega_{ a }$ of interacting
   system $Q\text{-}M$:
   \begin{equation}
@@ -888,7 +887,7 @@ eprint=true,
   time evolution on it given by family of symplectic transformations, which
   also has specified quantum version. This quantum version must be
   represented in Fock space by canonical variable, that are linear
-  combination of operators $a$ and $a^{ \dagger }$. We also require that
+  combinations of operators $a$ and $a^{ \dagger }$. We also requires that
   quantum hamiltonian is hermitian form in $a$ and $a^{ \dagger }$.
 
   Andrzej Herdegen and Mariusz Stopa in paper \textit{Global vs~local
@@ -933,7 +932,7 @@ eprint=true,
 
   Assuming that square roots $h$ and $h_{ a }$ of $h^{ 2 }$ and $h_{ a }^{ 2 }$
   exists, we can now use known for a~long time procedure to construct
-  quasi-free theory. One reference in which it could be find is Herdegen
+  quasi-free theory. One reference in which it could be found is Herdegen
   paper \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}.
 
 \end{frame}
@@ -1043,7 +1042,7 @@ eprint=true,
 
 
   In paper \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}
-  Herdegen used quite complicated decomposition of field into to creation
+  Herdegen used quite complicated decomposition of field into creation
   and annihilation operators to prove two fundamental relations. First, that
   number of quanta of \alert{free} field created when subsystem $M$ in
   position $a$ is introduced is given by
@@ -1111,7 +1110,7 @@ eprint=true,
   mathematical point of view. It guarantees that various representations
   of elements underplaying algebra $\Acal$ as operators in Hilbert space are
   equivalent. This allow us to compare results for different values of $a$
-  in meaningful ways. Requirements of finitness of Casimir energy is natural
+  in meaningful way. Requirements of finitness of Casimir energy is natural
   assumption of physical nature.
 
   Another result of paper
@@ -1158,7 +1157,7 @@ eprint=true,
     \left( \partial_{ t }^{ 2 } + h_{ \veca }^{ 2 } \right) \phi( t, \vecx ) = 0, \qquad
     h_{ \veca }^{ 2 } = -\Delta + V_{ \veca }.
   \end{equation}
-  We want to represented model in which scalar field interact with two
+  We want to represented model in which scalar field interacts with two
   spherically symmetric bodies, which centers are separated by
   vector~$\veca$.
 
@@ -1381,7 +1380,8 @@ eprint=true,
 
   Because function $g( \vecx )$ has spherical symmetry, we can replace it
   by function of one real variable, that we will be denoting simply
-  by $g( x )$. Simple calculation shows that Fourier transform $g( \vecx )$,
+  by $g( x )$. Simple calculation shows that Fourier transform of
+  $g( \vecx )$,
   which is also spherically symmetric, can be expressed as
   \begin{equation}
     \label{eq:Scalar-field-and-two-quasi-deltas-04}
@@ -1445,10 +1445,10 @@ eprint=true,
     \end{align}
   \end{subequations}
   Form of the $\sigma( g )$ shown above is motivated by problem of rescaling
-  of our model. Parameter $\alpha$ is well know from theory of $\delta$ potentials
+  of our model. Parameter $\alpha$ is well known from theory of $\delta$ potentials
   and describe scattering length in such systems. This is relevant
   since when we shrink sizes of our bodies to the point, in the limit
-  our problem became that of two $\delta$ system.
+  our problem becomes that of two $\delta$ system.
 
 
 
@@ -1499,7 +1499,7 @@ eprint=true,
   % Form of the $\sigma( g )$ shown above is motivated by problem of recycling our
   % model.
 
-  We need a few more functions. I must omit few nontrivial
+  We need a few more functions. We must omit few nontrivial
   steps, so please believe me that this notation make sens.
 
   \vspace{-2em}
@@ -1521,7 +1521,6 @@ eprint=true,
     \end{align}
 
   \end{subequations}
-
 
   \vspace{-1em}
 
@@ -1562,8 +1561,8 @@ eprint=true,
   \end{equation}
   It is can be shown that both integrals in above equation are convergent.
 
-  We now fix our attention to the energy. By taking limit $a \nearrow +\infty$
-  we identify self-energy of spherical bodie, i.e. energy of field
+  We now fix our attention on the energy. By taking limit $a \nearrow +\infty$
+  we identify self-energy of spherical bodies, i.e. energy of field
   clustering around two bodies. After subtracting it from full Casimir
   energy, we arrive at interaction energy:
   \begin{equation}
@@ -1595,6 +1594,8 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{Why rescaled model is useful?}
+
+  \vspace{-2em}
 
 
   \begin{equation}
@@ -1640,7 +1641,7 @@ eprint=true,
     \lambda \in \left( 0, \tfrac{ 1 }{ 2 } \right).
   \end{equation}
   First of these assumptions is the reason why equations in the following
-  part of the talk \alert{don't} contains parameter~$L$.
+  part of the talk \alert{don't} contain parameter~$L$.
 
   We now need to introduce natural, dimensionless variable $\gamma$:
   \begin{equation}
@@ -1726,9 +1727,9 @@ eprint=true,
   % there is \alert{possibility} of presence of bounded state with
   % negative energy.
 
-  When $\lambda \searrow 0$ our model converges in strong resolvent sens to scalar field
-  interacting with two $\delta$-s. This model is well known in literature and is
-  in great details discussed in monograph by S. Albeverio et al.
+  When $\lambda \searrow 0$ our model converges in strong resolvent sense to scalar
+  field interacting with two $\delta$-s. This model is well known in literature
+  and is in great details discussed in monograph by S. Albeverio et al.
   \textit{Solvable Models in~Quantum Mechanics}
   \parencite{Albeverio-et-al-Solvable-Models-in-Quantum-Mechanics-Pub-1988}.
 
@@ -1809,9 +1810,9 @@ eprint=true,
   \end{equation}
   Function $\chi( g ) > 0$ was defined in equation
   \eqref{eq:Scalar-field-and-two-quasi-deltas-07-A}. Parameter
-  $b_{ 1 }$ is give by explicit, but quite convoluted integrals of function
-  $g( \vecx )$ (notice that it does not dependent on $\lambda$) and fulfills
-  inequality $0 < b_{ 1 } \leq \alpha^{ -1 }$.
+  $b_{ 1 }$ is given by explicit, but quite convoluted integrals of function
+  $g( \vecx )$ (notice that it does not dependent on $\lambda$) and
+  $0 < b_{ 1 } \leq \alpha^{ -1 }$.
 
   You should notice that this formula is \alert{model dependent}. Two terms
   in expansion ``remember'' how we approximated $\delta$-s interactions.
@@ -1856,10 +1857,10 @@ eprint=true,
   \end{equation}
   To analyse this formula we were forced to use combination of analytical
   and numeric methods. With very high degree of confidence we established
-  that it predicts repulsive force that very quickly vanish with the
+  that it predicts repulsive force that very quickly vanishes with the
   distance. This is in striking contrast with previous works of A.
   Sccardicchio \parencite{Scardicchio-Casimir-dynamics-ETC-2005}, who used
-  version of zero-point energy approach to derived for this system force
+  version of zero-point energy approach to derive for this system force
   that according to him is \alert{universal} and \alert{attractive}.
 
 
@@ -1879,7 +1880,7 @@ eprint=true,
 \begin{frame}
   \frametitle{Asymptotic expansion of Casimir energy}
 
-  \vspace{-2em}
+  \vspace{-2.5em}
 
 
   \begin{equation}
@@ -1903,7 +1904,7 @@ eprint=true,
         \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
         \frac{ 1 }{ \gamma } \!
         \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
-        ( \gamma + l )^{ 2 } - e^{ -2 l } } dl + R( a, \lambda ) \Bigg],
+        ( \gamma + l )^{ 2 } - e^{ -2 l } } \, dl + R( a, \lambda ) \Bigg],
     \end{split}
   \end{equation}
   The four integrals in equation above, from left two right, all taken
@@ -2053,7 +2054,7 @@ eprint=true,
   %   \end{split}
   % \end{equation}
 
-  One should notes that local density of interaction energy is model
+  One should note that local density of interaction energy is model
   \alert{independent}, while global energy is heavily model depended. %
   % which preclude computation of global energy by
   % integration of it local density. We interpret it, roughly, as result of
@@ -2175,7 +2176,7 @@ eprint=true,
   for system of scalar field and single sphere. Basic analysis of it was
   already done in our master thesis, where main stumbling block was
   difficulty in proving
-  prove that limit $\lambda \searrow 0$ could be taken. For fixed model at least
+  that limit $\lambda \searrow 0$ could be taken. For fixed model at least
   numerical results should be in our reach, but we shouldn't count our
   chicken before they hatch.
 
@@ -2193,13 +2194,14 @@ eprint=true,
 
   Results for two quasi-delta system was first published in our paper
   \textit{Algebraic Approach to Casimir Force Between Two $\delta$-like
-    Potentials} \parencite{Ziemian-Algebraic-Approach-ETC-2021}.
-  Davide Fermi and Livio Pizzocchero found very obvious computation mistake
-  in it, information about it was published in
-  \textit{On~the~Casimir Effect with $\delta$-Like Potentials, and~a~Recent
-    Paper by~K.~Ziemian (Ann. Herni Poincaré, 2021)}
-  \parencite{Fermi-Pizzocchero-On-the-Casimir-Effect-ETC-2023}.
-  Correction was issue by us in
+    Potentials} \parencite{Ziemian-Algebraic-Approach-ETC-2021},
+  with correction of a travial mistake of sign in
+  % Davide Fermi and Livio Pizzocchero found very obvious computation mistake
+  % in it, information about it was published in
+  % \textit{On~the~Casimir Effect with $\delta$-Like Potentials, and~a~Recent
+  %   Paper by~K.~Ziemian (Ann. Herni Poincaré, 2021)}
+  % \parencite{Fermi-Pizzocchero-On-the-Casimir-Effect-ETC-2023}.
+  % Correction was issue by us in
   \parencite{Ziemian-Correction-to-Algebraic-Approach-ETC-2023}.
 
   Numerical computation was made using packages \texttt{scipy} and
