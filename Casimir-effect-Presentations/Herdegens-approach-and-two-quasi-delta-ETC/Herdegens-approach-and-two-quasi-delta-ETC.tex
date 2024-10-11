@@ -43,17 +43,6 @@
 % Importing packages, libraries and setting their configuration
 % ------------------------------------------------------------------------------------
 
-% ------------------------------------------------------
-% Packages for scientific papers
-% ------------------------------------------------------
-% Switching off \lll symbol, that I guess is representing letter ``Ł''.
-% It collide with `amsmath' package's command with the same name
-% \let\lll\undefined
-% Basic package from American Mathematical Society (AMS)
-% \usepackage[intlimits]{amsmath}
-% Equations are numbered separately in every section.
-% \numberwithin{equation}{section}
-
 
 
 
@@ -127,7 +116,7 @@ eprint=true,
 
 % \institute{Uniwersytet Jagielloński w~Krakowie}
 
-\date[13 X 2024]{Seminary of Field Theory Departament,
+\date[13 X 2024]{Seminar of Field Theory Departament,
   13 October 2024}
 % ------------------------------------------------------------------------------------------------------------------
 
@@ -151,7 +140,6 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 73k+, 25k+, 51k+, 71k+,
 \RaggedRight
 % ######################################
 
@@ -176,37 +164,6 @@ eprint=true,
 
 \end{frame}
 % ######################################
-
-
-
-
-
-
-
-
-
-
-% % ######################################
-% \section{General information about the talk}
-% % ######################################
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{General information about the talk}
-
-
-%   If you have any questions about the topic, please interrupt me during
-%   the~talk. I~will be also grateful for suggestions how this talk can be
-%   improved and for pointing out any mistakes found in it.
-
-%   In this presentation I will often gloss over more technical details
-%   and assumptions. To be more concise I will also simplified some
-%   historical facts. My hope is that it allow us to presented
-%   general picture of problem in a clear and easy manner.
-
-% \end{frame}
-% % ##################
 
 
 
@@ -262,7 +219,6 @@ eprint=true,
   cavity, that is expressed by formula:
   \begin{equation}
     \label{eq:Short-history-ETC-01}
-    % \begin{split}
     \frac{ 1 }{ 2 } \left( \sum \hbar \omega \right)_{ \text{II} } =
     \frac{ \hbar c a \HorSpaceFive L^{ 2 } }{ 2 \pi^{ 2 } }
     \int\limits_{ 0 }^{ \infty } \int\limits_{ 0 }^{ \infty } \kappa
@@ -357,11 +313,6 @@ eprint=true,
   suddenly be deemed physically important in the context of Casimir
   effect. The authors seem to be dissatisfied by this state of affairs.
 
-  % Second, that it does not introduce physical properties of materials at the
-  % beginning, but as an auxiliary tool for removing ill defined mathematical
-  % quantities. For both these reasons, alternative approaches should be
-  % welcome.
-
 \end{frame}
 % ##################
 
@@ -373,21 +324,6 @@ eprint=true,
 \begin{frame}
   \frametitle{Review of Casimir approach}
 
-  % We need to stress that in his article Casimir provide physical
-  % justification for presence of function $f$ and parameter $k_{ m }$.
-  % Namely that metal is beckoning more transparent to electromagnetic
-  % radiation, when energy of radiation grows.
-
-  % The Casimir method of computation is still present in current literature
-  % in more or less refined form. I~don't believe this can be view
-  % as satisfactory in $2024$.
-
-  % First of all, its use of zero-point energy, which according to
-  % original~(!) Casimir paper is itself nonphysical, is hard to explain.
-  % It is worth noticing that for over $700$ pages of Peskin and Schroeder
-  % book, zero-point energy is considered as physically irrelevant, to
-  % suddenly be deemed physically important in the context of Casimir
-  % effect. The authors seem to be dissatisfied by this state of affairs.
 
   Second, that it does not introduce physical properties of materials at the
   beginning, but as an auxiliary tool for removing ill defined mathematical
@@ -497,22 +433,6 @@ eprint=true,
     \Acal \ni A \mapsto \pi( A ) \in \Bcal( \Hcal ).
   \end{equation}
 
-  % We now want to give a~short summary of algebraic quantum field theory.
-  % The~two main pillars of it can be summarized in a~somewhat simplified
-  % ways as follows.
-  % \begin{itemize}
-
-  % \item For quantum observables the most important relations are of
-  %   algebraic nature.
-
-  % \item Physical measurements are localized in bounded regions of
-  %   spacetime.
-
-  % \end{itemize}
-  % Due to time constraints we can only sketch how this quite sophisticated
-  % formalism works. We first try to explain, what is the idea laying behind
-  % the~first point.
-
 \end{frame}
 % ##################
 
@@ -543,23 +463,6 @@ eprint=true,
   adiabatically, due to some external conditions. The backreaction of
   quantum subsystem $Q$ to this movement results in transfer of energy to
   $M$, which manifests itself as Casimir force.
-
-  % In standard curse of non-relativistic quantum mechanics, assuming
-  % one dimensional problem, the position and momentum operators are given as
-  % \begin{equation}
-  %   \label{eq:Overview-of-Herdegens-approach-ETC-01}
-  %   X = x, \quad
-  %   P = -i \, \hbar \frac{ d }{ dx },
-  % \end{equation}
-  % and both of these operators act on a~space of physical states that is
-  % equal to $L^{ 2 }( \Rbb, d\mu( x ) )$. From this, glossing over some
-  % mathematical problems, we can derive relation
-  % \begin{equation}
-  %   \label{eq:Overview-of-Herdegens-approach-ETC-02}
-  %   [ X, P ] = i \, \hbar \, \id.
-  % \end{equation}
-  % In \textsc{aqft} we interpreted equation
-  % \eqref{eq:Overview-of-Herdegens-approach-ETC-02} as being fundamental
 
 \end{frame}
 % ##################
@@ -665,212 +568,6 @@ eprint=true,
 
 
 
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Algebraic nature of observables}
-
-
-%   For technical reasons, we replace relation $[ X, P ] = i \, \hbar \, \id$
-%   with it Weyl form:
-%   \begin{equation}
-%     \label{eq:Overview-of-Herdegens-approach-ETC-03}
-%     e^{ \, i P s } e^{ \, i X t } = e^{ \, i X t } e^{ \, i P s } e^{ \, i s t }.
-%   \end{equation}
-%   % We can assume that our algebra $\Acal$ has a~neutral element $\UnitAlg$.
-%   While element of algebra $\Acal$ represents measurable physical
-%   quantities, the states are represented by class of the elements of space
-%   dual to $\Acal$: $\omega \in \Acal^{ \text{d} }$. Such $\omega$ to be considered state,
-%   must fulfill two requirements:
-%   \begin{equation}
-%     \label{eq:Overview-of-Herdegens-approach-ETC-04}
-%     \omega( A^{ * } A ) \geq 0, \; \forall A \in \Acal, \quad
-%     \omega( \UnitAlg ) = 1.
-%   \end{equation}
-
-%   \vspace{-2em}
-
-
-
-%   We can now talk about localization of physical events in the Minkowski
-%   spacetime.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Picture of Minkowski spacetime}
-
-
-%   \begin{figure}
-
-%     \centering
-
-
-%     \begin{tikzpicture}
-
-%       % x axis
-%       \draw[axis arrow] (-5,0) -- (5,0);
-
-%       \pic at (5,0) {x mark for horizontal axis 1};
-
-
-%       % t axis
-%       \draw[axis arrow] (0,-2.5) -- (0,4);
-
-%       \pic at (0,4) {t mark for vertical axis 1};
-
-
-
-%       % Light cone
-%       \fill[color=blue,opacity=0.4] (0,0) -- (3.5,3.5) -- (-3.5,3.5) -- cycle;
-
-%       \fill[color=blue,opacity=0.4] (0,0) -- (2.2,-2.2) -- (-2.2,-2.2) --
-%       cycle;
-
-%       \draw[dashed] (2.2,-2.2) -- (-3.5,3.5);
-
-%       \draw[dashed] (-2.2,-2.2) -- (3.5,3.5);
-
-
-
-%       % Region number 1
-%       \draw[dashed] plot[smooth cycle]
-%       coordinates { (1.2,0) (3,-1) (3.5,1.4) (2.5,1.2) };
-
-%       \node[scale=1.3] at (2.3,0.3) {$\Ocal_{ 1 }$};
-
-
-%       % Region number 2
-%       \draw[dashed] plot[smooth cycle]
-%       coordinates { (0.8,0) (2.9,-1.5) (4.2,1.8) (1,3) };
-
-%       \node[scale=1.3] at (2.7,1.8) {$\Ocal_{ 2 }$};
-
-
-%       % Region number 3
-%       \draw[dashed] plot[smooth cycle]
-%       coordinates { (-1,-0.2) (-2,1.2) (-3,0.3) (-2,-1) };
-
-%       \node[scale=1.3] at (-2,0.5) {$\Ocal_{ 3 }$};
-
-
-%       % Event reaching form region 3 to region 1
-%       \draw[dashed,color=black] (-1.3,0) -- (2,3.3);
-
-%       \fill[color=brown] (-1.3,0) circle [radius=0.09];
-
-%       \node[below] at (-1.3,-0.05) {$E$};
-
-%     \end{tikzpicture}
-
-%     \caption{Picture of spacetime}
-
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Localization of algebras}
-
-
-  % Previously we were just talking about algebras, but in \textsc{aqft}
-  % every algebra is localized in a~particular open region of spacetime
-  % with compact closure. We will denotes the algebra of region $\Ocal_{ 1 }$
-  % as $\Acal( \Ocal_{ 1 } )$. This algebra represents all quantities
-  % that can be measured in such regions. You can imagine that such
-  % represents experiment that take finite space and work for finite time.
-
-  % Family of all such localized algebras we will call \textbf{net of
-  %   algebras}. Since regions from previous picture obeys relation
-  % $\Ocal_{ 1 } \subset \Ocal_{ 2 }$ we require that
-  % \begin{equation}
-  %   \label{eq:Overview-of-Herdegens-approach-ETC-05}
-  %   \Acal( \Ocal_{ 1 } ) \subset \Acal( \Ocal_{ 2 } ),
-  % \end{equation}
-  % which has natural interpretation. It simply says that every quantity
-  % that can be measured in particular region is also measurable in any
-  % region that extends the first one.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Causality and problems with construction}
-
-
-%   Analogously, since there is no causally link between $\Ocal_{ 1 }$ and
-%   $\Ocal_{ 3 }$, we require that measurements of all physical quantities
-%   are independent. Algebraically this mean that
-%   \begin{equation}
-%     \label{eq:Overview-of-Herdegens-approach-ETC-06}
-%     [ A, B ] = 0, \quad
-%     \forall A \in \Acal( \Ocal_{ 1 } ), B \in \Acal( \Ocal_{ 3 } ).
-%   \end{equation}
-%   This and other requirements that we won't mention, that nets of algebras
-%   need to obey, should be viewed as axioms in the spirit of axiomatic
-%   quantum field theory.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{AQFT suited for Casimir effect}
-
-
-%   Construction of a~model fulfilling any such scheme is notoriously hard,
-%   see \parencite{Summers-Prespective-on-Constructive-ETC-Ver-2016} for the
-%   account. To my knowledge at this moment no
-%   model of quantum field theory in the $1 + 3$ dimension interacting with
-%   itself or other quantum fields was explicitly constructed. Fortunately,
-%   theory of quantum field weakly interacting with classical object
-%   were constructed and are general enough to allow us to handle Casimir
-%   effect in a variety of cases.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-
-
-
 % ######################################
 \section{Construction of quasi-free system and expressions
   for physical quantities}
@@ -937,100 +634,6 @@ eprint=true,
 
 \end{frame}
 % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Construction of quasi-free system}
-% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-%   \vspace{-0.5em}
-
-
-%   \begin{figure}
-
-%     \centering
-
-
-%     \begin{tikzpicture}
-
-%       \node (Rcal-h) at (0,0) {$( \Rcal, h )$};
-
-
-%       \node (Lcal-sigma) at (-2,-0.8) {$( \Lcal, \sigma )$};
-
-%       \draw[pointing arrow thin 1, dashed] (Rcal-h) -- (Lcal-sigma);
-
-
-%       \node (LcalTilde-sigma) at (-2,-2) {$( \LcalTilde, \sigma )$};
-
-%       \draw[pointing arrow thin 1, dashed] (Lcal-sigma) -- (LcalTilde-sigma);
-
-
-%       \node (LcalHat-sigmaHat) at (-2,-3.4) {$( \LcalHat, \sigmaHat )$};
-
-%       \draw[pointing arrow thin 1, dashed] (LcalTilde-sigma) --
-%       (LcalHat-sigmaHat);
-
-
-
-
-
-%       \node (Kcal) at (1.8,-2) {$\Kcal$};
-
-%       \draw[pointing arrow thin 1, dashed] (Rcal-h) -- (Kcal);
-
-
-%       \draw[pointing arrow thin 1] (LcalTilde-sigma) -- (Kcal);
-
-%       \node (j) at (0.1,-1.7) {$j( V )$};
-
-
-%       \draw[pointing arrow thin 1] (LcalHat-sigmaHat)
-%       .. controls (-1,-3.5) and (1,-3.2) .. (Kcal);
-
-%       \node (jHat) at (0.1,-2.8) {$\jHat( V )$};
-
-
-
-%       \node (Weyl-algebra) at (-2,-5.2) {$W( \LcalHat \, \, )$};
-
-%       \draw[pointing arrow thin 1] (LcalHat-sigmaHat) -- (Weyl-algebra);
-
-%       \node (Weyl-opeartor) at (-2.5,-4.3) {$W( V )$};
-
-
-%       \node (H-Fock) at (1.8,-5.2) {$\HFock( \Kcal )$};
-
-%       \draw[pointing arrow thin 1] (Kcal) -- (H-Fock);
-
-%       \node (W0-f) at (1.2,-3.6) {$W_{ 0 }( \HorSpaceNine f )$};
-
-%       \draw[pointing arrow thin 1,dashed] (Kcal)
-%       .. controls (2.7,-2.9) and (2.6,-4.3) .. (2.1,-4.9);
-
-
-
-%       \draw[pointing arrow thin 1] (Weyl-algebra) -- (H-Fock);
-
-%       \node at (0,-4.95) {$\pi_{ \; \jHat }$};
-
-%     \end{tikzpicture}
-
-%     \caption{Scheme of construction of the quasi-free theory. Dashed arrow
-%       means that one space is constructed from the other. Continuous arrow
-%       means that we have a function from one space to another.}
-
-
-%     \label{fig:Scheme-of-construction}
-
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
 
 
 
@@ -1450,22 +1053,6 @@ eprint=true,
   since when we shrink sizes of our bodies to the point, in the limit
   our problem becomes that of two $\delta$ system.
 
-
-
-
-  % Unfortunately we need few more functions. I must omit few nontrivial
-  % steps, so please believe me that this notation have sens.
-  % \begin{align}
-  %   \label{eq:Epstein-Glaser-24-A}
-  %   t( i k )
-  %   &=
-  %     \alpha + 2\pi \int_{ -\infty }^{ +\infty } dp \, \frac{ k^{ 2 } }{ k^{ 2 } + p^{ 2 } }
-  %     M_{ p } \\
-  %   u( i k )
-  %   &=
-  %     2\pi^{ 2 } M_{ i k } \frac{ e^{ -ka } }{ a }.
-  % \end{align}
-
 \end{frame}
 % ##################
 
@@ -1477,27 +1064,6 @@ eprint=true,
 \begin{frame}
   \frametitle{Formulas for number of particles and energy}
 
-
-  % We now define bunch functions
-  % \begin{align}
-  %   \label{eq:Epstein-Glaser-24-A}
-  %   M_{ p }
-  %   &= \gHat( p )^{ 2 }, \\
-  %   \checkMx
-  %   &=
-  %     \frac{ 1 }{ \sqrt{ 2 \pi } }
-  %     \int\limits_{ -\infty }^{ +\infty } dp \, e^{ i p x } M_{ p }, \\
-  %   \chi( g )
-  %   &=
-  %     \frac{ 2 \pi }{ \alpha }
-  %     \int\limits_{ -\infty }^{ +\infty } dp M_{ p } =
-  %     \sqrt{ 2 \pi }^{ 3 } \frac{ \checkMzero }{ \alpha }, \\
-  %   \sigma( g )^{ -1 }
-  %   &=
-  %     -\alpha ( M_{ 0 } + \chi( g ) ).
-  % \end{align}
-  % Form of the $\sigma( g )$ shown above is motivated by problem of recycling our
-  % model.
 
   We need a few more functions. We must omit few nontrivial
   steps, so please believe me that this notation make sens.
@@ -1657,40 +1223,6 @@ eprint=true,
   there is \alert{possibility} of presence of bounded state with
   negative energy.
 
-  % When $\lambda \searrow 0$ our model converge in strong resolvent sens to scalar field
-  % interacting with two $\delta$-s. This model is well known in literature and is
-  % in great details discussed in monograph by S. Albeverio et al.
-  % \textit{Solvable Models in~Quantum Mechanics}
-  % \parencite{Albeverio-et-al-Solvable-Models-in-Quantum-Mechanics-Pub-1988}.
-
-
-  % \begin{equation}
-  %   \label{eq:Energia-Casimira-dla-rodziny-ETC-09}
-  %   \begin{split}
-  %     &\EInt( a, \lambda ) = \\
-  %     &=
-  %       \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
-  %       \int\limits_{ 0 }^{ +\infty } \!
-  %       \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
-  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
-  %       \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
-  %       \int\limits_{ 0 }^{ +\infty } \!
-  %       \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
-  %       e^{ -4 l } \big] }
-  %       { ( \gamma + l )^{ 2 }
-  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
-  %       \, - \\[0.5em]
-  %     &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
-  %       \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
-  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
-  %       \frac{ 1 }{ \gamma } \!
-  %       \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
-  %       ( \gamma + l )^{ 2 } - e^{ -2 l } } dl + R( a, \lambda ) \Bigg],
-  %   \end{split}
-  % \end{equation}
-  % where $\gamma = ( \alpha a ) / ( 2 \pi^{ 2 } ) > 1$. Condition $\gamma > 1$ allow us to
-  % construct quasi-free theory for $\lambda \in ( 0, 1 ]$.
-
 \end{frame}
 % ##################
 
@@ -1702,30 +1234,6 @@ eprint=true,
 \begin{frame}
   \frametitle{Taking the limit}
 
-
-  % Since we are only interesting in limit case, we make two assumptions,
-  % that greatly simplify computations:
-  % \begin{equation}
-  %   \label{eq:Rescaled-version-of-the-model-03}
-  %   L = \frac{ 2 \pi^{ 2 } }{ \alpha }, \qquad
-  %   \lambda \in \left( 0, \tfrac{ 1 }{ 2 } \right).
-  % \end{equation}
-  % First of these assumptions is the reason why equations in the following
-  % part of the talk \alert{don't} contains parameter~$L$.
-
-  % We now need to introduce natural, dimensionless variable $\gamma$:
-  % \begin{equation}
-  %   \label{eq:Rescaled-version-of-the-model-04}
-  %   \gamma := \frac{ \alpha a }{ 2 \pi^{ 2 } }.
-  % \end{equation}
-  % We can prove that when
-  % \begin{equation}
-  %   \label{eq:Rescaled-version-of-the-model-05}
-  %   \gamma > 1,
-  % \end{equation}
-  % operator $h_{ a, \, \lambda }^{ 2 }$ is non negative and if this isn't true,
-  % there is \alert{possibility} of presence of bounded state with
-  % negative energy.
 
   When $\lambda \searrow 0$ our model converges in strong resolvent sense to scalar
   field interacting with two $\delta$-s. This model is well known in literature
@@ -1740,34 +1248,6 @@ eprint=true,
   implications of condition \eqref{eq:Rescaled-version-of-the-model-05}.
   At this moment, we don't think this particular problem is worth future
   research in the context of Casimir effect.
-
-
-  % \begin{equation}
-  %   \label{eq:Energia-Casimira-dla-rodziny-ETC-09}
-  %   \begin{split}
-  %     &\EInt( a, \lambda ) = \\
-  %     &=
-  %       \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
-  %       \int\limits_{ 0 }^{ +\infty } \!
-  %       \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
-  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
-  %       \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
-  %       \int\limits_{ 0 }^{ +\infty } \!
-  %       \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
-  %       e^{ -4 l } \big] }
-  %       { ( \gamma + l )^{ 2 }
-  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
-  %       \, - \\[0.5em]
-  %     &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
-  %       \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
-  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
-  %       \frac{ 1 }{ \gamma } \!
-  %       \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
-  %       ( \gamma + l )^{ 2 } - e^{ -2 l } } dl + R( a, \lambda ) \Bigg],
-  %   \end{split}
-  % \end{equation}
-  % where $\gamma = ( \alpha a ) / ( 2 \pi^{ 2 } ) > 1$. Condition $\gamma > 1$ allow us to
-  % construct quasi-free theory for $\lambda \in ( 0, 1 ]$.
 
 \end{frame}
 % ##################
@@ -1862,12 +1342,6 @@ eprint=true,
   Sccardicchio \parencite{Scardicchio-Casimir-dynamics-ETC-2005}, who used
   version of zero-point energy approach to derive for this system force
   that according to him is \alert{universal} and \alert{attractive}.
-
-
-  % Function $\chi( g ) > 0$ was defined in equation \eqref{}. Parameter
-  % $b_{ 1 }$ is give by explicit, but quite convoluted integrals of function
-  % $g( \vecx )$ (notice independence of parameter $\lambda$) and
-  % fulfill inequality $0 < b_{ 1 } \leq \alpha^{ -1 }$.
 
 \end{frame}
 % ##################
@@ -2017,49 +1491,9 @@ eprint=true,
   in the limit $\lambda \searrow 0$ is shown on the next slide (not the shortest
   formula that you can imagine). More precisely, it is a regular
   distribution on the set $\Rbb^{ 3 } \setminus \{ -\veca / 2, \veca / 2\}$.
-  % \begin{equation}
-  %   \label{eq:Lokalna-gestosc-energii-w-granicy-ETC-14} % OK
-  %   \begin{split}
-  %     \EIntDenLim
-  %     &( \veca, \vecx \HorSpaceOne ) =
-  %       \frac{ 1 }{ 8\pi^{ 2 } }
-  %       \int_{ 0 }^{ +\infty } dl \,
-  %       \frac{ e^{ -2 l } }{ ( \gamma + l ) [ ( \gamma + l )^{ 2 } - e^{ -2 l } ] } \, \times
-  %     \\[0.5em]
-  %     &\hspace{1em}
-  %       \times \Bigg[ \frac{ e^{ -2 l \absTwo{ \vecx + \vecb } / a } }{
-  %       \absTwo{ \vecx + \vecb }^{ 4 } }
-  %       \left( 1 + 2 l \frac{ \absTwo{ \vecx + \vecb } }{ a } \right) +
-  %       \frac{ e^{ -2 l \absTwo{ \vecx - \vecb } / a } }{
-  %       \absTwo{ \vecx - \vecb }^{ 4 } } \left( 1 +
-  %       2 l \frac{ \absTwo{ \vecx - \vecb } }{ a } \right) \Bigg] \, -
-  %     \\[0.5em]
-  %     &- \frac{ 1 }{ 4 \pi^{ 2 } } \int_{ 0 }^{ +\infty } dl \,
-  %       \frac{ e^{ -l } }{ ( \gamma + l )^{ 2 } - e^{ -2 l } }
-  %       \frac{ e^{ -l ( \absOne{ \vecx + \vecb } + |\,
-  %       \vecx - \vecb\, | ) / a } }{ |\, \vecx + \vecb\, | \absTwo{ \vecx -
-  %       \vecb } } \, \times \\[0.5em]
-  %     &\hspace{3.5em}
-  %       \times \Bigg[ \frac{ l^{ 2 } }{ a^{ 2 } } \Bigg( 1 - \frac{ (
-  %       \vecx + \veca ) \cdot ( \vecx - \veca ) }{ |\, \vecx
-  %       + \vecb\, | \absTwo{ \vecx - \vecb } } \Bigg) \, - \\[0.5em]
-  %     &\hspace{5.25em}
-  %       - \frac{ ( \vecx + \vecb \HorSpaceSix ) \cdot
-  %       ( \vecx - \vecb \HorSpaceSix ) }{
-  %       \absOne{ \vecx + \vecb } \HorSpaceFive
-  %       \absOne{ \vecx - \vecb } }
-  %       \frac{ 1 + l ( | \vecx
-  %       + \vecb | + | \vecx - \vecb | ) / a }{ | \vecx +
-  %       \vecb | \, \absOne{ \vecx - \vecb } } \Bigg].
-  %   \end{split}
-  % \end{equation}
 
   One should note that local density of interaction energy is model
-  \alert{independent}, while global energy is heavily model depended. %
-  % which preclude computation of global energy by
-  % integration of it local density. We interpret it, roughly, as result of
-  % nontrivial part of energy belonging to it singular support
-  % $\{ -\veca / 2, \veca / 2 \}$.
+  \alert{independent}, while global energy is heavily model depended.
 
 \end{frame}
 % ##################
@@ -2075,11 +1509,6 @@ eprint=true,
   \vspace{-1em}
 
 
-  % We also computed local energy density. Interaction part of it
-  % in the limit $\lambda \searrow 0$ is shown on the next slide (not the shortest
-  % formula that you can imagine). More precisely, it is a regular
-  % distribution on the set on the set $\Rbb^{ 3 } \setminus \{ -\veca / 2, \veca / 2\}$
-  % and this equation show this part of it.
   \begin{equation}
     \label{eq:Rescaled-version-of-the-model-08}
     \begin{split}
@@ -2196,12 +1625,6 @@ eprint=true,
   \textit{Algebraic Approach to Casimir Force Between Two $\delta$-like
     Potentials} \parencite{Ziemian-Algebraic-Approach-ETC-2021},
   with correction of a travial mistake of sign in
-  % Davide Fermi and Livio Pizzocchero found very obvious computation mistake
-  % in it, information about it was published in
-  % \textit{On~the~Casimir Effect with $\delta$-Like Potentials, and~a~Recent
-  %   Paper by~K.~Ziemian (Ann. Herni Poincaré, 2021)}
-  % \parencite{Fermi-Pizzocchero-On-the-Casimir-Effect-ETC-2023}.
-  % Correction was issue by us in
   \parencite{Ziemian-Correction-to-Algebraic-Approach-ETC-2023}.
 
   Numerical computation was made using packages \texttt{scipy} and
@@ -2214,196 +1637,6 @@ eprint=true,
 
 \end{frame}
 % ##################
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Computation of number of particles and energy}
-
-
-  % We also computed local energy density. Interaction part of it
-  % in the limit $\lambda \searrow 0$ is shown on the next slide (not the shortest
-  % formula that you can imagine). More precisely, it is a regular
-  % distribution on the set on the set $\Rbb^{ 3 } \setminus \{ -\veca / 2, \veca / 2\}$
-  % and this equation show this part of it.
-  % \begin{equation}
-  %   \label{eq:Lokalna-gestosc-energii-w-granicy-ETC-14} % OK
-  %   \begin{split}
-  %     \EIntDenLim
-  %     &( \veca, \vecx \HorSpaceOne ) =
-  %       \frac{ 1 }{ 8\pi^{ 2 } }
-  %       \int_{ 0 }^{ +\infty } dl \,
-  %       \frac{ e^{ -2 l } }{ ( \gamma + l ) [ ( \gamma + l )^{ 2 } - e^{ -2 l } ] } \, \times
-  %     \\[0.5em]
-  %     &\hspace{1em}
-  %       \times \Bigg[ \frac{ e^{ -2 l \absTwo{ \vecx + \vecb } / a } }{
-  %       \absTwo{ \vecx + \vecb }^{ 4 } }
-  %       \left( 1 + 2 l \frac{ \absTwo{ \vecx + \vecb } }{ a } \right) +
-  %       \frac{ e^{ -2 l \absTwo{ \vecx - \vecb } / a } }{
-  %       \absTwo{ \vecx - \vecb }^{ 4 } } \left( 1 +
-  %       2 l \frac{ \absTwo{ \vecx - \vecb } }{ a } \right) \Bigg] \, -
-  %     \\[0.5em]
-  %     &- \frac{ 1 }{ 4 \pi^{ 2 } } \int_{ 0 }^{ +\infty } dl \,
-  %       \frac{ e^{ -l } }{ ( \gamma + l )^{ 2 } - e^{ -2 l } }
-  %       \frac{ e^{ -l ( \absOne{ \vecx + \vecb } + |\,
-  %       \vecx - \vecb\, | ) / a } }{ |\, \vecx + \vecb\, | \absTwo{ \vecx -
-  %       \vecb } } \, \times \\[0.5em]
-  %     &\hspace{3.5em}
-  %       \times \Bigg[ \frac{ l^{ 2 } }{ a^{ 2 } } \Bigg( 1 - \frac{ (
-  %       \vecx + \veca ) \cdot ( \vecx - \veca ) }{ |\, \vecx
-  %       + \vecb\, | \absTwo{ \vecx - \vecb } } \Bigg) \, - \\[0.5em]
-  %     &\hspace{5.25em}
-  %       - \frac{ ( \vecx + \vecb \HorSpaceSix ) \cdot
-  %       ( \vecx - \vecb \HorSpaceSix ) }{
-  %       \absOne{ \vecx + \vecb } \HorSpaceFive
-  %       \absOne{ \vecx - \vecb } }
-  %       \frac{ 1 + l ( | \vecx
-  %       + \vecb | + | \vecx - \vecb | ) / a }{ | \vecx +
-  %       \vecb | \, \absOne{ \vecx - \vecb } } \Bigg].
-  %   \end{split}
-  % \end{equation}
-
-% \end{frame}
-% % ##################
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
-
-
-%   \begin{figure}
-
-%     \label{aaa:bbb}
-
-
-%     \centering
-
-%     \begin{tikzpicture}
-
-
-%       \fill[color=blue] (5.75,1.85) -- (5.75,3.15) -- (1.5,3.15) --
-%       (1.5,1.85) -- cycle;
-
-%       \fill[color=green] (1.5,4) -- (1,4) -- (1,1) -- (1.5,1) -- cycle;
-
-%       \fill[color=brown] (1,3.75) -- (0.84,3.75) -- (0.84,1.25) --
-%       (1,1.25) -- cycle;
-
-
-%       \draw[color=black,line width=0.7] (1.7,3.15) -- (2,1.85);
-
-%       \draw[color=black,line width=0.7] (2.3,3.15) -- (2.6,1.85);
-
-%       \draw[color=black,line width=0.7] (2.9,3.15) -- (3.2,1.85);
-
-%       \draw[color=black,line width=0.7] (3.5,3.15) -- (3.8,1.85);
-
-%       \draw[color=black,line width=0.7] (4.1,3.15) -- (4.4,1.85);
-
-%       \draw[color=black,line width=0.7] (4.7,3.15) -- (5,1.85);
-
-%       \draw[color=black,line width=0.7] (5.3,3.15) -- (5.6,1.85);
-
-
-%       \fill[color=gray] (-5,-0.5) -- (5,-0.5) -- (5,5) -- (4.5,5) --
-%       (4.5,0) -- (-5,0) -- cycle;
-
-
-
-
-
-
-
-%       \fill[color=brown] (-0.08,0) rectangle (0.08,2.5);
-
-%       % % y axis
-%       % \draw[axis arrow] (0,-1.3) -- (0,1.5);
-
-%       % % x axis
-%       % \draw[axis arrow] (-0.3,0) -- (10,0);
-
-
-%       % \node[number on the right and below] at (0,0) {$0$};
-
-
-
-%       % % Thicks on x axis
-%       % \pic at (0.5,0) {tick x axis thin 1};
-
-%       % \node[number below x axis] at (0.5,0) {$0.5$};
-
-
-%       % \pic at (1,0) {tick x axis thin};
-
-%       % \node[number below x axis] at (1,0) {$1$};
-
-
-%       % \pic at (1.5,0) {tick x axis thin 1};
-
-%       % \node[number below x axis] at (1.5,0) {$1.5$};
-
-
-%       % \pic at (2,0) {tick x axis thin};
-
-%       % \pic at (2.5,0) {tick x axis thin};
-
-%       % \pic at (3,0) {tick x axis thin};
-
-
-%       % % Ticks on y axis
-%       % \pic at (0,-1) {tick y axis thin};
-
-%       % \node[number on the left of y axis] at (0,-1) {$-1$};
-
-
-%       % \pic at (0,-0.5) {tick y axis thin 1};
-
-%       % \node[number on the left of y axis] at (0,-0.5) {$-0.5$};
-
-
-%       % \pic at (0,0.5) {tick y axis thin 1};
-
-%       % \pic at (0,1) {tick y axis thin};
-
-
-
-
-%       % % Graph of sin function
-%       % \draw[color=blue] (0,0) -- (0.05,0.049) -- (0.1,0.099) -- (0.15,0.149) --
-%       % (0.2,0.198) -- (0.25,0.247) -- (0.3,0.295) -- (0.35,0.342) --
-%       % (0.4,0.389) -- (0.45,0.434) -- (0.5,0.479) -- (0.55,0.522) --
-%       % (0.6,0.564) -- (0.65,0.605) -- (0.7,0.644) -- (0.75,0.681) --
-%       % (0.8,0.717) -- (0.85,0.751) -- (0.9,0.783) -- (0.95,0.813) --
-%       % (1,0.841) -- (1.05,0.867) -- (1.1,0.891) -- (1.15,0.912) -- (1.2,0.932) --
-%       % (1.25,0.948) -- (1.3,0.963) -- (1.35,0.975) -- (1.4,0.985) --
-%       % (1.45,0.992) -- (1.5,0.997) -- (1.55,0.999) -- (1.6,0.999) --
-%       % (1.65,0.996) -- (1.7,0.991) -- (1.75,0.983) -- (1.8,0.973) --
-%       % (1.85,0.961) -- (1.9,0.946) -- (1.95,0.928) -- (2.0,0.909) --
-%       % (2.05,0.887) -- (2.1,0.863) -- (2.15,0.836) -- (2.2,0.808) --
-%       % (2.25,0.778) -- (2.3,0.745) -- (2.35,0.711) -- (2.4,0.675) --
-%       % (2.45,0.637) -- (2.5,0.598) -- (2.55,0.557) -- (2.6,0.515) --
-%       % (2.65,0.472) -- (2.7,0.427) -- (2.75,0.381) -- (2.8,0.334) --
-%       % (2.85,0.287) -- (2.9,0.239) -- (2.95,0.19) -- (3,0.141) --
-%       % (3.05,0.091) -- (3.1,0.041) -- (10,0);
-
-
-%     \end{tikzpicture}
-
-%     \caption{Funkcja $\sin$}
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
 
 
 
@@ -2427,53 +1660,6 @@ eprint=true,
 
 \end{frame}
 % ##################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
