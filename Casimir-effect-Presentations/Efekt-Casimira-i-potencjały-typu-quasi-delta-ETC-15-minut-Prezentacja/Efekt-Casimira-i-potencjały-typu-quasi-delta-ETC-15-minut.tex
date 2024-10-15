@@ -1,0 +1,1569 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align frame text to the top
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Herdegens-approach-and-two-quasi-delta-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Wonderful package PGF/TikZ
+% ------------------------------------------------------
+
+% Node and pics for drawing charts
+\usepackage{./Local-packages/PGF-TikZ-Chart-nodes-and-pics}
+
+% Styles for arrows
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+% Pic for drawing functions
+\usepackage{./Local-packages/PGF-TikZ-Functions-pics}
+
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text
+\usepackage{./Local-packages/general-commands}
+
+% Package containing commands and other code useful for working with
+% mathematical text
+\usepackage{./Local-packages/math-commands}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Herdegen's approach to Casimir effect in application to
+  the~two quasi-delta system}
+
+\author{Kamil Ziemian \\
+  \texttt{kziemianfvt@gmail.com}}
+
+
+% \institute{Uniwersytet Jagielloński w~Krakowie}
+
+\date[13 X 2024]{Seminar of Field Theory Departament,
+  13 October 2024}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 47k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents % Spis treści
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Krótka historia efektu Casimira}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Początki}
+
+
+  W~$1948$ Hendrik Brugt Gerhard Casimir ($1909\text{-}2000$)
+  publikuje artykuł w~którym stwierdza, że~na skutek efektów kwantowych
+  dwie elektrycznie obojętne metalowe płyty powinny ze~sobą oddziaływać
+  \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}. Jego
+  rozumowanie opiera~się na rozpatrzeniu \textbf{energii stanu zerowego},
+  „nieskończonej stałej”, która jest rezultatem zastosowanie procedury
+  kanonicznej kwantyzacji do pola elektromagnetycznego. Choć wedle niego
+  energia punktu zerowego jest sama w~sobie niefizyczna, to różnica
+  energii punktu zerowego dla dwóch różnych typów warunków brzegowych
+  jest fizyczna. Wspierając~się własnościami fizycznymi metali
+  Casimir był w~stanie wyliczyć wyrażenie na energię przypadająca na
+  jednostkę powierzchni, które powinno być uniwersalne dla tej konkretnej
+  konfiguracji.
+  \begin{equation}
+    \label{eq:Krotka-historia-ETC-01}
+    \frac{ \delta E }{ L^{ 2 } } =
+    -\hbar c \frac{ \pi^{ 2 } }{ 720 } \frac{ 1 }{ a^{ 3 } },
+  \end{equation}
+  Jego podejście przewiduje więc przyciągającą siłę dla tego układu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Badania eksperymentalne}
+
+
+  W~$1955$ J.M. Lifszyc publikuje pracę, w~której pokazuje jak obliczyć
+  efekt Casimira uwzględniając wkład od niezerowej temperatury
+  i~konkretnych własności materiału (tłum. ang.
+  \parencite{Lifshitz-The-theory-of-molecular-ETC-Pub-1956}). Przeważająca
+  większość przeprowadzanych eksperymentów porównuje swoje wyniki z~którąś
+  z~wersji teorii Lifszyca.
+
+  Pierwsza próbę zmierzenia efektu Casimira podjął M.J. Sparnaay, swoje
+  rezultaty opublikował w~$1958$ roku
+  \parencite{Sparnaay-Measurments-of-attractive-forces-ETC-Pub-1958}.
+  Testował on układ dwóch metalowych płytek, nie był jednak w~stanie
+  rozstrzygnął kwestii istnienia tego efektu, gdyż dla dwóch zestawów
+  płytek zaobserwował ich przyciąganie, dla jednego odpychanie. Jednocześnie
+  zidentyfikowana przez Sparnaay’a lista problemów, które stają na
+  przeszkodzie dokładnego zmierzenia tego efektu, miała bardzo istotny
+  wpływ na dalsze badania.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Badania eksperymentalne}
+
+
+  Pierwsze eksperymentalne potwierdzenie istnienia efektu Casimira
+  stało~się udziałem P. van~Bloklanda i~J.~Overbeeka, którzy
+  opublikowali swoje wyniki w~$1970$
+  \parencite{Blokland-Overbeek-van-der-Waals-Forces-between-ETC-1978}.
+  Badali oni znacznie prostszy z~eksperymentalnego punktu widzenia
+  układu sfera-płaszczyzna i~porównywali dane doświadczalne z~skomplikowanym
+  modelem opartym o~teorię Lifszyca. Pomimo wielu trudności, przy
+  niepewności wynoszącej $50\%$ mierzonego efektu, potwierdzili zgodność
+  teorii z~eksperymentem.
+
+  Do dziś najważniejszy test oryginalnego efektu Casimira przedstawia
+  praca G.~Bressi’ego et al. z~$2002$ roku
+  \parencite{Bressi-et-al-Measurement-of-the-Casimir-Force-ETC-2002}.
+  Stosując skomplikowaną procedurę pomiarową oraz wymagającą analizę
+  danych, potwierdzili oryginalne przewidywania Casimira przy błędzie
+  wynoszącym około $15\%$ całkowitego wyniku.
+
+  Do tej pory zmierzono efekt Casimira dla wielu typów materiałów
+  i~konfiguracji geometrycznych, przy czym ogromną rolę w~jego badaniu
+  odgrywają rozważania z~zakresu fizyki fazy skondensowanej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Algebraiczne podejście Herdegena do efektu Casimira}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebraiczne podejście Herdegena}
+
+
+  Podejście algebraiczne do efektu Casimira na który bazuje moja praca
+  pracy zostało wprowadzone w~dwuczęściowym artykule
+  \textit{Quantum backreaction (Casimir) effect} Andrzeja Herdegena
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005},
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-II-Pub-2006}.
+  Pierwsza jego część zawiera między innymi zestaw aksjomatów odpowiedniej
+  algebraicznej kwantowej teorii pola (\textsc{aqft}). W~drugiej
+  przedstawiono analizę problemu pola elektromagnetyczne oraz
+  dwóch metalowych płytek, poprzez modyfikowanie wartości operatorów
+  w~reprezentacji pędowej.
+
+  Ten sam układ został przebadany w~pracy Andrzeja Herdegena i~Mariusza
+  Stopy, gdzie pokazano jak można opisać korzystając z~reprezentacji
+  położeń \parencite{Herdegen-Stopa-Global-vs-local-ETC-2010}. Praca ta była
+  główną inspiracją dla moich badań.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podstawowe założenia}
+
+
+  W~podejściu Herdegen efekt Casimira rozumiemy w~następujący sposób.
+  Przyjmijmy, że~badany układ można podzielić w~jasny sposób na część
+  kwantową~$Q$ i~makroskopową $M$. Gdy w~skutek warunków zewnętrznych układ
+  $M$ porusza~się w~sposób adiabatyczny, dochodzi do reakcji zwrotnej ze
+  strony układu $Q$, który przekazuje energię do~$M$, którą ten ostatni
+  podukład przekształca w~energię kinetyczną, co skutkuje pojawieniem~się
+  odpowiedniej siły.
+
+  Wedle naszej znajomości literatury dotyczącej eksperymentalnego badania
+  tego efektu, założenie o~adiabatycznym charakterze ruchu zgadza~się
+  dobrze z~tym, jak przeprowadzane są realne eksperymenty.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Schemat algebraiczny}
+
+
+  Wedle przyjętych aksjomatów układ $Q$ jest określony przez algebrę
+  $C^{ * }$, oznaczaną przez $\Acal$, oraz jej reprezentacje w~przestrzeni
+  Hilberta, przy czym wszystkie te reprezentacje muszą być sobie równoważne.
+  Algebra $\Acal$ jest zlokalizowana na hiperpłaszczyźnie $t = \const$, co
+  wobec przyjęcia założenia o~adiabatycznej ewolucji układu nie prowadzi
+  do problemów. Natomiast układ $M$ jest opisywany przez zestaw kilku
+  makroskopowych zmiennych, które zbiorczo oznaczamy przez $a$.
+
+  Energia Casimira jest zdefiniowana jako wartość oczekiwana
+  hamiltonianu \alert{swobodnego} układu $Q$ w~stanie podstawowym
+  sprzężonego układu $Q\text{-}M$:
+  \begin{equation}
+    \label{eq:Algebraiczne-podejscie-ETC-01}
+    \Ecal_{ a } = ( \Omega_{ a }, H \Omega_{ a } ).
+  \end{equation}
+  % Choć takie określenie energii Casimira nie jest powszechnie przyjęte
+  % w~literaturze, to jak zauważył Herdegen, w~tym problemie nie ma innego,
+  % jednoznacznie zdefiniowanego operatora energii.
+  Siła Casimira jest zdefiniowana w~naturalny sposób:
+  \begin{equation}
+    \label{eq:Algebraiczne-podejscie-ETC-02}
+    \Fcal_{ a } = -\frac{ \partial \Ecal_{ a } }{ \partial a }.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Schemat algebraiczny}
+
+
+%   Wedle przyjętych aksjomatów układ $Q$ jest określony przez algebrę
+%   $C^{ * }$, oznaczaną przez $\Acal$, oraz jej reprezentacje na przestrzeni
+%   Hilberta, przy czym wszystkie te reprezentacje muszą być sobie równoważne.
+%   Algebra $\Acal$ jest zlokalizowana na hiperpłaszczyźnie $t = \const$, co
+%   wobec przyjęcia założenia o~adiabatycznej ewolucji układu nie prowadzi
+%   do problemów. Natomiast układ $M$ jest opisywany przez zestaw kilku
+%   makroskopowych zmiennych, które zbiorczo oznaczamy przez $M$.
+
+%   Energia Casimira jest zdefiniowana jako wartość oczekiwana
+%   hamiltonianu \alert{swobodnego} układu $Q$ w~stanie podstawowym
+%   sprzężonego układu $Q\text{-}M$:
+%   \begin{equation}
+%     \label{eq:Algebraiczne-podejscie-ETC-03}
+%     \Ecal_{ a } = ( \Omega_{ a }, H \Omega_{ a } ).
+%   \end{equation}
+%   % Choć takie określenie energii Casimira nie jest powszechnie przyjęte
+%   % w~literaturze, to jak zauważył Herdegen, w~tym problemie nie ma innego,
+%   % jednoznacznie zdefiniowanego operatora energii.
+%   Siła Casimira jest zdefiniowana w~naturalny sposób:
+%   \begin{equation}
+%     \label{eq:Overview-of-Herdegens-approach-ETC-07}
+%     \Fcal_{ a } = -\frac{ \partial \Ecal_{ a } }{ \partial a }.
+%   \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewolucja pola skalarnego}
+
+
+  Zapiszemy teraz równania ewolucji swobodnego skalarnego pola kwantowego
+  oraz tego samego pole w~obecności układu~$M$:
+
+  \vspace{-2em}
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Algebraiczne-podejscie-ETC-03}
+      \left( \partial_{ t }^{ 2 } + h^{ 2 } \right) \phi( t, \vecx ) = 0, \qquad
+      &\left( \partial_{ t }^{ 2 } + h_{ a }^{ 2 } \right) \phi( t, \vecx ) = 0, \\
+      h^{ 2 } = -\Delta, \qquad
+      &h_{ a }^{ 2 } = h^{ 2 } + V_{ a }.
+    \end{align}
+
+  \end{subequations}
+
+  \vspace{-2em}
+
+
+
+  Na będzie interesowała tylko przypadek, gdy $V_{ a }$ jest operatorem
+  skończonego rzędu.
+
+  Herdegen, korzystając z~rozkładu pola na operator anihilacji i~kreacji,
+  pokazał, że~liczb kwantów  \alert{swobodnego} pola $\Ncal_{ a }$
+  wytworzona przez wprowadzenie układu $M$ i~jego energia Casimira
+  wyrażają~się wzorami
+
+  \vspace{-1.8em}
+
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Algebraiczne-podejscie-ETC-04-A}
+      \Ncal_{ a }^{ \vphantom{1} }
+      &=
+        \frac{ 1 }{ 4 } \Tr\big[ \HorSpaceOne h^{ -1/2 } (
+        h_{ \HorSpaceOne a }^{ \vphantom{1} } - h )
+        h_{ \HorSpaceOne a }^{ -1 }
+        ( h_{ a }^{ \vphantom{1} } - h ) h^{ -1/2 } \HorSpaceTwo \big], \\
+      \label{eq:Algebraiczne-podejscie-ETC-04-B}
+      \Ecal_{ \HorSpaceTwo a }
+      &=
+        ( \GroundStateAOne, H \HorSpaceOne \GroundStateAOne ) =
+        \frac{ 1 }{ 4 }
+        \Tr\big[ ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h )
+        h_{ \HorSpaceOne a }^{ -1 }
+        ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h ) \big].
+    \end{align}
+
+  \end{subequations}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Elements of Herdegen's approach}
+
+
+  Względy matematyczny i~fizyczne wymagają od nas byśmy żądali
+  od problemu, iż~liczba kwantów swobodnego pola i~energia Casimira
+  są skończone:
+
+  \vspace{-2.2em}
+
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Algebraiczne-podejscie-ETC-05-A}
+      \Ncal_{ a }^{ \vphantom{1} }
+      &=
+        \frac{ 1 }{ 4 } \Tr\big[ \HorSpaceOne h^{ -1/2 } (
+        h_{ \HorSpaceOne a }^{ \vphantom{1} } - h )
+        h_{ \HorSpaceOne a }^{ -1 }
+        ( h_{ a }^{ \vphantom{1} } - h ) h^{ -1/2 } \HorSpaceTwo \big]
+        < +\infty, \\[0.3em]
+      \label{eq:Algebraiczne-podejscie-ETC-05-B}
+      \Ecal_{ \HorSpaceTwo a }
+      &=
+        \frac{ 1 }{ 4 }
+        \Tr\big[ ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h )
+        h_{ \HorSpaceOne a }^{ -1 }
+        ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h ) \big] < +\infty.
+    \end{align}
+
+  \end{subequations}
+
+  \vspace{-1em}
+
+
+
+  Herdegen pokazał również, wychodząc od standardowego tensora energii-pędu,
+  że~lokalna gęstość energii tego problemu jest dystrybucją daną wzorem:
+  \begin{equation}
+    \label{eq:Algebraiczne-podejscie-ETC-06}
+    T_{ a }( \varphi, \psi ) =
+    \frac{ 1 }{ 4 } \big( \varphi, ( h_{ a }^{ \vphantom{1} } - h ) \psi \big) +
+    \frac{ 1 }{ 4 } \big( \nabla \varphi, ( h_{ a }^{ -1 } -
+    h^{ -1 }_{ \vphantom{a} } ) \nabla \psi \big).
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Pole skalarne z~dwoma quasi-deltami}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Sformułowanie modelu}
+
+
+  Przypominijmy równanie ewolucji pola skalarnego w~obecności
+  układu $M$:
+
+  \vspace{-2em}
+
+
+  \begin{equation}
+    \label{eq:Algebraiczne-podejscie-ETC-07}
+    \left( \partial_{ t }^{ 2 } + h_{ \veca }^{ 2 } \right) \phi( t, \vecx ) = 0, \qquad
+    h_{ \veca }^{ 2 } = -\Delta + V_{ \veca }.
+  \end{equation}
+  Chcemy by równanie to reprezentowało pole skalarne oddziałujące
+  z~dwoma sferycznie symetrycznymi ciałami, których środki są połączone
+  wektorem~$\veca$. Jego długość oznaczamy jako $a = \absOne{ \veca }$.
+
+  Biorąc ponownie inspirację z~pracy Herdegena i~Stopy
+  \parencite{Herdegen-Stopa-Global-vs-local-ETC-2010}, bierzemy
+  quasi-potencjał $V_{ \veca }$, który w~reprezentacji położeń ma postać
+  \begin{equation}
+    \label{eq:Pole-skalarne-ETC-01}
+    V_{ \veca }( \vecx, \vecy \HorSpaceThree ) =
+    \sigma( g ) \! \left[ g\!\left( \vecx - \vecb \HorSpaceFive \right) \,
+      \overline{ g\!\left( \vecy - \vecb \HorSpaceFive \right) }
+      + g\!\left( \vecx + \vecb \HorSpaceFive \right) \,
+      \overline{ g\!\left( \vecy + \vecb \HorSpaceFive \right) } \,
+    \right], \;
+    \vecb = \frac{ \veca }{ 2 }.
+  \end{equation}
+  O~funkcji $g( \vecx )$ przyjmujemy, że jest klasy $C^{ \infty }( \Rbb^{ 3 } )$,
+  o~zwartym nośniku zawartym w~kuli $B( \vecZero, L / 2 )$. Z~technicznych
+  względów potrzebujemy również założyć, że~$g( \vecx ) \geq 0$. Funkcjonał
+  $\sigma( g )$ wyjaśnimy później.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Symboliczne przedstawienie quasi-potencjału}
+
+
+  Poniżej można zobaczyć wykres przykładowych funkcji
+  $g( \vecx \pm \vecb )$ tworzących quasi-potencjał $V_{ \veca }$.
+
+  \vspace{5em}
+
+
+
+
+
+  \begin{figure}
+
+    \label{fig:Symbolic-sketch-of-quasi-potential}
+
+
+    \centering
+
+    \begin{tikzpicture}
+
+      % Smooth functions witch compact support
+      \pic at (-3,0) {smooth function with compact support fill 1};
+
+      \pic at (3,0) {smooth function with compact support fill 1};
+
+
+
+
+
+      % x axis
+      \draw[axis arrow] (-4.5,0) -- (5,0);
+
+      \pic at (5,0) {x mark for horizontal axis 1};
+
+
+      % y axis
+      \draw[axis arrow] (0,-0.2) -- (0,2.3);
+
+      \pic at (0,2.3) {V mark for vertical axis 1};
+
+      \node[right] at (0,-0.2) {$0$};
+
+
+
+
+
+      % Thicks on x axis
+      \pic at (-4,0) {tick x axis thin};
+
+      \node[below] at (-4,0) {$-4$};
+
+
+      \pic at (-3,0) {tick x axis thin};
+
+      \node[below] at (-3,0) {$-3$};
+
+
+      \pic at (-2,0) {tick x axis thin};
+
+      \node[below] at (-2,0) {$-2$};
+
+
+      \pic at (-1,0) {tick x axis thin};
+
+      \node[below] at (-1,0) {$-1$};
+
+
+      \pic at (1,0) {tick x axis thin};
+
+      \node[number below x axis] at (1,0) {$1$};
+
+
+      \pic at (2,0) {tick x axis thin};
+
+      \node[number below x axis] at (2,0) {$2$};
+
+
+      \pic at (3,0) {tick x axis thin};
+
+      \node[number below x axis] at (3,0) {$3$};
+
+
+      \pic at (4,0) {tick x axis thin 1};
+
+      \node[number below x axis] at (4,0) {$4$};
+
+
+      % \pic at (5,0) {tick x axis thin};
+
+      % \node[below] at (5,0) {$5$};
+
+
+
+
+
+      % Ticks on y axis
+      \pic at (0,0.5) {tick y axis thin 1};
+
+      \node[node scale small 2,left] at (0,0.5) {$0.5$};
+
+
+      \pic at (0,1) {tick y axis thin};
+
+      \node[left] at (0,1) {$1$};
+
+
+      \pic at (0,1.5) {tick y axis thin 1};
+
+      \node[node scale small 2,left] at (0,1.5) {$1.5$};
+
+    \end{tikzpicture}
+
+    \caption{Symboliczny wykres quasi-potencjału $V_{ \veca }$.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Własności modelu}
+
+
+  Korzystając z~twierdzeń Kato-Rellicha, Kato-Rosenbluma, twierdzenia
+  Weyla o~widmie istotnym, etc., oraz wykonując trochę obliczeń, pokazujemy,
+  że~widma obu operatorów $h^{ 2 }$ and $h_{ a }^{ 2 }$ redukują~się
+  do widma absolutnie ciągłego równego $[ 0, +\infty )$. Co więcej ich widmo
+  jest unitarnie równoważne, co pozwala nam użyć metod z teorii
+  rozpraszania do rozwiązania tego problemu.
+
+  Potrzebujemy teraz wprowadzić trochę notacji dla funkcji. Choć jest ich
+  niemało, najważniejsze jest to, że wszystkie wyrażają~się przez
+  odpowiednie całki funkcji $g( \vecx )$.
+
+  \vspace{-1.6em}
+
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Pole-skalarne-ETC-02-A}
+      \gHat( p ) = \gHat( \vecp \HorSpaceFour )
+      &=
+      \frac{ 1 }{ \sqrt{ 2 \pi } }
+      \int\limits_{ -\infty }^{ +\infty } dx \, \frac{ \sin( p x ) }{ p x }
+        \HorSpaceTwo x^{ 2 } g( x ), \\
+      \label{eq:Pole-skalarne-ETC-02-B}
+      M_{ p }
+      &= \gHat( p )^{ 2 }, \qquad
+        I_{ k } =
+        \int_{ -\infty }^{ +\infty } dq \,
+        \frac{ M_{ \HorSpaceOne q } - M_{ \HorSpaceOne k } }{
+        k^{ \HorSpaceOne 2 } - q^{ \HorSpaceOne 2 } }.
+    \end{align}
+
+  \end{subequations}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Objaśnienie notacji}
+
+  \vspace{-2em}
+
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Pole-skalarne-ETC-03-A}
+      \checkMx =
+        \frac{ 1 }{ \sqrt{ 2 \pi } }
+      \int\limits_{ -\infty }^{ +\infty } dp \, e^{ i p x }
+      &M_{ p }, \quad
+        b_{ \HorSpaceOne 1 } =
+        \frac{ 1 }{ \sqrt{ 2 \pi } 2 \pi^{ 2 } }
+        \int\limits_{ -\infty }^{ +\infty } dx \, \absOne{ x } \checkMx, \\
+      \label{eq:Pole-skalarne-ETC-03-B}
+      \chi( g )
+      &=
+        \frac{ 2 \pi }{ \alpha }
+        \int\limits_{ -\infty }^{ +\infty } dp \, M_{ p } =
+        \sqrt{ 2 \pi }^{ 3 } \frac{ \checkMzero }{ \alpha }, \\
+      \label{eq:Pole-skalarne-ETC-03-C}
+      \sigma( g )^{ -1 }
+      &=
+        -\alpha ( M_{ 0 } + \chi( g ) ).
+    \end{align}
+
+  \end{subequations}
+
+  \vspace{-1.8em}
+
+
+
+  W~problemie występuje wiele innych funkcji. Zdecydowaliśmy~się zapisać
+  tylko te, które występują jawnie w~najważniejszych równaniach.
+
+  Podana tu postać funkcjonału $\sigma( g )$ wynika z~analizy przeskalowanej
+  rodziny modeli. Mianowicie, gdy ściągamy oba sferyczne ciała do punktów,
+  nasz problem dąży w~sensie silnej granicy resolwentowej do problemu
+  pola skalarnego z~dwoma deltami Diraka. Parametr $\alpha$ jest dobrze znany
+  w~teorii takich układów i~opisuje długość rozpraszania
+  \parencite{Albeverio-et-al-Solvable-Models-in-Quantum-Mechanics-Pub-1988}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczba kwantów i~energia Casimira}
+
+
+  Rozkład spektralny operatorów i~metody teoria rozpraszania pozwalają nam
+  zapisać wzory na liczbę kwantów swobodnego pola i~energię Casimira
+  (\eqref{eq:Algebraiczne-podejscie-ETC-05-A},
+  \eqref{eq:Algebraiczne-podejscie-ETC-05-B})
+  za pomocą jednego wyrażenia:
+
+  \vspace{-1.1em}
+
+
+
+  \begin{equation}
+    \label{eq:Pole-skalarne-ETC-04}
+    \Pcal_{ \tau }( a ) =
+    16 \Real \int\limits_{ \Rbb_{ + }^{ \, 2 } } dk \, dp \,
+    \frac{ p^{ \HorSpaceOne 2 - \tau } }{ ( p + i k )^{ 2 } } M_{ \HorSpaceOne p }
+    \frac{ t( i k ) + h( p a ) u( i k ) }{ t( i k )^{ 2 } - u( i k )^{ 2 } }.
+  \end{equation}
+
+  \vspace{-1.3em}
+
+
+
+  Dla $\tau = 0$ dostajemy wyrażenie na energię, dla $\tau = 1$ na liczbę
+  kwantów. Można łatwo pokazać, że~obie te całki są zbieżne.
+
+  Poprzez przejście do granicy $a \nearrow +\infty$ może zidentyfikować człon
+  odpowiedzialny za samooddziaływanie ciał makroskopowych i~podzielić
+  wyrażenie na energię na część związaną z~samoodziaływaniem ciał
+  i~oddziaływaniem między nimi.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Interaction energy}
+
+  \vspace{-2em}
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Pole-skalarne-ETC-05-A}
+      \ESelf
+      &=
+        16 \pi^{ 2 } \, \int\limits_{ \Rbb_{ + }^{ \, 2 } } dp \, dk \,
+        \frac{ p^{ \HorSpaceOne 2 } k }{ ( p + k )^{ 2 } } \,
+        \frac{ M_{ \HorSpaceOne p } \, M_{ \HorSpaceOne k } }{
+        ( \alpha + 2 \pi k^{ 2 } I_{ k } )^{ 2 } +
+        ( 2 \pi^{ 2 } k M_{ \HorSpaceOne k } )^{ 2 } }, \\
+      \label{eq:Pole-skalarne-ETC-05-B}
+      \EInt( a )
+      &=
+        16 \, \Real \int\limits_{ \Rbb_{ + }^{ \, 2 } } dp \, dk \,
+        \frac{ p^{ \HorSpaceOne 2 } }{ ( p + i k )^{ 2 } } \,
+        M_{ \HorSpaceOne p } \,
+        \frac{ u( i k )^{ 2 } + h( p a ) t( i k ) u( i k ) }{
+        t( i k ) [ t( i k )^{ 2 } - u( i k )^{ 2 } ] }.
+    \end{align}
+
+  \end{subequations}
+
+
+
+  Ponieważ wzory te są dość skomplikowana, by wyizolować odpowiednie
+  stopnie swobody, przebadaliśmy przeskalowaną wersję modelu i~obliczyliśmy
+  jego rozwinięcie asymptotyczne. Tą przeskalowaną wersję problemu
+  otrzymujemy zastępując funkcję $g( \vecx )$ przez
+  \begin{equation}
+    \label{eq:Pole-skalarne-ETC-06}
+    g_{ \lambda }( \vecx ) =
+    \lambda^{ -3 } g\left( \tfrac{ \vecx }{ \lambda } \right), \qquad
+    \lambda \in ( 0, 1 ].
+  \end{equation}
+  Funkcja $g_{ \lambda }( \vecx )$, przy $\lambda$ ustalonym, posiada te same
+  własności co funkcja $g( \vecx )$, więc wszystkie otrzymane wyniki
+  pozostają w~mocy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Granica skalowania}
+
+
+  Z~postaci funkcji $g_{ \lambda }( \vecx )$ wynika, że~wzięcie granicy $\lambda \searrow 0$
+  powoduje ściągnięcie rozważanych ciał do punktu, podczas gdy siła
+  oddziaływania z~nimi rośnie do nieskończoności. Jak już mówiliśmy, nas
+  model jest wtedy zbieżny do problemu pola skalarnego z~dwoma deltami
+  Diraka
+  \parencite{Albeverio-et-al-Solvable-Models-in-Quantum-Mechanics-Pub-1988}.
+
+  Dalsze wyniki zapiszemy korzystając z~naturalnej wersji zmiennej
+  bezwymiarowej
+  \begin{equation}
+    \label{eq:Pole-skalarne-ETC-07}
+    \gamma := \frac{ \alpha a }{ 2 \pi^{ 2 } }.
+  \end{equation}
+  Można pokazać, że~gdy spełniony jest warunek
+  \begin{equation}
+    \label{eq:Pole-skalarne-08}
+    \gamma > 1,
+  \end{equation}
+  wówczas operator $h_{ \veca }^{ 2 }$ jest dodatnio określony i~całe
+  formalizm pozostaje spójny. Gdy $\gamma \leq 1$, potencjalnie mogą pojawić~się
+  stany związane do ujemnej energii.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozwinięcie asymptotyczne}
+
+
+  Energia sammooddziaływania, jak należało się spodziewać, jest rozbieżna
+  w~granicy $\lambda \searrow 0$. Energia oddziaływania również jest rozbieżna, jednak
+  jej rozwinięcie asymptotyczne prowadzi do konkretnych przewidywań.
+  \begin{equation}
+    \label{eq:Pole-skalarne-ETC-09}
+    \begin{split}
+      &\EInt( a, \lambda ) = \\
+      &=
+        \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
+        e^{ -4 l } \big] }
+        { ( \gamma + l )^{ 2 }
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
+        \, - \\[0.5em]
+      &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ 1 }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
+        ( \gamma + l )^{ 2 } - e^{ -2 l } } \, dl + R( a, \lambda ) \Bigg],
+    \end{split}
+  \end{equation}
+  Funkcjonały $\chi > 0$ i~$b_{ \HorSpaceOne 1 }$, zostały wprowadzone
+  w~równaniach \eqref{eq:Pole-skalarne-ETC-03-A}
+  i~\eqref{eq:Pole-skalarne-ETC-03-B}. Reszta rozwinięcia spełnia zaś
+  nierówność $\absOne{ R( a, \lambda ) } \leq \const( a ) \lambda$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podstawowe wnioski}
+
+
+  Korzystając z~kombinacji metod analitycznych i~numerycznych z~dużą
+  dozą pewności ustaliliśmy, że~wzór
+  \eqref{eq:Pole-skalarne-ETC-09} przewiduje występowanie
+  \alert{odpychającą} siły między ciałami. Do tego wyniki numeryczne
+  wskazują na to, że~dominujący jest człon \alert{zależny od modelu}.
+  W~prezentowanym podejściu, nie możemy więc mówić o~uniwersalnej sile
+  Casimira dla układu dwóch delt.
+
+  Jest to wynik bardzo odbiegający od tego otrzymanego przez A.~Scardicchia
+  dla tego samego problemu
+  \parencite{Scardicchio-Casimir-dynamics-ETC-2005}. Używają wariantu
+  energii punktu zerowego, wprowadził on wzór przewidujący
+  \alert{uniwersalną} i~\alert{przyciągającą} siłę Casimira.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Asymptotic expansion of Casimir energy}
+
+%   \vspace{-2em}
+
+
+
+%   To analyse this formula we were forced to use combination of analytical
+%   and numeric methods. With very high degree of confidence we established
+%   that it predicts repulsive force that very quickly vanishes with the
+%   distance. This is in striking contrast with previous works of A.
+%   Sccardicchio \parencite{}, who used
+%   version of zero-point energy approach to derive for this system force
+%   that according to him is \alert{universal} and \alert{attractive}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Asymptotic expansion of Casimir energy}
+
+%   \vspace{-2.5em}
+
+
+%   \begin{equation}
+%     \label{eq:Rescaled-version-of-the-model-06}
+%     \begin{split}
+%       &\EInt( a, \lambda ) = \\
+%       &=
+%         \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
+%         \int\limits_{ 0 }^{ +\infty } \!
+%         \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
+%         \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+%         \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
+%         \int\limits_{ 0 }^{ +\infty } \!
+%         \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
+%         e^{ -4 l } \big] }
+%         { ( \gamma + l )^{ 2 }
+%         \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
+%         \, - \\[0.5em]
+%       &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
+%         \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
+%         \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+%         \frac{ 1 }{ \gamma } \!
+%         \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
+%         ( \gamma + l )^{ 2 } - e^{ -2 l } } \, dl + R( a, \lambda ) \Bigg],
+%     \end{split}
+%   \end{equation}
+%   The four integrals in equation above, from left two right, all taken
+%   with sign plus, we denoted as $I_{ 1 }$, $I_{ 2 }$, $I_{ 3 }$ and $I_{ 4 }$.
+%   At the next slides we plot results of numerical computations of Casimir
+%   energy for which we assumed:
+%   \begin{equation}
+%     \label{eq:Rescaled-version-of-the-model-07}
+%     \frac{ \chi }{ \lambda } = 10.0, \qquad
+%     \chi b_{ 1 } = 1.0.
+%   \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Cztery składowe rozwinięcia asymptotycznego}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Terms-of-asymptotic-expansion}
+
+    \centering
+
+
+    \includegraphics[scale=0.525]
+    {./Presentation-pictures/Terms\_of\_asymptotic\_expansion\_01.png}
+
+    \caption{Wykres czterech całek obecnych we~wzorze
+      \eqref{eq:Pole-skalarne-ETC-09}, wziętych ze znakiem
+      plus.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Energia Casimira}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Asymptotic-expansion-of-Casimir-energy}
+
+    \centering
+
+
+    \includegraphics[scale=0.525]
+    {./Presentation-pictures/Casimir\_energy\_asymptotic\_expansion\_01.png}
+
+    \caption{Wykres sumy wiodących członów rozwinięcia asymptotycznego,
+      przy $\chi / \lambda = 10.0$, $\chi b_{ \HorSpaceOne 1 } = 1.0$.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Sccardicchio prediction for Casimir energy}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Casimir-energy-Scardicchio}
+
+    \centering
+
+
+    \includegraphics[scale=0.525]
+    {./Presentation-pictures/Casimir\_energy\_Scardicchio\_01.png}
+
+    \caption{Energia Casimira obliczona przez A.~Sccardicchio.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Lokalna gęstość energii}
+
+
+  Lokalna gęstość energii również dzieli~się na gęstość energii
+  samoodziaływania i~oddziaływania. W~granicy $\lambda \searrow 0$
+  ta pierwsza jest regularną dystrybucją
+  na~$\Rbb^{ 3 } \setminus \{ \vecZero \}$, ta druga zaś
+  na~$\Rbb^{ 3 } \setminus \{ -\veca / 2, \veca / 2\}$.
+
+  Poniższy wzór przedstawia gęstość energii samooddziaływania dla
+  pojedynczej delty Diraka.
+
+  \vspace{-1.5em}
+
+
+
+  \begin{equation}
+    \label{eq:Pole-skalarne-ETC-10}
+    \ESingleDenLim( \vecx \HorSpaceOne ) =
+    \frac{ 1 }{ 4 }
+    \int\limits_{ 0 }^{ +\infty } dr \, \frac{ 1 }{ \alpha + 2 \pi^{ 2 } r }
+    \left( 1 + 2 r \absOne{ \vecx } \right)
+    \frac{ e^{ -2 r \absOne{ \vecx } } }
+    { \absOne{ \vecx }^{ 4 } }.
+  \end{equation}
+  Gęstość energii oddziaływania znajduje~się na następnym slajdzie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Gęstość energii oddziaływania}
+
+  \vspace{-2em}
+
+
+  \begin{equation}
+    \label{eq:Pole-skalarne-ETC-11}
+    \begin{split}
+      &\EIntDenLim( \veca, \vecx \HorSpaceOne ) =
+        \frac{ 1 }{ 8\pi^{ 2 } }
+        \int\limits_{ 0 }^{ +\infty } dl \,
+        \frac{ e^{ -2 l } }{ ( \gamma + l ) [ ( \gamma + l )^{ 2 } - e^{ -2 l } ] } \, \times
+      \\[0.5em]
+      &\hspace{2em}
+        \times \Bigg[ \frac{ e^{ -2 l \absTwo{ \vecx + \vecb } / a } }{
+        \absTwo{ \vecx + \vecb }^{ 4 } }
+        \left( 1 + 2 l \frac{ \absTwo{ \vecx + \vecb } }{ a } \right) +
+        \frac{ e^{ -2 l \absTwo{ \vecx - \vecb } / a } }{
+        \absTwo{ \vecx - \vecb }^{ 4 } } \left( 1 +
+        2 l \frac{ \absTwo{ \vecx - \vecb } }{ a } \right) \Bigg] \, -
+      \\[0.5em]
+      &\hspace{1em}
+        - \frac{ 1 }{ 4 \pi^{ 2 } } \int\limits_{ 0 }^{ +\infty } dl \,
+        \frac{ e^{ -l } }{ ( \gamma + l )^{ 2 } - e^{ -2 l } }
+        \frac{ e^{ -l ( \absOne{ \vecx + \vecb } + |\,
+        \vecx - \vecb\, | ) / a } }{ |\, \vecx + \vecb\, | \absTwo{ \vecx -
+        \vecb } } \, \times \\[0.5em]
+      &\hspace{2em}
+        \times \Bigg[ \frac{ l^{ 2 } }{ a^{ 2 } } \Bigg( 1 - \frac{ (
+        \vecx + \veca ) \cdot ( \vecx - \veca ) }{ |\, \vecx
+        + \vecb\, | \absTwo{ \vecx - \vecb } } \Bigg) \, - \\[0.5em]
+      &\hspace{3.5em}
+        - \frac{ ( \vecx + \vecb \HorSpaceSix ) \cdot
+        ( \vecx - \vecb \HorSpaceSix ) }{
+        \absOne{ \vecx + \vecb } \HorSpaceFive
+        \absOne{ \vecx - \vecb } }
+        \frac{ 1 + l ( | \vecx
+        + \vecb | + | \vecx - \vecb | ) / a }{ | \vecx +
+        \vecb | \, \absOne{ \vecx - \vecb } } \Bigg].
+    \end{split}
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wnioski}
+
+
+  Należy zauważyć, że~\alert{globalna} energia dla badanego układu
+  jest silnie zależna od modelu, to \alert{lokalna gęstość energii}
+  na swoim zbiorze regularny jest już od niego \alert{niezależna}.
+  Do podobnych wniosków doszli w~swojej pracy Herdegena i~Stopy.
+
+  Gęstość energii samoodziaływania pojedynczej~$\delta$, cf.
+  rów. \eqref{eq:Pole-skalarne-ETC-10}, jest taka sama jak ta uzyskana
+  przez  Davide Fermi i~Livio Pizzocchero za pomocą zupełnie innego
+  podejścia, opartego o~tzw. regularyzację funkcją zeta
+  \parencite{Fermi-Pizzocchero-Local-Casimir-Effect-for-a-Scalar-ETC-2018}.
+
+  Wyniki te każą uważać, że~relacja między globalną i~lokalną energią
+  w~przypadku granicznym nie jest wcale prosta i~że gęstość energii jest
+  „łatwiejsza” do przewidzenia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\section{Pytania od recenzentów}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pytania od prof. Jana Derezińskiego}
+
+
+  \textit{Czemu autor stwierdził, że zasada przesunięcia punktu odniesienia
+    dla energii stosuje~się inaczej dla układów o~skończonej i~nieskończonej
+    liczbie stopni swobody?}
+
+  Rozpatrzymy dwa układ, jeden o~skończonej, drugi o~przeliczalnej liczbie
+  stopni swobody, takie że energia całkowita jest sumą energii
+  odpowiadającej poszczególnym stopniom swobody.
+
+  \vspace{-1.8em}
+
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Algebraiczne-podejscie-ETC-01}
+      E_{ \text{tot, fin} }
+      &=
+        \sum_{ i = 1 }^{ N } E_{ i } < +\infty, \\
+        \label{eq:Algebraiczne-podejscie-ETC-01}
+      E_{ \text{tot, con} }
+      &=
+        \sum_{ i = 1 }^{ \infty } E_{ i } < +\infty.
+    \end{align}
+
+  \end{subequations}
+
+  \vspace{-1em}
+
+
+  Dla układu o~skończonej liczbie stopni swobody przesunięcie energii
+  każdego z~tych stopni od skończoną wartość $E_{ \text{shi} }$, powoduje
+  pojawienie~się skończonej stałej $N E_{ \text{shi} }$ w~wyrażeniu na
+  energię całkowitą, co nie wpływa na stronę fizyczną
+  i~matematyczną problemu. %  Dla układu o~przeliczalnej liczbie stopni
+  % swobody ta sama
+  % procedura powoduje pojawienie się „nieskończonej stałej”
+  % $\infty \cdot E_{ \text{shi} }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pytania od prof. Jana Derezińskiego}
+
+
+  % \textit{Czemu autor stwierdził, że zasada przesunięcia energii
+  %   odniesienia stosuje~się inaczej dla układów o~skończonej i~nieskończonej
+  %   liczbie stopni swobody?}
+
+  % Rozpatrzymy dwa układ, jeden o~skończonej, drugi o~przeliczalnej liczbie
+  % stopni swobody, takie że energia całkowita jest sumą energii przypadającej
+  % na każdy stopień swobody.
+
+  % \vspace{-2em}
+
+
+
+  % \begin{subequations}
+
+  %   \begin{align}
+  %     \label{eq:Algebraiczne-podejscie-ETC-01}
+  %     E_{ \text{tot, fin} }
+  %     &=
+  %       \sum_{ i = 1 }^{ N } E_{ i } < +\infty, \\
+  %       \label{eq:Algebraiczne-podejscie-ETC-01}
+  %     E_{ \text{tot, con} }
+  %     &=
+  %       \sum_{ i = 1 }^{ \infty } E_{ i } < +\infty.
+  %   \end{align}
+
+  % \end{subequations}
+
+  % Dla układu o~skończonej liczbie stopni swobody przesunięcie energii
+  % każdego stopnia swobody od skończoną wartość $E_{ \text{shi} }$ powoduje
+  % pojawienie~się skończonej stałej $N E_{ \text{shi} }$, co nie stanowi
+  % żadnego problemu.
+  Dla układu o~przeliczalnej liczbie stopni swobody ta sama
+  procedura powoduje pojawienie się „nieskończonej stałej”
+  $\infty \cdot E_{ \text{shi} }$:
+  \begin{equation}
+    \label{eq:Algebraiczne-podejscie-ETC-01}
+    E_{ \text{tot, con} } \to E_{ \text{tot, con} } + \infty \cdot E_{ \text{shi} }.
+  \end{equation}
+  Z~punktu widzenia matematyki wyrażenie na energię całkowitą jest
+  w~zasadzie pozbawione sensu. Z~punktu widzenia fizyki wymaga co najmniej
+  jakiejś renormalizacji.
+
+  Ponieważ uważam, że takie „nieskończone stałe” należy wykluczyć
+  z~rozważań w~każdym przypadku, gdy to jest możliwe, według mnie taka
+  procedura przesuwania punktu odniesienia energii być zabroniona dla układu
+  o~nieskończonej liczbie stopni swobody.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pytania od prof. Andrzeja Horzeli}
+
+
+  \textit{Dlaczego w~pracy nie omówiono szerzej modeli efektu
+    Casimira bazujących na~podejściu Lifszyca?}
+
+  W~modelach opartych o~podejście Lifszyca bada~się wpływ szerokiego
+  zakresu zjawisk z~fizyki fazy skondensowanej na efekt Casimira.
+  Jest to tematyka zbyt szeroka, by móc ją choćby pobieżnie omówić w~pracy
+  poświęconej prostemu modelowi dwóch sferycznie symetrycznych ciał.
+  Dlatego ograniczyliśmy jej dyskusję do kilku najważniejszych
+  w~naszej ocenie zagadnień.
+
+  Ponadto już w~oryginalnej pracy Lifszyca, by uprościć obliczenia
+  dokonujemy przejścia na zmienne czysto urojone. W~większości literatury
+  przedmiotu operacja ta nie jest wykonywana na poziomie ścisłości,
+  który fizyka matematyczna może uznać za satysfakcjonujący. Doszliśmy
+  do~wniosku, że~dyskusja tego zagadnienia zaprowadziłaby nas zbyt daleko
+  od efektu Casimira, co stanowiło dodatkowy powód, by nie poruszać jej
+  głębiej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pytania od prof. Andrzeja Horzeli}
+
+
+  \textit{Jakie jest uzasadnienie założenia, że~funkcja $g( \vecx )$ ma
+    nośnik zwarty?}
+
+  Naszym celem było zbadanie podstawowych własności efektu Casimira
+  w~układzie z~dwoma sferycznie symetrycznymi ciałami. Przyjęcie,
+  że~funkcja $g( \vecx )$ ma zwarty nośnik, odpowiada założeniu,
+  iż~ciała mają dobrze określoną klasyczną granicę.
+
+  Gdybyś my przyjęli jako model ciał, przykładowo funkcję klasy Schwartza,
+  moglibyśmy argumentować, iż~jest to sposób uwzględnienia pewnych efektów
+  powierzchniowych. Jednak tego typu efekty, choć ważne, są drugorzędne
+  wobec takich, jak zależność przenikalności elektrycznej
+  $\varepsilon( \omega )$ od częstości fal elektromagnetyczny, które naturalnie uwzględnia
+  podejście Lifszyca. Ponieważ nie dysponujemy matematycznie
+  satysfakcjonujący model efektu Casimira uwzględniającego funkcję
+  $\varepsilon( \omega )$, próba uwzględnienia efektów powierzchniowych, nie jest obecnie
+  uzasadniona.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pytania od prof. Andrzeja Horzeli}
+
+
+  \textit{Czy i~w~jaki sposób metody użyte w~rozprawie można przenieść
+    na przypadek pola elektromagnetycznego?}
+
+  W~pracy z~2006 roku Herdegen pokazał, że~dla problemu dwóch płyt,
+  zagadnienie pola elektromagnetycznego redukuje~się do rozwiązania problemu
+  pola skalarnego dla dwóch typów „rozmytych” warunków brzegowych
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-II-Pub-2006}.
+  Stwierdzenie czy podobną procedurę można zastosować w~problemie z~dwiema
+  quasi-deltami wymaga dobrego zrozumienia oddziaływania pola
+  elektromagnetycznego z~potencjałami typu delta i~quasi-potencjałami,
+  który to zagadnienie wymaga dalszych studiów.
+
+\end{frame}
+% ##################
+
+
+
+% % ######################################
+% \section{Closing remarks}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zakończenie}
+
+  \vspace{7em}
+
+
+  \begin{center}
+
+    \Large
+
+    Dziękuję za uwagę.
+
+  \end{center}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}
