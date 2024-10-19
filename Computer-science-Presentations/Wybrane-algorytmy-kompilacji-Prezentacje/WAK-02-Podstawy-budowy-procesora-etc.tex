@@ -74,6 +74,10 @@ eprint=true,
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
+\usepackage{./Local-packages/jagiellonian-theme-colors}
+
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
 % Additional colors
 \usepackage{./Local-packages/jagiellonian-theme-additional-colors}
 
@@ -580,6 +584,8 @@ eprint=true,
   Bardzo~się jednak ucieszę, jeśli znajdzie~się ktoś, kto chce~się
   tym zajmować.
 
+  Tym którzy chcą się zajmować mogę polecić dwie książki wydane po polsku.
+
 \end{frame}
 % ##################
 
@@ -593,11 +599,348 @@ eprint=true,
 
 
 % ######################################
-\section{Rzut oka na kompilatory}
+\section{Abstrakcja i~siła myślenia symbolicznego}
 % ######################################
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Prosty schemat działania kompilatora}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.7]
+
+      \node[diagram rectangle block] (C source code) at (0,0)
+      {Kod programu w~języku C};
+
+      \node[diagram block,below=of C source code] (Compiler)
+      {Magia (kompilator)};
+
+      \draw[thick diagram arrow] (C source code) -- (Compiler);
+
+
+
+      \node[diagram rectangle block,below=of Compiler] (Assembly code)
+      {Kod programu w~asemblerze};
+
+      \draw[thick diagram arrow] (Compiler) -- (Assembly code);
+
+    \end{tikzpicture}
+
+    \caption{Ilustracja działania kompilatora~;).}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pedantyczny komentarz}
+
+
+  Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
+  francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
+  poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
+  bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
+  niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
+  et al. \textit{Podstawy biologii komórki}.
+
+  Badanie normalnych języków nie jest przedmiotem informatyki, tylko
+  filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
+  dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
+  Będziemy jednak wybiórczo korzystać
+  z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
+  Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
+  skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
+  których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
+
+  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
+  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
+  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
+  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pedantyczny komentarz}
+
+
+  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
+  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
+  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
+  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
+  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
+  % et al. \textit{Podstawy biologii komórki}.
+
+  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
+  % filologii i~językoznawstwa, dlatego nie będziemy wnikać w~problemy z
+  % jakimi mierzą się te dziedziny. Będziemy jednak wybiórczo korzystać
+  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
+  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
+  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
+  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
+
+  Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
+  wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
+  problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
+  leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Obliczenia w~zapisie numerycznym i~symbolicznym}
+
+
+  $\displaystyle \frac{ 3.1415 }{ 18.849 } + \frac{ 3.1415 }{ 18.849 } +
+  \frac{ 3.1415 }{ 18.849 } = \frac{ 6.283 }{ 18.849 } +
+  \frac{ 3.1415 }{ 18.849 } = \frac{ 9.4245 }{ 18.849 } = \frac{ 1 }{ 2 }$
+
+  \vspace{1em}
+
+
+  $a = 3.1415$
+
+  $\displaystyle \frac{ a }{ 6a } + \frac{ a }{ 6a } + \frac{ a }{ 6a } =
+  \frac{ 1 } { 2 }$
+
+  Schemat działania prawdziwego kompilatora.
+
+  Kod źródłowy -> Lekser (analizator leksykalny) -> Strumień tokenów i
+  tablica symboli -> Parser (analizator składniowy) -> Drzewo
+  składniowe -> Analizator semantyczny -> Zoptymalizowane drzewo składniowe
+  -> Generator kodu pośredniego -> IR, reprezentacja pośrednia ->
+  Optymalizator kodu pośredniego -> Zoptymalizowany IR -> Generator
+  asemblera -> Kod asemblera -> Optymalizacja asemblera ->
+  Zoptymalizowany asembler
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Schemat działania prawdziwego kompilatora}
+
+
+  % $\displaystyle \frac{ 3.1415 }{ 18.849 } + \frac{ 3.1415 }{ 18.849 } +
+  % \frac{ 3.1415 }{ 18.849 } = \frac{ 6.283 }{ 18.849 } +
+  % \frac{ 3.1415 }{ 18.849 } = \frac{ 9.4245 }{ 18.849 } = \frac{ 1 }{ 2 }$
+
+  % \vspace{1em}
+
+
+  % $a = 3.1415$
+
+  % $\displaystyle \frac{ a }{ 6a } + \frac{ a }{ 6a } + \frac{ a }{ 6a } =
+  % \frac{ 1 } { 2 }$
+
+  % Kod źródłowy -> Lekser (analizator leksykalny) -> Strumień tokenów i
+  % tablica symboli -> Parser (analizator składniowy) -> Drzewo
+  % składniowe -> Analizator semantyczny -> Zoptymalizowane drzewo składniowe
+  % -> Generator kodu pośredniego -> IR, reprezentacja pośrednia ->
+  % Optymalizator kodu pośredniego -> Zoptymalizowany IR -> Generator
+  % asemblera -> Kod asemblera -> Optymalizacja asemblera ->
+  % Zoptymalizowany asembler
+
+% \end{frame}
+% % ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Schemat działania prawdziwego kompilatora}
+
+
+  % $\displaystyle \frac{ 3.1415 }{ 18.849 } + \frac{ 3.1415 }{ 18.849 } +
+  % \frac{ 3.1415 }{ 18.849 } = \frac{ 6.283 }{ 18.849 } +
+  % \frac{ 3.1415 }{ 18.849 } = \frac{ 9.4245 }{ 18.849 } = \frac{ 1 }{ 2 }$
+
+  % \vspace{1em}
+
+
+  % $a = 3.1415$
+
+  % $\displaystyle \frac{ a }{ 6a } + \frac{ a }{ 6a } + \frac{ a }{ 6a } =
+  % \frac{ 1 } { 2 }$
+
+  Kod źródłowy -> Lekser (analizator leksykalny) -> Strumień tokenów i
+  tablica symboli -> Parser (analizator składniowy) -> Drzewo
+  składniowe -> Analizator semantyczny -> Zoptymalizowane drzewo składniowe
+
+  Niech „Azor” będzie imieniem konkretnego psa i weźmy zdanie \\
+  „Azor wbiegł do pokoju.”
+  Analiza leksykalna polega na rozbiciu tego zdania na części
+  posiadające znaczenie: „Azor”, „wbiegł”, „do”, „pokoju”, „.”. Częścią
+  znaczącą nie jest choćby „zor” czy „egł d”.
+
+  Analiza składniowa polega na przypisaniu wyrazów do odpowiednich typów
+  gramatycznych i~zbadanie czy razem tworzą dobrze zbudowane zdanie.
+  „Azor” i „pokój” to rzeczowniki „wbiegł” to czasownik, „do” to nie
+  pamiętam co (język polski to mój wróg), zaś „.” to znak interpunkcyjny.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  % $\displaystyle \frac{ 3.1415 }{ 18.849 } + \frac{ 3.1415 }{ 18.849 } +
+  % \frac{ 3.1415 }{ 18.849 } = \frac{ 6.283 }{ 18.849 } +
+  % \frac{ 3.1415 }{ 18.849 } = \frac{ 9.4245 }{ 18.849 } = \frac{ 1 }{ 2 }$
+
+  % \vspace{1em}
+
+
+  % $a = 3.1415$
+
+  % $\displaystyle \frac{ a }{ 6a } + \frac{ a }{ 6a } + \frac{ a }{ 6a } =
+  % \frac{ 1 } { 2 }$
+
+  W~języku polskim standardowe zdanie musi mieć podmiot będący rzeczownikiem
+  i~orzeczenie będące czasownikiem.
+
+  „Azor wbiegł do pokoju.” \\
+  To jest dobrze zbudowane zdanie, bo ma podmiot „Azor” i~orzeczenie
+  „wbiegł”.
+
+  „Azor pokoju.” \\
+  Od razu czuć, że to nie jest dobrze zbudowane zdanie, bo brak w~nim
+  czasownika „wbiegł” (i „do”).
+
+  „Do Azor wbiegł pokoju.” \\
+  Zdanie ma podmiot i orzeczenie, ale od razu czuć, że coś tu jest nie tak.
+  W~języku polskim „Do Azor” nie jest poprawnie zbudowany wyrażeniem,
+  może jednak być „Do Azora podszedł inny pies.”.
+
+  Język angielski ma znacznie bardziej sztywne reguły niż polski, więc
+  tam to widać jeszcze lepiej
+
+  % Kod źródłowy -> Lekser (analizator leksykalny) -> Strumień tokenów i
+  % tablica symboli -> Parser (analizator składniowy) -> Drzewo
+  % składniowe -> Analizator semantyczny -> Zoptymalizowane drzewo składniowe
+
+  % Niech „Azor” będzie imieniem konkretnego psa i weźmy zdanie \\
+  % „Azor wbiegł do pokoju.”
+  % Analiza leksykalna polega na rozbiciu tego zdania na części
+  % posiadające znaczenie: „Azor”, „wbiegł”, „do”, „pokoju”, „.”. Częścią
+  % znaczącą nie jest choćby „zor” czy „egł d”.
+
+  % Analiza składniowa polega na przypisaniu wyrazów do odpowiednich typów
+  % gramatycznych i~zbadanie czy razem tworzą dobrze zbudowane zdanie.
+  % „Azor” i „pokój” to rzeczowniki „wbiegł” to czasownik, „do” to nie
+  % pamiętam co (język polski to mój wróg), zaś „.” to znak interpunkcyjny.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Schemat działania prawdziwego kompilatora}
+
+
+%   % $\displaystyle \frac{ 3.1415 }{ 18.849 } + \frac{ 3.1415 }{ 18.849 } +
+%   % \frac{ 3.1415 }{ 18.849 } = \frac{ 6.283 }{ 18.849 } +
+%   % \frac{ 3.1415 }{ 18.849 } = \frac{ 9.4245 }{ 18.849 } = \frac{ 1 }{ 2 }$
+
+%   % \vspace{1em}
+
+
+%   % $a = 3.1415$
+
+%   % $\displaystyle \frac{ a }{ 6a } + \frac{ a }{ 6a } + \frac{ a }{ 6a } =
+%   % \frac{ 1 } { 2 }$
+
+%   Kod źródłowy -> Lekser (analizator leksykalny) -> Strumień tokenów i
+%   tablica symboli -> Parser (analizator składniowy) -> Drzewo
+%   składniowe -> Analizator semantyczny -> Zoptymalizowane drzewo składniowe
+
+%   Niech „Azor” będzie imieniem konkretnego psa i weźmy zdanie „Azor wbiegł
+%   do pokoju”.   Zdanie „Pies wbiegł do pokoju.” dzieli się na leksemy „Pies”, „wbiegł”,
+%   „do”, „pokoju”, „.”, gdyż każdy z~nich posiada określony sens. Fragmenty
+%   tego zdania, które nie są leksemami to choćby „zor”, „iegł d” czy „pok”.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Lekser}
+
+
+  Dla nas dzielenie zdań normalnego języka w ten sposób jest tak naturalne,
+  że o tym nawet nie myślimy, ale komputer jest tępy i by móc jakoś
+  zrozumieć dany program, musi najpierw go podzielić na leksemy za pomocą
+  odpowiedniego, bardzo mocno sprecyzowanego określonego algorytmu.
+  Chyba, że~akurat natrafimy na
+  \colorhref{http://www.catb.org/jargon/html/N/nasal-demons.html}
+  {demony nasala}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Parser}
+
+
+  Zdanie „Pies wbiegł do pokoju.” dzieli się na leksemy „Pies”, „wbiegł”,
+  „do”, „pokoju”, „.”, gdyż każdy z~nich posiada określony sens. Fragmenty
+  tego zdania, które nie są leksemami to choćby „es”, „iegł d” czy „pok”.
+
+  Dla nas dzielenie zdań normalnego języka w ten sposób jest tak naturalne,
+  że o tym nawet nie myślimy, ale komputer jest tępy i by móc jakoś
+  zrozumieć dany program, musi najpierw go podzielić na leksemy za pomocą
+  odpowiedniego, bardzo mocno sprecyzowanego określonego algorytmu.
+  Chyba, że~akurat natrafimy na
+  \colorhref{http://www.catb.org/jargon/html/N/nasal-demons.html}
+  {demony nasala}.
+
+\end{frame}
+% ##################
 
 
 
@@ -609,13 +952,98 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{??????}
+
+
+  Kod źródłowy -> Lekser (analizator leksykalny) -> Strumień tokenów i
+  tablica symboli -> Parser (analizator składniowy) -> Drzewo
+  składniowe -> Analizator semantyczny -> Zoptymalizowane drzewo składniowe
+
+  Pierwszą częścią kompilatora jest \textbf{lekser}, znany też jako
+  analizator leksykalnym. Jego zadaniem jest podzielenie programu
+  komputerowego na jednostki znaczące, zwane \textbf{leksemami}, lub
+  mniej formalnie \textbf{tokenami}. Ogólną zasadę można zrozumieć na
+  prostym przykładzie z~języka polskiego.
+
+  „Azor wbiegł do pokoju.” dzieli się na leksemy [„Azor”, „wbiegł”, „do”,
+  „pokoju”, „.”]. Leksemy dzielimy dwa typy: symbole abstrakcyjne
+  i~identyfikatory. Identyfikatory są chyba prostsze do zrozumienia.
+
+\end{frame}
+% ##################
 
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{??????}
 
 
+  Identyfikator to pewien symbol, który identyfikuje zewnętrzny obiekt.
+  Imię każdego z nas jest mniej więcej tym czym jest identyfikator
+  w~informatyce. Każdemu identyfikatorowi lekser przyporządkowuje
+  \textbf{token} w~postaci: \\
+  $( \text{nazwa}, \text{pozycja w tablicy symboli} )$
+
+  Identyfikatorem jest „Azor”, dla którego lekser generuje token
+  $( \text{id}, 1 )$, gdzie „id” oznacza, że jest to identyfikator (ang.
+  \textit{identifier}), a~$1$ to numer pozycji w~tablicy symboli.
+
+  \begin{center}
+
+    \begin{tabular}{|c|c|c|c|c|}
+
+      \hline
+      1 & Azor & pies & kundel & przyjazny \\
+      \hline
+    \end{tabular}
+
+  \end{center}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+  Drugim typem tokenu jest \textbf{symbol abstrakcyjny}. W~skrócie symbol
+  abstrakcyjny oznacza sam siebie. Nie jest nazwą żadnego zewnętrznego
+  obiektu, zwykle jest nazwą pewnej czynności, operacji matematycznej, etc.
+  Do ich zapisu będziemy używać oznaczeń $\langle symbol \rangle$.
+
+  „Azor wbiegł do pokoju.” -> [„Azor”, „wbiegł”, „do”, „pokoju”, „.”]
+
+  „Azor” to identyfikator. Przyjmiemy, że „pokój” też jest identyfikatorem
+  który oznacza jakieś konkretne pomieszczenie. Symbole abstrakcyjne to
+  „wbiegł”, „do” oraz „.”.
+
+  Lekser przekształci nam „Azor wbiegł do pokoju.” na \\
+  $( \text{id}, 1 ) \langle \text{wbiegł} \rangle \langle \text{do} \rangle ( \text{id}, 2 )$.
+
+  \begin{center}
+
+    \begin{tabular}{|c|c|c|c|c|}
+
+      \hline
+      1 & Azor & pies & kundel & przyjazny \\
+      2 & pokoju & sypialnia & ulica & miasto \\
+      \hline
+    \end{tabular}
+
+  \end{center}
+
+\end{frame}
+% ##################
 
 
 
@@ -639,55 +1067,24 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-% \end{frame}
-% % ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{??????}
-
-
-
-% \end{frame}
-% % ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-
-% \end{frame}
-% % ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{??????}
 
 
 
-
-% \end{frame}
-% % ##################
 
 
 

@@ -14,7 +14,7 @@
 % Options: t -- align text to the top of the frame
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
-\usetheme[style=\PresentationStyle,frametitlecolorstyle=general,titleframebackgroundcolorstyle=dark]{jagiellonian}
+\usetheme[style=\PresentationStyle]{jagiellonian}
 
 
 
@@ -237,13 +237,71 @@ eprint=true,
   \frametitle{Informacje wstępne}
 
 
-  Jeśli co omawiam jest tak proste, że~omawianie tego jest stratą Państwa
-  czasu, proszę mnie o~tym poinformować, przejdziemy do następnego
+  Wedle mojej obserwacji większość osób na tych studiach jest nastawiona
+  na praktyczną stronę informatyki: jak stworzyć program który działa?
+  Biorąc to pod uwagę, planuję przebieg zajęć tak, aby najpierw mieli
+  Państwo okazję oswoić~się z~tworzeniem działających programów
+  w~C, nawet jeśli są one bardzo proste. Zagadnienia teoretyczne, które
+  dobry programista musi znać, będę w~miarę możliwości odkładał
+  na późniejsze zajęcia.
+
+  Minus tego jest następujący. W~języku~C cała maszyneria komputera jest
+  delikatnie schowana pod dość cienką warstwą tego języka (w~dialekcie
+  informatyków powiedzielibyśmy „Pod cienką warstwą abstrakcji”)
+  i~nawet początkujący ciągle~się na nią natyka. Doświadczenie pokazuje,
+  że~wyjaśnianie wymaga sporo czasu i~mocno zaburza nakierowany na praktykę
+  programistyczną styl zajęć.
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Dlatego jak jestem \alert{bardzo} za tym by zadawali mi Państwo pytania,
+  to w~wielu wypadkach nie będę mógł na nie od razu odpowiadać, bo
+  dobre wyjaśnienie zajęłoby za dużo czasu i~~naruszyłoby tryb zajęć.
+  Zawsze~się do mnie zgłosić z~nim po zajęciach, wtedy odpowiem najlepiej
+  jak umiem. Będę jednak musiał często mówić „Proszę zrobić tak i~tak.
+  Dlaczego, wyjaśnimy to potem.”. Proszę mieć dla mnie wyrozumiałość w~tym
+  względzie.
+
+  Jeśli to o~czym mówię jest tak proste, że~omawianie tego jest stratą
+  Państwa czasu, proszę mnie o~tym poinformować, przejdziemy do następnego
   zagadnienia. Jest bardzo trudno sprawą wyczucie, co jest dla Państwa
   proste, a~co jednak trudniejsze.
 
   Proszę mieć dla mnie wyrozumiałość, pamiętać o~tym i~próbować mi pomóc.
   Te zajęcia są dla Państwa.
+
+
+  % Wedle mojej obserwacji większość osób na tych studiach jest nastawiona
+  % na praktyczną stronę informatyki: jak stworzyć program który działa?
+  % Biorąc to pod uwagę, planuję przebieg zajęć tak, aby najpierw mieli
+  % Państwo okazję oswoić~się z~tworzeniem działających programów
+  % w~C, nawet jeśli są one bardzo proste. Zagadnienia teoretyczne, które
+  % dobry programista musi znać, będę w~miarę możliwości odkładał
+  % na późniejsze zajęcia.
+
+  % Minus tego jest następujący. W~języku~C cała maszyneria komputera jest
+  % delikatnie schowana pod dość cienką warstwą tego języka (w~dialekcie
+  % informatyków powiedzielibyśmy „Pod cienką warstwą abstrakcji”)
+  % i~nawet początkujący ciągle~się na nią natyka. Doświadczenie pokazuje,
+  % że~wyjaśnianie wymaga sporo czasu i~mocno zaburza nakierowany na praktykę
+  % programistyczną styl zajęć.
+
+  % Jeśli to o~czym mówię jest tak proste, że~omawianie tego jest stratą
+  % Państwa czasu, proszę mnie o~tym poinformować, przejdziemy do następnego
+  % zagadnienia. Jest bardzo trudno sprawą wyczucie, co jest dla Państwa
+  % proste, a~co jednak trudniejsze.
+
+  % Proszę mieć dla mnie wyrozumiałość, pamiętać o~tym i~próbować mi pomóc.
+  % Te zajęcia są dla Państwa.
 
 \end{frame}
 % ##################
@@ -289,6 +347,8 @@ eprint=true,
 \begin{frame}
   \frametitle{Szczera prawda}
 
+  \vspace{-0.5em}
+
 
   \begin{figure}
 
@@ -297,7 +357,7 @@ eprint=true,
     \centering
 
 
-    \includegraphics[scale=0.19]
+    \includegraphics[scale=0.195]
     {./Presentations-pictures/Learning-language-at-100.jpg}
 
   \end{figure}
@@ -394,6 +454,8 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{Rozwój GNU/Linuxa}
+
+  \vspace{-0.5em}
 
 
   \begin{figure}
@@ -500,6 +562,8 @@ eprint=true,
 \begin{frame}
   \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
 
+  \vspace{-0.5em}
+
 
   \begin{figure}
 
@@ -508,7 +572,7 @@ eprint=true,
     \centering
 
 
-    \includegraphics[scale=0.41]
+    \includegraphics[scale=0.42]
     {./Presentations-pictures/Jak-to-bywa-na-zajeciach.jpeg}
 
   \end{figure}
@@ -537,7 +601,7 @@ eprint=true,
 
 
   Zaliczenie zaoczne można jak najbardziej uzyskać, np.~przedstawiając
-  swój prywatny projekt jakiegoś programu czy aplikacji. Projekt ten
+  kod jakiegoś swojego programu czy aplikacji. Projekt ten
   \alert{nie musi} być napisany w~języku~C, może być w~Pythonie albo
   JavaScripcie. Z~powodów które powinny być dla wszystkich oczywiste,
   preferowane są jednak te stworzone w~języku C. (W~trochę mniejszym
@@ -731,6 +795,8 @@ eprint=true,
 \begin{frame}
   \frametitle{Rozwiązywanie zadań}
 
+  \vspace{-0.5em}
+
 
   \begin{figure}
 
@@ -739,7 +805,7 @@ eprint=true,
     \centering
 
 
-    \includegraphics[scale=0.21]
+    \includegraphics[scale=0.22]
     {./Presentations-pictures/The-best-tribute.jpg}
 
   \end{figure}
@@ -755,6 +821,8 @@ eprint=true,
 \begin{frame}
   \frametitle{A~co~z~AI?}
 
+  \vspace{-0.5em}
+
 
   \begin{figure}
 
@@ -763,7 +831,7 @@ eprint=true,
     \centering
 
 
-    \includegraphics[scale=0.4]
+    \includegraphics[scale=0.41]
     {./Presentations-pictures/Copying-from-others.jpg}
 
   \end{figure}
@@ -779,6 +847,8 @@ eprint=true,
 \begin{frame}
   \frametitle{A~co~z~AI?}
 
+  \vspace{-0.5em}
+
 
   \begin{figure}
 
@@ -787,7 +857,7 @@ eprint=true,
     \centering
 
 
-    \includegraphics[scale=0.4]
+    \includegraphics[scale=0.38]
     {./Presentations-pictures/Impact-of-ChatGPT-One-view.jpg}
 
   \end{figure}

@@ -55,12 +55,12 @@
 \newcommand{\JUlogotitle}{0}
 \newcommand{\JUlogoLang}{Latin}
 \newcommand{\JUlogoShape}{B}
-\newcommand{\JULogoColor}{monochromaticJUwhite}
+\newcommand{\JUlogoColor}{monochromaticJUwhite}
 \newcommand{\jagiellonian@outer@setdefaults}{
   \pgfkeys{/jagiellonian/outer/.cd,
     numbering=counter,
     progressbar=frametitle,
-    JULogoOnTitleSlide=no,
+    JUlogotitle=no,
   }
 }
 \setbeamertemplate{navigation symbols}{}
@@ -94,7 +94,16 @@
 }
 \defbeamertemplate{frametitle}{plain}{%
   \nointerlineskip%
-  \begin{beamercolorbox}{frametitle}%
+  \begin{beamercolorbox}[%
+    wd=\paperwidth,%
+    sep=0pt,%
+    leftskip=\jagiellonian@frametitle@padding,%
+    rightskip=\jagiellonian@frametitle@padding,%
+    ]{frametitle}%
+    \jagiellonian@frametitlestrut@start%
+    \insertframetitle%
+    \nolinebreak%
+    \jagiellonian@frametitlestrut@end%
   \end{beamercolorbox}%
 }
 \setbeamertemplate{frametitle continuation}{%
@@ -126,43 +135,43 @@
       /jagiellonian/outer/.cd,
       numbering=none,
       progressbar=none}
-  }{}{}
+    }{}{}
 }
 \pgfkeys{
-  /jagiellonian/outer/JULogoOnTitleSlide/.cd,
+  /jagiellonian/outer/JUlogotitle/.cd,
   .is choice,
   yes/.code=\renewcommand{\JUlogotitle}{1},
   no/.code=\renewcommand{\JUlogotitle}{0},
 }
 \pgfkeys{
-  /jagiellonian/outer/LogoLang/.cd,
+  /jagiellonian/outer/logoLang/.cd,
   .is choice,
-  PL/.code=\renewcommand{\JULogoLang}{PL},
-  EN/.code=\renewcommand{\JULogoLang}{EN},
-  Latin/.code=\renewcommand{\JULogLang}{Latin},
+  PL/.code=\renewcommand{\JUlogoLang}{PL},
+  EN/.code=\renewcommand{\JUlogoLang}{EN},
+  Latin/.code=\renewcommand{\JUlogoLang}{Latin},
 }
 \pgfkeys{
-  /jaigellonian/outer/LogoShape/.cd,
-  .is choice,
-  % none/.code=\setbeamertemplate{frame numbering}[none],
-  A/.code=\renewcommand{\JULogoShape}{A},
-  B/.code=\renewcommand{\JULogoShape}{B},
-  C/.code=\renewcommand{\JULogoShape}{C},
-  D/.code=\renewcommand{\JULogoShape}{D},
+  /jagiellonian/outer/logoShape/.cd,
+    .is choice,
+    % none/.code=\setbeamertemplate{frame numbering}[none],
+    A/.code=\renewcommand{\JUlogoShape}{A},
+    B/.code=\renewcommand{\JUlogoShape}{B},
+    C/.code=\renewcommand{\JUlogoShape}{C},
+    D/.code=\renewcommand{\JUlogoShape}{D},
 }
 \pgfkeys{
-  /jagiellonian/outer/LogoColor/.cd,
+  /jagiellonian/outer/logoColor/.cd,
   .is choice,
   % none/.code=\setbeamertemplate{frame numbering}[none],
-  % white/.code=\renewcommand{\JULogoColor}{white},
-  % blue/.code=\renewcommand{\JULogoColor}{blue},
-  color/.code=\renewcommand{\JULogoColor}{color},
+  % white/.code=\renewcommand{\JUlogoColor}{white},
+  % blue/.code=\renewcommand{\JUlogoColor}{blue},
+  color/.code=\renewcommand{\JUlogoColor}{color},
   monochromaticJUblue/.code={
-    \renewcommand{\JULogoColor}{monochromaticJUblue}
-  }
-  monochromaticJUwhite/.code={%
-    \renewcommand{\JULogoColor}{monochromaticJUwhite}
-  }
+    \renewcommand{\JUlogoColor}{monochromaticJUblue}
+  },
+  monochromaticJUwhite/.code={
+    \renewcommand{\JUlogoColor}{monochromaticJUwhite}
+  },
 }
 \jagiellonian@outer@setdefaults
 \ProcessPgfPackageOptions{/jagiellonian/outer}
