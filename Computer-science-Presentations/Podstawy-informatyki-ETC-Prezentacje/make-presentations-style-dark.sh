@@ -18,6 +18,8 @@ $command_latex PI-Appendix-B-Opinie-o-języku-C.tex
 
 
 # Moving PDFs to separate directory
-mv PI-01-A-Wprowadzenie-do-ETC.pdf Presentations-PDF-style-dark
-mv PI-01-B-Kompilacja-i-zagadnienia-pokrewne.pdf Presentations-PDF-style-dark
+mv PI-01-A-Wprowadzenie-do-ETC.pdf \
+   Presentations-PDF-style-dark/PI-01-A-Wprowadzenie-do-ETC-Style-dark.pdf
+mv PI-01-B-Kompilacja-i-zagadnienia-pokrewne.pdf \
+   Presentations-PDF-style-dark/
 mv PI-Appendix-B-Opinie-o-języku-C.pdf Presentations-PDF-style-dark
