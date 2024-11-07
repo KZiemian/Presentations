@@ -1,0 +1,69 @@
+% ####################################################################
+% This file contains definitions of colors used in Jagiellonian Beamer
+% theme.
+
+% These colors are gathered here, so particular PGF/TikZ packages depending
+% on them can be used outside Jagiellonian theme.
+
+\ProvidesPackage{Jagiellonian-theme-colors}
+% ####################################################################
+
+
+% jOrange
+% jAxisRed
+% jAxisGreen
+% jAxisBlue
+
+% jMathTextFGColor
+
+
+
+
+% ######################################
+% Styles for writing arrows.
+
+% Arrow that should be used to point to elements of drawings.
+\tikzstyle{pointing arrow} = [-{Straight Barb[scale=1.2]},line width=1,
+color=jOrange]
+
+% Smaller version of pointing arrow.
+\tikzstyle{pointing arrow thin} = [-{Straight Barb[scale=1.5]},thin]
+
+% Smaller version of pointing arrow, first alternative variants.
+\tikzstyle{pointing arrow thin 1} = [-{Straight Barb[scale=1.5]},
+line width=0.4]
+
+% Pointing arrow with color of inherited from style of the document (???).
+\tikzstyle{pointing arrow color of style} = [-{Straight Barb[scale=1.2]},
+line width=1]
+
+% Arrow used to ilustrate rotation in the plain.
+\tikzstyle{angle arrow} = [-{Straight Barb[scale=1.5]},color=jAxisBlue,
+line width=0.9]
+% ######################################
+
+
+
+
+
+% ######################################
+% Styles for drawing of coordinates axis and axis arrows
+
+% Basic axis arrow ending with a tip.
+\tikzstyle{axis arrow} = [-{Straight Barb[scale=1.2]},line width=1]
+% Axis arrow with a tip at its beginning.
+\tikzstyle{axis arrow reversed 1} = [{Straight Barb[scale=1.2]}-,line width=1]
+
+% Smaller version of axis arrow.
+\tikzstyle{axis arrow thin} = [-{Straight Barb[scale=2.0]},line width=0.4]
+
+% Axis arrow with tips at its beginning and end.
+\tikzstyle{double axis arrow} = [{Straight Barb[scale=1.2]}-{Straight
+  Barb[scale=1.2]},line width=1]
+
+
+% Line with the same parameters, as the line in the axis arrow style.
+\tikzstyle{axis line} = [line width=1]
+% Smaller version of axis line.
+\tikzstyle{axis line thin} = [line width=0.4]
+% ##################

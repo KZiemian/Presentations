@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{light}
+  \def\PresentationStyle{dark}
 \fi
 
 
@@ -73,6 +73,11 @@ eprint=true,
 % ------------------------------------------------------
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
+
+% Patching problems with Jagiellonian
+\usepackage{./Local-packages/Jagiellonian-theme-colors}
+
+\usepackage{./Local-packages/Some-patches-for-Jagiellonian}
 
 % Stylef for drawing diagrams
 \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
@@ -216,14 +221,14 @@ eprint=true,
   grupie ludzi. Nauka ma to do siebie, że~jej dział potrafi naprawdę
   długo~się rozwijać, potrzebując niekiedy dekad jeśli nie wieków, by
   zbudować dla siebie solidne fundamenty. W~informatyce zaś cały czas
-  odkrywamy nowe i~kluczowe dla tej dziedziny rzeczy.
+  odkrywamy nowe i~kluczowe dla niej rzeczy.
 
-  W~szczególności, żyjemy teraz w~epoce intensywnego rozwoju kompilatorów,
-  która raczej~się nie skończy~się jutro. W~skutek tego cała masa rzeczy~się
-  ciągle zmienia i~to co wczoraj uchodziło za czystą fantazję, dziś jest
-  rzeczywistością wdrażaną do produkcji przemysłowej (może trochę
-  przesadzam, ale nie tak bardzo). Proszę mieć to na uwadze biorąc udział
-  w~zajęciach i~ucząc~się do tego kursu.
+  W~szczególności, żyjemy teraz, rok $2024$, w~epoce intensywnego rozwoju
+  kompilatorów, która raczej~się nie skończy~się jutro. W~skutek tego cała
+  masa rzeczy~się ciągle zmienia i~to co wczoraj uchodziło za czystą
+  fantazję, dziś jest rzeczywistością wdrażaną do produkcji przemysłowej
+  (może trochę przesadzam, ale nie tak bardzo). Proszę mieć to na uwadze
+  biorąc udział w~zajęciach i~ucząc~się do tego kursu.
 
 \end{frame}
 % ##################
@@ -234,7 +239,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Bardzo ważne}
+  \frametitle{Poziom zajęć i~konsultacje}
 
 
   Ze względu na ramy czasowe tego kursu wiele rzeczy będę
@@ -261,7 +266,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Bardzo ważne}
+  \frametitle{Konsultacje}
 
 
   Jeśli taki termin nie zostanie ustalony, to każdy z~Państwa kto ma
@@ -274,7 +279,7 @@ eprint=true,
 
   Zawsze będę wdzięczny za napisanie w~mailu z~czym konkretnie mają Państwo
   problem, rozumiem jedna, że~często wskazanie czy nazwanie tego co sprawia
-  trudności nie jest wcale łatwe. Sam przez to przechodziłem.
+  trudności, jest samo w~sobie problemem. Sam przez to przechodziłem.
 
 \end{frame}
 % ##################
@@ -289,14 +294,14 @@ eprint=true,
 
 
   Będę~się starał nagrywać na \textsc{ms}~Teamsach każde naszych spotkań.
-  Proszę mnie męczyć, żeby to robił, bo jestem roztrzepany i~któregoś
-  razu na pewno o~tym zapomnę.
+  Proszę mnie męczyć, żeby to robił, bo jestem roztrzepany i~za którymś
+  razem na pewno o~tym zapomnę.
 
   Proszę mi też zwracać uwagę, że~na ekranie czegoś nie widać,
   że~czcionka jest za mała, że~kolory kłują w~oczy, że~nagrany dźwięk
-  jest niskiej jakości,~etc. Zajęcia są dla Państwa, nie dla mnie, moim
+  jest niskiej jakości,~etc. Zajęcia są dla Państwa, nie dla mnie, a~moim
   obowiązkiem jest dostarczyć Państwu materiały do nauki o~najwyższej
-  dostępnej dla nas jakości.
+  jakości jaka jest nam dostępna.
 
   Niestety, jakość dźwięku to coś na co mam mały wpływ. Mogę~się starać
   mówić możliwie blisko mikrofonu, ale to raczej nie pomoże wiele.
@@ -328,9 +333,9 @@ eprint=true,
 
 
   Zaliczenie zaoczne można jak najbardziej uzyskać, przez oddanie
-  odpowiedniego projektu lub ustną dyskusję ze mną na temat algorytmów
-  kompilacji. Ta ostania musi~się odbyć na żywo, by uniknąć wątpliwości
-  co do źródła wiedzy zdającego.
+  odpowiedniego projektu lub ustną dyskusję ze mną na temat kompilatorów
+  i~algorytmów kompilacji. Ta ostania musi~się odbyć na żywo, by uniknąć
+  wątpliwości co do źródła wiedzy zdającego.
 
   Każdy kto chce uzyskać zaliczenie zaoczne, niech zgłosi~się do mnie po
   zajęciach lub napisze na maila \email.
@@ -350,8 +355,8 @@ eprint=true,
   Na dzień dzisiejszy zaliczenie uzyskuje~się przez oddanie jednego zestawu
   zadań domowych i~napisanie jednego sprawdzianu na żywo.
 
-  W~przyszłym tygodniu potwierdzę ostatecznie te zasady lub prześlę Państwu
-  zmodyfikowaną wersję.
+  Sprawdzian będzie zawierał $20$ pytań testowych, jednokrotnego wyboru.
+  Urządzimy go na pierwszym spotkaniu po świętach Bożego Narodzenia.
 
 \end{frame}
 % ##################
@@ -380,7 +385,10 @@ eprint=true,
   do internetu może jest zdobyć wpisując \\
   \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
   Znajdują~się one w~katalogu: \\
-  \texttt{Wybrane-algorytmy-kompilacji-ETC-Prezentacje}.
+  \texttt{Wybrane-algorytmy-kompilacji-ETC-Prezentacje}. \\
+  Można je również oglądać, jak normalny człowiek, w~przeglądarce: \\
+  \colorhref{https://github.com/KZiemian/Presentations}
+  {https://github.com/KZiemian/Presentations}.
 
   Będą też dostępne w~formie \textsc{pdf}ów na~Sake, wraz z~innymi
   materiałami do nauki.
@@ -399,10 +407,10 @@ eprint=true,
 
   W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
   merytorycznych do zajęć lub towarzyszącym ich materiałów proszę pisać pod
-  adres \email lub zgłaszać je mi po zajęciach. Chcemy by te zajęcia
-  i~towarzyszące im materiały były możliwie proste, łatwe w~zrozumieniu
-  i~pozbawione błędów. Proszę jednak uwierzyć, że~osiągnięcie tego jest
-  naprawdę dużym wyzwaniem.
+  adres \email{ } lub zgłaszać je mi po zajęciach. Chcemy by te zajęcia
+  i~towarzyszące im materiały były możliwie merytoryczne, proste, łatwe
+  w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć, że~osiągnięcie
+  tego jest naprawdę dużym wyzwaniem.
 
   W~szczególności uwagi odnośnie treści przedmiotu są mile widziane.
   Wciąż próbujemy znaleźć optymalną jego formę, co nie jest wcale sprawą
@@ -463,9 +471,9 @@ eprint=true,
 
   Bloki diagramu które mają kształt prostokąta z~zaokrąglonymi rogami,
   zwykle~są koloru niebieskiego, oznaczają \textbf{aktorów}, czyli
-  taki obiekt który wykonuje jakąś czynność na zadanych obiektach
-  wejściowych, tworząc obiekty wyjściowe. Takim obiektem może być kucharz,
-  komputer, program komputerowy,~etc.
+  taki obiekt który wykonuje jakąś czynność na obiektach wejściowych,
+  tworząc obiekty wyjściowe. Takim obiektem może być kucharz, komputer,
+  program komputerowy,~etc.
 
   Bloki diagramu które mają kształt prostokąta z~ostrymi rogami, zwykle~są
   koloru karmelowego (czy to jest kolor karmelowy?), przedstawiają
@@ -494,38 +502,47 @@ eprint=true,
 
 
 
-  \begin{figure}
 
-    \label{fig:Creating-code-in-C}
+  \begin{textblock}{10.5}(1.4,3.5)
 
+    \begin{figure}
 
-    \begin{tikzpicture}
-
-      \node[diagram block] (Man) at (0,0) {Człowiek};
-
-      \node[diagram block] (Keyboard) at (3.8,0) {Klawiatura};
-
-      \draw[thick diagram arrow] (Man) -- (Keyboard);
+      \label{fig:Creating-code-in-C}
 
 
+      \begin{tikzpicture}
 
-      \node[diagram block] (Computer) at (7.6,0) {Komputer};
-
-      \draw[thick diagram arrow] (Keyboard) -- (Computer);
+        % \path (0,0) -- (0,0);
 
 
 
-      \node[diagram rectangle block] (Source code) at (7.6,-2.5)
-      {Kod źródłowy w~języku~C};
+        \node[diagram block] (Man) at (0,0) {Człowiek};
 
-      \draw[thick diagram arrow] (Computer) -- (Source code);
+        \node[diagram block] (Keyboard) at (3.8,0) {Klawiatura};
 
-    \end{tikzpicture}
-
-    \caption{Diagram ilustrujący tworzenie kodu w~języku~C.}
+        \draw[thick diagram arrow] (Man) -- (Keyboard);
 
 
-  \end{figure}
+
+        \node[diagram block] (Computer) at (7.6,0) {Komputer};
+
+        \draw[thick diagram arrow] (Keyboard) -- (Computer);
+
+
+
+        \node[diagram rectangle block] (Source code) at (7.6,-2.5)
+        {Kod źródłowy w~języku~C};
+
+        \draw[thick diagram arrow] (Computer) -- (Source code);
+
+      \end{tikzpicture}
+
+      \caption{Diagram ilustrujący tworzenie kodu w~języku~C.}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -554,27 +571,31 @@ eprint=true,
 
 
 
+  \begin{textblock}{10.9}(1.4,6.1)
 
-  \begin{figure}
+    \begin{figure}
 
-    \label{fig:Also-creating-code-in-C}
-
-
-    \begin{tikzpicture}
-
-      \node[diagram block] (Man) at (0,0) {Człowiek};
-
-      \node[diagram rectangle block] (Source code) at (3.8,0)
-      {Kod źródłowy w~języku~C};
-
-      \draw[thick diagram arrow] (Man) -- (Source code);
-
-    \end{tikzpicture}
-
-    \caption{Inna wersja diagramu ilustrującego tworzenie kodu w~języku~C.}
+      \label{fig:Also-creating-code-in-C}
 
 
-  \end{figure}
+      \begin{tikzpicture}
+
+        \node[diagram block] (Man) at (0,0) {Człowiek};
+
+        \node[diagram rectangle block] (Source code) at (3.8,0)
+        {Kod źródłowy w~języku~C};
+
+        \draw[thick diagram arrow] (Man) -- (Source code);
+
+      \end{tikzpicture}
+
+      \caption{Inna wersja diagramu ilustrującego tworzenie kodu
+        w~języku~C.}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -596,15 +617,15 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Czy ten kurs jest praktyczny?}
+  \frametitle{Czy ten przedmiot jest praktyczny?}
 
 
   Jeśli kiedyś napisaliście Państwo i~uruchomili program w~języku C, C++,
   Fortran, Go, Java, Rust, etc., to na $99\%$ korzystali Państwo
-  z~kompilatora. W~2024 cała infrastruktura informatyczna stoi
-  na~kodzie napisany w~języku~C, który odpowiednie kompilatory przetworzyły
-  w~programy komputerowe. W~tym sensie kurs ten jest superpraktyczny, bo
-  ktoś te kompilatory musi pisać.
+  z~kompilatora danego języka. W~roku $2024$ cała infrastruktura
+  informatyczna stoi na~kodzie napisany w~języku~C, który odpowiednie
+  kompilatory przetworzyły w~programy komputerowe. W~tym sensie kurs ten
+  jest superpraktyczny, bo ktoś te kompilatory musi pisać.
 
   Jeśli jednak nie mają Państwo zamiaru zajmować~się zawodowo pracą nad
   kompilatorami, jak przytłaczająca większość informatyków, to ten kurs nie
@@ -681,11 +702,9 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze ARM~32,
-    \parencite{Low-Level-Learning-You-Can-Learn-ARM-ETC-Ver-2020}}
+  \frametitle{„Hello, World!” w~asemblerze ARM~32
+    \parencite{Low-Level-You-Can-Learn-ARM-ETC-Ver-2020}}
 
-
-  \# ARM~32
 
   \texttt{.global \_start} \\
   \texttt{.section .text} \\
@@ -720,11 +739,10 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{„Hello, World!” w~asemblerze AArch64,
-    \parencite{Low-Level-Learning-You-Can-Learn-AArch64-ETC-Ver-2020}}
 
+  \frametitle{„Hello, World!” w~asemblerze AArch64
+    \parencite{Low-Level-You-Can-Learn-AArch64-ETC-Ver-2020}}
 
-  \# AArch64
 
   \texttt{.global \_start} \\
   \texttt{.section .text} \\
@@ -760,10 +778,8 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{„Hello, World!” w~assemblerze RISC-V
-    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+    \parencite{Low-Level-You-Can-Learn-RISC-V-ETC-Ver-2021}}
 
-
-  \# RISC-V
 
   \texttt{.global \_start} \\
   \texttt{\_start:} \\
@@ -794,8 +810,6 @@ eprint=true,
   \frametitle{„Hello, World!” w~assemblerze NASM
     \parencite{Toal-NASM-Tutorial-Ver-2024}}
 
-
-  \# NASM
 
   \hphantom{aaaaaaaaa} \texttt{global} \hphantom{aa} \texttt{\_start} \\
   \vspace{0.8em}
@@ -837,8 +851,6 @@ eprint=true,
     \parencite{Low-Level-You-Can-Learn-Assembly-in-10-Minutes-ETC-Ver-2020}}
 
 
-  \# x86
-
   \texttt{.global \_start} \\
   \texttt{.intel\_syntax} \\
   \texttt{.section .text}
@@ -868,8 +880,6 @@ eprint=true,
   \frametitle{„Hello, World!” w~języku~C}
 
 
-  \# Język C
-
   \texttt{\#include <stdio.h>} \\
   \vspace{0.8em}
   \texttt{int main() \{ } \\
@@ -893,8 +903,6 @@ eprint=true,
   \frametitle{„Hello, World!” w~języku~Python}
 
 
-  \# Python
-
   \texttt{print("Hello, World!")}
 
 \end{frame}
@@ -910,7 +918,7 @@ eprint=true,
 
   Na pierwszy rzut oka powinno być jasne, że~C jest prostszy od~asemblera,
   a~Python prostszy od~C. Dlaczego tak jest, to niestety temat na inny
-  przedmiot, acz o~kilku powodach wspomnimy potem.
+  przedmiot, acz o~kilku czynnikach wspomnimy w~dalszym ciągu zajęć.
 
   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~asemblerze.
   Mam nadzieję, że~nie muszę tłumaczyć dlaczego.  A~nawet jeśli
@@ -935,10 +943,12 @@ eprint=true,
 \begin{frame}
   \frametitle{Dlaczego potrzebujemy kompilatorów?}
 
+  \vspace{-0.75em}
+
 
   Co więc robimy by uniknąć pisania kodu w~języku asemblera? Tworzymy
   język programowania taki jak~C czy Python, który jest dla nas prostszy
-  w~użyciu, niż dany dialekt asemblera i~piszemy program w~takim właśnie
+  w~użyciu, niż dany dialekt asemblera i~piszemy program w~tym właśnie
   języku. Proszę zwrócić uwagę, że~słowo „prostszy” wcale nie oznacza
   \alert{„prosty”}!
 
@@ -946,39 +956,43 @@ eprint=true,
   Pytona, co więc musimy zrobić, by uruchomić programy napisany w~jednym
   z~tych języków? Potrzebny jest nam program komputerowy zwany
   \textbf{translatorem}, który \alert{przetłumaczy} kod napisany,
-  przykładowo z~języka~C na język asemblera.
+  przykładowo w~języku~C, na język asemblera.
 
 
 
 
 
-  \begin{figure}
+  \begin{textblock}{10.1}(1.4,5.6)
 
-    \label{fig:Translator-01}
+    \begin{figure}
 
-    \begin{tikzpicture}% [node distance=0.8]
+      \label{fig:Translator-01}
 
-      \node[diagram rectangle block] (Source code in C) at (0,0)
-      {Kod programu (język C)};
+      \begin{tikzpicture}% [node distance=0.8]
 
-      \node[diagram block,right=of Source code in C] (Translator)
-      {Translator};
+        \node[diagram rectangle block] (Source code in C) at (0,0)
+        {Kod programu (język C)};
 
-      \draw[thick diagram arrow] (Source code in C) -- (Translator);
+        \node[diagram block,right=of Source code in C] (Translator)
+        {Translator};
 
-
-
-      \node[diagram rectangle block,right=of Translator] (Code in assembly)
-      {Kod programu (język asemblera)};
-
-      \draw[thick diagram arrow] (Translator) -- (Code in assembly);
-
-    \end{tikzpicture}
-
-    \caption{Ilustracja działania translatora.}
+        \draw[thick diagram arrow] (Source code in C) -- (Translator);
 
 
-  \end{figure}
+
+        \node[diagram rectangle block,right=of Translator]
+        (Code in assembly) {Kod programu (język asemblera)};
+
+        \draw[thick diagram arrow] (Translator) -- (Code in assembly);
+
+      \end{tikzpicture}
+
+      \caption{Ilustracja działania translatora.}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1067,32 +1081,36 @@ eprint=true,
 
 
 
-  \begin{figure}
+  \begin{textblock}{10.1}(1.4,5.6)
 
-    \label{fig:Running-Hollow-Knight-bad}
+    \begin{figure}
 
-    \begin{tikzpicture}
+      \label{fig:Running-Hollow-Knight}
 
-      \node[diagram rectangle block] (Hollow Knight) at (0,0)
-      {\textit{Hollow Knight} (język asemblera)};
+      \begin{tikzpicture}
 
-      \node[diagram block,right=of Hollow Knight] (Computer) {Komputer};
+        \node[diagram rectangle block] (Hollow Knight) at (0,0)
+        {\textit{Hollow Knight} (język asemblera)};
 
-      \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+        \node[diagram block,right=of Hollow Knight] (Computer) {Komputer};
 
-
-
-      \node[diagram block,right=of Computer] (Playable computer)
-      {Komputer z~włączoną grą \textit{HK}};
-
-      \draw[thick diagram arrow] (Computer) -- (Playable computer);
-
-    \end{tikzpicture}
-
-    \caption{Typowy sposób uruchamiania programu na~komputerze.}
+        \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
 
 
-  \end{figure}
+
+        \node[diagram block,right=of Computer] (Playable computer)
+        {Komputer z~włączoną grą \textit{HK}};
+
+        \draw[thick diagram arrow] (Computer) -- (Playable computer);
+
+      \end{tikzpicture}
+
+      \caption{Typowy sposób uruchamiania programu na~komputerze.}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1105,6 +1123,9 @@ eprint=true,
 \begin{frame}
   \frametitle{Pisanie gier w~języku asembler?}
 
+  \vspace{-0.75em}
+
+
 
   Jak już wspomnieliśmy, pisanie czegokolwiek, w~tym gier wideo, w~języku
   asemblera to zwykle nie jest dobry pomysł. Znanym przykładem tego, że~jest
@@ -1114,18 +1135,21 @@ eprint=true,
 
 
 
+  \begin{textblock}{8}(2.6,2.9)
 
-  \begin{figure}
+    \begin{figure}
 
-    \label{fig:Feel-even-worse}
+      \label{fig:Feel-even-worse}
 
-    \centering
+      % \centering
 
 
-    \includegraphics[scale=0.275]
-    {./Presentations-pictures/Feel-even-worse.jpg}
+      \includegraphics[scale=0.27]
+      {./Presentations-pictures/Feel-even-worse.jpg}
 
-  \end{figure}
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1137,7 +1161,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Jak uruchomić grę?}
 
 
   Dzisiaj gry zwykle tworzy~się w~środowiskach takich jak
@@ -1154,32 +1178,36 @@ eprint=true,
 
 
 
-  \begin{figure}
+  \begin{textblock}{10.1}(1.4,5.6)
 
-    \label{fig:Running-Hollow-Knight-good}
+    \begin{figure}
 
-    \begin{tikzpicture}
+      \label{fig:Running-Hollow-Knight-good}
 
-      \node[diagram rectangle block] (Hollow Knight) at (0,0)
-      {\textit{Hollow Knight} (język C\#)};
+      \begin{tikzpicture}
 
-      \node[diagram block,right=of Hollow Knight] (Computer) {Komputer};
+        \node[diagram rectangle block] (Hollow Knight) at (0,0)
+        {\textit{Hollow Knight} (język C\#)};
 
-      \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
+        \node[diagram block,right=of Hollow Knight] (Computer) {Komputer};
 
-
-
-      \node[diagram block,right=of Computer] (Playable computer)
-      {Komputer z~włączoną grą \textit{HK}};
-
-      \draw[thick diagram arrow] (Computer) -- (Playable computer);
-
-    \end{tikzpicture}
-
-    \caption{Błędny sposób uruchamiania gry \textit{Hollow Knight}}
+        \draw[thick diagram arrow] (Hollow Knight) -- (Computer);
 
 
-  \end{figure}
+
+        \node[diagram block,right=of Computer] (Playable computer)
+        {Komputer z~włączoną grą \textit{HK}};
+
+        \draw[thick diagram arrow] (Computer) -- (Playable computer);
+
+      \end{tikzpicture}
+
+      \caption{Błędny sposób uruchamiania gry \textit{Hollow Knight}}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1190,7 +1218,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{????}
+  \frametitle{Jak uruchomić grę?}
 
 
   Komputer jako taki nie rozumie języka~C\#, więc nie jest w~stanie
@@ -1202,47 +1230,53 @@ eprint=true,
 
 
 
-  \begin{figure}
+  \begin{textblock}{10.1}(1.4,3.6)
 
-    \begin{tikzpicture}
+    \begin{figure}
 
-      \node[diagram rectangle block] (Hollow Knight in C-sharp) at (0,0)
-      {\textit{Hollow Knight} (język C\#)};
+      \begin{tikzpicture}
 
-      \node[diagram block,right=of Hollow Knight in C-sharp] (Translator)
-      {Translator};
+        \node[diagram rectangle block] (Hollow Knight in C-sharp) at (0,0)
+        {\textit{Hollow Knight} (język C\#)};
 
-      \draw[thick diagram arrow] (Hollow Knight in C-sharp) -- (Translator);
+        \node[diagram block,right=of Hollow Knight in C-sharp] (Translator)
+        {Translator};
 
-
-
-      \node[diagram rectangle block,right=of Translator]
-      (Hollow Knight in assembly)
-      {\textit{Hollow Knight} (język asemblera)};
-
-      \draw[thick diagram arrow] (Translator) -- (Hollow Knight in assembly);
+        \draw[thick diagram arrow] (Hollow Knight in C-sharp) --
+        (Translator);
 
 
 
-      \node[diagram block,below=of Hollow Knight in assembly] (Computer)
-      {Komputer};
+        \node[diagram rectangle block,right=of Translator]
+        (Hollow Knight in assembly)
+        {\textit{Hollow Knight} (język asemblera)};
 
-      \draw[thick diagram arrow] (Hollow Knight in assembly) -- (Computer);
-
-
-      \node[diagram block,left=of Computer]
-      (Computer running Hollow Knight)
-      {Komputer z~włączoną grą \textit{HK}};
-
-      \draw[thick diagram arrow]
-      (Computer) -- (Computer running Hollow Knight);
-
-    \end{tikzpicture}
-
-    \caption{Poprawny sposób włączania gry \textit{Hollow Knight}.}
+        \draw[thick diagram arrow] (Translator) --
+        (Hollow Knight in assembly);
 
 
-  \end{figure}
+
+        \node[diagram block,below=of Hollow Knight in assembly] (Computer)
+        {Komputer};
+
+        \draw[thick diagram arrow] (Hollow Knight in assembly) -- (Computer);
+
+
+        \node[diagram block,left=of Computer]
+        (Computer running Hollow Knight)
+        {Komputer z~włączoną grą \textit{HK}};
+
+        \draw[thick diagram arrow]
+        (Computer) -- (Computer running Hollow Knight);
+
+      \end{tikzpicture}
+
+      \caption{Poprawny sposób włączania gry \textit{Hollow Knight}.}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1256,11 +1290,10 @@ eprint=true,
   \frametitle{Czy to znaczy\ldots}
 
 
-  Może~się Państwu nasunąć taka myśl.
-
-  „Ja coś słyszałem, że~istnieje oprogramowanie o~otwarty kodzie, jak
-  system operacyjny GNU/Linux i~o~zamkniętym kodzie, takie jak system
-  Windows. Każdy może przeczytać kod źródłowy otwartego oprogramowania,
+  Może~się Państwu nasunąć taka myśl. „Ja słyszałem, że~istnieje
+  oprogramowanie o~otwarty kodzie, jak system operacyjny GNU/Linux
+  i~o~zamkniętym kodzie, takie jak system Windows. Każdy może przeczytać
+  kod źródłowy otwartego oprogramowania,
   ale tego o~zamkniętym kodzie tylko ci którzy pracują dla takich firm jak
   Microsoft. A~Pan tu twierdzi, że~program który dostaję na moim komputerze
   jest napisany w~języku assemblera, więc jeśli tylko otworzę ten program
@@ -1288,7 +1321,7 @@ eprint=true,
   kod, jeśli potrafisz przeprowadzić jego inżynierię wsteczną”
   (org.~\textit{Everything is open source, if you can reverse engineering
     it.},
-  \parencite{Low-Level-Learning-Everything-is-open-source-if-ETC-Ver-2023})~;).
+  \parencite{Low-Level-Everything-is-open-source-if-ETC-Ver-2023})~;).
 
   \vspace{1.5em}
 
@@ -1343,6 +1376,8 @@ eprint=true,
 \begin{frame}
   \frametitle{Translatory}
 
+  \vspace{-0.75em}
+
 
   W~tym momencie już mam nadzieję wszyscy rozumiemy, czemu potrzebujemy
   kompilatorów. Zanim jednak przejdziemy dalej, potrzebujemy, choć to może
@@ -1350,46 +1385,47 @@ eprint=true,
   terminologię.
 
   \textbf{Translator} to dowolny obiekt który tłumaczy tekst z~języka~A,
-  na odpowiedni tekst w~języku~B. Wedle tej definicji człowiek tłumaczący
-  z~polskiego na angielski też jest translatorem. To nie jest bug tej
-  definicji, to jest jej feature.
-
-  Bardziej formalnie, język~A nazywamy \textbf{językiem źródłowym}
-  (ang.~\textit{source language}), a~język~B \textbf{językiem wynikowym}
-  (ang.~\textit{target language}).
+  na odpowiedni tekst w~języku~B. Bardziej formalnie, język~A nazywamy
+  \textbf{językiem źródłowym} (ang.~\textit{source language}), a~język~B
+  \textbf{językiem wynikowym} (ang.~\textit{target language}).
+  Wedle tej definicji człowiek tłumaczący z~polskiego na angielski też
+  jest translatorem. To nie jest bug tej definicji, to jest jej feature.
 
 
 
 
+  \begin{textblock}{10.1}(1.4,5.6)
 
-  \begin{figure}
+    \begin{figure}
 
-    \label{fig:Translator-01}
-
-
-    \begin{tikzpicture}
-
-      \node[diagram rectangle block] (Text in language A) at (0,0)
-      {Tekst w~języku~A};
-
-      \node[diagram block,right=of Text in language A] (Translator)
-      {Translator};
-
-      \draw[thick diagram arrow] (Text in language A) -- (Translator);
+      \label{fig:Translator-01}
 
 
-      \node[diagram rectangle block,right=of Translator]
-      (Text in language B)
-      {Tekst w~języku~B};
+      \begin{tikzpicture}
 
-      \draw[thick diagram arrow] (Translator) -- (Text in language B);
+        \node[diagram rectangle block] (Text in language A) at (0,0)
+        {Tekst w~języku~A};
 
-    \end{tikzpicture}
+        \node[diagram block,right=of Text in language A] (Translator)
+        {Translator};
 
-    \caption{Sposób działania translatora}
+        \draw[thick diagram arrow] (Text in language A) -- (Translator);
 
 
-  \end{figure}
+        \node[diagram rectangle block,right=of Translator]
+        (Text in language B)
+        {Tekst w~języku~B};
+
+        \draw[thick diagram arrow] (Translator) -- (Text in language B);
+
+      \end{tikzpicture}
+
+      \caption{Sposób działania translatora}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1402,16 +1438,17 @@ eprint=true,
 \begin{frame}
   \frametitle{Translatory}
 
+  \vspace{-0.75em}
+
 
   W~kontekście języków programowania, słowo „tekst” będzie dla nas
-  równoważne słowom „kod” i~„program”, choć intuicyjnie przez „program”
+  równoważne słowom „kod” i~„program”, choć zwykle przez „program”
   rozumiemy obiekt, który można od razu uruchomić na~komputerze. Jednak nie
-  możemy tak po prostu uruchomić programu (tekstu kodu źródłowego)
+  możemy tak uruchomić programu (tekstu kodu źródłowego)
   napisanego w~języku~C, bo komputer rozumie tylko swój dialekt języka
   asembler. Musimy najpierw przetłumaczyć go odpowiednim translatorem na ów
-  dialekt i~dopiero nowy program jesteśmy w~stanie uruchomić. Mam jednak
+  dialekt i~dopiero ten nowy program możemy uruchomić. Mam jednak
   nadzieję, że~ta kwestia nie będzie prowadzić do nieporozumień.
-
   Będziemy więc mówić o~„kodzie źródłowym” (ang. \textit{source code})
   i~„kodzie wynikowym” (ang. \textit{target code}).
 
@@ -1419,35 +1456,39 @@ eprint=true,
 
 
 
-  \begin{figure}
+  \begin{textblock}{10.1}(1.4,5.6)
 
-    \label{fig:Translator-02}
+    \begin{figure}
 
-
-    \begin{tikzpicture}
-
-      \node[diagram rectangle block] (Source code) at (0,0)
-      {Kod źródłowy};
-
-      \node[diagram block,right=of Source code] (Translator)
-      {Translator};
-
-      \draw[thick diagram arrow] (Source code) -- (Translator);
+      \label{fig:Translator-02}
 
 
+      \begin{tikzpicture}
 
-      \node[diagram rectangle block,right=of Translator]
-      (Target code)
-      {Kod wynikowy};
+        \node[diagram rectangle block] (Source code) at (0,0)
+        {Kod źródłowy};
 
-      \draw[thick diagram arrow] (Translator) -- (Target code);
+        \node[diagram block,right=of Source code] (Translator)
+        {Translator};
 
-    \end{tikzpicture}
-
-    \caption{Sposób działania translatora}
+        \draw[thick diagram arrow] (Source code) -- (Translator);
 
 
-  \end{figure}
+
+        \node[diagram rectangle block,right=of Translator]
+        (Target code)
+        {Kod wynikowy};
+
+        \draw[thick diagram arrow] (Translator) -- (Target code);
+
+      \end{tikzpicture}
+
+      \caption{Sposób działania translatora}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1458,7 +1499,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Translatory}
+  \frametitle{Co ma robić translator?}
 
 
   W~definicji translatora jest powiedziane, że~tłumaczy on tekst
@@ -1474,36 +1515,38 @@ eprint=true,
 
 
 
+  \begin{textblock}{10.1}(1.4,5.6)
 
-  \begin{figure}
+    \begin{figure}
 
-    \label{fig:Translator-03}
-
-
-    \begin{tikzpicture}
-
-      \node[diagram rectangle block] (Source code) at (0,0)
-      {Kod źródłowy};
-
-      \node[diagram block,fill=black,right=of Source code] (Translator)
-      {Translator (czarna skrzynka)};
-
-      \draw[thick diagram arrow] (Source code) -- (Translator);
+      \label{fig:Program-as-black-box-01}
 
 
+      \begin{tikzpicture}
 
-      \node[diagram rectangle block,right=of Translator]
-      (Target code)
-      {Kod wynikowy};
+        \node[diagram rectangle block] (Input) at (0,0)
+        {Dane wejściowe};
 
-      \draw[thick diagram arrow] (Translator) -- (Target code);
+        \node[diagram block,fill=black,right=of Input] (Program)
+        {Program (czarna skrzynka)};
 
-    \end{tikzpicture}
-
-    \caption{Translator jako czarna skrzynka}
+        \draw[thick diagram arrow] (Input) -- (Program);
 
 
-  \end{figure}
+
+        \node[diagram rectangle block,right=of Program] (Output)
+        {Dane wyjściowe};
+
+        \draw[thick diagram arrow] (Program) -- (Output);
+
+      \end{tikzpicture}
+
+      \caption{Program komputerowy jako czarna skrzynka.}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1514,7 +1557,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Translatory}
+  \frametitle{Co ma robić translator?}
 
 
   Co jest w~środku danego programu (czarnej skrzynki) nas nie obchodzi.
@@ -1522,41 +1565,73 @@ eprint=true,
   na zadane dane wejściowa, dawał poprawną odpowiedź na wyjściu.
 
   Od translatora będziemy więc żądać, by~przetwarzał kod źródłowy
-  na równoważny mu kod wynikowy.
+  na równoważny mu kod wynikowy, w~sensie koncepcji czarnej skrzynki.
 
 
 
 
 
-  \begin{figure}
+  \begin{textblock}{10.1}(1.4,5.6)
 
-    \label{fig:Translator-04}
+    \begin{figure}
 
-
-    \begin{tikzpicture}
-
-      \node[diagram rectangle block] (Source code) at (0,0)
-      {Kod źródłowy};
-
-      \node[diagram block,fill=black,right=of Source code] (Translator)
-      {Translator (czarna skrzynka)};
-
-      \draw[thick diagram arrow] (Source code) -- (Translator);
+      \label{fig:Program-as-black-box-02}
 
 
+      \begin{tikzpicture}
 
-      \node[diagram rectangle block,right=of Translator]
-      (Target code)
-      {Kod wynikowy};
+        \node[diagram rectangle block] (Input) at (0,0)
+        {Dane wejściowe};
 
-      \draw[thick diagram arrow] (Translator) -- (Target code);
+        \node[diagram block,fill=black,right=of Input] (Program)
+        {Program (czarna skrzynka)};
 
-    \end{tikzpicture}
-
-    \caption{Translator jako czarna skrzynka}
+        \draw[thick diagram arrow] (Input) -- (Program);
 
 
-  \end{figure}
+
+        \node[diagram rectangle block,right=of Program] (Output)
+        {Dane wyjściowe};
+
+        \draw[thick diagram arrow] (Program) -- (Output);
+
+      \end{tikzpicture}
+
+      \caption{Program komputerowy jako czarna skrzynka.}
+
+
+    \end{figure}
+
+  \end{textblock}
+  % \begin{figure}
+
+  %   \label{fig:Translator-04}
+
+
+  %   \begin{tikzpicture}
+
+  %     \node[diagram rectangle block] (Source code) at (0,0)
+  %     {Kod źródłowy};
+
+  %     \node[diagram block,fill=black,right=of Source code] (Translator)
+  %     {Translator (czarna skrzynka)};
+
+  %     \draw[thick diagram arrow] (Source code) -- (Translator);
+
+
+
+  %     \node[diagram rectangle block,right=of Translator]
+  %     (Target code)
+  %     {Kod wynikowy};
+
+  %     \draw[thick diagram arrow] (Translator) -- (Target code);
+
+  %   \end{tikzpicture}
+
+  %   \caption{Translator jako czarna skrzynka}
+
+
+  % \end{figure}
 
 \end{frame}
 % ##################
@@ -1568,15 +1643,17 @@ eprint=true,
 \begin{frame}
   \frametitle{Rodzaje translatorów}
 
+  \vspace{-0.75em}
+
 
   Wyróżniamy dwa główne typy translatorów, \textbf{kompilatory}
   i~\textbf{interpretery}. Dawno temu można było dość łatwo podzielić
   języki programowania na języki kompilowane, czyli takie których translator
-  jest kompilatorem i~języki interpretowane, zdefiniowane tak samo.
-  Typowymi językami kompilowanymi były C i~C++, a~typowym językiem
-  interpretowany Python.
+  jest kompilatorem i~języki interpretowane, zdefiniowane analogicznie.
+  Typowymi językami kompilowanymi \alert{były} C i~C++, a~typowym językiem
+  interpretowany \alert{był} Python.
 
-  Jednak najmniej $2010$ roku sprawa ta nie jest taka prosta, ale ten
+  Jednak co najmniej od $2010$ roku sprawa ta nie jest taka prosta, ale ten
   podział jest wciąż bardzo użyteczny, gdy chcemy zrozumieć podstawy. Do
   tego jak dzisiaj to wygląda, może wrócimy w~dalszej części zajęć.
 
@@ -1599,6 +1676,8 @@ eprint=true,
 \begin{frame}
   \frametitle{Kompilator}
 
+  \vspace{-0.75em}
+
 
   Dla ustalenia uwagi, przyjmijmy, że~językiem źródłowym jest~C
   (Czy Państwo dobrze znają ten język?), a~językiem docelowym dialekt
@@ -1615,36 +1694,39 @@ eprint=true,
 
 
 
+  \begin{textblock}{10.1}(1.4,5.6)
 
-  \begin{figure}
+    \begin{figure}
 
-    \label{fig:Translator-04}
-
-
-    \begin{tikzpicture}
-
-      \node[diagram rectangle block] (Source program) at (0,0)
-      {Program źródłowy (język~C)};
-
-      \node[diagram block,right=of Source program] (Compiler)
-      {Kompilator};
-
-      \draw[thick diagram arrow] (Source program) -- (Compiler);
+      \label{fig:Translator-04}
 
 
+      \begin{tikzpicture}
 
-      \node[diagram rectangle block,right=of Compiler]
-      (Target program)
-      {Program wynikowy (dia. asemblera)};
+        \node[diagram rectangle block] (Source program) at (0,0)
+        {Program źródłowy (język~C)};
 
-      \draw[thick diagram arrow] (Translator) -- (Target program);
+        \node[diagram block,right=of Source program] (Compiler)
+        {Kompilator};
 
-    \end{tikzpicture}
-
-    \caption{Kompilacja programu w~języku~C}
+        \draw[thick diagram arrow] (Source program) -- (Compiler);
 
 
-  \end{figure}
+
+        \node[diagram rectangle block,right=of Compiler]
+        (Target program)
+        {Program wynikowy (dia. asemblera)};
+
+        \draw[thick diagram arrow] (Translator) -- (Target program);
+
+      \end{tikzpicture}
+
+      \caption{Kompilacja programu w~języku~C}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1656,6 +1738,9 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{Faza kompilacji i~faza wykonania}
+
+  \vspace{-0.5em}
+
 
 
   \begin{figure}
@@ -1712,7 +1797,8 @@ eprint=true,
 
     \end{tikzpicture}
 
-    \caption{Ilustracja podziału na fazę kompilacji i~wykonania programu}
+    \caption{Ilustracja podziału na fazę kompilacji i~fazę wykonania
+      programu.}
 
 
   \end{figure}
@@ -1766,37 +1852,42 @@ eprint=true,
 
 
 
-  \begin{figure}
+  \begin{textblock}{10.3}(1.4,4.1)
 
-    \begin{tikzpicture}
+    \begin{figure}
 
-      \node[diagram rectangle block] (Source code) at (0,0) {Kod źródłowy};
+      \begin{tikzpicture}
 
-      \node[diagram block,right=of Source code] (Interpreter)
-      {Interpreter};
+        \node[diagram rectangle block] (Source code) at (0,0)
+        {Kod źródłowy};
 
-      \draw[thick diagram arrow] (Source code) -- (Interpreter);
+        \node[diagram block,right=of Source code] (Interpreter)
+        {Interpreter};
 
-
-
-      \node[diagram rectangle block,above=1.5em of Interpreter] (Input)
-      {Wejście};
-
-      \draw[thick diagram arrow] (Input) -- (Interpreter);
+        \draw[thick diagram arrow] (Source code) -- (Interpreter);
 
 
 
-      \node[diagram rectangle block,right=of Interpreter] (Results)
-      {Wynik działania programu};
+        \node[diagram rectangle block,above=1.5em of Interpreter] (Input)
+        {Wejście};
 
-      \draw[thick diagram arrow] (Interpreter) -- (Results);
-
-    \end{tikzpicture}
-
-    \caption{Ilustracja działania interpretera}
+        \draw[thick diagram arrow] (Input) -- (Interpreter);
 
 
-  \end{figure}
+
+        \node[diagram rectangle block,right=of Interpreter] (Results)
+        {Wynik działania programu};
+
+        \draw[thick diagram arrow] (Interpreter) -- (Results);
+
+      \end{tikzpicture}
+
+      \caption{Ilustracja działania interpretera}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1816,38 +1907,42 @@ eprint=true,
 
 
 
+  \begin{textblock}{10.3}(1.4,4.1)
 
-  \begin{figure}
+    \begin{figure}
 
-    \begin{tikzpicture}
+      \begin{tikzpicture}
 
-      \node[diagram rectangle block] (Source code) at (0,0) {Kod źródłowy};
+        \node[diagram rectangle block] (Source code) at (0,0)
+        {Kod źródłowy};
 
-      \node[diagram block,right=of Source code] (Interpreter)
-      {Interpreter};
+        \node[diagram block,right=of Source code] (Interpreter)
+        {Interpreter};
 
-      \draw[thick diagram arrow] (Source code) -- (Interpreter);
-
-
-
-      \node[diagram rectangle block,above=1.5em of Interpreter] (Input)
-      {Wejście};
-
-      \draw[thick diagram arrow] (Input) -- (Interpreter);
+        \draw[thick diagram arrow] (Source code) -- (Interpreter);
 
 
 
-      \node[diagram rectangle block,right=of Interpreter] (Results)
-      {Wynik działania programu};
+        \node[diagram rectangle block,above=1.5em of Interpreter] (Input)
+        {Wejście};
 
-      \draw[thick diagram arrow] (Interpreter) -- (Results);
-
-    \end{tikzpicture}
-
-    \caption{Ilustracja działania interpretera}
+        \draw[thick diagram arrow] (Input) -- (Interpreter);
 
 
-  \end{figure}
+
+        \node[diagram rectangle block,right=of Interpreter] (Results)
+        {Wynik działania programu};
+
+        \draw[thick diagram arrow] (Interpreter) -- (Results);
+
+      \end{tikzpicture}
+
+      \caption{Ilustracja działania interpretera}
+
+
+    \end{figure}
+
+  \end{textblock}
 
 \end{frame}
 % ##################
@@ -1862,14 +1957,15 @@ eprint=true,
 
 
 % ######################################
-\section{Działanie interpreterów i~kompilatorów}
+\section{Krótkie opis działania interpreterów
+  i~kompilatorów}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{Kompilacja vs interpretacja programu}
+  \frametitle{Przykładowy program}
 
 
   Zacznijmy od rozpatrzenia następującego pseudokodu.
@@ -1894,7 +1990,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Przykład pracy interpretera}
+  \frametitle{Jak wykona go interpretera?}
 
 
   \texttt{sum = 0} \\
@@ -1928,7 +2024,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{????}
+  \frametitle{Jak wykona go kompilator?}
 
 
   \texttt{sum = 0} \\
@@ -1940,10 +2036,11 @@ eprint=true,
 
   Dobry kompilator wykona następującą procedurę.
 
-  1) Analiza powyższego programu pod względem treści, ale \alert{bez}
-  wykonywania żadnej z~podanych instrukcji. To jak przeczytanie
-  przepisu kucharskiego, ale bez wykonania zawartym w~nim instrukcji, takich
-  jak zdobycie dwóch kilogramów mąki, etc. \\
+  1) Analizujemy programu pod względem treści, ale \alert{bez}
+  wykonywania żadnej z~podanych w~nich instrukcji. Porównać można
+  to do przeczytania przepisu kucharskiego, ale bez wykonania zawartym
+  w~nim instrukcji. Czytamy więc, że~mamy zdobyć dwa kilogramy, ale
+  nie idziemy do sklepu je kupić. \\
   2) W~trakcie tej analizy kompilator wykryje, że~to co chcemy
   zrobić to wyliczyć sumę $1 + 2 + \ldots + 100$. Tak, współczesne kompilatory
   potrafią wykrywać takie rzeczy i~wiele innych.
@@ -1957,7 +2054,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Jak wykona go kompilator?}
 
 
   \texttt{sum = 0} \\
@@ -1967,7 +2064,7 @@ eprint=true,
 
   \texttt{print("sum = ", sum)}
 
-  3) Wiedząc, że~chcemy obliczyć sumę $1 + 2 + \ldots + 100$ kompilator korzysta
+  3) Wiedząc, że~chcemy obliczyć sumę $1 + 2 + \ldots + 100$ korzystamy
   ze wzoru: \\[0.3em]
   $\displaystyle \sum_{ i = 1 }^{ n } i = \frac{ n ( n + 1 ) }{ 2 }$. \\[0.5em]
   Na jego mocy \\[0.3em]
@@ -1985,22 +2082,23 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Co z~tego wynika?}
 
 
   Przedstawiony przykład jest oczywiście bardzo uproszczoną wersją tego
-  jak działa interpreter i~kompilator, ale już on pozwala zrozumieć kilka
-  ważnych rzeczy.
+  jak działa współczesny interpreter i~kompilator, ale już on pozwala
+  zrozumieć kilka ważnych rzeczy.
 
-  Przede wszystkim kompilator korzysta z~zasady czarnej skrzynki. Nie
-  interesuje nas jak będzie działa program wytworzony przez kompilator,
-  jeśli będzie dawał poprawny wynik i~będzie działa możliwie szybko.
+  Przede wszystkim, podkreślmy to mocno,  kompilator korzysta z~zasady
+  czarnej skrzynki. Nie interesuje nas jak będzie działa program wytworzony
+  przez kompilator, jeśli będzie dawał poprawny wynik i~będzie działa
+  możliwie szybko. Szybkość dla kompilatorów \alert{jest} ważna.
 
-  Nie jest więc ważne, czy program pracowicie będzie liczył
-  $1 + 2 + 3 + \ldots$, czy wyliczy $100 \cdot 101 / 2$.
+  Nie jest więc ważne, czy program pracowicie będzie liczył sumę
+  $1 + 2 + 3 + \ldots$, czy wyliczy wzór $100 \cdot 101 / 2$.
   Z~naszego punktu widzenia w~środku programu może być smok, który wykonuje
-  odpowiednie obliczenia matematyczne, byleby tylko ten smok zwracał
-  poprawną odpowiedź i~to możliwie szybko.
+  odpowiednie obliczenia matematyczne, byleby tylko ten smok liczył
+  poprawnie i~możliwie szybko.
 
 \end{frame}
 % ##################
@@ -2011,30 +2109,22 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Jak to jest w~praktyce?}
 
 
   Ja szacuję, że~98\% programistów myśli o~działaniu programów nad którymi
   pracują w~taki sposób, jakby był on wykonywany przez interpreter, nawet
-  gdy chodzi o~język „silnie” kompilowany. Mnie tak nauczono myśleć
+  gdy piszą w~języku „silnie” kompilowanym. Mnie tak nauczono myśleć
   o~programach i~tak uczymy dziś większość informatyków. Jak Państwo widzą,
   to wcale nie musi mieć wiele wspólnego z~tym jak \alert{naprawdę} będzie
   działa \alert{rzeczywisty} program.
 
   Tego jednak nie należy uważać za problem. Program działa poprawnie? Jeśli
   tak, to czym~się mamy przejmować? A~nauka programowania jest wystarczająco
-  trudna bez wchodzenia w~to jak naprawdę działa program po dokonaniu
+  trudna bez wchodzenia w~to, jak naprawdę działa program po dokonaniu
   kompilacji. To zresztą dopiero pierwsze drugie dno całej sprawy, a jest
-  jeszcze drugie drugie dno i~trzecie drugie dno, etc.
-
-  % A~nawet jeśli w~jakimś wyjątkowym przypadku, to byłby problem,
-  % że~prawdziwy program działa inaczej niż myślimy, to w~większości
-  % przypadków będzie to nasz najmniejszy problem. Poza dziedziną
-  % cyberbezpieczeństwa nie widzę kiedy to mogłoby mieć miejsce. A~to już jest
-  % temat na osobny przedmiot.
-
-  % Teraz przejdziemy do kilku praktycznych kwestii, które ponownie ilustruje
-  % poprzedni przykład.
+  jeszcze drugie drugie dno i~trzecie drugie dno, etc. Ale nie musimy~się
+  tym specjalnie przejmować.
 
 \end{frame}
 % ##################
@@ -2045,30 +2135,18 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Jak to jest w~praktyce?}
 
 
-  % Ja szacuję, że~98\% programistów myśli o~działaniu programów nad którymi
-  % pracują w~taki sposób, jakby był on wykonywany przez interpreter, nawet
-  % gdy chodzi o~język „silnie” kompilowany. Mnie tak nauczono myśleć
-  % o~programach i~tak uczymy dziś większość informatyków. Jak Państwo widzą,
-  % to wcale nie musi mieć wiele wspólnego z~tym jak \alert{naprawdę} będzie
-  % działa \alert{rzeczywisty} program.
+  A~nawet jeśli trafimy na ten wyjątkowy przypadek, że~fakt, iż~nasz
+  program działa w~inny sposób niż to sobie wyobrażamy, to w~większości
+  przypadków będzie to nasze najmniejszy zmartwienie. Chyba, że~jesteśmy
+  ekspertami od cyberbezpieczeństwa, bo wtedy to jak \alert{naprawdę}
+  działa program, jest niezwykle ważne. To jest jednak temat na osobny
+  przedmiot.
 
-  % Tego jednak nie należy uważać za problem. Program działa poprawnie? Jeśli
-  % tak, to czym~się mamy przejmować? A~nauka programowania jest wystarczająco
-  % trudna bez wchodzenia w~to jak naprawdę działa program po dokonaniu
-  % kompilacji. To zresztą dopiero pierwsze drugie dno całej sprawy, a jest
-  % jeszcze drugie drugie dno i~trzecie drugie dno, etc.
-
-  A~nawet jeśli w~jakimś wyjątkowym przypadku, to byłby problem,
-  że~prawdziwy program działa inaczej niż myślimy, to w~większości
-  przypadków będzie to nasz najmniejszy problem. Poza dziedziną
-  cyberbezpieczeństwa nie widzę kiedy to mogłoby mieć miejsce. A~to już jest
-  temat na osobny przedmiot.
-
-  Teraz przejdziemy do kilku praktycznych kwestii, które pozwoli nam
-  zilustrować poprzedni przykład.
+  Teraz przejdziemy do kilku praktycznych kwestii, które ilustruje
+  poprzedni przykład.
 
 \end{frame}
 % ##################
@@ -2079,7 +2157,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{????}
+  \frametitle{Szybkość}
 
 
   \texttt{sum = 0} \\

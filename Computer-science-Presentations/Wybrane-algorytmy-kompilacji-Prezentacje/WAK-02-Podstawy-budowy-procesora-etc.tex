@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{light}
+  \def\PresentationStyle{dark}
 \fi
 
 
@@ -74,12 +74,15 @@ eprint=true,
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
-\usepackage{./Local-packages/jagiellonian-theme-colors}
-
 \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
+% Patching problems with Jagiellonian
+\usepackage{./Local-packages/Jagiellonian-theme-colors}
+
+\usepackage{./Local-packages/Some-patches-for-Jagiellonian}
+
 % Additional colors
-\usepackage{./Local-packages/jagiellonian-theme-additional-colors}
+\usepackage{./Local-packages/Jagiellonian-theme-additional-colors}
 
 
 
@@ -122,8 +125,8 @@ eprint=true,
 
 % ######################################
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+, 11k+,
 \RaggedRight
+% Number of chars: 62k+, 11k+, 32k+,
 % ######################################
 
 
@@ -158,7 +161,9 @@ eprint=true,
 
 
 % ######################################
-\section{Podstawy budowy procesora}
+\section{Podstawy budowy procesora i~języka asemblera}
+
+\label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
 % ######################################
 
 
@@ -167,14 +172,15 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Bardzo ważne}
 
 
-  \alert{Ważne.} Znajomość treści tego rozdziału nie będziemy od Państwa
-  wymagać. Jest on częścią wykładu, żeby ułatwić Państwu zrozumienie o~co w
-  tym wszystkim chodzi (i~może Państwa postraszyć jak to wszystko jest
-  skomplikowane). Jeśli uważają Państwo tą wiedzę za niepotrzebną do
-  zrozumienia przedmiotu, to nie muszą~się Państwo tego uczyć.
+  \alert{Ważne.} Znajomość treści rozdziałów
+  \eqref{sec:Podstawy-budowy-procesora-i-jezyka-asemblera} nie będziemy od
+  Państwa wymagać. Wprowadziliśmy je do wykładu, by ułatwić Państwu
+  zrozumienie treści tego przedmiotu (i~może by Państwa postraszyć jak to
+  wszystko jest skomplikowane). Jeśli uważają Państwo tę wiedzę za
+  niepotrzebną, to mogą Państwo spokojnie pominąć ten rozdziały.
 
   Ponieważ kompilator przetwarza kod w~języku takim jak~C do języka
   asemblera, musimy coś sobie powiedzieć o~tym jak działa ten język. Będę
@@ -194,12 +200,12 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Prosty schemat budowy procesora}
 
 
   \begin{figure}
 
-    \label{fig:aaaa}
+    \label{fig:Scheme-of-CPU}
 
 
     \begin{tikzpicture}
@@ -209,41 +215,52 @@ eprint=true,
 
       \draw[color=black,dashed] (2.05,2.1) rectangle (2.65,2.7);
 
-      \node[color=jMathTextFGColorOfStyleLight] at (2.35,2.4) {R0};
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,2.4)
+      {\texttt{R0}};
 
 
 
       \draw[color=black,dashed] (2.05,1.2) rectangle (2.65,1.8);
 
-      \node[color=jMathTextFGColorOfStyleLight] at (2.35,1.5) {R1};
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,1.5)
+      {\texttt{R1}};
 
 
 
       \draw[color=black,dashed] (2.05,0.3) rectangle (2.65,0.9);
 
-      \node[color=jMathTextFGColorOfStyleLight] at (2.35,0.6) {R2};
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,0.6)
+      {\texttt{R2}};
 
 
 
       \draw[color=black,dashed] (2.05,-0.6) rectangle (2.65,0);
 
-      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-0.3) {R3};
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-0.3)
+      {\texttt{R3}};
 
 
 
       \draw[color=black,dashed] (2.05,-1.5) rectangle (2.65,-0.9);
 
-      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-1.2) {R4};
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-1.2)
+      {\texttt{R4}};
 
 
 
       \draw[color=black,dashed] (2.05,-2.4) rectangle (2.65,-1.8);
 
-      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-2.1) {R5};
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,-2.1)
+      {\texttt{R5}};
+
+
+      % \draw[color=black,dashed] (2.05,-3.3) rectangle (2.65,-2.7);
+
+      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-3) {R5};
 
     \end{tikzpicture}
 
-    \caption{Prosty schemat procesora (wymaga dokończenia)}
+    \caption{Prosty schemat procesora (wymaga dokończenia).}
 
 
   \end{figure}
@@ -257,7 +274,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Rejestry}
 
 
   \textbf{Rejestr} (ang. \textit{register}) to obszar pamięci będący
@@ -266,14 +283,14 @@ eprint=true,
   że~ładowanie danych z~rejestru do procesora jest tak samo szybkie jak
   procesor. \alert{To jest niezwykle ważne.}
 
-  Od $1990$ roku zmagamy~się z~problemem, że~transport danych
-  z~\textsc{ram}u do procesora zajmuje około $100$ cykli jego obliczeń.
-  Czyli $99$ cykli~się marnuje, bo procesor czeka na dane do przetworzenia!
-  Może obecny postęp w~rozwoju \textsc{ram}u pozwoli nam ten problem
-  rozwiązać, ale to jest dyskusja na inny dzień.
+  Od około $1990$ roku zmagamy~się z~problemem, że~transport danych
+  z~\textsc{ram}u do procesora zajmuje około $100$ cykli jego pracy.
+  Czyli $99$ cykli~się \alert{marnuje}, bo procesor czeka na dane do
+  przetworzenia! Może obecny postęp w~rozwoju \textsc{ram}u pozwoli nam ten
+  problem rozwiązać, ale to jest dyskusja na inny dzień.
 
   Problem z~rejestrami jest taki, że~powierzchnia procesora którą zajmują
-  jest niezwykle droga, więc mamy \alert{bardzo mało} rejestrów.
+  jest niezwykle droga, więc mamy ich \alert{bardzo mało}.
   Przykładowo w~języku asemblera \textsc{nams} mamy $16$ (!) rejestrów
   na liczy całkowite, po $64$-bity każdy! Jedno zdjęcie na moim smartfonie
   zajmuje pamięć równoważną ponad $500 \, 000$ takich rejestrów.
@@ -327,16 +344,16 @@ eprint=true,
 
     \begin{tabular}{|c|c|}
       \hline
-      \multicolumn{2}{|c|}{Nazwa rejestru \textsc{nams}} \\
+      \multicolumn{2}{|c|}{Nazwa rejestrów \textsc{nams}} \\
       \hline
       \texttt{R0} (\texttt{RAX}) & \texttt{R8}\hphantom{0} \\
-      \texttt{R1} (RCX) & R9  \\
-      \texttt{R2} (RDX) & R10 \\
-      R3 (RBX) & R11 \\
-      R4 (RSP) & R12 \\
-      R5 (RBP) & R13 \\
-      R6 (RSI) & R14 \\
-      R7 (RDI) & R15 \\
+      \texttt{R1} (\texttt{RCX}) & \texttt{R9}\hphantom{0}  \\
+      \texttt{R2} (\texttt{RDX}) & \texttt{R10} \\
+      \texttt{R3} (\texttt{RBX}) & \texttt{R11} \\
+      \texttt{R4} (\texttt{RSP}) & \texttt{R12} \\
+      \texttt{R5} (\texttt{RBP}) & \texttt{R13} \\
+      \texttt{R6} (\texttt{RSI}) & \texttt{R14} \\
+      \texttt{R7} (\texttt{RDI}) & \texttt{R15} \\
       \hline
     \end{tabular}
 
@@ -361,7 +378,7 @@ eprint=true,
 
   \texttt{syscall}~-- wywołanie systemowe (ang. \textit{system call}).
   Instrukcja przesłana do systemu operacyjnego, by w~tym miejscu wykonał
-  odpowiednią instrukcję.
+  odpowiednie działanie.
 
   \texttt{xor nazwa-rejestru, wartość}~-- każe wykonać bitową alternatywą
   wykluczającą (ang. \textit{bit eXclusive OR}) na zawartości rejestru
@@ -379,8 +396,6 @@ eprint=true,
   \frametitle{Objaśnienie „Hello, World!” w~asem. NASM
     \parencite{Toal-NASM-Tutorial-Ver-2024}}
 
-
-  \# NASM
 
   \hphantom{aaaaaaaaa} \texttt{global} \hphantom{aa} \texttt{\_start} \\
   \vspace{0.8em}
@@ -418,31 +433,31 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Objaśnienia „Hello, World!” w~asem. NASM
+  \frametitle{Objaśnienie „Hello, World!” w~asem. NASM
     \parencite{Toal-NASM-Tutorial-Ver-2024}}
 
 
-  \# NASM
-
-  \# Definiujemy globalny symbol \texttt{\_start}, który posłuży nam
-  za~etykietę.
   \hphantom{aaaaaaaaa} \texttt{global} \hphantom{aa} \texttt{\_start} \\
-  \vspace{0.8em}
+  \# Definiujemy globalny symbol \texttt{\_start}, który posłuży nam \\
+  \# za~etykietę. Etykieta służy nam do poruszania~się po programie.
 
+  \hphantom{aaaaaaaaa} \texttt{section} \hphantom{a} \texttt{.text} \\
   \# Rozpoczynamy sekcję \texttt{.text}, która zawiera wykonywalne \\
-  \# polecenia języka asemblera. \\
-  \hphantom{aaaaaaaaa} \texttt{section} \hphantom{a} \texttt{.text}
+  \# polecenia języka asemblera.
 
-  \# Etykieta \texttt{start} informuje procesor o~miejscu rozpoczęcia \\
-  \# programu. \\
+
   \texttt{\_start:} \hphantom{a} \hspace{-0.14em}
   \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 1} \\
-  \# Radzę teraz zapiąć pasy. Umieszczamy w~rejestrze \texttt{RAX}
-  liczbę~$1$. Jest \\
-  \# to informacja dla komputera, że~chcemy wypisać jakiś tekst. \\
-  \# Tak, w~języku asembler przekazujemy komputerowi polecenia, \\
-  \# poprzez ręczne wpisywanie określonych liczb do odpowiednich \\
-  \# rejestrów. Lub inne równie „proste” operacje.
+  \# Etykieta \texttt{start} informuje procesor o~tym gdzie zaczyna~się
+  program.
+
+  \# \alert{Radzę Państwu teraz zapiąć pasy.} Instrukcja \texttt{mov}
+  umieszcza \\
+  \# w~rejestrze \texttt{RAX} liczbę~$1$. Jest to informacja dla komputera,
+  że~chcemy \\
+  \# wypisać jakiś tekst. Tak, w~języku asembler przekazujemy \\
+  \# komputerowi polecenia, poprzez ręczne wpisywanie określonych \\
+  \# liczb do odpowiednich rejestrów. Lub inne równie „proste” operacje.
 
 \end{frame}
 % ##################
@@ -453,21 +468,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Objaśnienie „Hello, World!” w~asem. NASM
+    \parencite{Toal-NASM-Tutorial-Ver-2024}}
 
 
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdi, 1} \\
   \# W rejestrze \texttt{RDI} umieszczamy liczbę $1$, co oznacza, że~tekst
   ma zostać
   \# wypisany na standardowe wyjście (\textsc{stdout}, ang.
-  \textit{standard output}). \\
-  \# $\text{\textsc{stdout}} \mapsto 1$
+  \textit{standard output}): \\
+  \# $\text{\textsc{stdout}} \mapsto 1$. \\
+  \# Samo omówienie standardowego wyjścia, to raczej temat na \\
+  \# przedmiot o~systemach operacyjnych.
 
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa}
   \texttt{rsi, message} \\
   \# W~rejestrze \texttt{RSI} umieszczamy liczbę oznaczaną
   symbolem \texttt{message}, \\
-  \# który przedstawia adres miejsca, gdzie zaczyna~się string \\
+  \# który przedstawia adres miejsca w~pamięci, gdzie zaczyna~się string \\
   \# \texttt{"Hello, World!\textbackslash n"}.
 
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rdx, 14} \\
@@ -475,11 +493,6 @@ eprint=true,
   chcemy \\
   \# wypisać na ekranie.
 
-  \hphantom{aaaaaaaaa} \texttt{syscall} \\
-  \# Wywołujemy system operacyjny, by wypisał nam string \\
-  \# \texttt{"Hello, World!\textbackslash n"} na standardowym
-  wyjściu.
-
 \end{frame}
 % ##################
 
@@ -489,8 +502,14 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{?????}
+  \frametitle{Objaśnienie „Hello, World!” w~asem. NASM
+    \parencite{Toal-NASM-Tutorial-Ver-2024}}
 
+
+  \hphantom{aaaaaaaaa} \texttt{syscall} \\
+  \# Wywołujemy system operacyjny, by wypisał nam string \\
+  \# \texttt{"Hello, World!\textbackslash n"} na standardowym
+  wyjściu.
 
   \hphantom{aaaaaaaaa} \texttt{mov} \hphantom{aaaaaa} \texttt{rax, 60} \\
   \# Musimy poprosić system operacyjny o~zamknięcie tego programu. \\
@@ -498,17 +517,12 @@ eprint=true,
 
   \hphantom{aaaaaaaaa} \texttt{xor} \hphantom{aaaaaa} \texttt{rdi, rdi} \\
   \# To jest taki trik asemblerzystów. Potrzebujemy ustawić kod wyjścia \\
-  \# programu (w~C jest to \texttt{return 0;}) na $0$, przez umieszczenie \\
+  \# programu (w~C robi to „\texttt{return 0;}”) na $0$, przez
+  umieszczenie \\
   \# w~rejestrze \texttt{rdi} tej liczby. Robimy to przez wywołanie
   instrukcji \texttt{xor}, \\
-  \# czyli bitowej alternatywy wykluczającej.
-
-  \# Nie jestem na tyle dobry w~asemblerze by powiedzieć, czemu oni \\
-  \# to robią przez \texttt{xor rdi, rdi}. Podejrzewam jednak, że~chodzi \\
-  \# o~szybkość wykonania tej instrukcji.
-
-  \# Jeśli nie próbujesz wycisnąć z~komputera każdej nanosekundy, to po \\
-  \# co piszesz w~asemblerze? Jest C, C++, Go, Python, etc.
+  \# czyli bitowej alternatywy wykluczającej. Dlaczego właśnie tak? \\
+  \# Przecież są prostsze metody? Wyjaśnimy to za chwilę
 
 \end{frame}
 % ##################
@@ -519,21 +533,21 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{??????}
+  \frametitle{Objaśnienie „Hello, World!” w~asem. NASM
+    \parencite{Toal-NASM-Tutorial-Ver-2024}}
 
 
   \hphantom{aaaaaaaaa} \texttt{syscall} \\
   \# Wywołujemy system operacyjny, by zamknąć nasz program.
 
+  \hphantom{aaaaaaaaa} \texttt{section .data} \\
   \# Rozpoczynamy sekcję \texttt{data}, która zawiera odpowiednie
   dane. \\
   \# Obiektów zdefiniowanych w~tej sekcji nie można wywoływać, można
-  \# je jednak modyfikować w~trakcie działania programu. \\
-  \hphantom{aaaaaaaaa} \texttt{section .data} \\
-  \vspace{0.8em}
+  \# je jednak modyfikować w~trakcie działania programu.
 
-  \# Definiujemy string \texttt{"Hello, World!\textbackslash n"}. \\
-  \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10}
+  \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10} \\
+  \# Definiujemy string \texttt{"Hello, World!\textbackslash n"}.
 
   \# Myślą Państwo, że~to koniec? Chciałbym.
 
@@ -546,26 +560,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{??????}
+  \frametitle{Kilka niuansów asemblera NAMS}
 
 
   \texttt{message: db} \hphantom{aaaaa} \texttt{"Hello, World!", 10}
 
-  \# String „\texttt{"Hello, World!", 10}” zawiera $14$ (!) znaków.
-  Pierwsze $13$ \\
-  \# to „\texttt{H}”, „\texttt{e}”, „\texttt{l}”, „\texttt{l}”,
-  „\texttt{o}”, „\texttt{,}”, „\texttt{ }” (znak spacji), „\texttt{W}”,
-  „\texttt{o}”, „\texttt{r}”, „\texttt{l}”, \\
-  \# „\texttt{d}”, „\texttt{!}”.
+  String zdefiniowany w~powyższej linii jako „\texttt{"Hello, World!", 10}”
+  zawiera $14$ (!) znaków. Pierwsze $13$ to „\texttt{H}”, „\texttt{e}”,
+  „\texttt{l}”, „\texttt{l}”, „\texttt{o}”, „\texttt{,}”, „\texttt{ }”
+  (znak spacji), „\texttt{W}”, „\texttt{o}”, „\texttt{r}”, „\texttt{l}”,
+  „\texttt{d}”, „\texttt{!}”.
 
-  \# A gdzie $14$-sty znak? W~stringu „\texttt{"Hello, World!", 10}”
-  odpowiada \\
-  \# za niego liczba $10$ na końcu. W~kodowaniu \textsc{ascii} pod liczbą
-  dziesięć, \\
-  \# kryje~się „line feed”, czyli po ludzku znak nowej linii. Ten zapis \\
-  \# oznacza więc, że do końca stringu dodany jest znak nowej linii.
+  A gdzie $14$-sty znak? W~stringu „\texttt{"Hello, World!", 10}”
+  odpowiada za niego liczba $10$ na końcu. W~kodowaniu
+  \colorhref{}{\textsc{ascii}} pod
+  liczbą dziesięć, kryje~się „line feed”, czyli po ludzku znak nowej linii.
+  Ten zapis oznacza więc, że do końca stringu dodany jest znak nowej linii.
 
-  \# Dlaczego życie nie może być proste?
+  Bo czemu życie miałoby być proste?
 
 \end{frame}
 % ##################
@@ -576,15 +588,101 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{????}
+  \frametitle{Kilka niuansów asemblera NAMS}
+
+
+  \hphantom{aaaaaaaaa} \texttt{xor} \hphantom{aaaaaa} \texttt{rdi, rdi}
+
+  Dlaczego w~taki dziwny sposób ustawiamy wartość rejestru \texttt{rdi}
+  na~$0$? Zasadniczo chodzi o~to, że~autor tego kodu, nie jestem nim ja,
+  chciał wycisnąć z~niego wszystko co~się da. Jeśli nie walczymy
+  z~komputerem o~każdą nanosekundę, to po co piszesz w~asemblerze, gdy jest
+  C, C++, Go, Python, etc.
+
+  Zaletą zrobienia \texttt{xor} na rejestrze \texttt{rdi} z~nim samym jest
+  to, że~nie musimy przesyłać do \texttt{rdi} z~żadnego innego rejestru by
+  wykonać tą operację, bo wszystkie są na miejscu. Przesłanie danych
+  z~innego rejestru wymaga czasu, więc w~ten sposób możemy wycisnąć
+  kilka nanosekund z~naszego kodu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podsumowanie}
 
 
   Znając życie, większość z~Państwa nie chce już nigdy w~życiu mieć
-  do czynienia z~językiem asemblera. Całkowicie naturalne i~zrozumiałe.
+  do czynienia z~językiem asemblera. Zdrowa ~zrozumiała reakcja.
   Bardzo~się jednak ucieszę, jeśli znajdzie~się ktoś, kto chce~się
-  tym zajmować.
+  zagłębić w~tą tematykę i~takim osobom polecam dwie książki wydane po
+  polsku.
 
-  Tym którzy chcą się zajmować mogę polecić dwie książki wydane po polsku.
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Literatura dla bardzo ambitnych}
+
+
+  Książka Jo Van Hoey’a \textit{Programowanie w~asemblerze x64. Od
+    nowicjusza do znawcy \textsc{avx}} jest wprowadzeniem do asemblera
+  \textsc{nams}, które nie zakłada żadnej wcześniejszy wiedzy o~językach
+  asemblera, ale wymaga pewnej wiedzy z~informatyki. Polecam zacząć
+  swoją przygodę w~niskopoziomowym świecie od tej pozycji.
+
+
+
+
+  \begin{figure}
+
+    \centering
+
+    \includegraphics[scale=0.0325]
+    {./Presentations-pictures/Programowanie-w-x64.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Literatura dla bardzo ambitnych}
+
+
+  \textit{Niebieski lis. Polecenia procesorów \textsc{arm} i~inżynieria
+    wsteczna} Marii Azerii Markstedter to już stosunkowo zaawansowana
+  pozycja, dotyczy jednak powszechnie stosowanych procesorów \textsc{arm}
+  i~opanowanie jej materiału sprawia, że~należy~się do stosunkowo wąskiego
+  grona bardzo dobrych programistów.
+
+
+
+
+
+  \begin{figure}
+
+    \centering
+
+    \includegraphics[scale=0.0325]
+    {./Presentations-pictures/Niebieski-lis.jpg}
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -599,7 +697,157 @@ eprint=true,
 
 
 % ######################################
-\section{Abstrakcja i~siła myślenia symbolicznego}
+\section{Odrobina historii}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kompilatorów}
+
+
+  Za umowną datę początków informatyki będziemy przyjmować rok $1945$,
+  gdy rozwinięte na potrzeby II Wojny Światowej komputery trafiają do
+  użytku cywilnego. Początkowo można je tylko programować za pomocą czegoś
+  co nazwalibyśmy kodem maszynowym, czyli ciągów $0$ i~$1$ reprezentujących
+  zarówno instrukcje jak i~odpowiednie dane, na których te instrukcje będą
+  działać.
+
+  Pierwszy kompilator stworzyła pani Grace Brewster Hopper, nazwisko
+  panieńskie Murray ($1906\text{-}1992$) na przełomie lat $50$-tych
+  i~$60$-tych XX wieku. Było to tylko jedno z~wielu osiągnięć tej wybitnej
+  osoby. Jako ciekawostkę, warto wspomnieć, że~uważa~się,
+  iż~spopularyzowała wśród informatyków pojęcie „debugowania”, wcześniej
+  używane w~innych dziedzinach.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kompilatorów}
+
+  \vspace{-0.5em}
+
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=1.75]
+    {./Presentations-pictures/Grace-Hopper-and-UNIVAC-I.jpeg}
+
+    \caption{Grace Hopper przy komputerze \textsc{univac~I}, około
+      $1960$ roku.}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kompilatorów}
+
+  \vspace{-0.5em}
+
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.25]
+    {./Presentations-pictures/Grace-Hopper-in-1984.jpeg}
+
+    \caption{Grace Hopper w~$1984$ roku. W~marynarce \textsc{usa}
+      dosłużyła~się stopnia kontradmirała.}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kompilatorów}
+
+  \vspace{-0.5em}
+
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./Presentations-pictures/Grace-Hopper-promoted-to-Commodore.jpeg}
+
+    \caption{Grace Hopper awansowana do stopnia komandora marynarki
+      w~$1983$ roku.}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kompilatorów}
+
+  \vspace{-0.5em}
+
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./Presentations-pictures/Bug-found-1947.jpeg}
+
+    \caption{Wpis w~księdze pracy komputera Mark~II z~$1947$ roku. Obok ćmy
+      która utknęła w~jego wnętrzu zakłócając pracę, Hopper napisał
+      „Pierwszy przypadek znalezienia prawdziwego robaka (ang.
+      \textit{bug})”.}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Podstawy działania kompilatora}
 % ######################################
 
 
@@ -613,13 +861,13 @@ eprint=true,
 
     \begin{tikzpicture}[node distance=0.7]
 
-      \node[diagram rectangle block] (C source code) at (0,0)
-      {Kod programu w~języku C};
+      \node[diagram rectangle block] (Source code) at (0,0)
+      {Kod źródłowy programu};
 
-      \node[diagram block,below=of C source code] (Compiler)
+      \node[diagram block,below=of Source code] (Compiler)
       {Magia (kompilator)};
 
-      \draw[thick diagram arrow] (C source code) -- (Compiler);
+      \draw[thick diagram arrow] (Source code) -- (Compiler);
 
 
 
@@ -644,7 +892,656 @@ eprint=true,
 
 % ##################
 \begin{frame}
+  \frametitle{Schemat działania kompilatora}
+
+
+  Kompilator to bardzo skomplikowany program, więc będziemy kolejne
+  fazy jego działania odsłaniać po kolei. Zaczniemy od~tego, że~najpierw
+  nasz kod źródłowy jest przetwarzany w~fazie analizy do reprezentacji
+  pośredniej.% , następnie w~fazie syntezy kod zapisany w~reprezentacji
+  % pośredniej jest w~fazie syntezy przepisywany na~odpowiedni język
+  % asemblera.
+
+
+
+
+  \begin{textblock}{10.1}(1.4,3.7)
+
+    \begin{figure}
+
+      \begin{tikzpicture}[node distance=0.7]
+
+        \node[diagram rectangle block] (Source code) at (0,0)
+        {Kod źródłowy programu};
+
+        \node[diagram block,right=of Source code] (Analitic phase)
+        {Faza analizy};
+
+        \draw[thick diagram arrow] (Source code) -- (Analitic phase);
+
+
+        \node[diagram rectangle block,right=of Analitic phase] (IR)
+        {Kod w~reprezentacji pośredniej};
+
+        \draw[thick diagram arrow] (Analitic phase) -- (IR);
+
+
+        \node[diagram block,below=of IR] (Synthesis phase) {Faza syntezy};
+
+        \draw[thick diagram arrow] (IR) -- (Synthesis phase);
+
+
+        \node[diagram rectangle block,left=of Synthesis phase]
+        (Assembly code) {Kod programu w~asemblerze};
+
+        \draw[thick diagram arrow] (Synthesis phase) -- (Assembly code);
+
+      \end{tikzpicture}
+
+      \caption{Bardziej poprawny opis działania kompilatora.}
+
+
+    \end{figure}
+
+  \end{textblock}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% #################
+\begin{frame}
+  \frametitle{Faza analizy}
+
+
+  Pierwszym etapem działania kompilatora jest \textbf{faza analizy}. Proszę
+  sobie przypomnieć, że~komputer rozumie tylko swój dialekt asemblera,
+  nie zaś takie języki jak C~czy Python. Jak sama nazwa wskazuje, w~fazie
+  analizy, kompilator poddaje nasz kod źródłowy odpowiedniej procedurze
+  analizy, by zrozumieć jego sens. Dzięki uzyskanej wiedzy, kompilator
+  generuje następnie kod zapisany w~odpowiedniej reprezentacji pośredniej.
+
+  \textbf{Reprezentacja pośrednia}, \textsc{ir},
+  ang.~\textit{intermidiate representation}, spotyka~się też
+  \textit{internal representation}. Jest to pewien język programowania,
+  możemy o~nim myśleć jako o~„fikcyjnym” asemblerze. Fikcyjnym w~tym sensie,
+  że~nie jest ważne, czy istnieje w~materialnym świecie procesor, który
+  rozumiem ten język. Może istnieć, ale nie musi, to jest dla nas bez
+  znaczenia. Dlaczego w~ogóle potrzebujemy wprowadzać \textsc{ir}?
+  Jednym z~powodów jest ograniczenie czasu kompilacji.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problem wielokrotnej kompilacji}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.7]
+
+      \node[diagram rectangle block] (Source code A) at (0,0)
+      {Kod źródłowy programu};
+
+      \node[diagram block,below=of Source code A] (Compiler A)
+      {Magia (kompilator)};
+
+      \draw[thick diagram arrow] (Source code A) -- (Compiler A);
+
+
+
+      \node[diagram rectangle block,below=of Compiler A] (Assembly code A)
+      {Kod programu w~asm. x86};
+
+      \draw[thick diagram arrow] (Compiler A) -- (Assembly code A);
+
+
+
+
+
+      \begin{scope}[xshift=4cm]
+
+        \node[diagram rectangle block] (Source code B) at (0,0)
+        {Kod źródłowy programu};
+
+        \node[diagram block,below=of Source code B] (Compiler B)
+        {Magia (kompilator)};
+
+        \draw[thick diagram arrow] (Source code B) -- (Compiler B);
+
+
+
+        \node[diagram rectangle block,below=of Compiler B] (Assembly code B)
+        {Kod programu w~asm. \textsc{arm} 32};
+
+        \draw[thick diagram arrow] (Compiler B) -- (Assembly code B);
+
+      \end{scope}
+
+
+
+
+
+      \begin{scope}[xshift=8cm]
+
+        \node[diagram rectangle block] (Source code C) at (0,0)
+        {Kod źródłowy programu};
+
+        \node[diagram block,below=of Source code C] (Compiler C)
+        {Magia (kompilator)};
+
+        \draw[thick diagram arrow] (Source code C) -- (Compiler C);
+
+
+
+        \node[diagram rectangle block,below=of Compiler C] (Assembly code C)
+        {Kod programu w~asm. AArch64};
+
+        \draw[thick diagram arrow] (Compiler C) -- (Assembly code C);
+
+      \end{scope}
+
+
+    \end{tikzpicture}
+
+    \caption{Jeśli ten sam program ma działać na komputerach z~różnymi
+      typami procesorów, to musimy kilkakrotnie wykonać cały
+      proces kompilacji.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wykorzystane reprezentacji pośredniej}
+
+  \vspace{-0.5em}
+
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.7]
+
+      \node[diagram rectangle block] (Source code) at (0,0)
+      {Kod źródłowy programu};
+
+      \node[diagram block,right=of Source code] (Analitic phase)
+      {Faza analizy};
+
+      \draw[thick diagram arrow] (Source code) -- (Analitic phase);
+
+
+
+      \node[diagram rectangle block,right=of Analitic phase] (IR)
+      {Kod programu w~\textsc{ir}};
+
+      \draw[thick diagram arrow] (Analitic phase) -- (IR);
+
+
+      \node[diagram block,below=of IR] (Back-end) {Faza syntezy};
+
+      \draw[thick diagram arrow] (IR) -- (Back-end);
+
+
+      \node[diagram rectangle block] (Assembly ARM 32) at (0,-5.2)
+      {Kod programu w~asm. \textsc{arm} 32};
+
+      \draw[thick diagram arrow] (Back-end) -- (Assembly ARM 32);
+
+
+      \node[diagram rectangle block] (Assembly AArch64) at (3.9,-5.2)
+      {Kod programu w~asm. AArch64};
+
+      \draw[thick diagram arrow] (Back-end) -- (Assembly AArch64);
+
+
+      \node[diagram rectangle block] (Assembly x86) at (6.8,-5.2)
+      {Kod programu w~asm. x86};
+
+      \draw[thick diagram arrow] (Back-end) -- (Assembly x86);
+
+
+
+      \node[text width=10em] (Front-end description) at (2.8,-2)
+      {$90\%$ procesu kompilacji wykonujemy do tego miejsca.};
+
+      \draw[pointing arrow] (Front-end description) -- (IR);
+
+
+
+      \node[text width=10em] (Back-end work description)
+      at (0.5,-3.5) {Tutaj wykonujemy tylko pozostałe $10\%$.};
+
+      \draw[pointing arrow] (Back-end work description) -- (3.3,-3.55);
+
+    \end{tikzpicture}
+
+    \caption{Przykład wykorzystanie~\textsc{ir}.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Faza syntezy}
+
+
+  W~fazie analizy wykonywane jest około $90\%$ całego procesu kompilacji
+  (ta liczba jest mocno orientacyjna, ale na razie niech nam to wystarczy).
+  W~wyniku tego z~języka źródłowego, takiego jak~C, powstaje reprezentacja
+  pośrednia~(\textsc{ir}).
+
+  W~fazie syntezy na podstawie reprezentacji pośredniej jest
+  \alert{syntezowany} odpowiedni kod w~danym dialekcie asemblera,
+  który będziemy mogli następnie uruchomić na~odpowiednim komputerze.
+  Ten fakt wyjaśnia też nazwę „reprezentacja pośrednia”.
+
+  Jak już mówiliśmy, reprezentacja pośrednia \textsc{ir} jest swego rodzaju
+  fikcyjnym asemblerem. Ponieważ \textsc{ir} jest podobny do prawdziwych
+  dialektów asemblera, tłumaczenie z~\textsc{ir} zajmuje tylko $10\%$
+  czasu kompilacji i~pochłania niewiele mocy obliczeniowej, w~porównaniu do
+  kompilacji z~języka takiego jak~C do~\textsc{ir}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Prosty schemat działania kompilatora}
+
+%   \vspace{-0.5em}
+
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}[node distance=0.7]
+
+%       \node[diagram rectangle block] (Source code) at (0,0)
+%       {Kod źródłowy programu};
+
+%       \node[diagram block,right=of Source code] (Front-end)
+%       {Front kompilatora};
+
+%       \draw[thick diagram arrow] (Source code) -- (Front-end);
+
+
+
+%       \node[diagram rectangle block,right=of Front-end] (IR)
+%       {Kod programu w~\textsc{ir}};
+
+%       \draw[thick diagram arrow] (Front-end) -- (IR);
+
+
+%       \node[diagram block,below=of IR] (Back-end) {Tył kompilatora};
+
+%       \draw[thick diagram arrow] (IR) -- (Back-end);
+
+
+%       \node[diagram rectangle block] (Assembly ARM 32) at (0,-5.2)
+%       {Kod programu w~asm. \textsc{arm} 32};
+
+%       \draw[thick diagram arrow] (Back-end) -- (Assembly ARM 32);
+
+
+%       \node[diagram rectangle block] (Assembly AArch64) at (3.9,-5.2)
+%       {Kod programu w~asm. AArch64};
+
+%       \draw[thick diagram arrow] (Back-end) -- (Assembly AArch64);
+
+
+%       \node[diagram rectangle block] (Assembly x86) at (6.8,-5.2)
+%       {Kod programu w~asm. x86};
+
+%       \draw[thick diagram arrow] (Back-end) -- (Assembly x86);
+
+
+
+%       \node[text width=10em] (Front-end description) at (2.8,-2)
+%       {$90\%$ procesu kompilacji wykonujemy do tego miejsca.};
+
+%       \draw[pointing arrow] (Front-end description) -- (IR);
+
+
+
+%       \node[text width=10em] (Back-end work description)
+%       at (0.5,-3.5) {Tutaj wykonujemy tylko pozostałe $10\%$.};
+
+%       \draw[pointing arrow] (Back-end work description) -- (3.3,-3.55);
+
+
+
+
+
+%       % \end{scope}
+
+
+
+
+
+%       % \begin{scope}[xshift=8cm]
+
+%       %   \node[diagram rectangle block] (Source code C) at (0,0)
+%       %   {Kod źródłowy programu};
+
+%       %   \node[diagram block,below=of Source code C] (Compiler C)
+%       %   {Magia (kompilator)};
+
+%       %   \draw[thick diagram arrow] (Source code C) -- (Compiler C);
+
+
+
+%       %   \node[diagram rectangle block,below=of Compiler C] (Assembly code C)
+%       %   {Kod programu w~asm. AArch64};
+
+%       %   \draw[thick diagram arrow] (Compiler C) -- (Assembly code C);
+
+%       % \end{scope}
+
+
+%     \end{tikzpicture}
+
+%     \caption{Przykład wykorzystanie~\textsc{ir}.}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pedantyczny komentarz}
+
+
+
+
+% Abstrakcja i~siła myślenia symbolicznego
+
+
+  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
+  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
+  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
+  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
+  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
+  % et al. \textit{Podstawy biologii komórki}.
+
+  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
+  % filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
+  % dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
+  % Będziemy jednak wybiórczo korzystać
+  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
+  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
+  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
+  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
+
+  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
+  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
+  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
+  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
   \frametitle{Pedantyczny komentarz}
+
+  \vspace{-0.5em}
+
+
+  Część kompilatora odpowiedzialna za~fazę analizy nosi angielską
+  nazwę \textbf{compiler front-end}, na polski tłumaczymy to jako
+  „przód/front kompilatora”. Część kompilatora która na
+  podstawie reprezentacji pośredniej tworzy właściwy kod asemblera nosi
+  angielską nazwę \textbf{compiler back-end}. Po polsku zwykle mówimy „tył
+  kompilatora”.
+
+
+
+
+
+  \begin{textblock}{10.1}(1.4,3.7)
+
+    \begin{figure}
+
+      \begin{tikzpicture}[node distance=0.7]
+
+        \node[diagram rectangle block] (Source code) at (0,0)
+        {Kod źródłowy programu};
+
+        \node[diagram block,right=of Source code] (Front-end)
+        {Front kompilatora};
+
+        \draw[thick diagram arrow] (Source code) -- (Front-end);
+
+
+        \node[diagram rectangle block,right=of Front-end] (IR)
+        {Kod w~reprezentacji pośredniej};
+
+        \draw[thick diagram arrow] (Front-end) -- (IR);
+
+
+        \node[diagram block,below=of IR] (Back-end) {Tył kompilatora};
+
+        \draw[thick diagram arrow] (IR) -- (Back-end);
+
+
+        \node[diagram rectangle block,left=of Back-end]
+        (Assembly code) {Kod programu w~asemblerze};
+
+        \draw[thick diagram arrow] (Back-end) -- (Assembly code);
+
+      \end{tikzpicture}
+
+      \caption{Bardziej poprawny opis działania kompilatora.}
+
+
+    \end{figure}
+
+  \end{textblock}
+
+
+  % Część kompilatora odpowiedzialna za~fazę analizy nosi angielską
+  % nazwę \textbf{compiler front-end}, na polski tłumaczymy to jako
+  % „przód kompilatora” lub „front kompilatora”. Front kompilatora ma
+  % za~zadanie wykonać $90\%$ całej pracy kompilatora, czyli zrozumienie
+  % co dany kod napisany w~języku takim jak~C ma zrobić. Następnie ma
+  % wygenerować reprezentację pośrednią (\textsc{ir}).
+
+  % Jak już mówiliśmy, reprezentacja pośrednia jest swego rodzaju fikcyjnym
+  % asemblerem. Ponieważ \textsc{ir} jest podobny prawdziwych dialektów
+  % asemblera, tłumaczenie z~\textsc{ir} zajmuje stosunkowo mało czasu
+  % i~pochłania niewiele mocy obliczeniowej, w~porównaniu do kompilacji
+  % z~języka takiego jak~C do~\textsc{ir}. To też tłumaczy nazwę
+  % „reprezentacja pośrednia.
+
+  % Część kompilatora która na podstawie reprezentacji pośredniej tworzy
+  % właściwy kod asemblera nosi angielską nazwę \textbf{compiler back-end}.
+  % Po polsku zwykle mówimy „tył kompilatora”.
+
+% Abstrakcja i~siła myślenia symbolicznego
+
+
+  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
+  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
+  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
+  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
+  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
+  % et al. \textit{Podstawy biologii komórki}.
+
+  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
+  % filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
+  % dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
+  % Będziemy jednak wybiórczo korzystać
+  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
+  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
+  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
+  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
+
+  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
+  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
+  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
+  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+% ######################################
+\section{Front kompilatora}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Schemat działania frontu kompilatora}
+
+
+    % \begin{textblock}{10.1}(1.4,3.7)
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.7]
+
+      \node[diagram rectangle block] (Source code) at (0,0)
+      {Kod źródłowy programu};
+
+      \node[diagram block,right=of Source code] (Lexer)
+      {Lekser};
+
+      \draw[thick diagram arrow] (Source code) -- (Lexer);
+
+
+      \node[diagram rectangle block] (Symbols table) at (3.4,-2.3)
+      {Tablica symboli};
+
+      \draw[thick diagram arrow,color=red] (Lexer) -- (Symbols table);
+
+
+
+      \node[diagram rectangle block,right=of Lexer] (Stream of tokens)
+      {Strumień tokenów};
+
+      \draw[thick diagram arrow] (Lexer) -- (Stream of tokens);
+
+
+      \node[diagram block,below=of Stream of tokens] (Parser)
+      {Parser};
+
+      \draw[thick diagram arrow] (Stream of tokens) -- (Parser);
+
+
+      \node[diagram rectangle block,below=of Parser]
+      (Syntax tree A) {Drzewo składniowe};
+
+      \draw[thick diagram arrow] (Parser) -- (Syntax tree A);
+
+
+      \node[diagram block,left=of Syntax tree A]
+      (Semantic analizator) {Analizator semantyczny};
+
+      \draw[thick diagram arrow] (Syntax tree A) --
+      (Semantic analizator);
+
+      % \node[diagram rectangle block,below=of Parser]
+      % (Semantic analizator) {Analizator semantyczny};
+
+      % \draw[thick diagram arrow] (Parser) -- (Semantic analizator);
+
+
+      \node[diagram rectangle block,left=of Semantic analizator]
+      (Syntax tree B) {Zmodyfikowane drzewo składniowe};
+
+      \draw[thick diagram arrow] (Semantic analizator) --
+      (Syntax tree B);
+
+    \end{tikzpicture}
+
+    \caption{Bardziej poprawny opis działania kompilatora.}
+
+
+  \end{figure}
+
+  % \end{textblock}
+
+
+  % Abstrakcja i~siła myślenia symbolicznego
+
+
+  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
+  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
+  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
+  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
+  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
+  % et al. \textit{Podstawy biologii komórki}.
+
+  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
+  % filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
+  % dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
+  % Będziemy jednak wybiórczo korzystać
+  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
+  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
+  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
+  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
+
+  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
+  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
+  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
+  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
+
+\end{frame}
+% ##################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pedantyczny komentarz}
+
+  Abstrakcja i~siła myślenia symbolicznego
 
 
   Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
@@ -1638,15 +2535,7 @@ eprint=true,
 
 
 
-% #################
-% \begin{frame}
-%   \frametitle{??????}
 
-
-
-
-% \end{frame}
-% ##################
 
 
 
