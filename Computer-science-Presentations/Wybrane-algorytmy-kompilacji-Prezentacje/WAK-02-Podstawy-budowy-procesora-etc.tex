@@ -898,9 +898,8 @@ eprint=true,
   Kompilator to bardzo skomplikowany program, więc będziemy kolejne
   fazy jego działania odsłaniać po kolei. Zaczniemy od~tego, że~najpierw
   nasz kod źródłowy jest przetwarzany w~fazie analizy do reprezentacji
-  pośredniej.% , następnie w~fazie syntezy kod zapisany w~reprezentacji
-  % pośredniej jest w~fazie syntezy przepisywany na~odpowiedni język
-  % asemblera.
+  pośredniej.
+
 
 
 
@@ -966,12 +965,13 @@ eprint=true,
 
   \textbf{Reprezentacja pośrednia}, \textsc{ir},
   ang.~\textit{intermidiate representation}, spotyka~się też
-  \textit{internal representation}. Jest to pewien język programowania,
-  możemy o~nim myśleć jako o~„fikcyjnym” asemblerze. Fikcyjnym w~tym sensie,
-  że~nie jest ważne, czy istnieje w~materialnym świecie procesor, który
-  rozumiem ten język. Może istnieć, ale nie musi, to jest dla nas bez
-  znaczenia. Dlaczego w~ogóle potrzebujemy wprowadzać \textsc{ir}?
-  Jednym z~powodów jest ograniczenie czasu kompilacji.
+  rozwinięcie \textit{internal representation}. Jest to pewien język
+  programowania, możemy o~nim myśleć jako o~„fikcyjnym” asemblerze.
+  Fikcyjnym w~tym sensie, że~nie jest ważne, czy istnieje w~materialnym
+  świecie procesor, który rozumiem ten język. Może istnieć, ale nie musi,
+  to jest dla nas bez znaczenia. Dlaczego w~ogóle potrzebujemy
+  wprowadzać~\textsc{ir}? Jednym z~powodów jest ograniczenie czasu
+  kompilacji.
 
 \end{frame}
 % ##################
@@ -1155,20 +1155,334 @@ eprint=true,
   W~wyniku tego z~języka źródłowego, takiego jak~C, powstaje reprezentacja
   pośrednia~(\textsc{ir}).
 
-  W~fazie syntezy na podstawie reprezentacji pośredniej jest
-  \alert{syntezowany} odpowiedni kod w~danym dialekcie asemblera,
-  który będziemy mogli następnie uruchomić na~odpowiednim komputerze.
-  Ten fakt wyjaśnia też nazwę „reprezentacja pośrednia”.
+  Następnie przechodzimy do \textbf{fazy syntezy}, w~trakcie której na
+  podstawie reprezentacji pośredniej jest \alert{syntezowany} odpowiedni
+  kod w~danym dialekcie asemblera, który będziemy mogli następnie uruchomić
+  na~konkretnym komputerze. Ten fakt wyjaśnia też nazwę „reprezentacja
+  pośrednia”.
 
   Jak już mówiliśmy, reprezentacja pośrednia \textsc{ir} jest swego rodzaju
   fikcyjnym asemblerem. Ponieważ \textsc{ir} jest podobny do prawdziwych
-  dialektów asemblera, tłumaczenie z~\textsc{ir} zajmuje tylko $10\%$
-  czasu kompilacji i~pochłania niewiele mocy obliczeniowej, w~porównaniu do
-  kompilacji z~języka takiego jak~C do~\textsc{ir}.
+  dialektów asemblera, tłumaczenie z~\textsc{ir} zajmuje mniej
+  czasu kompilacji i~pochłania niewiele mocy obliczeniowej, niż kompilacja
+  bezpośrednio z~języka takiego jak C do~\textsc{ir}.
 
 \end{frame}
 % ##################
 
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Główne elementy kompilatora}
+
+  \vspace{-0.5em}
+
+
+  Część kompilatora odpowiedzialna za~fazę analizy nosi angielską
+  nazwę \textbf{compiler front-end}, na polski tłumaczymy to jako
+  „przód/front kompilatora”. Część kompilatora która na
+  podstawie reprezentacji pośredniej tworzy właściwy kod asemblera nosi
+  angielską nazwę \textbf{compiler back-end}. Po polsku zwykle mówimy „tył
+  kompilatora”.
+
+
+
+
+
+  \begin{textblock}{10.1}(1.4,3.7)
+
+    \begin{figure}
+
+      \begin{tikzpicture}[node distance=0.7]
+
+        \node[diagram rectangle block] (Source code) at (0,0)
+        {Kod źródłowy programu};
+
+        \node[diagram block,right=of Source code] (Front-end)
+        {Front kompilatora};
+
+        \draw[thick diagram arrow] (Source code) -- (Front-end);
+
+
+        \node[diagram rectangle block,right=of Front-end] (IR)
+        {Kod w~reprezentacji pośredniej};
+
+        \draw[thick diagram arrow] (Front-end) -- (IR);
+
+
+        \node[diagram block,below=of IR] (Back-end) {Tył kompilatora};
+
+        \draw[thick diagram arrow] (IR) -- (Back-end);
+
+
+        \node[diagram rectangle block,left=of Back-end]
+        (Assembly code) {Kod programu w~asemblerze};
+
+        \draw[thick diagram arrow] (Back-end) -- (Assembly code);
+
+      \end{tikzpicture}
+
+      \caption{Ilustracja działania części kompilatora.}
+
+
+    \end{figure}
+
+  \end{textblock}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Front kompilatora}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Schemat działania frontu kompilatora. Część~I}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.7]
+
+      \node[diagram rectangle block] (Source code) at (0,0)
+      {Kod źródłowy programu};
+
+      \node[diagram block,right=of Source code] (Lexer)
+      {Lekser};
+
+      \draw[thick diagram arrow] (Source code) -- (Lexer);
+
+
+      \node[diagram rectangle block] (Symbols table) at (3.4,-2.3)
+      {Tablica symboli};
+
+      \draw[thick diagram arrow,color=red] (Lexer) -- (Symbols table);
+
+
+
+      \node[diagram rectangle block,right=of Lexer] (Stream of tokens)
+      {Strumień tokenów};
+
+      \draw[thick diagram arrow] (Lexer) -- (Stream of tokens);
+
+
+      \node[diagram block,below=of Stream of tokens] (Parser)
+      {Parser};
+
+      \draw[thick diagram arrow] (Stream of tokens) -- (Parser);
+
+
+      \draw[thick diagram arrow] (Symbols table) -- (Parser);
+
+
+      \node[diagram rectangle block,below=of Parser]
+      (Syntax tree A) {Drzewo składniowe};
+
+      \draw[thick diagram arrow] (Parser) -- (Syntax tree A);
+
+
+      \node[diagram block,left=of Syntax tree A]
+      (Semantic analizer) {Analizator semantyczny};
+
+      \draw[thick diagram arrow] (Syntax tree A) --
+      (Semantic analizer);
+
+
+      \draw[thick diagram arrow] (Symbols table) -- (Semantic analizer);
+
+      % \node[diagram rectangle block,below=of Parser]
+      % (Semantic analizator) {Analizator semantyczny};
+
+      % \draw[thick diagram arrow] (Parser) -- (Semantic analizator);
+
+
+      \node[diagram rectangle block,left=of Semantic analizer]
+      (Syntax tree B) {Zmodyfikowane drzewo składniowe};
+
+      \draw[thick diagram arrow] (Semantic analizer) --
+      (Syntax tree B);
+
+    \end{tikzpicture}
+
+    \caption{Działa frontu kompilatora, część~I.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Schemat działania frontu kompilatora. Część~II}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.7]
+
+      \node[diagram rectangle block] (Syntax tree B) at (0,0)
+      {Zmodyfikowane drzewo składniowe};
+
+      \node[diagram block,right=of Syntax tree B] (Generator of IR)
+      {Generacja reprezentacji pośredniej \textsc{ir}};
+
+      \draw[thick diagram arrow] (Syntax tree B) -- (Generator of IR);
+
+
+      \node[diagram rectangle block] (Symbols table) at (3.4,-2.3)
+      {Tablica symboli};
+
+      \draw[thick diagram arrow] (Symbols table) -- (Generator of IR);
+
+
+
+      \node[diagram rectangle block,right=of Generator of IR]
+      (IR) {Reprezentacja pośrednia \textsc{ir}};
+
+      \draw[thick diagram arrow] (Generator of IR) -- (IR);
+
+    \end{tikzpicture}
+
+    \caption{Działa frontu kompilatora, część~II.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tył kompilatora}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}[node distance=0.7]
+
+      \node[diagram rectangle block] (IR) at (0,0)
+      {Reprezentacja pośrednia \textsc{ir}};
+
+      \node[diagram block,right=of IR] (Optimalization of IR)
+      {Optymalizacja reprezentacji pośredniej \textsc{ir}};
+
+      \draw[thick diagram arrow] (IR) -- (Optimalization of IR);
+
+
+      \node[diagram rectangle block] (Symbols table) at (3.4,-2.3)
+      {Tablica symboli};
+
+      \draw[thick diagram arrow] (Symbols table) -- (Optimalization of IR);
+
+
+
+      \node[diagram rectangle block,right=of Generator of IR]
+      (Modified IR) {Zmodyfikowany \textsc{ir}};
+
+      \draw[thick diagram arrow] (Optimalization of IR) -- (Modified IR);
+
+
+      \node[diagram block,below=of Modified IR]
+      (Generation of assembly code) {Generowanie kodu asemblera};
+
+      \draw[thick diagram arrow] (Modified IR) --
+      (Generation of assembly code);
+
+      \draw[thick diagram arrow] (Symbols table) --
+      (Generation of assembly code);
+
+
+      \node[diagram rectangle block,below=of Generation of assembly code]
+      (Assembly code) {Kod assemblera};
+
+      \draw[thick diagram arrow] (Generation of assembly code) --
+      (Assembly code);
+
+
+      \node[diagram block,left=of Assembly code]
+      (Optimalization of assembly code) {Optymalizacja kodu assemblera};
+
+      \draw[thick diagram arrow] (Assembly code) --
+      (Optimalization of assembly code);
+
+      \draw[thick diagram arrow] (Symbols table) --
+      (Optimalization of assembly code);
+
+
+      \node[diagram rectangle block,left=of Optimalization of assembly code]
+      (Optimalized assembly code) {Zoptymalizowany kod assemblera};
+
+      \draw[thick diagram arrow] (Optimalization of assembly code) --
+      (Optimalized assembly code);
+
+    \end{tikzpicture}
+
+    \caption{Działa frontu kompilatora, część~II.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pedantyczny komentarz}
+
+  Abstrakcja i~siła myślenia symbolicznego
+
+
+  Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
+  francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
+  poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
+  bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
+  niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
+  et al. \textit{Podstawy biologii komórki}.
+
+  Badanie normalnych języków nie jest przedmiotem informatyki, tylko
+  filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
+  dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
+  Będziemy jednak wybiórczo korzystać
+  z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
+  Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
+  skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
+  których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
+
+  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
+  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
+  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
+  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
+
+\end{frame}
+% ##################
 
 
 
@@ -1277,296 +1591,6 @@ eprint=true,
 % \end{frame}
 % % ##################
 
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Pedantyczny komentarz}
-
-
-
-
-% Abstrakcja i~siła myślenia symbolicznego
-
-
-  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
-  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
-  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
-  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
-  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
-  % et al. \textit{Podstawy biologii komórki}.
-
-  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
-  % filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
-  % dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
-  % Będziemy jednak wybiórczo korzystać
-  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
-  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
-  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
-  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
-
-  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
-  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
-  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
-  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pedantyczny komentarz}
-
-  \vspace{-0.5em}
-
-
-  Część kompilatora odpowiedzialna za~fazę analizy nosi angielską
-  nazwę \textbf{compiler front-end}, na polski tłumaczymy to jako
-  „przód/front kompilatora”. Część kompilatora która na
-  podstawie reprezentacji pośredniej tworzy właściwy kod asemblera nosi
-  angielską nazwę \textbf{compiler back-end}. Po polsku zwykle mówimy „tył
-  kompilatora”.
-
-
-
-
-
-  \begin{textblock}{10.1}(1.4,3.7)
-
-    \begin{figure}
-
-      \begin{tikzpicture}[node distance=0.7]
-
-        \node[diagram rectangle block] (Source code) at (0,0)
-        {Kod źródłowy programu};
-
-        \node[diagram block,right=of Source code] (Front-end)
-        {Front kompilatora};
-
-        \draw[thick diagram arrow] (Source code) -- (Front-end);
-
-
-        \node[diagram rectangle block,right=of Front-end] (IR)
-        {Kod w~reprezentacji pośredniej};
-
-        \draw[thick diagram arrow] (Front-end) -- (IR);
-
-
-        \node[diagram block,below=of IR] (Back-end) {Tył kompilatora};
-
-        \draw[thick diagram arrow] (IR) -- (Back-end);
-
-
-        \node[diagram rectangle block,left=of Back-end]
-        (Assembly code) {Kod programu w~asemblerze};
-
-        \draw[thick diagram arrow] (Back-end) -- (Assembly code);
-
-      \end{tikzpicture}
-
-      \caption{Bardziej poprawny opis działania kompilatora.}
-
-
-    \end{figure}
-
-  \end{textblock}
-
-
-  % Część kompilatora odpowiedzialna za~fazę analizy nosi angielską
-  % nazwę \textbf{compiler front-end}, na polski tłumaczymy to jako
-  % „przód kompilatora” lub „front kompilatora”. Front kompilatora ma
-  % za~zadanie wykonać $90\%$ całej pracy kompilatora, czyli zrozumienie
-  % co dany kod napisany w~języku takim jak~C ma zrobić. Następnie ma
-  % wygenerować reprezentację pośrednią (\textsc{ir}).
-
-  % Jak już mówiliśmy, reprezentacja pośrednia jest swego rodzaju fikcyjnym
-  % asemblerem. Ponieważ \textsc{ir} jest podobny prawdziwych dialektów
-  % asemblera, tłumaczenie z~\textsc{ir} zajmuje stosunkowo mało czasu
-  % i~pochłania niewiele mocy obliczeniowej, w~porównaniu do kompilacji
-  % z~języka takiego jak~C do~\textsc{ir}. To też tłumaczy nazwę
-  % „reprezentacja pośrednia.
-
-  % Część kompilatora która na podstawie reprezentacji pośredniej tworzy
-  % właściwy kod asemblera nosi angielską nazwę \textbf{compiler back-end}.
-  % Po polsku zwykle mówimy „tył kompilatora”.
-
-% Abstrakcja i~siła myślenia symbolicznego
-
-
-  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
-  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
-  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
-  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
-  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
-  % et al. \textit{Podstawy biologii komórki}.
-
-  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
-  % filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
-  % dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
-  % Będziemy jednak wybiórczo korzystać
-  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
-  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
-  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
-  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
-
-  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
-  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
-  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
-  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-% ######################################
-\section{Front kompilatora}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Schemat działania frontu kompilatora}
-
-
-    % \begin{textblock}{10.1}(1.4,3.7)
-
-  \begin{figure}
-
-    \begin{tikzpicture}[node distance=0.7]
-
-      \node[diagram rectangle block] (Source code) at (0,0)
-      {Kod źródłowy programu};
-
-      \node[diagram block,right=of Source code] (Lexer)
-      {Lekser};
-
-      \draw[thick diagram arrow] (Source code) -- (Lexer);
-
-
-      \node[diagram rectangle block] (Symbols table) at (3.4,-2.3)
-      {Tablica symboli};
-
-      \draw[thick diagram arrow,color=red] (Lexer) -- (Symbols table);
-
-
-
-      \node[diagram rectangle block,right=of Lexer] (Stream of tokens)
-      {Strumień tokenów};
-
-      \draw[thick diagram arrow] (Lexer) -- (Stream of tokens);
-
-
-      \node[diagram block,below=of Stream of tokens] (Parser)
-      {Parser};
-
-      \draw[thick diagram arrow] (Stream of tokens) -- (Parser);
-
-
-      \node[diagram rectangle block,below=of Parser]
-      (Syntax tree A) {Drzewo składniowe};
-
-      \draw[thick diagram arrow] (Parser) -- (Syntax tree A);
-
-
-      \node[diagram block,left=of Syntax tree A]
-      (Semantic analizator) {Analizator semantyczny};
-
-      \draw[thick diagram arrow] (Syntax tree A) --
-      (Semantic analizator);
-
-      % \node[diagram rectangle block,below=of Parser]
-      % (Semantic analizator) {Analizator semantyczny};
-
-      % \draw[thick diagram arrow] (Parser) -- (Semantic analizator);
-
-
-      \node[diagram rectangle block,left=of Semantic analizator]
-      (Syntax tree B) {Zmodyfikowane drzewo składniowe};
-
-      \draw[thick diagram arrow] (Semantic analizator) --
-      (Syntax tree B);
-
-    \end{tikzpicture}
-
-    \caption{Bardziej poprawny opis działania kompilatora.}
-
-
-  \end{figure}
-
-  % \end{textblock}
-
-
-  % Abstrakcja i~siła myślenia symbolicznego
-
-
-  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
-  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
-  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
-  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
-  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
-  % et al. \textit{Podstawy biologii komórki}.
-
-  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
-  % filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
-  % dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
-  % Będziemy jednak wybiórczo korzystać
-  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
-  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
-  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
-  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
-
-  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
-  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
-  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
-  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
-
-\end{frame}
-% ##################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pedantyczny komentarz}
-
-  Abstrakcja i~siła myślenia symbolicznego
-
-
-  Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
-  francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
-  poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
-  bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
-  niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
-  et al. \textit{Podstawy biologii komórki}.
-
-  Badanie normalnych języków nie jest przedmiotem informatyki, tylko
-  filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
-  dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
-  Będziemy jednak wybiórczo korzystać
-  z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
-  Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
-  skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
-  których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
-
-  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
-  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
-  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
-  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
-
-\end{frame}
-% ##################
 
 
 
@@ -1791,6 +1815,44 @@ eprint=true,
 %   do pokoju”.   Zdanie „Pies wbiegł do pokoju.” dzieli się na leksemy „Pies”, „wbiegł”,
 %   „do”, „pokoju”, „.”, gdyż każdy z~nich posiada określony sens. Fragmenty
 %   tego zdania, które nie są leksemami to choćby „zor”, „iegł d” czy „pok”.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pedantyczny komentarz}
+
+
+
+
+% Abstrakcja i~siła myślenia symbolicznego
+
+
+  % Warto zaznaczyć, że~normalne języki takie jak angielski, birmański,
+  % francuski, japoński, polski, etc., to obiekty o~trudnym do pojęcia
+  % poziomie złożoności, bo korzystają z nich ludzie, którzy są znacznie
+  % bardziej skomplikowanymi bytami niż komputery. Jak ktoś ma wątpliwości
+  % niech spróbuje najpierw przeczytać dwutomową książkę Bruce’a Albertsa
+  % et al. \textit{Podstawy biologii komórki}.
+
+  % Badanie normalnych języków nie jest przedmiotem informatyki, tylko
+  % filologii, lingwistyka, językoznawstwa i~sam nie wiem czego jeszcze,
+  % dlatego nie będziemy wnikać w~problemy z jakimi mierzą się te dziedziny.
+  % Będziemy jednak wybiórczo korzystać
+  % z~języka polskiego i~angielskiego by ilustrować problemy jakie napotykamy.
+  % Choć bowiem z punktu widzenia informatyki języki ludzkie są dużo bardziej
+  % skomplikowane niż C czy Python, to ponieważ są to \alert{nasze} języki
+  % których ciągle używamy, są dla nas łatwiejsze w zrozumieniu.
+
+  % Dlatego proszę się nie przywiązywać zbytnio do takich rzeczy, jak
+  % wyróżnianie leksemów języka polskiego, bo człowiek utknie na różnych
+  % problemach spoza naszej działki. Jak to czy w zdaniu „Kot się przeciąga.”,
+  % leksemem jest samo „się”, czy dopiero „Kot się”, a może „się przeciąga”?
 
 % \end{frame}
 % % ##################
