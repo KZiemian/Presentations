@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -130,7 +130,7 @@ eprint=true,
 
 % \institute{Uniwersytet Jagielloński w~Krakowie}
 
-\date[19 XI 2024]{Seminary of Field Theory Departament,
+\date[19 XI 2024]{Seminary of Particle Physics Theory Departament,
   19 November 2024}
 % ------------------------------------------------------------------------------------------------------------------
 
@@ -175,7 +175,8 @@ eprint=true,
   \frametitle{Table of contents}
 
 
-  \tableofcontents % Spis treści
+  % Table of contents
+  \tableofcontents
 
 \end{frame}
 % ######################################
@@ -185,26 +186,6 @@ eprint=true,
 
 
 
-
-
-
-
-% % ######################################
-% \section{General information about the talk}
-% % ######################################
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{General information about the talk}
-
-
-%   If you have any question about the topic, please interrupt me during
-%   the~talk. I~will be also grateful for suggestion how this talk can be
-%   improved and for pointing any mistakes found in it.
-
-% \end{frame}
-% % ##################
 
 
 
@@ -233,20 +214,15 @@ eprint=true,
   cavity will attract each other due to strange relation between ``zero-point
   energy'' of the~electromagnetic field with different boundary conditions.
 
-  As it is well known, see for example book by Peskin and Schroeder
+  As it is well known, see for example a~book by Peskin and Schroeder
   \parencite{Peskin-Schroeder-An-Introduction-to-Quantum-Field-Theory-Pub-1995},
-  that procedure known as canonical quantisation applied to classical
-  electromagnetic field, produce ``infinite constant'' in the~expression
-  for energy, which he refers to as ``zero-point energy''. Casimir claims
-  was that since boundary conditions change ``value of infinite constant'',
-  their difference should manifest itself as finite force. For Casimir
-  these two situations were free field and field with strict Dirichlet
-  boundary conditions.
-
-  % It worth noticing that for over $700$ pages of Peskin and Schroeder book,
-  % zero-point energy is considered as physically irrelevant, to suddenly be
-  % considered physically important in the context of Casimir effect.
-  % The authors seems to be dissatisfied by this state of affair.
+  procedure known as canonical quantisation applied to classical
+  electromagnetic field, produce an ``infinite constant'' in the~expression
+  for energy, which Casimir called ``the zero-point energy''. His claim
+  was that since boundary conditions change ``value of the~infinite
+  constant'', their difference should manifest itself as finite force.
+  Casimir choose as these two situation a~free field and field with a~strict
+  Dirichlet boundary conditions.
 
 \end{frame}
 % ##################
@@ -260,9 +236,6 @@ eprint=true,
   \frametitle{Casimir view of zero-point energy}
 
 
-  % Casimir view of his own procedure is quite striking and it's worth quoting
-  % verbatim.
-
   \textit{In both cases the expressions $\frac{ 1 }{ 2 } \sum \hbar \, \omega$ where
     the~summation extendes over all possible resonance frequencies~of
     the~cavities are divergent and devoid~of physical meaning but
@@ -270,13 +243,14 @@ eprint=true,
     $\frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{I} } -
     \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{II} }$, will be shown to have
     a~well defined value and this value will be~interpreted as
-    the~interaction between the~plate and the~$xy$ face.} Cf. p.~793 in
-  \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}.
+    the~interaction between the~plate and the~$xy$ face.} (Cf. p.~793 in
+  \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}.)
 
   To obtain fine result from
   $\delta E = \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{I} } -
-  \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{II} }$ Casimir need to introduce
-  cutoff function{ } $f$, with cutoff parameter $k_{ \HorSpaceThree m }$. He
+  \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{II} }$ Casimir needed to introduce
+  cutoff function{ } $f$ and cutoff parameter $k_{ \HorSpaceThree m }$. To
+  justified their presence he
   recounts that when frequency of electromagnetic
   waves increase, metal objects became more and more transparent to them.
   By expanding such ``improved'' expression into a series and taking only
@@ -286,11 +260,6 @@ eprint=true,
     \frac{ \delta E }{ L^{ 2 } } =
     -\hbar c \frac{ \pi^{ 2 } }{ 720 } \frac{ 1 }{ a^{ 3 } }.
   \end{equation}
-
-  % Casimir statement that zero-point energy is non-physical, but
-  % difference~of \alert{two} such quantities is, should give our a~pause.
-  % My personal opinion is that we should avoid using such types of energies
-  % wherever it is possible.
 
 \end{frame}
 % ##################
@@ -335,17 +304,20 @@ eprint=true,
 
   In the $1955$ E.M. Lifshitz publish paper on in which show how to compute
   Casimir effect taking into account temperature and properties of the
-  material of plates. I~used English version of this article published in
-  $1956$ as \textit{The~theory~of molecular attractive forces between
-    solids} \parencite{Lifshitz-The-theory-of-molecular-ETC-Pub-1956}.
-  Outside giving us one proof, that he can do physics without Landau, more
-  importantly he shown us how to compute Casimir effect taking into
-  account some properties of real materials and effect of $T > 0$.
+  material of the~plates. Another results of this paper was the proof, that
+  he can do physics without Landau. I~used English version of this article
+  published in $1956$
+  as~\textit{The~theory~of molecular attractive forces between solids}
+  \parencite{Lifshitz-The-theory-of-molecular-ETC-Pub-1956}.
 
-  Since most experiments compare their results with prediction of some
-  variants of Lifshitz theory, we need to presents it outlines for
-  the~system of two plates. Presentation offered here is based on article
-  by Klimchitskaya and~Mostepanenko
+  % Outside giving us one proof, that he can do physics without Landau, more
+  % importantly he shown us how to compute Casimir effect taking into
+  % account some properties of real materials and effect of $T > 0$.
+
+  Since the majority of the~experiments compare their results with
+  prediction of some variants of Lifshitz theory, we need to presents it
+  outlines for the~system of two plates. Presentation offered here is based
+  on article by Klimchitskaya and~Mostepanenko
   \parencite{Klimchitskaya-Mostepanenko-Current-status-ETC-Pub-2022}.
   As~a~caveat we need to add, that in his original work, Lifshitz
   considered not two plates~of finite width, but two infinite half-spaces
@@ -366,6 +338,11 @@ eprint=true,
   In Lifshitz approach dielectric permittivity $\varepsilon( \omega )$ and magnetic
   permeability $\mu( \omega )$ are functions of electromagnetic waves frequency
   and can also depend on~$T$. We introduce auxiliary notation
+
+  \vspace{-1em}
+
+
+
   \begin{equation}
     \label{eq:First-theoretical-works-02}
     k( \omega, k_{ \HorSpaceOne \bot } ) =
@@ -373,12 +350,17 @@ eprint=true,
       \varepsilon( \omega ) \mu( \omega ) \frac{ \omega^{ 2 } }{ c^{ 2 } } }, \quad
     q( \omega, k_{ \HorSpaceOne \bot } ) =
     \sqrt{ ( k_{ \HorSpaceOne \bot } )^{ 2 } -
-      \frac{ \omega^{ 2 } }{ c^{ 2 } } }.
+      \frac{ \omega^{ 2 } }{ c^{ 2 } } },
   \end{equation}
+
+  \vspace{-1em}
+
+
+
   where
   $k_{ \HorSpaceOne \bot } = \sqrt{ k_{ \HorSpaceOne x }^{ \HorSpaceTen 2 } +
     k_{ \HorSpaceOne y }^{ \HorSpaceTen 2 } }$ is the length of the component of
-  the wave vector $k$ laying in the plane of plates.
+  the wave vector $k$ laying in the plane of the~plates.
 
   We now define transverse electric (\textsc{te}) and transverse magnetic
   (\textsc{tm}) reflection coefficients as
@@ -405,25 +387,6 @@ eprint=true,
 
   \end{subequations}
 
-  % \begin{equation}
-  %   \label{eq:Oryginalna-praca-ETC-05}
-  %   \begin{split}
-  %     \delta E
-  %     &=
-  %     \frac{ \hbar c \HorSpaceFive L^{ 2 } \pi^{ 2 } }{ 4 a^{ 3 } } \!
-  %     \left( \, \sum_{ ( 0 ), \, 1 }^{ \infty } \,
-  %     \int_{ 0 }^{ \infty } \! d\kappa \, \sqrt{ n^{ 2 } \! + \! u } \,
-  %     f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{ a k_{ \HorSpaceTwo m } }
-  %     \right) \right. \, - \\
-  %     &\left. \;\;\;
-  %       - \int_{ 0 }^{ \infty } \! \int_{ 0 }^{ \infty } \! du \, dn \,
-  %     \sqrt{ n^{ \, 2 } \! + \! u } \,
-  %     f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{
-  %     a k_{ \HorSpaceTwo m } } \right) \right).
-  %     \end{split}
-  %   \end{equation}
-
-
 \end{frame}
 % ##################
 
@@ -435,6 +398,8 @@ eprint=true,
 \begin{frame}
   \frametitle{Lifshitz formula for Casimir force}
 
+  \vspace{-0.75em}
+
 
   Force per unit area is now given by
   \begin{equation}
@@ -443,8 +408,8 @@ eprint=true,
       F_{ a }( T )
       &=
         -\frac{ \hbar }{ 2 \pi^{ 2 } }
-        \int_{ 0 }^{ \infty } dk_{ \HorSpaceOne \bot } \, k_{ \HorSpaceOne \bot }
-        \int_{ 0 }^{ \infty } d \omega \, \coth\left( \frac{ \hbar \omega }{
+        \int\limits_{ 0 }^{ \infty } dk_{ \HorSpaceOne \bot } \, k_{ \HorSpaceOne \bot }
+        \int\limits_{ 0 }^{ \infty } d \omega \, \coth\left( \frac{ \hbar \omega }{
         2 k_{ \HorSpaceThree \text{B} } \HorSpaceOne T } \right) \times \\[0.5em]
       &\hspace{2.5em}
         \times \, \Imag\left\{ \frac{ q( \omega, k_{ \HorSpaceOne \bot } ) }{
@@ -455,14 +420,14 @@ eprint=true,
     \end{split}
   \end{equation}
   To simplify this formula Lifshitz himself replace integrals over
-  $[ 0, + \infty )$, by integrals over imaginary line. Today it is called
-  a~Matsubara approach. This and other result of Lifshitz theory we must
-  leave outside scope of this talk.
+  $[ 0, + \infty )$, by integrals over imaginary axis. Today such procedure is
+  called a~Matsubara formalism. This and other result of Lifshitz theory we
+  must leave outside scope of this talk.
 
   What need to be noted, that to compute Casimir force using above formula,
   we need empirical data of how material of plates interact with
-  electromagnetic field in broad range of frequencies. And we need some
-  theoretical model $\varepsilon( \omega )$.
+  electromagnetic field in broad range of frequencies. We also need some
+  theoretical model of function $\varepsilon( \omega )$.
 
 \end{frame}
 % ##################
@@ -513,7 +478,7 @@ eprint=true,
 
   We first need to note that according to original Casimir result
   \eqref{eq:First-theoretical-works-01},
-  predicted force between two bodies of surface area $1 \, \si{cm}^{ 2 }$
+  force between two bodies of surface area $1 \, \si{cm}^{ 2 }$
   put at the distance $1 \, \mu\si{m}$ is of the order of magnitude
   \begin{equation}
     \label{eq:Sparnaay-experiment-from-ETC-01}
@@ -524,40 +489,13 @@ eprint=true,
   small, an experimental confirmation seems not unfeasible and might be of
   a~certain interst.”
   (p.~$795$~\parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}),
-  which can serve as very fit description of the problem.
+  which can serve as very fitting description of the problem.
 
   Results of first such experimental attempt to measure this effect were
   published by M.J. Sparnaay in $1958$ paper \textit{Measurements of
     attractive forces between flat plates}
   \parencite{Sparnaay-Measurments-of-attractive-forces-ETC-Pub-1958}.
   This experiment can be described as important failure.
-
-  % results of his experiments in which he
-  % tried to measure force predicted by original Casimir paper. He
-
-%   \textbf{Nieprzyjemna cecha rzeczywistości.}
-%   Ponieważ $\Delta_{ F }( x_{ 1 }, x_{ 2 } )$ jest dystrybucją, więc~sens
-%   ma~tylko jego całka z~odpowiednią „funkcją poprawiającą”
-%   $g( x ) \in \Scal( \Rbb^{ d } )$:
-%   \begin{equation}
-%     \label{eq:Epstein-Glaser-19}
-%     A( x_{ 1 }, x_{ 4 } ) =
-%     \int d x_{ 2 }^{ 4 } \, d x_{ 3 }^{ 4 } \; \Delta_{ F }( x_{ 1 }, x_{ 2 } )
-%     \Delta_{ F }( x_{ 2 }, x_{ 3 } ) \Delta_{ F }( x_{ 3 }, x_{ 4 } )
-%     g( x_{ 2 } ) g( x_{ 3 } ).
-%   \end{equation}
-%   Funkcja poprawiająca nie~ma sensu fizycznego dlatego też należy
-%   wziąć granicę $g( x ) \to 1$.
-
-%   \vspace{\spaceThree}
-
-
-
-%   \textbf{Problem.}
-%   Wzięcie granicy $g( x ) \to 1$ w~sposób spójny i~dający sensowny
-%   wynik, oznaczałoby rozwiązanie problemów podczerwonych. Funkcja
-%   $g( x )$ obcina oddziaływania na~„skończonej odległości”,
-%   eliminując ogony podczerwone.
 
 \end{frame}
 % ##################
@@ -572,17 +510,19 @@ eprint=true,
 
 
   Sparnaay measured force acting on three pairs of metal plates keep at the
-  distance of $\mu\si{m}$ from each other and compared experimental data with
-  original Casimir formula \eqref{eq:First-theoretical-works-01}. For the
-  pairs chromium-chromium and chromium-steel he observed attractive force,
-  while for pair aluminium-aluminium he find presence of repulsive force.
-  It is clear that such results cannot be deemed as conclusive.
+  distance of few $\mu\si{m}$ from each other and compared experimental data
+  with original Casimir formula \eqref{eq:First-theoretical-works-01}. For
+  the pairs chromium-chromium and chromium-steel plates he observed
+  attractive force,
+  while for pair aluminium-aluminium plates he find presence of repulsive
+  force. It is clear that such results cannot be deemed as conclusive.
 
   What is of the most importance to us, is a list of weak points of the
   experiment, that Sparnaay provided for us and which had a big impact on
-  future research. As the biggest problem in his method he considered a~big
-  hysteresis of the experimental system, which was result of sharp edges of
-  plates and presence of the spring scale attached to them. Second, he
+  future research. According to his the biggest problem of his method was
+  a~big hysteresis of the experimental system, which was result of sharp
+  edges of plates and presence of the spring scale attached to them.
+  Second, he
   wasn't able to eliminate difference of electrostatic potentials between
   plates. According to his estimates $\Delta V = 17 \, \si{mV}$ is big enough to
   make measurement of Casimir force impossible.
@@ -604,15 +544,15 @@ eprint=true,
   potential big enough to overcome Casimir force. Despite various tries,
   Sparnaay wasn't able this eliminate them form experimental devices.
 
-  We also should noted, that since distance between plates is of the order
-  of the orders of $\mu\si{m}$, particle of size $2 \, \mu\si{m}$ is in
+  We also should noted, that since distance between plates was of the order
+  of $\mu\si{m}$, dust particle of size $2 \, \mu\si{m}$ is in
   comparisons a~very big object. Their presence also prevent the metal
   plates of touching each other, with minimal distance between them
   recorded in the experiment was $0.2 \, \mu\si{m}$.
 
   The last thing we need to noted is the fact, that keeping plates parallel
   to each other was also a~very hard task and distance between them can
-  change of $10\%$ of the total value depending on the place in which it
+  change by $10\%$ of the total value depending on the place in which it
   was measured.
 
 \end{frame}
@@ -628,7 +568,7 @@ eprint=true,
 
 
 % ######################################
-\section{van Blokland and Overbeek experiment form 1978}
+\section{van Blokland and Overbeek experiment from 1978}
 % ######################################
 
 
@@ -639,20 +579,21 @@ eprint=true,
 
 
   The~time period between Sparnaay paper from $1958$ and publication of
-  P.~van Blokland and J. Overbeek from $1978$ shouldn't be considered a
-  barren field, but we need to largely glossed over it. We still should
-  noted, that due to problems encountered by Sparnaay in this period of time
-  different geometrical configuration was tested and new non-conducting
-  materials were tested.
+  thic by P.~van Blokland and J. Overbeek from $1978$ shouldn't be
+  considered a~barren field, but we need to largely glossed over it.
+  We should
+  noted, that due to problems encountered by Sparnaay in the following
+  years different geometrical configurations were tested and new
+  non-conducting materials were used.
 
   Sphere-plate (lens-plate) configuration has clear advantage over two
   plates, because problem of putting objects parallel to each other is
   mostly eliminated. I wrote ``mostly'', because producing spherical
   object~of the radius~of $10 \, \si{cm}$ and preventing it from big
   deformation, can be surprisingly hard thing to do. In very important
-  experiment of S.~Lamoreaux from $1997$, only after dis malting experiment
+  experiment of S.~Lamoreaux from $1997$, only after dismalting experiment
   set, previously measured radius $( 11.3 \pm 0.1 ) \, \si{cm}$ was found to
-  be in reality $( 12.5 \pm 0.3 ) \, \si{cm}$
+  be in reality equal to $( 12.5 \pm 0.3 ) \, \si{cm}$
   \parencite{Lamoreaux-Demonstration-of-the-Casimir-Force-ETC-Pub-1997},
   \parencite{Lamoreaux-Erratum-Demonstration-of-the-Casimir-ETC-Pub-1998}.
   Regardless of that, to this day, this is the most used experimental
@@ -755,24 +696,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Sphere-plate configuration}
+  \frametitle{van Blokland and Overbeek experiment}
 
 
-  At this moment we should notice, that according to theoretical
+  At this moment we should point out, that according to theoretical
   computation Casimir force is very strongly geometrical and distance
   dependent. If we compute it, using standard methods, for the system of
-  single sphere with massive scalar field, it will try to shrink sphere at
-  small distance and expand it at large distances.
+  single sphere with massive scalar field, we will find that it tries to
+  shrink sphere at small distance and expand it at large.
 
   P.~van Bloklanda and J.~Overbeeka, published they results in $1978$ paper
   \textit{van der Waals forces between objects covered with a~chromium
     layer}
-  \parencite{Blokland-Overbeek-van-der-Waals-forces-between-ETC-1978}.
+  \parencite{Blokland-Overbeek-van-der-Waals-Forces-between-ETC-Pub-1978}.
   They investigated sphere-plate configuration, when distance between them
   was in the range $132\text{-}670 \, \si{nm}$. Both object were covered by
   the layer of chromium. Unfortunately, formation of chromium oxides on the
-  surface couldn't be prevented and contribution to them must be included
-  in theoretical computations.
+  surface couldn't be prevented and this contribution to them whole effect
+  must be included in theoretical computations.
 
 \end{frame}
 % ##################
@@ -789,19 +730,19 @@ eprint=true,
   Another problem was caused by the fact that chromium has two absorption
   bands at the $\lambda = 600 \, \si{nm}$. To simplify model they were replaced
   with single absorption band. It was estimated that this single band
-  contributed around $40\%$ (!) of measured effect. Even after all this
-  simplification computation based on Lifshitz theory wasn't achievable and
-  they in addition need to use so empirical data and numerical
-  approximations.
+  contributed around $40\%$ (!) of measured effect. Even after such
+  simplifications computation based on Lifshitz theory wasn't achievable and
+  use of some empirical data and numerical approximations was needed.
 
-  Also, the electric potential difference of $20 \si{mV}$ cannot be
-  eliminated and appropriate compensating potential was need to be applied
+  Also, the electric potential difference of $20 \, \si{mV}$ cannot be
+  eliminated, so appropriate compensating voltage was  applied
   to the~system.
 
-  At the end, with accuracy of $50\%$ of the measured effect, theoretical
-  predictions were in agreement with measured data. For this reason, we
-  consider this experiment to be the first experimental confirmation~of
-  Casimir effect.
+  At the end, with accuracy of $50\%$ of the measured effect, particular
+  theoretical predictions were in agreement with measured data. For this
+  reason, this experiment is considered to be the first experimental
+  confirmation~of existence of Casimir effect. At the same time, it
+  contribution to the understanding of \textsc{qed} was quite small.
 
 \end{frame}
 % ##################
@@ -816,31 +757,43 @@ eprint=true,
 
 
 % ######################################
-\section{G.~Bressi et al. experiment form 2002}
+\section{G.~Bressi et al. experiment from 2002}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{}
+  \frametitle{The main idea}
+
+  \vspace{-0.5em}
 
 
   According to my knowledge, the most accuratte experimental results for
   the system of two plates were published in the paper by G.~Bressi,
   G.~Carugno, R.~Onofrio and G.~Ruoso \textit{Measurement of the Casimir
-    Force between Parallel Metallic Surfaces} \parencite{}.
+    Force between Parallel Metallic Surfaces} from $2002$
+  \parencite{Bressi-et-al-Measurement-of-the-Casimir-Force-ETC-Pub-2002}.
 
-  G.~Bressi et al. wrote down Casimir equation as
+  In the first step G.~Bressi et al. rewrote Casimir formula as
   \begin{equation}
-    \label{eq:Herdegens-approach-01}
+    \label{eq:G-Bressi-et-al-ETC-01}
     F_{ a } =
-    -\frac{ K_{ \HorSpaceTwo \text{C} } }{ a^{ 4 } }, \quad
+    -\frac{ K_{ \HorSpaceTwo \text{C} } }{ d^{ 4 } }, \qquad
     K_{ \HorSpaceTwo \text{C} } = \frac{ \pi h c }{ 480 } \approx
     1.3 \cdot 10^{ -27 } \, \si{N.m^{ 2 }}.
   \end{equation}
-  Their aim was to found experimental value of coefficient
-  $K_{ \HorSpaceTwo \text{C}, \, \text{exp} }$.
+  We will use symbol $d$ for the distance between plates, to be consistent
+  with the original paper. The aim of their experiment is to measure
+  experimental value of physical constant from this equation, that they
+  denote as $K_{ \HorSpaceTwo \text{C}, \, \text{exp} }$.
+
+  In the experiment they use two plates. First one was called
+  \textit{resonator} and had dimensions
+  $1.9 \, \si{cm} \times 1.2 \, \si{mm} \times 47 \, \mu\si{m}$.
+  Second was called \textit{source} and had dimensions
+  $1.9 \, \si{cm} \times 1.2 \, \si{mm} \times 0.5 \, \si{mm}$. Both were covered
+  with $50 \, \si{nm}$ layer of chromium.
 
 \end{frame}
 % ##################
@@ -851,7 +804,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Ilustration of experimental settings}
+  \frametitle{Sketch of experimental settings}
 
 
   \begin{figure}
@@ -900,7 +853,7 @@ eprint=true,
 
 
       % Source
-      \fill[color=brown] (-0.08,0) rectangle (0.08,2.5);
+      \fill[color=brown] (-0.08,0) rectangle (-0.01,2.5);
 
 
       \node at (-0.45,4.3) {Source};
@@ -928,66 +881,144 @@ eprint=true,
       %
       \pic[scale=0.5] at (-3.15,2) {sin graph small amplitude 3};
 
-      % % y axis
-      % \draw[axis arrow] (0,-1.3) -- (0,1.5);
-
-      % % x axis
-      % \draw[axis arrow] (-0.3,0) -- (10,0);
-
-
-      % \node[number on the right and below] at (0,0) {$0$};
-
-
-
-      % % Thicks on x axis
-      % \pic at (0.5,0) {tick x axis thin 1};
-
-      % \node[number below x axis] at (0.5,0) {$0.5$};
-
-
-      % \pic at (1,0) {tick x axis thin};
-
-      % \node[number below x axis] at (1,0) {$1$};
-
-
-      % \pic at (1.5,0) {tick x axis thin 1};
-
-      % \node[number below x axis] at (1.5,0) {$1.5$};
-
-
-      % \pic at (2,0) {tick x axis thin};
-
-      % \pic at (2.5,0) {tick x axis thin};
-
-      % \pic at (3,0) {tick x axis thin};
-
-
-      % % Ticks on y axis
-      % \pic at (0,-1) {tick y axis thin};
-
-      % \node[number on the left of y axis] at (0,-1) {$-1$};
-
-
-      % \pic at (0,-0.5) {tick y axis thin 1};
-
-      % \node[number on the left of y axis] at (0,-0.5) {$-0.5$};
-
-
-      % \pic at (0,0.5) {tick y axis thin 1};
-
-      % \pic at (0,1) {tick y axis thin};
-
-
-
-
-
-
-
     \end{tikzpicture}
 
-    \caption{Ilustration of G.~Bressi et al. experimental settings.}
+    \caption{Sketch of G.~Bressi et al. experimental settings.}
 
   \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Method of measurement}
+
+
+  Using fibre optic interferometer the resonance frequency $\nu$ of
+  the lowest torsional mode of resonator was measured. In the paper
+  written in addition with A.~Galvani and F. Veronesem
+  \parencite{Bressi-et-al-Experimental-studies-of-macroscopic-ETC-Pub-2001},
+  authors derived the the following equation:
+  \begin{equation}
+    \label{eq:G-Bressi-et-al-ETC-02}
+    \Delta \HorSpaceOne \nu( d )^{ 2 } =
+    \nu^{ \HorSpaceOne 2 } - \nu_{ \HorSpaceTwo 0 }^{ \; 2 } =
+    -C_{ \HorSpaceTwo \text{el} } \frac{ V_{ \text{r} }^{ \, 2 } }{
+      d^{ \HorSpaceThree 3 } } -
+    \frac{ C_{ \HorSpaceTwo \text{Cas} } }{ d^{ \HorSpaceFour 5 } }.
+  \end{equation}
+  We now need to explain some notation. First,
+  $\nu_{ \HorSpaceFour 0 } = 138.275 \, \si{Hz}$ is resonance frequency of
+  free resonator, $S$ is area of overlap of two plates, $V_{ \text{r} }$ is
+  residual voltage and $m_{ \HorSpaceThree \text{eff} }$ is effective mass of
+  the lowest torsion mode. The two constants $C_{ \HorSpaceTwo \text{el} }$
+  and $C_{ \HorSpaceTwo \text{Cas} }$ are defined as
+  \begin{equation}
+    \label{eq:G-Bressi-et-al-ETC-03}
+    C_{ \HorSpaceTwo \text{el} } =
+    \frac{ \varepsilon_{ \HorSpaceTwo 0 } \, S }{ 4 \pi^{ 2 }
+      m_{ \HorSpaceThree \text{eff} } }, \qquad
+    C_{ \HorSpaceTwo \text{Cas} } =
+    \frac{ K_{ \HorSpaceTwo \text{C}, \, \text{exp} } \, S }{ \pi^{ 2 }
+      m_{ \HorSpaceThree \text{eff} } }.
+  \end{equation}
+  The part of the equation \eqref{eq:G-Bressi-et-al-ETC-02}
+  proportional to $C_{ \HorSpaceTwo \text{el} }$ is called electrostatic term.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Experiment}
+
+
+  Physical constant in Casimir equation can now be computed as
+  \begin{equation}
+    \label{eq:G-Bressi-et-al-ETC-04}
+    K_{ \HorSpaceTwo \text{C}, \, \text{exp} } =
+    \frac{ \varepsilon_{ 0 } }{ 4 } \frac{ C_{ \HorSpaceTwo \text{Cas} } }{
+      C_{ \HorSpaceTwo \text{el} } }.
+  \end{equation}
+
+  \vspace{-1em}
+
+
+
+  We can now take another look on the main equation.
+  \begin{equation}
+    \label{eq:G-Bressi-et-al-ETC-05}
+    \Delta \HorSpaceOne \nu( d )^{ 2 } =
+    \nu^{ \HorSpaceOne 2 } - \nu_{ \HorSpaceTwo 0 }^{ \; 2 } =
+    -C_{ \HorSpaceTwo \text{el} } \frac{ V_{ \text{r} }^{ \, 2 } }{
+      d^{ \HorSpaceThree 3 } } -
+    \frac{ C_{ \HorSpaceTwo \text{Cas} } }{ d^{ \HorSpaceFour 5 } }.
+  \end{equation}
+  To find values of physical constants present in it, three series~of
+  measurements with different values of $V_{ \text{r} }$ were performed.
+  In each series distance between plates was changing from
+  $0.5 \, \mu\si{m}$ to $3 \, \mu\si{m}$. After that four series of
+  measurements, from which results electrostatic term was subtracted, was
+  used to estimate the value of $C_{ \HorSpaceTwo \text{Cas} }$. This procedure
+  give us, according to the authors, following results:
+  \begin{align}
+    \label{eq:G-Bressi-et-al-ETC-06-A}
+    C_{ \HorSpaceTwo \text{el} }
+    &=
+      ( 4.24 \pm 0.11 ) \cdot 10^{ -13 } \, \si{Hz}^{ 2 } \, \si{m}^{ 3 }, \\
+    \label{eq:G-Bressi-et-al-ETC-06-B}
+    C_{ \HorSpaceTwo \text{Cas} }
+    &=
+      ( 2.34 \pm 0.34 ) \cdot 10^{ -28 } \, \si{Hz}^{ 2 } \, \si{m}^{ 5 }.
+    \end{align}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Results}
+
+
+  Easy computation give us
+  \begin{equation}
+    \label{eq:Zarys-badan-ETC-14}
+    K_{ \HorSpaceTwo \text{C}, \, \text{exp} } =
+    ( 1.22 \pm 0.18 ) \cdot 10^{ -27 } \, \si{N.m}^{ 2 }.
+  \end{equation}
+  This agree withing experimental uncertainty with theoretical
+  value $K_{ \HorSpaceTwo \text{C} } = \frac{ \pi h c }{ 480 } \approx
+  1.3 \cdot 10^{ -27 } \, \si{N.m^{ 2 }}$.
+
+  We also should noted that for $d = 0.5 \, \mu\si{m}$ we have
+  \begin{equation}
+    \label{eq:Herdegens-approach-01}
+    \frac{ C_{ \HorSpaceTwo \text{el} } }{ d^{ 3 } } \approx
+    3.39 \cdot 10^{ 6 } \, \si{Hz}, \qquad
+    \frac{ C_{ \HorSpaceTwo \text{Cas} } }{ d^{ 5 } } \approx
+    7.49 \cdot 10^{ 3 } \, \si{Hz},
+  \end{equation}
+  while for $d = 3 \, \mu\si{m}$
+  \begin{equation}
+    \label{eq:Herdegens-approach-01}
+    \frac{ C_{ \HorSpaceTwo \text{el} } }{ d^{ 3 } } \approx
+    1.57 \cdot 10^{ 4 } \, \si{Hz}, \qquad
+    \frac{ C_{ \HorSpaceTwo \text{Cas} } }{ d^{ 5 } } \approx
+    9.63 \cdot 10^{ -1 } \, \si{Hz}.
+  \end{equation}
 
 \end{frame}
 % ##################
@@ -1006,27 +1037,75 @@ eprint=true,
 
 
 
+% ######################################
+\section{Few words about measurements of Casimir effect in
+  XXI century}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Other configurations and possible future}
+
+
+  While sphere-plate configuration remains the staple of the field of
+  experimental Casimir effect, in the~time after year $2000$ a variety of
+  different geometrical configurations was tested. For example G.~Biamonte,
+  D. L\'{o}pez and R.S. Decca measured this effect in system of sphere
+  with rotating plate, periodically covered by strips of different types of
+  metals
+  \parencite{Biomonte-Lopez-Decca-Isoelectronic-determination-ETC-Pub-2016}.
+  Unfortunately, I~don't know of any completed measurement of two plate
+  system after the publication of paper G.~Bressi et al. in $2002$.
+
+  In this context the \textsc{cannex} project
+  (The Casimir And Non-Newtonian force EXperiment) should be mentioned
+  \parencite{Sedmik-Pitschmann-Next-Generation-Design-ETC-Pub-2021}. It aim
+  is to measure discussed effect in two plate system in and out thermal
+  equilibrium, with precision that provide new bounds on axion and
+  axion-like dark matter, among other things. It is a~lofty and very
+  desirable goal, but challenges before it are quite daunting. At this
+  moment, according to my knowledge, no result of this experiment are
+  available in literature.
+
+\end{frame}
+% ##################
 
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Problem of $\MathTextFrametitleFGColor{\varepsilon( \omega )}$ model}
 
 
+  As was said before to computer Casimir effect using Lifshitz theory, we
+  need a~model of the function $\varepsilon( \omega )$ and the two most used are defined
+  as:
+  \begin{equation}
+    \label{eq:First-theoretical-works-05}
+    \varepsilon_{ \HorSpaceTwo \text{p} }( \omega ) =
+    1 - \frac{ \omega_{ \HorSpaceTwo \text{p} }^{ \, 2 } }{ \omega^{ 2 } }, \qquad
+    \varepsilon_{ \HorSpaceThree \text{D} }( \omega ) =
+    1 - \frac{ \omega_{ \HorSpaceTwo \text{p} }^{ \, 2 } }{ \omega [ \omega + i \gamma( T ) ] }.
+  \end{equation}
+  They are called plasma and Drude model.
 
+  From the time around year $2005$ following start to appear. According to
+  condense matter physics, Drude model should be more realistic, but
+  measurements of Casimir force consistently excluded it, in the favor of
+  plasma model.
+  Since Casimir force measurements are very complicated, they should not be
+  used for validation of permittivity models, but this is still a~big
+  problem.
+  Debate about its source spans around two decades and
+  according to my knowledge, at current moment it isn't yet solved.
 
+\end{frame}
+% ##################
 
-
-
-
-
-
-
-
-
-% % ######################################
-% \section{Regularyzacja wymiarowa w~przestrzeni położeń}
-% % ######################################
 
 
 
@@ -1142,7 +1221,7 @@ eprint=true,
 
   \end{tikzpicture}
 
-  \caption{\textsc{PFA} method for sphere-plate system.}
+  \caption{\textsc{pfa} method for sphere-plate system.}
 
 
   \label{fig:Ilustration-of-PFA}
