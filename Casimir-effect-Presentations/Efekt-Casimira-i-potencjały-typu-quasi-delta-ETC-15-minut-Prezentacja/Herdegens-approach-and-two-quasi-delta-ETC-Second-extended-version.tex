@@ -1,0 +1,2268 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{light}
+\fi
+
+
+
+% Options: t -- align frame text to the top
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianEnglishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------------------------------------
+
+% ------------------------------------------------------
+% Packages for scientific papers
+% ------------------------------------------------------
+% Switching off \lll symbol, that I guess is representing letter ``Ł''.
+% It collide with `amsmath' package's command with the same name
+% \let\lll\undefined
+% Basic package from American Mathematical Society (AMS)
+% \usepackage[intlimits]{amsmath}
+% Equations are numbered separately in every section.
+% \numberwithin{equation}{section}
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Herdegens-approach-and-two-quasi-delta-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Wonderful package PGF/TikZ
+% ------------------------------------------------------
+
+% Node and pics for drawing charts
+\usepackage{./Local-packages/PGF-TikZ-Chart-nodes-and-pics}
+
+% Styles for arrows
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+% Pic for drawing functions
+\usepackage{./Local-packages/PGF-TikZ-Functions-pics}
+
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text
+\usepackage{./Local-packages/general-commands}
+
+% Package containing commands and other code useful for working with
+% mathematical text
+\usepackage{./Local-packages/math-commands}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Herdegen's approach to Casimir effect in application to
+  the~two quasi-delta system}
+
+\author{Kamil Ziemian \\
+  \texttt{kziemianfvt@gmail.com}}
+
+
+% \institute{Uniwersytet Jagielloński w~Krakowie}
+
+\date[13 X 2024]{Seminar of Field Theory Departament,
+  13 October 2024}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Text is adjusted to the left and words are broken at the end of the line.
+% Number of chars: 62k+, 73k+, 25k+, 51k+,
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Table of contents}
+
+
+  \tableofcontents % Spis treści
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{General information about the talk}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{General information about the talk}
+
+
+%   If you have any questions about the topic, please interrupt me during
+%   the~talk. I~will be also grateful for suggestions how this talk can be
+%   improved and for pointing out any mistakes found in it.
+
+%   In this presentation I will often gloss over more technical details
+%   and assumptions. To be more concise I will also simplified some
+%   historical facts. My hope is that it allow us to presented
+%   general picture of problem in a clear and easy manner.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Short history of Casimir effect}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Casimir paper from 1948}
+
+
+  In the year 1948 Hendrik Brugt Gerhard Casimir published a~only three
+  pages long article \textit{On~the~Attraction Between Two Perfectly
+    Conducting Plates}
+  \parencite{Casimir-On-the-Attraction-Between-ETC-Pub-1948}, in
+  which he predicted that two electrical neutral plates put inside the
+  cubic cavity will attract each other due to the strange relation between
+  ``zero-point energy'' of the~electromagnetic field and different
+  boundary conditions.
+
+  As it is well known, see for example book by Peskin and Schroeder
+  \parencite{Peskin-Schroeder-An-Introduction-to-Quantum-Field-Theory-Pub-1995},
+  procedure known as canonical quantisation applied to classical
+  electromagnetic field produces ``infinite constant'' in the~expression
+  for energy, which he refers to as ``zero-point energy''. Casimir's claims
+  was that since boundary conditions change ``value of infinite constant'',
+  their difference should manifest itself as finite force.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zero-point energies used by Casimir}
+
+
+  Casimir considered zero-point energy of empty cavity, that is expressed
+  by formula:
+  \begin{equation}
+    \label{eq:Short-history-ETC-01}
+    % \begin{split}
+    \frac{ 1 }{ 2 } \left( \sum \hbar \omega \right)_{ \text{II} } =
+    \frac{ \hbar c a \HorSpaceFive L^{ 2 } }{ 2 \pi^{ 2 } }
+    \int\limits_{ 0 }^{ \infty } \int\limits_{ 0 }^{ \infty } \kappa
+    \sqrt{ k_{ \HorSpaceOne z }^{ \,\, 2 } + \kappa^{ 2 } } \, d\kappa \,
+    dk_{ \HorSpaceTwo z }.
+    % \end{split}
+  \end{equation}
+  Notation used here is taken from the original paper.
+
+  On the other hand, zero-point energy in the situation when
+  two parallel plates, with Dirichlet boundary conditions, are
+  inserted at the distance $a$ from each other is given by:
+  \begin{equation}
+    \label{eq:Short-history-ETC-02}
+    \frac{ 1 }{ 2 } \left( \sum \hbar \omega \right)_{ \text{I} } =
+    \frac{ \hbar c \HorSpaceFive L^{ 2 } }{ 2 \pi }
+    \sum_{ n = ( 0 ), \, 1 }^{ \infty } \, \int\limits_{ 0 }^{ \infty } \kappa
+    \sqrt{ \left( n^{ 2 } \frac{ \pi^{ 2 } }{ a^{ 2 } } \right)
+      + \kappa^{ 2 } } \, d\kappa.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Introduction of cutoff}
+
+
+  To obtain finite result from
+  $\delta E = \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{I} } -
+  \frac{ 1 }{ 2 } ( \sum \hbar \omega )_{ \text{II} }$ Casimir needs to introduce
+  cutoff function $f$ and parameter $k_{ \HorSpaceThree m }$.
+  After doing that regularized energy difference of zero-point energies is
+  given by
+  \begin{equation}
+    \label{eq:Short-history-ETC-03}
+    \begin{split}
+      \delta E
+      &=
+        \frac{ \hbar c \HorSpaceFive L^{ 2 } \pi^{ 2 } }{ 4 a^{ 3 } } \!
+        \left( \, \sum_{ ( 0 ), \, 1 }^{ \infty } \,
+        \int\limits_{ 0 }^{ \infty } \! d\kappa \, \sqrt{ n^{ 2 } \! + \! u } \,
+        f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{ a k_{ \HorSpaceTwo m } }
+        \right) \right. \, - \\
+      &\left. \;\;\;
+        - \int\limits_{ 0 }^{ \infty } \! \int\limits_{ 0 }^{ \infty } \! du \, dn \,
+        \sqrt{ n^{ \, 2 } \! + \! u } \,
+        f\!\left( \tfrac{ \pi \sqrt{ n^{ 2 } + u } }{
+        a k_{ \HorSpaceTwo m } } \right) \right).
+    \end{split}
+  \end{equation}
+
+  By expanding this expression into a series and taking only zero order term
+  Casimir arrives at formula:
+  \begin{equation}
+    \label{eq:Short-history-ETC-04}
+    \frac{ \delta E }{ L^{ 2 } } =
+    -\hbar c \frac{ \pi^{ 2 } }{ 720 } \frac{ 1 }{ a^{ 3 } },
+  \end{equation}
+  which gives us now a famous expression for force, proportional
+  to~$a^{ -4 }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Review of Casimir approach}
+
+
+  The Casimir method of computation is still present in current literature
+  in more or less refined form. I~don't believe this can be view
+  as satisfactory in $2024$.
+
+  First of all, its use of zero-point energy, which according to
+  original~(!) Casimir paper is itself nonphysical, is hard to explain.
+  It is worth noticing that for over $700$ pages of Peskin and Schroeder
+  book, zero-point energy is considered as physically irrelevant, to
+  suddenly be deemed physically important in the context of Casimir
+  effect. The authors seem to be dissatisfied by this state of affairs.
+
+  Second, it does not introduce physical properties of materials at the
+  beginning, but as an auxiliary tool for removing ill defined mathematical
+  quantities. For both these reasons, alternative approaches should be
+  welcome.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Number of citations of Casimir 1948 paper}
+
+
+  \begin{figure}
+
+    \label{fig:aaa}
+
+    \centering
+
+
+    \includegraphics[scale=0.6]
+    {./Presentation-pictures/Casimir-paper-citations.png}
+
+    \caption{Inspire HEP graph of numbers of citation of Casimir 1948 paper
+      per year, \colorhref{https://inspirehep.net/literature/24990}
+      {https://inspirehep.net/literature/24990}}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Overview of Herdegen's approach to Casimir effect}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Introduction to Herdegen's approach}
+
+
+  Approach to Casimir force that we will be discussing, was first announced
+  in short paper of Andrzej Herdegen \textit{No-nonsens Casimir force}
+  \parencite{Herdegen-Nononsens-Casimir-force-Pub-2001} and fully presented
+  in the two part article \textit{Quantum backreaction (Casimir) effect}
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005},
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-II-Pub-2006}. Casimir
+  effect in this approach is interpreted as backreaction of quantum system
+  to adiabatic changes in macroscopic system and apparatus of algebraic
+  quantum field theory (\textsc{aqft}) is used to allow rigorous analysis
+  of physical properties of the system.
+
+  We need to pay special attention to how the Casimir effect is interpreted
+  in this formalism. According to it, this effect is present in the system
+  having the quantum part $Q$ and macroscopic part $M$. In the standard
+  example quantum part is quantum electromagnetic field and macroscopic
+  contains two metal, electric neutral plates. When $M$ moves
+  \alert{adiabatically} there is backreaction on the part of subsystem $Q$,
+  that gives rise to particular force.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Elements of Herdegen's approach}
+
+
+  According to my reading of experimental literature on the subject,
+  this assumption of adiabatic movement of macroscopic subsystem fits
+  well with the way how true experiments are done.
+
+  We now want to give a~short summary of algebraic quantum field theory.
+  The~two main pillars of it can be summarized in a~somewhat simplified
+  ways as follows.
+  \begin{itemize}
+
+  \item For quantum observables the most important relations are of
+    algebraic nature.
+
+  \item Physical measurements are localized in bounded regions of
+    spacetime.
+
+  \end{itemize}
+  Due to time constraints we can only sketch how this quite sophisticated
+  formalism works. We first try to explain, what is the idea laying behind
+  the~first point.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebraic nature of observables}
+
+
+  In standard curse of non-relativistic quantum mechanics, assuming
+  one dimensional problem, the position and momentum operators are given as
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-01}
+    X = x, \quad
+    P = -i \, \hbar \frac{ d }{ dx },
+  \end{equation}
+  and both of these operators act on a~space of physical states that is
+  equal to $L^{ 2 }( \Rbb, d\mu( x ) )$. From this, glossing over some
+  mathematical problems, we can derive relation
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-02}
+    [ X, P ] = i \, \hbar \, \id.
+  \end{equation}
+  In \textsc{aqft} we interpreted equation
+  \eqref{eq:Overview-of-Herdegens-approach-ETC-02} as being fundamental
+  relation between observables of algebraic nature. More precisely, given
+  physical system, we attach to it $C^{ * }$ algebra $\Acal$, representing
+  physical quantities that can be measured inside it.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebraic nature of observables}
+
+
+  For technical reasons, we replace relation $[ X, P ] = i \, \hbar \, \id$
+  with it Weyl form:
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-03}
+    e^{ \, i P s } e^{ \, i X t } = e^{ \, i X t } e^{ \, i P s } e^{ \, i s t }.
+  \end{equation}
+  % We can assume that our algebra $\Acal$ has a~neutral element $\UnitAlg$.
+  While element of algebra $\Acal$ represents measurable physical
+  quantities, the states are represented by class of the elements of space
+  dual to $\Acal$: $\omega \in \Acal^{ \text{d} }$. Such $\omega$ to be considered state,
+  must fulfill two requirements:
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-04}
+    \omega( A^{ * } A ) \geq 0, \; \forall A \in \Acal, \quad
+    \omega( \UnitAlg ) = 1.
+  \end{equation}
+
+  \vspace{-2em}
+
+
+
+  We can now talk about localization of physical events in the Minkowski
+  spacetime.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Picture of Minkowski spacetime}
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \begin{tikzpicture}
+
+      % x axis
+      \draw[axis arrow] (-5,0) -- (5,0);
+
+      \pic at (5,0) {x mark for horizontal axis 1};
+
+
+      % t axis
+      \draw[axis arrow] (0,-2.5) -- (0,4);
+
+      \pic at (0,4) {t mark for vertical axis 1};
+
+
+
+      % Light cone
+      \fill[color=blue,opacity=0.4] (0,0) -- (3.5,3.5) -- (-3.5,3.5) -- cycle;
+
+      \fill[color=blue,opacity=0.4] (0,0) -- (2.2,-2.2) -- (-2.2,-2.2) --
+      cycle;
+
+      \draw[dashed] (2.2,-2.2) -- (-3.5,3.5);
+
+      \draw[dashed] (-2.2,-2.2) -- (3.5,3.5);
+
+
+
+      % Region number 1
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (1.2,0) (3,-1) (3.5,1.4) (2.5,1.2) };
+
+      \node[scale=1.3] at (2.3,0.3) {$\Ocal_{ 1 }$};
+
+
+      % Region number 2
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (0.8,0) (2.9,-1.5) (4.2,1.8) (1,3) };
+
+      \node[scale=1.3] at (2.7,1.8) {$\Ocal_{ 2 }$};
+
+
+      % Region number 3
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (-1,-0.2) (-2,1.2) (-3,0.3) (-2,-1) };
+
+      \node[scale=1.3] at (-2,0.5) {$\Ocal_{ 3 }$};
+
+
+      % Event reaching form region 3 to region 1
+      \draw[dashed,color=black] (-1.3,0) -- (2,3.3);
+
+      \fill[color=brown] (-1.3,0) circle [radius=0.09];
+
+      \node[below] at (-1.3,-0.05) {$E$};
+
+    \end{tikzpicture}
+
+    \caption{Picture of spacetime}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Localization of algebras}
+
+
+  Previously we were just talking about algebras, but in \textsc{aqft}
+  every algebra is localized in a~particular open region of spacetime
+  with compact closure. We will denotes the algebra of region $\Ocal_{ 1 }$
+  as $\Acal( \Ocal_{ 1 } )$. This algebra represents all quantities
+  that can be measured in such regions. You can imagine that such
+  represents experiment that take finite space and work for finite time.
+
+  Family of all such localized algebras we will call \textbf{net of
+    algebras}. Since regions from previous picture obeys relation
+  $\Ocal_{ 1 } \subset \Ocal_{ 2 }$ we require that
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-05}
+    \Acal( \Ocal_{ 1 } ) \subset \Acal( \Ocal_{ 2 } ),
+  \end{equation}
+  which has natural interpretation. It simply says that every quantity
+  that can be measured in particular region is also measurable in any
+  region that extends the first one.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Causality and problems with construction}
+
+
+  Analogously, since there is no causally link between $\Ocal_{ 1 }$ and
+  $\Ocal_{ 3 }$, we require that measurements of all physical quantities
+  are independent. Algebraically this mean that
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-06}
+    [ A, B ] = 0, \quad
+    \forall A \in \Acal( \Ocal_{ 1 } ), B \in \Acal( \Ocal_{ 3 } ).
+  \end{equation}
+  This and other requirements that we won't mention, that nets of algebras
+  need to obey, should be viewed as axioms in the spirit of axiomatic
+  quantum field theory.
+
+  Construction of a~model fulfilling any such scheme is notoriously hard,
+  see \parencite{Summers-Prespective-on-Constructive-ETC-Ver-2016} for the
+  account. To my knowledge at this moment no
+  model of quantum field theory in the $1 + 3$ dimension interacting with
+  itself or other quantum fields was explicitly constructed. Fortunately,
+  theory of quantum field weakly interacting with classical object
+  were constructed and are general enough to allow us to handle Casimir
+  effect in a variety of cases.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{AQFT suited for Casimir effect}
+
+
+  Herdegen's paper
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}
+  presents a set of axioms tailored for discussion of Casimir effect.
+  Here we can only mention a few of them.
+
+  We start from the assumption that the quantum subsystem $Q$ is defined by
+  its algebra $\Acal$ and representation $\pi$ of this algebra of bounded
+  operators on Hilbert space $\Hcal$.
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-07}
+    \Acal \ni A \mapsto \pi( A ) \in \Bcal( \Hcal ).
+  \end{equation}
+  Algebra $\Acal$ is localized on hyperplane $t = \const$, which due to
+  assumption of adiabatic changes inside the system, pose no problem to
+  the~formalism.
+
+  Time evolution on algebra $\Acal$ is given by family of automorphism
+  $\alpha_{ \HorSpaceThree t }$ and translates to unitary evolution on $\Hcal$:
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-07}
+    \pi( \alpha_{ \HorSpaceThree t } \, A ) \mapsto U( t ) \, \pi( A ) \, U^{ * }( t ), \qquad
+    U( t ) = \exp( i t H ).
+  \end{equation}
+  This relation defines the~hamiltonian of the free quantum system.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{AQFT suited for Casimir effect}
+
+
+  About the macroscopic system $M$ we assume that it changes its states
+  adiabatically, due to some external conditions. The backreaction of
+  quantum subsystem $Q$ to this movement results in transfer of energy to
+  $M$, which manifests itself as Casimir force.
+
+  Let~$a$ be a collective name for parameters describing subsystem~$M$. For
+  two plates~$a$ reduce to one number, distance of the plates.
+  \textsc{aqft} scheme requires that algebra $\Acal$ cannot change when
+  part $M$ is introduced to the free system $Q$ and representation $\pi$
+  can only change into equivalent one.
+
+  By $H_{ a }$ we will denote the hamiltonian of subsystem $Q$ interacting
+  with $M$ in position~$a$. We assume that for every allowed $a$ exists
+  non degenerate eigenstate of $H_{ a }$:
+  \begin{equation}
+    \label{eq:Overview-of-Herdegens-approach-ETC-07}
+    H_{ a } \HorSpaceFive \psi_{ \HorSpaceOne a } =
+    E_{ \HorSpaceOne a } \HorSpaceFive \psi_{ \HorSpaceOne a }.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{AQFT suited for Casimir effect}
+
+
+  In particular, in the presence of $M$ the ground state of the subsystem
+  $Q$ became function of $a$. We will denote it by $\Omega_{ a }$.
+
+  We now switch to Schr\"{o}dinger picture of interaction. If movement of
+  $M$ is given by function $a( t )$, then according to adiabatic
+  approximation we have following evolution of physical state:
+  \begin{equation}
+    \label{eq:Formalizm-algebraiczny-dla-efektu-Casimira-12}
+    \psi( t ) =
+    e^{ \HorSpaceOne i \varphi( t ) } \HorSpaceOne \psi_{ \HorSpaceOne a( t ) }, \qquad
+    \psi( 0 ) = \psi_{ \HorSpaceOne a( 0 ) }.
+  \end{equation}
+  The~expectation value of operator $B$ in the time $t$ is now given by
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    \langle B \rangle_{ t } =
+    ( \psi_{ \HorSpaceOne a( t ) }, B \HorSpaceOne \psi_{ \HorSpaceOne a( t ) } ).
+  \end{equation}
+  It should be notice that it doesn't depends on function $\varphi( t )$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{AQFT suited for Casimir effect}
+
+
+  Casimir energy is now defined as exception value of \alert{free}
+  hamiltonian of subsystem $Q$ in the ground state $\Omega_{ a }$ of interacting
+  system $Q\text{-}M$:
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    \Ecal_{ a } = ( \Omega_{ a }, H \Omega_{ a } ).
+  \end{equation}
+  This choice may seems controversial, but as Herdegen demonstrated in
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}, this is
+  the only unambiguous energy operator present in such settings. We also
+  don't see reasons to consider energy that isn't explicitly defined as
+  expectation value of self-adjoint operator, even when such approaches to
+  Casimir effect are present in the literature, cf. paper by Scardicchio
+  about Casimir effect and Dirac delta potentials
+  \parencite{Scardicchio-Casimir-dynamics-ETC-2005}.
+
+  Casimir force is now defined in the~standard way:
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    \Fcal_{ a } = -\frac{ \partial \Ecal_{ a } }{ \partial a }.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Construction of quasi-free system and expressions
+  for physical quantities}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Quasi-free system}
+
+
+  By \textbf{quasi-free system} we understand system with symplectic space,
+  time evolution on it given by family of symplectic transformations, which
+  also has specified quantum version. This quantum version must be
+  represented in Fock space by canonical variable, that are linear
+  combination of operators $a$ and $a^{ \dagger }$. We also require that
+  quantum hamiltonian is hermitian form in $a$ and $a^{ \dagger }$.
+
+  Andrzej Herdegen and Mariusz Stopa in paper \textit{Global vs~local
+    Casimir effect} \parencite{Herdegen-Stopa-Global-vs-local-ETC-2010}
+  presented following way of treating Casimir effect. We start from
+  free quantum scalar field obeying equation:
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    \left( \partial_{ t }^{ 2 } + h^{ 2 } \right) \phi( t, \vecx ) = 0, \qquad
+    h^{ 2 } = -\Delta.
+  \end{equation}
+  The presence of macroscopic bodies is modeled by perturbing operator
+  $h^{ 2 }$ by adding to it operator of finite rank $V_{ a }$:
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    h_{ a }^{ 2 } = h^{ 2 } + V_{ a }.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Construction of quasi-free system}
+
+
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    h_{ a }^{ 2 } = h^{ 2 } + V_{ a }.
+  \end{equation}
+  This equation define model of subsystem $Q$ interacting with $M$.
+  We should stress that all effects caused by subsystem $M$ are contained
+  in finite-rank operator $V_{ a }$.
+
+  In the next step we need to take square root of operators $h^{ 2 }$
+  and $h_{ a }^{ 2 }$, which means that they need to be positive. This
+  requirement is source of few subtleties in the problem.
+
+  Assuming that square roots $h$ and $h_{ a }$ of $h^{ 2 }$ and $h_{ a }^{ 2 }$
+  exists, we can now use known for a~long time procedure to construct
+  quasi-free theory. One reference in which it could be find is Herdegen
+  paper \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Construction of quasi-free system}
+% !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \begin{tikzpicture}
+
+%       \node (Rcal-h) at (0,0) {$( \Rcal, h )$};
+
+
+%       \node (Lcal-sigma) at (-2,-0.8) {$( \Lcal, \sigma )$};
+
+%       \draw[pointing arrow thin 1, dashed] (Rcal-h) -- (Lcal-sigma);
+
+
+%       \node (LcalTilde-sigma) at (-2,-2) {$( \LcalTilde, \sigma )$};
+
+%       \draw[pointing arrow thin 1, dashed] (Lcal-sigma) -- (LcalTilde-sigma);
+
+
+%       \node (LcalHat-sigmaHat) at (-2,-3.4) {$( \LcalHat, \sigmaHat )$};
+
+%       \draw[pointing arrow thin 1, dashed] (LcalTilde-sigma) --
+%       (LcalHat-sigmaHat);
+
+
+
+
+
+%       \node (Kcal) at (1.8,-2) {$\Kcal$};
+
+%       \draw[pointing arrow thin 1, dashed] (Rcal-h) -- (Kcal);
+
+
+%       \draw[pointing arrow thin 1] (LcalTilde-sigma) -- (Kcal);
+
+%       \node (j) at (0.1,-1.7) {$j( V )$};
+
+
+%       \draw[pointing arrow thin 1] (LcalHat-sigmaHat)
+%       .. controls (-1,-3.5) and (1,-3.2) .. (Kcal);
+
+%       \node (jHat) at (0.1,-2.8) {$\jHat( V )$};
+
+
+
+%       \node (Weyl-algebra) at (-2,-5.2) {$W( \LcalHat \, \, )$};
+
+%       \draw[pointing arrow thin 1] (LcalHat-sigmaHat) -- (Weyl-algebra);
+
+%       \node (Weyl-opeartor) at (-2.5,-4.3) {$W( V )$};
+
+
+%       \node (H-Fock) at (1.8,-5.2) {$\HFock( \Kcal )$};
+
+%       \draw[pointing arrow thin 1] (Kcal) -- (H-Fock);
+
+%       \node (W0-f) at (1.2,-3.6) {$W_{ 0 }( \HorSpaceNine f )$};
+
+%       \draw[pointing arrow thin 1,dashed] (Kcal)
+%       .. controls (2.7,-2.9) and (2.6,-4.3) .. (2.1,-4.9);
+
+
+
+%       \draw[pointing arrow thin 1] (Weyl-algebra) -- (H-Fock);
+
+%       \node at (0,-4.95) {$\pi_{ \; \jHat }$};
+
+%     \end{tikzpicture}
+
+%     \caption{Scheme of construction of the quasi-free theory. Dashed arrow
+%       means that one space is constructed from the other. Continuous arrow
+%       means that we have a function from one space to another.}
+
+
+%     \label{fig:Scheme-of-construction}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Number of particles and Casimir energy}
+
+
+  In paper \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}
+  Herdegen used quite complicated decomposition of field into to creation
+  and annihilation operators to prove two fundamental relations. First, that
+  number of quanta of \alert{free} field created when subsystem $M$ in
+  position $a$ is introduced is given by
+  \begin{equation}
+    \label{eq:Uklad-quasi-swobodny-w-obecnosci-ETC-21}
+    \Ncal_{ a }^{ \vphantom{1} } :=
+    \frac{ 1 }{ 4 } \Tr\big[ \HorSpaceOne h^{ -1/2 } (
+    h_{ \HorSpaceOne a }^{ \vphantom{1} } - h ) h_{ \HorSpaceOne a }^{ -1 }
+    ( h_{ a }^{ \vphantom{1} } - h ) h^{ -1/2 } \HorSpaceTwo \big].
+  \end{equation}
+  Using same method he proved that
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    \Ecal_{ \HorSpaceTwo a } :=
+    ( \GroundStateAOne, H \HorSpaceOne \GroundStateAOne ) =
+    \frac{ 1 }{ 4 }
+    \Tr\big[ ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h )
+    h_{ \HorSpaceOne a }^{ -1 }
+    ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h ) \big].
+  \end{equation}
+  This two equation are crucial to the rest of the talk.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Number of particles and Casimir energy}
+
+  \vspace{-2em}
+
+
+  \begin{align}
+    \label{eq:Uklad-quasi-swobodny-w-obecnosci-ETC-21}
+    \Ncal_{ a }^{ \vphantom{1} }
+    &=
+      \frac{ 1 }{ 4 } \Tr\big[ \HorSpaceOne h^{ -1/2 } (
+      h_{ \HorSpaceOne a }^{ \vphantom{1} } - h )
+      h_{ \HorSpaceOne a }^{ -1 }
+      ( h_{ a }^{ \vphantom{1} } - h ) h^{ -1/2 } \HorSpaceTwo \big]
+      < +\infty, \\
+    \label{eq:Epstein-Glaser-24-A}
+    \Ecal_{ \HorSpaceTwo a }
+    &=
+      ( \GroundStateAOne, H \HorSpaceOne \GroundStateAOne ) =
+      \frac{ 1 }{ 4 }
+      \Tr\big[ ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h )
+      h_{ \HorSpaceOne a }^{ -1 }
+      ( h_{ \HorSpaceOne a }^{ \vphantom{1} } - h ) \big] < +\infty.
+  \end{align}
+  Finitness of number of quanta is fundamental from both physical and
+  mathematical point of view. It guarantee that various representations
+  of elements underplaying algebra $\Acal$ as operators in Hilbert space are
+  equivalent. This allow us to compare results for different values of $a$
+  in meaningful way. Requirements of finitness of Casimir energy is natural
+  assumption of physical nature.
+
+  Another result of paper
+  \parencite{Herdegen-Quantum-backreaction-ETC-Part-I-Pub-2005}
+  is that energy density defined by standard energy-momentum tensor is
+  given by
+  \begin{equation}
+    \label{eq:Lokalna-gestosc-energii-ETC-06}
+    T_{ a }( \varphi, \psi ) =
+    \frac{ 1 }{ 4 } \big( \varphi, ( h_{ a }^{ \vphantom{1} } - h ) \psi \big) +
+    \frac{ 1 }{ 4 } \big( \nabla \varphi, ( h_{ a }^{ -1 } -
+    h^{ -1 }_{ \vphantom{a} } ) \nabla \psi \big).
+  \end{equation}
+  Unfortunately, this will be marginal topic in this talk.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Scalar field and two quasi-delta}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Formulation of the problem}
+
+
+  Again following Herdegen and Stopa
+  \parencite{Herdegen-Stopa-Global-vs-local-ETC-2010}, we start with set of
+  equations
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    \left( \partial_{ t }^{ 2 } + h_{ \veca }^{ 2 } \right) \phi( t, \vecx ) = 0, \qquad
+    h_{ \veca }^{ 2 } = -\Delta + V_{ \veca }.
+  \end{equation}
+  We want to represented model in which scalar field interact with two
+  spherical symmetric bodies, which centers are separated by vector~$\veca$.
+
+  Again following their footsteps we introduce quasi-potential in the form
+  \begin{equation}
+    \label{eq:Model-ukladu-z-dwoma-ETC-08}
+    V_{ \veca }( \vecx, \vecy \HorSpaceThree ) =
+    \sigma( g ) \left[ g\!\left( \vecx - \vecb \HorSpaceFive \right) \,
+      \overline{ g\!\left( \vecy - \vecb \HorSpaceFive \right) }
+      + g\!\left( \vecx + \vecb \HorSpaceFive \right) \,
+      \overline{ g\!\left( \vecy + \vecb \HorSpaceFive \right) } \,
+    \right].
+  \end{equation}
+  To be succinct I~presented quasi-potential in the position representation.
+  We assumed that function $g( \vecx )$ is smooth ($C^{ \infty }( \Rbb^{ 3 } )$),
+  with compact support contained in ball of radius $L$. Value of $L$
+  should be macroscopic, but it particular numeric value is not very
+  important at this level of considerations. The real valued function
+  $\sigma( g )$ will be explained latter.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Formulation of the problem}
+
+
+  For technical reason we can only solve our problem for function whose
+  values are non negative:
+  \begin{equation}
+    \label{eq:Epstein-Glaser-24-A}
+    g( \vecx ) \geq 0.
+  \end{equation}
+
+  \vspace{-1em}
+
+
+
+  Quasi-potential is projection on the two dimensional subspace spanned by
+  functions $g\!\left( \vecx \pm \vecb \HorSpaceFive \right)$.
+
+  Herdegen and Stopa consider two plates system, which due to symmetry
+  within the plane of plates, reduce to one dimensional problem.
+  Because our model, due to rotational symmetry along one axis, is
+  also at some level one dimensional, we can use many the same methods as
+  they before. Still, there are very important differences in behavior
+  of both systems.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Symbolic sketch of quasi-potential}
+
+
+  Below we can see simple, symbolic to some extent, sketch of
+  quasi-potential, with parameter $L = 2$ in appropriate unit system.
+  It show shape of function making one particular object.
+
+  \vspace{5em}
+
+
+
+
+
+  \begin{figure}
+
+    \label{aaa:bbb}
+
+
+    \centering
+
+    \begin{tikzpicture}
+
+      % Smooth functions witch compact support
+      \pic at (-3,0) {smooth function with compact support fill 1};
+
+      \pic at (3,0) {smooth function with compact support fill 1};
+
+
+
+
+
+      % x axis
+      \draw[axis arrow] (-4.5,0) -- (5,0);
+
+      \pic at (5,0) {x mark for horizontal axis 1};
+
+
+      % y axis
+      \draw[axis arrow] (0,-0.2) -- (0,2.3);
+
+      \pic at (0,2.3) {V mark for vertical axis 1};
+
+      \node[right] at (0,-0.2) {$0$};
+
+
+
+
+
+      % Thicks on x axis
+      \pic at (-4,0) {tick x axis thin};
+
+      \node[below] at (-4,0) {$-4$};
+
+
+      \pic at (-3,0) {tick x axis thin};
+
+      \node[below] at (-3,0) {$-3$};
+
+
+      \pic at (-2,0) {tick x axis thin};
+
+      \node[below] at (-2,0) {$-2$};
+
+
+      \pic at (-1,0) {tick x axis thin};
+
+      \node[below] at (-1,0) {$-1$};
+
+
+      \pic at (1,0) {tick x axis thin};
+
+      \node[number below x axis] at (1,0) {$1$};
+
+
+      \pic at (2,0) {tick x axis thin};
+
+      \node[number below x axis] at (2,0) {$2$};
+
+
+      \pic at (3,0) {tick x axis thin};
+
+      \node[number below x axis] at (3,0) {$3$};
+
+
+      \pic at (4,0) {tick x axis thin 1};
+
+      \node[number below x axis] at (4,0) {$4$};
+
+
+      % \pic at (5,0) {tick x axis thin};
+
+      % \node[below] at (5,0) {$5$};
+
+
+
+
+
+      % Ticks on y axis
+      \pic at (0,0.5) {tick y axis thin 1};
+
+      \node[node scale small 2,left] at (0,0.5) {$0.5$};
+
+
+      \pic at (0,1) {tick y axis thin};
+
+      \node[left] at (0,1) {$1$};
+
+
+      \pic at (0,1.5) {tick y axis thin 1};
+
+      \node[node scale small 2,left] at (0,1.5) {$1.5$};
+
+    \end{tikzpicture}
+
+    \caption{Symbolic sketch of quasi-potential $V_{ \veca }$}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Few basic properties}
+
+
+  We need to assume that distance between center of objects
+  $a = \absOne{ \veca }$, need be bigger than upper bound of it diameter,
+  which is given by parameter~$L$.
+
+  Since our quasi-potential $V_{ a }$ is operator of finite order,
+  Kato-Rellich and Kato-Rosenblum guaranties that $h_{ a }^{ 2 }$ is
+  self-adjoint operator and that absolutely continuous spectrum of
+  $h^{ 2 }$ and $h_{ a }^{ 2 }$ are unitary equivalent. After some
+  computation we can prove that both $h^{ 2 }$ and $h_{ a }^{ 2 }$ have only
+  absolutely continuous spectrum equal to $[ 0, +\infty )$, which open
+  the~way to use scattering theory method to solve this problem. But,
+  to show how to do it, we need introduce more functions.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Construction of quasi-free system}
+
+
+  Because function $g( \vecx )$ has spherical symmetry, we can replace it
+  by function of one real variable, that we will be denoting simply
+  by $g( x )$. Simple calculation shows that Fourier transform $g( \vecx )$,
+  which is also spherically symmetric, can be expressed as
+  \begin{equation}
+    \label{eq:Model-ukladu-z-dwoma-ETC-09}
+    \gHat( p ) = \gHat( \vecp \HorSpaceFour ) =
+    \frac{ 1 }{ \sqrt{ 2 \pi } }
+    \int_{ -\infty }^{ +\infty } dx \, \frac{ \sin( p x ) }{ p x }
+    \HorSpaceTwo x^{ 2 } g( x ).
+  \end{equation}
+  We again replaced function on $\Rbb^{ 3 }$ by function on $\Rbb$.
+
+  We now define a bunch of functions.
+  \begin{align}
+    \label{eq:Epstein-Glaser-24-A}
+    M_{ p }
+    &= \gHat( p )^{ 2 }, \\
+    \checkMx
+    &=
+      \frac{ 1 }{ \sqrt{ 2 \pi } }
+      \int\limits_{ -\infty }^{ +\infty } dp \, e^{ i p x } M_{ p }.
+  \end{align}
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+  \vspace{-2em}
+
+
+  \begin{align}
+    \chi( g )
+    &=
+      \frac{ 2 \pi }{ \alpha }
+      \int\limits_{ -\infty }^{ +\infty } dp \, M_{ p } =
+      \sqrt{ 2 \pi }^{ 3 } \frac{ \checkMzero }{ \alpha }, \\
+    \sigma( g )^{ -1 }
+    &=
+      -\alpha ( M_{ 0 } + \chi( g ) ), \\
+    h( x )
+    &=
+      \frac{ \sin( x ) }{ x }.
+  \end{align}
+  Form of the $\sigma( g )$ shown above is motivated by problem of rescaling
+  of our model. Parameter $\alpha$ is well know from theory of $\delta$ potentials
+  and describe scattering length in such system. This is relevant
+  since when we shrink size of our bodies to the point, in the limit
+  our problem became this of two $\delta$ system.
+
+
+
+
+  % Unfortunately we need few more functions. I must omit few nontrivial
+  % steps, so please believe me that this notation have sens.
+  % \begin{align}
+  %   \label{eq:Epstein-Glaser-24-A}
+  %   t( i k )
+  %   &=
+  %     \alpha + 2\pi \int_{ -\infty }^{ +\infty } dp \, \frac{ k^{ 2 } }{ k^{ 2 } + p^{ 2 } }
+  %     M_{ p } \\
+  %   u( i k )
+  %   &=
+  %     2\pi^{ 2 } M_{ i k } \frac{ e^{ -ka } }{ a }.
+  % \end{align}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  % We now define bunch functions
+  % \begin{align}
+  %   \label{eq:Epstein-Glaser-24-A}
+  %   M_{ p }
+  %   &= \gHat( p )^{ 2 }, \\
+  %   \checkMx
+  %   &=
+  %     \frac{ 1 }{ \sqrt{ 2 \pi } }
+  %     \int\limits_{ -\infty }^{ +\infty } dp \, e^{ i p x } M_{ p }, \\
+  %   \chi( g )
+  %   &=
+  %     \frac{ 2 \pi }{ \alpha }
+  %     \int\limits_{ -\infty }^{ +\infty } dp M_{ p } =
+  %     \sqrt{ 2 \pi }^{ 3 } \frac{ \checkMzero }{ \alpha }, \\
+  %   \sigma( g )^{ -1 }
+  %   &=
+  %     -\alpha ( M_{ 0 } + \chi( g ) ).
+  % \end{align}
+  % Form of the $\sigma( g )$ shown above is motivated by problem of recycling our
+  % model.
+
+  Unfortunately we need few more functions. I must omit few nontrivial
+  steps, so please believe me that this notation make sens.
+  \begin{align}
+    \label{eq:Epstein-Glaser-24-A}
+    t( i k )
+    &=
+      \alpha + 2\pi \int\limits_{ -\infty }^{ +\infty } dp \,
+      \frac{ k^{ 2 } }{ k^{ 2 } + p^{ 2 } } M_{ p } \\
+    u( i k )
+    &=
+      2\pi^{ 2 } M_{ i k } \frac{ e^{ -ka } }{ a }.
+  \end{align}
+
+  \vspace{-1em}
+
+
+
+  Now, using in the intermediate steps some methods of scattering theory
+  and few other tricks, we can wrote number of particles and Casimir
+  energy using one equation:
+  \begin{equation}
+    \label{eq:Energia-i-liczba-czastek-dla-modelu-ETC-31}
+    \Pcal_{ \tau }( a ) =
+    16 \Real \int\limits_{ \Rbb_{ + }^{ \, 2 } } dk \, dp \,
+    \frac{ p^{ \HorSpaceOne 2 - \tau } }{ ( p + i k )^{ 2 } } M_{ \HorSpaceOne p }
+    \frac{ t( i k ) + h( p a ) u( i k ) }{ t( i k )^{ 2 } - u( i k )^{ 2 } }.
+  \end{equation}
+  For $\tau = 0$ we get energy and $\tau = 1$ number of created particles.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+  \vspace{-1em}
+
+
+  \begin{equation}
+    \label{eq:Energia-i-liczba-czastek-dla-modelu-ETC-31}
+    \Pcal_{ \tau }( a ) =
+    16 \Real \int\limits_{ \Rbb_{ + }^{ \, 2 } } dk \, dp \,
+    \frac{ p^{ \HorSpaceOne 2 - \tau } }{ ( p + i k )^{ 2 } } M_{ \HorSpaceOne p }
+    \frac{ t( i k ) + h( p a ) u( i k ) }{ t( i k )^{ 2 } - u( i k )^{ 2 } }.
+  \end{equation}
+  It is can be shown that both integrals in above equation are convergent.
+
+  We now fix our attention to the energy. By taking limit $a \nearrow +\infty$
+  we identify self-energy of plates, i.e. energy of field clustering around
+  two bodies. After subtracting it from full Casimir energy, we arrive
+  at interaction energy:
+  \begin{equation}
+    \label{eq:Energia-i-liczba-czastek-dla-modelu-ETC-34}
+    \EInt( a ) =
+    16 \, \Real \int\limits_{ \Rbb_{ + }^{ \, 2 } } dp \, dk \,
+    \frac{ p^{ \HorSpaceOne 2 } }{ ( p + i k )^{ 2 } } \, M_{ \HorSpaceOne p } \,
+    \frac{ u( i k )^{ 2 } + h( p a ) t( i k ) u( i k ) }{
+      t( i k ) [ t( i k )^{ 2 } - u( i k )^{ 2 } ] }.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Rescalling of the model}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  \begin{equation}
+    \label{eq:Energia-i-liczba-czastek-dla-modelu-ETC-34}
+    \EInt( a ) =
+    16 \, \Real \int\limits_{ \Rbb_{ + }^{ \, 2 } } dp \, dk \,
+    \frac{ p^{ \HorSpaceOne 2 } }{ ( p + i k )^{ 2 } } \, M_{ \HorSpaceOne p } \,
+    \frac{ u( i k )^{ 2 } + h( p a ) t( i k ) u( i k ) }{
+      t( i k ) [ t( i k )^{ 2 } - u( i k )^{ 2 } ] }.
+  \end{equation}
+  Since this formula is quite to hard to understand when bodies have finite
+  sizes, we analyzed limit case of rescaled model.
+
+  Rescaled family of models is defined by replacing $g( \vecx )$ by family
+  of functions
+  \begin{equation}
+    \label{eq:Energia-i-liczba-czastek-dla-modelu-ETC-34}
+    g_{ \lambda }( \vecx ) =
+    \lambda^{ -3 } g\left( \tfrac{ \vecx }{ \lambda } \right), \qquad
+    \lambda \in ( 0, 1 ].
+  \end{equation}
+  It should be noted that function $g_{ \lambda }( \vecx )$, $\lambda$ fixed, have the
+  same properties that we demand from function $g( \vecx )$, so all
+  previous results folds in this case.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  Since we are only interesting in limit case, we make two assumptions,
+  that greatly simplify computations:
+  \begin{equation}
+    \label{eq:Energia-i-liczba-czastek-dla-modelu-ETC-34}
+    L = \frac{ 2 \pi^{ 2 } }{ \alpha } \quad
+    \lambda \in \left( 0, \tfrac{ 1 }{ 2 } \right).
+  \end{equation}
+  First of these assumptions is the reason why equations in the following
+  part of the talk \alert{don't} contains parameter~$L$.
+
+  When $\lambda \searrow 0$ our model converge in strong resolvent sens to scalar field
+  interacting with two $\delta$-s. This model is well known in literature, see
+  monograph by S. Albeverio et al. \parencite{}.
+
+
+  % \begin{equation}
+  %   \label{eq:Energia-Casimira-dla-rodziny-ETC-09}
+  %   \begin{split}
+  %     &\EInt( a, \lambda ) = \\
+  %     &=
+  %       \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
+  %       \int\limits_{ 0 }^{ +\infty } \!
+  %       \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
+  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+  %       \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
+  %       \int\limits_{ 0 }^{ +\infty } \!
+  %       \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
+  %       e^{ -4 l } \big] }
+  %       { ( \gamma + l )^{ 2 }
+  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
+  %       \, - \\[0.5em]
+  %     &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
+  %       \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
+  %       \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+  %       \frac{ 1 }{ \gamma } \!
+  %       \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
+  %       ( \gamma + l )^{ 2 } - e^{ -2 l } } dl + R( a, \lambda ) \Bigg],
+  %   \end{split}
+  % \end{equation}
+  % where $\gamma = ( \alpha a ) / ( 2 \pi^{ 2 } ) > 1$. Condition $\gamma > 1$ allow us to
+  % construct quasi-free theory for $\lambda \in ( 0, 1 ]$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+  % \vspace{-2em}
+
+
+  Our main result is asymptotic expansion of interaction energy:
+  \begin{equation}
+    \label{eq:Energia-Casimira-dla-rodziny-ETC-09}
+    \begin{split}
+      &\EInt( a, \lambda ) = \\
+      &=
+        \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
+        e^{ -4 l } \big] }
+        { ( \gamma + l )^{ 2 }
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
+        \, - \\[0.5em]
+      &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ 1 }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
+        ( \gamma + l )^{ 2 } - e^{ -2 l } } dl + R( a, \lambda ) \Bigg],
+    \end{split}
+  \end{equation}
+  Function $\chi( g ) > 0$ was defined in equation \eqref{}. Parameter
+  $b_{ 1 }$ is give by explicit, but quite convoluted integrals of function
+  $g( \vecx )$ (notice that it is not dependent on $\lambda$) and fulfill
+  inequality $0 < b_{ 1 } \leq \alpha^{ -1 }$.
+
+  You should notice that this formula is \alert{model dependent}. Two terms
+  in expansion ``remember'' how we approximated $\delta$-s interactions.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+  \vspace{-2em}
+
+
+  \begin{equation}
+    \label{eq:Energia-Casimira-dla-rodziny-ETC-09}
+    \begin{split}
+      &\EInt( a, \lambda ) = \\
+      &=
+        \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
+        e^{ -4 l } \big] }
+        { ( \gamma + l )^{ 2 }
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
+        \, - \\[0.5em]
+      &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ 1 }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
+        ( \gamma + l )^{ 2 } - e^{ -2 l } } dl + R( a, \lambda ) \Bigg],
+    \end{split}
+  \end{equation}
+  To analyse formula \eqref{} we used combination of analytical and numeric
+  methods. With very high degree of probability we established that \eqref{}
+  predicts repulsive force that very quickly vanish with the distance.
+  This is in strict contrast with previous work of A. Sccardicchio, who
+  using version of zero-point energy derive \alert{universal} and
+  \alert{attractive} Casimir force in such system.
+
+
+  % Function $\chi( g ) > 0$ was defined in equation \eqref{}. Parameter
+  % $b_{ 1 }$ is give by explicit, but quite convoluted integrals of function
+  % $g( \vecx )$ (notice independence of parameter $\lambda$) and
+  % fulfill inequality $0 < b_{ 1 } \leq \alpha^{ -1 }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+  \vspace{-2em}
+
+
+  \begin{equation}
+    \label{eq:Energia-Casimira-dla-rodziny-ETC-09}
+    \begin{split}
+      &\EInt( a, \lambda ) = \\
+      &=
+        \frac{ 2 \alpha }{ \pi^{ 3 } } \! \Bigg[ \frac{ \chi }{ \lambda } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ e^{ -2 l } \, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ b_{ \HorSpaceOne 1 } \chi }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l^{ 2 } \big[ 3 ( \gamma + l )^{ 2 } e^{ -2 l } -
+        e^{ -4 l } \big] }
+        { ( \gamma + l )^{ 2 }
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big]^{ 2 } } dl
+        \, - \\[0.5em]
+      &- \! \frac{ 2 }{ \gamma } \! \int\limits_{ 0 }^{ +\infty } \!
+        \frac{ l e^{ -2 l }\, dl }{ ( \gamma + l )
+        \big[ ( \gamma + l )^{ 2 } - e^{ -2 l } \big] } \! + \!
+        \frac{ 1 }{ \gamma } \!
+        \int\limits_{ 0 }^{ +\infty } \! \frac{ ( 1 - l ) e^{ -2 l } }{
+        ( \gamma + l )^{ 2 } - e^{ -2 l } } dl + R( a, \lambda ) \Bigg],
+    \end{split}
+  \end{equation}
+  The four integrands in equation above, from left two right, all taken
+  with sign plus, we denoted as $I_{ 1 }$, $I_{ 2 }$, $I_{ 3 }$ and $I_{ 4 }$.
+  At the next slides we plot results of numerical computations of Casimir
+  energy for which we assumed:
+  \begin{equation}
+    \frac{ \chi }{ \lambda } = 10.0, \qquad
+    \chi b_{ 1 } = 1.0.
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  \begin{figure}
+
+    \label{fig:aaa}
+
+    \centering
+
+
+    \includegraphics[scale=0.525]
+    {./Presentation-pictures/Terms\_of\_asymptotic\_expansion\_01.png}
+
+    \caption{Plot of four integrands from equation \eqref{}, taken with
+      plus sign}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  \begin{figure}
+
+    \label{fig:aaa}
+
+    \centering
+
+
+    \includegraphics[scale=0.525]
+    {./Presentation-pictures/Casimir\_energy\_asymptotic\_expansion\_01.png}
+
+    \caption{Plot of asymptotic expansion of Casimir energy}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  \begin{figure}
+
+    \label{fig:aaa}
+
+    \centering
+
+
+    \includegraphics[scale=0.525]
+    {./Presentation-pictures/Casimir\_energy\_Scardicchio\_01.png}
+
+    \caption{Casimir energy for two delta system computed by
+      A.~Sccardicchio}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  We also computed local energy density. Interaction part of it
+  in the limit $\lambda \searrow 0$ is shown on the next slide (not the shortest
+  formula that you can imagine). More precisely, it is a regular
+  distribution on the set on the set $\Rbb^{ 3 } \setminus \{ -\veca / 2, \veca / 2\}$
+  and this equation show this part of it.
+  % \begin{equation}
+  %   \label{eq:Lokalna-gestosc-energii-w-granicy-ETC-14} % OK
+  %   \begin{split}
+  %     \EIntDenLim
+  %     &( \veca, \vecx \HorSpaceOne ) =
+  %       \frac{ 1 }{ 8\pi^{ 2 } }
+  %       \int_{ 0 }^{ +\infty } dl \,
+  %       \frac{ e^{ -2 l } }{ ( \gamma + l ) [ ( \gamma + l )^{ 2 } - e^{ -2 l } ] } \, \times
+  %     \\[0.5em]
+  %     &\hspace{1em}
+  %       \times \Bigg[ \frac{ e^{ -2 l \absTwo{ \vecx + \vecb } / a } }{
+  %       \absTwo{ \vecx + \vecb }^{ 4 } }
+  %       \left( 1 + 2 l \frac{ \absTwo{ \vecx + \vecb } }{ a } \right) +
+  %       \frac{ e^{ -2 l \absTwo{ \vecx - \vecb } / a } }{
+  %       \absTwo{ \vecx - \vecb }^{ 4 } } \left( 1 +
+  %       2 l \frac{ \absTwo{ \vecx - \vecb } }{ a } \right) \Bigg] \, -
+  %     \\[0.5em]
+  %     &- \frac{ 1 }{ 4 \pi^{ 2 } } \int_{ 0 }^{ +\infty } dl \,
+  %       \frac{ e^{ -l } }{ ( \gamma + l )^{ 2 } - e^{ -2 l } }
+  %       \frac{ e^{ -l ( \absOne{ \vecx + \vecb } + |\,
+  %       \vecx - \vecb\, | ) / a } }{ |\, \vecx + \vecb\, | \absTwo{ \vecx -
+  %       \vecb } } \, \times \\[0.5em]
+  %     &\hspace{3.5em}
+  %       \times \Bigg[ \frac{ l^{ 2 } }{ a^{ 2 } } \Bigg( 1 - \frac{ (
+  %       \vecx + \veca ) \cdot ( \vecx - \veca ) }{ |\, \vecx
+  %       + \vecb\, | \absTwo{ \vecx - \vecb } } \Bigg) \, - \\[0.5em]
+  %     &\hspace{5.25em}
+  %       - \frac{ ( \vecx + \vecb \HorSpaceSix ) \cdot
+  %       ( \vecx - \vecb \HorSpaceSix ) }{
+  %       \absOne{ \vecx + \vecb } \HorSpaceFive
+  %       \absOne{ \vecx - \vecb } }
+  %       \frac{ 1 + l ( | \vecx
+  %       + \vecb | + | \vecx - \vecb | ) / a }{ | \vecx +
+  %       \vecb | \, \absOne{ \vecx - \vecb } } \Bigg].
+  %   \end{split}
+  % \end{equation}
+
+  One should noted that local density of interaction energy is model
+  \alert{independent}, which preclude computation of global energy by
+  integration of it local density. We interpret it, roughly, as result of
+  nontrivial part of energy belonging to it singular support
+  $\{ -\veca / 2, \veca / 2 \}$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+  \vspace{-1em}
+
+
+  % We also computed local energy density. Interaction part of it
+  % in the limit $\lambda \searrow 0$ is shown on the next slide (not the shortest
+  % formula that you can imagine). More precisely, it is a regular
+  % distribution on the set on the set $\Rbb^{ 3 } \setminus \{ -\veca / 2, \veca / 2\}$
+  % and this equation show this part of it.
+  \begin{equation}
+    \label{eq:Lokalna-gestosc-energii-w-granicy-ETC-14} % OK
+    \begin{split}
+      \EIntDenLim
+      &( \veca, \vecx \HorSpaceOne ) =
+        \frac{ 1 }{ 8\pi^{ 2 } }
+        \int_{ 0 }^{ +\infty } dl \,
+        \frac{ e^{ -2 l } }{ ( \gamma + l ) [ ( \gamma + l )^{ 2 } - e^{ -2 l } ] } \, \times
+      \\[0.5em]
+      &\hspace{1em}
+        \times \Bigg[ \frac{ e^{ -2 l \absTwo{ \vecx + \vecb } / a } }{
+        \absTwo{ \vecx + \vecb }^{ 4 } }
+        \left( 1 + 2 l \frac{ \absTwo{ \vecx + \vecb } }{ a } \right) +
+        \frac{ e^{ -2 l \absTwo{ \vecx - \vecb } / a } }{
+        \absTwo{ \vecx - \vecb }^{ 4 } } \left( 1 +
+        2 l \frac{ \absTwo{ \vecx - \vecb } }{ a } \right) \Bigg] \, -
+      \\[0.5em]
+      &- \frac{ 1 }{ 4 \pi^{ 2 } } \int_{ 0 }^{ +\infty } dl \,
+        \frac{ e^{ -l } }{ ( \gamma + l )^{ 2 } - e^{ -2 l } }
+        \frac{ e^{ -l ( \absOne{ \vecx + \vecb } + |\,
+        \vecx - \vecb\, | ) / a } }{ |\, \vecx + \vecb\, | \absTwo{ \vecx -
+        \vecb } } \, \times \\[0.5em]
+      &\hspace{3.5em}
+        \times \Bigg[ \frac{ l^{ 2 } }{ a^{ 2 } } \Bigg( 1 - \frac{ (
+        \vecx + \veca ) \cdot ( \vecx - \veca ) }{ |\, \vecx
+        + \vecb\, | \absTwo{ \vecx - \vecb } } \Bigg) \, - \\[0.5em]
+      &\hspace{5.25em}
+        - \frac{ ( \vecx + \vecb \HorSpaceSix ) \cdot
+        ( \vecx - \vecb \HorSpaceSix ) }{
+        \absOne{ \vecx + \vecb } \HorSpaceFive
+        \absOne{ \vecx - \vecb } }
+        \frac{ 1 + l ( | \vecx
+        + \vecb | + | \vecx - \vecb | ) / a }{ | \vecx +
+        \vecb | \, \absOne{ \vecx - \vecb } } \Bigg].
+    \end{split}
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Computation of number of particles and energy}
+
+
+  We should also note, that as a byproduct of our computation we find
+  self-energy of single $\delta$, that is identical to that find by very
+  different methods by L. Pizzochero and D. Fermi \parencite{}.
+
+  This confirms what Herdegen and Stopa found before. Namely, that relation
+  between Casimir energy and local energy density is not straightforward at
+  all and computation need to be done with grate care. And that local energy
+  density is more ``predicable'' than global one.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{What next?}
+
+
+  The most natural step now is to try compute Casimir effect for system
+  of scalar field and single sphere. Basic analysis of it was already done
+  in our master thesis, where main stumbling block was lack of prove
+  that limit $\lambda \searrow 0$ could be taken. For fixed model at least numerical
+  results should be in our reach, but we shouldn't count our chicken
+  before they hatch.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{References}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Computation of number of particles and energy}
+
+
+  % We also computed local energy density. Interaction part of it
+  % in the limit $\lambda \searrow 0$ is shown on the next slide (not the shortest
+  % formula that you can imagine). More precisely, it is a regular
+  % distribution on the set on the set $\Rbb^{ 3 } \setminus \{ -\veca / 2, \veca / 2\}$
+  % and this equation show this part of it.
+  % \begin{equation}
+  %   \label{eq:Lokalna-gestosc-energii-w-granicy-ETC-14} % OK
+  %   \begin{split}
+  %     \EIntDenLim
+  %     &( \veca, \vecx \HorSpaceOne ) =
+  %       \frac{ 1 }{ 8\pi^{ 2 } }
+  %       \int_{ 0 }^{ +\infty } dl \,
+  %       \frac{ e^{ -2 l } }{ ( \gamma + l ) [ ( \gamma + l )^{ 2 } - e^{ -2 l } ] } \, \times
+  %     \\[0.5em]
+  %     &\hspace{1em}
+  %       \times \Bigg[ \frac{ e^{ -2 l \absTwo{ \vecx + \vecb } / a } }{
+  %       \absTwo{ \vecx + \vecb }^{ 4 } }
+  %       \left( 1 + 2 l \frac{ \absTwo{ \vecx + \vecb } }{ a } \right) +
+  %       \frac{ e^{ -2 l \absTwo{ \vecx - \vecb } / a } }{
+  %       \absTwo{ \vecx - \vecb }^{ 4 } } \left( 1 +
+  %       2 l \frac{ \absTwo{ \vecx - \vecb } }{ a } \right) \Bigg] \, -
+  %     \\[0.5em]
+  %     &- \frac{ 1 }{ 4 \pi^{ 2 } } \int_{ 0 }^{ +\infty } dl \,
+  %       \frac{ e^{ -l } }{ ( \gamma + l )^{ 2 } - e^{ -2 l } }
+  %       \frac{ e^{ -l ( \absOne{ \vecx + \vecb } + |\,
+  %       \vecx - \vecb\, | ) / a } }{ |\, \vecx + \vecb\, | \absTwo{ \vecx -
+  %       \vecb } } \, \times \\[0.5em]
+  %     &\hspace{3.5em}
+  %       \times \Bigg[ \frac{ l^{ 2 } }{ a^{ 2 } } \Bigg( 1 - \frac{ (
+  %       \vecx + \veca ) \cdot ( \vecx - \veca ) }{ |\, \vecx
+  %       + \vecb\, | \absTwo{ \vecx - \vecb } } \Bigg) \, - \\[0.5em]
+  %     &\hspace{5.25em}
+  %       - \frac{ ( \vecx + \vecb \HorSpaceSix ) \cdot
+  %       ( \vecx - \vecb \HorSpaceSix ) }{
+  %       \absOne{ \vecx + \vecb } \HorSpaceFive
+  %       \absOne{ \vecx - \vecb } }
+  %       \frac{ 1 + l ( | \vecx
+  %       + \vecb | + | \vecx - \vecb | ) / a }{ | \vecx +
+  %       \vecb | \, \absOne{ \vecx - \vecb } } \Bigg].
+  %   \end{split}
+  % \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Twierdzenie o~przedłużaniu dystrybucji}
+
+
+%   \begin{figure}
+
+%     \label{aaa:bbb}
+
+
+%     \centering
+
+%     \begin{tikzpicture}
+
+
+%       \fill[color=blue] (5.75,1.85) -- (5.75,3.15) -- (1.5,3.15) --
+%       (1.5,1.85) -- cycle;
+
+%       \fill[color=green] (1.5,4) -- (1,4) -- (1,1) -- (1.5,1) -- cycle;
+
+%       \fill[color=brown] (1,3.75) -- (0.84,3.75) -- (0.84,1.25) --
+%       (1,1.25) -- cycle;
+
+
+%       \draw[color=black,line width=0.7] (1.7,3.15) -- (2,1.85);
+
+%       \draw[color=black,line width=0.7] (2.3,3.15) -- (2.6,1.85);
+
+%       \draw[color=black,line width=0.7] (2.9,3.15) -- (3.2,1.85);
+
+%       \draw[color=black,line width=0.7] (3.5,3.15) -- (3.8,1.85);
+
+%       \draw[color=black,line width=0.7] (4.1,3.15) -- (4.4,1.85);
+
+%       \draw[color=black,line width=0.7] (4.7,3.15) -- (5,1.85);
+
+%       \draw[color=black,line width=0.7] (5.3,3.15) -- (5.6,1.85);
+
+
+%       \fill[color=gray] (-5,-0.5) -- (5,-0.5) -- (5,5) -- (4.5,5) --
+%       (4.5,0) -- (-5,0) -- cycle;
+
+
+
+
+
+
+
+%       \fill[color=brown] (-0.08,0) rectangle (0.08,2.5);
+
+%       % % y axis
+%       % \draw[axis arrow] (0,-1.3) -- (0,1.5);
+
+%       % % x axis
+%       % \draw[axis arrow] (-0.3,0) -- (10,0);
+
+
+%       % \node[number on the right and below] at (0,0) {$0$};
+
+
+
+%       % % Thicks on x axis
+%       % \pic at (0.5,0) {tick x axis thin 1};
+
+%       % \node[number below x axis] at (0.5,0) {$0.5$};
+
+
+%       % \pic at (1,0) {tick x axis thin};
+
+%       % \node[number below x axis] at (1,0) {$1$};
+
+
+%       % \pic at (1.5,0) {tick x axis thin 1};
+
+%       % \node[number below x axis] at (1.5,0) {$1.5$};
+
+
+%       % \pic at (2,0) {tick x axis thin};
+
+%       % \pic at (2.5,0) {tick x axis thin};
+
+%       % \pic at (3,0) {tick x axis thin};
+
+
+%       % % Ticks on y axis
+%       % \pic at (0,-1) {tick y axis thin};
+
+%       % \node[number on the left of y axis] at (0,-1) {$-1$};
+
+
+%       % \pic at (0,-0.5) {tick y axis thin 1};
+
+%       % \node[number on the left of y axis] at (0,-0.5) {$-0.5$};
+
+
+%       % \pic at (0,0.5) {tick y axis thin 1};
+
+%       % \pic at (0,1) {tick y axis thin};
+
+
+
+
+%       % % Graph of sin function
+%       % \draw[color=blue] (0,0) -- (0.05,0.049) -- (0.1,0.099) -- (0.15,0.149) --
+%       % (0.2,0.198) -- (0.25,0.247) -- (0.3,0.295) -- (0.35,0.342) --
+%       % (0.4,0.389) -- (0.45,0.434) -- (0.5,0.479) -- (0.55,0.522) --
+%       % (0.6,0.564) -- (0.65,0.605) -- (0.7,0.644) -- (0.75,0.681) --
+%       % (0.8,0.717) -- (0.85,0.751) -- (0.9,0.783) -- (0.95,0.813) --
+%       % (1,0.841) -- (1.05,0.867) -- (1.1,0.891) -- (1.15,0.912) -- (1.2,0.932) --
+%       % (1.25,0.948) -- (1.3,0.963) -- (1.35,0.975) -- (1.4,0.985) --
+%       % (1.45,0.992) -- (1.5,0.997) -- (1.55,0.999) -- (1.6,0.999) --
+%       % (1.65,0.996) -- (1.7,0.991) -- (1.75,0.983) -- (1.8,0.973) --
+%       % (1.85,0.961) -- (1.9,0.946) -- (1.95,0.928) -- (2.0,0.909) --
+%       % (2.05,0.887) -- (2.1,0.863) -- (2.15,0.836) -- (2.2,0.808) --
+%       % (2.25,0.778) -- (2.3,0.745) -- (2.35,0.711) -- (2.4,0.675) --
+%       % (2.45,0.637) -- (2.5,0.598) -- (2.55,0.557) -- (2.6,0.515) --
+%       % (2.65,0.472) -- (2.7,0.427) -- (2.75,0.381) -- (2.8,0.334) --
+%       % (2.85,0.287) -- (2.9,0.239) -- (2.95,0.19) -- (3,0.141) --
+%       % (3.05,0.091) -- (3.1,0.041) -- (10,0);
+
+
+%     \end{tikzpicture}
+
+%     \caption{Funkcja $\sin$}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{The end}
+
+  \vspace{7em}
+
+
+  \begin{center}
+
+    \Large
+
+    Thank you. \\
+    Are there any questions?
+
+  \end{center}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}

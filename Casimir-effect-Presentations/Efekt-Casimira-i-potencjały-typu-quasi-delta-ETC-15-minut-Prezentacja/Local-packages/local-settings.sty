@@ -1,0 +1,330 @@
+% ####################################################################
+% Local settings and commands for LaTeX files
+
+\ProvidesPackage{local-settings}
+% ####################################################################
+
+
+\newcommand{\email}{\texttt{kziemianfvt@gmail.com}}
+
+
+% ############################
+% Functions
+
+\newcommand{\checkMx}{\check{M}_{ \HorSpaceTwo x }}
+\newcommand{\checkMzero}{\check{M}_{ \HorSpaceOne 0 }}
+
+\DeclareMathOperator{\ci}{ci}
+
+\newcommand{\jHat}{\widehat{j}}
+
+\newcommand{\fHat}{\widehat{f}}
+
+\newcommand{\gHat}{\widehat{g}}
+
+\newcommand{\kHat}{\hat{k}}
+
+\newcommand{\LHat}{\widehat{L}}
+
+\newcommand{\SHat}{\widehat{S}}
+
+\newcommand{\THat}{\widehat{T}}
+
+
+
+
+
+
+
+
+% ##################
+% Operator for functions
+
+\newcommand{\Ub}{U_{ \, \vecb } \;}
+\newcommand{\Umb}{U_{ -\vecb } \;}
+
+
+
+
+
+% ############################
+% Operators
+
+\newcommand{\Gtilde}{\widetilde{G}}
+
+\newcommand{\htilde}{\widetilde{h}}
+
+
+
+
+
+
+% ############################
+% Physical quantities
+
+
+% ##################
+% Energy
+
+\newcommand{\BFermiPiaBoundary}{B_{ \HorSpaceFour \text{FP} }^{
+    \HorSpaceOne u }}
+
+\newcommand{\BFermiPiaBoundaryEps}{B_{ \HorSpaceFour \text{FP} }^{
+    \HorSpaceThree \varepsilon, \HorSpaceOne u }}
+
+\newcommand{\BFermiPiaRen}{B_{ \HorSpaceFour \text{FP}, \, \text{ren} }}
+
+\newcommand{\ECasimir}{\mathcal{E}_{ \, \textrm{Casi} }}
+
+\newcommand{\ECasimirZero}{\mathcal{E}_{ \, 0 }}
+
+\newcommand{\EDirich}{E_{ \HorSpaceFive \textrm{Dir} }}
+
+\newcommand{\EFermiPiaBulk}{E_{ \HorSpaceFour \text{FP} }^{
+    \HorSpaceThree u }}
+
+\newcommand{\EFermiPiaBulkEps}{E_{ \HorSpaceSix \text{FP} }^{
+    \HorSpaceSix \varepsilon, \HorSpaceThree u }}
+
+\newcommand{\EFermiPiaRen}{\mathcal{E}_{ \, \text{FP}, \HorSpaceFive
+    \textrm{ren} }}
+
+\newcommand{\EFermiPiaU}{\mathcal{E}_{ \HorSpaceThree \text{FP} }^{
+    \HorSpaceThree u }}
+
+\newcommand{\EInt}{\mathcal{E}_{ \, \textrm{int}}}
+
+\newcommand{\EMink}{E_{ \HorSpaceFive \textrm{Min} }}
+
+\newcommand{\ESelf}{\mathcal{E}_{ \, \textrm{self}}}
+
+\newcommand{\EShi}{E_{ \HorSpaceTwo \textrm{shi} }}
+
+\newcommand{\EShiI}{E_{ \textrm{shi}, \, i }}
+
+\newcommand{\ESprZerSingle}{\mathcal{E}_{ \, \textrm{SP}, \,
+    \textrm{single} }}
+
+\newcommand{\ETotal}{E_{ \HorSpaceSeven \textrm{tot} }}
+
+\newcommand{\ETotalA}{\mathcal{E}_{ \, a }}
+
+\newcommand{\ETotalI}{E_{ \textrm{tot}, \, i }}
+
+\newcommand{\EVac}{E_{ \HorSpaceOne \textrm{vac} }}
+
+
+
+
+
+% ##################
+% Energy denstiy
+
+\newcommand{\EDens}{\mathcal{E}_{ \, \textrm{den} }}
+
+\newcommand{\EDensA}{\mathcal{E}_{ \, \textrm{den}, \HorSpaceThree a }}
+
+\newcommand{\EFermiPiaDen}{\mathcal{E}_{ \, \text{FP}, \HorSpaceThree
+    \textrm{den} }}
+
+\newcommand{\EFermiPiaDenU}{\mathcal{E}_{ \, \text{FP}, \HorSpaceThree
+    \textrm{den} }^{ \HorSpaceThree u }}
+
+\newcommand{\EFermiPiaRenDen}{\mathcal{E}_{ \HorSpaceSeven \text{FP},
+    \HorSpaceEight \textrm{ren} \HorSpaceSeven \textrm{den} }}
+
+\newcommand{\EHerStoDen}{\mathcal{E}_{ \, \text{HS}, \HorSpaceThree
+    \textrm{den} }}
+
+\newcommand{\EHerStoBouDen}{\mathcal{E}_{ \, \HorSpaceFive \text{HS},
+    \HorSpaceThree \textrm{den} }^{ \HorSpaceOne \text{B} }}
+
+\newcommand{\EHerStoBouSelf}{\mathcal{E}_{ \, \HorSpaceFive \text{HS},
+    \HorSpaceThree \textrm{self} }^{ \HorSpaceOne \text{B} }}
+
+\newcommand{\EHerStoBouInt}{\mathcal{E}_{ \, \HorSpaceFive \text{HS},
+    \HorSpaceThree \textrm{int} }^{ \HorSpaceOne \text{B} }}
+
+\newcommand{\EIntDen}{\mathcal{E}_{ \, \textrm{int} }}
+
+\newcommand{\EIntDenLim}{\mathcal{E}_{ \, \textrm{int}, \, \textrm{lim} }}
+
+\newcommand{\ESelfDen}{\mathcal{E}_{ \, \textrm{self} }}
+
+\newcommand{\ESelfDenLim}{\mathcal{E}_{ \, \textrm{self}, \, \textrm{lim} } }
+
+\newcommand{\ESingleDen}{\mathcal{E}_{ \, \textrm{single} }}
+
+\newcommand{\ESingleDenLim}{\mathcal{E}_{ \, \textrm{single}, \,
+    \textrm{lim} }}
+
+
+
+
+
+% ############################
+% Quantume states
+
+\newcommand{\EMgroundState}{\Omega_{ \, \textrm{EM} }}
+
+\newcommand{\GroundStateFreeOne}{\Omega}
+
+\newcommand{\GroundStateAOne}{\Omega_{ \HorSpaceTwo a }}
+\newcommand{\GroundStateATwo}{\Omega_{ \, \veca }}
+
+\newcommand{\GroundStateFree}{\Omega_{ 0 }}
+
+\newcommand{\ScalMinGroundState}{\Omega_{ \HorSpaceTwo \textrm{Min} }}
+
+\newcommand{\ScalBCGroundState}{\Omega_{ \HorSpaceThree \text{BC} }}
+
+\newcommand{\ScalDirichGroundState}{\Omega_{ \HorSpaceFour \textrm{Dir} }}
+
+\newcommand{\VacAOne}{\Omega_{ \, \veca }}
+\newcommand{\VacATwo}{\Omega_{ \, a }}
+
+\newcommand{\VacFree}{\Omega_{ 0 }}
+
+
+
+
+
+% ############################
+% Spacetime
+
+
+\newcommand{\MinkFourDim}{\textrm{Mink}_{ \, 4 }}
+
+
+
+
+
+% ############################
+% Spaces and scalar products
+
+
+\newcommand{\HFock}{\mathcal{H}_{ \; \HorSpaceThree \textrm{Fock} }}
+
+\newcommand{\LcalHat}{\widehat{\mathcal{L}}}
+\newcommand{\sigmaHat}{\widehat{\sigma}}
+
+\newcommand{\LcalTilde}{\widetilde{\mathcal{L}}}
+
+
+
+
+
+% ############################
+% Vectors in 3D space
+
+\newcommand{\nHat}{\widehat{n}}
+
+
+
+
+
+% \newcommand{\veca}{\vec{ a }}
+% \newcommand{\vecb}{\vec{ b }}
+% \newcommand{\veck}{\vec{ k }}
+% \newcommand{\vecp}{\vec{ p }}
+% \newcommand{\vecq}{\vec{ q }}
+% \newcommand{\vecx}{\vec{ x }}
+% \newcommand{\vecy}{\vec{ y }}
+
+% \renewcommand{\lambda}{\uplambda}
+
+% \newcommand{\Rb}{\mathbb{R}}
+
+% \newcommand{\Ec}{\mathcal{E}}
+% \newcommand{\Hc}{\mathcal{H}}
+% \newcommand{\Lc}{\mathcal{L}}
+% \newcommand{\Mc}{\mathcal{M}}
+% \newcommand{\Nc}{\mathcal{N}}
+% \newcommand{\Rc}{\mathcal{R}}
+
+
+
+% \newcommand{\Real}{\mathfrak{Re}}
+% \newcommand{\Imag}{\mathfrak{Im}}
+
+% \newcommand{\Tr}{\mathrm{Tr}}
+
+
+
+
+% \newcommand{\supp}{\mathrm{supp}\,}
+
+
+% \newcommand{\Rbp}{\mathbb{R}_{ + }}
+% \newcommand{\Rbth}{\mathbb{R}^{ 3 }}
+
+
+
+% \newcommand{\oneOv}[1]{\frac{ 1 }{ #1 }}
+
+% \providecommand{\abs}[1]{\lvert{ #1 }\rvert}
+% \newcommand{\absse}[1]{\lvert{\, #1 \,}\rvert}
+
+% \providecommand{\norm}[1]{\lVert #1 \rVert}
+
+
+
+% \newcommand{\de}[3]{\frac{ d^{ #1 } { #2 } }{ d { #3 }^{ #1 } }}
+% \newcommand{\pd}[3]{\frac{ \partial^{ #1 } { #2 } }{ \partial { #3 }^{ #1 } }}
+
+% \newcommand{\IntLo}[3]{\int\limits_{ { #1 } }^{ { #2 } } d#3 \,}  % One
+
+% \newcommand{\IntMPInf}[1]{\int\limits_{ -\infty }^{ +\infty } d#1 \,}
+% \newcommand{\IntOInf}[1]{\int\limits_{ 0 }^{ +\infty } d#1 \,}
+% \newcommand{\IntDo}[5]{\int\limits_{ #1 } d^{ #2 }#3\, d^{ #4 }#5 \;}
+
+
+
+
+% \newcommand{\gl}{g_{ \lambda }}
+
+% \newcommand{\sig}{\sigma( g )}
+% \newcommand{\sigm}{\sigma( g )^{ -1 }}
+% \newcommand{\sigmla}{\sigma( \gl )^{ -1 }}
+
+% \newcommand{\Va}{V_{ \veca }}
+% \newcommand{\Val}{V_{ \veca,\, \lambda }}
+
+
+
+
+
+% \newcommand{\To}{T( w^{ 2 } )}
+% \newcommand{\Tm}{\mathcal{T}( w )}
+% \newcommand{\Tlm}{\mathcal{T}_{ \lambda }( w )}
+
+
+
+% \newcommand{\Mp}{M_{ p }}
+% \newcommand{\Mk}{M_{ k }}
+
+% \newcommand{\chMx}{\check{M}_{ x }}
+% \newcommand{\chMo}{\check{M}_{ 0 }}
+
+% \newcommand{\Fl}[1]{\mathcal{F}_{ \lambda,\, { #1 } }}
+
+
+
+% \newcommand{\Ptau}{\mathcal{P}_{ \tau }}
+
+% \newcommand{\red}[1]{{\color{red} #1}}
+
+
+
+\newcommand{\AcalBC}{\Acal_{ \, \text{BC} }}
+
+\newcommand{\AcalBCeps}{\Acal_{ \, \text{BC} }^{ \HorSpaceOne \varepsilon }}
+
+\newcommand{\AcalBCepsU}{\Acal_{ \, \text{BC} }^{ \HorSpaceOne \varepsilon,
+    \HorSpaceThree u }}
+
+\newcommand{\AcalBCu}{\Acal_{ \, \text{BC}, \, u }}
+
+\DeclareMathOperator{\RP}{RP}
+
+\DeclareMathOperator{\Ren}{Ren}
