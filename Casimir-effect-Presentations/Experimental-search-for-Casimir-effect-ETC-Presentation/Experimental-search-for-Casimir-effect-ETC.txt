@@ -1,3 +1,0 @@
-"Experimental search for Casimir effect. An overview"
-
-Among theoretical physicists Casimir effect is well known physical phenomena, but when theoretical models are usually taught in various courses on quantum physics, experimental investigation of it is often neglected. Because this effect appears when an objects easily seen with the naked eye interacts with a quantum electromagnetic field, measuring it is very challenging and simple theoretical models are often not very useful, when it comes to provide background for experimental data. In this talk we provide a short survey of a few of the most important experiments that tried to measure it, their failures, challenges and success, from 1958 to the current day and some glimpse of possible future.
