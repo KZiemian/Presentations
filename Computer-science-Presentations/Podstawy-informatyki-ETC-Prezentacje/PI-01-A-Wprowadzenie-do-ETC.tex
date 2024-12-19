@@ -84,7 +84,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Wprowadzenie do~kursu}
+\subtitle{Spotkanie~1,~A. Wprowadzenie do~kursu}
 
 \author{Kamil Ziemian \\
   \email}
@@ -112,9 +112,9 @@ eprint=true,
 
 
 % ######################################
+% Number of chars: 23k+, 51k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% Number of chars: 23k+,
 % ######################################
 
 
@@ -324,7 +324,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Czysta prawda}
+  \frametitle{Szczera prawda}
 
   \vspace{-0.5em}
 
@@ -430,6 +430,7 @@ eprint=true,
 
 
 
+
 % ##################
 \begin{frame}
   \frametitle{Rozwój GNU/Linuxa}
@@ -474,7 +475,9 @@ eprint=true,
   wyznaję zasadę, że~konsultacje są dla Państwa, nie dla mnie. Jeśli
   Państwo chcą bym ustalił konkretne terminy na konsultacje, to proszę jako
   grupa wybrać jeden taki i~poinformować mnie o~tym mailowo, pisząc na
-  adres \email.
+  adres \email. W~tytule maila proszę napisać „Prośba o~konsultacje” lub
+  coś podobnego, byśmy wiedzieli, że~na ten mail należy możliwie szybko
+  odpowiedzieć.
 
 \end{frame}
 % ##################
@@ -491,7 +494,7 @@ eprint=true,
   W~przeciwnym razie, jeśli ktoś z~Państwa ma problem i~chce zasięgnąć
   mojej pomocy, proszę do mnie podejść po zajęciach lub napisać, na
   wspomniany już adres \email, kiedy, gdzie i~w~jakiej formie chcą Państwo
-  uczestniczyć w konsultacjach.
+  uczestniczyć w~konsultacjach.
 
   Mogą one być zarówno w~świecie rzeczywistym (niekoniecznie w~budynku
   \textsc{wsz}i\textsc{b}u), online lub telefonicznie.
@@ -515,10 +518,6 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{Jeszcze o~zajęciach}
-
-
-
-
 
 
   Proszę mi też zwracać uwagę, że~na ekranie czegoś nie widać,
@@ -590,7 +589,9 @@ eprint=true,
   stopniu, w~C++.)
 
   Każdy kto chce uzyskać zaliczenie zaoczne, niech zgłosi~się do mnie po
-  zajęciach lub napisze na maila \email.
+  zajęciach lub napisze na maila \email. W~tytule proszę wpisać
+  „Pytanie o~zaliczenie zaoczne”, inaczej mail może na długo zaginąć
+  wśród maili, które nie wymagają szybkiej odpowiedzi.
 
 \end{frame}
 % ##################
@@ -631,8 +632,28 @@ eprint=true,
   semestru otrzymują Państwo \alert{jedną} ocenę łączną, która
   jest wpisywana jako jednocześnie jako ocena z~ćwiczeń i~laboratoriów.
 
-  Jeśli ktoś ma uwagi do tego systemu, co można zmienić, co poprawić, to
-  proszę powiedzieć to mi po zajęciach lub napisać pod adres \email.
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Naprawdę cenimy Państwa zadanie}
+
+
+  Jeśli ktoś ma uwagi do tego systemu, propozycję co można zmienić,
+  co~poprawić, to proszę powiedzieć to mi po zajęciach lub napisać pod
+  adres \email. Ponownie prosimy by w~tytule emaila napisać „Uwagi do zajęć”
+  lub coś podobnego, bo inaczej na długo zaginą wśród innych.
+
+  W~chwili obecnej nie mamy złudzeń, że~nasz system jest choćby bliski
+  ideałowi, próbujemy jednak go~ciągle ulepszać. Państwa zdanie jest dla
+  nas naprawdę ważne, choć oczywiście nie zawsze~się z~nim zgadzamy.
+  To jak ten przedmiot wygląda obecnie wynika częściowo z~tego co
+  w~przeszłości zaproponowali studenci.
 
 \end{frame}
 % ##################
@@ -656,7 +677,7 @@ eprint=true,
 
   \begin{itemize}
 
-  \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+  \item $41\%\text{--}50\%$~-- ocena dostateczna ($3.0$).
 
   \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
 
@@ -679,7 +700,7 @@ eprint=true,
   konkretnym zadaniu domowym. Za jeden test można zdobyć $10$ pkt.,
   konkretna wartość zależy od zdobytej oceny. Za projekt można zdobyć
   do~$30$ pkt. Ilość punktów za projekt jest tym, co obecnie najmniej mnie
-  satysfakcjonuje, ale na razie nie mam pomysłu jak to poprawić.
+  satysfakcjonuje, ale na razie nie mamy pomysłu jak to poprawić.
 
 \end{frame}
 % ##################
@@ -799,7 +820,7 @@ eprint=true,
 
   Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
   tego stopnia, by czyjś wkład własny został zredukowany do metody
-  Copyego-Pejsta.
+  Copy’ego-Pejsta.
 
 \end{frame}
 % ##################
@@ -888,11 +909,20 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Prawo Kernighana}
+  \frametitle{Odnośnie rozwiązywań zadań}
 
 
-  Proszę wiedzieć, że~obowiązuje prawo Kernighana.
+  Proszę przyjąć zasadę, że~\alert{najprostszy program} który rozwiązuje
+  zadanie zgodnie z~wytycznymi jest najlepszym jaki można oddać. Niekiedy
+  studenci oddają bardzo skomplikowane programy jako rozwiązanie naprawdę
+  prostych zadań, co jest zupełnie zbędne. Oczywiście, nikt nie straci
+  punktów za oddanie skomplikowanego programu, ale jest wiele powodów, by
+  poprzestać na pisaniu prostego kodu. Po pierwsze, to zwykle oszczędza
+  czas spędzony na~rozwiązywaniu zadań na~ten przedmiot. Po~drugie,
+  prostota i~czytelność kodu są naprawdę ważne przy tworzeniu programów na
+  każdym poziomie.
 
+  Proszę też pamiętać, że~obowiązuje prawo Kernighana. \\
   \textit{Debugowanie programu jest dwa razy trudniejsze, niż jego
     napisanie. Jeśli więc napiszesz program w~najbardziej pomysłowy sposób
     jaki możesz, to nie jesteś wystarczająco inteligentny by go zdebugować.}
@@ -901,37 +931,15 @@ eprint=true,
 % ##################
 
 
+
+
+
 % % ##################
 % \begin{frame}
-%   \frametitle{AI, ChatGPT,\ldots}
+%   \frametitle{Prawo Kernighana}
 
 
-%   Żeby nie pozostać za bardzo w~tyle, staram~się wprowadzić do zajęć
-%   praktyki związane z~korzystanie ze~sztucznej inteligencji. Problem jest
-%   taki, że~nie wiem jak je wpasować do tego konkretnego przedmiotu.
-%   Linus Torvalds (czyta się: \textit{turwalds}) też chyba nie wie
-%   \colorhref{https://www.youtube.com/watch?v=VHHT6W-N0ak}{nie wie}
-%   jakie są dobre praktyki w~tym względzie.
 
-%   Przygotowałem całą prezentację o~Chatcie\textsc{gpt} i~powiązanych
-%   sprawach, będzie dostępna na Sake. Jeśli Państwo chcą to możemy
-%   ją omówić na któryś zajęciach.
-
-%   \textsc{kz:} Czy w~$2024$ roku warto~się uczyć języka~C?
-
-%   Chat\textsc{gtp:} Tak, uczenie~się C~w~roku $2024$ wciąż jest dobrym
-%   pomysłem. Oto dlaczego.
-
-%   \textbf{1.~Podstawy informatyki.} C~pozwala nam dogłębnie zrozumieć
-%   architekturę komputera i~zarządzania pamięcią, które~są kluczowe
-%   dla przyswojenia sobie bardziej abstrakcyjnych koncepcji z~programowania.
-
-  % \textbf{2.~Duża wydajność.} C~jest znany ze swej szybkości
-  % i~niskopoziomowego dostępu do sprzętu, czyniąc go idealny kandydatem
-  % do programowania systemów (np. systemów operacyjnych, systemów
-  % wbudowanych, etc.). Wciąż jest szeroko stosowany w~przemyśle lotniczym,
-  % samochodowym i~telekomunikacji, gdzie wydajność i~kontrola nad sprzętem
-  % są kluczowe.
 
 % \end{frame}
 % % ##################
@@ -945,9 +953,69 @@ eprint=true,
 
 
 
+
+
 % ######################################
 \section{Wymagania i~materiały do nauki}
 % ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki, błędy i~uwagi}
+
+
+  Zarówno w~materiałach z~wykładu, jak i~w~tych do ćwiczeń, były
+  i~obawiam~się, że~wciąż są błędy. Pragniemy by te zajęcia i~towarzyszące
+  im materiały były możliwie merytoryczne, proste, łatwe w~zrozumieniu
+  i~pozbawione błędów, proszę jednak uwierzyć, że~osiągnięcie tego jest
+  naprawdę trudne.
+
+  W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
+  merytorycznych do zajęć lub dostępnych materiałów proszę zgłaszać to
+  przed lub po zajęciach lub też pisać pod adres \email. Proszę w~tytule
+  napisać coś w~stylu „Błędy w~materiałach”, „Uwagi do zajęć”, inaczej
+  email może na długo zaginąć wśród dużej ilości tych, które dostaję od
+  Państwa z~rozwiązanymi zadaniami.
+
+  % Do tego na rok $2024$ priorytet ma dla mnie przygotowanie
+  % materiałów, które pokrywają cały zakres tego przedmiotu. Zaś~usuwanie,
+  % z~nich różnorakich niekonsekwencji jest sprawą drugorzędną.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Styl pisania w~języku~C}
+
+
+  Można i~należy zgłaszać też uwagi do materiałów z~wykładów, bezpośrednio
+  do~prowadzącego albo do mnie. Mój wpływ na stan materiałów do wykładów
+  jest oczywiście skromniejszy, niż~na moje własne materiały.
+  Mimo tego, będę próbował nakłonić prowadzącego, by poprawiał znaleziony
+  błędy i~wprowadzał zasadne zmiany.
+
+  Mówi~się, że~w~pewnych językach programowania istnieje tylko jeden sposób
+  zrobienia czegoś, w~innych (prawie) każdą rzecz można zrobić na kilka
+  sposobów. Język~C należy do tej drugiej grupy. Ja na zajęciach będę
+  prezentował styl i~podejście do korzystania z~języka~C, który ja uważam
+  za optymalny.
+
+  Doświadczenie poprzednich lat uczy, że~ja i~prowadzący mamy bardzo różne
+  opinie na temat tego jak wygląda dobry styl pisania kodu w~C. Wiele
+  z~przykładów kodu które w~poprzednich latach pojawiły~się na wykładzie,
+  ja uważam za~przykład złego stylu i~złych praktyk. O~tym jeszcze za
+  chwilę.
+
+\end{frame}
+% ##################
+
+
 
 
 
@@ -972,6 +1040,24 @@ eprint=true,
   w~przeglądarce: \\
   \colorhref{https://github.com/KZiemian/Presentation}
   {https://github.com/KZiemian/Presentation}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  W~serwisie Sake są dostępne pliki zawierające kod~C wraz oraz komentarze
+  objaśniające jak on działa. Będziemy~się też starali przygotować możliwie
+  duży zestaw programów, które ilustrują, w~naszej ocenie, dobry styl
+  pisania programów w~języku~C. Jednak to drugie zadanie jest ze względu
+  na ilość możliwych wyborów, dość trudne do wykonania.
 
 \end{frame}
 % ##################
@@ -1049,24 +1135,7 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Zgłaszanie błędów i~uwag}
 
-
-  W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
-  merytorycznych do zajęć lub dostępnych materiałów proszę zgłaszać to
-  przed lub po zajęciach lub też pisać pod adres \email. Chcemy by te
-  zajęcia i~towarzyszące im materiały były możliwie merytoryczne, proste,
-  łatwe w~zrozumieniu i~pozbawione błędów. Proszę jednak uwierzyć,
-  że~osiągnięcie tego jest naprawdę trudne.
-
-  Do tego na rok $2024$ priorytet ma dla mnie przygotowanie
-  materiałów, które pokrywają cały zakres tego przedmiotu. Zaś~usuwanie,
-  z~nich różnorakich niekonsekwencji jest sprawą drugorzędną.
-
-\end{frame}
-% ##################
 
 
 
@@ -1289,6 +1358,151 @@ eprint=true,
 % ##################
 
 
+
+
+
+
+
+
+
+
+% ######################################
+\section{Informacje dla początkujących programistów}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozszerzenia plików}
+
+
+  Rozszerzenie pliku, kropka i~to co następuje po niej w~nazwie tego pliku,
+  informuje używane przez nas programy z~jakim typem pliku mają do
+  czynienia. Dlatego każdy język programowania posiada własne, właściwe
+  tylko niemu rozszerzenie Pliki napisane w~języku~C mają mieć
+  rozszerzenie~\texttt{.c}. Analogicznie, każdy program w~języku Python
+  powinien~się kończyć na~\texttt{.py}.
+
+  Jak ktoś na zajęciach napisze program w~języku~C, który \alert{nie} ma
+  rozszerzenia~\texttt{.c}, będzie to musiał przy mnie poprawić.
+  Chyba, że~będę musiał od razu biec do kogoś innego. Ale proszę nie
+  liczyć, że~zapomnę o~tej zniewadze. ;)
+
+  Brak tego rozszerzenia sprawia, że~możemy zostać pozbawienie części
+  wsparcia w~pracy z~C, jaką dają nam przeróżne programy. A~do tego
+  \alert{nie} możemy dopuścić.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Nazwy plików}
+
+
+  Niekiedy ktoś nazwie swój plik jako \\
+  \texttt{plik-numer.1.c} \\
+  co jest proszeniem~się o~problem. Programy mogą błędnie rozpoznać
+  „\texttt{.1.c}” jako rozszerzenie pliku i~wtedy mogą~się dziać różne
+  nieporządne rzeczy.
+
+  W~nazwie pliku powinna być \alert{jedna i~tylko jedna kropka}, ta
+  poprzedzająca nazwę rozszerzenia pliku, czyli dla nas \texttt{.c}.
+  Jeśli ta zasada nie jest prawdą wszędzie na świecie, to na pewno jest
+  prawdą na tych zajęciach i~proszę o~tym pamiętać.
+
+  Jeśli ktoś prześle mi plik, którego nazwa zawiera więcej lub mniej niż
+  \alert{jedną} kropkę, to zastrzegam sobie prawo odesłania mu pliku
+  z~prośbą o~zmianę nazwy na~poprawniejszą. Dla mnie to nie jest sposób
+  karania, tylko metoda wyrabiania w~ludziach dobrych nawyków.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Te zajęcia są prowadzone w~C, ale\ldots}
+
+
+  Czy ja powinienem~się skupić na nauce języka~C? To bardzo dobre
+  pytanie i~każdy z~Państwa powinien je sobie zadać.
+
+  Każdy dobry informatyk powinien dobrze znać co najmniej jeden język
+  programowania, acz niekoniecznie musi to być język~C. Zupełnie zrozumiałe
+  jest, że~ktoś z~Państwa zdecyduje, iż~językiem który chce poznać jest
+  jakiś inny język niż~C i~będzie~się uczył~C tylko tyle ile wymaga ten
+  przedmiot. Co~więcej, w~naszej ocenie jest to bardzo dobre podejście do
+  nauki.
+
+  Jeśli nie wiedzą Państwo, na nauce którego języka należy~się teraz skupić,
+  proponuję sprawdzić~$20$ najpopularniejszych języków programowania
+  według indeksu \textsc{tiobe}, poczytać o~każdym z~nich i~wybrać ten
+  który Państwo uważają za~najlepszy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Te zajęcia są prowadzone w~C, ale\ldots}
+
+
+  W~grudniu $2024$ roku indeks \textsc{tiobe} przedstawia~się w~następujący
+  sposób: Python, C++, Java, C, C\#, JavaScript, Go, \textsc{sql}, Visual
+  Basic, Fortran, Delphi/Object Pascal, \textsc{php}, Scratch, Rust,
+  \textsc{matlab}, R, język asemblera, Ruby, \textsc{cobol}, Swift.
+
+  Decyzję o~tym na nauce którego języka~się Państwo skupią, muszą
+  oczywiście podjąć Państwo sami. Jeśli ktoś chce uzyskać od nas jakieś
+  wskazówki, to służymy całą swoją osobą. Jeśli chcą Państwo napisać emaila
+  w~tej sprawie to proszę go nazwać „Pytanie o~wybór języka do nauki”, czy
+  coś podobnego.
+
+  Bardzo~się ucieszymy, jeśli ktoś z~Państwa zdecyduje~się skupić na
+  języku~C, ale to w~żadnym razie nie jest wymagane. Nie o~to chodzi w~nauce
+  informatyki.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Szczera prawda}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Learning-any-language-at-100-procent}
+
+    \centering
+
+
+    \includegraphics[scale=0.195]
+    {./Presentations-pictures/Learning-language-at-100.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
 
 
 
@@ -1788,34 +2002,6 @@ eprint=true,
 
 
 
-% ######################################
-\section{Informacje dla początkujących programistów}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Informacje dla początkujących programistów}
-
-
-  Rozszerzenie pliku, kropka i~to co następuje po niej w~nazwie tego pliku,
-  informuje używane przez nas programy z~jakim typem pliku mają do
-  czynienia. Dlatego każdy język programowania posiada własne, właściwe
-  tylko niemu rozszerzenie Pliki napisane w~języku~C mają mieć
-  rozszerzenie~\texttt{.c}.
-
-  Jak ktoś na zajęciach napisze program w~języku~C, który \alert{nie} ma
-  rozszerzenia~\texttt{.c}, będzie to musiał przy mnie poprawić.
-  (Chyba, że~będę musiał od razu biec do kogoś innego. Ale proszę nie
-  liczyć, że~zapomnę o~tej zniewadze. ;))
-
-  Brak tego rozszerzenia sprawia, że~możemy zostać pozbawienie części
-  wsparcia w~pracy z~C, jaką dają nam przeróżne programy. A~do tego
-  \alert{nie} możemy dopuścić.
-
-\end{frame}
-% ##################
 
 
 

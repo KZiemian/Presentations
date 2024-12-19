@@ -109,9 +109,9 @@ eprint=true,
 
 
 % ######################################
+% Number of chars: 62k+, 12k+, 20k+, 27k+, 24k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% Number of chars: 62k+, 12k+, 20k+, 27k+, 24k+,
 % ######################################
 
 
@@ -151,20 +151,46 @@ eprint=true,
   \frametitle{Informacje wstępne}
 
 
-  Obawiam~się, że na tych konkretnych zajęciach będzie sporo przynudzania,
+  Obawiam~się, że~na tych konkretnych zajęciach będzie sporo przynudzania,
   ale nie widzę sposobu, by~tego uniknąć.
 
   Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
   ja jestem tu dla Państwa, a~nie Państwo dla mnie. Jestem tu po to, by
-  pomóc Państwu pomóc zaznajomić~się z~pracą z~bardzo potężny, ale też
-  nie raz bardzo topornym, systemem operacyjnym GNU/Linux. W~związku z~tym,
+  pomóc Państwu pomóc zaznajomić~się z~pracą z~bardzo potężnym, ale też
+  często topornym systemem operacyjnym GNU/Linux. W~związku z~tym,
   ja będę Państwa rozliczał tylko i~wyłącznie z~umiejętności i~wiedzy,
   z~niczego innego. Wychodzę bowiem z~założenia, że~Państwo sami najlepiej
   wiedzą, czemu warto poświęcić swój czas. (Choć jak wiadomo, nie jeden raz
   potem stwierdzamy, że~nasz wybór mógł być jednak lepszy.)
 
-  \textbf{Pytanie.} Kto z~Państwa \alert{nie} używa na codzień systemu
+  \textbf{Pytanie.} Kto z~Państwa \alert{nie} używa na co dzień systemu
   operacyjnego GNU/Linux?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozwój GNU/Linuxa}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Evolution-of-OS}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./Presentations-pictures/Evolution-of-operating-systems.jpg}
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -179,28 +205,38 @@ eprint=true,
 
 
   Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-  na dowolne związane z~zajęciami zagadnienia. W~szczególności
-  \alert{należy} zadawać pytania, jeśli~się czegoś nie rozumie, lub coś
-  jest niejasne. Ten kurs ma być wstępem do systemu operacyjnego GNU/Linux,
-  \alert{nie} zakładamy, że~są Państwo doświadczonymi administratorami tego
-  systemu. Byłoby to bardzo niewłaściwe założenie.
+  na~dowolne związany z~nimi temat. W~szczególności \alert{należy} zadawać
+  pytania, jeśli coś jest niezrozumiałe albo niejasne. Ten kurs ma być
+  wstępem do systemu operacyjnego GNU/Linux, \alert{nie} zakładamy, że~są
+  Państwo doświadczonymi administratorami tego systemu. Byłoby to bardzo
+  niewłaściwe założenie.
 
-  Proszę pamiętać, gdy chodzi o~tematy związane z~zajęciami
-  \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
-  niezadowalające odpowiedzi na~Państwa pytania.
-
-  Jestem tutaj by Państwu pomóc w~zaznajomieni~się z~pracą z~systemem
-  operacyjnym na poziomie głębszym, niż ma normalny użytkownik.
+  Proszę pamiętać, że~gdy chodzi o~tematy związane z~zajęciami \alert{nie}
+  ma pytań zbyt elementarnych czy głupich. Są~tylko niezadowalające
+  odpowiedzi udzielane na~Państwa pytania. Jestem tutaj by Państwu pomóc
+  w~zaznajomieni~się z~pracą z~systemem operacyjnym na głębszym poziomie.
   Pytania z~Państwa strony bardzo mi ułatwiają to zadanie. Zadawania pytań
   nie traktuję jako oznakę tego, że~ktoś czegoś nie umie, tylko że~chce~się
   czegoś nauczyć.
 
-  Pytania typu „Czy \textit{Max Payne 3} to dobra gra?” musimy jednak
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bardzo ważne}
+
+
+  Pytania typu „Czy \textit{Max Payne~3} to dobra gra?” musimy jednak
   zostawić na~czas po zajęciach.
 
-  Ten kurs jest tylko \textit{wstępem} do~systemów operacyjnych. Ze~względu
+  Ten kurs jest tylko \alert{wstępem} do~systemów operacyjnych. Ze~względu
   na rozmiar i~poziom skomplikowania tej dziedziny, dużą liczbę rzeczy
-  będę musiał \textit{upraszczać}. Proszę więc pamiętać, że~choć staram~się
+  będę musiał \alert{upraszczać}. Proszę więc pamiętać, że~choć staram~się
   przekazywać rzetelną wiedzę, to to co mówię będzie w~wielu wypadkach
   bardzo mocny uproszczeniem rzeczywistości.
 
@@ -223,32 +259,33 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Jakie systemy operacyjne są obecnie używane?}
+  \frametitle{Jakie systemy operacyjne są dziś używane?}
 
 
   Obecnie na komputerach osobistych dominują trzy rodziny systemów
   operacyjnych (\textsc{os}, ang. \textit{operating system}). Są to:
   \begin{itemize}
 
-  \item GNU/Linux;
+  \item GNU/Linux (w~skrócie: Linux);
 
-  \item macOS;
+  \item mac\textsc{os};
 
   \item Windows.
 
   \end{itemize}
 
-  Gdy chodzi o~smartfony, to istnieją dwie duże rodziny systemów
+  Gdy chodzi o~smartfony, to istnieją co~najmniej dwie duże rodziny systemów
   operacyjnych dla nich:
   \begin{itemize}
 
   \item Android;
 
-  \item iOS.
+  \item i\textsc{os}.
 
   \end{itemize}
-  Niemniej ja nie jestem ekspertem w~kwestii smartfonów, więc nie będę~się
-  o~tym mówił wiele.
+  Niemniej ja nie jestem ekspertem w~kwestii smartfonów, więc nie będę
+  wnikał w~tą tematykę.
+
 
 \end{frame}
 % ##################
@@ -259,26 +296,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Jakie systemy operacyjne są obecnie używane?}
+  \frametitle{Jakie systemy operacyjne są dziś używane?}
 
 
   Jeśli chodzi o~inne systemy operacyjne to możemy wymienić i~wymieniać:
-  Fire~\textsc{os}, FreeBSD, FreeDOS, Haiku, HarmonyOS, HeliOS,
-  Inferno, \textsc{minix}, OpenHarmony, OpenSolaris, Phantom~OS, Plan~9
-  from Bell Labs, ReactOS, Redox (bardzo interesujący projekt),
-  Thesueus~\textsc{os} (też interesujący projekt), Visopsys, etc.
+  Fire~\textsc{os}, Free\textsc{bsd}, Free\textsc{dos}, Haiku,
+  Harmony\textsc{os}, Heli\textsc{os}, Inferno, \textsc{minix},
+  OpenHarmony, OpenSolaris, Phantom~\textsc{os}, Plan~9
+  from Bell Labs, React\textsc{os}, Redox (bardzo interesujący projekt),
+  Thesueus~\textsc{os} (inny interesujący projekt), Visopsys, etc.
 
-  Poza tym, systemy operacyjne można podzielić na klasy w~zależności od
+  Poza tym, systemy operacyjne można podzielić na klasy, w~zależności od
   tego na jakim sprzęcie mają one działać, listę podstawowych z~nich można
   znaleźć poniżej.
 
   \begin{itemize}
 
-  \item Systemy operacyjne komputerów mainframowych. Komputery tego typu
-    spotyka~się zwykle w~centrach obliczeniowych. Używany są tutaj specjalne
-    dystrybucje Linuxa, jak również dedykowane systemy takie jak z/OS.
-
-
+  \item Systemy operacyjne komputerów mainframowych, ten typ komputera
+    spotyka~się zwykle w~centrach obliczeniowych różnorakiego
+    przeznaczenia. Tutaj często używane są specjalne dystrybucje Linuxa,
+    jak~również dedykowane systemy takie jak z/OS.
 
   \item Systemy operacyjne serwerów. Tutaj również Linux jest popularny.
 
@@ -300,29 +337,21 @@ eprint=true,
 
   \item Systemy operacyjne komputerów osobistych. O~nich jest ten kurs.
 
-
-
   \item Systemy operacyjne smartfonów. Na pewno każdy słyszał o~Androidzie
-    i~iOS.
-
-
+    i~i\textsc{os}.
 
   \item Wbudowane systemy operacyjne. Są to systemy operacyjne pracujące
     na~pralkach, kuchenkach mikrofalowych, pralkach, samochodach, etc.
 
-
-
   \item Systemy operacyjne kart elektronicznych. Temat na zupełnie inne
     zajęcia.
 
-
-
   \item Systemy operacyjne węzłów sensorowych. Przykładem węzła sensorowego
-    jest czujnik do mierzenia temperatury, ilości opadów, etc.
+    są czujniki do mierzenia temperatury, ilości opadów, etc.
 
   \end{itemize}
 
-  Dodatkowo można systemy operacyjne podzielić na monolityczne,
+  Dodatkowo systemy operacyjne można podzielić na monolityczne,
   wielowarstwowe, etc.
 
 \end{frame}
@@ -342,6 +371,57 @@ eprint=true,
   ludzi którzy tworzą systemy operacyjne. Pamiętając, że~ci sami ludzie
   całkiem dużo roboty mocno spaprali.
 
+  Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełna jest
+  maszyn Rube Goldbergera. Państwo już na pewno nie raz widzieli taką
+  maszynę, pewien jej fajny przykład jest
+  \colorhref{https://www.youtube.com/watch?v=vn-g1Mn2\_3g}{tutaj}. Jeżeli
+  więc w~czasie tego kursu komuś z~Państwa nasunie~się myśl „Czy naprawdę
+  nie da~się tego zrobić prościej?”, to często odpowiedź brzmi, że~owszem,
+  można to zrobić prościej. W~informatyce wiele rzeczy można uczynić
+  znacznie prostszymi, ale, w~mojej skromnej ocenie, zajmie nam to jeszcze
+  parę ładnych dekad.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Jaka jest rola systemów operacyjnych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest „abstrakcja” w~informatyce?}
+
+
+  Pojęcie abstrakcji ma w~informatyce swój specjalny posmak.
+  Przez \textbf{abstrakcję} rozumiemy zastąpienie jednego opisu
+  rzeczywistości i~sposobu oddziaływania na nią, inny opisem, który jest
+  bardziej odległy od rzeczywistości, ale ma być bardziej użyteczny
+  od~poprzedniego. Definicja ta ma bardziej przekazywać intuicję, niż
+  ściśle definiować pojęcie, które jest w~praktyce dość nieostre, więc
+  nie musimy~się przejmować występującymi w~niej niejasnościami.
+
+  Jeśli nowy opis rzeczywistości jest bardziej użyteczny dla nas nisz
+  poprzedni, to mówimy, że jest on \textbf{dobrą abstrakcją}. Jeśli nowy
+  opis nie jest bardziej użyteczny, to mówimy, że~jest \textbf{złą
+    abstrakcją}.
+
+  \textbf{Przykład.} Każdy procesor posiada zestaw wbudowanych komórek
+  pamięci zwanych rejestrami. Ile rejestrów posiada procesor Państwa
+  smartfona? Jeśli nie umieją Państwo odpowiedzieć na to pytanie, to
+  znaczy, że~oprogramowanie smartfona jest dobrą abstrakcją dla
+  znajdującego~się niżej sprzętu elektronicznego.
+
 \end{frame}
 % ##################
 
@@ -351,18 +431,10 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Tak to jest}
+  \frametitle{System operacyjny jako abstrakcja}
 
 
-  Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełna jest
-  maszyn Rube Goldbergera. Państwo już na pewno nie raz widzieli taką
-  maszynę, pewien jej fajny przykład jest
-  \colorhref{https://www.youtube.com/watch?v=vn-g1Mn2\_3g}{tutaj}.
 
-  Jeżeli więc w~Państwa głowie pojawi~się myśl „Czy naprawdę nie da~się
-  tego zrobić prościej?”, to często odpowiedź jest, że~owszem, jest to
-  możliwe.. W~informatyce wiele rzeczy można uczynić znacznie prostszymi,
-  ale, w~mojej skromnej ocenie, zajmie nam to jeszcze parę ładnych dekad.
 
 \end{frame}
 % ##################
@@ -371,16 +443,75 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
+% ##################
+\begin{frame}
+  \frametitle{Uproszczony schemat systemu operacyjnego}
+
+
+  \begin{figure}
+
+    \label{fig:Scheme-of-CPU}
+
+
+    \begin{tikzpicture}
+
+      \fill[fill=brown] (-3,0) rectangle (3,1);
+
+
+      % \draw[color=black,dashed] (2.05,2.1) rectangle (2.65,2.7);
+
+      \node[color=jMathTextFGColorOfStyleLight] at (2.35,2.4)
+      {Sprzęt komputerowy};
 
 
 
+      % \draw[color=black,dashed] (2.05,1.2) rectangle (2.65,1.8);
 
-% \end{frame}
-% % ##################
+      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,1.5)
+      % {\texttt{R1}};
 
+
+
+      % \draw[color=black,dashed] (2.05,0.3) rectangle (2.65,0.9);
+
+      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,0.6)
+      % {\texttt{R2}};
+
+
+
+      % \draw[color=black,dashed] (2.05,-0.6) rectangle (2.65,0);
+
+      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-0.3)
+      % {\texttt{R3}};
+
+
+
+      % \draw[color=black,dashed] (2.05,-1.5) rectangle (2.65,-0.9);
+
+      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-1.2)
+      % {\texttt{R4}};
+
+
+
+      % \draw[color=black,dashed] (2.05,-2.4) rectangle (2.65,-1.8);
+
+      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-2.1)
+      % {\texttt{R5}};
+
+
+      % \draw[color=black,dashed] (2.05,-3.3) rectangle (2.65,-2.7);
+
+      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-3) {R5};
+
+    \end{tikzpicture}
+
+    \caption{Prosty schemat procesora (wymaga dokończenia).}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
 
 
 
@@ -1119,15 +1250,7 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
 
-
-
-
-% \end{frame}
-% % ##################
 
 
 
