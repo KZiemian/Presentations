@@ -70,15 +70,11 @@ eprint=true,
 % Wonderful package PGF/TikZ
 % ------------------------------------------------------
 
-% % Node and pics for drawing charts
-% \usepackage{./Local-packages/PGF-TikZ-Chart-nodes-and-pics}
+% Node and pics for drawing charts
+\usepackage{./Local-packages/PGF-TikZ-Chart-nodes-and-pics}
 
-% % Styles for arrows
-% \usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
-
-% % Pic for drawing functions
-% \usepackage{./Local-packages/PGF-TikZ-Functions-pics}
-
+% Styles for arrows
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
 
 
 
@@ -173,146 +169,117 @@ eprint=true,
 
 
 % ######################################
-\section{Czym są problemy podczerwone?}
+\section{Problemy podczerwone i~nadfioletowe}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
+  \frametitle{Informacji wstępne}
+
+
+  Tematyka problemów podczerwonych (\textsc{ir}, ang. \textit{infrared
+    problems}) jest bardzo szeroka wielokrotnie przekracza ramy tego
+  wystąpienia. Naszym celem jest przedstawienie możliwie szerokiej panoramy
+  tych zagadnień, dlatego poglądowość, prostota i~zwięzłość przekazu jest
+  dla nas dużo ważniejsza, niż pełna prezentacja każdego z~tych zagadnień
+  oraz różnorakie, często bardzo ciekawe, ich aspekty techniczne. Różne,
+  często dość poważne uproszczenia, były nieuniknione.
+
+  To samo, choć w~dużo mniejszej skali, można powiedzieć o~problemach
+  nadfioletowych (\textsc{uv}, ang. \textit{ultraviolet problems}).
+  Musimy zaznaczyć, że~z~punktu widzenia tego wystąpienia problemy
+  nadfioletowe, \alert{nie} są problemami fizycznymi, lecz rezultatami
+  braku w~pełni ścisłych matematycznie metod rachunkowych w~kwantowej
+  teorii pola. Temat ten odłożymy jednak do ewentualnej dyskusji
+  podczas~Q\&A.
+
+  Standardowo, w~większości wzorów przyjęto „$c = 1$” i~„$\hbar = 1$”.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}[label=sld-Problemy-podczerwone-i-nadfioletowe]
   \frametitle{Problemy podczerowne i~nadfioletowe}
 
 
-  Niech $k = 2 \pi / \lambda$ będzie modułem wektora falowego.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Jak to obliczyć?}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pochodzenie efektu}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Dwie nieskończone płyty}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Siła Casimira}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Dalszy ciąg krytyki}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Podejście Herdegena, podstawy fizyczne i~jego cele}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Podejście Herdegena, podstawy fizyczne}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Formalizm algebraicznej QFT}
-
-
-  Formalizm algebraiczny. Układ kwantowy, o~skończonej bądź nie ilości
-  stopni swobody, definiuje algebra $\Acal$, przestrzeń Hilberta $\Hcal$
-  oraz reprezentacja:
+  Zaczniemy od~prostej ilustracji jak problemy podczerwone i~nadfioletowe
+  przejawiają~się na poziomie reguł rachunkowych. Niech $k = 2 \pi / \lambda$
+  będzie modułem wektora falowego. Załóżmy, że~metody rachunkowe danej
+  teorii wymagają od nas obliczenia całki
+  % Całka ma indeks „rul” od ang. „rules”, reguły rachunkowe.
   \begin{equation}
-    \label{eq:Efekt-Casimira-10}
-    \pi: \Acal \to \Hcal.
+    \label{eq:Czym-sa-problemy-ETC-01}
+    I_{ \HorSpaceOne \text{rul} } = \int\limits_{ 0 }^{ +\infty } \frac{ 1 }{ k } \, dk.
   \end{equation}
-  Dwa układy możemy porównać wtedy, gdy ich algebra $\Acal$ jest
-  identyczna, zaś reprezentacje są równoważne.
+  Zastąpimy ją przez całkę po przedziale $[ \varepsilon, \Lambda ]$, $0 < \varepsilon < \Lambda < +\infty$:
+  \begin{equation}
+    \label{eq:Czym-sa-problemy-ETC-02}
+    I_{ \HorSpaceOne \text{rul} }( \varepsilon, \Lambda ) =
+    \int\limits_{ \varepsilon }^{ \Lambda } \frac{ 1 }{ k } \, dk.
+  \end{equation}
+  Ponieważ ta całka jest rozbieżna w~granicy $\varepsilon \searrow 0$ to mówimy,
+  że~w~teorii występują \textbf{problemy podczerwone}. Ponieważ jest ona
+  rozbieżna w~granicy $\Lambda \nearrow +\infty$, to mówimy, że w~teorii występują
+  \textbf{problemy nadfioletowe}.
+
+\end{frame}
+% ##################
 
 
 
-  A. Herdegen, \textit{Quantum backreaction (Casimir) effect~I.
-    What are admissible idealizations?} arXiv:hep-th/0412132 (2004).
-  Podana tam została złożona konstrukcja odpowiedniej algebry,
-  przestrzeni Hilberta i~reprezentacji $\pi$ dla efektu Casimira,
-  w~oparciu o~\textbf{rzeczywistą} przestrzeń Hilberta $\Kcal$ i~dodatni
-  operator~$h$.
+
+
+
+
+
+
+
+% ######################################
+\section{Główne rodzaje problemów podczerwonych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reguły nadwyboru}
+
+
+  Rozpatrzmy model w~którym przestrzeń Hilberta opisująca cząstki
+  naładowane jest sumą prostą dwóch przestrzeni:
+  \begin{equation}
+    \label{eq:Czym-sa-problemy-ETC-03}
+    \Hcal_{ \HorSpaceTwo \text{phy} } =
+    \Hcal_{ \HorSpaceTwo 0 } \oplus \Hcal_{ \HorSpaceTwo e }.
+  \end{equation}
+  Jeśli $\psi \in \Hcal_{ 0 }$ to stan ten opisuje system, którego całkowity
+  ładunek elektryczny jest równy~$0$. Analogicznie, jeśli
+  $\psi \in \Hcal_{ e }$ to system ten ma całkowity ładunek elektryczny
+  równy~$e$.
+
+  Czysto matematycznie ma sens następujące wyrażenie
+  % nc od not conserved, brak zachowanego ładunku
+  \begin{equation}
+    \label{eq:Czym-sa-problemy-ETC-04}
+    \psi_{ \HorSpaceTwo \text{nc} } =
+    \frac{ 1 }{ \sqrt{ 2 } } \psi_{ \HorSpaceTwo 0 } +
+    \frac{ 1 }{ \sqrt{ 2 } } \psi_{ \HorSpaceTwo 1 }, \quad
+    \psi_{ \HorSpaceTwo 0 } \in \Hcal_{ \HorSpaceTwo 0 }, \,
+    \psi_{ \HorSpaceTwo 1 } \in \Hcal_{ \HorSpaceTwo e }.
+  \end{equation}
+  Czy ten stan ma sens fizyczny? W~zależności od wyniku pomiaru
+  dostawalibyśmy stan zawierający całkowity ładunek elektryczny równy
+  $0$ lub $e$, co jest sprzeczne z~zasadą zachowania ładunku elektrycznego.
+  Wobec tego stwierdzamy, że~\alert{fizycznie} superpozycja stanów
+  $\psi_{ \HorSpaceOne a }$, $\psi_{ \HorSpaceOne b }$ jest dopuszczona wtedy i~tylko
+  wtedy, gdy $\psi_{ \HorSpaceOne a }, \psi_{ \HorSpaceOne b } \in \Hcal_{ \HorSpaceTwo 0 }$
+  lub $\psi_{ \HorSpaceOne a }, \psi_{ \HorSpaceOne b } \in \Hcal_{ \HorSpaceTwo e }$.
 
 \end{frame}
 % ##################
@@ -323,31 +290,83 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Jak to obliczyć?}
+  \frametitle{Reguły nadwyboru}
 
 
-  Do konstrukcji teorii swobodnego pola skalarnego $( \Acal, \Hcal, \pi )$
-  potrzebujemy operator:
+  \textbf{Regułę nadwyboru} w~ogólnym przypadku możemy sformułować
+  w~następujący sposób. Przestrzeń Hilberta $\Hcal$ danej teorii fizycznej
+  rozpada~się na sumę prostą podprzestrzeni
   \begin{equation}
-    \label{eq:Efekt-Casimira-11}
-    h^{ 2 } = -\Delta, \quad
-    h = \sqrt{ -\Delta }.
+    \label{eq:Czym-sa-problemy-ETC-02}
+    \Hcal =
+    \Hcal_{ \HorSpaceTwo 0 } \oplus \Hcal_{ \HorSpaceTwo 1 } \oplus
+    \Hcal_{ \HorSpaceTwo 2 } \oplus \ldots,
   \end{equation}
+  i~superpozycja stanów $\psi_{ a }$ i~$\psi_{ b }$ jest fizycznie dopuszczalna
+  wtedy i~tylko wtedy, gdy $\psi_{ a }, \psi_{ b } \in \Hcal_{ \HorSpaceTwo i }$
+  dla pewnego~$i$.
 
-  Wprowadzamy obiekty makroskopowe
+  Matematycznie, przez
+  \colorhref{https://en.wikipedia.org/wiki/Schur\%27s\_lemma}{lemat Schura},
+  oznacza to, że~istnieje operator $Q \neq C \id$, który jest przemienny
+  z~wszystkimi fizycznymi obserwablami. Dla pola elektromagnetycznego tym
+  operatorem jest to operator ładunku elektrycznego, którego wartości własne
+  mają postać $n \HorSpaceOne e$, $n \in \Zbb$.
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Krótko- i~długozasięgowe oddziaływania}
+
+
+  Jak dobrze wiadomo fotonowi należy przypisać zerową masę spoczynkową.
+  Teoria pola uczy nas, że~wobec tego \alert{klasyczny} potencjał
+  naładowanej cząstki punktowej w~elektrodynamice będzie miał postać
   \begin{equation}
-    \label{eq:Efekt-Casimira-12}
-    h_{ a }^{ 2 } = -\Delta + V_{ a }, \quad
-    h_{ a } = \sqrt{ h_{ a }^{ 2 } }.
+    \label{eq:Czym-sa-problemy-ETC-03}
+    V_{ \text{Cou} }( r ) =
+    \frac{ \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q }{ r }.
   \end{equation}
-  Operator $V_{ a }$ jest konsekwencją wprowadzenia ciał
-  makroskopowych do układu. To zamiana prowadzi do konstrukcji
-  $( \Acal, \Hcal, \pi_{ a } )$. W~trakcie jej przeprowadzanie potrzebny
-  jest m.~in. operator $\sqrt{ h_{ a } }$.
+  Z~drugiej strony jeśli oddziaływanie przenosi bozon o~masie $m$, wówczas
+  należy spodziewać~się potencjału posiadającego formę
+  \colorhref{https://en.wikipedia.org/wiki/Hideki\_Yukawa}{Yukały}:
+  \begin{equation}
+    \label{eq:Czym-sa-problemy-ETC-03}
+    V_{ \text{Yuk} }( r ) =
+    -( g_{ \HorSpaceOne \text{Yuk} } )^{ \HorSpaceOne 2 }
+    \frac{ e^{ -\alpha_{ \HorSpaceThree \text{Yuk} } \HorSpaceThree m \HorSpaceOne r } }
+    { r },
+  \end{equation}
+  gdzie $g_{ \HorSpaceOne \text{Yuk} }$ jest odpowiednikiem, z~grubsza, ładunku
+  elektrycznego. Obliczając gradient tych potencjałów dostajemy
 
-  Uwaga. Sytuacja staje~się subtelniejsza, bo musimy zagwarantować,
-  że~$h_{ a }^{ 2 }$ nie ma stanów związanych o~ujemnej energii.
-  Stany o~energii 0, nie stanowią problemu.
+  \vspace{-1.5em}
+
+
+  \begin{subequations}
+
+    \begin{align}
+      \label{eq:Czym-sa-problemy-ETC-03}
+      \vecE( r )
+      &= -\nabla V_{ \text{Cou} }( r ) =
+        \frac{ \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q }{ r^{ 2 } } \,
+        \widehat{ r }, \\
+      \vec{ M }( r )
+      &=
+        -\nabla V_{ \text{Yuk} }( r ) =
+        -( g_{ \HorSpaceOne \text{Yuk} } )^{ \HorSpaceOne 2 } \,
+        e^{ -\alpha_{ \HorSpaceThree \text{Yuk} } \HorSpaceThree m \HorSpaceOne r }
+        \left( \frac{ 1 }{ r^{ 2 } } +
+        \frac{ \alpha_{ \HorSpaceThree \text{Yuk} } \HorSpaceThree m }{ r } \right)
+        \widehat{ r }.
+    \end{align}
+
+  \end{subequations}
 
 \end{frame}
 % ##################
@@ -358,68 +377,39 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{????}
+  \frametitle{Krótko- i~długozasięgowe oddziaływania}
 
 
-  Warunek równoważności reprezentacji. Wprowadzenie ciał makroskopowych,
-  może wygenerować tylko skończoną liczbę cząstek swobodnych. Nie całkiem
-  banalna analiza prowadzi do wzoru:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-13}
-    \Ncal_{ a } =
-    \frac{ 1 }{ 4 } \Tr\left[ h^{ -1/2 } ( h_{ a } - h ) h_{ a }^{ -1 }
-      ( h_{ a } - h ) h^{ -1/2 } \right]
-    < +\infty.
-  \end{equation}
+  Łatwo obliczamy całki z~tych pól wektorowych po sferze $S( R )$, gdzie
+  $R$ to jej promień.
+
+  \vspace{-1.5em}
 
 
+  \begin{subequations}
 
-  Energia Casimira. Korzystając z~założenia o~\textbf{adiabatyczności}
-  ruchu ciał makroskopowych, po~nie całkiem elementarnej analizie
-  otrzymujemy:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-14}
-    \Ecal_{ a } =
-    \langle \Omega_{ a } | h^{ 2 } | \Omega_{ a } \rangle =
-    \frac{ 1 }{ 4 } \Tr\left[ ( h_{ a } - h ) h_{ a }^{ -1 }
-      ( h_{ a } - h ) \right].
-  \end{equation}
-  Skończona wartość tego wyrażenia, jest dodatkowym warunkiem na
-  fizyczną porównywalność obu układów.
+    \begin{align}
+      \label{eq:Czym-sa-problemy-ETC-03}
+      \int\limits_{ S( R ) } \vecE( R ) \cdot d\vec{ \sigma }
+      &= 4 \pi \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q, \\
+      \int\limits_{ S( R ) } \vec{ M }( R ) \cdot d\vec{ \sigma }
+      &=
+        -4 \pi \HorSpaceTwo g_{ \text{Yuk} }^{ \, 2 } \,
+        e^{ -\alpha_{ \HorSpaceThree \text{Yuk} } \HorSpaceThree m \HorSpaceOne R }
+        \left( 1 + \alpha_{ \HorSpaceThree \text{Yuk} } \HorSpaceThree m R \right).
+    \end{align}
 
-\end{frame}
-% ##################
+  \end{subequations}
+
+  \vspace{-1em}
 
 
 
-
-
-% ##################
-\begin{frame}
-  \frametitle{Problem dwóch punktów}
-
-
-  Pomysł zajęcia~się tym problemem wyszedł od dr. Bogdana Damskiego.
-
-  Rozwiązanie z~literatury. A. Scardicchio, \textit{Casimir dynamic:
-    Interactions~of surface with codimension $> 1$ due to quantum
-    fluctuations}, (2005), na pracę wskazał dr Damski.
-
-  Korzystając ze~wzoru:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-15}
-    E_{ a } =
-    \frac{ 1 }{ 2 } \int\limits_{ 0 }^{ \Lambda } dE \, \sqrt{E} \rho( E ),
-  \end{equation}
-  odejmując od niego odpowiednie człony
-  i~$\Lambda \to +\infty$ otrzymał on wzór:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-16}
-    \Fcal_{ a } =
-    -\frac{ 5 }{ 4 } \frac{ L_{ c }^{ 4 } }{ \pi a^{ 6 } }.
-  \end{equation}
-  Jeżeli dwa punkty są w~odległości $L_{ c }$ wówczas pojawia~się
-  stan związany o~$E < 0$ i~„próżnia staje~się niestabilna”.
+  Widzimy więc, że~dla teorii z~bozonem o~masie spoczynkowej $m = 0$
+  całka ta pozostaje stała w~granicy $R \nearrow +\infty$, lecz gdy masa bozonu
+  $m > 0$, to całka ta w~tej granicy znika. Pierwszy wynik to dobrze nam
+  znane prawo Gaussa, rachunek ten zaś miał służyć pokazaniu jego związek
+  z~masą bozonu obecnego w~tej teorii.
 
 \end{frame}
 % ##################
@@ -430,24 +420,551 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Problem dwóch płyt}
+  \frametitle{Kilka nieoczywistych konsekwencji}
 
 
-  Wyniki. W~ramach tego podejścia problem został obliczony, dla dwóch
-  różnych sposobów modyfikowania operatora $h^{ 2 } = -\Delta$.
+  Poprzednio rozważaliśmy pole od cząstki punktowej, ale jak wiemy
+  wynikający z~prawa Gaussa wzór
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    \lim_{ R \nearrow +\infty } \int\limits_{ S( R ) } \vecE( \vecr, t ) \cdot d\vec{ \sigma } =
+    4 \pi \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q,
+  \end{equation}
+  jest zawsze spełniony w~teorii Clerka Maxwella, proszę przy tym zwrócić
+  uwagę na obecność czasu. Niech $\vecn$ będzie dowolnym unormowanym
+  wektorem w~$\Rbb^{ 3 }$: $\Vert \vecn \Vert = 0$. Określamy asymptotyczne pole
+  elektromagnetyczne:
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    \vecE^{ \HorSpaceOne \text{asm} }( \vecn ) :=
+    \lim_{ R \nearrow +\infty } R^{ 2 } \vecE( R \vecn, t ), \quad
+    \vecB^{ \HorSpaceOne \text{asm} }( \vecn ) :=
+    \lim_{ R \nearrow +\infty } R^{ 2 } \vecB( R \vecn, t ).
+  \end{equation}
+  Jeśli mamy do czynienia ze standardowym problemem rozpraszania masywnych
+  cząstek (elektronów), to można pokazać, że~pola asymptotyczne nie zależą
+  od wyboru chwili~$t$. Fakt ten przez niektórych będzie uznany za
+  oczywisty, przez innych za zastanawiający.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka nieoczywistych konsekwencji}
+
+  \vspace{-1.5em}
+
+
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    \vecEasm :=
+    \lim_{ R \nearrow +\infty } R^{ 2 } \vecE( R \vecn, t ), \quad
+    \vecBasm :=
+    \lim_{ R \nearrow +\infty } R^{ 2 } \vecB( R \vecn, t ).
+  \end{equation}
+  Istnieje nieskończenie wiele różnych pól
+  $\vecE^{ \HorSpaceOne \text{asm} }( \vecn )$
+  $\vecB^{ \HorSpaceOne \text{asm} }( \vecn )$ czyniących zadość prawu Gaussa
+  wyrażonemu przez wzór \eqref{}. Do pola columbowskiego zadanego rozkładu
+  ładunków zawsze można dodać dowolną kombinację swobodnych fal
+  elektromagnetycznych, które uciekają „do nieskończoności”
+  i~znikają jak $r^{ -2 }$ dla $r >> 1$.
+
+  Jak powiedziano wcześniej, dla standardowego problemu rozpraszania,
+  pola asymptotyczne nie zależą od~$t$. Prof. Herdegen stwierdził,
+  że~wobec tego, ciężko uniknąć wniosku, że~w~tym problemie wszystkie pola
+  są jakby podwładnymi pola Coulomba (str.~2,
+  \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}).
+  Pole coulombowskie~jest odpowiedzialne za „ustalenie” ładunku
+  elektrycznego, wszystkie pozostałe służą tylko „poprawieniu” ich
+  zachowania w~nieskończoności, tak by pola asymptotyczne
+  $\vecE^{ \HorSpaceOne \text{asm} }( \vecn )$,
+  $\vecB^{ \HorSpaceOne \text{asm} }( \vecn )$ miały zawsze tą samą,
+  niezależną od czasu postać.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka nieoczywistych konsekwencji}
+
+
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    \lim_{ R \nearrow +\infty } \int\limits_{ S( R ) } \vecE( \vecr, t ) \cdot d\vec{ \sigma } =
+    4 \pi \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q
+  \end{equation}
+  Inną konsekwencją tego wzoru jest to, że~w~elektrodynamice ładunek
+  elektryczny nie jest wielkością lokalną. Jeśli ładunek jest skupiony
+  w~ograniczonym obszarze $\Ocal$, to jego \alert{całkowitą} wartość można
+  znaleźć przez całkowanie po sferze, które jest „bardzo daleko” od niego.
+  W~szczególności całkowity ładunek pełnego układu możemy znaleźć poprzez
+  całkowanie „po sferze w~nieskończoności”.
+
+  Przyjrzyjmy~się teraz tej nielokalności z~punktu widzenia algebraicznej
+  kwantowej teorii pola \textsc{aqft}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Lokalizacja zjawisk w~czasoprzestrzeni}
+
+  \vspace{-0.8em}
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \begin{tikzpicture}
+
+      % x axis
+      \draw[axis arrow] (-5,0) -- (5,0);
+
+      \pic at (5,0) {x mark for horizontal axis 1};
+
+
+      % t axis
+      \draw[axis arrow] (0,-2.5) -- (0,4);
+
+      \pic at (0,4) {t mark for vertical axis 1};
+
+
+
+      % Light cone
+      \fill[color=blue,opacity=0.4] (0,0) -- (3.5,3.5) -- (-3.5,3.5) -- cycle;
+
+      \fill[color=blue,opacity=0.4] (0,0) -- (2.2,-2.2) -- (-2.2,-2.2) --
+      cycle;
+
+      \draw[dashed] (2.2,-2.2) -- (-3.5,3.5);
+
+      \draw[dashed] (-2.2,-2.2) -- (3.5,3.5);
+
+
+
+      % Region number 1
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (1.2,0) (3,-1) (3.5,1.4) (2.5,1.2) };
+
+      \node[scale=1.3] at (2.3,0.3) {$\Ocal_{ 1 }$};
+
+
+      % Region number 2
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (0.8,0) (2.9,-1.5) (4.2,1.8) (1,3) };
+
+      \node[scale=1.3] at (2.7,1.8) {$\Ocal_{ 2 }$};
+
+
+      % Region number 3
+      \draw[dashed] plot[smooth cycle]
+      coordinates { (-1,-0.2) (-2,1.2) (-3,0.3) (-2,-1) };
+
+      \node[scale=1.3] at (-2,0.5) {$\Ocal_{ 3 }$};
+
+
+      % Event reaching form region 3 to region 1
+      \draw[dashed,thick,color=yellowLoc] (-1.3,0) -- (2,3.3);
+
+      \fill[color=brown] (-1.3,0) circle [radius=0.09];
+
+      \node[below] at (-1.3,-0.05) {$E$};
+
+    \end{tikzpicture}
+
+    \caption{Trzy ograniczone obszary $\Ocal_{ 1 }$, $\Ocal_{ 2 }$
+      i~$\Ocal_{ 3 }$, oraz zjawisko $E$ wysyłające promień światła.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Konsekwencje prawa Gaussa}
+
+
+  Standardowo obserwable przypisujemy ograniczonym obszarom
+  czasoprzestrzeni i~jeśli dwa z~nich są rozłączne przestrzenie to zawarte
+  w~nich obserwable komutują $[ A, B ] = 0$. Pola
+  $\vecE^{ \HorSpaceOne \text{asm} }( \vecn )$,
+  $\vecB^{ \HorSpaceOne \text{asm} }( \vecn )$ są zlokalizowane na „sferze
+  w~nieskończoności”, która jest rozłączna przestrzennie z~dowolnym
+  ograniczonym obszarem czasoprzestrzeni, więc są przemienne z~wszystkimi
+  lokalnymi obserwablami.
+
+  Ten wynik jest niezwykle ważny dla prac prof. Staruszkiewicza i~Herdegena,
+  proszę więc zwrócić na niego szczególną uwagę.
+
+  Na mocy lematu Schura pola $\vecE^{ \HorSpaceOne \text{asm} }( \vecn )$,
+  $\vecB^{ \HorSpaceOne \text{asm} }( \vecn )$ definiują nową regułę
+  nadwyboru, gdzie każda konfiguracja tych pól, zadaje jeden sektor.
+  Przestrzeń Hilberta rozkłada~się więc na \alert{nieprzeliczalną} sumę
+  prostą odpowiednich sektorów, wyznaczonych przez asymptotyczny kształt
+  pól. Nie będę ukrywał, że~właściwe zrozumienie sensu fizycznego tego
+  faktu, nie jest dla mnie proste.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mamy poważny problem}
+
+
+  Istnienie reguły nadwyboru związanej z~polami $\vecEasm$, $\vecBasm$ jest
+  \alert{sprzeczne} z~niezmienniczością Lorentza. Już na poziomie klasycznym
+  nie można znaleźć lorentzowsko niezmienniczych pól $\vecEasm$, $\vecBasm$
+  i~ten sam problemy występuje na poziomie kwantowym. W~literaturze padają
+  sugestie, że~mamy przez to do czynienia ze spontanicznym łamaniem
+  symetrii Lorentza, analogiczną do tej dotyczącej bozonu Higgsa.
+  Wybierając teorię, musimy wybrać jeden stan, który łamie symetrię
+  Lorentza i~wyróżnia pewną klasę inercjalnych układów odniesienia.
+  Powrócimy do tego za chwilę.
+
+  Jakkolwiek może istnieć sposób obejścia tego nieprzyjemnego wyniku,
+  przez odrzucenie pewnych założeń o~lokalności pola, to istnieje też drugi
+  problem, znacznie trudniejszy do obejścia. Jak wskazuje praca Detlev’a
+  Buchholza istnienie reguł nadwyboru związanej z~polami asympotycznymi,
+  sprawia, że~masa elektronu jest „rozmyta”
+  \parencite{Buchholz-The-Physical-State-Space-Of-Quantum-ETC-Pub-1982}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Infracząstki}
+
+
+  Jak wiadomo, dla swobodnej cząstki w~\textsc{stw} musi obowiązywać
+  dobrze znana relacja
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    E^{ 2 } - p^{ 2 } = p^{ \mu } p_{ \mu }  = m^{ 2 }.
+  \end{equation}
+  Gdy przechodzimy do teorii kwantowej pęd i~energia stają~się operatorami
+  $P^{ \mu }$. Jeśli zachodzi
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    P^{ \mu } P_{ \mu } \psi  = m^{ 2 } \psi, \quad
+    \psi \in \Hcal,
+  \end{equation}
+  to $\psi$ reprezentuje swobodną cząstkę o~„ostrej” masie $m > 0$. Argument
+  Buchholza wskazuje, że~dla elektrodynamiki kwantowej taki stan $\psi$
+  istnieje tylko dla $m^{ 2 } = 0$, czyli jest pozbawiony elektronów!
+
+  Dlaczego tak jest? Intuicyjnie jego rozumowanie, po ogromny uproszczeniu,
+  przebiega mniej więcej tak. Jeśli $\vecEasm \neq 0$ lub~$\vecBasm \neq 0$, to
+  elektron musi cały czas emitować niskoenergetyczne fotony, aby podtrzymać
+  istnienie pól asymptotycznych.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Infracząstki}
+
+
+  W~skutek emisji niskoenergetycznego fotonu elektron doznaje lekkiego
+  odrzutu, który zmienia jego ruch. Wygląda to tak, jakby masa
+  elektronu fluktuowała w~czasie jego ruchu, nie może więc on być stanem
+  własnym operatora $P^{ \mu } P_{ \mu }$ do dyskretnej wartości
+  własnej~$m^{ 2 }$.
+
+  Cząstki które nie mają ściśle określonej masy nazywamy
+  \textbf{infracząstkami} (ang.~\textit{infraparticles})
+  lub~\textbf{cząstkami podczerwonymi}. Poglądowy obraz elektronu jako
+  infracząstki jest taki, że~jest on zawsze otoczony przez chmurę fotonów
+  („ubrany w~chmurę fotonów”). Chmura ta jest odpowiedzialna za generowanie
+  pól asymptotycznych i~przez to, iż elektron „ciągnie” tę chmurę jego masa
+  nie jest „ostro” określona.
+
+  Intuicyjne wyjaśnienia łamania symetrii Lorentzowskiej w~tym obrazie
+  jest następujące. Chmury fotonów zmieniają kształt pod wpływem
+  transformacji Lorentza, więc wyróżnione są te układy odniesienia,
+  w~których chmury te są sferycznie symetryczne.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Załamanie~się klasyfikacji Wignera}
+
+
+  \colorhref{https://en.wikipedia.org/wiki/Eugene\_Wigner}{Eugen Wigner}
+  pokazał, że~każdą nieredukowalną, skończenie wymiarową reprezentację grupy
+  Lorentza określają dwie liczby: $m^{ \HorSpaceOne 2 }$ i~$s$. Jak wynika
+  z~zapisu, każdą taką reprezentację można jednoznacznie skojarzyć
+  z~cząstką swobodną, która ma zadany kwadrat masy i~spin (przez relację
+  $S^{ 2 } = s ( s + 1 )$).
+
+  Niestety klasyfikacja ta \alert{nie} może obejmować infracząstek, bo
+  te z~definicji nie mają one „ostro” określonej masy. To stawia pod
+  znakiem zapytania wyniki niemałej ilości prac obecnej w~literaturze.
+
+  Tematy infracząstek, choć dość niszowy w~środowisku, posiada literaturę
+  zbyt dużą by móc ją choćby wymienić. Osobom zainteresowany polecamy
+  sięgnąć po dalsze informacje i~odniesienia do literatury po pracę
+  J.~Munda, K.H.~Rehrena i B.~Schroera
+  \colorhref{https://arxiv.org/abs/2109.10342}{\textit{Infraparticle
+      quantum fields and the~formation~of photon clouds}}
+  \parencite{Mund-Rehren-Schroer-Infraparticle-quantum-fiels-ETC-Pub-2022}.
+  W~pracy tej omówione są takie zagadnienia jak reguła nadwyboru pól
+  asymptotycznych, „rozmycie” masy czy złamanie symetrii Lorentza.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy podczerwone w~teorii rozpraszania}
+
+
+  Rozważmy podstawowy problem z~teorii rozpraszania. Chcemy obliczyć
+  przekrój czynny na proces rozpraszania na przejście ze~stanu dwóch
+  elektronów~$\alpha$ do~stanu~$\beta$, oznaczamy go
+  $\sigma_{ \HorSpaceOne \alpha, \HorSpaceOne \beta }$. Zachodzi,trochę symboliczna relacja
+
+  \vspace{-2.2em}
+
+
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta } \sim
+    \absOne{ S_{ \alpha, \HorSpaceOne \beta } }^{ 2 },
+  \end{equation}
+
+  \vspace{-1.8em}
+
+
+  gdzie $S_{ \alpha, \HorSpaceOne \beta }$ to odpowiedni element macierzy~$S$. Elementu
+  tego nie możemy obliczyć bezpośrednio, ze~względu na rozbieżności
+  podczerwone, takie jak te zaznaczone na~slajdzie
+  \eqref{sld-Problemy-podczerwone-i-nadfioletowe}, musimy więc wprowadzić
+  parametr obcięcia $\varepsilon$. Poprzez wprowadzenie go blokujemy powstanie
+  fotonów o~energii mniejszej niż~$\varepsilon$.
+
+  Nasza wiedza fizyczna wymaga, by na końcu przejść z~$\varepsilon$ do~zera,
+  co daje nam
+
+  \vspace{-2.3em}
+
+
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta } \sim \lim_{ \varepsilon \searrow 0 }
+    \absOne{ S_{ \alpha, \HorSpaceOne \beta }^{ \HorSpaceOne \varepsilon } }^{ 2 } = 0.
+  \end{equation}
+
+  \vspace{-1.7em}
+
+
+  Mało który wynik fizyki teoretycznej jest tak sprzeczny z~rzeczywistością
+  jak ten. Ale~się nie poddajemy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy podczerwone w~teorii rozpraszania}
+
+
+  D.R. Yennie, S.C. Frautschi i~H.~Suura podali przepis rachunkowy na
+  obliczenie, tzw. inkluzywnego przekroju czynnego, który na poziomie
+  zgodności teorii z~eksperymentem rozwiązuje ten problem bardzo dobrze
+  \parencite{Yennie-Frautschi-Suura-The-infrared-divergence-ETC-Pub-1961}.
+  Idea ich podejścia jest następująca.
+
+  Gdyby foton miał masę spoczynkową $m > 0$, to wówczas elektron
+  potrzebowałby mieć energię kinetyczną $E_{ \text{kin} } \geq m$, aby móc
+  wytworzyć pojedynczy foton. Ponieważ jednak foton jest bezmasowy, to
+  elektron o~dowolnej energii $E_{ \text{kin} } > 0$ jest w~stanie
+  wytworzyć \alert{dowolną} ilość fotonów, pod warunkiem, że~ich sumaryczna
+  energia jest odpowiednio mała. Z~drugiej strony czułość każdego detektora
+  jest skończona i~nie jest w~stanie on wykrywać fotonów o~energii niższej,
+  niż pewna energia progowa $E_{ \HorSpaceOne \text{thre} } > 0$.
+  % thre - threshold
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy podczerwone w~teorii rozpraszania}
+
+
+  Wobec tego, należy przyjąć, że~każdy proces rozpraszania dwóch elektronów
+  zawiera pewną liczbę miękkich fotonów (ang. \textit{soft photons}),
+  których detektor był w~stanie zarejestrować. Nasza metoda powinna być
+  inkluzywna ze względu na te niezarejestrowane fotony, co prowadzi nas do
+  wzoru
+  \begin{equation}
+    \label{eq:Efekt-Casimira-01}
+    \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta }^{ \HorSpaceOne \text{inc} } \sim
+    \lim_{ \varepsilon \searrow 0 } \sum_{ n = 0 }^{ \infty }
+    \absOne{ S_{ \alpha, \HorSpaceOne \beta_{ \HorSpaceOne n } }^{ \HorSpaceOne \varepsilon } }^{ 2 },
+  \end{equation}
+  gdzie $\beta_{ \HorSpaceOne n }$ oznacza stan, który poza cząstkami obecnymi
+  w~stanie $\beta$ zawiera $n$~miękkich fotonów o~energii poniżej progu
+  czułości detektora.
+
+  Choć ten przepis prowadzi do bardzo dobrych przewidywań, nie potrafimy
+  go w~sposób satysfakcjonujący wyprowadzić z~kwantowej teorii pola.
+  Osobom zainteresowany tym tematem polecam lekturę artykułu Pawła Ducha
+  i~Wojciecha Dybalskiego \colorhref{https://arxiv.org/abs/2307.06114}{
+    \textit{Infrared problem in quantum electrodynamics}}
+  \parencite{Duch-Dybalski-Infrared-problem-in-quantum-electrodynamics-Pub-2023}
+  i~\colorhref{https://arxiv.org/abs/1906.00940}{\textit{Infrared problem\ldots}}
+  pierwszego z~tych autorów
+  \parencite{Duch-Infrared-problem-in-perturbative-quantum-ETC-Pub-2021}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~wadze zagadnień podczerwonych}
+
+
+  Na chwilę obecną nie istnieje matematycznie ścisły sposób konstrukcji
+  kwantowej elektrodynamiki w~$1 + 3$ wymiarach, dlaczego więc, z~punktu
+  widzenia dla której matematyczna spójność jest ważna, warto zajmować~się
+  problemami podczerwonymi, zanim taki model kwantowej elektrodynamiki
+  zostanie zbudowany? Tutaj odwołam~się do słów prof. Herdegena (zob.
+  str.~2
+  w~\parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}).
+
+  Po pierwsze, w~granicy asymptotycznej większość elementów dynamiki pola
+  powinna tracić znaczenie. Jest więc prawdopodobne, że~teoria problemów
+  podczerwonych oparta na solidnych podstawach fizycznych, będzie zgodna
+  z~tą wyprowadzoną z~pełnego, ścisłego modelu elektrodynamiki kwantowej
+  (miejmy nadzieję, że~taki kiedyś zostanie zbudowany), pomimo że~on
+  sam nie jest dziś znany.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~wadze zagadnień podczerwonych}
+
+
+  Po drugie, teoria asymptotyczna musi czynić zadość prawu Gaussa
+  i~związanym z~nim długozasięgowym oddziaływaniom. Ponieważ to musi być
+  prawdą również w, standardowo pojętej, kwantowej elektrodynamice, więc
+  jest zasadne przyjąć, iż~odtworzenie teorii asymptotycznej jako pewnej
+  granicy kwantowej elektrodynamiki. W~jednej ze swoich prac prof.~Herdegen
+  badał jak w~\alert{klasycznej} elektrodynamice energia, pęd i~moment pędu
+  związane są z~ich asymptotycznymi odpowiednikami, o~czym powiem
+  trochę później
+  (zob.~\parencite{Herdegen-Long-range-effects-in-asymptotic-ETC-Pub-1995}).
+
+  W~takiej sytuacji badanie reżimu asymptotycznego może rzucić nowe światło
+  na pełnej elektrodynamiki kwantowej, a~dziś każdy taka informacja jest
+  niezwykle cenna.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Pola asymptotyczne i~efekt pamięci}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problem pól asymptotycznych}
+
+
+  Wróćmy do problemu roli pól asymptotycznych $\vecEasm$, $\vecBasm$
+  w~zagadnieniach rozpraszania i~ponownie odwołamy~się do
+  prof.~Herdegena, który zauważył, że~z~przytoczonych wcześniej informacji
+  wyciągane~są mocno przeciwstawne wnioski (str.~2,
+  \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}).
+
   \begin{itemize}
-    \RaggedRight
 
-  \item[1.)] Poprzez modyfikację zachowanie $h^{ 2 } = -\Delta$
-    dla mały $k$ w~przestrzeni pędów. A. Herdegen (2005).
+  \item[1)] Konkretna postać pól asymptotycznych $\vecEasm$, $\vecBasm$
+    jest w~dużej mierze kwestią konwencji. Ważne jest tylko by było
+    dla nich spełnione prawo Gaussa.
 
-  \item[2.)] Poprzez dodanie odpowiedniego pseudopotencjału:
-    \begin{equation}
-      \label{eq:Efekt-Casimira-17}
-      h_{ a }^{ 2 } = -\Delta + V_{ a }.
-    \end{equation}
-    A. Herdegen, M. Stop, \textit{Global vs local Casimir effect}, \\
-    arXiv:1007.2139, (2010).
+  \item[2)] Podczerwone stopnie swobody swobodnego pola różnią~się
+    fundamentalnie od jego lokalnych stopni swobody. Warto zaznaczyć,
+    że~ultrafioletowe stopnie swobody są lokalne w~podanym tu sensie.
 
   \end{itemize}
 
@@ -460,99 +977,56 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Problem dwóch płyt}
+  \frametitle{Problem pól asymptotycznych}
 
 
-  Wynik z~pracy Herdegena i~Stopy.
-  \begin{equation}
-    \label{eq:Efekt-Casimira-18}
-    \Fcal_{ a } =
-    \frac{ 2 c }{ \lambda } - \frac{ \pi^{ 2 } }{ 240 a^{ 4 } }
-    + ( \textrm{wyrazy} \xrightarrow[ \lambda \to 0 ]{} 0 ).
-  \end{equation}
-  Symbole $c$ i~$\lambda$, to parametry zależne od kształtu „rozmytych” warunków
-  brzegowych.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Skalowanie modelu}
-
-
-  Ta procedura powinna odtwarzać siłę Casimira między dwoma punktami,
-  czyli gdy $V_{ a }$ jest quasipotencjałem typu delty Diraca. Wprowadźmy
-  parametr $\lambda$, tak by zachodziło:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-19}
-    h_{ a,\, \lambda }^{ 2 } \xrightarrow[ \lambda \to 0 ]{}
-    h_{ a,\, \textrm{DP} }^{ 2 }.
-  \end{equation}
-  Ponieważ $h_{ a,\, \lambda }^{ 2 }$, $h_{ a,\, \textrm{DP} }^{ 2 }$ są
-  nieograniczone, odpowiedź na pytanie o~to co znaczy taka granica
-  nie jest oczywiste.
-
-  Granica rezolwentowa. Dla $w^{ 2 }$ spoza widma $h_{ a,\, \lambda }^{ 2 }$
-  i~$h_{ a,\, \textrm{DP} }^{ 2 }$ ich rezolwenty są operatorami
-  ograniczonymi, można więc postawić pytanie czy punktowo zachodzi:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-20}
-    ( w^{ 2 } - h_{ a,\, \lambda }^{ 2 } )^{ -1 }
-    \xrightarrow[ \lambda \to 0 ]{}
-    ( w^{ 2 } - h_{ a,\, \textrm{DP} }^{ 2 } )^{ -1 }.
-  \end{equation}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Model dla dwóch punktów, oznaczenia}
-
+  Przeciwne spojrzenie na ten problemy prezentuje~się następująco.
 
   \begin{itemize}
-    \RaggedRight
 
-  \item $g( \vecx )$ funkcja zespolona, gładka o~nośniku
-    zawartym w~kuli o~promieniu $d$ i~środku w~$0 \in \Rbb^{ 3 }$;
+  \item[1)] Eksperymentalne testy teorii odbywają~się na skali metrów,
+    więc odległość rzędu kilku metrów jest wystarczając by mówić o~efekcie
+    „w~nieskończoności”. Ponadto efekt pamięci, odkryty w~przypadku
+    elektrodynamiki przez
+    \colorhref{https://pl.wikipedia.org/wiki/Andrzej_Staruszkiewicz}{prof.~Staruszkiewicza}, pokazuje
+    istnienie obserwowalne efekty pól asymptotycznych.
 
-  \item $g_{ \vec{ v } }( x ) = g( \vec{ x } - \vec{ v } )$;
-
-  \item $g_{ \lambda }( \vecx ) = \lambda^{ -\gamma } g\left( \frac{ \vecx }{ \lambda } \right)$,
-    $\gamma > 0$;
-
-  \item $\veca$ -- odległość między punktami materialnymi,
-    $a = \absOne{ \veca }$;
-
-  \item $\vecb = \frac{ 1 }{ 2 } \veca$, $b = \absOne{ \vecb }$.
+  \item[2)] W~klasycznym przypadku, w~teorii rozpraszania swobodne pola
+    muszą mieć silne zachowanie podczerwone i~wszystkie ich stopnie swobody
+    są niezależne. W~teorii kwantowej lokalne pole swobodne ma naturalne
+    rozszerzenie, zawierające pola wykazujące podczerwone zachowanie.
 
   \end{itemize}
 
+  Prof. Herdegen i~Staruszkiewicz w~swoich badaniach opowiedzieli~się
+  za~drugim z~tych podejść i~pewne osiągnięte przez nich wyniki zreferujemy
+  poniżej, zaczynając od~efektu pamięci (ang. \textit{memory effect}).
+
+  \end{frame}
+% ##################
 
 
-  Pseudopotencjał
-  \begin{subequations}
-    \begin{align}
-      \label{eq:Efekt-Casimira-21-A}
-      | g \rangle \langle g | \psi \rangle
-      &= g( x ) \int\limits_{ \Rbb^{ 3 } } d^{ 3 } x \; \overline{ g( x ) } \;
-        \psi( x ) \\
-      \label{eq:Efekt-Casimira-21-B}
-      V_{ a,\, \lambda }
-      &=
-        \sigma( \lambda ) \left( | g_{ \vecb,\, \lambda } \rangle \langle g_{ \vecb,\, \lambda } |
-        + | g_{ -\vecb,\, \lambda } \rangle \langle g_{ -\vecb,\, \lambda } | \right)
-    \end{align}
-  \end{subequations}
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Efekt pamięci}
+
+
+  Efekt pamięci został znaleziony dla pola grawitacyjnego przez
+  Zel'dovicha i~Polnareva w~$1974$ roku (data publikacji angielskiego
+  tłumaczenia ich pracy
+  \parencite{Zeldovich-Polnarev-Radiation-of-gravitational-ETC-Pub-1974}),
+  a~dla pola elektromagnetycznego przez prof. Staruszkiewicza w~roku~$1981$
+  \parencite{Staruszkiewicz-Gauge-invariant-surface-contribution-ETC-Pub-1981}.
+
+  Zacznijmy od ustalenia postać pól asymptotycznych $\vecEasm$,
+  $\vecBasm$. Okazuje~się, że~możemy wziąć pole elektromagnetyczne
+  o~dowolnie małej energii, które posiada taką postać asymptotyczną,
+  co~ponownie unaocznia, że~pola asymptotyczne są zjawiskiem z~reżimu
+  podczerwonego. Wystarczy bowiem wziąć jedno pole które generuje
+  tego typu pola asymptotyczne i~następnie przeskalować je w~prosty sposób.
 
 \end{frame}
 % ##################
@@ -563,34 +1037,39 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Model dla dwóch punktów}
+  \frametitle{Efekt pamięci}
 
 
-  Podstawowe obiekty modelu
-  \begin{subequations}
-    \begin{align}
-      \label{eq:Efekt-Casimira-22-A}
-      h^{ 2 } &= -\Delta, \\
-      \label{eq:Efekt-Casimira-22-B}
-      g_{ \lambda }( \vecx )
-              &= \lambda^{ -\gamma } g\left( \frac{ \vecx }{ \lambda } \right), \quad
-                \gamma > 0, \\
-      \label{eq:Efekt-Casimira-22-C}
-      V_{ a, \lambda } =
-      \sigma( \lambda )
-              &\left( | g_{ \vecb, \lambda } \rangle
-                \langle g_{ \vecb, \lambda } | + | g_{ -\vecb, \lambda } \rangle
-                \langle g_{ -\vecb, \lambda } | \right), \\
-      \label{eq:Efekt-Casimira-22-D}
-      h_{ a }^{ 2 } &= h^{ 2 } + V_{ a }.
-    \end{align}
-  \end{subequations}
+  Niech teraz dane będzie padająca fala płaska
+  $\exp\!\big( -i 2\pi ( E t + \vecp \cdot \vecx \HorSpaceOne ) \big)$. W~wielkim
+  uproszczeniu prof. Staruszkiewicz wykazał, że~istnieje funkcja
+  $f\big( \HorSpaceOne \vecp, \vecEasm, \vecBasm \big)$, taka
+  że~przesunięcie fazowe $\delta( \HorSpaceOne \vecp \HorSpaceOne )$ jakiego
+  dozna ta fala wyraża się wzorem
 
-  Komentarz. $V_{ a }$ jest nielokalnym pseudopotencjałem. To postępowanie
-  zostało zaproponowane w~pracy A.~Herdegena i~M.~Stopy, \textit{Global
-    vs~local Casimir effect}, (2010) arXiv: 1007.2139v1, gdyż
-  wprowadzenie potencjału lokalnego prowadziło do~rozbieżnych
-  wyrażeń na ślady odpowiednich operatorów.
+  \vspace{-1em}
+
+
+  \begin{equation}
+    \label{eq:Czym-sa-problemy-ETC-01}
+    \delta( \HorSpaceOne \vecp \HorSpaceOne ) =
+    -\frac{ e }{ 2\pi }
+    \int \frac{ f\big( \HorSpaceOne \vecp, \vecEasm,
+      \vecBasm \big) }{ u( \HorSpaceOne \vecp, l ) } \,
+    d^{ \HorSpaceOne 2 } l.
+  \end{equation}
+  W~notacji relatywistycznej możemy zapisać
+  $u( \HorSpaceOne \vecp, l ) = p \cdot l$.
+
+  Wzór ten jest ciekawe zarówno z~punkt widzenia fizyki jak i~matematyki,
+  jednak jego dyskusja przekracza ramy tego przeglądowego wystąpienia. To co
+  jest ważne to fakt, że~przesunięcie fazowe zależy \alert{tylko
+    i~wyłącznie} od pędu fali padającej i~postaci pól asymptotycznych.
+  W~szczególności, ponieważ mogę dowolnie zamieszczać energię zawartą
+  w~polu elektromagnetycznym $E_{ \HorSpaceOne \text{el} }$, nie zmieniają jego
+  postaci asymptotycznej. Wynika stąd, że~przesunięcie fazowe
+  $\delta( \HorSpaceOne \vecp \HorSpaceOne )$ również nie zależy od tego tej
+  energii.
 
 \end{frame}
 % ##################
@@ -601,38 +1080,25 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Wreszcie coś liczymy}
+  \frametitle{Efekt pamięci}
 
 
-  Wynik. Niech dane będą dane stany własne $h$ i~$h_{ a }$:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-23}
-    h | p \rangle = p | p \rangle, \quad
-    h_{ a } | k+ \rangle = k | k+ \rangle.
-  \end{equation}
-    Za pomocą tych stanów możemy obliczyć energię Casimira
-    w~następujący sposób:
-    \begin{equation}
-      \label{eq:Efekt-Casimira-24}
-      \Ecal_{ a } =
-      \frac{ 1 }{ 4 } \Tr\left[ ( h_{ a } - h ) h_{ a }^{ -1 }
-        ( h_{ a } - h ) \right]
-      =
-      \frac{ 1 }{ 4 } \int\limits d^{ 3 } k \, d^{ 3 } p \,
-      \frac{ ( \absOne{ k } - \absOne{ p } )^{ 2 } }{ \absOne{ k } }
-      \absOne{ \langle p | k+ \rangle }^{ 2 }.
-    \end{equation}
+  Ale to oznacza, że~mogę wziąć granicę $E_{ \HorSpaceOne \text{el} } \searrow 0$,
+  w~której \textit{niemożliwa} jest zmiana pędu $\vecp$ fali padającej,
+  a~mimo tego $\delta( \HorSpaceOne \vecp \HorSpaceOne ) \neq 0$. Jak to zrozumieć?
 
-    Teraz potrzebujemy znaleźć $\langle p | k+ \rangle$. W~dalszym
-    ciągu jest $k$ zamiast $\absOne{ k }$.
+  Po pierwsze zwróćmy uwagę, że~niezerowe przesunięcie fazowe nie łamie
+  zasady zachowania energii. Po drugie, zadaną postać pól asymptotycznych
+  $\vecEasm$ i~$\vecBasm$ mogę otrzymać dla pola o~dowolnej energii
+  całkowitej $E_{ \HorSpaceOne \text{el} } > 0$ odpowiednie rozkładając
+  niskoenergetyczne fotony po czasoprzestrzeni. Powyższy wynik stwierdza
+  więc, że~niezależnie jak małą energią pola dysponujemy, by~odtworzyć
+  zadane pola asymptotyczne, musimy tak rozłożyć niskoenergetyczne fotony,
+  że~zawsze spowodują to samo przesunięcie fazowe fali płaskiej.
 
-    Z~pomocą przychodzi teoria rozpraszania
-    \begin{equation}
-      \label{eq:Efekt-Casimira-25}
-      \langle p | k + \rangle =
-      \delta(p - k)
-      + \frac{ \langle p | T( k^{ 2 } + i0 ) | k \rangle}{ k^{ 2 } - p^{ 2 } + i0 }.
-    \end{equation}
+  % Chyba właśnie fakt otrzymania $\delta( \vecp ) \neq 0$ w~granicy
+  % $E_{ \HorSpaceOne \text{el} } \searrow 0$ jest źródłem nazwy „efekt pamięci”.
+  % Acz~to tylko moje przypuszczenie.
 
 \end{frame}
 % ##################
@@ -643,41 +1109,70 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Wreszcie coś liczymy}
+  \frametitle{Nowe badania nad efekt pamięci}
 
 
-  Oznaczenia
-  \begin{equation}
-    \label{eq:Efekt-Casimira-26}
-    G_{ 0 }( w^{ 2 } ) = ( w^{ 2 } - h^{ 2 } )^{ -1 }, \quad
-    G_{ \lambda }( w^{ 2 } ) = ( w^{ 2 } - h_{ \lambda }^{ 2 } ).
-  \end{equation}
-  Tutaj pomijam indeks $a$.
+  Na~tym musimy zakończyć to bardzo pobieżne omówienie efektu pamięci.
+  Dokładniejsze jego omówienie można znaleźć w~rozdziale $2.6$ pracy
+  prof.~Herdegena
+  \colorhref{https://arxiv.org/abs/2403.09234}{\textit{Infrared structure
+      beyond\ldots}}
+  \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}. Tam
+  też znajduje~się wyjaśnienie jak efekt pamięci przejawia~się w~przypadku
+  bardziej fizycznych problemów, niż padająca fala płaska.
+
+  Zanim przejdziemy dalej warto dodać, w~ostatnich
+  kilkunastu latach, efekt pamięci zyskał stosunkowo dużą popularność, jak
+  też stał~się przedmiotem paru kontrowersji. Polecam w~tym względzie pracę
+  prof. Herdegena
+  \colorhref{https://arxiv.org/abs/2311.06325}
+  {\textit{There is no 'veolcity kick'\ldots}}, w~której stwierdza on,
+  że~Lydia~Bieri i~David~Garfinkle błędnie przewidzieli dla efektu pamięci
+  występowanie „kopnięcia prędkości”
+  (por.~\parencite{Bieri-Garfinkle-An-electromagnetic-analogue-of-ETC-Pub-2013}),
+  gdyż dokonali nieuprawnionej zamiany kolejności brania granic
+  \parencite{Herdegen-There-Is-No-Velocity-Kick-Memory-ETC-Pub-2024}.
+
+\end{frame}
+% ##################
 
 
-  Wzory z~teorii rozpraszania
-  \begin{align}
-    \label{eq:Efekt-Casimira-27-A}
-    G( w^{ 2 } )
-    &=
-      G_{ 0 }( w^{ 2 } ) + G_{ 0 }( w^{ 2 } ) T( w^{ 2 } ) G_{ 0 }( w^{ 2 } ), \\
-    \label{eq:Efekt-Casimira-27-B}
-    T( w^{2 } ) &= V + V G_{ 0 }( w^{ 2 } ) T( w^{ 2 } ).
-  \end{align}
-  $G_{ 0 }( w^{ 2 } )$ to rezolwenta laplasjanu, więc znamy ten operator
-  bardzo dobrze.
 
-  Postulujemy
-  \begin{equation}
-    \label{eq:Efekt-Casimira-28}
-    T_{ \lambda }( w^{ 2 } ) =
-    \left( | g_{ \vecb,\, \lambda } \rangle | g_{ -\vecb,\, \lambda } \rangle \right)
-    \Tcal_{ \lambda }( w^{ 2 } )
-    \begin{pmatrix}
-      \langle g_{ \vecb, \lambda } | \\
-      \langle g_{ -\vecb,\, \lambda } |
-    \end{pmatrix}
-  \end{equation}
+
+
+
+
+
+
+
+% ######################################
+\section{Wybrane badania prof. Herdegena}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Prof. Staruszkiewicz i~prace
+    prof.~Herdegena}
+
+
+  Teraz chcemy pokrótce zarysować wyniki kilku prac prof.~Herdegena
+  poświęconych problemom podczerwony. Wszystkie one mają na celu
+  rozjaśnienie problemów wymienionych w~pierwszej części niniejszego
+  wystąpienia, widać też w~nich wyraźny wpływ badań prof. Staruszkiewicza,
+  dlatego należy wspomnieć od dwóch jego badań.
+
+  Prof. Staruszkiewicz, i~za nim prof. Herdegen, kładą duży nacisk
+  na~geometryczne własności czasoprzestrzeni Minkowskiego i~ich ścisły
+  związek z~równaniami ruchu pola elektromagnetycznego (wariantami równań
+  Clerka Maxwella). Pozostaje ubolewać, że~geometryczne własności z~których
+  korzystają i~ich związek z~teorią reprezentacji grupy Lorentza nie są
+  częściej przytaczane w~literaturze dotyczącej~\textsc{stw}.
+
+  Obecnie jestem w~trakcie przygotowywania notatek na temat tych własności
+  do cyklu seminariów \textsc{nkf}u, ciągle wynajdując dość proste
+  geometryczne ich wyjaśnienia, dlatego wolę~się dzisiaj nie zagłębiać~się
+  przesadnie w~ten temat.
 
 \end{frame}
 % ##################
@@ -688,45 +1183,25 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Wreszcie coś liczymy}
+  \frametitle{Teoria prof. Staruszkiewicza}
 
 
-  Postulujemy
-  \begin{equation}
-    \label{eq:Efekt-Casimira-29}
-    T_{ \lambda }( w^{ 2 } ) =
-    \left( | g_{ \vecb,\, \lambda } \rangle | g_{ -\vecb,\, \lambda } \rangle \right)
-    \Tcal_{ \lambda }( w^{ 2 } )
-    \begin{pmatrix}
-      \langle g_{ \vecb, \lambda } | \\
-      \langle g_{ -\vecb, \lambda } |
-    \end{pmatrix}.
-  \end{equation}
+  Jak już zostało to wspomniane w~pierwszej części, na gruncie algebraicznej
+  kwantowej teorii pola, pola asymptotyczne są przemienne z~wszystkimi
+  lokalnymi obserwablami. Wielkości wykazujące tę własność są
+  właściwie zmiennymi klasycznymi, które przetrwały w~teorii kwantowej
+  i~zwykle mają tylko charakter pomocniczy w~stosunku do prawdziwie
+  „fizycznych” wielkości.
 
-  Rozwiązanie
-  \begin{subequations}
-    \begin{align}
-      \label{eq:Efekt-Casimira-30-A}
-      &\Tcal_{ \lambda }( w^{ 2 } ) =
-      \begin{bmatrix}
-        \sigma^{ -1 }( \lambda )
-        - ( g_{ \lambda }, G_{ 0 }( w^{ 2 } ) g_{ \lambda } )
-        & -( U_{ \veca } g_{ \lambda }, G_{ 0 }( w^{ 2 } ) g_{ \lambda } ) \\
-        -( U_{ \veca } g_{ \lambda }, G_{ 0 }( w^{ 2 } ) g_{ \lambda } )
-        & \sigma^{ -1 }( \lambda )
-          - ( g_{ \lambda }, G_{ 0 }( w^{ 2 } ) g_{ \lambda } )
-      \end{bmatrix}^{ -1 }, \\
-      \label{eq:Efekt-Casimira-30-B}
-      &g_{ \lambda }( \vecx ) =
-      \lambda^{ -\gamma } g\left( \tfrac{ \vecx }{ \lambda } \right).
-    \end{align}
-  \end{subequations}
-
-  Możemy teraz obliczyć
-  \begin{equation}
-    \label{eq:Efekt-Casimira-31}
-    \langle \vecp | G_{ \lambda }( w^{ 2 } ) - G_{ 0 }( w^{ 2 } ) | \vecq \rangle.
-  \end{equation}
+  Wydaje~się, że~pierwszą osobą, która postawiła pytanie o~uczynienie pól
+  asymptotycznych zmiennymi prawdziwie kwantowymi, był właśnie
+  prof.~Staruszkiewicz, inspiracja zaś wypłynęła z~jego pracy o~efekcie
+  pamięci. Podał on teorię, która zasadniczo sprowadza~się do kwantowej
+  teorii pola Coulomba w~nieskończoności przestrzennopodobnej
+  \parencite{Staruszkiewicz-Quantum-Mechanics-of-Phase-and-Charge-ETC-Pub-1989}.
+  Prof.~Herdegen rozwinął później jej algebraiczny formalizm
+  \parencite{Herdegen-Asymptotic-algebra-of-quantum-electrodynamics-Pub-2005},
+  \parencite{Herdegen-Remarks-on-mathematical-structure-of-ETC-Pub-2022} .
 
 \end{frame}
 % ##################
@@ -737,34 +1212,23 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Funkcja $\sigma( \lambda )$}
+  \frametitle{Teoria prof. Staruszkiewicza}
 
 
-  Wzory
-  \begin{subequations}
-    \begin{align}
-      \label{eq:Efekt-Casimira-32-A}
-      \widehat{g}( \vecp ) = \widehat{g}( | \vecp | ) = \widehat{g}( p )
-      &=
-        \frac{ 1 }{ \sqrt{ 2 \pi }^{ 3 } }
-        \int\limits_{ \Rbb^{ 3 } } d^{ 3 } x \, e^{ -i \vecp \cdot \vecx } g( \vecx ), \\
-      \label{eq:Efekt-Casimira-32-B}
-      M_{ p } &= \absOne{ \widehat{g}( p ) }^{ 2 }, \\
-      \label{eq:Efekt-Casimira-32-C}
-      \beta &= 2( 3 - \gamma ).
-    \end{align}
-  \end{subequations}
+  Nie możemy zbyt dogłębnie wnikać w~tą teorię, warto jednak zaznaczyć,
+  że~teoria ta wykazuje intrygujące własności na poziomie reprezentacji
+  grupy Lorentza, w~sensie teorii reprezentacji grup. Mianowicie własności
+  pewnych jej reprezentacji, zależą od~wartości stałej struktury subtelnej
+  $\alpha = e^{ 2 } / ( \HorSpaceThree \hbar c ) =
+  0.007 \, 297 \, 352 \, 56 \, 43(11)$. W~teorii Staruszkiewicza
+  wyróżniona jest wartość $\alpha = \pi = 3.1415\ldots$, która nie ma większego związku
+  z~rzeczywistym światem. Niemniej sam fakt, że~jakaś teoria może wyróżnić
+  jakąkolwiek wartość stałej struktury subtelnej, miał na pewno spore
+  znaczenie dla osób zajmujących~się tematyką stałej struktury subtelnej.
 
-
-  Zagadnienie funkcji $\sigma( \lambda )$. Chcieliśmy granicę rezolwentową, która
-  jest zupełnie niezależne od funkcji $g( \vecx )$. Udało mi~się znaleźć
-  tylko jedną \textbf{nietrywialną} granicę która spełnia ten warunek.
-  Aby~ją otrzymać należy dodatkowo przyjąć:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-33}
-    \sigma^{ -1 }( \lambda ) =
-    \alpha M_{ 0 } \lambda^{ \beta } - \lambda^{ \beta - 1 } \int\limits_{ -\infty }^{ +\infty } M_{ q } \, dq.
-  \end{equation}
+  Osobom bardziej zainteresowanym teorią Staruszkiewicza polecam lekturę
+  rozdziału~$4$ w~cytowanej już wielokrotnie pracy
+  \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}.
 
 \end{frame}
 % ##################
@@ -775,34 +1239,29 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Granica rezolwentowa}
+  \frametitle{Struktura asymptotyczna klasycznej elektrodynamiki}
 
 
-  \begin{equation}
-    \label{eq:Efekt-Casimira-34}
-    \begin{split}
-      &\lim_{ \lambda \searrow 0 }\langle \vecp | G_{ \lambda }( w^{ 2 } ) - G_{ 0 }( w^{ 2 } )
-        | \vecq \rangle
-        = \\
-      &= \frac{ 1 }{ ( -\tfrac{ \alpha } { 2 \pi^{ 2 } } + iw )^{ 2 }
-        - \left( \tfrac{ e^{ i aw } }{ a } \right)^{ 2 } }
-        \frac{ 1 }{ w^{ 2 } - \vecp^{ 2 } }
-        \frac{ 1 }{ w^{ 2 } - \vecq^{ 2 } } \times \\
-      &\hphantom{=}
-        \times \Big[ ( -\tfrac{ \alpha }{ 2 \pi^{ 2 } } + i w ) e^{ -i \vecb \cdot \vecp }
-        e^{ i \vecb \cdot \vecq }
-        - \frac{ e^{ i aw } }{ a } e^{ i \vecb \cdot \vecp }
-        e^{ i \vecb \cdot \vecq } -\frac{ e^{ i aw } }{ a } e^{ -i \vecb \cdot \vecp }
-        e^{ -i \vecb \cdot \vecq } \; + \\
-      &\hphantom{= \times}
-        + \, ( -\tfrac{ \alpha }{ 2 \pi^{ 2 } } + i w ) e^{ i \vecb \cdot \vecp }
-        e^{ -i \vecb \cdot \vecq } \Big].
-    \end{split}
-  \end{equation}
+  Artykuł \colorhref{https://arxiv.org/abs/2411.13977}
+  {\textit{Long-range effects in asymptotic fields and~angular momentu~of
+      classical field electrodynamics}} z~$1995$ roku jest poświęcony
+  badaniom asmyptotycznego zachowania klasycznego pola elektromagnetycznego
+  i~pola Diraca
+  \parencite{Herdegen-Long-range-effects-in-asymptotic-ETC-Pub-1995}.
+  Badanie to jest podjęte z~jawną motywacją podstawienia procedury
+  kwantyzacji na solidnym gruncie.
 
-  Sens granicy. Jest to rezolwenta potencjału dwóch delt Diraca
-  znajdujących~się w~punktach $\vec{ b }$ i~$-\vec{ b }$, $\alpha$ mierzy siłę
-  oddziaływania tego potencjału.
+  Dla przypadku pola elektromagnetycznego badane są jego asymptotyki
+  w~świetlnej nieskończoności, korzystając z~funkcji jednorodnych i~dobrych
+  własności ich całkowania po kierunkach świetlnych. Analogiczne badanie
+  jest przeprowadzone dla czasopodobnej przyszłości dla pola Diraca. Jak
+  sam ten opis wskazuje, geometryczne własności czasoprzestrzeni
+  Minkowskiego są w~niej mocno wykorzystywane.
+
+  Pomimo braku dowodów dla pewnych jawnie zapostulowanych własności
+  oddziałujące teorii pola elektromagnetycznego i~pola Diraca, poza tym jej
+  fragmentem praca jest matematycznie ścisła i~zawiera wiele interesujących
+  wyników.
 
 \end{frame}
 % ##################
@@ -813,35 +1272,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Granica rezolwentowa}
+  \frametitle{Struktura asymptotyczna klasycznej elektrodynamiki}
 
 
-  \begin{equation}
-    \label{eq:Efekt-Casimira-35}
-    \begin{split}
-      &\lim_{ \lambda \searrow 0 }\langle \vecp | G_{ \lambda }( w^{ 2 } ) - G_{ 0 }( w^{ 2 } )
-        | \vecq \rangle
-        = \\
-      &= \frac{ 1 }{ ( -\tfrac{ \alpha } { 2 \pi^{ 2 } } + iw )^{ 2 }
-        - \left( \tfrac{ e^{ i aw } }{ a } \right)^{ 2 } }
-        \frac{ 1 }{ w^{ 2 } - \vecp^{ 2 } }
-        \frac{ 1 }{ w^{ 2 } - \vecq^{ 2 } } \times \\
-      &\hphantom{=}
-        \times \Big[ ( -\tfrac{ \alpha }{ 2 \pi^{ 2 } } + i w ) e^{ -i \vecb \cdot \vecp }
-        e^{ i \vecb \cdot \vecq }
-        - \frac{ e^{ i aw } }{ a } e^{ i \vecb \cdot \vecp }
-        e^{ i \vecb \cdot \vecq } -\frac{ e^{ i aw } }{ a } e^{ -i \vecb \cdot \vecp }
-        e^{ -i \vecb \cdot \vecq } \, + \\
-      &\hphantom{=}
-        + \, ( -\tfrac{ \alpha }{ 2 \pi^{ 2 } } + i w ) e^{ i \vecb \cdot \vecp }
-        e^{ -i \vecb \cdot \vecq } \Big].
-    \end{split}
-  \end{equation}
+  Wśród nich należy wymienić dość niespodziewane trudności w~zdefiniowaniu
+  momentu pędu pola i~procedurę pozwalającą je rozwiązać, rozkład energii
+  i~pędu systemu na sumę energii oraz pędu asymptotycznych pól
+  promieniowania i~materii oraz brak analogicznego wyniku dla momentu pędu.
+  W~tym ostatnim przypadku pojawia~się człon zawierający wkład do momentu
+  pędu zarówno od pól Coulomba jak i~od fal elektromagnetycznych.
 
-  Uwaga matematyczna. Zdefiniowanie w~sposób poprawny matematycznie
-  potencjałów będących sumą $\delta( x )$ wymaga zastanowienia. Do tej pory
-  ostatecznym słowem nauki jakie znam zostały przedstawione przez grupę
-  Sergia Albeverio. Dr.~Damski zwrócił nam uwagę na książkę S. Albeverio
+  Należy dodać, że~tego członu łączącego wkład materii i~promieniowania
+  można~się pozbyć wprowadzając nielokalną transformację pola Diraca. Jeśli
+  zostanie to wykonane, to wówczas można otrzymać wyniki zgodne
+  z~wcześniejszymi pracami prof. Staruszkiewicza.
+
+  W~mojej ocenie ten artykuł jest bardzo wartościowy i~wart dokładnego
+  studiowania w~roku $2025$, ze względu na duże zainteresowanie problemami
+  podczerwonymi w~ostatnich latach.
 
 \end{frame}
 % ##################
@@ -852,53 +1300,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Zagadnienie stanów związanych}
+  \frametitle{Konstrukcja nielokalnej asymptotycznej
+    elektrodynamiki}
 
 
-  Problem dla formalizmu. Jeżeli zachodzi związek
-  \begin{equation}
-    \label{eq:Efekt-Casimira-36}
-    \alpha a \leq 2 \pi^{ 2 },
-  \end{equation}
-  to dla potencjału dwóch $\delta( x )$ pojawia~się stan związany dla
-  ujemnej energii. Ten fenomen zidentyfikowali już Albeverio et. al.,
-  w~kontekście problemu Casimira dyskutował go Scardicchio
-  („destabilizacja próżni przez tachiony”).
+  Ostatnią pracą prof.~Herdegena jaką czas pozawala nam pokrótce omówić
+  jest \colorhref{https://arxiv.org/abs/hep-th/9711066}
+  {\textit{Semidirect product~of CCR and~CAR algebras and~asymptotic states
+      in~quantum electrodynamics}} z~$1998$ roku
+  \parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}.
+  Praca ta jest fascynująca matematycznie,
+  jak i~pod względem pewnych wyników fizycznych, ale wymaga dokładnego
+  studiowania, podbudowanego dużą wiedzą i~zrozumieniem matematyki.
+  W~poniższej dyskusji musieliśmy bardzo wiele elementów uprościć.
 
-  Przypuszczenie. Jeżeli $\alpha a \leq 2 \pi^{ 2 }$, to istnieje ryzyko, że~dla
-  $\lambda \in ( 0, \eta )$, również pojawia~się stan związany do ujemnej energii.
-  Wtedy granica $\lambda \searrow 0$ nie ma sensu. W~tej chwili nie wiemy, czy tak
-  rzeczywiście jest.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Energia Casimira}
-
-
-  Stan obecny. Korzystając z~wzoru na operator $T_{ \lambda }( w^{ 2 } )$, chcemy
-  obliczyć graniczną postać $E_{ a, \lambda }$. Ostatnie wyrażenie jakie do tej
-  pory uzyskaliśmy ma postać:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-37}
-    E_{ a, \lambda } = 4 \lambda^{ -1 } f( \lambda, a ).
-  \end{equation}
-
-  Wynik Herdegena, Stopy
-  \begin{equation}
-    \label{eq:Efekt-Casimira-38}
-    \Fcal_{ a, \lambda } =
-    \frac{ 2 c }{ \lambda } - \frac{ \pi^{ 2 } }{ 240 a^{ 4 } }
-    + ( \textrm{wyrazy} \xrightarrow[ \lambda \searrow 0 ]{} 0 ).
-  \end{equation}
-  $c$ może być różne od 0, w~ogólności zależy od funkcji
-  $g( \vecx )$.
+  Główny wątek tej pracy można, znów w~dużym uproszczeniu, opisać
+  w~następujący sposób. Z~omówionej poprzednio pracy prof.~Herdegena
+  wiemy jak wyglądają warunki asymptotyczne w~„świetlnej nieskończoności”.
+  Mechanika Newtona w~sformułowaniu hamiltonowskim i~nierelatywistyczna
+  mechanika kwantowa uczą nas, jak wychodząc ze struktury symplektycznej
+  klasycznej teorii sformułować warunku określające teorię kwantową.
 
 \end{frame}
 % ##################
@@ -909,33 +1330,93 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Obecny stan pracy}
+  \frametitle{Konstrukcja nielokalnej asymptotycznej
+    elektrodynamiki}
 
 
-  Energia Casimira. Korzystając z~wzoru na operator $T_{ \lambda }( w^{ 2 } )$,
-  chcemy obliczyć graniczną postać $E_{ a, \lambda }$. Ostatnie wyrażenie jakie
-  do tej pory uzyskaliśmy ma postać:
-  \begin{equation}
-    \label{eq:Efekt-Casimira-39}
-    E_{ a, \lambda } = 4 \lambda^{ -1 } f( \lambda, a ).
-  \end{equation}
+  Wyniki poprzednio omówionej pracy prof.~Herdegena pozawalają zrozumieć
+  jaką wagę mają warunki w~„świetlnej nieskończoności” i~określić
+  odpowiednią przestrzeń symplektyczną. Należy rozważyć funkcje gładkie
+  o~zwartym nośniku (znikające poza kulą o~skończonym promieniu) zawartym
+  w~„świetlnej nieskończoności”, na których określamy odpowiedni skalarny
+  iloczyn symplektyczny.
+
+  Następnie korzystamy z~twierdzenia
+  \colorhref{https://en.wikipedia.org/wiki/Hermann_Weyl}{Weyl’a},
+  które mówi jak dla danej przestrzeni symplektycznej stworzyć algebrę
+  $C^{ \HorSpaceOne * }$
+  (zob. tom drugi książki Brattelego i~Robinsona
+  \parencite{Bratteli-Robinson-Operator-algebras-ETC-Vol-I-Pub-2002}).
+  Osoby znające trochę algebraiczną kwantową teorią pola wiedzą, że~to
+  zasadniczo pozwala nam mówić o~teorii kwantowej.
+
+  Pojawia~się problem, że~startują z~przestrzeni symplektycznej funkcji
+  o~zwartym nośniku możemy otrzymać tylko \alert{lokalne} obserwable,
+  więc z~oczywistych względów nie obejmują one pól asymptotycznych.
+
+\end{frame}
+% ##################
 
 
-  Postać $f( \lambda, a )$
-  \begin{equation}
-    \label{eq:Efekt-Casimira-40}
-    \begin{split}
-      f( \lambda, a )
-      &=
-        f( \lambda )
-        - \frac{ 1 }{ M_{ 0 } }
-        \left( \int\limits_{ 0 }^{ +\infty } dp M_{ p } \right)
-        \left( \frac{ 2 \pi^{ 2 } }{ a } \right)^{ 2 n } \\
-      &\times \Imag \sum\limits_{ n = 1 }^{ \infty } \int\limits_{ 0 }^{ \infty }
-        \frac{ 1 }{ ( -\alpha + i 2 \pi^{ 2 } \rho )^{ 2n + 1 } }
-        e^{ i 2 na \rho } d\rho.
-      \end{split}
-    \end{equation}
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Konstrukcja nielokalnej asymptotycznej
+%     elektrodynamiki}
+
+
+%   Wyniki poprzednio omówionej pracy prof.~Herdegena pozawalają zrozumieć
+%   jaką wagę mają warunki w~„świetlnej nieskończoności” i~określić
+%   odpowiednią przestrzeń symplektyczną. Należy rozważyć funkcje gładkie
+%   o~zwartym nośniku (znikające poza kulą o~skończonym promieniu) zawartym
+%   w~„świetlnej nieskończoności”, na których określamy odpowiedni skalarny
+%   iloczyn symplektyczny.
+
+%   Następnie korzystamy z~twierdzenia
+%   \colorhref{https://en.wikipedia.org/wiki/Hermann_Weyl}{Weyl’a},
+%   które mówi jak dla danej przestrzeni symplektycznej stworzyć algebrę
+%   $C^{ \HorSpaceOne * }$
+%   (zob. tom drugi książki Brattelego i~Robinsona
+%   \parencite{Bratteli-Robinson-Operator-algebras-ETC-Vol-I-Pub-2002}).
+%   Osoby znające trochę algebraiczną kwantową teorią pola wiedzą, że~to
+%   zasadniczo pozwala nam mówić o~teorii kwantowej.
+
+%   Pojawia~się problem, że~startują z~przestrzeni symplektycznej funkcji
+%   o~zwartym nośniku możemy otrzymać tylko \alert{lokalne} obserwable,
+%   więc z~oczywistych względów nie obejmują one pól asymptotycznych.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Konstrukcja nielokalnej asymptotycznej
+    elektrodynamiki}
+
+
+  By temu zaradzić prof.~Herdegen rozszerza algebrę pól asymptotycznych.
+  w~następujący sposób. Obok funkcji gładkich o~zwartym nośniku
+  w~„świetlnej nieskończoności” do przestrzeni symplektycznej dodawane
+  są pewne odpowiednio szybko gasnące funkcje. Procedura ta nie jest wcale
+  tak prosta jakby~się zdawało, bo trzeba zagwarantować, że~rozszerzona
+  przestrzeń też jest przestrzenią symplektyczną.
+
+  Twierdzenie Weyl’a zastosowane do nowej przestrzeni symplektycznej daje
+  nam algebrę $C^{ \HorSpaceOne * }$, z~tą różnicą, że~elementy
+  odpowiadające gasnącym funkcją „generują” w~pewnym konkretnym sensie
+  \alert{nielokalne} elementy tej algebry.
+
+  Z~mojego punktu widzenia szczególnie trudną częścią pracy jest utworzenie
+  reprezentacji tej algebry. Prof.~Herdegen jest w~stanie to zrobić
+  korzystając z~odpowiednich
+  \colorhref{https://en.wikipedia.org/wiki/Direct\_integral}{całek prostych}
+  przestrzeni Hilberta, ale~to temat na zupełnie osobne spotkanie.
 
 \end{frame}
 % ##################
@@ -946,74 +1427,55 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Obecny stan pracy}
+  \frametitle{Konstrukcja nielokalnej asymptotycznej
+    elektrodynamiki}
 
 
-  \begin{subequations}
-    \begin{equation}
-      \label{eq:Efekt-Casimira-41-A}
-      \widehat{g}( p ) =
-      \frac{ 1 }{ \sqrt{ 2 \pi }^{ 3 } } \int\limits_{ \Rbb^{ 3 } } d^{ 3 } x \,
-      e^{ -i \vecp \cdot \vecx } g( \vecx ), \quad
-      M_{ p } = \absOne{ \widehat{g}( p ) }^{ 2 }.
-    \end{equation}
-    \begin{equation}
-      \begin{split}
-        f( \lambda, a )
-        &= f( \lambda )
-          - \frac{ 1 }{ M_{ 0 } }
-          \left( \int\limits_{ 0 }^{ +\infty } dp M_{ p } \right)
-          \left( \frac{ 2 \pi^{ 2 } } { a } \right)^{ 2 n } \\
-        &\hphantom{=}
-          \times \Imag \sum\limits_{ n = 1 }^{ \infty }
-          \int\limits_{ 0 }^{ \infty }
-          \frac{ 1 }{ ( -\alpha + i 2 \pi^{ 2 } \rho )^{ 2n + 1 } } e^{ i 2 na \rho } d\rho.
-      \end{split}
-    \end{equation}
-  \end{subequations}
+  Podsumowując w~tej pracy prof.~Herdegen zbudował algebrę z~reprezentacją
+  na tyle dużą, by objęła operatory kreacji i~anihilacji bozonów
+  i~fermionów, a~także odpowiednie pola asymptotyczne elektrodynamiki.
+  Znalazł też warunek na to, by w~teorii opisywanej taką algebrą ładunek
+  elektryczny był skwantowany, por. \textit{Colloraly $3.1$}
+  i~poprzedzający ją dyskusja
+  w~\parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}.
 
-
-
-  Na razie brak satysfakcjonującej postaci tego wyrażenia. Wstępne
-  badania z~pomocą Mathematici sugerują, że~powyższe całki stają~się
-  rozbieżne, gdy $\alpha a \leq 2 \pi^{ 2 }$
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pytania, problemy, wątpliwości}
-
-
-  \begin{itemize}
-    \RaggedRight
-
-  \item Jak przedstawiona tu teoria ma~się do tego co istnieje
-    w~przyrodzie?
-
-  \item Czy dla $\lambda \in ( 0, \eta )$ również istnieją stany związane?
-
-  \item Jaka jest fizyka tych układów, gdy pojawia~się stan
-    związany o~ujemnej energii?
-
-  \item W~otrzymanych wzorach nie widać jakiegoś uniwersalnego
-    zachowania. Czy to oznacza, że~podejście jest niepoprawne,
-    wyprowadzenie otrzymanych wyników zawiera błąd, czy też
-    takie uniwersalne zachowanie w~naturze nie
-    zachodzi?
-
-  \item Dlaczego energia Casimira tak silnie zależy od kształtu
-    pseudopotencjału?
-
-  \end{itemize}
+  Prace naukowe prof.~Herdegena nie ograniczają~się do problemów
+  podczerownych, ale stanowią one główny temat jego zainteresowań. Choć nie
+  możemy ich omówić tutaj, to chcielibyśmy wspomnieć o~kilku jego dalszych
+  pracach ich dotyczących:
+  \colorhref{https://arxiv.org/abs/1210.1731}{\textit{Infraparticle problem,
+      asymptotic fields and Haag-Ruelle theory}} z~$2013$ roku
+  \parencite{Herdegen-Infraparticle-Problem-Asymptotic-Fields-ETC-Pub-2013},
+  napisaną razem z~Pawłem Duchem \colorhref{https://arxiv.org/abs/1410.7665}
+  {\textit{Massless asymptotic fields and~Haag-Ruelle theory}} z~$2014$
+  \parencite{Duch-Herdegen-Massless-asymptotic-fields-and-ETC-Pub-2014},
+  \colorhref{https://arxiv.org/abs/2012.14170}
+  {\textit{Infrared problem vs gague choice: scattering~of classical Dirac
+      field}} z~$2021$
+  \parencite{Herdegen-Infrared-Problem-vs-Gauge-Choice-ETC-Ver-2021},
+  \colorhref{https://arxiv.org/abs/2107.02044}{\textit{Almost radial
+      gauge}} z~$2022$
+  \parencite{Herdegen-Almost-radial-gauge-ETC-Pub-2022}
+  i~\colorhref{https://arxiv.org/abs/2310.20560}
+  {\textit{Undressing the~electron}} z~$2024$
+  \parencite{Herdegen-Undressing-the-electron-Pub-2024}.
 
 \end{frame}
 % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pytania, problemy, wątpliwości}
+
+
+
+
+% \end{frame}
+% % ##################
 
 
 
