@@ -1,5 +1,0 @@
-„Krótki przewodnik po problemach podczerwonych w elektrodynamice kwantowej”
-
-Jest powszechną wiedzą, że fotonowi należy przypisać zerową masę spoczynkową, co prowadzi do długozasięgowego charakteru oddziaływań elektromagnetycznych. Ten dobrze znany fakt jest jednak przyczyną wielu koncepcyjnych i technicznych problemów pojawiających się w elektrodynamice kwantowej, które wciąż oczekują na w pełni satysfakcjonujące rozwiązanie. W pierwszej części wystąpienia w możliwie prosty sposób zostanie omówionych kilka takich efektów, jak choćby obliczanie inkluzywnych przekroi czynnych, czy reguła nadwyboru dla pól asymptotycznych. W drugiej części wystąpienia, przedyskutujemy pokrótce odkryty przez prof. Staruszkiewicza efekt pamięci dla pola elektromagnetyczne i kilka jego ważniejszych konsekwencji. W~ostatniej części przedstawimy wybrane aspekty badań prof. Herdegena dotyczących zagadnień podczerwonych.
-
-Choć wystąpienie będzie miało charakter wstępu, do jego pełnego zrozumienia potrzebna będzie pewna podstawowa znajomość algebraicznej kwantowej teorii pola.
