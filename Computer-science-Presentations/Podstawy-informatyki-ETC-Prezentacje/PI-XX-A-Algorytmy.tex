@@ -14,7 +14,7 @@
 % Options: t -- align text to the top of the frame
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
-\usetheme[style=\PresentationStyle,frametitlecolorstyle=general,titleframebackgroundcolorstyle=dark]{jagiellonian}
+\usetheme[style=\PresentationStyle]{jagiellonian}
 
 
 
@@ -84,7 +84,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{}
+\subtitle{Algorytmy???}
 
 \author{Kamil Ziemian \\
   \email}
@@ -112,9 +112,9 @@ eprint=true,
 
 
 % ######################################
+% Number of chars: 72k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% Number of chars:
 % ######################################
 
 
@@ -148,223 +148,230 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Czym jest informatyk?}
+% ##################
+\begin{frame}
+  \frametitle{Algorytmy typu „dziel i~zwyciężaj”}
 
 
-%   \textbf{Informatyka} (\textsc{cs}, ang. \textit{computer science}) to
-%   nauka o~rozwiązywaniu problemów za~pomocą komputera. Niektórzy mogą
-%   uważać tą definicję, że~obrazę informatyki, według mnie jest bardzo dobra.
+  Algorytmy typu „dziel i~zwyciężaj” (pl. \textit{dziel i~rządź},
+  ang.~\textit{divide and conquer}, termin stosowany głównie w~odniesieniu
+  do~polityki) to algorytmy w~których wyjściowy problem dzielony jest
+  na~mniejsze, te mniejsze problemy na jeszcze mniejsze, aż~do momentu,
+  gdy problem jest tak mały, iż~jego rozwiązanie jest bardzo proste.
+  Następnie tak otrzymane rozwiązania scala~się w~odpowiedni sposób
+  w~rozwiązanie pełnego problemu. Algorytmy te ze swej natury są zwykle
+  silnie związane z~wykorzystaniem rekurencji.
 
-%   Za pomocą komputera możemy próbować rozwiązać wiele różnych problemów.
-%   Np.~potrzebuję przesłać komuś informację (email), potrzebuję obliczyć
-%   przybliżoną wartość pewnej liczby $\pi$ lub $\gamma$ (metody numeryczne),
-%   chciałbym pograć w~coś fajnego (gry wideo), etc. Powstaje jednak pytania.
-%   Czym~się różni komputer od przykładowo konsoli do gier takiej jak
-%   PlayStation? Przecież ona też pozwala nam rozwiązać jeden z~tych
-%   problemów.
+  Omówimy teraz algorytm sortowania szybkiego (ang. \textit{quicksort})
+  pierwszy raz podanych przez
+  \colorhref{https://en.wikipedia.org/wiki/Tony_Hoare}{Tony’ego Hoare’a}
+  w~$1959$ roku, który teraz omówimy.
 
-%   Komputer to \textbf{programowalne urządzenie elektroniczne},
-%   w~przeciwieństwie do PlayStation, która jest urządzeniem elektroniczny,
-%   ale \textit{nie} jest programowalna. Co to jednak znaczy?
+\end{frame}
+% ##################
 
-% \end{frame}
-% % ##################
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Algorytm sortowanie szybkiego (ang.
+    \textit{quicksort})}
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Co to znaczy „programowalny”?}
 
+  Stajemy przed dobrze znanym nam problemem. Dana jest tablica liczb typu
+  int, którą chcemy posortować. Dla ustalenia uwagi, przyjmijmy, że~chcemy
+  ją posortować w~sposób rosnący, ale oczywiście algorytm po lekkiej
+  modyfikacji będzie sortował liczby w~sposób malejący.
 
-%   Każde urządzenie elektroniczne działa w~ten sposób, że~gdy płynie przez
-%   nie prąd wykonuje pewne instrukcje. To jakie są instrukcje wynika
-%   z~tego jak wewnątrz urządzenia „podpięte są kable”. Jeśli jesteśmy
-%   w~stanie wywołać dowolną instrukcję jaką dysponuje to urządzenie, to
-%   mówimy, że~jest ono \textbf{programowalne}. Jeśli mogę wywołać tylko
-%   część możliwych instrukcji, tą część którą udostępnił mi producent
-%   urządzenia, to wówczas takie urządzenie \textbf{nie jest programowalne}.
+  Oznaczmy naszą tablicę \texttt{A}, jej najmniejszy indeks \texttt{first},
+  a~jej największy \texttt{last}. Ponieważ nasz przedmiot dotyczy języka~C,
+  przyjmujemy, że~tablicę indeksujemy poczynając od liczby~$0$.
 
-%   Ta definicja nie jest bardzo prepozycyjna, ale powinna dać nam wyczucie
-%   o~co chodzi. Komputer daje nam dostęp do wszystkich swoich instrukcji,
-%   co objawia~się choćby tym, że mogę na nim instalować dowolne
-%   oprogramowanie, podczas gdy na~PlayStation mogę mieć tylko oprogramowanie
-%   jakie uprzednio zainstalowała tam firma \textsc{sony}.
+  1.~Sprawdzamy, czy \texttt{first >= last} lub \texttt{first < 0}. Jeśli
+  zachodzi co~najmniej jeden z~tych warunków kończymy procedurę, tablica
+  \texttt{A} jest posortowana. Jeśli oba warunki nie są spełnione
+  przechodzimy do punktu~$2$.
 
-% \end{frame}
-% % ##################
+  2.~Potrzebujmy obliczyć indeks zwany osią obrotu (ang. \texttt{pivot~of
+    rotation}), który będziemy oznaczać literą~\texttt{p}. Indeks ten jest
+  oczywiście liczbą całkowitą.
 
+\end{frame}
+% ##################
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Programowalne urządzenie elektroniczne}
 
+% ##################
+\begin{frame}
+  \frametitle{Algorytm sortowanie szybkiego (ang.
+    \textit{quicksort})}
 
-%   Przykładowo konsolę \textsc{sony} można zhakować, uzyskując pełną
-%   kontrolę nad nią. Jak to zrobić można~się choćby dowiedzieć z~nagrania
-%   kanału Low Level Learning
-%   \colorhref{https://www.youtube.com/watch?v=7OwdCc81zHo}
-%   {\textit{The new PS4 jailbreak is sort of hilarious}}
-%   \parencite{Low-Level-Learning-The-new-PS4-jailbreak-ETC-2024}.
 
-%   Pomijając ten i~nieskończoną ilość innych niuansów, nie powinno być
-%   trudne w~zrozumieniu co to znaczy, że~komputer jest programowalnym
-%   urządzeniem elektronicznym.
+  2.~Cd. By tego dokonać wprowadzamy następujące zmienne. \\
+  \texttt{tempPivot := A[last]} \\
+  \texttt{i := first} \\
+  \texttt{j := first} \\
+  Pierwsza z~tych zmiennych oznacza oczywiście tymczasową oś obrotu.
 
-%   \textbf{Program komputerowy} to zestaw instrukcji danego komputera, które
-%   przekazujemy mu, by je wykonał. Tutaj pojawia~się potrzeba wprowadzenia
-%   języków programowania. Nie będziemy podawać definicji języka
-%   programowania, zamiast tego zajmiemy~się tym jak o~nich myśleć.
+  3.~Dla wszystkich wartości \texttt{j} od~\texttt{j = first}
+  do~\texttt{last - 1} wykonujemy następujące operacje. Jeśli
+  \texttt{A[j] <= tempPivot} to zamieniamy miejscami \texttt{A[i]}
+  i~\texttt{A[j]} oraz zwiększamy indeks \texttt{i} o~jeden: \\
+  \texttt{i := i + 1}
 
-% \end{frame}
-% % ##################
+  4. Zamieniamy miejscami \texttt{A[i]} i~\texttt{A[last]}. Oś obrotu
+  \texttt{p} jest równa obecnej wartość indeksu \texttt{i}: \\
+  \texttt{p := i}
 
+\end{frame}
+% ##################
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Czym jest język programowania?}
 
+% ##################
+\begin{frame}
+  \frametitle{Algorytm sortowanie szybkiego (ang.
+    \textit{quicksort})}
 
-%   Dwie metafory które są wygodne w~opisie tego czym jest język
-%   programowania i~które ja lubię, to metafora języka właśnie i~skrzynki
-%   z~narzędziami.
 
-%   Jeśli chcę by człowiek coś zrobił, muszę mu to przekazać w~języku który
-%   on rozumiem. Przykładowo ze względu na to jak zbudowany jest język
-%   angielski i~język japoński, ich wzajemna nauka dla użytkowników tych
-%   języków jest niezwykle trudna. Jeśli więc osobą której chcę zlecić
-%   zrobienie czegoś jest Japończyk, może~się zdarzyć, iż będę musiał
-%   przekazać mu informację po japońsku.
+  5.~Dokonujemy podziału (w~końcu to jest algorytm dziel i~zwyciężaj)
+  tablicy \texttt{A} na dwie części względem osi obrotu \texttt{p}. \\
+  Pierwsza część rozciąga~się od obecnego \texttt{first}
+  do~\texttt{last := p - 1}. \\
+  Druga część rozciąga~się od~\texttt{first := p + 1} do obecnego
+  \texttt{last}.
 
-%   Oczywiście człowiek może~się nie zgodzić, wykręcać, etc. Komputer to
-%   tępa maszyna więc pewnie ślepo wykona wszystko co mu zleciliśmy. Ktoś
-%   może powiedzieć, że~przecież mamy \textsc{ai}, chata\textsc{gpt}, etc.
-%   To wszystko są ciekawe sprawy, ale na tym przedmiocie nie mamy
-%   możliwości~się nimi zająć.
+  6.~Stosujemy algorytm sortowania szybkiego do~dwóch zdefiniowany
+  poprzednio części.
 
-% \end{frame}
-% % ##################
+  Działanie tego algorytmu najlepiej zilustruje przykład.
 
+\end{frame}
+% ##################
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Czym jest język programowania?}
 
+% ##################
+\begin{frame}
+  \frametitle{Przykład~1}
 
-%   Żeby komputer coś zrobił musimy więc mu przekazać polecenie w~języku,
-%   który rozumie. Dla mnie pierwotny językiem jest język polski, co zaś
-%   jest pierwotnym językiem komputera? Na potrzeby tego kursu przyjmiemy,
-%   że~pierwotnym językiem komputera jest \textbf{język assembler}.
 
-%   Tak jak niektórzy ludzie mają jako swój pierwotny język angielski,
-%   hiszpański, japoński, niemiecki, polski, etc., tak komputer również
-%   posługują~się różnymi rodzajami języka assembler, takimi jak \textsc{arm}
-%   czy x86/Intel. Generalnie typ assemblera jest ustalony przez firmę, która
-%   wyprodukowała procesor, bowiem assembler jest zdefiniowany przez to jak są
-%   „podpięte kable” w~rzeczonym procesorze.
+  \texttt{A := \{9, 5, 7, 2, 1, 8, 0, 3, 6, 4\} } \\
+  \texttt{first := 0}, \texttt{last := 9}
 
-%   I~tutaj pojawia~się dwa poważne problem.
+  1.~Nie zachodzi żaden z~warunków \texttt{first >= last}
+  (\texttt{0 >= 9}), \\
+  \texttt{first < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  osi obrotu.
 
-% \end{frame}
-% % ##################
+  2.~\texttt{tempPivot := A[last] := 4} \\
+  \texttt{i := first := 0} \\
+  \texttt{j := first := 0}
 
+  3.~Przechodzimy ze zmienną \texttt{j} od~\texttt{first := 0}
+  do~\texttt{last - 1 := 8} porównując \texttt{A[j]}
+  z~\texttt{tempPivot := 4}. \\
+  \texttt{A[0] := 9 !<= tempPivot}, nic nie robimy. \\
+  \texttt{A[1] := 5 !<= tempPivot}, nic nie robimy. \\
+  \texttt{A[2] := 7 !<= tempPivot}, nic nie robimy. \\
 
+\end{frame}
+% ##################
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Assembler, jaki problem?}
 
 
-%   Większość ludzi zrobi wszystko, by tylko uniknąć pracy w~assemblerze.
-%   A~nawet jeśli ktoś lubi pisać w~assemblerze, to w~praktyce unika~się
-%   tego jak tylko~się da, bo w~assemblerze nawet najlepsi zbyt często
-%   popełniają błędy, co może prowadzić do tragicznych konsekwencji.
+% ##################
+\begin{frame}
+  \frametitle{Przykład~1}
 
-%   Wynika to z~tego, że~assembler to język naturalny dla \alert{komputera},
-%   ale nie dla człowieka. Ponieważ zaś, nie jest to wielkie odkrycie,
-%   człowiek mocno~się różni od komputer, język naturalny dla jednego z~nich
-%   jest zupełnie nienaturalny dla drugiego. Dla nas assembler jest bardzo
-%   nienaturalny, komputer nie potrafi zaś sobie radzić z~angielskim, czy
-%   polskim.
 
-%   Żeby nie być gołosłownym, przedstawię teraz przykład programu, który
-%   jedyne co robi to wypisuje gdzieś na ekranie tekst „Hello, World!”.
-%   Podany zostanie odpowiedni kod w~assemblerze x86 w~wersji Nasm, języku~C
-%   i~języku Python.
+  \texttt{A[3] := 2 <= tempPivot}, więc zamieniamy \texttt{A[0]}
+  i~\texttt{A[3]} miejscami: \\
+  \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  \texttt{i := 0 + 1 := 1} \\
+  \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  \texttt{i := 1} \\
+  \texttt{j := 4} \\
+  \texttt{A[4] := 1 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  z~\texttt{A[4]} miejscami: \\
+  \texttt{A := \{2, 1, 7, 9, 5, 8, 0, 3, 6, 4\} } \\
+  \texttt{i := 1 + 1 := 2} \\
+  \texttt{j := 4} \\
+  \texttt{A[5] := 8 !<= tempPivot}, nic nie robimy. \\
+  \texttt{A[6] := 0 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  z~\texttt{A[6]} miejscami: \\
+  \texttt{A := \{2, 1, 0, 9, 5, 8, 7, 3, 6, 4\} } \\
+  \texttt{i := 2 + 1 := 3} \\
+  \texttt{j := 7}
 
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Przykład~1}
 
 
+  \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
+  z~\texttt{A[3]} miejscami: \\
+  \texttt{A := \{2, 1, 0, 3, 5, 8, 7, 9, 6, 4\} } \\
+  \texttt{i := 3 + 1 := 4} \\
+  \texttt{j := 8} \\
+  \texttt{A[8] := 6 !<= tempPivot}, nic nie robimy. \\
+  Zmienna \texttt{j} osiągnęła wartość \texttt{last - 1 := 8}, więc
+  kończymy punkt~$3$.
 
+  4.~Zamieniamy miejscami \texttt{A[i] = A[4]} i~\texttt{A[last] = A[9]}: \\
+  \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\} } \\
+  Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  \texttt{p := i := 4}.
 
+  5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  \texttt{B := \{2, 1, 0, 3\} }, \texttt{first := 0},
+  \texttt{last := 4 - 1 := 3}, \\
+  \texttt{C := \{8, 6, 9, 6, 5\} }, \texttt{first := p + 1 := 5},
+  \texttt{last := 9}.
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Co z~tego wynika?}
+  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
 
+\end{frame}
+% ##################
 
-%   Powinno być teraz dość oczywiste, że~C jest prostszy od~assemblera,
-%   a~Python prostszy od~C.
 
-%   Czy od tego momentu kursu możemy uznać, że~język assemblera nas nie
-%   interesuje? Jeśli ktoś z~Państwa chce~się dowiedzieć więcej o~assemblerze,
-%   to bardzo mnie to cieszy, ale musimy to przełożyć na czas po zajęciach.
 
-%   Dobrze, ale czemu w~takim wypadku ten kurs jest prowadzony w~C, a~nie
-%   w~Pythonie? Gdybym ja miał na to wpływ, to może byłby prowadzony
-%   w~Pythonie, ale ja o~tym nie decyduje.
 
-% \end{frame}
-% % ##################
 
+% ##################
+\begin{frame}
+  \frametitle{Komentarz do przykładu~1}
 
 
+  Jeśli przyjrzymy~się tablicy \texttt{A} w~punkcie~$4$ to zrozumiemy, czemu
+  element \texttt{tempPivot := 4} nazywany jest „osią obrotu”. \\
+  \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\} } \\
+  Wokół niego „obracają~się” wszystkie elementy tej tablicy, tak że te
+  mniejsze od niego lądują po lewej jego stronie, te zaś większe od niego
+  po jego prawej stronie.
 
+  W~tym przykładzie \texttt{p := 4} i~elementem \texttt{A[p] := A[4] = 4},
+  co jest zwykłym przypadkiem, na który nie należy zwracać uwagi.
 
-% % ##################
-% \begin{frame}
-%   \frametitle{W~jaki sposób działają~C i~Python?}
-
-
-%   Wróćmy do przykładu z~Japończykiem nieznającym angielskiego. Przyjmijmy,
-%   że~ja nie znam angielskiego, a~on polskiego (po kiego Japończykowi język
-%   polski?). Czy nie ma szans, żeby przekazał mu polecenie? Oczywiście,
-%   że~jest. Wystarczy, że~spiszę odpowiednią informację na kartce, użyję
-%   translatora by przetłumaczyć ją na japoński i~mu ją dam.
-
-%   Tak samo postępujemy z~komputerem. W~teorii języków programowania
-%   \textbf{translatorem} nazywamy program który tłumaczy między dwoma
-%   \alert{dowolnymi} językami programowania. Mogę więc napisać program
-%   w~języku~C następnie użyć odpowiedniego translatora by przetłumaczyć
-%   go na assembler, który następnie zostanie wykonany przez komputer.
-
-%   Koniec końców każdy język programowania, czy to~C, czy Python,
-%   \alert{musi} zostać przetłumaczony na odpowiedni kod assemblera,
-%   by~komputer go wykonał. To jednak wykracza poza temat zajęć.
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 

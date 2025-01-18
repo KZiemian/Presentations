@@ -1,0 +1,1667 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align text to the top of the frame
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ---------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in directory
+% "preambule".
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Wybrane-algorytmy-kompilacji-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Packages, libraries and their settings
+% ------------------------------------------------------
+% Library improving positioning of nodes in graphs
+\usetikzlibrary{positioning}
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
+% Patching problems with Jagiellonian
+% \usepackage{./Local-packages/Jagiellonian-theme-colors}
+
+% \usepackage{./Local-packages/Some-patches-for-Jagiellonian}
+
+% Additional colors
+% \usepackage{./Local-packages/Jagiellonian-theme-additional-colors}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Wybrane algorytmy kompilacji}
+\subtitle{Drzew składniowe}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+
+% \date{}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document.
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 62k+, 11k+, 32k+, 55k+, 91k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Table of contents}
+
+
+%   \tableofcontents
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Gramatyki}
+
+\label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historyjka ilustrująca problem}
+
+
+  Tematyka gramatyk jest stosunkowo abstrakcyjna, więc dla zbalansowania
+  tego zacznijmy od trochę niepoważnej historii o~dwóch chłopcach, Janie
+  i~Marianie. Siedzą oni na lekcji i~śmiertelnie~się nudzą (nie tylko oni).
+  By umilić sobie czas, stwierdzili, że~będą przesyłać sobie zaszyfrowane
+  wiadomości, tak by nauczyciel nie widział o~czym pisze. Ich pomysł był
+  taki, żeby wziąć alfabet grecki i~przyporządkować im ciągi liter
+  łacińskich, spacji i~kropek.
+
+  By utrudnić nauczycielowi zrozumienie o~czym mówią, co jakiś czas
+  zmieniają swój szyfr. By usprawnić zapisywanie ciągle zmieniających~się
+  reguł, wprowadzili notację $\alpha \to \text{wbi}$. Oznacza ona, że~każde
+  pojawienie~się symbolu $\alpha$ należy zastąpić ciągiem liter $\text{wbi}$.
+
+  Jakie zdanie reprezentuje ciąg symboli
+  $\alpha\gamma\sigma\beta\eta\theta\sigma\delta\sigma\lambda\kappa\zeta\omega$, jeśli szyfr jest podanej tu
+  postaci? $\alpha \to \text{Az}$, $\beta \to \text{wbi}$, $\gamma = \text{or}$,
+  $\delta = \text{do}$, $\zeta \to \text{oju}$, $\eta \to \text{e}$, $\theta \to \text{gł}$,
+  $\kappa \to \text{k}$, $\lambda \to \text{po}$, $\sigma = "\;\;"$ (spacja),
+  $\omega \to .$ (pojedyncza kropka).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Gramatyki}
+
+
+  To co opracowali Janek i~Marian to prosty przykład gramatyki. Słowo
+  „gramatyka” ma oczywiście kilka znaczeń, nas będzie interesować to jakie
+  ma w~informatyce teoretycznej, gdzie oznacza sformalizowany system
+  przepisywania tekstu.
+
+  W~przykładzie z~Janem i~Marianem mieliśmy do czynienia z~ciągiem symboli
+  alfabetu greckiego, który zgodnie z~podanymi zasadami przepisywaliśmy,
+  aż dostaliśmy tekst zapisany za pomocą liter łacińskich, spacji i~kropki.
+  To zasadniczo ilustruje o~co chodzi w~gramatykach: dostajemy ciąg
+  „niezrozumiałych” symboli, który przekształcamy zgodnie z regułami tak
+  długo, aż~dostaniemy ciąg symboli, który sens jesteśmy w~stanie pojąć.
+
+  Ma to dla nas znaczenie, bo program w~języku C jest tekstem i~program
+  w~dialekcie assemblera jest też tekstem. Kompilacja polega więc na
+  przetworzeniu jednego tekstu w~drugi, co formalizujemy za pomocą
+  gramatyki.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Definicja gramatyki}
+
+
+  Ze względu na skromny charakter naszego kursu, nie możemy wchodzić zbyt
+  głęboko w~definicję gramatyki. Najważniejsze jest dla nas wyrobienie
+  sobie intuicji czym gramatyka jest oraz jak nią operować.
+
+  Gramatykę definiują cztery rzeczy. \\
+  1)~Skończony zbiór symboli terminalnych. \\
+  2)~Skończony zbiór symboli nieterminalnych. \\
+  3)~Reguły produkcji. \\
+  4)~Symbol startowy.
+
+  Teraz postaramy~się omówić każde z~tych pojęć.
+
+  \textbf{Symbol terminalny} to symbol który oznacza samego siebie.
+  W~kontekście programowania proszę myśleć o~taki rzeczach jak $0$,
+  czy~$0.1$. Nie wchodząc w~szczegóły, powinno być jasne, że~zarówno
+  $0$ jak i~$0.1$ oznaczają zasadniczo same siebie. W~opowieści
+  z~Janem i~Marianem terminalami były litery łacińskie, spacja i~kropka.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Symbole nieterminalne, \ldots}
+
+
+  \textbf{Symbole nieterminalne} to symbole które odnoszą nas do czegoś
+  innego niż one same. W~kontekście programowania proszę myśleć o~nazwach
+  zmiennych, takich jak \texttt{intVar1} czy \texttt{float64Var1}.
+  Czasem, by uniknąć nieporozumień symbole te będziemy nazywać
+  \textbf{nieterminalami właściwymi}.
+
+  W~opowieści o~Janie i~Marianie
+  symbolami nieterminalnymi były litery
+  alfabetu greckiego $\alpha$, $\beta$, $\gamma$, \ldots{ } Proszę sobie przypomnieć, że~oni
+  zastępowali symbole nieterminalne przez ciągi symboli terminalnych, wedle
+  reguł postaci $\alpha \to \text{Az}$. Tym samym dochodzimy do~pojęcia reguły
+  produkcji.
+
+  \textbf{Reguły produkcji} to zestaw reguł, które tłumaczą jak
+  przekształcić ciąg symboli zawierający symbole nieterminalne,
+  w~inny ciągi symboli. Tym samym $\alpha \to \text{Az}$ jest regułą produkcji,
+  której przykład użycia już widzieliśmy. Trochę dokładniej omówimy je
+  za~chwilę.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Terminologia}
+
+
+  \textbf{Symbol startowy} jest to symbol od którego zaczynamy tworzenie
+  ciągu symboli. Z~punktu widzenia człowieka, jest to najmniej ważny
+  element definiujący gramatykę, komputer może mieć inne zdanie. Dokładniej
+  wyjaśnimy jego sens po omówieniu reguł produkcji.
+
+  Zauważmy, że~język polski w~formie pisanej składa~się z~słów, które są
+  ciągami litera, podobnie jest w~gramatykach, gdzie rozważamy ciągi
+  symboli. Rozważane ciągi mogą~się składać z~samych symboli terminalnych,
+  samych symboli nieterminalnych, lub jednocześnie z~symboli terminalnych
+  i~nieterminalnych. Wracając do naszej opowieści $\alpha\beta$ jest ciągiem
+  gramatyki składającym~się z~dwóch symboli nieterminalnych, $\text{Azor}$
+  składa~się z~czterech symboli terminalnych, a~$\alpha\text{or}$ składa~się
+  z~jednego symbolu nieterminalnego i~dwóch terminalnych.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reguły produkcji}
+
+
+  Dowolny ciąg symboli danej gramatyki zawierający co najmniej jeden symbol
+  nieterminalny nazywać będziemy \textbf{nieterminalem}. Tym samym zarówno
+  $\alpha\beta$, jak i~$\alpha\text{or}$ nazywa będziemy nieterminalami. Ciąg składający
+  z~samych symboli terminalnych będziemy nazywali \textbf{terminalem}.
+  Dodatkowo przyjmujemy, że~pojedynczy znak będziemy rozumieć jako ciąg
+  o~długości jeden.
+
+  Przypomnijmy podane wcześniej zasady przekształcania przyjęte przez
+  Jana i~Mariana: $\alpha \to \text{Az}$, $\beta \to \text{wbi}$, $\gamma = \text{or}$,
+  $\delta = \text{do}$, $\zeta \to \text{oju}$, $\eta \to \text{e}$, $\theta \to \text{gł}$,
+  $\kappa \to \text{k}$, $\lambda \to \text{po}$, $\sigma = "\;\;"$ (spacja),
+  $\omega \to .$ (kropka). Są to w~istocie reguły produkcji pewnej gramatyki.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reguły produkcji}
+
+
+  Dla człowieka jest proste w~zrozumieniu, że~skoro $\alpha \to \text{Az}$,
+  $\gamma \to \text{or}$ to $\alpha\gamma \to \text{Azor}$, jednak na poziomie pracy
+  z~kompilatorem jest to
+  trochę zbyt mało precyzyjne. Dla człowieka jest jasne, że~jeśli mamy
+  nieterminal $\alpha\alpha$, który rozwija~się $\text{AzAz}$, a~to słowo nie ma
+  sensu, to coś musiał pójść nie tak. Jednak w~języku~C wraz \texttt{AzAz}
+  jest dopuszczalną nazwą zmiennej (odradzam jednak jej stosowanie)
+  i~nikogo to nie gorszy, więc kompilator nie ma powodu tego odrzucać.
+
+  Przyjmijmy, że~Jan i~Marian wprowadzili dodatkowy nieterminal
+  $\Gamma$ za~które możemy podstawić dowolne słowo. Jak możemy teraz
+  przekształcić $\Gamma\sigma\Gamma$? Przyjmijmy reguły $\Gamma \to \text{Azor}$
+  i~$\Gamma \to \text{wbiegła}$. Jeśli musielibyśmy za każde wystąpienie
+  $\Gamma$ podstawić to samo słowo, to mamy tylko dwie możliwości
+  $\Gamma\sigma\Gamma \to \text{Azor} \; \; \text{Azor}$
+  i~$\Gamma\sigma\Gamma \to \text{wbiegł} \; \; \text{wbiegł}$, obie nonsensowne
+  z~punktu widzenia języka polskiego.
+
+  % \begin{figure}
+
+  %   \begin{tikzpicture}
+
+  %     \path (0,0) -- (0,-2);
+
+
+
+  %     \node (przypisanie) at (0,0) {\texttt{=}};
+
+  %     \node (liczba-1) at (-1.5,-1) {\texttt{intVar1}};
+
+  %     \node (multiplication) at (1.5,-1) {\texttt{*}};
+
+
+  %     \draw (przypisanie) -- (liczba-1);
+
+  %     \draw (przypisanie) -- (multiplication);
+
+
+  %     \node (number-2) at (0.5,-2) {};
+
+  %     \node (int-variable-2) at (2.5,-2) {};
+
+
+  %     \draw (multiplication) -- (number-2);
+
+  %     \draw (multiplication) -- (int-variable-2);
+
+  %   \end{tikzpicture}
+
+  %   \caption{Budowanie drzewa składniowego wyrażenia
+  %     \texttt{intVar1 = 3 * intVar2}}
+
+  %   \label{fig:Scheme-of-CPU}
+
+  % \end{figure}
+
+
+
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reguły produkcji}
+
+
+  Jeśli jednak przyjmiemy, że~możemy w~każdym kroku wybrać \alert{jeden}
+  symbol $\Gamma$ i~dla niego użyć reguły $\Gamma \to \text{Azor}$
+  lub~$\Gamma \to \text{wbiegła}$, to mamy cztery możliwe wyniki: \\
+  $\Gamma\sigma\Gamma \to \text{Azor} \; \; \text{Azor}$ \\
+  $\Gamma\sigma\Gamma \to \text{wbiegł} \; \; \text{wbiegł}$ \\
+  $\Gamma\sigma\Gamma \to \text{Azor} \; \; \text{wbiegł}$ \\
+  $\Gamma\sigma\Gamma \to \text{wbiegł} \; \; \text{Azor}$ \\
+  gdzie dwie ostatnie wyrażenia już mają jakiś sens.
+
+  Ten przykład z~nieterminalem $\Gamma\sigma\Gamma$ może~się wydać sztuczny, jednak
+  naświetla nam dwa ważne fakty. Po pierwsze, wprowadzenie więcej niż
+  jednej reguły produkcji dla nieterminala $\Gamma$ może być użyteczne.
+  Po drugie, zastępowanie kilku egzemplarzy nieterminala $\Gamma$,
+  jeden po drugim, różnymi słowami również może prowadzić do~ciekawych
+  wyników (najpierw $\Gamma \to \text{Azor}$, potem
+  $\Gamma \to \text{wbiegł}$).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reguły produkcji}
+
+
+  Gdy to już wszystko wiemy, możemy sprecyzować co rozumiemy przez reguły
+  produkcji danej gramatyki. Jest nim zbiór reguł postaci $A \to B$, gdzie
+  $A$ \alert{musi} być nieterminalem, a~$B$ może być zarówno terminalem,
+  lub nieterminalem.
+
+  Widzimy więc, że~reguły $\alpha \to \text{Az}$, $\beta \to \text{wbi}$,
+  $\gamma = \text{or}$, $\delta = \text{do}$, $\zeta \to \text{oju}$, $\eta \to \text{e}$,
+  $\theta \to \text{gł}$, $\kappa \to \text{k}$, $\lambda \to \text{po}$, $\sigma = "\;\;"$
+  (spacja), $\omega \to .$ (kropka) są ciągiem reguł produkcji, które zupełnie
+  wystarczają dla Jana i~Mariana, ale nie są zadowalające z~punktu widzenia
+  kompilatora. Do tego wrócimy za~chwilę.
+
+  Reguł produkcji używamy w~następujący sposób. Jeśli otrzymamy dany
+  nieterminal, powiedzmy $\alpha\gamma\sigma\beta\eta\theta$, dokonuje ciąg przekształceń zgodnie
+  z~regułami produkcji, w~każdym kroku podmieniając \alert{jeden}
+  nieterminal występujący po lewej stronie którejś z~reguły produkcji,
+  na~ciąg symboli występujący po prawej stronie tej reguły.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reguły produkcji}
+
+
+  Korzystając z~reguł produkcji $\alpha \to \text{Az}$,
+  $\beta \to \text{wbi}$, $\gamma = \text{or}$, $\delta = \text{do}$,
+  $\zeta \to \text{oju}$, $\eta \to \text{e}$, $\theta \to \text{gł}$,
+  $\kappa \to \text{k}$, $\lambda \to \text{po}$, $\sigma = "\;\;"$ (spacja),
+  $\omega \to .$ (kropka), mamy następujący ciąg produkcji dla
+  nieterminala $\alpha\gamma\sigma\beta\eta\theta$. \\
+  $\alpha\gamma\sigma\beta\eta\theta \to \text{Az}\gamma\sigma\beta\eta\theta \to \text{Azor}\sigma\beta\eta\theta \to $
+  $\text{Azor}\sigma\beta\eta\theta \to \text{Azor} \; \; \beta\eta\theta \to $ \\
+  $\to \text{Azor} \; \; \text{wbi}\eta\theta \to $
+  $\text{Azor} \; \; \text{wbie}\theta \to \text{Azor} \; \; \text{wbiegł}$
+
+  Dowolnie taki ciąg przekształceń nazywamy \textbf{ciągiem produkcji}
+  lub \textbf{produkcją} danej gramatyki. Jeśli dany nieterminal zaczyna
+  dany ciąg produkcji, to mówimy, że~jest to ciąg produkcji tego
+  nieterminalna. Zgodnie z~tym
+  $\alpha\gamma \to \text{Az}\gamma \to \text{Azor}$ jest ciągiem produkcji
+  nieterminala~$\alpha\gamma$.
+
+  Powstaje pytanie. Czy nie możemy napisać po prostu
+  $\alpha\gamma \to \text{Azor}$, skoro widać, że~to musi wyjść? Odpowiedź jest taka,
+  że~gdy piszemy dany ciąg produkcji, po to by czytali go inni ludzie,
+  którzy i~tak to zrozumieją, to oczywiście możemy dokonywać kilku takich
+  podstawień w~jednym kroku.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Reguły produkcji i~symbol startowy}
+
+
+  Należy jednak pamiętać, że~z~technicznych względów, jeśli chcemy być
+  bardzo poprawni, to w~każdym kroku musimy skorzystać \alert{dokładnie}
+  jeden raz z~\alert{dokładnie} jednej reguły produkcji. Nie wolno też
+  przesadzić w~skracaniu ciągu produkcji, tak że nawet dla ludzi staje~się
+  niezrozumiały. ;)
+
+  Choć nie było to jawnie powiedziane, to zapewne już~się Państwo domyślili,
+  że~jeżeli w~trakcie produkcji dojdziemy do ciągu zawierającego tylko
+  symbole terminalne, to kończymy dany ciąg. Wszak symbole terminalne
+  oznaczają same siebie, więc taki ciąg oznacza sam siebie.
+
+  Teraz powinno być jasne, czemu po lewej stronie strzałki $\to$ w~regule
+  produkcji, \alert{musi} stać co najmniej jeden symbol nieterminalny.
+  Inaczej cały formalizm traci sens. Wracają do podanego przykładu,
+  Jan i~Marian nie mogli ustalić reguły produkcji
+  $\text{wbi} \to \text{wbiegł}$, bo wówczas ich system nie byłby gramatyką.
+  Byłby szyfrem, ale nie gramatyką, ale szyfry to temat na zajęcia
+  z~\colorhref{https://pl.wikipedia.org/wiki/Kryptologia}{kryptologii},
+  a~nie z~podstaw kompilatorów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Symbol startowy}
+
+
+  Tutaj musimy wyjaśnić jeszcze jedno zagadnienie: skąd wiadomo,
+  że~ciąg $\alpha\beta$ jest sensowny? Dla nas ludzi sprawa jest prosta. Sprawdzamy,
+  że~oznacza on $\text{Azor}$ i~sprawdzamy, czy jest to sensowne słowo
+  języka polskiego. Jednak nasze ludzkie pojęcie sensownego słowa jest
+  ciężko przekładalne (a~jest w~ogóle?) na język komputera, więc musimy
+  to jakoś obejść. By to zrobić wprowadzamy \textbf{symbol startowy}.
+
+  Idea jest prosta. Wybieramy jakiś symbol nieterminalny od~którego musi
+  zacząć~się każda pełna produkcja gramatyki i~dowolny ciąg symboli
+  gramatyki uważamy za poprawny, jeśli możemy znaleźć ciąg produkcji, który
+  zaczyna~się od symbolu startowego i~kończy na~rozważanym ciągu symboli.
+  Jeśli danego ciągu symboli nie da~się wyprowadzić zaczynając od symbolu
+  startowego to mówimy, że~dany ciąg jest \textbf{niepoprawnie
+    skonstruowany} w~ramach danej gramatyki.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Symbol startowy}
+
+
+  Wcześniej powiedzieliśmy, że~symbol startowy jest najmniej ważnym
+  składnikiem gramatyki. Dokładnej, jest ona najmniej ważny z~punktu
+  widzenia człowieka, co widać po tym, że~książkowych definicjach gramatyki
+  często się go nawet nie podaje, uważając, że~same reguły produkcji
+  wyjaśniają wystarczająco jasno jakie ciągi symboli można w~ramach jej
+  utworzyć. Z~punktu widzenia teorii i~kompilatora jest on oczywiście
+  bardzo ważny.
+
+  Zwyczajowo, za~symbol startowy przyjmuje~się symbol $\epsilon$, który oznacza
+  pusty ciąg symboli. My też będziemy tak przyjmować w~dalszym ciągu tych
+  zajęć.
+
+  Ciąg produkcji gramatyki zaczynający~się od symbolu startowego~$\epsilon$
+  i~kończący na~ciągu symboli terminalnych, nazywamy \textbf{pełnym ciągiem
+    produkcji}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uzupełnienie reguł produkcji}
+
+
+  Jak teraz widzimy, z~technicznego punktu widzenia, gramatyka Jana
+  i~Mariana jest niepełna bo nie określa jak wyprowadzać ciągi symboli
+  zaczynając od symbolu startowego $\epsilon$. By~ją uzupełnić, obok symbolu
+  $\epsilon$~wprowadzamy jeszcze jeden symbol nieterminalny $S$
+  (od~słowa \textit{symbol}) i~reguły produkcji \\
+  $\epsilon \to S$, $S \to SS$.
+
+  Sens pierwszej z~nich jest prosty. Zaczynając od symbolu startowego
+  możemy wygenerować pojedynczy symbol. Druga reguła mówi, że~za~pojedynczy
+  symbol możemy podstawić dwa symbole. To pozwala nam otrzymać dowolnie
+  długi, acz skończony, ciąg symboli poprzez produkcję: \\
+  $\epsilon \to S \to SS \to SSS \to SSSS \to \ldots$
+
+  Teraz potrzebujemy wprowadzić reguły postaci $S \to \alpha$, $S \to \beta$,
+  $S \to \gamma$, \ldots{ } Jak łatwo zauważyć, szybko staje~się to dość żmudne.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uzupełnienie reguł produkcji}
+
+
+  By uprościć notację, wprowadzamy symbol $|$, który należy czytać
+  „jedno z~dwojga”. Dwie reguły produkcji $S \to \alpha$, $S \to \beta$ możemy zapisać
+  w~następujący sposób: $S \to \alpha \, | \, \beta$.
+
+  Analogicznie reguły produkcji $S \to \alpha$, $S \to \beta$, $S \to \gamma$ możemy zapisać
+  jako $S \to \alpha \, | \, \beta \, | \, \gamma$, etc.
+
+  W~tym momencie możemy zapisać pełny zestaw reguł produkcji gramatyki
+  której używali Jan i~Marian. \\
+  $\epsilon \to S$, \\
+  $S \to SS$, \\
+  $S \to \alpha \, | \, \beta \, | \, \gamma \, | \, \delta \, | \, \zeta \, | \, \eta \, | \,
+  \theta \, | \, \kappa \, | \, \lambda \, | \, \sigma \, | \, \omega$, \\
+  $\alpha \to \text{Az}$, $\beta \to \text{wbi}$, $\gamma = \text{or}$,
+  $\delta = \text{do}$,$\zeta \to \text{oju}$, $\eta \to \text{e}$,
+  $\theta \to \text{gł}$, $\kappa \to \text{k}$, $\lambda \to \text{po}$,
+  $\sigma = "\;\;"$ (spacja), $\omega \to .$ (kropka).
+
+  Korzystając z~nich, pokażemy pełny ciąg produkcji ciągu symboli
+  $\text{Azor wbiegł}$.
+
+  % \begin{figure}
+
+  %   \begin{tikzpicture}
+
+  %     \path (0,0) -- (0,-2);
+
+
+
+  %     \node (assignment) at (0,0) {\texttt{=}};
+
+  %     \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+  %     \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+  %     \draw (assignment) -- (int-variable-4);
+
+  %     \draw (assignment) -- (addition);
+
+
+  %     \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+  %     \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+  %     \draw (addition) -- (int-variable-2);
+
+  %     \draw (addition) -- (int-variable-3);
+
+
+  %     \node (int-variable-1) at (-0.25,-2.75) {\texttt{intVar1}};
+
+  %     \node (multiplication) at (1.25,-2.75) {\texttt{*}};
+
+
+  %     \draw (assigment-1) -- (int-variable-1);
+
+  %     \draw (assigment-1) -- (multiplication);
+
+
+  %     % \node (number-2) at (0.25,-3.4) {\texttt{5}};
+
+  %     % \node (int-variable-3) at (2.25,-3.4) {\texttt{intVar2}};
+
+
+  %     % \draw (multiplication) -- (number-2);
+
+  %     % \draw (multiplication) -- (int-variable-3);
+
+  %   \end{tikzpicture}
+
+  %   \caption{Budowanie drzewa składniowego wyrażenia
+  %     \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+  %   \label{fig:Scheme-of-CPU}
+
+  % \end{figure}
+
+
+
+
+
+  % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  % \texttt{intVar3}. \\
+  % 2.~Przypisz do \texttt{intVar1} wynik punktu~1. \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład ciągu produkcji}
+
+
+  $\epsilon \to S$, $S \to SS$, \\
+  $S \to \alpha \, | \, \beta \, | \, \gamma \, | \, \delta \, | \, \zeta \, | \, \eta \, | \,
+  \theta \, | \, \kappa \, | \, \lambda \, | \, \sigma \, | \, \omega$, \\
+  $\alpha \to \text{Az}$, $\beta \to \text{wbi}$, $\gamma = \text{or}$,
+  $\delta = \text{do}$,$\zeta \to \text{oju}$, $\eta \to \text{e}$,
+  $\theta \to \text{gł}$, $\kappa \to \text{k}$, $\lambda \to \text{po}$,
+  $\sigma = "\;\;"$ (spacja), $\omega \to .$ (kropka).
+
+  Ciąg produkcje $\text{Azor wbiegł}$ jest postaci:
+  $\epsilon \to S \to SS \to SSS \to SSSS \to SSSSS \to SSSSSS \to \alpha SSSSS \to $
+  $\to \alpha\gamma SSSS \to \alpha\gamma\sigma SSS \to \alpha\gamma\sigma\beta SS \to \alpha\gamma\sigma\beta\eta S \to \alpha\gamma\sigma\beta\eta\theta \to $
+  $\to \text{Az}\gamma\sigma\beta\eta\theta \to \text{Azor}\sigma\beta\eta\theta \to $
+  $\to \text{Azor }\beta\eta\theta \to \text{Azor wbi}\eta\theta \to \text{Azor wbie}\theta \to $
+  $\text{Azor wbiegł}$
+
+  Jak widzimy wypisywanie ciągów produkcji potrafi być bardzo żmudne
+  i~należy~się cieszyć, że~robi to za nas komputer. :)
+
+  Zauważmy, że~ciąg produkcji prowadzący do danego ciągu symboli
+  terminalnych nie musi być jednoznaczny. Powyżej moglibyśmy nieterminal
+  $SSSSS$ przekształcić w~następujący sposób
+  $SSSSS \to \alpha SSSS \to \alpha SSSSS$ i~postępując jak poprzednio ponownie dojść
+  do~$\text{Azor wbiegł}$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka pojęć}
+
+
+  Dowolny ciąg terminali generowany przez daną gramatykę nazywamy
+  \textbf{słowem}. Trochę mylące jest to, że~wedle tej terminologi zdanie
+  języka polskiego „Azor wbiegł do pokoju.” jest \alert{słowem} rozważanej
+  wcześniej gramatyki. Zbiór wszystkich słów generowanych przez daną
+  gramatykę nazywamy \textbf{językiem}.
+
+  Dwa podstawowe zadania przy pracy z~gramatykami są następujące.
+
+  \begin{itemize}
+
+  \item[1)] Jaki jest język generowany przez daną gramatykę.
+
+  \item[2)] Dany jest ciąg symboli terminalnych danej gramatyki. Czy ten
+    ciąg należy do języka przez nią generowanego?
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+% % ######################################
+% \section{Przykład drzewa składniowego, 1}
+
+% \label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \path (0,0) -- (0,-2);
+
+
+
+%       \node (assignment) at (0,0) {\texttt{=}};
+
+%       \node (liczba-1) at (-1.5,-1) {\texttt{intVar1}};
+
+%       \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%       \draw (assignment) -- (liczba-1);
+
+%       \draw (assignment) -- (addition);
+
+
+%       \node (int-variable-2) at (0.5,-2) {\texttt{intVar2}};
+
+%       \node (multiplication) at (2.5,-2) {\texttt{*}};
+
+
+%       \draw (addition) -- (int-variable-2);
+
+%       \draw (addition) -- (multiplication);
+
+
+%       \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%       \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%       \draw (multiplication) -- (number-2);
+
+%       \draw (multiplication) -- (int-variable-3);
+
+%     \end{tikzpicture}
+
+%     \caption{Budowanie drzewa składniowego wyrażenia
+%       \texttt{intVar1 = intVar2 + 4 * intVar3}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+
+
+
+
+%   3.~Przypisz do zmiennej \texttt{intVar1} wynik punktu~2. \\
+%   2.~Dodaj do \texttt{intVar2} wynik punktu~1. \\
+%   1.~Pomnóż \texttt{4} i~\texttt{intVar3}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Przykład drzewa składniowego, 2}
+
+% \label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+%   Zbudujmy teraz drzewo składniowe bardziej skomplikowanego wyrażenia,
+%   które składa~się z~dwóch linii instrukcji. \\
+%   \texttt{1: intVar1 = 5 * intVar2} \\
+%   \texttt{2: intVar4 = intVar1 + intVar3} \\
+%   Należy zaznaczyć, że~\texttt{1:} i~\texttt{2:} nie są częścią składni,
+%   ale jedynie pomocniczymi etykietami, które informują nas, że~ten
+%   konkretny kod jest rozbity na dwie linie.
+
+%   Jak poprzednio wypisujemy wszystkie działania w~odpowiedniej
+%   kolejności. \\
+%   1.~Pomnóż \texttt{5} i~\texttt{intVar2}. \\
+%   2.~Przypisz do \texttt{intVar1} wynik punktu~1. \\
+%   3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+%   \texttt{intVar3}. \\
+%   4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+%   % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+%   % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+%   % lewej stronie.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \path (0,0) -- (0,-2);
+
+
+
+%       \node (assignment) at (0,0) {\texttt{=}};
+
+%       \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+%       \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%       \draw (assignment) -- (int-variable-4);
+
+%       \draw (assignment) -- (addition);
+
+
+%       \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+%       \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+%       \draw (addition) -- (int-variable-2);
+
+%       \draw (addition) -- (multiplication);
+
+
+%       % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%       % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%       % \draw (multiplication) -- (number-2);
+
+%       % \draw (multiplication) -- (int-variable-3);
+
+%     \end{tikzpicture}
+
+%     \caption{Budowanie drzewa składniowego wyrażenia
+%       \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+
+
+
+
+%   4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+%   3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+%   \texttt{intVar3}. \\
+%   Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+%   \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+%   lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+%   \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \path (0,0) -- (0,-2);
+
+
+
+%       \node (assignment) at (0,0) {\texttt{=}};
+
+%       \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+%       \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%       \draw (assignment) -- (int-variable-4);
+
+%       \draw (assignment) -- (addition);
+
+
+%       \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+%       \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+%       \draw (addition) -- (int-variable-2);
+
+%       \draw (addition) -- (multiplication);
+
+
+%       % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%       % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%       % \draw (multiplication) -- (number-2);
+
+%       % \draw (multiplication) -- (int-variable-3);
+
+%     \end{tikzpicture}
+
+%     \caption{Budowanie drzewa składniowego wyrażenia
+%       \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+
+
+
+
+%   4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+%   3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+%   \texttt{intVar3}. \\
+%   Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+%   \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+%   lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+%   \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \path (0,0) -- (0,-2);
+
+
+
+%       \node (assignment) at (0,0) {\texttt{=}};
+
+%       \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+%       \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%       \draw (assignment) -- (int-variable-4);
+
+%       \draw (assignment) -- (addition);
+
+
+%       \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+%       \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+%       \draw (addition) -- (int-variable-2);
+
+%       \draw (addition) -- (int-variable-3);
+
+
+%       \node (int-variable-1) at (-0.25,-2.75) {\texttt{intVar1}};
+
+%       \node (multiplication) at (1.25,-2.75) {\texttt{*}};
+
+
+%       \draw (assigment-1) -- (int-variable-1);
+
+%       \draw (assigment-1) -- (multiplication);
+
+
+%       \node (number-2) at (0.5,-3.4) {\texttt{5}};
+
+%       \node (int-variable-3) at (2.25,-3.4) {\texttt{intVar2}};
+
+
+%       \draw (multiplication) -- (number-2);
+
+%       \draw (multiplication) -- (int-variable-3);
+
+%     \end{tikzpicture}
+
+%     \caption{Budowanie drzewa składniowego wyrażenia
+%       \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+
+
+
+
+%   4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+%   3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+%   \texttt{intVar3}. \\
+%   2.~Przypisz do \texttt{intVar1} wynik punktu~1. \\
+%   1.~Pomnóż \texttt{5} i~\texttt{intVar2}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Drzewa składniowe z~wywołaniem funkcji}
+
+% \label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe wywołania funkcji}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       % \path (0,0) -- (0,-2);
+
+
+
+%       \node (parenties) at (0,0) {\texttt{( )}};
+
+%       \node (sin) at (-1.5,-1) {\texttt{sin}};
+
+%       \node (x) at (1.5,-1) {\texttt{x}};
+
+
+%       \draw (parenties) -- (sin);
+
+%       \draw (parenties) -- (x);
+
+
+%       % \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+%       % \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+%       % \draw (addition) -- (int-variable-2);
+
+%       % \draw (addition) -- (multiplication);
+
+
+%       % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%       % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%       % \draw (multiplication) -- (number-2);
+
+%       % \draw (multiplication) -- (int-variable-3);
+
+%     \end{tikzpicture}
+
+%     \caption{Drzewo składniowe wyrażenia
+%       \texttt{sin(x)}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+
+
+
+
+%   Wywołanie funkcji typu \texttt{sin(x)}, gdzie \texttt{x} jest zmienną,
+%   a~\texttt{sin} to funkcja trygonometryczna, jest dobrze znane z~wielu
+%   języków programowania. Może zaskakiwać, że~na poziomie drzew składniowych
+%   wywołanie funkcji traktujemy jako wynik obliczań wykonany przez
+%   operator \alert{dwuargumentowy}. Dokładniej nawiasy \texttt{( )}
+%   traktujemy jako \alert{dwuargumentowy} operator, który jako pierwszą
+%   wartość pobiera nazwę funkcji, a~jako drugi jej argument (może być
+%   oczywiście więcej, niż jeden argument).
+%   % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+%   % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+%   % \texttt{intVar3}. \\
+%   % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+%   % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+%   % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+%   % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe z~wywołaniem funkcji}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       % \path (0,0) -- (0,-2);
+
+
+
+%       \node (parenties) at (0,0) {\texttt{( )}};
+
+%       \node (sin) at (-1.5,-1) {\texttt{sin}};
+
+%       \node (x) at (1.5,-1) {\texttt{x}};
+
+
+%       \draw (parenties) -- (sin);
+
+%       \draw (parenties) -- (x);
+
+
+%       % \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+%       % \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+%       % \draw (addition) -- (int-variable-2);
+
+%       % \draw (addition) -- (multiplication);
+
+
+%       % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%       % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%       % \draw (multiplication) -- (number-2);
+
+%       % \draw (multiplication) -- (int-variable-3);
+
+%     \end{tikzpicture}
+
+%     \caption{Drzewo składniowe wyrażenia
+%       \texttt{sin(x)}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+%   % \begin{figure}
+
+%   %   \begin{tikzpicture}
+
+%   %     \path (0,0) -- (0,-2);
+
+
+
+%   %     \node (assignment) at (0,0) {\texttt{=}};
+
+%   %     \node (float64Var1) at (-1.5,-1) {\texttt{float64Var1}};
+
+%   %     \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%   %     \draw (assignment) -- (float64Var1);
+
+%   %     \draw (assignment) -- (addition);
+
+
+%   %     \node (parenties) at (0.5,-2) {\texttt{( )}};
+
+%   %     \node (number-1) at (2.5,-2) {\texttt{2.7182}};
+
+
+%   %     % \draw (addition) -- (int-variable-2);
+
+%   %     % \draw (addition) -- (multiplication);
+
+
+%   %     % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%   %     % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%   %     % \draw (multiplication) -- (number-2);
+
+%   %     % \draw (multiplication) -- (int-variable-3);
+
+%   %   \end{tikzpicture}
+
+%   %   \caption{Drzewo składniowe wyrażenia
+%   %     \texttt{float64Var1 = sin(x) + 2.7182}}
+
+%   %   \label{fig:Scheme-of-CPU}
+
+%   % \end{figure}
+%   % \begin{figure}
+
+%   %   \begin{tikzpicture}
+
+%   %     \path (0,0) -- (0,-2);
+
+
+
+%   %     \node (assignment) at (0,0) {\texttt{=}};
+
+%   %     \node (float64Var1) at (-1.5,-1) {\texttt{float64Var1}};
+
+%   %     \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%   %     \draw (assignment) -- (float64Var1);
+
+%   %     \draw (assignment) -- (addition);
+
+
+%   %     \node (parenties) at (0.5,-2) {\texttt{( )}};
+
+%   %     \node (number-1) at (2.5,-2) {\texttt{2.7182}};
+
+
+%   %     % \draw (addition) -- (int-variable-2);
+
+%   %     % \draw (addition) -- (multiplication);
+
+
+%   %     % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%   %     % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%   %     % \draw (multiplication) -- (number-2);
+
+%   %     % \draw (multiplication) -- (int-variable-3);
+
+%   %   \end{tikzpicture}
+
+%   %   \caption{Drzewo składniowe wyrażenia
+%   %     \texttt{float64Var1 = sin(x) + 2.7182}}
+
+%   %   \label{fig:Scheme-of-CPU}
+
+%   % \end{figure}
+
+
+
+
+
+%   Wiedząc to, widzimy, że~powyższe drzewo składniowe poprawnie
+%   reprezentuje wywołanie funkcji sinus postaci \texttt{sin(x)}.
+
+%   Dysponując powyższymi informacjami, rozpisywanie drzew składniowych
+%   wyrażeń zawierających funkcje powinno nie stanowić problemu.
+%   % Wywołanie funkcji typu \texttt{sin(x)}, gdzie \texttt{x} jest zmienną,
+%   % a~\texttt{sin} to funkcja trygonometryczna, jest dobrze znane z~wielu
+%   % języków programowania. Może zaskakiwać, że~na poziomie drzew składniowych
+%   % wywołanie funkcji traktujemy jako wynik obliczań wykonany przez
+%   % operator \alert{dwuargumentowy}. Dokładniej nawiasy \texttt{( )}
+%   % traktujemy jako \alert{dwuargumentowy} operator, który jako pierwszą
+%   % wartość pobiera nazwę funkcji, a~jako drugi jej argument (może być
+%   % oczywiście więcej, niż jeden argument).
+%   % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+%   % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+%   % \texttt{intVar3}. \\
+%   % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+%   % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+%   % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+%   % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe z~wywołaniem funkcji}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       % \path (0,0) -- (0,-2);
+
+
+
+%       \node (assignment) at (0,0) {\texttt{=}};
+
+%       \node (float64Var1) at (-1.5,-1) {\texttt{float64Var1}};
+
+%       \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%       \draw (assignment) -- (float64Var1);
+
+%       \draw (assignment) -- (addition);
+
+
+%       \node (parenties) at (0.5,-2) {\texttt{( )}};
+
+%       \node (number-1) at (2.5,-2) {\texttt{2.7182}};
+
+
+%       \draw (addition) -- (parenties);
+
+%       \draw (addition) -- (number-1);
+
+
+%       \node (sin function) at (-0.25,-3) {\texttt{sin}};
+
+%       \node (x variable) at (1.25,-3) {\texttt{x}};
+
+
+%       \draw (parenties) -- (sin function);
+
+%       \draw (parenties) -- (x variable);
+
+%     \end{tikzpicture}
+
+%     \caption{Drzewo składniowe wyrażenia
+%       \texttt{float64Var1 = sin(x) + 2.7182}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+
+
+
+
+%   % Wiedząc to, widzimy, że~powyższe drzewo składniowe poprawnie
+%   % reprezentuje wywołanie funkcji sinus postaci \texttt{sin(x)}.
+
+%   % Dysponując powyższymi informacjami, rozpisywanie drzew składniowych
+%   % wyrażeń zawierających funkcje powinno nie stanowić problemu.
+%   % Wywołanie funkcji typu \texttt{sin(x)}, gdzie \texttt{x} jest zmienną,
+%   % a~\texttt{sin} to funkcja trygonometryczna, jest dobrze znane z~wielu
+%   % języków programowania. Może zaskakiwać, że~na poziomie drzew składniowych
+%   % wywołanie funkcji traktujemy jako wynik obliczań wykonany przez
+%   % operator \alert{dwuargumentowy}. Dokładniej nawiasy \texttt{( )}
+%   % traktujemy jako \alert{dwuargumentowy} operator, który jako pierwszą
+%   % wartość pobiera nazwę funkcji, a~jako drugi jej argument (może być
+%   % oczywiście więcej, niż jeden argument).
+%   % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+%   % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+%   % \texttt{intVar3}. \\
+%   % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+%   % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+%   % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+%   % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Drzewa składniowe pętli for}
+
+% \label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Drzewo składniowe pętli for}
+
+
+%   \begin{figure}
+
+%     \begin{tikzpicture}
+
+%       \path (0,0) -- (0,-2);
+
+
+
+%       \node[text width=5em] (run of for loop) at (0,0) {\texttt{wykonanie pętli for}};
+
+%       % \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+%       % \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+%       % \draw (assignment) -- (int-variable-4);
+
+%       % \draw (assignment) -- (addition);
+
+
+%       \node (condition) at (-3,-1.5) {\texttt{warunek}};
+
+%       \node[text width=7em] (body) at (0,-1.5) {\texttt{ciało pętli for}};
+
+%       \node[text width=7em] (ending instruction) at (3,-1.5) {\texttt{instrukcja kończąca}};
+
+
+%       \draw (run of for loop) -- (condition);
+
+%       \draw (run of for loop) -- (body);
+
+%       \draw (run of for loop) -- (ending instruction);
+
+
+%       % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+%       % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+%       % \draw (multiplication) -- (number-2);
+
+%       % \draw (multiplication) -- (int-variable-3);
+
+%     \end{tikzpicture}
+
+%     \caption{Drzewo składniowe \texttt{wykonanie pętli for}}
+
+%     \label{fig:Scheme-of-CPU}
+
+%   \end{figure}
+
+
+
+
+
+%   Jak można~się domyśli, w~obecnej sytuacji kolejność czytania wierzchołków
+%   w~drzewie rozkładu jest kluczowa. Ich układ na drzewie obrazuje,
+%   że~najpierw należy sprawdzić warunek, jeśli jest prawdziwy to wykonać
+%   ciało pętli, następnie instrukcję kończącą i~wrócić do warunku. Jeśli
+%   warunek nie jest spełniony, to kończymy pracę pętli i~przechodzimy w~górę
+%   drzewa składniowego.
+
+%   Proszę pamiętać, że~normalnie pętle nie „fruwają w~powietrzu”. Drzewo
+%   składniowe takiej pętli będzie więc zwykle częścią większego drzewa
+%   składniowego całego programu i~do niego pętla \texttt{for} wyśle
+%   odpowiednie informacje.
+%   % Choć \textsc{nasm} posiada inne rejestry niż te całkowitoliczbowe, to nie
+%   % będziemy~się tym zajmować. Zaprowadziłoby to nas zbyt daleko od właściwej
+%   % treści tego przedmiotu.
+
+%   % Możemy przyjąć, że~każdy z~$16$ rejestr odpowiada za konkretne zadanie.
+%   % Umieszczając w~nim liczbę całkowitą o~odpowiedniej wartości przekazujemy
+%   % procesorowi informację o~tym co ma zrobić.
+
+%   % Przypomnijmy, że~jeden rejestr dialektu \textsc{nams} składa~się z~$64$
+%   % bitów, pozwala więc zapisać liczby całkowite od~$0$
+%   % do~$18 \, 446 \, 744 \, 073 \, 709 \, 551 \, 616 \approx 1.8 \cdot 10^{ 19 }$.
+%   % W~skrócie, dużo liczb.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+
+% End of the document
+\end{document}

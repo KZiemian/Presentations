@@ -999,8 +999,7 @@ eprint=true,
   Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
   \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
   lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
-  \texttt{intVar1}, lecz
-
+  \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
 
 \end{frame}
 % ##################
@@ -1009,88 +1008,919 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Rola rejestrów}
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
 
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \path (0,0) -- (0,-2);
+
+
+
+      \node (assignment) at (0,0) {\texttt{=}};
+
+      \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+      \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+      \draw (assignment) -- (int-variable-4);
+
+      \draw (assignment) -- (addition);
+
+
+      \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+      \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+      \draw (addition) -- (int-variable-2);
+
+      \draw (addition) -- (multiplication);
+
+
+      % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+      % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+      % \draw (multiplication) -- (number-2);
+
+      % \draw (multiplication) -- (int-variable-3);
+
+    \end{tikzpicture}
+
+    \caption{Budowanie drzewa składniowego wyrażenia
+      \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  \texttt{intVar3}. \\
+  Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+  \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+  lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+  \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \path (0,0) -- (0,-2);
+
+
+
+      \node (assignment) at (0,0) {\texttt{=}};
+
+      \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+      \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+      \draw (assignment) -- (int-variable-4);
+
+      \draw (assignment) -- (addition);
+
+
+      \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+      \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+      \draw (addition) -- (int-variable-2);
+
+      \draw (addition) -- (int-variable-3);
+
+
+      \node (int-variable-1) at (-0.25,-2.75) {\texttt{intVar1}};
+
+      \node (multiplication) at (1.25,-2.75) {\texttt{*}};
+
+
+      \draw (assigment-1) -- (int-variable-1);
+
+      \draw (assigment-1) -- (multiplication);
+
+
+      % \node (number-2) at (0.25,-3.4) {\texttt{5}};
+
+      % \node (int-variable-3) at (2.25,-3.4) {\texttt{intVar2}};
+
+
+      % \draw (multiplication) -- (number-2);
+
+      % \draw (multiplication) -- (int-variable-3);
+
+    \end{tikzpicture}
+
+    \caption{Budowanie drzewa składniowego wyrażenia
+      \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  \texttt{intVar3}. \\
+  2.~Przypisz do \texttt{intVar1} wynik punktu~1. \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \path (0,0) -- (0,-2);
+
+
+
+      \node (assignment) at (0,0) {\texttt{=}};
+
+      \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+      \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+      \draw (assignment) -- (int-variable-4);
+
+      \draw (assignment) -- (addition);
+
+
+      \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+      \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+      \draw (addition) -- (int-variable-2);
+
+      \draw (addition) -- (int-variable-3);
+
+
+      \node (int-variable-1) at (-0.25,-2.75) {\texttt{intVar1}};
+
+      \node (multiplication) at (1.25,-2.75) {\texttt{*}};
+
+
+      \draw (assigment-1) -- (int-variable-1);
+
+      \draw (assigment-1) -- (multiplication);
+
+
+      \node (number-2) at (0.5,-3.4) {\texttt{5}};
+
+      \node (int-variable-3) at (2.25,-3.4) {\texttt{intVar2}};
+
+
+      \draw (multiplication) -- (number-2);
+
+      \draw (multiplication) -- (int-variable-3);
+
+    \end{tikzpicture}
+
+    \caption{Budowanie drzewa składniowego wyrażenia
+      \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  \texttt{intVar3}. \\
+  2.~Przypisz do \texttt{intVar1} wynik punktu~1. \\
+  1.~Pomnóż \texttt{5} i~\texttt{intVar2}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe wyrażenia arytmetycznego}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \path (0,0) -- (0,-2);
+
+
+
+      \node (assignment) at (0,0) {\texttt{=}};
+
+      \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+      \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+      \draw (assignment) -- (int-variable-4);
+
+      \draw (assignment) -- (addition);
+
+
+      \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+      \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+      \draw (addition) -- (int-variable-2);
+
+      \draw (addition) -- (int-variable-3);
+
+
+      \node (int-variable-1) at (-0.25,-2.75) {\texttt{intVar1}};
+
+      \node (multiplication) at (1.25,-2.75) {\texttt{*}};
+
+
+      \draw (assigment-1) -- (int-variable-1);
+
+      \draw (assigment-1) -- (multiplication);
+
+
+      \node (number-2) at (0.5,-3.4) {\texttt{5}};
+
+      \node (int-variable-3) at (2.25,-3.4) {\texttt{intVar2}};
+
+
+      \draw (multiplication) -- (number-2);
+
+      \draw (multiplication) -- (int-variable-3);
+
+    \end{tikzpicture}
+
+    \caption{Budowanie drzewa składniowego wyrażenia
+      \texttt{intVar1 = 5 * intVar2; intVar4 = intVar1 + intVar3}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  Naszą dyskusję zaczęliśmy od wyrażeń arytmetycznych, gdyż jak pokazują
+  powyższe przykłady, struktura tych drzew zależy od reguły wyliczania
+  odpowiednich wyrażeń. Dla wyrażeń arytmetycznych te reguły są dobrze
+  znane, stąd nasz wybór, by przeanalizować je najpierw.
+  % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  % \texttt{intVar3}. \\
+  % 2.~Przypisz do \texttt{intVar1} wynik punktu~1. \\
+  % 1.~Pomnóż \texttt{5} i~\texttt{intVar2}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Drzewa składniowe z~wywołaniem funkcji}
+
+\label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe wywołania funkcji}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      % \path (0,0) -- (0,-2);
+
+
+
+      \node (parenties) at (0,0) {\texttt{( )}};
+
+      \node (sin) at (-1.5,-1) {\texttt{sin}};
+
+      \node (x) at (1.5,-1) {\texttt{x}};
+
+
+      \draw (parenties) -- (sin);
+
+      \draw (parenties) -- (x);
+
+
+      % \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+      % \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+      % \draw (addition) -- (int-variable-2);
+
+      % \draw (addition) -- (multiplication);
+
+
+      % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+      % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+      % \draw (multiplication) -- (number-2);
+
+      % \draw (multiplication) -- (int-variable-3);
+
+    \end{tikzpicture}
+
+    \caption{Drzewo składniowe wyrażenia
+      \texttt{sin(x)}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  Wywołanie funkcji typu \texttt{sin(x)}, gdzie \texttt{x} jest zmienną,
+  a~\texttt{sin} to funkcja trygonometryczna, jest dobrze znane z~wielu
+  języków programowania. Może zaskakiwać, że~na poziomie drzew składniowych
+  wywołanie funkcji traktujemy jako wynik obliczań wykonany przez
+  operator \alert{dwuargumentowy}. Dokładniej nawiasy \texttt{( )}
+  traktujemy jako \alert{dwuargumentowy} operator, który jako pierwszą
+  wartość pobiera nazwę funkcji, a~jako drugi jej argument (może być
+  oczywiście więcej, niż jeden argument).
+  % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  % \texttt{intVar3}. \\
+  % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+  % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+  % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+  % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe z~wywołaniem funkcji}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      % \path (0,0) -- (0,-2);
+
+
+
+      \node (parenties) at (0,0) {\texttt{( )}};
+
+      \node (sin) at (-1.5,-1) {\texttt{sin}};
+
+      \node (x) at (1.5,-1) {\texttt{x}};
+
+
+      \draw (parenties) -- (sin);
+
+      \draw (parenties) -- (x);
+
+
+      % \node (assigment-1) at (0.5,-2) {\texttt{=}};
+
+      % \node (int-variable-3) at (2.5,-2) {\texttt{intVar3}};
+
+
+      % \draw (addition) -- (int-variable-2);
+
+      % \draw (addition) -- (multiplication);
+
+
+      % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+      % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+      % \draw (multiplication) -- (number-2);
+
+      % \draw (multiplication) -- (int-variable-3);
+
+    \end{tikzpicture}
+
+    \caption{Drzewo składniowe wyrażenia
+      \texttt{sin(x)}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
 
   % \begin{figure}
 
-  %   \label{fig:Scheme-of-CPU}
-
-
   %   \begin{tikzpicture}
 
-  %     \fill[rounded corners,fill=metalicGray] (-3,-3) rectangle (3,3);
-
-
-  %     \draw[color=black,dashed] (2.05,2.1) rectangle (2.65,2.7);
-
-  %     \node[color=jMathTextFGColorOfStyleLight] at (2.35,2.4)
-  %     {\texttt{R0}};
+  %     \path (0,0) -- (0,-2);
 
 
 
-  %     \draw[color=black,dashed] (2.05,1.2) rectangle (2.65,1.8);
+  %     \node (assignment) at (0,0) {\texttt{=}};
 
-  %     \node[color=jMathTextFGColorOfStyleLight] at (2.35,1.5)
-  %     {\texttt{R1}};
+  %     \node (float64Var1) at (-1.5,-1) {\texttt{float64Var1}};
 
-
-
-  %     \draw[color=black,dashed] (2.05,0.3) rectangle (2.65,0.9);
-
-  %     \node[color=jMathTextFGColorOfStyleLight] at (2.35,0.6)
-  %     {\texttt{R2}};
+  %     \node (addition) at (1.5,-1) {\texttt{+}};
 
 
+  %     \draw (assignment) -- (float64Var1);
 
-  %     \draw[color=black,dashed] (2.05,-0.6) rectangle (2.65,0);
-
-  %     \node[color=jMathTextFGColorOfStyleLight] at (2.35,-0.3)
-  %     {\texttt{R3}};
+  %     \draw (assignment) -- (addition);
 
 
+  %     \node (parenties) at (0.5,-2) {\texttt{( )}};
 
-  %     \draw[color=black,dashed] (2.05,-1.5) rectangle (2.65,-0.9);
-
-  %     \node[color=jMathTextFGColorOfStyleLight] at (2.35,-1.2)
-  %     {\texttt{R4}};
+  %     \node (number-1) at (2.5,-2) {\texttt{2.7182}};
 
 
+  %     % \draw (addition) -- (int-variable-2);
 
-  %     \draw[color=black,dashed] (2.05,-2.4) rectangle (2.65,-1.8);
-
-  %     \node[color=jMathTextFGColorOfStyleLight] at (2.35,-2.1)
-  %     {\texttt{R5}};
+  %     % \draw (addition) -- (multiplication);
 
 
-  %     % \draw[color=black,dashed] (2.05,-3.3) rectangle (2.65,-2.7);
+  %     % \node (number-2) at (1.5,-3) {\texttt{4}};
 
-  %     % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-3) {R5};
+  %     % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+  %     % \draw (multiplication) -- (number-2);
+
+  %     % \draw (multiplication) -- (int-variable-3);
 
   %   \end{tikzpicture}
 
-  %   \caption{Prosty schemat procesora (wymaga dokończenia).}
+  %   \caption{Drzewo składniowe wyrażenia
+  %     \texttt{float64Var1 = sin(x) + 2.7182}}
 
+  %   \label{fig:Scheme-of-CPU}
+
+  % \end{figure}
+  % \begin{figure}
+
+  %   \begin{tikzpicture}
+
+  %     \path (0,0) -- (0,-2);
+
+
+
+  %     \node (assignment) at (0,0) {\texttt{=}};
+
+  %     \node (float64Var1) at (-1.5,-1) {\texttt{float64Var1}};
+
+  %     \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+  %     \draw (assignment) -- (float64Var1);
+
+  %     \draw (assignment) -- (addition);
+
+
+  %     \node (parenties) at (0.5,-2) {\texttt{( )}};
+
+  %     \node (number-1) at (2.5,-2) {\texttt{2.7182}};
+
+
+  %     % \draw (addition) -- (int-variable-2);
+
+  %     % \draw (addition) -- (multiplication);
+
+
+  %     % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+  %     % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+  %     % \draw (multiplication) -- (number-2);
+
+  %     % \draw (multiplication) -- (int-variable-3);
+
+  %   \end{tikzpicture}
+
+  %   \caption{Drzewo składniowe wyrażenia
+  %     \texttt{float64Var1 = sin(x) + 2.7182}}
+
+  %   \label{fig:Scheme-of-CPU}
 
   % \end{figure}
 
-%   Choć \textsc{nasm} posiada inne rejestry niż te całkowitoliczbowe, to nie
-%   będziemy~się tym zajmować. Zaprowadziłoby to nas zbyt daleko od właściwej
-%   treści tego przedmiotu.
 
-%   Możemy przyjąć, że~każdy z~$16$ rejestr odpowiada za konkretne zadanie.
-%   Umieszczając w~nim liczbę całkowitą o~odpowiedniej wartości przekazujemy
-%   procesorowi informację o~tym co ma zrobić.
 
-%   Przypomnijmy, że~jeden rejestr dialektu \textsc{nams} składa~się z~$64$
-%   bitów, pozwala więc zapisać liczby całkowite od~$0$
-%   do~$18 \, 446 \, 744 \, 073 \, 709 \, 551 \, 616 \approx 1.8 \cdot 10^{ 19 }$.
-%   W~skrócie, dużo liczb.
 
-% \end{frame}
-% % ##################
+
+  Wiedząc to, widzimy, że~powyższe drzewo składniowe poprawnie
+  reprezentuje wywołanie funkcji sinus postaci \texttt{sin(x)}.
+
+  Dysponując powyższymi informacjami, rozpisywanie drzew składniowych
+  wyrażeń zawierających funkcje powinno nie stanowić problemu.
+  % Wywołanie funkcji typu \texttt{sin(x)}, gdzie \texttt{x} jest zmienną,
+  % a~\texttt{sin} to funkcja trygonometryczna, jest dobrze znane z~wielu
+  % języków programowania. Może zaskakiwać, że~na poziomie drzew składniowych
+  % wywołanie funkcji traktujemy jako wynik obliczań wykonany przez
+  % operator \alert{dwuargumentowy}. Dokładniej nawiasy \texttt{( )}
+  % traktujemy jako \alert{dwuargumentowy} operator, który jako pierwszą
+  % wartość pobiera nazwę funkcji, a~jako drugi jej argument (może być
+  % oczywiście więcej, niż jeden argument).
+  % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  % \texttt{intVar3}. \\
+  % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+  % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+  % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+  % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe z~wywołaniem funkcji}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      % \path (0,0) -- (0,-2);
+
+
+
+      \node (assignment) at (0,0) {\texttt{=}};
+
+      \node (float64Var1) at (-1.5,-1) {\texttt{float64Var1}};
+
+      \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+      \draw (assignment) -- (float64Var1);
+
+      \draw (assignment) -- (addition);
+
+
+      \node (parenties) at (0.5,-2) {\texttt{( )}};
+
+      \node (number-1) at (2.5,-2) {\texttt{2.7182}};
+
+
+      \draw (addition) -- (parenties);
+
+      \draw (addition) -- (number-1);
+
+
+      \node (sin function) at (-0.25,-3) {\texttt{sin}};
+
+      \node (x variable) at (1.25,-3) {\texttt{x}};
+
+
+      \draw (parenties) -- (sin function);
+
+      \draw (parenties) -- (x variable);
+
+    \end{tikzpicture}
+
+    \caption{Drzewo składniowe wyrażenia
+      \texttt{float64Var1 = sin(x) + 2.7182}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  % Wiedząc to, widzimy, że~powyższe drzewo składniowe poprawnie
+  % reprezentuje wywołanie funkcji sinus postaci \texttt{sin(x)}.
+
+  % Dysponując powyższymi informacjami, rozpisywanie drzew składniowych
+  % wyrażeń zawierających funkcje powinno nie stanowić problemu.
+  % Wywołanie funkcji typu \texttt{sin(x)}, gdzie \texttt{x} jest zmienną,
+  % a~\texttt{sin} to funkcja trygonometryczna, jest dobrze znane z~wielu
+  % języków programowania. Może zaskakiwać, że~na poziomie drzew składniowych
+  % wywołanie funkcji traktujemy jako wynik obliczań wykonany przez
+  % operator \alert{dwuargumentowy}. Dokładniej nawiasy \texttt{( )}
+  % traktujemy jako \alert{dwuargumentowy} operator, który jako pierwszą
+  % wartość pobiera nazwę funkcji, a~jako drugi jej argument (może być
+  % oczywiście więcej, niż jeden argument).
+  % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  % \texttt{intVar3}. \\
+  % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+  % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+  % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+  % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe z~wywołaniem funkcji}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      % \path (0,0) -- (0,-2);
+
+
+
+      \node (parenties) at (0,0) {\texttt{( )}};
+
+      \node (fun1) at (-1.5,-1) {\texttt{fun1}};
+
+      \node (x variable) at (0,-1) {\texttt{x}};
+
+      \node (y variable) at (1.5,-1) {\texttt{y}};
+
+
+      \draw (parenties) -- (fun1);
+
+      \draw (parenties) -- (x variable);
+
+      \draw (parenties) -- (y variable);
+
+
+      % \node (parenties) at (0.5,-2) {\texttt{( )}};
+
+      % \node (number-1) at (2.5,-2) {\texttt{2.7182}};
+
+
+      % \draw (addition) -- (parenties);
+
+      % \draw (addition) -- (number-1);
+
+
+      % \node (sin function) at (-0.25,-3) {\texttt{sin}};
+
+      % \node (x variable) at (1.25,-3) {\texttt{x}};
+
+
+      % \draw (parenties) -- (sin function);
+
+      % \draw (parenties) -- (x variable);
+
+    \end{tikzpicture}
+
+    \caption{Drzewo składniowe wywołania funkcji
+      \texttt{fun1(x, y)}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  Do tej pory wszystkie drzewa składniowe jakie napotkaliśmy, były drzewami
+  binarnymi, jednak nie jest to regułą. Z~tego co do tej pory powiedzieliśmy
+  wynika, że~drzewo zawierające wywołanie funkcji dwóch argumentów
+  \texttt{fun1(x, y)} nie będzie drzewem binarnym.
+
+  % Wiedząc to, widzimy, że~powyższe drzewo składniowe poprawnie
+  % reprezentuje wywołanie funkcji sinus postaci \texttt{sin(x)}.
+
+  % Dysponując powyższymi informacjami, rozpisywanie drzew składniowych
+  % wyrażeń zawierających funkcje powinno nie stanowić problemu.
+  % Wywołanie funkcji typu \texttt{sin(x)}, gdzie \texttt{x} jest zmienną,
+  % a~\texttt{sin} to funkcja trygonometryczna, jest dobrze znane z~wielu
+  % języków programowania. Może zaskakiwać, że~na poziomie drzew składniowych
+  % wywołanie funkcji traktujemy jako wynik obliczań wykonany przez
+  % operator \alert{dwuargumentowy}. Dokładniej nawiasy \texttt{( )}
+  % traktujemy jako \alert{dwuargumentowy} operator, który jako pierwszą
+  % wartość pobiera nazwę funkcji, a~jako drugi jej argument (może być
+  % oczywiście więcej, niż jeden argument).
+  % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  % \texttt{intVar3}. \\
+  % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+  % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+  % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+  % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Drzewa składniowe pętli for}
+
+\label{sec:Podstawy-budowy-procesora-i-jezyka-asemblera}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe pętli for}
+
+
+  Użyte do tej pory metody opisywania drzew składniowych nie pozwalają
+  nam opisać kodu pętli for dobrze znanego z~języka~C. \\
+  \texttt{for (int i = 0; i < 10; i++) \{ } \\
+  \hphantom{aaaa} \texttt{printf("i = \%d.\textbackslash n", i);} \\
+  \texttt{ \} } \\
+  Przyjmujemy, że korzystamy co najmniej ze standardu C99, więc powyższy
+  kod jest poprawny.
+
+  Same ramy czasowe uniemożliwiają nam pełną dyskusję drzew składniowych,
+  jednak dyskusja możliwego przedstawienia pętli \texttt{for} w~formie
+  takiego drzewa, jest zasadne.
+
+  Utworzenie takiego drzewa wymaga to od nas wprowadzenia specjalnego typu
+  wierzchołka \texttt{wykonanie pętli for}. Z~wierzchołka tego wychodzą trzy
+  gałęzie, których wierzchołki to, licząc od lewej, warunek, ciało pętli,
+  instrukcja kończąca obieg pętli.
+
+
+
+
+
+
+  % 4.~Przypisz do \texttt{intVar4} wynik punktu 3. \\
+  % 3.~Dodaj wartość zmiennej \texttt{intVar1} do~wartości
+  % \texttt{intVar3}. \\
+  % Na potrzeby naszej analizy przyjmujemy, że~każda operacja przypisania
+  % \texttt{=} przekazuje w~górę drzewa wartość jaką przypisana została jej
+  % lewej stronie. Stąd w~lewym wierzchołku \texttt{+} nie znajduje~się
+  % \texttt{intVar1}, lecz symbol przypisania \texttt{=}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Drzewo składniowe pętli for}
+
+
+  \begin{figure}
+
+    \begin{tikzpicture}
+
+      \path (0,0) -- (0,-2);
+
+
+
+      \node[text width=5em] (run of for loop) at (0,0) {\texttt{wykonanie pętli for}};
+
+      % \node (int-variable-4) at (-1.5,-1) {\texttt{intVar4}};
+
+      % \node (addition) at (1.5,-1) {\texttt{+}};
+
+
+      % \draw (assignment) -- (int-variable-4);
+
+      % \draw (assignment) -- (addition);
+
+
+      \node (condition) at (-3,-1.5) {\texttt{warunek}};
+
+      \node[text width=7em] (body) at (0,-1.5) {\texttt{ciało pętli for}};
+
+      \node[text width=7em] (ending instruction) at (3,-1.5) {\texttt{instrukcja kończąca}};
+
+
+      \draw (run of for loop) -- (condition);
+
+      \draw (run of for loop) -- (body);
+
+      \draw (run of for loop) -- (ending instruction);
+
+
+      % \node (number-2) at (1.5,-3) {\texttt{4}};
+
+      % \node (int-variable-3) at (3.5,-3) {\texttt{intVar3}};
+
+
+      % \draw (multiplication) -- (number-2);
+
+      % \draw (multiplication) -- (int-variable-3);
+
+    \end{tikzpicture}
+
+    \caption{Drzewo składniowe \texttt{wykonanie pętli for}}
+
+    \label{fig:Scheme-of-CPU}
+
+  \end{figure}
+
+
+
+
+
+  Jak można~się domyśli, w~obecnej sytuacji kolejność czytania wierzchołków
+  w~drzewie rozkładu jest kluczowa. Ich układ na drzewie obrazuje,
+  że~najpierw należy sprawdzić warunek, jeśli jest prawdziwy to wykonać
+  ciało pętli, następnie instrukcję kończącą i~wrócić do warunku. Jeśli
+  warunek nie jest spełniony, to kończymy pracę pętli i~przechodzimy w~górę
+  drzewa składniowego.
+
+  Proszę pamiętać, że~normalnie pętle nie „fruwają w~powietrzu”. Drzewo
+  składniowe takiej pętli będzie więc zwykle częścią większego drzewa
+  składniowego całego programu i~do niego pętla \texttt{for} wyśle
+  odpowiednie informacje.
+  % Choć \textsc{nasm} posiada inne rejestry niż te całkowitoliczbowe, to nie
+  % będziemy~się tym zajmować. Zaprowadziłoby to nas zbyt daleko od właściwej
+  % treści tego przedmiotu.
+
+  % Możemy przyjąć, że~każdy z~$16$ rejestr odpowiada za konkretne zadanie.
+  % Umieszczając w~nim liczbę całkowitą o~odpowiedniej wartości przekazujemy
+  % procesorowi informację o~tym co ma zrobić.
+
+  % Przypomnijmy, że~jeden rejestr dialektu \textsc{nams} składa~się z~$64$
+  % bitów, pozwala więc zapisać liczby całkowite od~$0$
+  % do~$18 \, 446 \, 744 \, 073 \, 709 \, 551 \, 616 \approx 1.8 \cdot 10^{ 19 }$.
+  % W~skrócie, dużo liczb.
+
+\end{frame}
+% ##################
 
 
 
