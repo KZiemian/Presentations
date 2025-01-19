@@ -236,8 +236,8 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Algorytm sortowanie szybkiego (ang.
-    \textit{quicksort})}
+  \frametitle{Algorytm sortowanie szybkiego
+    (ang.~\textit{quicksort})}
 
 
   5.~Dokonujemy podziału (w~końcu to jest algorytm dziel i~zwyciężaj)
@@ -250,7 +250,7 @@ eprint=true,
   6.~Stosujemy algorytm sortowania szybkiego do~dwóch zdefiniowany
   poprzednio części.
 
-  Działanie tego algorytmu najlepiej zilustruje przykład.
+  Działanie tego algorytmu najlepiej zilustrują przykłady.
 
 \end{frame}
 % ##################
@@ -262,6 +262,207 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{Przykład~1}
+
+
+  Zacznijmy od~tablicy o~długości~$1$. Zrozumienie najprostszych przypadków
+  taki jak ten, jest ważne dla zrozumienia jak ten algorytm działa
+  dla dowolnej tablicy. \\
+  \texttt{A := \{7\} } \\
+  \texttt{first = 0}, \texttt{last = 0}
+
+  1.~Zachodzi warunek \texttt{first >= last} (\texttt{0 >= 0}) więc
+  kończymy algorytm, tablica jest posortowana.
+
+  Jest to poprawny wynik, bo każda tablica o~długości $1$ jest w~oczywisty
+  sposób posortowana.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~2}
+
+
+  Weźmy teraz tablicę o~długości $2$: \\
+  \texttt{A := \{1, 7\} } \\
+  \texttt{first := 0}, \texttt{last := 1}
+
+  1.~Nie zachodzi żaden z~warunków \texttt{first >= last}
+  (\texttt{0 >= 1}), \\
+  \texttt{first < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia osi
+  obrotu.
+
+  2.~\texttt{tempPivot := A[last] := A[1] := 7} \\
+  \texttt{i := first := 0} \\
+  \texttt{j := first := 0}
+
+  3.~Przechodzimy ze zmienną \texttt{j} od~\texttt{first := 0}
+  do~\texttt{last - 1 := 0} porównując \texttt{A[j]}
+  z~\texttt{tempPivot := 7}. \\
+  \texttt{A[0] := 1 <= tempPivot}, więc zamieniamy \texttt{A[0]}
+  i~\texttt{A[0]} miejscami (czyli nic nie robimy).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~2}
+
+
+  3.~Cd.~\texttt{A := \{1, 7\} } \\
+  \texttt{i := 0 + 1 := 1} \\
+  \texttt{j := 1}
+
+  4.~Zamieniamy miejscami \texttt{A[i] = A[1]} i~\texttt{A[last] = A[1]}
+  (czyli znowu nic nie robimy): \\
+  \texttt{A := \{1, 7\} } \\
+  Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  \texttt{p := i := 1}.
+
+  5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  \texttt{B := \{1\} }, \texttt{first := 0},
+  \texttt{last := 1 - 1 := 0}, \\
+  \texttt{C := \{\} }, \texttt{first := 1 + 1 := 2},
+  \texttt{last := 1}. Tablica ta jest pusta, bo jej początkowy indeks jest
+  większy od jej indeksu końcowego.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~2}
+
+
+  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}. Wracamy
+  więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  sam sposób. Analogicznie dla~\texttt{C}. Akurat w~tym przykładzie nie ma
+  to~znaczenia.
+
+  1,~B).~Tablica \texttt{B := \{1\}} jest jednoelementowa, więc
+  z~poprzedniego przykładu wiemy, że~algorytm zachowa~się poprawie
+  i~zostawi tą tablicę niezmienioną.
+
+  1,~C).~Tablica \texttt{C := \{\}}, \texttt{first := 2},
+  \texttt{last := 1}. Kończymy tą część algorytmu nie robiąc nic, bo jest
+  spełniony warunek \texttt{first >= last} (\texttt{2 >= 1}).
+
+  W~tej chwili \texttt{A := \{1, 7\}} więc tablica nie uległą zmianie
+  i~jest posortowana.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~3}
+
+
+  Weźmy teraz nieposortowaną w~sposób rosnący tablicę o~długości $2$: \\
+  \texttt{A := \{8, 3\} } \\
+  \texttt{first := 0}, \texttt{last := 1}
+
+  1.~Nie zachodzi żaden z~warunków \texttt{first >= last}
+  (\texttt{0 >= 1}), \\
+  \texttt{first < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia osi
+  obrotu.
+
+  2.~\texttt{tempPivot := A[last] := A[1] := 3} \\
+  \texttt{i := first := 0} \\
+  \texttt{j := first := 0}
+
+  3.~Przechodzimy ze zmienną \texttt{j} od~\texttt{first := 0}
+  do~\texttt{last - 1 := 0} porównując \texttt{A[j]}
+  z~\texttt{tempPivot := 3}. \\
+  \texttt{A[0] := 8 !<= tempPivot}, więc nic nie robimy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~3}
+
+
+  3.~Cd.~\texttt{A := \{8, 3\} } \\
+  \texttt{i := 0} \\
+  \texttt{j := 1}
+
+  4.~Zamieniamy miejscami \texttt{A[i] = A[0]} i~\texttt{A[last] = A[1]}: \\
+  \texttt{A := \{3, 8\} } \\
+  Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  \texttt{p := i := 0}.
+
+  5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  \texttt{B := \{3\} }, \texttt{first := 0},
+  \texttt{last := 1 - 0 := 1}, \\
+  \texttt{C := \{8\} }, \texttt{first := 0 + 1 := 1}, \texttt{last := 1}.
+
+  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}. Wracamy
+  więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  to~znaczenia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~3}
+
+
+  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}. Wracamy
+  więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  to~znaczenia.
+
+  1.~Tablica \texttt{B := \{3\}} jest jednoelementowa, więc
+  z~poprzedniego przykładu wiemy, że~algorytm zachowa~się poprawie
+  i~zostawi tą tablicę niezmienioną. To~samo jest prawdą dla tablicy
+  \texttt{C := \{8\}}.
+
+  W~tej chwili \texttt{A := \{3, 8\}}, więc tablica ta jest posortowana
+  w~sposób rosnący.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
 
 
   \texttt{A := \{9, 5, 7, 2, 1, 8, 0, 3, 6, 4\} } \\
@@ -292,7 +493,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Przykład~1}
+  \frametitle{Przykład~4}
 
 
   \texttt{A[3] := 2 <= tempPivot}, więc zamieniamy \texttt{A[0]}
@@ -323,7 +524,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Przykład~1}
+  \frametitle{Przykład~4}
 
 
   \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
@@ -336,17 +537,15 @@ eprint=true,
   kończymy punkt~$3$.
 
   4.~Zamieniamy miejscami \texttt{A[i] = A[4]} i~\texttt{A[last] = A[9]}: \\
-  \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\} } \\
+  \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\}} \\
   Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
   \texttt{p := i := 4}.
 
   5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
-  \texttt{B := \{2, 1, 0, 3\} }, \texttt{first := 0},
+  \texttt{B := \{2, 1, 0, 3\}}, \texttt{first := 0},
   \texttt{last := 4 - 1 := 3}, \\
-  \texttt{C := \{8, 6, 9, 6, 5\} }, \texttt{first := p + 1 := 5},
+  \texttt{C := \{8, 6, 9, 6, 5\}}, \texttt{first := p + 1 := 5},
   \texttt{last := 9}.
-
-  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
 
 \end{frame}
 % ##################
@@ -357,12 +556,18 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Komentarz do przykładu~1}
+  \frametitle{Komentarz do przykładu~4}
 
+
+  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  to~znaczenia.
 
   Jeśli przyjrzymy~się tablicy \texttt{A} w~punkcie~$4$ to zrozumiemy, czemu
   element \texttt{tempPivot := 4} nazywany jest „osią obrotu”. \\
-  \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\} } \\
+  \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\}} \\
   Wokół niego „obracają~się” wszystkie elementy tej tablicy, tak że te
   mniejsze od niego lądują po lewej jego stronie, te zaś większe od niego
   po jego prawej stronie.
@@ -377,132 +582,12 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Typy translatorów}
 
 
-%   Istnieje wiele różnych rodzai translatorów. Przykładowo translatory
-%   używane dla języka~C noszą nazwę \textbf{kompilatorów}, zaś te stosowane
-%   dla języka Python \textbf{interpreterów}. To jednak bardzo złożona
-%   dziedzina informatyki, która od mniej więcej w~roku 2000 roku wkroczył
-%   w~nową, wciąż trwającą fazę rozwoju, więc tutaj ciągle~się coś zmienia.
 
-%   Na razie wszystko co muszą Państwo wiedzieć o~kompilatorach sprowadza~się
-%   do tego jak uruchomić program napisany w~języku~C, co~można ująć w~trzech
-%   punktach.
 
-% \end{frame}
-% % ##################
 
 
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Jak używać kompilatora?}
-
-
-%   Przyjmijmy, że~program napisany w~języku~C znajduje~się w~pliku
-%   \texttt{source.c} (od ang. \textit{source code}, kod źródłowy), a~program
-%   wynikowy nazywa~się \texttt{progOut} (od ang. \textit{program out},
-%   program wyjściowy).
-
-
-
-
-
-%   \begin{enumerate}
-
-%   \item W~pliku \texttt{source.c} zapisujemy odpowiedni kod w~języku~C.
-
-
-
-%   \item Przekazujemy kompilatorowi plik \texttt{source.c}, na podstawie
-%     niego tworzy on program \texttt{progOut}.
-
-
-
-%   \item Uruchamiamy program wykonywalny \texttt{progOut}.
-
-%   \end{enumerate}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Jak to wygląda w~praktyce?}
-
-
-%   Przyjmujemy, że~jesteśmy pod systemem GNU/Linux i~wszystkie potrzebne
-%   programy~są zainstalowane.
-
-
-
-
-%   \begin{enumerate}
-
-%   \item Otwieramy powłokę \textsc{bash}.
-
-
-
-%   \item Tworzymy plik \texttt{source.c} za pomocą komendy \\
-%     \texttt{\$ gedit source.c \&}
-
-
-
-%   \item Zapisujemy odpowiedni kod programu w~pliku \texttt{source.c}.
-
-
-
-%   \item Kompilujemy plik \texttt{source.c} przez wpisanie w~terminalu
-%     polecenia \\
-%     \texttt{\$ gcc -std=c99 -pedantic source.c -o progOut}
-
-
-
-%   \item Jeśli wystąpił błąd, poprawiamy kod w~pliku \texttt{source.c}.
-
-
-
-%   \item Uruchamiamy program \texttt{progOut} wpisując w~terminalu \\
-%     \texttt{\$ ./progOut}
-
-
-
-%   \item Jeśli \texttt{progOut} nie działa jak trzeba wracamy do punktu~5.
-
-%   \end{enumerate}
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{„Bardzo śmieszne”}
-
-
-%   Teraz sobie pewnie niektórzy z~Państwa myślą: „Bardzo śmieszne. Napisał
-%   listę siedmiu punktów, z~których każdy brzmi jak magiczne zaklęcia
-%   z~>>Harry’ego Pottera”. Ja od trzech godzin siedzę nad punktem piątym
-%   i~powoli tracę zmysły, a~kolega obok jeszcze nie ukończył pierwszego.”.
-
-%   Tak może być, to zupełnie normalne. Dlatego ja tu jestem by Państwu pomóc
-%   zrobić te pierwsze kroki, które prawie zawsze są najtrudniejsze. Dlatego
-%   jeśli coś nie działa, proszę mówić, postaram~się pomóc.
-
-% \end{frame}
-% % ##################
 
 
 
