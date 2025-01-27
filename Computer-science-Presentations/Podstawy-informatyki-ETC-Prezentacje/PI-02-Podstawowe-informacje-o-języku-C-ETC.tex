@@ -14,7 +14,7 @@
 % Options: t -- align text to the top of the frame
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
-\usetheme[style=\PresentationStyle,frametitlecolorstyle=general,titleframebackgroundcolorstyle=dark]{jagiellonian}
+\usetheme[style=\PresentationStyle]{jagiellonian}
 
 
 
@@ -124,9 +124,9 @@ eprint=true,
 
 
 % ######################################
+% Number of chars: 62k+, 73k+, 43k+, 52k+, 69k+, 77k+, 32k+, 33k+, 62k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% Number of chars: 62k+, 73k+, 43k+, 52k+, 69k+, 77k+, 32k+, 33k+,
 % ######################################
 
 
@@ -150,6 +150,894 @@ eprint=true,
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ######################################
+\section{Informacje dla początkujących programistów}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~nazwach plików}
+
+
+  Powtórzmy kilka rzeczy. Rozszerzenie pliku, kropka i~to co następuje po
+  niej w~nazwie tego pliku, informuje używane przez nas programy z~jakim
+  typem pliku mają do czynienia. Dlatego każdy język programowania posiada
+  własne, właściwe tylko jemu rozszerzenie. Pliki napisane w~języku~C mają
+  mieć rozszerzenie~\texttt{.c}. Analogicznie, każdy program w~języku Python
+  powinien~się kończyć na~\texttt{.py}, pliki w~języku C++ \texttt{.cpp},
+  w~\textsc{bash}u \texttt{.sh},~etc.
+
+  Nadanie plikowi nazwy bez rozszerzenia to nie jest dobry pomysł. Nazwa
+  zawierająca spacje to proszenie~się o~problem, gdy pracujemy w~systemie
+  GNU/Linux (\textsc{bash} i~inne sprawy). Nazwa pliku która zawiera
+  dwie lub więcej kropek to wymysł Szatana i~wytwór piekieł. Proszę mi
+  oszczędzić styczności z~tymi plugawymi tworami.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozszerzenia plików}
+
+
+  Jak ktoś na zajęciach napisze program w~języku~C, który \alert{nie} ma
+  rozszerzenia~\texttt{.c}, będzie to musiał przy mnie poprawić.
+  Chyba, że~będę musiał od razu biec do kogoś innego. Ale proszę nie
+  liczyć, że~zapomnę o~tej zniewadze. ;)
+
+  Brak tego rozszerzenia sprawia, że~możemy zostać pozbawienie części
+  wsparcia w~pracy z~C, jaką dają nam przeróżne programy. A~do tego
+  \alert{nie} możemy dopuścić.
+
+  Załóżmy, że~ktoś wymyśli taką szatańską nazwę \\
+  \texttt{plik-numer.1.c} \\
+  co jest absolutnym plugastwem. Programy których używamy mogą błędnie
+  rozpoznać „\texttt{.1.c}” jako rozszerzenie pliku i~wtedy demony mają
+  prawa wylecieć nam \colorhref{}{z~nosa}.
+
+  % Rozszerzenie pliku, kropka i~to co następuje po niej w~nazwie tego pliku,
+  % informuje używane przez nas programy z~jakim typem pliku mają do
+  % czynienia. Dlatego każdy język programowania posiada własne, właściwe
+  % tylko niemu rozszerzenie Pliki napisane w~języku~C mają mieć
+  % rozszerzenie~\texttt{.c}. Analogicznie, każdy program w~języku Python
+  % powinien~się kończyć na~\texttt{.py}.
+
+  % Jak ktoś na zajęciach napisze program w~języku~C, który \alert{nie} ma
+  % rozszerzenia~\texttt{.c}, będzie to musiał przy mnie poprawić.
+  % Chyba, że~będę musiał od razu biec do kogoś innego. Ale proszę nie
+  % liczyć, że~zapomnę o~tej zniewadze. ;)
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Plugawe nazwy plików}
+
+
+  W~nazwie pliku powinna być \alert{jedna i~tylko jedna kropka}, ta
+  poprzedzająca nazwę rozszerzenia pliku, czyli dla nas \texttt{.c}.
+  Jeśli ta zasada nie jest prawdą wszędzie na świecie, to na pewno jest
+  prawdą na tych zajęciach i~proszę o~tym pamiętać.
+
+  Jeśli ktoś prześle mi plik, którego nazwa zawiera więcej lub mniej niż
+  \alert{jedną} kropkę, to zastrzegam sobie prawo odesłania mu pliku
+  z~prośbą o~zmianę nazwy na~poprawniejszą. Dla mnie to nie jest sposób
+  karania, tylko metoda wyrabiania w~ludziach dobrych nawyków.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Te zajęcia są prowadzone w~C, ale\ldots}
+
+
+  Czy ja powinienem~się skupić na nauce języka~C? To bardzo dobre
+  pytanie i~każdy z~Państwa powinien je sobie zadać.
+
+  Każdy dobry informatyk powinien dobrze znać co najmniej jeden język
+  programowania, acz niekoniecznie musi to być język~C. Zupełnie zrozumiałe
+  jest, że~ktoś z~Państwa zdecyduje, iż~językiem który chce poznać jest
+  jakiś inny język niż~C i~będzie~się uczył~C tylko tyle ile wymaga ten
+  przedmiot. Co~więcej, w~naszej ocenie jest to bardzo dobre podejście do
+  nauki.
+
+  Jeśli nie wiedzą Państwo, na nauce którego języka należy~się teraz skupić,
+  proponuję sprawdzić~$20$ najpopularniejszych języków programowania
+  według indeksu
+  \colorhref{https://www.tiobe.com/tiobe-index/}{\textsc{tiobe}},
+  poczytać o~każdym z~nich i~wybrać ten który Państwo uważają za~najlepszy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Te zajęcia są prowadzone w~C, ale\ldots}
+
+
+  W~grudniu $2024$ roku indeks
+  \colorhref{https://www.tiobe.com/tiobe-index/}{\textsc{tiobe}}
+  przedstawia~się w~następujący sposób: Python, C++, Java, C, C\#,
+  JavaScript, Go, \textsc{sql}, Visual Basic, Fortran, Delphi/Object
+  Pascal, \textsc{php}, Scratch, Rust, \textsc{matlab}, R, język asemblera,
+  Ruby, \textsc{cobol}, Swift.
+
+  Decyzję o~tym na nauce którego języka~się Państwo skupią, muszą
+  oczywiście podjąć Państwo sami. Jeśli ktoś chce uzyskać od nas jakieś
+  wskazówki, to służymy całą swoją osobą. Jeśli chcą Państwo napisać emaila
+  w~tej sprawie to proszę go nazwać „Pytanie o~wybór języka do nauki”, czy
+  coś podobnego.
+
+  Bardzo~się ucieszymy, jeśli ktoś z~Państwa zdecyduje~się skupić na
+  języku~C, ale to w~żadnym razie nie jest wymagane. Nie o~to chodzi w~nauce
+  informatyki.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tak to wygląda}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Learning-any-language-at-100-procent}
+
+    \centering
+
+
+    \includegraphics[scale=0.195]
+    {./Presentations-pictures/Learning-language-at-100.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Kilka informacji o~języku~C % i~metody nauki
+}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zalety języka~C}
+
+
+  \begin{itemize}
+
+  \item Pozwala tworzyć bardzo szybkie programy. \alert{Bardzo szybkie}
+      programy.
+
+  \item Jeśli poznamy~C, to nauka języka który na nim bazuje będzie
+    już prostsza. A~60\%, albo więcej, najważniejszych języków jakie
+    istnieją, w~jakimś stopniu bazuje na~C.
+
+  \item Na świecie jest tyle kodu napisanego w~języku~C, że~jeśli umie~się
+    go dobrze, można dość łatwo znaleźć naprawdę dobrze płatną pracę. I~na
+    razie nic nie wskazuje, by ta praca zniknęła przez następne $20$ lat
+    (do $2044$ roku). Chat\textsc{gpt} też nie.
+
+  \item Pozwala lepiej poznać jak komputer działa na niskim poziomie.
+    Zdania uczonych są podzielone, czy to jest wada czy zaleta. Ja
+    ostatnio~się skłaniam do stwierdzenia, że~to jest zaleta, ale rozumiem,
+    jeśli według Państwa mylę się~totalnie.
+
+  \item Jawne zarządzanie wskaźnikami.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wady języka~C}
+
+
+  \begin{itemize}
+
+  \item Pisane w~C nie jest wcale proste.
+
+  \item C~oferuje nam bardzo mało zabezpieczeń przed nami samymi, co
+    skutkuje tym, że~bardzo łatwo stworzyć kod w~którym kryją~się
+    koszmarnie niebezpieczne rzeczy. To jednak temat na inny przedmiot.
+
+  \item Jawne zarządzanie wskaźnikami. Tak, to było też w~dziale
+    \textit{Zalety języka~C}.
+
+  \item Arytmetyka wskaźników. To relikt minionej epoki.
+
+  \item Metody operowania na stringach. A~raczej brak takich metod.
+
+  \item Wiele standardowych funkcji języka~C \alert{nie} powinno być
+    używane. Powtarzam, wielu standardowych funkcji dostępnych w~języku~C
+    \alert{nie należy} używać pod żadnym pozorem.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wady języka~C}
+
+
+  \begin{itemize}
+
+  \item Trudne do zapamiętania nazewnictwo. Czasem nazwy w~C są zwyczajnie
+    głupie, jak \texttt{unsigned char} (pl.~\textit{znak bez znaku}) na
+    oznaczenie pojedynczego bajtu.
+
+  \item  Sama nazwa języka, „C”, też jest w~sumie dość głupia. Dzisiaj
+    staramy~się nadawać im nazwy będące pełnymi słowami.
+
+  \item Brak normalnego typu boolowskiego. Nawet \texttt{stdbool.h} nie
+    rozwiązuje tego problemu.
+
+  \item Domyślna konwersja typów. To naprawdę nie pasuje do takiego
+    języka jak~C.
+
+  \item Obsługa błędów. Jak obsługa błędów?
+
+  \item Toporny i~niewygodny model kompilacji: pliki nagłówkowe,
+    preprocesor, etc.
+
+  \item „The more I~C, the less I see.” Przykład: złożone typy danych.
+
+  % \item Brak modułowości.
+
+  % \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
+  %   programowania (1972 rok był dawno temu).
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{The more I~C, the less I~see}
+
+
+  Jak głosi mądrość internetu, języki~C nie jest trudny.
+
+  \texttt{void (* (*f[])())()}
+
+  Poprawna kod w~języku~C, który definiuje~\texttt{f} jako tablicę
+  o~nieokreślonej długości, zawierającej wskaźniki do funkcji, które
+  to funkcje zwracając wskaźniki do~funkcji, które to funkcje~są typu
+  \texttt{void}.
+
+  Taaaaak, nic trudnego.
+
+  % \begin{itemize}
+
+  % \item Domyślna konwersja typów. To naprawdę nie pasuje do takiego
+  %   języka jak~C.
+
+  % \item Toporny i~niewygodny model kompilacji: pliki nagłówkowe,
+  %   preprocesor, etc.
+
+  % \item „The more I~C, the less I see.” Przykład: złożone typy danych.
+
+  % % \item Brak modułowości.
+
+  % % \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
+  % %   programowania (1972 rok był dawno temu).
+
+  % \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wady języka~C}
+
+
+  \begin{itemize}
+
+  % \item Domyślna konwersja typów. To naprawdę nie pasuje do takiego
+  %   języka jak~C.
+
+  % \item Toporny i~niewygodny model kompilacji: pliki nagłówkowe,
+  %   preprocesor, etc.
+
+  % \item „The more I~C, the less I see.” Przykład: złożone typy danych.
+
+  \item Brak modułowości.
+
+  \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
+    programowania (rok $1972$ to było kawał czasu temu).
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jaki jest związek między C a~C++?}
+
+
+  Taki jak między krzesłem, a~krzesłem elektrycznym. Bardzie trafne byłoby
+  powiedzenie, że~jak, między mechaniką i~mechaniką kwantową, ale mniej
+  osób rozumie tą różnicę.
+
+  Mimo wszystko to są dwa bardzo różne języki programowania, które
+  ze~względów historycznych mają pewnie wspólny rdzeń.
+
+  Jeśli~C to taka skrzynka z~narzędziami, to C++ to cały Leroy
+  Merlin. Naprawdę, ogarnięcie wszystkich featurów C++, jest zupełnie nie do
+  ogarnięcia. A~przynajmniej ja w~możliwość tego osiągnięcia nie wierzę.
+  Jak zapytałem osobą prowadzącą kurs C++, czy ktoś zna cały ten język
+  to odpowiedziała „Podobno Bjarne Stroustrup [twórca C++]. Ale to tylko
+  plotki.”
+
+  Języki takie jak C\#, to zupełnie osobna sprawa.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{AI, ChatGPT,\ldots}
+
+
+%   Żeby nie pozostać za bardzo w~tyle, staram~się wprowadzić do zajęć
+%   praktyki związane z~korzystanie ze~sztucznej inteligencji. Niemniej
+%   nawet taki gigant programowania jak Linus Torvalds (czyta się:
+%   \textit{turwalds}),
+%   \colorhref{https://www.youtube.com/watch?v=VHHT6W-N0ak}{zapytany na
+%     przełomie} $2023$ i~$2024$ roku o~rolę \textsc{ai} w~praktyce
+%   programisty, odpowiedział w~sposób, który zdradzał jego wątpliwości
+%   na temat tego, jak to będzie działać w~praktyce.
+
+%   Ja zaś~$5$ września $2024$ przeprowadziłem z~Chatem\textsc{gpt} taką
+%   rozmowę.
+
+%   \textsc{kz:} Czy w~$2024$ roku warto~się uczyć języka~C?
+
+%   Chat\textsc{gtp:} Tak, uczenie~się C~w~roku $2024$ wciąż jest dobrym
+%   pomysłem. Oto dlaczego.
+
+%   \textbf{1.~Podstawy informatyki.} C~pozwala nam dogłębnie zrozumieć
+%   architekturę komputera i~zarządzania pamięcią, które~są kluczowe
+%   dla przyswojenia sobie bardziej abstrakcyjnych koncepcji z~programowania.
+
+%   % \textbf{2.~Duża wydajność.} C~jest znany ze swej szybkości
+%   % i~niskopoziomowego dostępu do sprzętu, czyniąc go idealny kandydatem
+%   % do programowania systemów (np. systemów operacyjnych, systemów
+%   % wbudowanych, etc.). Wciąż jest szeroko stosowany w~przemyśle lotniczym,
+%   % samochodowym i~telekomunikacji, gdzie wydajność i~kontrola nad sprzętem
+%   % są kluczowe.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{AI, ChatGPT,\ldots}
+
+
+%   % Żeby nie pozostać za bardzo w~tyle, staram~się wprowadzić do zajęć
+%   % praktyki związane z~korzystanie ze~sztucznej inteligencji. Niemniej
+%   % nawet taki gigant programowania jak Linus Torvalds (czyta się:
+%   % \textit{turwalds}),
+%   % \colorhref{https://www.youtube.com/watch?v=VHHT6W-N0ak}{zapytany na
+%   %   przełomie} $2023$ i~$2024$ roku o~rolę \textsc{ai} w~praktyce
+%   % programisty, odpowiedział w~sposób, który zdradzał jego wątpliwości
+%   % na temat tego, jak to będzie działać w~praktyce.
+
+%   % Ja zaś~$5$ września $2024$ przeprowadziłem z~Chatem\textsc{gpt} taką
+%   % rozmowę.
+
+%   % \textsc{kz:} Czy w~$2024$ roku warto~się uczyć języka~C?
+
+%   % Chat\textsc{gtp:} Tak, uczenie~się C~w~roku $2024$ wciąż jest dobrym
+%   % pomysłem. Oto dlaczego.
+
+%   % \textbf{1.~Podstawy informatyki.} C~pozwala nam dogłębnie zrozumieć
+%   % architekturę komputera i~zarządzania pamięcią, które~są kluczowe
+%   % dla przyswojenia sobie bardziej abstrakcyjnych koncepcji z~programowania.
+
+%   \textbf{2.~Duża wydajność.} C~jest znany ze swej szybkości
+%   i~niskopoziomowego dostępu do sprzętu, czyniąc go idealny kandydatem
+%   do programowania systemów (np. systemów operacyjnych, systemów
+%   wbudowanych, etc.). Wciąż jest szeroko stosowany w~przemyśle lotniczym,
+%   samochodowym i~telekomunikacji, gdzie wydajność i~kontrola nad sprzętem
+%   są kluczowe.
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{AI, ChatGPT,\ldots}
+
+
+%   Żeby nie pozostać za bardzo w~tyle, staram~się wprowadzić do zajęć
+%   praktyki związane z~korzystanie ze~sztucznej inteligencji. Niemniej
+%   nawet taki gigant programowania jak Linus Torvalds (czyta się:
+%   \textit{turwalds}),
+%   \colorhref{https://www.youtube.com/watch?v=VHHT6W-N0ak}{zapytany na
+%     przełomie} $2023$ i~$2024$ roku o~rolę \textsc{ai} w~praktyce
+%   programisty, odpowiedział w~sposób, który zdradzał jego wątpliwości
+%   na temat tego, jak to będzie działać w~praktyce.
+
+%   Ja zaś $5$ września $2024$ przeprowadziłem z~Chatem\textsc{gpt} taką
+%   rozmowę.
+
+%   \textsc{kz:} Czy w~$2024$ roku warto~się uczyć języka~C?
+
+%   Chat\textsc{gtp:} Tak, uczenie~się C~w~roku $2024$ wciąż jest dobrym
+%   pomysłem. Oto dlaczego.
+
+%   \textbf{1.~Podstawy informatyki.} C~pozwala nam dogłębnie zrozumieć
+%   architekturę komputera i~zarządzania pamięcią, które~są kluczowe
+%   dla przyswojenia sobie bardziej abstrakcyjnych koncepcji z~programowania.
+
+%   \textbf{2.~Duża wydajność.} C~jest znany ze swej szybkości
+%   i~niskopoziomowego dostępu do sprzętu, czyniąc go idealny kandydatem
+%   do programowania systemów (np. systemów operacyjnych, systemów
+%   wbudowanych, etc.). Wciąż jest szeroko stosowany w~przemyśle lotniczym,
+%   samochodowym i~telekomunikacji, gdzie wydajność i~kontrola nad sprzętem
+%   są kluczowe.
+
+
+% \end{frame}
+% % ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{AI, ChatGPT,\ldots}
+
+
+%   \textbf{\textsc{kz}:} Czy Chat\textsc{gpt} jest dobry w~generowaniu kodu
+%   w~C?
+
+%   \textbf{Chat\textsc{gpt}:} Chat\textsc{gpt} jest stosunkowo dobry
+%   w~generowaniu kodu w~C, zwłaszcza gdy kod ten dotyczy typowych zadań
+%   i~problemów. Jednak, jakość i~dokładność generowanego kodu może zależeć
+%   od złożoności zadań i~dokładności przekazanych instrukcji. Tutaj
+%   jest kilka czynników które należy rozważyć.
+
+%   1.~\textbf{Składnia i~biblioteka standardowa.} Chat\textsc{gpt} potrafi
+%   dobrze generować fragmenty kodu, które są zgodne ze~składnią~C oraz
+%   odwołują do standardowych bibliotek. Na przykład, może pisać kod
+%   dla podstawowych operacji, struktur kontrolnych i~przetwarzania danych,
+%   jak również używać standardowych funkcji z~bibliotek takich jak
+%   \texttt{stdio.h}, \texttt{stdlib.h}, \texttt{string.h}, etc.
+
+%   2.~\textbf{Powszechne schematy i~idiomy.} Potrafi rozpoznawać i~powielać
+%   schemat obecne w~programach w~C, takie jak pętle dla iteracji,
+%   \texttt{if-else} dla logiki warunkowej, czy \texttt{switch-case} dla
+%   rozgałęzień. Potrafi również obsługiwać popularne idiomy~C, takie jak
+%   używanie wskaźników, dynamiczna alokacja pamięci za pomocą \texttt{malloc}
+%   i~\texttt{free} i~operacje bitowe.
+
+%   % 3. \textbf{Rozumienie konstrukcji właściwych dla C.} Chat\textsc{gpt}
+%   % zwykle dobrze sobie radzi z~konstrukcjami właściwymi dla języka C, takimi
+%   % jak wskaźniki, struktury, unie, czy zarządzanie pamięcią. Potrafi również
+%   % generować kod do obsługi plików \textsc{i/o}, zarządzania procesami
+%   % poprzez funkcje \texttt{fork()} i~\texttt{exec()} oraz obsługujący
+%   % podstawową komunikację między procesami (\textsc{ipc}, ang.
+%   % \textit{Inter-Process Communication}), za pomocą takich mechanizmów jak
+%   % rury (ang. \textit{pipes}) czy współdzielona pamięć.
+
+% \end{frame}
+% % ##################
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{AI, ChatGPT,\ldots}
+
+
+%   % 1.~\textbf{Składnia i~biblioteka standardowa.} Chat\textsc{gpt} potrafi
+%   % dobrze generować fragmenty kodu, które są zgodne ze~składnią~C oraz
+%   % odwołują do standardowych bibliotek. Na przykład, może pisać kod
+%   % dla podstawowych operacji, struktur kontrolnych i~przetwarzania danych,
+%   % jak również używać standardowych funkcji z~bibliotek takich jak
+%   % \texttt{stdio.h}, \texttt{stdlib.h}, \texttt{string.h}, etc.
+
+%   % 2.~\textbf{Powszechne schematy i~idiomy.} Potrafi rozpoznawać i~powielać
+%   % schemat obecne w~programach w~C, takie jak pętle dla iteracji,
+%   % \texttt{if-else} dla logiki warunkowej, czy \texttt{switch-case} dla
+%   % rozgałęzień. Potrafi również obsługiwać popularne idiomy~C, takie jak
+%   % używanie wskaźników, dynamiczna alokacja pamięci za pomocą \texttt{malloc}
+%   % i~\texttt{free} i~operacje bitowe.
+
+%   3. \textbf{Rozumienie konstrukcji właściwych dla C.} Chat\textsc{gpt}
+%   zwykle dobrze sobie radzi z~konstrukcjami właściwymi dla języka C, takimi
+%   jak wskaźniki, struktury, unie, czy zarządzanie pamięcią. Potrafi również
+%   generować kod do obsługi plików \textsc{i/o}, zarządzania procesami
+%   poprzez funkcje \texttt{fork()} i~\texttt{exec()} oraz obsługujący
+%   podstawową komunikację między procesami (\textsc{ipc}, ang.
+%   \textit{Inter-Process Communication}), za pomocą takich mechanizmów jak
+%   rury (ang. \textit{pipes}) czy współdzielona pamięć.
+
+%   4.~\textbf{Obsługa błędów.} Chat\textsc{gpt} może zawrzeć w~plikach
+%   podstawową obsługę błędów (np. sprawdzenie, czy \texttt{malloc} zwrócił
+%   \texttt{NULL}), bardziej zaawansowane zarządzanie błędami może wymagać
+%   dodatkowych ulepszeń pochodzących od użytkownika.
+
+%   5. **Advanced Topics**: For more advanced topics, like implementing network protocols, writing multi-threaded applications, or interfacing with hardware, the generated code might need more careful review and modification. ChatGPT can provide a solid starting point, but may not always capture the nuances required for robust, production-quality code.
+
+% 6. **Code Quality**: The code generated by ChatGPT may lack certain best practices, such as efficient memory usage, proper resource management, and comprehensive error handling. Therefore, it is advisable for a human programmer to review and refine the code, especially for critical applications.
+
+% In summary, while ChatGPT can generate functional and syntactically correct C code for a wide range of scenarios, it may not always produce optimal or fully correct solutions, particularly for more complex tasks. It's a useful tool for generating initial code snippets, learning concepts, and exploring ideas, but it should be complemented with thorough testing and review by an experienced C programmer.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ######################################
+\section{Czy informatyka jest trudna?}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy informatyka jest trudna?}
+
+
+  Ten przedmiot dotyczy podstaw informatyki w~języku~C, warto~się
+  więc spytać, czy informatyka jest prosta czy trudna w~nauce?
+
+  Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
+  głęboko, to robi~się naprawdę złożona i~niebanalna. Jednak na stosunkowo
+  płytkim poziomie to czy jest on trudna czy nie, to mocno zależy od~odczuć
+  konkretnej osoby.
+
+  Zadam takie pytanie: czy włączenie komputera jest skomplikowane?
+  Odpowiemy na to pytanie na dwóch poziomach. Pierwszy to poziom normalnego
+  użytkownika, drugi to opis pochodzący z~książki Andrewa S.~Tanenbauma
+  \textit{Systemy operacyjne. Wydanie~III}
+  \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}
+  i~dotyczy komputera z~systemem Pentium.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+
+
+  \begin{enumerate}
+
+  \item Wciskamy przycisk \texttt{Power}.
+
+  \item Czekamy minutę albo dłużej.
+
+  \item W~oknie logowania wybieramy użytkownika i~wchodzimy na swoje konto.
+
+  \end{enumerate}
+
+  Co w~tym trudnego?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
+  skomplikowany, że~najpierw trzeba wprowadzić trochę pojęć.
+
+  \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
+    wyłącznie do~odczytu}. Pamięć komputera której zawartość została
+  zapisana przez firmę, która ten fragment pamięci wyprodukowała
+  i~użytkownik nie może zmodyfikować jej teści. Przynajmniej nie w~żaden
+  normalny sposób.
+
+  \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
+  pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
+  własności, że~jeśli będę w~sposób losowy wybierał elementy tej pamięci,
+  to czas odczytania informacji z~każdego z~tych elementów będzie taki sam.
+  Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci zajmuje tyle samo
+  czasu.
+
+  Tak naprawdę czas odczytu zależy od tego, w~jakiś sposób pamięć
+  \textsc{ram} jest odczytywana, ale jeszcze długo nie będziemy się musieli
+  tym przejmować.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
+  zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
+  przykładem takiej pamięci jest \textsc{ram}.
+
+  \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
+  której treść jest zachowana, gdy przez układ przestaje płynąć prąd.
+  Typowym przykładem jest dysk \textsc{ssd}.
+
+  Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
+  które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
+  we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
+  komputera z~prądu. Bo~niby czemu życie ma być proste?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
+  Skrót pochodzi od angielskiej nazwy technologi \textit{Complementary
+    Metal-Oxide-Semiconductor} (pl.~\textit{komplementarny półprzewodnik
+    metalowo-tlenkowy}), w~której ta pamięć jest wykonana. Musi być zasilana
+  prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię,
+  klasyfikowana jest jako nieulotna.
+
+  \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
+  \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
+  na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
+  danych z~klawiatury, obsługę ekranu oraz operacje wejścia-wyjścia dysków.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[1)] Wciskamy przycisk \texttt{Power}.
+
+  \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
+    ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
+    klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
+    urządzenia te odpowiadają w~sposób prawidłowy. W~pierwszej
+    kolejności skanowane są magistrale \textsc{isa}
+    (ang. \textit{Industry Standard Architecture}) i~\textsc{pci}
+    (ang.~\textit{Peripheral Component Interconnect}) w~celu wykrycia
+    podłączonych do nich urządzeń.
+
+  \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
+    były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
+    konfigurowane.
+
+  \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
+    z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które mogą
+    zawierać system operacyjny. W~przeszłości były nimi dyskietki, płyty
+    \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
+    i~dyski~\textsc{ssd}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
+    z~wspomnianej wcześniej listy, aż~znajdzie pierwsze, który zawiera
+    działający system operacyjny.
+
+  \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
+    w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
+
+  \item[7)] Program wczytany z~pierwszego sektora sprawdza zapisaną na jego
+    końcu listę partycji, by~ustalić która z~nich jest partycją aktywną.
+    Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
+
+  \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
+    z~aktywnej partycji i~go uruchamia.
+
+  \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
+    \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
+    jego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
+    z~odpowiedniego źródła.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+    to ładuje je do jądra systemu.
+
+  \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+    działające w~tle.
+
+  \item[12)] Uruchamiane jest okno logowania.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bootowanie}
+
+
+  W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
+  \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
+  całej procedury uruchamiania komputer opisanej powyżej, albo tylko
+  stawiania systemu operacyjnego, czyli od kiedy \textsc{bios} wczytał
+  pierwszy jego sektor do pamięci (punkt siedem i~dalej). Acz to pojęcie
+  nie jest specjalnie ostro zdefiniowane.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+
+
+  Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
+  w~informatyce.
+
+\end{frame}
+% ##################
+
+
+
 
 
 

@@ -1,0 +1,1670 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align text to the top of the frame
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Podstawy informatyki z~językiem~C}
+\subtitle{1. Wprowadzenie do~przedmiotu}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 23k+, 51k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Informacje wstępne}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Obawiam~się, że na pierwszych zajęciach będzie sporo przynudzania,
+  ale nie widzę sposobu, by~tego uniknąć. Do tego to jest kurs
+  \textit{Podstawy informatyki}, więc przyjmujemy, że~Państwo dopiero
+  zaczynają swoją przygodę z~tą specyficzną dziedziną
+  teoretyczno-praktyczną jaką jest informatyka.
+
+  Według mnie to zajęcia są dla studentów, nie studenci dla zajęć. Tak samo
+  ja jestem tu dla Państwa, a~nie Państwo dla mnie. Jestem tu po to, by
+  pomóc Państwu stawiać pierwsze kroki w~programowaniu w~języku~C.
+  W~związku z~tym, ja będę Państwa rozliczał tylko i~wyłącznie
+  z~umiejętności i~wiedzy, i~z~niczego innego. Wychodzę bowiem z~założenia,
+  że~Państwo sami najlepiej wiedzą, czemu warto poświęcić swój czas. (Choć
+  jak wiadomo, nie jeden raz potem stwierdzamy, że~nasz wybór mógł być
+  jednak lepszy.)
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+  na dowolne związane z~nimi tematy. W~szczególności
+  \alert{należy} zadawać pytania, jeśli czegoś~się nie rozumie, lub coś
+  jest niejasno przedstawione. To są podstawy informatyki, \alert{nie}
+  zakładamy, że~Państwo mają już wszystko umieć. Byłoby to bardzo
+  niewłaściwe założenie.
+
+  Proszę pamiętać, że~gdy chodzi o~tematy związane z~zajęciami
+  \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
+  niezadowalające odpowiedzi na nie. Jestem tutaj by Państwu
+  pomóc w~nauce programowania w~C, pytania z~Państwa strony bardzo mi to
+  zadanie ułatwiają. Zadawania pytań nie jest traktowane, jako oznaka tego,
+  że~ktoś czegoś nie umie, tylko że~chce~się czegoś nauczyć.
+
+  Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+    Knight}?” musimy jednak zostawić na czas po zajęciach.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Na tych zajęciach \alert{nie} nauczymy~się jak programować. Jak dobrze
+  pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
+  programowanie obejmuje tyle zagadnień i~wymaga tyle godzin praktyki,
+  iż~nie ma najmniejszych szans, że~uda nam~się to wszystko zrobić.
+
+  Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
+  Mogą~się Państwo wręcz czuć przytłoczeni jego ilością. Proszę mi jednak
+  uwierzyć, że~większość tych zagadnień nie jest taka trudna, jak~się
+  może wydawać na pierwszy rzut oka.
+
+  Przyznam~się, że~sam staję przed duży dylematem. Czy to mają być
+  \alert{podstawy informatyki} z~językiem~C, czy \alert{nauka
+    programowania w~języku~C} z~podstawami informatyki. Na którą część
+  położyć większy nacisk, to jest problem przed którym stoję. W~obecnej
+  chwili zdecydowałem~się iść tą drugą drogą. A~jaka jest Państwa opinia
+  w~tej sprawie?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Wedle mojej obserwacji większość osób na tych studiach jest nastawiona
+  na praktyczną stronę informatyki: jak stworzyć program który działa?
+  Biorąc to za punkt, staram~się prowadzić te zajęcia tak, aby najpierw
+  mieli Państwo okazję oswoić~się z~tworzeniem programów w~C, nawet jeśli
+  są one bardzo proste. Zagadnienia teoretyczne i~bardziej techniczne,
+  które dobry programista musi znać, będę w~miarę możliwości omawiane
+  na późniejszych zajęciach.
+
+  Minus tego podejścia jest następujący. W~języku~C cała maszyneria
+  komputera jest delikatnie schowana pod dość cienką warstwą tego języka
+  (w~dialekcie informatyków powiedzielibyśmy „pod cienką warstwą
+  abstrakcji”) i~nawet początkujący ciągle natrafia na drugie dno problemu.
+  Doświadczenie pokazuje, że~wyjaśnianie czemu tak jest wymaga sporo czasu
+  i~mocno zaburza nakierowany na praktykę programistyczną plan zajęć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Informacje wstępne}
+
+
+  Dlatego jak jestem \alert{bardzo} za tym by zadawali mi Państwo pytania,
+  to w~wielu wypadkach nie będę mógł na nie od razu odpowiadać, bo
+  dobre wyjaśnienie zajęłoby za dużo czasu. Zawsze można~się do mnie
+  zgłosić z~takimi pytaniami po zajęciach, wtedy odpowiem najlepiej
+  jak umiem. W~trakcie zajęć będę jednak często musiał mówić „Proszę zrobić
+  tak i~tak. Dlaczego, wyjaśnimy to potem.”. Proszę mieć dla mnie
+  wyrozumiałość w~tym względzie.
+
+  Jeśli to o~czym mówię jest tak proste, że~omawianie tego jest stratą
+  Państwa czasu, proszę mnie o~tym poinformować, przejdziemy do następnego
+  zagadnienia. Jest bardzo trudno sprawą wyczucie, co jest dla Państwa
+  proste, a~co trudniejsze.
+
+  Proszę mieć dla mnie pewną wyrozumiałość, pamiętać o~tych zastrzeżeniach
+  i~próbować mi pomóc w~takim prowadzeniu zajęć, by Państwo wynieśli z~nich
+  jak najwięcej. Jak mówiłem, te~zajęcia są dla Państwa.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego na tych zajęciach nie nauczymy~się
+    programować?}
+
+
+  Rozpatrzmy problem liczb z~częścią dziesiętną, takich jak $0.1$, $2.71$,
+  czy $3.14$. Formalna ich nazwa w~informatyce to \textbf{liczby
+    zmiennoprzecinkowe} (ang. \textit{floating-point numbers}). Klasyczny
+  artykuł Davida Goldberga
+  \colorhref{https://dl.acm.org/doi/10.1145/103162.103163}
+  {\textit{Co każdym informatyk musi wiedzieć o~arytmetyce liczb
+      zmiennoprzecinkowych}} z~1991 roku, ma w~wersji \textsc{pdf}
+  $44$~strony długości. I~nie jest to tekst, który~się szybko czyta.
+
+  Mówiąc inaczej, gdyby ten przedmiot prowadził zawodowy
+  zmiennoprzecinkowiec to mógłby \alert{wszystkie} (powtórzmy to:
+  wszystkie) nasze spotkania poświęcić tylko i~wyłącznie operacjom
+  arytmetycznym w~komputerze. I~tak pewnie zabrakło by mu czasu, by zrobić
+  wszystko co uważa za ważne.
+
+  My tego nie będziemy robić, bo trzeba jakoś omówić również liczby
+  całkowite, stringi, zmienne, typy zmiennych, konwersje typów, algebrę
+  Boole’a, operatory logiczne, instrukcje warunkowe, pętle, struktur, etc.
+  Nie wiem, czy i~tak uda nam~się to wszystko przerobić.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tak to wygląda}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Learning-any-language-at-100-procent}
+
+    \centering
+
+
+    \includegraphics[scale=0.195]
+    {./Presentations-pictures/Learning-language-at-100.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uwagi odnośnie treści zajęć}
+
+
+  Ponieważ tematyka którą poruszamy jest mimo wszystko niebanalna, więc
+  mnóstwo rzeczy będę musiał bardzo \alert{upraszczać}. Proszę mieć to na
+  uwadze w~trakcie zajęć i~studiując materiały do nich.
+
+  Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
+  czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
+  semestralnego kursu. Co gorsza, wiele z~nich \alert{jest} tematem
+  semestralnych kursów, przykładowo: praca z~liczbami zmiennoprzecinkowymi.
+  Po drugie, to jest kurs \alert{podstaw} informatyki, który ma położyć
+  fundamenty pod Państwa umiejętności i~wiedzę w~zakresie informatyki. To
+  nie przedmiot na którym należy wnikać we wszystkie detale, szczegóły,
+  drugie, trzecie i~czwarte dno problemu.
+
+  Jeśli jednak ktoś chce~się bardziej zagłębić w~te temat, to służę po
+  zajęciach całą swoją osobą.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego język~C?}
+
+
+  Dlaczego zaczynamy naukę od~języka~C? Krótka odpowiedź jest taka,
+  że~pomimo tego iż język ten ma już pół wieku~(!) na karku, w~2024 roku
+  nasza infrastruktura informatyczna wciąż stoi na kodzie źródłowym
+  napisanym właśnie w~nim. W~internecie mogą Państwo znaleźć wiele
+  artykułów i~blogów takich jak
+  \colorhref{https://wideinfo.org/c-programming-is-still-running-the-world/}
+  {\textit{C~programming is still running the world}}, datowany na styczeń
+  $2025$ roku, którego tytuł mówi sam za siebie
+  \parencite{Scott-C-programming-is-still-ETC-Ver-2025}.
+
+  Niektórzy mówią, że~C to król wszystkich języków programowania.
+  Inni, bardzo dobrzy informatycy, twierdzą, że każdy szanujący
+  programista musi znać~C (cf. str.~17
+  \parencite{Hoey-Programowanie-w-asemblerze-x64-ETC-Pub-2024}).
+
+  A~jak to jest w~praktyce? Na te zajęcia potrafią uczęszczać ludzie,
+  którzy pracują zawodowo jako programiści i~nie mają pojęcia jak napisać
+  program w~języku~C. Proszę samemu wyciągnąć z~tego wnioski.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego system GNU/Linux?}
+
+
+  Dlaczego korzystamy z~systemu GNU/Linux, a~nie z~znacznie
+  popularniejszego wśród normalny ludzi systemu Windows? Bo~oferuje
+  znacznie lepsze warunki pracy z~językiem~C.
+
+  \alert{Ważne.} Jeśli mają Państwo jakiekolwiek problemy z~systemem
+  GNU/Linux to proszę o~tym \alert{mówić}. Nie przyjmujemy założenia,
+  że~Państw mają już teraz być ekspertami, w~kwestii używania tego, co by
+  tu nie mówić, często bardzo topornego systemu operacyjnego.
+
+  Jak bowiem głosi mądrość internetu „GNU/Linux jest darmowy, tylko jeśli
+  twój czas nie ma wartości.”
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozwój GNU/Linuxa}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Evolution-of-OS}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./Presentations-pictures/Evolution-of-operating-systems.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~zajęciach i~konsultacjach}
+
+
+  \alert{Ważne.} Wykład ma bardziej charakter teoretyczny, te laboratoria
+  zaś praktyczny. Niemniej wciąż poszukujemy optymalnej formy prowadzenia
+  tych zajęć, bo obecna jest daleka od ideału. Naprawdę
+  praktyczne zajęcia z~podstaw informatyki w~języku~C są trudne do
+  zorganizowania. Jedną z~przyczyn takiego stanu rzeczy, jest natura
+  języka~C, który pozwala pisać praktyczne programy, dopiero gdy opanuje~się
+  naprawdę duży zakres jest funkcjonalności.
+
+  Z~mojego doświadczenia wynika, że~ustalanie jednego terminu na konsultacje
+  to nie jest dobry pomysł. W~zasadzie nikt wtedy nie przychodzi, a~ja
+  wyznaję zasadę, że~konsultacje są dla Państwa, nie dla mnie. Jeśli
+  Państwo chcą bym ustalił konkretne terminy na konsultacje, to proszę jako
+  grupa wybrać jeden taki i~poinformować mnie o~tym mailowo, pisząc na
+  adres \email. W~tytule maila proszę napisać „Termin konsultacji” lub
+  coś podobnego, byśmy wiedzieli, że~na ten mail należy możliwie szybko
+  odpowiedzieć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bardzo ważne}
+
+
+  W~przeciwnym razie, jeśli ktoś z~Państwa ma problem i~chce zasięgnąć
+  mojej pomocy, proszę do mnie podejść po zajęciach lub napisać, na
+  wspomniany już adres \email, kiedy, gdzie i~w~jakiej formie chcą Państwo
+  uczestniczyć w~konsultacjach. Mogą one być zarówno w~świecie rzeczywistym
+  (niekoniecznie w~budynku \textsc{wsz}i\textsc{b}u), online lub
+  telefonicznie.
+
+  Ponawiam prośbę o~nadanie takiemu e-mailowi tytułu typu „Termin
+  konsultacji”, bo w~przy ilości e-maili jakie trafiają na tę skrzynkę
+  pocztową łatwo jeden przegapić.
+
+  Jeśli ktoś będzie pisał w~sprawie konsultacji, to będę wdzięczny
+  za~napisanie z~czym konkretnie mają Państwo problem. Rozumiem jedna,
+  że~często wskazanie czy nazwanie tego co sprawia komuś problem, samo nie
+  jest łatwe. Sam przez to przechodziłem.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Nagrania zajęć}
+
+
+  Będę~się starał nagrywać na \textsc{ms}~Teamsach każde naszych spotkań.
+  Proszę mi o~tym ciągle przypominać, bo jestem roztrzepany i~któregoś
+  razu o~tym zapomnę.
+
+  Proszę mi też zwracać uwagę, że~na ekranie czegoś nie widać,
+  że~czcionka za mała, że~kolory kłują w~oczy, że~nagrany dźwięk
+  jest niskiej jakości,~etc. Zajęcia są dla Państwa, naszym obowiązkiem jest
+  dostarczyć Państwu najlepszej jakości materiały do nauki jakie jesteśmy
+  w~stanie stworzyć.
+
+  Niestety, jakość dźwięku to coś, na co mamy mały wpływ. Mogę~się starać
+  mówić możliwie blisko mikrofonu, ale nie wiem co więcej mogę zrobić.
+  Poza tym, na~pewno nie wyjdzie zbyt dobrze, bo te zajęcia często wymagają
+  bym~się poruszał, poza tym w~którymś momencie na pewno o~tym zapomnę.
+  Swoje uwagi na temat jakości nagrań proszę kierować do ludzi
+  odpowiedzialnych za~sprawy studenckie na \textsc{wsz}i\textsc{b}ie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Jak-to-bywa-na-zajeciach}
+
+    \centering
+
+
+    \includegraphics[scale=0.42]
+    {./Presentations-pictures/Jak-to-bywa-na-zajeciach.jpeg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{O~uzyskaniu zaliczenia}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaliczenie zaoczne}
+
+
+  Zaliczenie zaoczne można jak najbardziej uzyskać, np.~przedstawiając
+  kod jakiegoś swojego programu czy aplikacji. Projekt ten
+  \alert{nie musi} być napisany w~języku~C, może być w~Pythonie albo
+  JavaScripcie. Z~powodów które powinny być dla wszystkich oczywiste,
+  preferowane są jednak te stworzone w~języku C. W~trochę mniejszym
+  stopniu, w~te w języku~C++.
+
+  Każdy kto chce uzyskać zaliczenie zaoczne, niech zgłosi~się do mnie po
+  zajęciach lub napisze na maila \email. W~tytule proszę wpisać
+  „Pytanie o~zaliczenie zaoczne” lub coś podobnego, inaczej mail może
+  na~długo zaginąć na mojej skrzynce pocztowej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uzyskanie zaliczenia}
+
+
+  Zaliczenie i~ocenę uzyskują Państwo na podstawie trzech rzeczy.
+
+  \vspace{-0.3em}
+
+
+
+  \begin{itemize}
+
+  \item Zadania domowe.
+
+  \item Dwa testy jednokrotnego wyboru.
+
+  \item Jeden większy projekt.
+
+  \end{itemize}
+
+  \vspace{-0.3em}
+
+  Za każdy z~tych rzeczy przyznawana jest pewna ilość punktów. Niestety
+  system przyznawania punktów wciąż jest daleki od ideału, ale mam nadzieję,
+  że~nie będzie to dla Państwa zbyt wielkim obciążeniem.
+
+  Podział na ćwiczenia i~laboratoria jest bardzo sztuczny, obecnie
+  to bardziej kwestia administracji, niż praktyki. Dlatego pod koniec
+  semestru otrzymują Państwo \alert{jedną} ocenę łączną, która
+  jest wpisywana jako jednocześnie jako ocena z~ćwiczeń i~laboratoriów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Naprawdę cenimy Państwa zadanie}
+
+
+  Jeśli ktoś ma uwagi do tego systemu, propozycję co można zmienić,
+  co~poprawić, to proszę powiedzieć to mi po zajęciach lub napisać pod
+  adres \email. Ponownie prosimy by w~tytule emaila napisać „Uwagi do zajęć”
+  lub coś podobnego, bo inaczej może zniknąć na długo w~skrzynce.
+
+  W~chwili obecnej nie mamy złudzeń, że~nasz system jest choćby bliski
+  ideałowi, próbujemy jednak go~ciągle ulepszać. Państwa zdanie jest dla
+  nas naprawdę ważne, choć oczywiście nie zawsze~się z~nim zgadzamy.
+  To jak ten przedmiot wygląda obecnie wynika częściowo z~tego co
+  w~przeszłości zaproponowali studenci.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uwagi odnośnie treści zajęć}
+
+
+  Pod koniec semestru podliczane są wszystkie punkty jakie były do
+  zdobycia. W~zależności ile procent pełnej puli Państwo zdobyli, otrzymują
+  Państwo odpowiednią ocenę.
+
+  \vspace{-0.3em}
+
+
+
+  \begin{itemize}
+
+  \item $41\%\text{--}50\%$~-- ocena dostateczna ($3.0$).
+
+  \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+  \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+  \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+  \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+  \end{itemize}
+
+  \vspace{-0.3em}
+
+
+
+  W~przypadku zaokrąglanie wyników, robione to jest zawsze na korzyść dla
+  Państwa. Czyli $40.1\%$ zaokrągla~się do $41\%$.
+
+  Ilość punktów do zdobycie jest będzie jawnie podana przy każdym
+  konkretnym zadaniu domowym. Za jeden test można zdobyć $10$ pkt.,
+  konkretna wartość zależy od zdobytej oceny. Za projekt można zdobyć
+  do~$30$ pkt. Ilość punktów za projekt jest tym, co obecnie najmniej mnie
+  satysfakcjonuje, ale na razie nie mamy pomysłu jak to poprawić.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Punktacja testów}
+
+
+  W~tym semestrze każdy test będzie zawierał 10 pytań jednokrotnego wyboru.
+  Progi ocen są takie same jak dla całego przedmiotu, stosowana jest też ta
+  sama reguła zaokrąglania (wątpię by była potrzeba korzystania z~niej
+  w~praktyce).
+
+  \vspace{-0.3em}
+
+
+
+  \begin{itemize}
+
+  \item $41\%\text{--}50\%$ -- ocena dostateczna ($3.0$).
+
+  \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+  \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+  \item $71\%\text{--}80\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+  \item $81\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+  \end{itemize}
+
+  \vspace{-0.3em}
+
+
+
+  Ilość zdobytych punktów równa jest zero jeśli uzyskało~się ocenę $2.0$
+  (mniej niż $41\%$), lub $2 \cdot \text{uzyskana ocena}$.
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Punktacja testów}
+
+
+  Liczba punktów z~testów wliczanych do końcowej puli, w~zależności od
+  wyniku testu, przedstawia~się następująco.
+
+  \vspace{-0.3em}
+
+
+
+  \begin{itemize}
+
+  \item $0\%\text{--}40\%$ -- $0$ pkt.
+
+  \item $41\%\text{--}50\%$ -- $6$ pkt.
+
+  \item $51\%\text{--}60\%$ -- $7$ pkt.
+
+  \item $61\%\text{--}70\%$ -- $8$ pkt.
+
+  \item $71\%\text{--}80\%$ -- $9$ pkt.
+
+  \item $81\%\text{--}100\%$ -- $10$ pkt.
+
+  \end{itemize}
+
+  \vspace{-0.3em}
+
+
+
+
+  Następujące zasady powinny być dla każdego oczywiste, ale lepiej
+  przedstawić je jawnie, by nie było żadnych niedomówień.
+
+  Wszelkie sprawdziany i~testy przeprowadzane na zajęciach, lub w~trakcie
+  zajęć online, mają Państwo rozwiązać \alert{samemu}, bez żadnej pomocy
+  ze strony innych ludzi, internetu czy programów takich jak
+  Chat\textsc{gpt}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~pracach domowych}
+
+
+  Z~naszego punktu widzenia, zadania i~projekt, które rozwiązują Państwo
+  w~domu są najważniejsze przy wyliczaniu oceny. Testy są, ale staramy~się
+  by miały one mniejszą wagę. Możliwie, że~trzeba będzie zmniejszyć
+  obecną punktacje testów oraz przemyśleć ich miejsce w~przedmiocie.
+
+  Proszę przy tym nie traktować zadań domowych, jako nieprzyjemnego
+  obowiązku do~odhaczenia, ale okazję do nauczenia~się czegoś o~pisaniu
+  programów komputerowych. Aby zostać dobrym informatykiem trzeba sporo
+  czasu spędzić pisząc, testując i~debugując własne programy, te zadania
+  temu przede wszystkim mają służyć. To że~otrzymują Państwo za nie punkty,
+  to w~porównaniu z~tym sprawa drugorzędna.
+
+  Wątpię by rozwiązywanie i~oddawanie tych zadań było przyjemnością,
+  ale~można o~tym mimo wszystko myśleć jako o~wartościowo spędzonym czasie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~pracach domowych}
+
+
+  Ile będzie zestawów zadań? Ciężko powiedzieć. W~obecnej chwili wychodzi
+  tak jeden zestaw na dwa tygodnie, ale staram~się to zoptymalizować.
+  Proszę~się spodziewać około siedmiu zestawów.
+
+  Początkowo zadania są bardzo prosto, jak na ten przedmiot, z~czasem ich
+  trudność, jak i~punkty do zdobycia za nie rosną. Układanie dobrych
+  zestawów zadań to trudna sztuka, stąd będę wdzięczny za~wszelkie uwagi
+  jak można je poprawić. Przypominam, że~o tych zestawach lepiej myśleć
+  jako o~sposobie nauczenia~się tworzenia programów, a~nie nieprzyjemnym
+  obowiązku do odhaczenia. Easier said than done, wiemy o~tym.
+
+  Jeśli dla kogoś zadania domowe to będzie za mało, co jest wspaniałą
+  wiadomością, to na listach materiałów do nauki będą zamieszczone źródła,
+  z~większą liczbą zadań do~rozwiązania.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~rozwiązywaniu prac domowych}
+
+
+  Proszę przyjąć zasadę, że~\alert{najprostszy program} który rozwiązuje
+  zadanie zgodnie z~wytycznymi jest najlepszym jaki można oddać. Niekiedy
+  studenci oddają bardzo skomplikowane programy jako rozwiązanie naprawdę
+  prostych zadań, co jest zupełnie zbędne.
+
+  Oczywiście, nikt nie straci punktów za oddanie skomplikowanego programu,
+  ale jest wiele powodów, by poprzestać na pisaniu prostego kodu.
+  Po~pierwsze, to zwykle oszczędza czas spędzony na~rozwiązywaniu zadań
+  na~ten przedmiot. Po~drugie, prostota i~czytelność kodu są naprawdę ważne
+  przy tworzeniu programów na~każdym poziomie.
+
+  Należy bowiem wiedzieć, że~pisanie programów, wbrew pozorom,
+  \alert{nie} jest trudne. \alert{Trudne jest ich debugowanie.}
+  Dokładniej, obowiązuje prawo \colorhref{}{Kernighana}. \\
+  \textit{Debugowanie programu jest dwa razy trudniejsze, niż jego
+    napisanie. Jeśli więc napiszesz program w~najbardziej pomysłowy sposób
+    jaki możesz, to nie jesteś wystarczająco inteligentny by go zdebugować.}
+
+  % Jeżeli ktoś oddaje trudne rozwiązywania zadań, bo chce spróbować swoich
+  % sił w~programowaniu, to oczywiście, naszym obowiązkiem jest poprawić
+  % ten zestaw bez marudzenia. Wszystkie te uwagi nie są po to byśmy
+  % my mieli prostszą pracę przy poprawianiu zdań, tylko by Państwo nie
+  % trudzili~się niepotrzebnie.
+
+  % Proszę też pamiętać, że~obowiązuje prawo Kernighana. \\
+  % \textit{Debugowanie programu jest dwa razy trudniejsze, niż jego
+  %   napisanie. Jeśli więc napiszesz program w~najbardziej pomysłowy sposób
+  %   jaki możesz, to nie jesteś wystarczająco inteligentny by go zdebugować.}
+
+  % Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
+  % oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
+  % którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
+  % nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
+  % \alert{nie dostanie}.
+
+  % Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
+  % A~jak ktoś ściąga tak, żeby ślepy zauważył, to może mieć pretensje tylko
+  % i~wyłącznie do siebie. ;)
+
+  % Gdy chodzi o~zadania domowe i~projekt, to należy próbować rozwiązać je
+  % możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+  % ale i~należy prosić o~pomoc kolegów, korzystać z~materiałów w~internecie
+  % i~używać programów takich jak Chat\textsc{gpt}.
+
+  % Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
+  % tego stopnia, by czyjś wkład własny został zredukowany do metody
+  % Copy’ego-Pejsta.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~rozwiązywaniu prac domowych}
+
+
+  Jeśli ktoś nie wierzy, że~trudną częścią programowania nie jest pisanie
+  programów, tylko ich debugowanie, niech zajrzy na świetny kanał
+  \colorhref{}{Low Level} i~posłucha jakie błędy są znajdowane w~kodzie
+  tworzony przez zawodowych programistów.
+
+  Jeżeli ktoś oddaje trudne rozwiązywania zadań, bo chce spróbować swoich
+  sił w~programowaniu, to oczywiście, naszym obowiązkiem jest poprawić
+  ten zestaw bez marudzenia. Wszystkie te uwagi nie są po to byśmy
+  my mieli prostszą pracę przy poprawianiu zdań, tylko by Państwo nie
+  trudzili~się niepotrzebnie.
+
+  Proszę jednak mieć w~głowie następującą mądrość informatyków. \\
+  \textit{Program z~którego usunęliśmy jeden błąd, stał~się tym samym
+    $10$~razy lepszy.}
+
+  Należy mieć świadomość, że~w~praktyce brak błędów (a~przynajmniej
+  zmniejszenie ich liczby) jest ważniejszy niż szybkość programu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~rozwiązywaniu prac domowych}
+
+
+  Błędy zwiększają kilkunastokrotnie możliwość, że~haker włamie~się do
+  danego komputera, a~to w~czasach internetu rzecz kluczowa. W~okresie po
+  ??? roku, gdy
+  odkryto luki w~bezpieczeństwie \colorhref{}{Specter}
+  i~\colorhref{}{Meltdown}
+  w~imię bezpieczeństwa zabiliśmy $50$\% (!!!) prędkości pewnych programów,
+  by~się zabezpieczyć przed atakami hakerów.
+
+
+  % Początkowo zadania są bardzo prosto, jak na ten przedmiot, z~czasem ich
+  % trudność, jak i~punkty do zdobycia za nie rosną. Układanie dobrych
+  % zestawów zadań to trudna sztuka, stąd będę wdzięczny za~wszelkie uwagi
+  % jak można je poprawić. Przypominam, że~o tych zestawach lepiej myśleć
+  % jako o~sposobie nauczenia~się tworzenia programów, a~nie nieprzyjemnym
+  % obowiązku do odhaczenia. Easier said than done, wiemy o~tym.
+
+  % Proszę przyjąć zasadę, że~\alert{najprostszy program} który rozwiązuje
+  % zadanie zgodnie z~wytycznymi jest najlepszym jaki można oddać. Niekiedy
+  % studenci oddają bardzo skomplikowane programy jako rozwiązanie naprawdę
+  % prostych zadań, co jest zupełnie zbędne.
+
+  % Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
+  % oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
+  % którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
+  % nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
+  % \alert{nie dostanie}.
+
+  % Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
+  % A~jak ktoś ściąga tak, żeby ślepy zauważył, to może mieć pretensje tylko
+  % i~wyłącznie do siebie. ;)
+
+  % Gdy chodzi o~zadania domowe i~projekt, to należy próbować rozwiązać je
+  % możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+  % ale i~należy prosić o~pomoc kolegów, korzystać z~materiałów w~internecie
+  % i~używać programów takich jak Chat\textsc{gpt}.
+
+  % Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
+  % tego stopnia, by czyjś wkład własny został zredukowany do metody
+  % Copy’ego-Pejsta.
+
+  % Oczywiście, nikt nie straci punktów za oddanie skomplikowanego programu,
+  % ale jest wiele powodów, by poprzestać na pisaniu prostego kodu.
+  % Po~pierwsze, to zwykle oszczędza czas spędzony na~rozwiązywaniu zadań
+  % na~ten przedmiot. Po~drugie, prostota i~czytelność kodu są naprawdę ważne
+  % przy tworzeniu programów na~każdym poziomie.
+
+  % Jeżeli ktoś oddaje trudne rozwiązywania zadań, bo chce spróbować swoich
+  % sił w~programowaniu, to oczywiście, naszym obowiązkiem jest poprawić
+  % ten zestaw bez marudzenia. Wszystkie te uwagi nie są po to byśmy
+  % my mieli prostszą pracę przy poprawianiu zdań, tylko by Państwo nie
+  % trudzili~się niepotrzebnie.
+
+  % Proszę też pamiętać, że~obowiązuje prawo Kernighana. \\
+  % \textit{Debugowanie programu jest dwa razy trudniejsze, niż jego
+  %   napisanie. Jeśli więc napiszesz program w~najbardziej pomysłowy sposób
+  %   jaki możesz, to nie jesteś wystarczająco inteligentny by go zdebugować.}
+
+  % Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
+  % oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
+  % którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
+  % nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
+  % \alert{nie dostanie}.
+
+  % Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
+  % A~jak ktoś ściąga tak, żeby ślepy zauważył, to może mieć pretensje tylko
+  % i~wyłącznie do siebie. ;)
+
+  % Gdy chodzi o~zadania domowe i~projekt, to należy próbować rozwiązać je
+  % możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+  % ale i~należy prosić o~pomoc kolegów, korzystać z~materiałów w~internecie
+  % i~używać programów takich jak Chat\textsc{gpt}.
+
+  % Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
+  % tego stopnia, by czyjś wkład własny został zredukowany do metody
+  % Copy’ego-Pejsta.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pomoce przy rozwiązywaniu prac domowych}
+
+
+  % Jeżeli ktoś oddaje trudne rozwiązywania zadań, bo chce spróbować swoich
+  % sił w~programowaniu, to oczywiście, naszym obowiązkiem jest poprawić
+  % ten zestaw bez marudzenia. Wszystkie te uwagi nie są po to byśmy
+  % my mieli prostszą pracę przy poprawianiu zdań, tylko by Państwo nie
+  % trudzili~się niepotrzebnie.
+
+  % Proszę jednak mieć w~głowie następującą mądrość informatyków. \\
+  % \textit{Program z~którego usunęliśmy jeden błąd, stał~się tym samym
+  %   $10$~razy lepszy.}
+
+  % Proszę uwierzyć, że~w~praktyce brak błędów (a~przynajmniej ich
+  % zmniejszenie) jest ważniejszy niż szybkość programu. Błędy zwiększają
+  % kilkunastokrotnie możliwość, że~haker włamie~się do danego komputera,
+  % a~to w~czasach internetu rzecz kluczowa. W~okresie po ??? roku, gdy
+  % odkryto luki w~bezpieczeństwie \colorhref{}{Specter}
+  % i~\colorhref{}{Meltdown}
+  % w~imię bezpieczeństwa zabiliśmy $50$\% (!!!) prędkości pewnych programów,
+  % by~się zabezpieczyć przed atakami hakerów.
+
+
+  % Początkowo zadania są bardzo prosto, jak na ten przedmiot, z~czasem ich
+  % trudność, jak i~punkty do zdobycia za nie rosną. Układanie dobrych
+  % zestawów zadań to trudna sztuka, stąd będę wdzięczny za~wszelkie uwagi
+  % jak można je poprawić. Przypominam, że~o tych zestawach lepiej myśleć
+  % jako o~sposobie nauczenia~się tworzenia programów, a~nie nieprzyjemnym
+  % obowiązku do odhaczenia. Easier said than done, wiemy o~tym.
+
+  Ponieważ zadania są głównie po to, by mogli Państwo nauczyć~się
+  programować, jeśli Państwo tempo kopiują rozwiązanie kogoś innego,
+  to oszukują Państwo głównie samych siebie.
+
+  Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
+  oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
+  którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
+  nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
+  \alert{nie dostanie}. Chyba, że~przymkniemy oko i~udamy, że~tego nie było.
+  Wszystko zależy.
+
+  Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
+  A~jak ktoś ściąga tak, żeby ślepy zauważył, to może mieć pretensje tylko
+  i~wyłącznie do siebie. ;)
+
+  Gdy chodzi o~zadania domowe i~projekt, to należy próbować rozwiązać je
+  możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+  ale i~należy prosić o~pomoc kolegów, korzystać z~materiałów w~internecie
+  i~używać programów takich jak Chat\textsc{gpt}.
+
+  % Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
+  % tego stopnia, by czyjś wkład własny został zredukowany do metody
+  % Copy’ego-Pejsta.
+
+  % Oczywiście, nikt nie straci punktów za oddanie skomplikowanego programu,
+  % ale jest wiele powodów, by poprzestać na pisaniu prostego kodu.
+  % Po~pierwsze, to zwykle oszczędza czas spędzony na~rozwiązywaniu zadań
+  % na~ten przedmiot. Po~drugie, prostota i~czytelność kodu są naprawdę ważne
+  % przy tworzeniu programów na~każdym poziomie.
+
+  % Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
+  % oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
+  % którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
+  % nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
+  % \alert{nie dostanie}.
+
+  % Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
+  % A~jak ktoś ściąga tak, żeby ślepy zauważył, to może mieć pretensje tylko
+  % i~wyłącznie do siebie. ;)
+
+  % Gdy chodzi o~zadania domowe i~projekt, to należy próbować rozwiązać je
+  % możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+  % ale i~należy prosić o~pomoc kolegów, korzystać z~materiałów w~internecie
+  % i~używać programów takich jak Chat\textsc{gpt}.
+
+  % Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
+  % tego stopnia, by czyjś wkład własny został zredukowany do metody
+  % Copy’ego-Pejsta.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pomoce przy rozwiązywaniu prac domowych}
+
+
+  % Ponieważ zadania są głównie po to, by mogli Państwo nauczyć~się
+  % programować, jeśli Państwo tempo kopiują rozwiązanie kogoś innego,
+  % to oszukują Państwo głównie samych siebie.
+
+  % Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
+  % oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
+  % którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
+  % nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
+  % \alert{nie dostanie}. Chyba, że~przymkniemy oko i~udamy, że~tego nie było.
+  % Wszystko zależy.
+
+  % Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
+  % A~jak ktoś ściąga tak, żeby ślepy zauważył, to może mieć pretensje tylko
+  % i~wyłącznie do siebie. ;)
+
+  % Gdy chodzi o~zadania domowe i~projekt, to należy próbować rozwiązać je
+  % możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+  % ale i~należy prosić o~pomoc kolegów, korzystać z~materiałów w~internecie
+  % i~używać programów takich jak Chat\textsc{gpt}.
+
+  Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
+  tego stopnia, by czyjś wkład własny został zredukowany do metody
+  Copy’ego-Pejsta.
+
+  \vspace{-0.5em}
+
+
+
+
+
+  \begin{figure}
+
+    \label{fig:The-best-salute}
+
+    \centering
+
+
+    \includegraphics[scale=0.17]
+    {./Presentations-pictures/The-best-salute.jpg}
+
+  \end{figure}
+
+  % Oczywiście, nikt nie straci punktów za oddanie skomplikowanego programu,
+  % ale jest wiele powodów, by poprzestać na pisaniu prostego kodu.
+  % Po~pierwsze, to zwykle oszczędza czas spędzony na~rozwiązywaniu zadań
+  % na~ten przedmiot. Po~drugie, prostota i~czytelność kodu są naprawdę ważne
+  % przy tworzeniu programów na~każdym poziomie.
+
+  % Jeżeli ktoś oddaje trudne rozwiązywania zadań, bo chce spróbować swoich
+  % sił w~programowaniu, to oczywiście, naszym obowiązkiem jest poprawić
+  % ten zestaw bez marudzenia. Wszystkie te uwagi nie są po to byśmy
+  % my mieli prostszą pracę przy poprawianiu zdań, tylko by Państwo nie
+  % trudzili~się niepotrzebnie.
+
+  % Proszę też pamiętać, że~obowiązuje prawo Kernighana. \\
+  % \textit{Debugowanie programu jest dwa razy trudniejsze, niż jego
+  %   napisanie. Jeśli więc napiszesz program w~najbardziej pomysłowy sposób
+  %   jaki możesz, to nie jesteś wystarczająco inteligentny by go zdebugować.}
+
+  % Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
+  % oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
+  % którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
+  % nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
+  % \alert{nie dostanie}.
+
+  % Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
+  % A~jak ktoś ściąga tak, żeby ślepy zauważył, to może mieć pretensje tylko
+  % i~wyłącznie do siebie. ;)
+
+  % Gdy chodzi o~zadania domowe i~projekt, to należy próbować rozwiązać je
+  % możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+  % ale i~należy prosić o~pomoc kolegów, korzystać z~materiałów w~internecie
+  % i~używać programów takich jak Chat\textsc{gpt}.
+
+  % Na zajęciach, poza testami, też można z~tych pomocy korzystać, ale nie do
+  % tego stopnia, by czyjś wkład własny został zredukowany do metody
+  % Copy’ego-Pejsta.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~oddawaniu prac domowych}
+
+
+  Prosimy oddawać jako rozwiązania pliki o~nazwie \\
+  \texttt{Imię-nazwisko-Zestaw-XX-Zad-YY.c} \\
+  gdzie za \texttt{XX} i~\texttt{YY} trzeba oczywiście wstawić odpowiednie
+  numery zestawu i~zadania. Nie jest to $100$\% obowiązkowe, ale gdy~się
+  dostaje $50$~rozwiązań jednego zestawu zadań, to naprawdę nam pomaga.
+
+  Ocenie podlega tylko kod źródłowy języka~C, proszę nie przesyłać nic
+  więcej. Pliki zawierające ten kod prawie zawsze kończą~się na
+  \texttt{.c}. Jeśli będzie trzeba przesłać innego typu, jak plik
+  nagłówkowy (ang.~\textit{header}) kończący~się na~\texttt{.h}, to będzie
+  to jawnie zaznaczone w~zadaniu. Acz na dzień dzisiejszy jest mała szansa,
+  że~takie zadanie w~ogóle~się pojawi.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~oddawaniu prac domowych}
+
+
+  Jeśli plik kończy~się na~\texttt{.c} to prawie na pewno jest to plik
+  z~kodem źródłowy w~języku~C. Jeśli plik kończy~się choćby
+  na~\texttt{.cbp} czy \texttt{.layout} to na $99.99$\% plik zupełnie
+  innego typu, których nie należy przesyłać. Doświadczenie mówi,
+  że~większość osób na tym kursie jest początkującymi informatykami, więc
+  nic dziwnego, że~niekiedy Państwo~się mylą i~przesyłając nie ten plik
+  co~trzeba.
+
+  Kilka drobny uwag. Plik pozbawiony rozszerzenia (brak kropki w~nazwie) to
+  nie jest dobry pomysł. Plik ze spacją w~nazwie to proszenie~się
+  o~problemy, gdy trzeba pracować w~systemie GNU/Linux (\textsc{bash}
+  i~inne sprawy). Plik który ma~dwie lub~więcej kropek w~nazwie to wymysł
+  Szatana i~produkt piekieł. Z~tego powodu do walki z~nim należy wysłać
+  choćby Doom Marina
+  (\colorhref{}{wersja z~$2016$ roku} jest całkiem dobra, w~nowsze
+  nie grałem).
+
+  %   Bardzo proszę nie skazywać mnie na obcowanie z~tymi diabelskimi tworami.
+  % Acz za przesyłanie mi tych wytworów czeluści piekielnych nie stracą
+  % Państwo punktów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{O~oddawaniu prac domowych}
+
+
+  % Jeśli plik kończy~się na~\texttt{.c} to prawie na pewno jest to plik
+  % z~kodem źródłowy w~języku~C. Jeśli plik kończy~się choćby
+  % na~\texttt{.cbp} czy \texttt{.layout} to na $99.99$\% plik zupełnie
+  % innego typu, których nie należy przesyłać. Doświadczenie mówi,
+  % że~większość osób na tym kursie jest początkującymi informatykami, więc
+  % nic dziwnego, że~niekiedy Państwo~się mylą i~przesyłając nie ten plik
+  % co~trzeba.
+
+  % Kilka drobny uwag. Plik pozbawiony rozszerzenia (brak kropki w~nazwie) to
+  % nie jest dobry pomysł. Plik ze spacją w~nazwie to proszenie~się
+  % o~problemy, gdy trzeba pracować w~systemie GNU/Linux (\textsc{bash}
+  % i~inne sprawy). Plik który ma~dwie lub~więcej kropek w~nazwie to wymysł
+  % Szatana i~produkt piekieł. Z~tego powodu do walki z~nim należy wysłać
+  % choćby Doom Marina
+  % (\colorhref{}{wersja z~$2016$ roku} jest całkiem dobra, w~nowsze
+  % nie grałem).
+
+    Bardzo proszę nie skazywać mnie na obcowanie z~tymi diabelskimi tworami.
+  Acz za przesyłanie mi tych wytworów czeluści piekielnych nie stracą
+  Państwo punktów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rozwiązywanie zadań}
+
+%   \vspace{-0.5em}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{A~co~z~AI?}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Coping-for-others}
+
+    \centering
+
+
+    \includegraphics[scale=0.415]
+    {./Presentations-pictures/Copying-from-others.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{A~co~z~AI?}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Impact-of-ChatGPT-One-view}
+
+    \centering
+
+
+    \includegraphics[scale=0.38]
+    {./Presentations-pictures/Impact-of-ChatGPT-One-view.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Prawo Kernighana}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Czego~się nauczymy, a~czego nie}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Semestr z~językiem~C i~co~dalej?}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Wymagania i~materiały do nauki}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki, błędy i~uwagi}
+
+
+  Zarówno w~materiałach z~wykładu, jak i~w~tych do ćwiczeń, były
+  i~obawiam~się, że~wciąż są błędy. Pragniemy by te zajęcia i~towarzyszące
+  im materiały były możliwie merytoryczne, proste, łatwe w~zrozumieniu
+  i~pozbawione błędów, proszę jednak uwierzyć, że~osiągnięcie tego jest
+  naprawdę trudne.
+
+  W~razie znalezienia jakiegokolwiek błędu lub jakichkolwiek uwag
+  merytorycznych do zajęć lub dostępnych materiałów proszę zgłaszać to
+  przed lub po zajęciach lub też pisać pod adres \email. Proszę w~tytule
+  napisać coś w~stylu „Błędy w~materiałach”, „Uwagi do zajęć”, inaczej
+  email może na długo zaginąć wśród dużej ilości tych, które dostaję od
+  Państwa z~rozwiązanymi zadaniami.
+
+  % Do tego na rok $2024$ priorytet ma dla mnie przygotowanie
+  % materiałów, które pokrywają cały zakres tego przedmiotu. Zaś~usuwanie,
+  % z~nich różnorakich niekonsekwencji jest sprawą drugorzędną.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Styl pisania w~języku~C}
+
+
+  Można i~należy zgłaszać też uwagi do materiałów z~wykładów, bezpośrednio
+  do~prowadzącego albo do mnie. Mój wpływ na stan materiałów do wykładów
+  jest oczywiście skromniejszy, niż~na moje własne materiały.
+  Mimo tego, będę próbował nakłonić prowadzącego, by poprawiał znaleziony
+  błędy i~wprowadzał zasadne zmiany.
+
+  Mówi~się, że~w~pewnych językach programowania istnieje tylko jeden sposób
+  zrobienia czegoś, w~innych (prawie) każdą rzecz można zrobić na kilka
+  sposobów. Język~C należy do tej drugiej grupy. Ja na zajęciach będę
+  prezentował styl i~podejście do korzystania z~języka~C, który ja uważam
+  za optymalny.
+
+  Doświadczenie poprzednich lat uczy, że~ja i~prowadzący mamy bardzo różne
+  opinie na temat tego jak wygląda dobry styl pisania kodu w~C. Wiele
+  z~przykładów kodu które w~poprzednich latach pojawiły~się na wykładzie,
+  ja uważam za~przykład złego stylu i~złych praktyk. O~tym jeszcze za
+  chwilę.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Na Sake będzie dostępna w~formacie \textsc{pdf} \alert{lista zagadnień do
+    opanowania z~tego przedmiotu}, która będzie główny punktem odniesieniem
+  przy tworzeniu pytań testowych. Jak również dwa listy materiałów do nauki.
+  Jedna lista normalna, druga dla bardzo ambitnych osób.
+
+  Będą tam również dostępne te prezentacje w~formacie \textsc{pdf}ów.
+  W~formie źródłowej (plików \LaTeX a) są dostępna na serwisie GitHub.
+  Każdy kto ma na komputerze program Git i~dostęp do internetu może je
+  pobrać wpisując \\
+  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+  Znajdują~się one w~katalogu „Podstawy-informatyki-ETC-Prezentacje”.
+
+  Można też obejrzeć to repozytorium jak normalny człowiek. Czyli
+  w~przeglądarce: \\
+  \colorhref{https://github.com/KZiemian/Presentation}
+  {https://github.com/KZiemian/Presentation}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  W~serwisie Sake są dostępne pliki zawierające kod~C wraz oraz komentarze
+  objaśniające jak on działa. Będziemy~się też starali przygotować możliwie
+  duży zestaw programów, które ilustrują, w~naszej ocenie, dobry styl
+  pisania programów w~języku~C. Jednak to drugie zadanie jest ze względu
+  na ilość możliwych wyborów, dość trudne do wykonania.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czego od Państwa oczekujemy?}
+
+
+  Proszę zwrócić uwagę, że~ze względu na charakter tych zajęć, wystarczające
+  jest, żeby o~pewnych rzeczach wymienionych na liście zagadnień mieli
+  Państwo bardzo ogólne i~podstawowe pojęcie. Nawet w~sytuacji, gdy na
+  kursie było o~danym zagadnieniu powiedziane znacznie więcej.
+
+  Przykładowo, jest wystarczające, żeby Państwo wiedzieli, że~kompilator
+  języka~C jest to program, który przetwarza kod napisany w~języku~C
+  w~program, który jest napisany w~języku zrozumiałym dla komputera.
+  Nawet jeśli na zajęciach wspomnimy czym są takie części kompilatora
+  jak lekser czy parser, nie jest wymagane by Państwo po tym kursie
+  wiedzieli, że takie rzeczy istnieją, nie mówiąc już o~znajomości tego
+  co robią.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czego od Państwa oczekujemy?}
+
+
+  Na liście zagadnień postaramy~się wyróżnić tego typu „powierzchowne”
+  zagadnienia. Dodać należy, że~gdy chodzi o~pozostałe pytania, wymagana
+  jest dobra znajomość na \alert{poziomie tego co było prezentowane na
+    kursie}, nie zaś taka jaka jest zawarta w~standardzie języka~C.
+  Bądźmy poważni, to jest tylko kurs podstaw informatyki.
+
+  Przykładowo, jak ktoś będzie umiał napisać program który dodaje $2.71$
+  do~$3.14$ to na \alert{ten} kurs wystarczy. Przynajmniej by dostać dobrą
+  ocenę z~laboratoriów, ocena z~\alert{całego} kursu to inna sprawa.
+  Nie musicie Państwo znać całego artykułu
+  \colorhref{https://dl.acm.org/doi/10.1145/103162.103163}{\textit{Co każdy
+      informatyk musi wiedzieć o~arytmetyce zmiennoprzecinkowej}}.
+
+  % Na liście zagadnień postaramy~się wyróżnić tego typu pytania w~specjalny
+  % sposób. Dodać należy, że~gdy chodzi o~pozostałe pytania, wymagana jest
+  % dobra znajomość na \alert{poziomie tego co było prezentowane na kursie},
+  % nie zaś taka jaka jest zawarta w~standardzie??? języka~C. Bądźmy poważni,
+  % to jest tylko kurs podstaw informatyki.
+
+  % Przykładowo, jak ktoś będzie umiał napisać program który dodaje $2.71$
+  % do~$3.14$ to na \alert{ten} kurs wystarczy. Przynajmniej by dostać dobrą
+  % ocenę z~laboratoriów, ocena z~\alert{całego} kursu to inna sprawa.
+  % Nie musicie Państwo znać całego
+  % \colorhref{https://dl.acm.org/doi/10.1145/103162.103163}{\textit{Co każdy
+  %     informatyk musi wiedzieć o~arytmetyce zmiennoprzecinkowej}}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}
