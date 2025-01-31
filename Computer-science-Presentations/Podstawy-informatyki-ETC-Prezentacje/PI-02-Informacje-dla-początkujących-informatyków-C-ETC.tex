@@ -96,7 +96,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Podstawowe wiadomości o~języku~C, etc.}
+\subtitle{Informacje dla początkujących programistów, etc.}
 
 \author{Kamil Ziemian \\
   \email}
@@ -155,6 +155,62 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Charakter tych zajęć}
+
+
+  Niekiedy wejdziemy w~pewne zagadnienia teoretyczne, bo~są sytuacje, gdy
+  niewiedza teoretyczna powoduje poważne problemy praktyczne. Jeśli ktoś
+  nie wie, że~proch strzelniczy wybucha pod wpływem temperatury, to może
+  nieopatrznie postawić pudełko naboi koło gorącego pieca. W~informatyce
+  też zdarzają~się takie sytuacje, gdy brak wiedzy teoretycznej jest zbyt
+  groźny, by można było pominąć dyskusję danego problemu.
+
+  Jako kwestie praktyczne traktujemy też dobre praktyki programisty.
+  Czyli jeśli nawet dany kod działa, ale w~dłuższej perspektywie może
+  sprawiać problemy, to będziemy naciskali na jego zmianę. Wbrew
+  pozorom~są to bardzo praktyczne sprawy.
+
+  Proszę jednak pamiętać, że~ze względu na to treść tego kursu jest wysoce
+  selektywna. O~wielu rzeczach z~premedytacją nie powiemy, uznając je
+  za~zbyt teoretyczne.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Charakter tych zajęć}
+
+
+  Może~się Państwu wydawać, że~ilość zagadnień teoretycznych na tym kursie
+  i~tak jest bardzo duża. To zależy w~sporej mierze od perspektywy,
+  bo~naprawdę wiele zagadnień teoretycznych zdecydowaliśmy~się pominąć.
+
+  Jeśli oczywiście ktoś chce~się zagłębić w~te bardziej teoretyczne
+  zagadnienia, to oczywiście służymy całą naszą wiedzą. Można
+  nas o~to pytać po zajęciach i~pisać na e-maila \email.
+  Prosimy takim e-mailom nadawać tytuły typu „Pytanie o~X”, tak by nie
+  zaginęły one wśród kilkudziesięciu innych e-maili jakie zwykle dostajemy
+  każdego miesiąca.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
 % ######################################
 \section{Informacje dla początkujących programistów}
 % ######################################
@@ -205,14 +261,8 @@ eprint=true,
   \texttt{plik-numer.1.c} \\
   co jest absolutnym plugastwem. Programy których używamy mogą błędnie
   rozpoznać „\texttt{.1.c}” jako rozszerzenie pliku i~wtedy demony mają
-  prawa wylecieć nam \colorhref{}{z~nosa}.
-
-  % Rozszerzenie pliku, kropka i~to co następuje po niej w~nazwie tego pliku,
-  % informuje używane przez nas programy z~jakim typem pliku mają do
-  % czynienia. Dlatego każdy język programowania posiada własne, właściwe
-  % tylko niemu rozszerzenie Pliki napisane w~języku~C mają mieć
-  % rozszerzenie~\texttt{.c}. Analogicznie, każdy program w~języku Python
-  % powinien~się kończyć na~\texttt{.py}.
+  prawa wylecieć nam
+  \colorhref{http://www.catb.org/jargon/html/N/nasal-demons.html}{z~nosa}.
 
   % Jak ktoś na zajęciach napisze program w~języku~C, który \alert{nie} ma
   % rozszerzenia~\texttt{.c}, będzie to musiał przy mnie poprawić.
@@ -331,15 +381,165 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Kilka rad praktycznych}
+
+
+  Edytor \textsc{gnu} \colorhref{https://www.nano-editor.org/}{nano} to nie
+  jest, w~mojej ocenie, dobry edytor dla osób początkujących. Zbyt dużo
+  czasu tracimy na przełączaniu~się między nim, a~powłoką, zamiast na
+  próbie zrozumienia jak należy pisać programy komputerowe. Jeśli ktoś jest
+  już zaawansowany programistą~C (czy jakiegokolwiek innego języka) lub
+  wyjątkowo lubi nano, to oczywiście, może i~powinien z~niego korzystać.
+  Po prostu uważam, że~dla osób początkujących to~nie jest zbyt dobry wybór.
+
+  Dla tych którzy nigdy wcześniej nie programowali polecam edytor
+  \colorhref{https://gedit-text-editor.org/}{gedit}, gdyż jest prosty
+  w~obsłudze i~nie trzeba go samemu ustawiać. Potem warto rozważyć użycie
+  potężniejszej technologii.
+
+  Gdy chodzi o~edytory to ja normalnie używam
+  \colorhref{https://www.gnu.org/software/emacs/}{\textsc{gnu} Emacsa},
+  który jest niezwykle fajny, ale ogromnie skomplikowany w~użyciu.
+  Tak trudny, że~aby go dobrze opanować, trzeba~się nauczyć nowego języka
+  programowania o~nazwie \colorhref
+  {https://www.gnu.org/software/emacs/manual/html_node/eintr/}{Emacs Lisp}
+  (w~skrócie: elisp). I~to wcale nie jest żart. Oprócz tego legendarny
+  \colorhref{https://www.vim.org/}{vim} wciąż ma wierną rzeszę fanów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka rad praktycznych}
+
+
+  \colorhref{https://www.vim.org/}{Vima} warto znać, bo jest praktycznie
+  wszędzie, gdzie jest system GNU/Linux, a~takich edytorów nie ma wiele.
+  Trzeba jednak wiedzieć, że~jest on dość trudny w~obsłudze.
+
+  Odkładając na bok edytory, warto zwrócić uwagę na zintegrowane środowiska
+  programistyczne (\textsc{ide}, ang.~\textit{Integrated Development
+    Environment}). Dla języków C i~C++ jest dedykowane \textsc{ide}
+  \colorhref{https://www.jetbrains.com/clion/promo/}{CLion} od firmy
+  \colorhref{https://www.jetbrains.com/}{JetBrains}, z~którego mogą Państwo
+  korzystać dzięki licencji uczelnianej. Warto~się mu przyjrzeć, jeśli
+  ktoś chce programować w~C z~wykorzystaniem \textsc{ide}.
+
+  Wybór oczywiście pozostawiamy Państwu. Jeśli ktoś chce więcej porad
+  od nas, to oczywiście służymy całą naszą wiedzą.
+
+\end{frame}
+% ##################
+
+
+
+
+
 
 
 
 
 
 % ######################################
-\section{Kilka informacji o~języku~C % i~metody nauki
-}
+\section{Kilka rad odnośnie języka~C}
 % ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka rad odnośnie języka~C}
+
+
+  Jeśli chcesz użyć \texttt{\#define} zastanów~się, czy nie można
+  tego zrobić korzystając z~\texttt{const}. Jeśli można, to skorzystaj
+  z~\texttt{const}.
+
+  Jeśli nie wiesz czy użyć \texttt{float} czy \texttt{double}, użyj
+  \texttt{double}.
+
+  Jeśli masz dobry powód by użyć \texttt{float}, użyj \texttt{float}.
+
+  Jeśli nic Państwo z~tego nie rozumieją, to proszę~się nie martwić.
+  Będziemy o~tym mówić w~trakcie tego kursu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Kilka informacji o~języku~C}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak długo~C jest z~nami?}
+
+
+  Język~C został stworzony przez Dennis Ritchie ($1941\text{--}2011$), by
+  ułatwić Kenowi Thompsonowi (ur.~$1943$), pracę nad systemem operacyjnym
+  \textsc{unix}. Pierwsza jego wersja ukazała~się w~$1972$ roku.
+
+  Język~C w $2025$ rok ma $53$ (!) lata. Jego wiek
+  niestety często czuć, bo wiele funkcjonalności które dziś uważamy
+  za~niezbędne w~pracy programisty albo są w~nim nieobecne, albo są,
+  ale w~dość koślawej wersji. Niektórych rzeczy nie da~się w~sposób
+  elegancki dodać do języka z~lat 70-tych XX wieku.
+
+  Do tego język~C został pomyślany jako mały język, więc on z~premedytacją
+  \alert{nie} wprowadził pewnych rzeczy znanych w~$1972$~roku. To
+  niestety też nie ułatwia nam życia. Co gorsza, dla początkujących~C i~tak
+  może sprawiać wrażenie ogromnego języka. On jest mały w~porównaniu
+  z~innymi językami, ale to niewiele zmienia, gdy~się dopiera zaczyna swoją
+  przygodę z~informatyką.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy 1972 rok był dawno temu?}
+
+
+    \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./Presentations-pictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
+
+    \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
+      PDP-11 firmy Digital Equipment Corporation.}
+
+    \label{fig:Ritchie-Thompson-PDP-11}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
 
 
 
@@ -360,7 +560,7 @@ eprint=true,
   \item Na świecie jest tyle kodu napisanego w~języku~C, że~jeśli umie~się
     go dobrze, można dość łatwo znaleźć naprawdę dobrze płatną pracę. I~na
     razie nic nie wskazuje, by ta praca zniknęła przez następne $20$ lat
-    (do $2044$ roku). Chat\textsc{gpt} też nie.
+    (do $2044$~roku). Chat\textsc{gpt} też nie.
 
   \item Pozwala lepiej poznać jak komputer działa na niskim poziomie.
     Zdania uczonych są podzielone, czy to jest wada czy zaleta. Ja
@@ -388,6 +588,9 @@ eprint=true,
   \begin{itemize}
 
   \item Pisane w~C nie jest wcale proste.
+
+  \item Wersji języka~C, różniących~się drugorzędnymi kwestiami, jest
+    zbyt dużo i~łatwo~się w~tym pogubić.
 
   \item C~oferuje nam bardzo mało zabezpieczeń przed nami samymi, co
     skutkuje tym, że~bardzo łatwo stworzyć kod w~którym kryją~się
@@ -470,23 +673,6 @@ eprint=true,
 
   Taaaaak, nic trudnego.
 
-  % \begin{itemize}
-
-  % \item Domyślna konwersja typów. To naprawdę nie pasuje do takiego
-  %   języka jak~C.
-
-  % \item Toporny i~niewygodny model kompilacji: pliki nagłówkowe,
-  %   preprocesor, etc.
-
-  % \item „The more I~C, the less I see.” Przykład: złożone typy danych.
-
-  % % \item Brak modułowości.
-
-  % % \item I~miliona innych udogodnień, które daje ci dobry, nowoczesny język
-  % %   programowania (1972 rok był dawno temu).
-
-  % \end{itemize}
-
 \end{frame}
 % ##################
 
@@ -500,14 +686,6 @@ eprint=true,
 
 
   \begin{itemize}
-
-  % \item Domyślna konwersja typów. To naprawdę nie pasuje do takiego
-  %   języka jak~C.
-
-  % \item Toporny i~niewygodny model kompilacji: pliki nagłówkowe,
-  %   preprocesor, etc.
-
-  % \item „The more I~C, the less I see.” Przykład: złożone typy danych.
 
   \item Brak modułowości.
 
@@ -839,8 +1017,8 @@ eprint=true,
   \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
     wyłącznie do~odczytu}. Pamięć komputera której zawartość została
   zapisana przez firmę, która ten fragment pamięci wyprodukowała
-  i~użytkownik nie może zmodyfikować jej teści. Przynajmniej nie w~żaden
-  normalny sposób.
+  i~użytkownik nie może zmodyfikować jej zawartości. Przynajmniej nie
+  w~żaden normalny sposób.
 
   \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
   pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
@@ -1222,57 +1400,6 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Podstawowe informacje o~języku~C}
-
-
-  Język~C został stworzony przez Dennis Ritchie (1941--2011), by ułatwić
-  Kenowi Thompsonowi (ur. 1943), pracę nad systemem operacyjnym
-  \textsc{unix}. Pierwsza jego wersja ukazała~się w~1972 roku.
-
-  Język~C w 2022 roku obchodził 50 (!) lecie swojego istnienia. Jego wiek
-  niestety często czuć, bo wiele funkcjonalności które dziś uważamy
-  za~niezbędne w~pracy programisty albo są w~nim nieobecne, albo są,
-  ale w~dość koślawej wersji. Niektórych rzeczy nie da~się w~sposób
-  elegancki dodać do języka z~lat 70-tych XX wieku.
-
-  Do tego język~C został pomyślany jako mały język, więc on z~premedytacją
-  \alert{nie} wprowadził pewnych rzeczy znanych już koło 1970 roku. To
-  niestety też nie ułatwia nam życia. Co gorsza, dla początkujących~C i~tak
-  może sprawiać wrażenie ogromnego języka. On jest mały w~porównaniu
-  z~innymi językami, ale to niewiele zmienia, gdy~się dopiera zaczyna swoją
-  przygodę z~informatyką.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czy 1972 rok był bardzo dawno temu?}
-
-
-    \begin{figure}
-
-    \centering
-
-
-    \includegraphics[scale=0.3]
-    {./Presentations-pictures/Meeting-01/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
-
-    \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
-      PDP-11 firmy Digital Equipment Corporation.}
-
-    \label{fig:Ritchie-Thompson-PDP-11}
-
-  \end{figure}
-
-\end{frame}
-% ##################
 
 
 

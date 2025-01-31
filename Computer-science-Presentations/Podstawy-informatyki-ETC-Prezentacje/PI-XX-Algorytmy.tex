@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -217,9 +217,9 @@ eprint=true,
   \texttt{j := first} \\
   Pierwsza z~tych zmiennych oznacza oczywiście tymczasową oś obrotu.
 
-  3.~Dla wszystkich wartości \texttt{j} od~\texttt{j = first}
-  do~\texttt{last - 1} wykonujemy następujące operacje. Jeśli
-  \texttt{A[j] <= tempPivot} to zamieniamy miejscami \texttt{A[i]}
+  3.~Dla wszystkich wartości \texttt{j} od~\texttt{j := first}
+  do~\texttt{j := last - 1} włącznie wykonujemy następujące operacje.
+  Jeśli \texttt{A[j] <= tempPivot} to zamieniamy miejscami \texttt{A[i]}
   i~\texttt{A[j]} oraz zwiększamy indeks \texttt{i} o~jeden: \\
   \texttt{i := i + 1}
 
@@ -242,15 +242,43 @@ eprint=true,
 
   5.~Dokonujemy podziału (w~końcu to jest algorytm dziel i~zwyciężaj)
   tablicy \texttt{A} na dwie części względem osi obrotu \texttt{p}. \\
-  Pierwsza część rozciąga~się od obecnego \texttt{first}
-  do~\texttt{last := p - 1}. \\
-  Druga część rozciąga~się od~\texttt{first := p + 1} do obecnego
-  \texttt{last}.
+  Pierwsza część obejmuje indeksy od obecnej wartości \texttt{first}
+  do~\texttt{p - 1}. Będziemy ją oznaczać~\texttt{B}. \\
+  Druga część tablicy obejmuje indeksy od~\texttt{p + 1} do obecnej
+  wartości \texttt{last}. Będziemy ją oznaczać~\texttt{C}.
 
-  6.~Stosujemy algorytm sortowania szybkiego do~dwóch zdefiniowany
-  poprzednio części.
+  Proszę zwrócić uwagę, że~jeśli tablica \texttt{A} miała długość~$n$
+  to sumaryczna długość tablic \texttt{B} i~\texttt{C} wynosi $n - 1$.
+  Wynika to z~tego, że~żadna z~tych tablic nie zawiera elementu
+  \texttt{tempPivot}, który w~tablicy \texttt{A} stoi pod
+  indeksem~\texttt{p}.
+
+  6.~Stosujemy algorytm sortowania szybkiego do~tablic \texttt{B}
+  i~\texttt{C}. Przyjmujemy przy tym umowę, że~każda zmiana tych dwóch
+  tablic automatycznie jest wprowadzana do~tablicy~\texttt{A}.
 
   Działanie tego algorytmu najlepiej zilustrują przykłady.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Notacja}
+
+
+  Na~potrzeby omawiany przykładów wprowadzamy następującą notację.
+  Symbol \texttt{<=} oznacza standardowo, że~lewa strona jest mniejsza bądź
+  równa prawej. Symbol \texttt{!<=} oznacza, że~lewa strona \alert{nie}
+  jest mniejsza bądź równa prawej. Tutaj oczywiście korzystamy z~szeroko
+  stosowanej w~informatyce konwencji, wedle której symbol „\texttt{!}”
+  oznacza negację.
+
+  Analogicznie umowę stosujemy dla \texttt{>=} i~\texttt{!>=}.
 
 \end{frame}
 % ##################
@@ -265,7 +293,7 @@ eprint=true,
 
 
   Zacznijmy od~tablicy o~długości~$1$. Zrozumienie najprostszych przypadków
-  taki jak ten, jest ważne dla zrozumienia jak ten algorytm działa
+  takich jak ten, jest ważne dla zrozumienia jak ten algorytm działa
   dla dowolnej tablicy. \\
   \texttt{A := \{7\} } \\
   \texttt{first = 0}, \texttt{last = 0}
@@ -301,10 +329,11 @@ eprint=true,
   \texttt{i := first := 0} \\
   \texttt{j := first := 0}
 
-  3.~Przechodzimy ze zmienną \texttt{j} od~\texttt{first := 0}
-  do~\texttt{last - 1 := 0} porównując \texttt{A[j]}
-  z~\texttt{tempPivot := 7}. \\
-  \texttt{A[0] := 1 <= tempPivot}, więc zamieniamy \texttt{A[0]}
+  3.~Przechodzimy ze zmienną \texttt{j} od~wartości
+  \texttt{j := first := 0} \\
+  do~\texttt{j := last - 1 := 0} włącznie, porównując wartość elementu
+  \texttt{A[j]} z~\texttt{tempPivot := 7}. \\
+  \texttt{A[0] := 1 <= tempPivot := 7}, więc zamieniamy \texttt{A[0]}
   i~\texttt{A[0]} miejscami (czyli nic nie robimy).
 
 \end{frame}
@@ -321,20 +350,22 @@ eprint=true,
 
   3.~Cd.~\texttt{A := \{1, 7\} } \\
   \texttt{i := 0 + 1 := 1} \\
-  \texttt{j := 1}
+  \texttt{j := 1} \\
+  Zmienna \texttt{j} przekroczyła wartość \texttt{last - 1 := 0}, więc
+  przechodzimy do~punktu~$4$.
 
-  4.~Zamieniamy miejscami \texttt{A[i] = A[1]} i~\texttt{A[last] = A[1]}
-  (czyli znowu nic nie robimy): \\
+  4.~Zamieniamy miejscami elementy \texttt{A[i] := A[1]}
+  i~\texttt{A[last] := A[1]} (czyli znowu nic nie robimy): \\
   \texttt{A := \{1, 7\} } \\
   Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
   \texttt{p := i := 1}.
 
   5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
-  \texttt{B := \{1\} }, \texttt{first := 0},
-  \texttt{last := 1 - 1 := 0}, \\
-  \texttt{C := \{\} }, \texttt{first := 1 + 1 := 2},
-  \texttt{last := 1}. Tablica ta jest pusta, bo jej początkowy indeks jest
-  większy od jej indeksu końcowego.
+  \texttt{B := \{1\} }, \texttt{newFirst1 := 0},
+  \texttt{newLast1 := 1 - 1 := 0}, \\
+  \texttt{C := \{\} }, \texttt{newFirst2 := 1 + 1 := 2},
+  \texttt{newLast2 := 1}. Tablica ta jest pusta, bo jej początkowy indeks
+  jest większy od~końcowego.
 
 \end{frame}
 % ##################
@@ -349,21 +380,23 @@ eprint=true,
 
 
   6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}. Wracamy
-  więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  więc do punktu~$1$. Przypomnijmy, że~przyjmujemy przy tym, że~każda zmiana
   tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
   sam sposób. Analogicznie dla~\texttt{C}. Akurat w~tym przykładzie nie ma
   to~znaczenia.
 
-  1,~B).~Tablica \texttt{B := \{1\}} jest jednoelementowa, więc
+  1,~B.~\texttt{B := \{1\}}, \texttt{newFirst1 := 0},
+  \texttt{newLast1 := 0}. Tablica \texttt{B} jest jednoelementowa, więc
   z~poprzedniego przykładu wiemy, że~algorytm zachowa~się poprawie
   i~zostawi tą tablicę niezmienioną.
 
-  1,~C).~Tablica \texttt{C := \{\}}, \texttt{first := 2},
+  1,~C.~Tablica \texttt{C := \{\}}, \texttt{first := 2},
   \texttt{last := 1}. Kończymy tą część algorytmu nie robiąc nic, bo jest
-  spełniony warunek \texttt{first >= last} (\texttt{2 >= 1}).
+  spełniony warunek \texttt{first >= last} \\
+  (\texttt{2 >= 1}).
 
-  W~tej chwili \texttt{A := \{1, 7\}} więc tablica nie uległą zmianie
-  i~jest posortowana.
+  W~tej chwili \texttt{A := \{1, 7\}} więc tablica nie uległa zmianie
+  i~jest posortowana w~sposób rosnący.
 
 \end{frame}
 % ##################
@@ -390,8 +423,10 @@ eprint=true,
   \texttt{i := first := 0} \\
   \texttt{j := first := 0}
 
-  3.~Przechodzimy ze zmienną \texttt{j} od~\texttt{first := 0}
-  do~\texttt{last - 1 := 0} porównując \texttt{A[j]}
+  3.~Przechodzimy ze zmienną \texttt{j} wartości
+  od~\texttt{j := first := 0} \\
+  do~\texttt{j := last - 1 := 0} porównując wartość elementu
+  \texttt{A[j]} \\
   z~\texttt{tempPivot := 3}. \\
   \texttt{A[0] := 8 !<= tempPivot}, więc nic nie robimy.
 
@@ -409,23 +444,27 @@ eprint=true,
 
   3.~Cd.~\texttt{A := \{8, 3\} } \\
   \texttt{i := 0} \\
-  \texttt{j := 1}
+  \texttt{j := 1} \\
+  Zmienna \texttt{j} przekroczyła wartość \texttt{last - 1 := 0}, więc
+  kończymy punkt~$3$.
 
-  4.~Zamieniamy miejscami \texttt{A[i] = A[0]} i~\texttt{A[last] = A[1]}: \\
+  4.~Zamieniamy miejscami elementy tablicy \texttt{A[i] := A[0] := 8}
+  i~\texttt{A[last] = A[1] := 3}: \\
   \texttt{A := \{3, 8\} } \\
   Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
   \texttt{p := i := 0}.
 
   5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
-  \texttt{B := \{3\} }, \texttt{first := 0},
-  \texttt{last := 1 - 0 := 1}, \\
-  \texttt{C := \{8\} }, \texttt{first := 0 + 1 := 1}, \texttt{last := 1}.
+  \texttt{B := \{\}}, \texttt{newFirst1 := 0},
+  \texttt{newLast1 := 0 - 1 := -1}, \\
+  \texttt{C := \{8\}}, \texttt{newFirst2 := 0 + 1 := 1},
+  \texttt{newLast2 := 1}.
 
-  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}. Wracamy
-  więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
-  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
-  sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
-  to~znaczenia.
+  % 6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}. Wracamy
+  % więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  % sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  % to~znaczenia.
 
 \end{frame}
 % ##################
@@ -440,18 +479,21 @@ eprint=true,
 
 
   6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}. Wracamy
-  więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
-  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
-  sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
-  to~znaczenia.
+  więc do punktu~$1$. Przypomnijmy, że~każda zmiana tablicy~\texttt{B}
+  automatycznie zmienia tablicę~\texttt{A} w~taki sam sposób. Analogicznie
+  dla~\texttt{C}. W~tym przykładzie nie ma to~znaczenia.
 
-  1.~Tablica \texttt{B := \{3\}} jest jednoelementowa, więc
-  z~poprzedniego przykładu wiemy, że~algorytm zachowa~się poprawie
-  i~zostawi tą tablicę niezmienioną. To~samo jest prawdą dla tablicy
-  \texttt{C := \{8\}}.
+  1~B.~\texttt{B := \{\}}, \texttt{newFirst1 := 0},
+  \texttt{newLast1 := -1}. Spełniony jest warunek
+  \texttt{newFirst1 >= newLast1} (\texttt{0 >= -1}), więc kończymy działanie
+  algorytmu, nic nie robiąc
 
-  W~tej chwili \texttt{A := \{3, 8\}}, więc tablica ta jest posortowana
-  w~sposób rosnący.
+  1~C.~\texttt{C := \{8\}}, \texttt{newFirst2 := 1},
+  \texttt{newLast2 := 1}. Tablica~\texttt{C} jest jednoelementowa, więc
+  wiemy, że~algorytm zachowa~się poprawnie i~zwróci ją niezmienioną.
+
+  Kończymy algorytm. W~tej chwili \texttt{A := \{3, 8\}}, więc tablica ta
+  jest posortowana w~sposób rosnący.
 
 \end{frame}
 % ##################
@@ -463,6 +505,814 @@ eprint=true,
 % ##################
 \begin{frame}
   \frametitle{Przykład~4}
+
+
+  \texttt{A := \{11, 1, 0, 3, 10, 13, 7\} } \\
+  \texttt{first := 0}, \texttt{last := 6}
+
+  1.~Nie zachodzi żaden z~warunków \texttt{first >= last}
+  (\texttt{0 >= 6}) \\
+  i~\texttt{first < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  osi obrotu.
+
+  2.~\texttt{tempPivot := A[last] := A[6] := 7} \\
+  \texttt{i := first := 0} \\
+  \texttt{j := first := 0}
+
+  3.~Przechodzimy z~wartością zmiennej \texttt{j}
+  od~\texttt{j := first := 0} \\
+  do~\texttt{j := last - 1 := 5} porównując \texttt{A[j]}
+  z~\texttt{tempPivot := 7}. \\
+  \texttt{A[0] := 11 !<= tempPivot := 7}, nic nie robimy. \\
+  \texttt{A[1] := 1 <= tempPivot := 7}, więc zamieniamy elementy tablicy
+  \texttt{A[i] := A[0] := 11} i~\texttt{A[j] := A[1] := 1} miejscami.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  Po~zamianie \texttt{A[0]} z~\texttt{A[1]} mamy: \\
+  \texttt{A := \{1, 11, 0, 3, 10, 13, 7\}} \\
+  \texttt{i := i + 1 := 0 + 1 := 1} \\
+  \texttt{j := 2} \\
+  \texttt{A[2] := 0 <= tempPivot := 7}, więc zamieniamy
+  \texttt{A[1] := 11} \\
+  i~\texttt{A[2] := 0} miejscami: \\
+  \texttt{A := \{1, 0, 11, 3, 10, 13, 7\}} \\
+  \texttt{i := i + 1 := 1 + 1 := 2} \\
+  \texttt{j := 3} \\
+  \texttt{A[3] := 3 <= tempPivot := 7}, więc zamieniamy
+  \texttt{A[2] := 11} \\
+  i~\texttt{A[3] := 0} miejscami: \\
+  \texttt{A := \{1, 0, 3, 11, 10, 13, 7\}} \\
+  \texttt{i := i + 1 := 2 + 1 := 3} \\
+  \texttt{j := 4}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  \texttt{A := \{1, 0, 3, 11, 10, 13, 7\}} \\
+  \texttt{A[4] := 10 !<= tempPivot := 7}, nic nie robimy. \\
+  \texttt{A[5] := 13 !<= tempPivot := 7}, nic nie robimy. \\
+  \texttt{i := 3} \\
+  \texttt{j := 6} \\
+  Zmienna \texttt{j} przekroczyła wartość \texttt{last - 1 := 5}, więc
+  kończymy punkt~$3$.
+
+  4.~Zamieniamy miejscami elementy tablicy \texttt{A[i] := A[3] := 11}
+  i~\texttt{A[last] := A[6] := 7}: \\
+  \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  \texttt{p := i := 3}.
+
+  % Przyjrzyjmy~się na chwilę temu wynikowi. Choć tablica \texttt{A}
+  % nie jest posortowania, to można powiedzieć, że~jest posortowana
+  % \alert{względem} osi obrotu: na lewo od niej są tylko wartości mniejsze
+  % od niej, na prawo od niej większe.
+
+  % To tłumaczy dlaczego indeks \texttt{p := 3} i~odpowiadający mu element
+  % \texttt{A[i] := tempPivot := 7} noszą nazwy „osi obrotu”.
+  % Wokół nich „obracają~się” wszystkie elementy tej tablicy, tak że te
+  % mniejsze od \texttt{tempPivot} lądują po lewej indeksu \texttt{p := 3},
+  % te zaś większe od \texttt{tempPivot} na prawej stronie \texttt{p := 3}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  \texttt{tempPivot := 7} \\
+  \texttt{p := 3}
+
+  Przyjrzyjmy~się na chwilę temu wynikowi. Choć tablica \texttt{A}
+  nie jest posortowania, to można powiedzieć, że~jest posortowana
+  \alert{względem} osi obrotu: na lewo od niej są tylko wartości mniejsze
+  od niej, na prawo od niej większe.
+
+  To tłumaczy dlaczego indeks \texttt{p := 3} i~odpowiadający mu element
+  \texttt{A[i] := tempPivot := 7} noszą nazwy „osi obrotu”.
+  Wokół nich „obracają~się” wszystkie elementy tej tablicy, tak że te
+  mniejsze od \texttt{tempPivot} lądują po lewej indeksu \texttt{p := 3},
+  te zaś większe od \texttt{tempPivot} po~prawej stronie \texttt{p := 3}.
+
+
+  % 1.~Nie zachodzi żaden z~warunków \texttt{first >= last}
+  % (\texttt{0 >= 9}), \\
+  % \texttt{first < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  % osi obrotu.
+
+  % 2.~\texttt{tempPivot := A[last] := 4} \\
+  % \texttt{i := first := 0} \\
+  % \texttt{j := first := 0}
+
+  % 3.~Przechodzimy ze zmienną \texttt{j} od~\texttt{first := 0}
+  % do~\texttt{last - 1 := 8} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 4}. \\
+  % \texttt{A[0] := 9 !<= tempPivot}, nic nie robimy. \\
+  % \texttt{A[1] := 5 !<= tempPivot}, nic nie robimy. \\
+  % \texttt{A[2] := 7 !<= tempPivot}, nic nie robimy. \\
+
+  % \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
+  % z~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 3, 5, 8, 7, 9, 6, 4\} } \\
+  % \texttt{i := 3 + 1 := 4} \\
+  % \texttt{j := 8} \\
+  % \texttt{A[8] := 6 !<= tempPivot}, nic nie robimy. \\
+  % Zmienna \texttt{j} osiągnęła wartość \texttt{last - 1 := 8}, więc
+  % kończymy punkt~$3$.
+
+  % 4.~Zamieniamy miejscami elementy \texttt{A[i] = A[4]} i~\texttt{A[last] = A[9]}: \\
+  % \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\}} \\
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 4}.
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  \texttt{tempPivot := 7} \\
+  \texttt{p := 3}
+
+  5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  \texttt{B := \{1, 0, 3\}}, \texttt{newFirst1 := 0},
+  \texttt{newLast1 := p - 1 :=} \\
+  \texttt{:= 3 - 1 := 2}, \\
+  \texttt{C := \{10, 13, 11\}}, \texttt{newFirst2 := p + 1 := 4},
+  \texttt{newLast2 := 6}.
+
+  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  to~znaczenia.
+
+  1~B.~\texttt{B = \{1, 0, 3\}}, \texttt{newFrist1 := 0},
+  \texttt{newLast1 := 2}. Nie jest spełniony żaden z~warunków
+  \texttt{newFirst1 >= newLast1} (\texttt{0 >= 2}), \\
+  \texttt{newFirst1 < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  osi obrotu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  \texttt{B = \{1, 0, 3\}} \\
+  \texttt{newFrist1 := 0} \\
+  \texttt{newLast1 := 2}
+
+  2~B.~\texttt{tempPivot := A[newLast1] := B[2] := 3} \\
+  \texttt{i := newFirst1 := 0} \\
+  \texttt{j := newFirst1 := 0}
+
+  3~B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  od~\texttt{j := newFirst1 := 0} \\
+  do~\texttt{j := newLast1 - 1 := 1} porównując \texttt{B[j]}
+  z~\texttt{tempPivot := B[newLast1] := 3}.
+
+  \texttt{B[0] := 1 <= tempPivot := 3}, więc zamieniamy elementy
+  \texttt{B[i] := B[0] := 1} z~\texttt{B[j] := B[0] := 1},
+   miejscami (czyli nic nie robimy): \\
+  \texttt{B := \{1, 0, 3\} } \\
+  \texttt{i := i + 1 := 0 + 1 := 1} \\
+  \texttt{j := 1}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+  \texttt{B := \{1, 0, 3\} } \\
+  \texttt{i := 1} \\
+  \texttt{j := 1}
+
+  \texttt{B[1] := 1 <= tempPivot := 3}, więc zamieniamy elementy \\
+  \texttt{B[1] := B[1] := 0} z~\texttt{B[j] := B[1] := 0},
+  miejscami (czyli nic nie robimy): \\
+  \texttt{B := \{1, 0, 3\} } \\
+  \texttt{i := i + 1 := 1 + 1 = 2} \\
+  \texttt{j := 2} \\
+  Zmienna \texttt{j} przekroczyła wartość \texttt{newLast1 - 1 := 1}, więc
+  kończymy punkt~$3$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  \texttt{B := \{1, 0, 3\} } \\
+  \texttt{i := 2} \\
+
+  4,~B.~Zamieniamy miejscami elementy tablicy \texttt{B[i] := B[2] := 3}
+  i~\texttt{B[newLast1] := B[2] := 3} (czyli nic nie robimy): \\
+  \texttt{B := \{1, 0, 3\}}
+  Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  \texttt{p := i := 2}.
+
+  5,~B.~Dzielimy tablicę \texttt{B} na dwie części tablic: \\
+  \texttt{B1 := \{1, 0\}}, \texttt{newFirst3 := 0},
+  \texttt{newLast3 := p - 1 := 2 - 1 :=} \\
+  \texttt{:= 1}, \\
+  \texttt{B2 := \{\}}, \texttt{newFirst4 := p + 1 := 2 + 1 := 3},
+  \texttt{newLast4 := 2}.
+
+  6,~B.~Dokonujemy sortowania szybkiego tablic~\texttt{B1} i~\texttt{B2}.
+  Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  tablicy~\texttt{B1} i~\texttt{B2} automatycznie zmienia
+  tablicę~\texttt{A}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  1,~B1.~\texttt{B1 := \{1, 0\}}, \texttt{newFrist3 := 0},
+  \texttt{newLast3 := 1}. Wynik działania algorytmu już znamy, tablica
+  zostanie posortowana do~postaci \\
+  \texttt{B1 := \{0, 1\}}. Tej części algorytmu nie musimy omawiać.
+
+  W~wyniku zamiany \\
+  \texttt{B1 := \{0, 1\}} $\to$ \texttt{B1 := \{0, 1\}}, \\
+  musimy też dokonać zmiany tablicy \texttt{B}: \\
+  \texttt{B = \{1, 0, 3\}} $\to$ \texttt{B = \{0, 1, 3\}}. \\
+  Część tablicy \texttt{B}, którą mamy zmienić jest zdefiniowana przez
+  zakres indeksów \texttt{newFirst3 := 0}, \texttt{newLast3 := 1}.
+
+  Na tym jednak nie koniec. Zamiana tablicy \texttt{B} oznacza,
+  że~musimy dokonać zamiany tablicy \texttt{A}: \\
+  \texttt{A = \{1, 0, 3, 7, 10, 13, 11\}} $\to$
+  \texttt{A = \{0, 1, 3, 7, 10, 13, 11\}}.
+
+  % Zwróćmy uwagę, na to, że tablica w~zakresie indeksów od~\texttt{0}
+  % do~\texttt{3} tablica~\texttt{A} jest teraz posortowana. Co prawda
+  % duża część algorytmu jest jeszcze przed nami, ale na tym wydaje mi się,
+  % że możemy poprzestać.
+
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % \texttt{tempPivot := 7} \\
+  % \texttt{p := 3}
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{1, 0, 3\}}, \texttt{newFirst1 := 0},
+  % \texttt{newLast1 := p - 1 :=} \\
+  % \texttt{3 - 1 := 2}, \\
+  % \texttt{C := \{10, 13, 11\}}, \texttt{newFirst2 := p + 1 := 4},
+  % \texttt{newLast2 := 6}.
+
+  % 6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  % sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  % to~znaczenia.
+
+  % 1B.~\texttt{B = \{1, 0, 3\}}, \texttt{newFrist1 := 0},
+  % \texttt{newLast1 := 2}. Nie jest spełniony żaden z~warunków
+  % \texttt{newFirst1 >= newLast1} (\texttt{0 >= 2}),
+  % \texttt{newFirst1 < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  % osi obrotu.
+
+  % \texttt{B = \{1, 0, 3\}} \\
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  % \texttt{A[3] := 2 <= tempPivot}, więc zamieniamy \texttt{A[0]}
+  % i~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 0 + 1 := 1} \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[4] := 1 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[4]} miejscami: \\
+  % \texttt{A := \{2, 1, 7, 9, 5, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1 + 1 := 2} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[5] := 8 !<= tempPivot}, nic nie robimy. \\
+  % \texttt{A[6] := 0 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[6]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 9, 5, 8, 7, 3, 6, 4\} } \\
+  % \texttt{i := 2 + 1 := 3} \\
+  % \texttt{j := 7}
+
+  % \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
+  % z~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 3, 5, 8, 7, 9, 6, 4\} } \\
+  % \texttt{i := 3 + 1 := 4} \\
+  % \texttt{j := 8} \\
+  % \texttt{A[8] := 6 !<= tempPivot}, nic nie robimy. \\
+  % Zmienna \texttt{j} osiągnęła wartość \texttt{last - 1 := 8}, więc
+  % kończymy punkt~$3$.
+
+  % 4.~Zamieniamy miejscami \texttt{A[i] = A[4]} i~\texttt{A[last] = A[9]}: \\
+  % \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\}} \\
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 4}.
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{2, 1, 0, 3\}}, \texttt{first := 0},
+  % \texttt{last := 4 - 1 := 3}, \\
+  % \texttt{C := \{8, 6, 9, 6, 5\}}, \texttt{first := p + 1 := 5},
+  % \texttt{last := 9}.
+
+  % \texttt{B := \{1, 0, 3\} } \\
+  % \texttt{i := 1} \\
+  % \texttt{j := 1}
+
+  % \texttt{B[1] := 1 <= tempPivot := 3}, więc zamieniamy elementy \\
+  % \texttt{B[1] := B[1] := 0} z~\texttt{B[j] := B[1] := 0},
+  % miejscami (czyli nic nie robimy): \\
+  % \texttt{B := \{1, 0, 3\} } \\
+  % \texttt{i := i + 1 := 1 + 1 = 2} \\
+  % \texttt{j := 2} \\
+  % Zmienna \texttt{j} przekroczyła wartość \texttt{newLast1 - 1 := 1}, więc
+  % kończymy punkt~$3$.
+
+
+  % 4.~Zamieniamy miejscami elementy tablicy \texttt{A[i] := A[3] := 11}
+  % i~\texttt{A[last] := A[6] := 7}: \\
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 3}.
+
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % \texttt{tempPivot := 7} \\
+  % \texttt{p := 3}
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{1, 0, 3\}}, \texttt{newFirst1 := 0},
+  % \texttt{newLast1 := p - 1 := 3 - 1 := 2}, \\
+  % \texttt{C := \{10, 13, 11\}}, \texttt{newFirst2 := p + 1 := 4},
+  % \texttt{newLast2 := 6}.
+
+  % 6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  % sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  % to~znaczenia.
+
+  % 1B.~\texttt{B = \{1, 0, 3\}}, \texttt{newFrist1 := 0},
+  % \texttt{newLast1 := 2}. Nie jest spełniony żaden z~warunków
+  % \texttt{newFirst1 >= newLast1} (\texttt{0 >= 2}),
+  % \texttt{newFirst1 < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  % osi obrotu.
+
+  % \texttt{B = \{1, 0, 3\}} \\
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % \texttt{tempPivot := 7} \\
+  % \texttt{p := 3}
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{1, 0, 3\}}, \texttt{newFirst1 := 0},
+  % \texttt{newLast1 := p - 1 :=} \\
+  % \texttt{3 - 1 := 2}, \\
+  % \texttt{C := \{10, 13, 11\}}, \texttt{newFirst2 := p + 1 := 4},
+  % \texttt{newLast2 := 6}.
+
+  % 6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  % sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  % to~znaczenia.
+
+  % 1B.~\texttt{B = \{1, 0, 3\}}, \texttt{newFrist1 := 0},
+  % \texttt{newLast1 := 2}. Nie jest spełniony żaden z~warunków
+  % \texttt{newFirst1 >= newLast1} (\texttt{0 >= 2}),
+  % \texttt{newFirst1 < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  % osi obrotu.
+
+  % \texttt{B = \{1, 0, 3\}} \\
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  %   \texttt{A[3] := 2 <= tempPivot}, więc zamieniamy \texttt{A[0]}
+  % i~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 0 + 1 := 1} \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[4] := 1 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[4]} miejscami: \\
+  % \texttt{A := \{2, 1, 7, 9, 5, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1 + 1 := 2} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[5] := 8 !<= tempPivot}, nic nie robimy. \\
+  % \texttt{A[6] := 0 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[6]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 9, 5, 8, 7, 3, 6, 4\} } \\
+  % \texttt{i := 2 + 1 := 3} \\
+  % \texttt{j := 7}
+
+  % \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
+  % z~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 3, 5, 8, 7, 9, 6, 4\} } \\
+  % \texttt{i := 3 + 1 := 4} \\
+  % \texttt{j := 8} \\
+  % \texttt{A[8] := 6 !<= tempPivot}, nic nie robimy. \\
+  % Zmienna \texttt{j} osiągnęła wartość \texttt{last - 1 := 8}, więc
+  % kończymy punkt~$3$.
+
+  % 4.~Zamieniamy miejscami \texttt{A[i] = A[4]} i~\texttt{A[last] = A[9]}: \\
+  % \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\}} \\
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 4}.
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{2, 1, 0, 3\}}, \texttt{first := 0},
+  % \texttt{last := 4 - 1 := 3}, \\
+  % \texttt{C := \{8, 6, 9, 6, 5\}}, \texttt{first := p + 1 := 5},
+  % \texttt{last := 9}.
+
+  % \texttt{B := \{1, 0, 3\} } \\
+  % \texttt{i := 2} \\
+
+  % 4,~B.~Zamieniamy miejscami elementy tablicy \texttt{B[i] := B[2] := 3}
+  % i~\texttt{B[newLast1] := B[2] := 3} (czyli nic nie robimy): \\
+  % \texttt{B := \{1, 0, 3\}}
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 2}.
+
+  % 5,~B.~Dzielimy tablicę \texttt{B} na dwie części tablic: \\
+  % \texttt{B1 := \{1, 0\}}, \texttt{newFirst3 := 0},
+  % \texttt{newLast3 := p - 1 := 2 - 1 :=} \\
+  % \texttt{:= 1}, \\
+  % \texttt{B2 := \{\}}, \texttt{newFirst4 := p + 1 := 2 + 1 := 3},
+  % \texttt{newLast4 := 2}.
+
+  % 6,~B.~Dokonujemy sortowania szybkiego tablic~\texttt{B1} i~\texttt{B2}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B1} i~\texttt{B2} automatycznie zmienia
+  % tablicę~\texttt{A}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~4}
+
+
+  \texttt{A = \{0, 1, 3, 7, 10, 13, 11\}}
+
+  Zwróćmy uwagę, na to, że tablica w~zakresie indeksów od~\texttt{0}
+  do~\texttt{3} tablica~\texttt{A} jest teraz posortowana. Co prawda
+  duża część algorytmu jest jeszcze przed nami, ale na tym wydaje mi się,
+  że możemy poprzestać.
+
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % \texttt{tempPivot := 7} \\
+  % \texttt{p := 3}
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{1, 0, 3\}}, \texttt{newFirst1 := 0},
+  % \texttt{newLast1 := p - 1 :=} \\
+  % \texttt{3 - 1 := 2}, \\
+  % \texttt{C := \{10, 13, 11\}}, \texttt{newFirst2 := p + 1 := 4},
+  % \texttt{newLast2 := 6}.
+
+  % 6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  % sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  % to~znaczenia.
+
+  % 1B.~\texttt{B = \{1, 0, 3\}}, \texttt{newFrist1 := 0},
+  % \texttt{newLast1 := 2}. Nie jest spełniony żaden z~warunków
+  % \texttt{newFirst1 >= newLast1} (\texttt{0 >= 2}),
+  % \texttt{newFirst1 < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  % osi obrotu.
+
+  % \texttt{B = \{1, 0, 3\}} \\
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  % \texttt{A[3] := 2 <= tempPivot}, więc zamieniamy \texttt{A[0]}
+  % i~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 0 + 1 := 1} \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[4] := 1 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[4]} miejscami: \\
+  % \texttt{A := \{2, 1, 7, 9, 5, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1 + 1 := 2} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[5] := 8 !<= tempPivot}, nic nie robimy. \\
+  % \texttt{A[6] := 0 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[6]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 9, 5, 8, 7, 3, 6, 4\} } \\
+  % \texttt{i := 2 + 1 := 3} \\
+  % \texttt{j := 7}
+
+  % \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
+  % z~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 3, 5, 8, 7, 9, 6, 4\} } \\
+  % \texttt{i := 3 + 1 := 4} \\
+  % \texttt{j := 8} \\
+  % \texttt{A[8] := 6 !<= tempPivot}, nic nie robimy. \\
+  % Zmienna \texttt{j} osiągnęła wartość \texttt{last - 1 := 8}, więc
+  % kończymy punkt~$3$.
+
+  % 4.~Zamieniamy miejscami \texttt{A[i] = A[4]} i~\texttt{A[last] = A[9]}: \\
+  % \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\}} \\
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 4}.
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{2, 1, 0, 3\}}, \texttt{first := 0},
+  % \texttt{last := 4 - 1 := 3}, \\
+  % \texttt{C := \{8, 6, 9, 6, 5\}}, \texttt{first := p + 1 := 5},
+  % \texttt{last := 9}.
+
+  % \texttt{B := \{1, 0, 3\} } \\
+  % \texttt{i := 1} \\
+  % \texttt{j := 1}
+
+  % \texttt{B[1] := 1 <= tempPivot := 3}, więc zamieniamy elementy \\
+  % \texttt{B[1] := B[1] := 0} z~\texttt{B[j] := B[1] := 0},
+  % miejscami (czyli nic nie robimy): \\
+  % \texttt{B := \{1, 0, 3\} } \\
+  % \texttt{i := i + 1 := 1 + 1 = 2} \\
+  % \texttt{j := 2} \\
+  % Zmienna \texttt{j} przekroczyła wartość \texttt{newLast1 - 1 := 1}, więc
+  % kończymy punkt~$3$.
+
+
+  % 4.~Zamieniamy miejscami elementy tablicy \texttt{A[i] := A[3] := 11}
+  % i~\texttt{A[last] := A[6] := 7}: \\
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 3}.
+
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % \texttt{tempPivot := 7} \\
+  % \texttt{p := 3}
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{1, 0, 3\}}, \texttt{newFirst1 := 0},
+  % \texttt{newLast1 := p - 1 := 3 - 1 := 2}, \\
+  % \texttt{C := \{10, 13, 11\}}, \texttt{newFirst2 := p + 1 := 4},
+  % \texttt{newLast2 := 6}.
+
+  % 6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  % sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  % to~znaczenia.
+
+  % 1B.~\texttt{B = \{1, 0, 3\}}, \texttt{newFrist1 := 0},
+  % \texttt{newLast1 := 2}. Nie jest spełniony żaden z~warunków
+  % \texttt{newFirst1 >= newLast1} (\texttt{0 >= 2}),
+  % \texttt{newFirst1 < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  % osi obrotu.
+
+  % \texttt{B = \{1, 0, 3\}} \\
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  % \texttt{A := \{1, 0, 3, 7, 10, 13, 11\}} \\
+  % \texttt{tempPivot := 7} \\
+  % \texttt{p := 3}
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{1, 0, 3\}}, \texttt{newFirst1 := 0},
+  % \texttt{newLast1 := p - 1 :=} \\
+  % \texttt{3 - 1 := 2}, \\
+  % \texttt{C := \{10, 13, 11\}}, \texttt{newFirst2 := p + 1 := 4},
+  % \texttt{newLast2 := 6}.
+
+  % 6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  % sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  % to~znaczenia.
+
+  % 1B.~\texttt{B = \{1, 0, 3\}}, \texttt{newFrist1 := 0},
+  % \texttt{newLast1 := 2}. Nie jest spełniony żaden z~warunków
+  % \texttt{newFirst1 >= newLast1} (\texttt{0 >= 2}),
+  % \texttt{newFirst1 < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+  % osi obrotu.
+
+  % \texttt{B = \{1, 0, 3\}} \\
+  % \texttt{newFrist1 := 0} \\
+  % \texttt{newLast1 := 2}
+
+  % 2B.~Przechodzimy z~wartością zmiennej \texttt{j}
+  % od~\texttt{j := newFirst1 := 0} \\
+  % do~\texttt{j := newLast - 1 := 1} porównując \texttt{A[j]}
+  % z~\texttt{tempPivot := 7}. \\
+
+  %   \texttt{A[3] := 2 <= tempPivot}, więc zamieniamy \texttt{A[0]}
+  % i~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 0 + 1 := 1} \\
+  % \texttt{A := \{2, 5, 7, 9, 1, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[4] := 1 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[4]} miejscami: \\
+  % \texttt{A := \{2, 1, 7, 9, 5, 8, 0, 3, 6, 4\} } \\
+  % \texttt{i := 1 + 1 := 2} \\
+  % \texttt{j := 4} \\
+  % \texttt{A[5] := 8 !<= tempPivot}, nic nie robimy. \\
+  % \texttt{A[6] := 0 <= tempPivot}, więc zamieniamy \texttt{A[1]}
+  % z~\texttt{A[6]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 9, 5, 8, 7, 3, 6, 4\} } \\
+  % \texttt{i := 2 + 1 := 3} \\
+  % \texttt{j := 7}
+
+  % \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
+  % z~\texttt{A[3]} miejscami: \\
+  % \texttt{A := \{2, 1, 0, 3, 5, 8, 7, 9, 6, 4\} } \\
+  % \texttt{i := 3 + 1 := 4} \\
+  % \texttt{j := 8} \\
+  % \texttt{A[8] := 6 !<= tempPivot}, nic nie robimy. \\
+  % Zmienna \texttt{j} osiągnęła wartość \texttt{last - 1 := 8}, więc
+  % kończymy punkt~$3$.
+
+  % 4.~Zamieniamy miejscami \texttt{A[i] = A[4]} i~\texttt{A[last] = A[9]}: \\
+  % \texttt{A := \{2, 1, 0, 3, 4, 8, 7, 9, 6, 5\}} \\
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 4}.
+
+  % 5.~Dzielimy tablicę \texttt{A} na dwie części tablic: \\
+  % \texttt{B := \{2, 1, 0, 3\}}, \texttt{first := 0},
+  % \texttt{last := 4 - 1 := 3}, \\
+  % \texttt{C := \{8, 6, 9, 6, 5\}}, \texttt{first := p + 1 := 5},
+  % \texttt{last := 9}.
+
+  % \texttt{B := \{1, 0, 3\} } \\
+  % \texttt{i := 2} \\
+
+  % 4,~B.~Zamieniamy miejscami elementy tablicy \texttt{B[i] := B[2] := 3}
+  % i~\texttt{B[newLast1] := B[2] := 3} (czyli nic nie robimy): \\
+  % \texttt{B := \{1, 0, 3\}}
+  % Oś obrotu jest teraz równa obecnej wartości zmiennej~\texttt{i}: \\
+  % \texttt{p := i := 2}.
+
+  % 5,~B.~Dzielimy tablicę \texttt{B} na dwie części tablic: \\
+  % \texttt{B1 := \{1, 0\}}, \texttt{newFirst3 := 0},
+  % \texttt{newLast3 := p - 1 := 2 - 1 :=} \\
+  % \texttt{:= 1}, \\
+  % \texttt{B2 := \{\}}, \texttt{newFirst4 := p + 1 := 2 + 1 := 3},
+  % \texttt{newLast4 := 2}.
+
+  % 6,~B.~Dokonujemy sortowania szybkiego tablic~\texttt{B1} i~\texttt{B2}.
+  % Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  % tablicy~\texttt{B1} i~\texttt{B2} automatycznie zmienia
+  % tablicę~\texttt{A}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Przykład~5}
+
+
+%   \texttt{A := \{9, 5, 7, 2, 1, 8, 0, 3, 6, 4\} } \\
+%   \texttt{first := 0}, \texttt{last := 9}
+
+%   1.~Nie zachodzi żaden z~warunków \texttt{first >= last}
+%   (\texttt{0 >= 9}), \\
+%   \texttt{first < 0} (\texttt{0 < 0}), więc przystępujemy do obliczenia
+%   osi obrotu.
+
+%   2.~\texttt{tempPivot := A[last] := 4} \\
+%   \texttt{i := first := 0} \\
+%   \texttt{j := first := 0}
+
+%   3.~Przechodzimy ze zmienną \texttt{j} od~\texttt{first := 0}
+%   do~\texttt{last - 1 := 8} porównując \texttt{A[j]}
+%   z~\texttt{tempPivot := 4}. \\
+%   \texttt{A[0] := 9 !<= tempPivot}, nic nie robimy. \\
+%   \texttt{A[1] := 5 !<= tempPivot}, nic nie robimy. \\
+%   \texttt{A[2] := 7 !<= tempPivot}, nic nie robimy. \\
+
+% \end{frame}
+% % ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~5}
 
 
   \texttt{A := \{9, 5, 7, 2, 1, 8, 0, 3, 6, 4\} } \\
@@ -493,7 +1343,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Przykład~4}
+  \frametitle{Przykład~5}
 
 
   \texttt{A[3] := 2 <= tempPivot}, więc zamieniamy \texttt{A[0]}
@@ -524,7 +1374,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Przykład~4}
+  \frametitle{Przykład~5}
 
 
   \texttt{A[7] := 3 <= tempPivot}, więc zamieniamy \texttt{A[7]}
@@ -556,7 +1406,27 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Komentarz do przykładu~4}
+  \frametitle{Komentarz do przykładu~5}
+
+
+  6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
+  Wracamy więc do punktu~$1$. Przyjmujemy przy tym, że~każda zmiana
+  tablicy~\texttt{B} automatycznie zmienia tablicę~\texttt{A} w~taki
+  sam sposób. Analogicznie dla~\texttt{C}. W~tym przykładzie nie ma
+  to~znaczenia.
+
+
+
+  W~tym przykładzie \texttt{p := 4} i~elementem \texttt{A[p] := A[4] = 4},
+  co jest zwykłym przypadkiem, na który nie należy zwracać uwagi.
+
+\end{frame}
+% ##################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komentarz do przykładu~5}
 
 
   6.~Dokonujemy sortowania szybkiego tablic~\texttt{B} i~\texttt{C}.
