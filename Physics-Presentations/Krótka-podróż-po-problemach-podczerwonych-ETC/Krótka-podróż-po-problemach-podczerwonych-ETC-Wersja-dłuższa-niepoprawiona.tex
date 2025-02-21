@@ -168,6 +168,12 @@ eprint=true,
 
 
 
+% ######################################
+\section{Problemy podczerwone i~nadfioletowe}
+% ######################################
+
+
+
 % ##################
 \begin{frame}
   \frametitle{Informacji wstępne}
@@ -175,56 +181,21 @@ eprint=true,
 
   Tematyka problemów podczerwonych (\textsc{ir}, ang. \textit{infrared
     problems}) dotyka wielu fizycznych zagadnień i~nie może być
-  wyczerpująco omówiona w~ramach jednego wystąpienia. Naszym
-  celem jest przedstawienie tych spośród nich, które dotyczą prac profesorów
-  Herdegena i~Staruszkiewicza, bez głębszego wnikania w~ich bardzo złożoną
-  strukturę. Będziemy przy tym stosowali wiele uproszczeń.
+  wyczerpująco przedstawiona w~ramach jednego wystąpienia. Naszym
+  celem jest przedstawienie szerokiej panoramy tych zagadnień,
+  gdzie~poglądowość, prostota i~zwięzłość przekazu jest dużo ważniejsza,
+  niż pełna prezentacja każdego
+  z~zagadnień. Będziemy też pomijać różnorakie, często bardzo ciekawe, ich
+  aspekty techniczne. W~takiej sytuacji poważne uproszczenia są
+  nieuniknione.
 
-  Wiele z~tego można powtórzyć w~odniesieniu do~problemów nadfioletowych
-  (\textsc{uv}, ang. \textit{ultraviolet problems}). Musimy jednak
-  zaznaczyć, że~z~punktu widzenia przyjętego na tym wystąpieniu, problemy
-  nadfioletowe, \alert{nie} są problemami fizycznymi, lecz zagadnieniem
-  technicznym, wynikającym z~braku metod rachunkowych w~kwantowej teorii
-  pola, które są matematycznie ścisłe. Możemy o~nich porozmawiać
-  w~ramach ewentualnego~Q\&A, ale wyjaśnienie wymaga teorii dystrybucji
-  Schwartza.
-
-  % Standardowo, w~większości wzorów przyjęto „$c = 1$”
-  % i~„\HorSpaceFour$\hbar = 1$”.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Informacji wstępne}
-
-
-  Większość podanych tu informacji można w~sposób w~pełni ścisły udowodnić,
-  \alert{pod warunkiem}, że~przyjmiemy pewne założenia o~naturze pól
-  kwantowych. W~obecnej chwili nie możemy stwierdzić, jaki zestaw założeń
-  o~polach kwantowych jest poprawny, więc wyniki te można kwestionować.
-  Schematem teoretyczny o~którym należy myśleć podczas tego wystąpienia
-  jest algebraiczna kwantowa teoria pola (\textsc{aqft},
-  ang.~\textit{algebraic quantum field theory}), który jest jednak bardzo
-  ogólnym schematem teoretyczny.
-  % Tematyka problemów podczerwonych (\textsc{ir}, ang. \textit{infrared
-  %   problems}) dotyka wielu fizycznych zagadnień i~nie może być
-  % wyczerpująco przedstawiona w~ramach jednego wystąpienia. Naszym
-  % celem jest przedstawienie tych zagadnień, które dotyczą prac profesorów
-  % Herdegena i~Staruszkiewicza, bez głębszego wnikania w~ich bardzo złożoną
-  % strukturę. Będziemy więc wiele problemów upraszczać lub pomijać.
-
-  % Wiele z~tego można powtórzyć w~odniesieniu do~problemów nadfioletowych
-  % (\textsc{uv}, ang. \textit{ultraviolet problems}). Musimy zaznaczyć,
-  % że~z~punktu widzenia tego wystąpienia problemy nadfioletowe, \alert{nie}
-  % są problemami fizycznymi, lecz zagadnieniem technicznym, wynikającym
-  % z~braku w~pełni matematycznie ścisłych metod rachunkowych w~kwantowej
-  % teorii pola. Możemy o~nich porozmawiać podczas~Q\&A.
+  To samo, choć w~dużo mniejszej skali, można powiedzieć o~problemach
+  nadfioletowych (\textsc{uv}, ang. \textit{ultraviolet problems}).
+  Musimy zaznaczyć, że~z~punktu widzenia tego wystąpienia problemy
+  nadfioletowe, \alert{nie} są problemami fizycznymi, lecz kwestia
+  techniczną wynikającą z~braku w~pełni matematycznie ścisłych metod
+  rachunkowych w~kwantowej teorii pola. Możemy o~tym porozmawiać
+  podczas~Q\&A.
 
   Standardowo, w~większości wzorów przyjęto „$c = 1$”
   i~„\HorSpaceFour$\hbar = 1$”.
@@ -233,17 +204,6 @@ eprint=true,
 % ##################
 
 
-
-
-
-
-
-
-
-
-% ######################################
-\section{Problemy podczerwone i~nadfioletowe}
-% ######################################
 
 
 
@@ -268,8 +228,8 @@ eprint=true,
     \int\limits_{ \varepsilon }^{ \Lambda } \frac{ 1 }{ k } \, dk.
   \end{equation}
   Ponieważ ta całka jest rozbieżna w~granicy $\varepsilon \searrow 0$ to mówimy,
-  że~w~teorii występują \textbf{problemy podczerwone}. Dlatego, że~jest ona
-  rozbieżna w~granicy $\Lambda \nearrow +\infty$, to mówimy, że~obecne są
+  że~w~teorii występują \textbf{problemy podczerwone}. Ponieważ jest ona
+  rozbieżna w~granicy $\Lambda \nearrow +\infty$, to mówimy, że~są obecne
   \textbf{problemy nadfioletowe}.
 
 \end{frame}
@@ -285,7 +245,7 @@ eprint=true,
 
 
 % ######################################
-\section{Reguły nadwyboru, prawo Gaussa i~problemy podczerowne}
+\section{Główne rodzaje problemów podczerwonych}
 % ######################################
 
 
@@ -301,7 +261,7 @@ eprint=true,
     \Hcal_{ \HorSpaceTwo \text{phy} } =
     \Hcal_{ \HorSpaceTwo 0 } \oplus \Hcal_{ \HorSpaceTwo e }.
   \end{equation}
-  Jeśli $\psi \in \Hcal_{ 0 }$ to stan ten opisuje układ, którego całkowity
+  Jeśli $\psi \in \Hcal_{ 0 }$ to stan ten opisuje system, którego całkowity
   ładunek elektryczny jest równy~$0$. Analogicznie, jeśli
   $\psi \in \Hcal_{ e }$ to system ten ma całkowity ładunek elektryczny
   równy~$e$.
@@ -318,8 +278,8 @@ eprint=true,
   \end{equation}
   Czy ten stan ma sens fizyczny? W~zależności od wyniku pomiaru
   dostawalibyśmy stan zawierający całkowity ładunek elektryczny równy
-  $0$ lub $e$, co jest sprzeczne z~zasadą zachowania ładunku. Wobec tego
-  stwierdzamy, że~\alert{fizycznie} superpozycja stanów
+  $0$ lub $e$, co jest sprzeczne z~zasadą zachowania ładunku elektrycznego.
+  Wobec tego stwierdzamy, że~\alert{fizycznie} superpozycja stanów
   $\psi_{ \HorSpaceOne a }$, $\psi_{ \HorSpaceOne b }$ jest dopuszczona wtedy i~tylko
   wtedy, gdy $\psi_{ \HorSpaceOne a }, \psi_{ \HorSpaceOne b } \in \Hcal_{ \HorSpaceTwo 0 }$
   lub $\psi_{ \HorSpaceOne a }, \psi_{ \HorSpaceOne b } \in \Hcal_{ \HorSpaceTwo e }$.
@@ -336,17 +296,17 @@ eprint=true,
   \frametitle{Reguły nadwyboru}
 
 
-  Ogólną postać \textbf{regułę nadwyboru}, na potrzeby tego wystąpienia,
-  możemy sformułować w~następujący sposób. Przestrzeń Hilberta $\Hcal$ danej
-  teorii fizycznej rozkłada~się na sumę prostą podprzestrzeni
-  $\Hcal_{ \HorSpaceTwo i }$
+  Ogólną \textbf{regułę nadwyboru}, na potrzeby tego wystąpienia, możemy
+  sformułować w~następujący sposób. Przestrzeń Hilberta $\Hcal$ danej
+  teorii fizycznej
+  rozkłada~się na sumę prostą podprzestrzeni $\Hcal_{ \HorSpaceTwo i }$
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-03}
     \Hcal =
     \Hcal_{ \HorSpaceTwo 0 } \oplus \Hcal_{ \HorSpaceTwo 1 } \oplus
     \Hcal_{ \HorSpaceTwo 2 } \oplus \ldots,
   \end{equation}
-  i~suma stanów $\psi_{ a }$ i~$\psi_{ b }$ jest \alert{fizycznie} dopuszczalna
+  i~superpozycja stanów $\psi_{ a }$ i~$\psi_{ b }$ jest fizycznie dopuszczalna
   wtedy i~tylko wtedy, gdy $\psi_{ a }, \psi_{ b } \in \Hcal_{ \HorSpaceTwo i }$
   dla pewnego~$i$.
 
@@ -379,7 +339,7 @@ eprint=true,
     { \absOne{ \vecx } }.
   \end{equation}
   Z~drugiej strony jeśli oddziaływanie przenosi bozon o~masie $m$, wówczas
-  należy spodziewać~się potencjału w~formie
+  należy spodziewać~się potencjału posiadającego formę
   \colorhref{https://en.wikipedia.org/wiki/Hideki\_Yukawa}{Yukały}:
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-05}
@@ -392,7 +352,7 @@ eprint=true,
   gdzie $g_{ \HorSpaceOne \text{Yuk} }$ jest odpowiednikiem, z~grubsza, ładunku
   elektrycznego. Obliczając gradient tych potencjałów dostajemy
 
-  \vspace{-1.8em}
+  \vspace{-1.5em}
 
 
   \begin{subequations}
@@ -403,7 +363,7 @@ eprint=true,
       &= -\nabla V_{ \text{Cou} }( \vecx \HorSpaceOne ) =
         \frac{ \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q }
         { \absOne{ \vecx }^{ 2 } } \,
-        \widehat{ x }, \\
+        \widehat{ r }, \\
       \label{eq:Glowne-rodzaje-problemow-podczerwonych-06-B}
       \vec{ M }( \vecx \HorSpaceOne )
       &=
@@ -458,10 +418,10 @@ eprint=true,
 
 
   Widzimy więc, że~dla teorii z~bozonem o~masie spoczynkowej $m = 0$
-  całka ta jest stała, lecz gdy masa bozonu $m > 0$, to całka ta znika
-  w~granicy~$R \nearrow +\infty$. Pierwszy wynik to dobrze nam
+  całka ta pozostaje stała w~granicy $R \nearrow +\infty$, lecz gdy masa bozonu
+  $m > 0$, to całka ta w~tej granicy znika. Pierwszy wynik to dobrze nam
   znane prawo Gaussa, rachunek ten zaś miał służyć pokazaniu jego związek
-  z~masą bozonu danej teorii.
+  z~masą bozonu obecnego w~tej teorii.
 
 \end{frame}
 % ##################
@@ -484,7 +444,7 @@ eprint=true,
   \end{equation}
   jest zawsze spełniony w~teorii Clerka Maxwella, proszę przy prawa strona
   nie zależy od wyboru chwili $t$, bo ładunek jest zachowany. Niech $\vecn$
-  będzie dowolnym unormowanym wektorem w~$\Rbb^{ 3 }$: $\Vert \vecn \Vert = 1$.
+  będzie dowolnym unormowanym wektorem w~$\Rbb^{ 3 }$: $\Vert \vecn \Vert = 0$.
   Określamy asymptotyczne pole elektromagnetyczne:
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-09}
@@ -522,9 +482,9 @@ eprint=true,
   Istnieje nieskończenie wiele różnych pól $\vecEasm$, $\vecBasm$
   czyniących zadość prawu Gaussa wyrażonemu przez wzór
   \eqref{eq:Glowne-rodzaje-problemow-podczerwonych-08}. Do pola Coulomba
-  zadanego rozkładu ładunków zawsze można dodać dowolne swobodne pole
-  elektromagnetyczne, które ucieka „do nieskończoności” i~znika
-  jak~$r^{ -2 }$ dla~$r >> 1$ (pole promieniowania).
+  zadanego rozkładu ładunków zawsze można dodać dowolną kombinację
+  swobodnych fal elektromagnetycznych, które uciekają „do nieskończoności”
+  i~znikają jak $r^{ -2 }$ dla $r >> 1$.
 
   Jak powiedziano wcześniej, dla standardowego problemu rozpraszania,
   pola asymptotyczne nie zależą od~$t$. Prof. Herdegen stwierdził,
@@ -561,7 +521,7 @@ eprint=true,
   całkowanie „po sferze w~nieskończoności”.
 
   Przyjrzyjmy~się teraz tej nielokalności z~punktu widzenia algebraicznej
-  kwantowej teorii pola.
+  kwantowej teorii pola \textsc{aqft}.
 
 \end{frame}
 % ##################
@@ -660,7 +620,7 @@ eprint=true,
   Standardowo obserwable przypisujemy ograniczonym obszarom
   czasoprzestrzeni i~jeśli dwa z~nich są rozłączne przestrzenie to zawarte
   w~nich obserwable komutują $[ A, B ] = 0$. Pola $\vecEasm$,
-  $\vecBasm$ są zlokalizowane na „sferze w~nieskończoności”, która jest
+  $\vecBasm$a są zlokalizowane na „sferze w~nieskończoności”, która jest
   rozłączna przestrzennie z~dowolnym ograniczonym obszarem
   czasoprzestrzeni, więc są przemienne z~wszystkimi lokalnymi obserwablami.
 
@@ -672,7 +632,7 @@ eprint=true,
   Przestrzeń Hilberta rozkłada~się więc na \alert{nieprzeliczalną} sumę
   prostą odpowiednich sektorów, wyznaczonych przez asymptotyczny kształt
   pól. Nie będę ukrywał, że~właściwe zrozumienie sensu fizycznego tego
-  faktu, nie jest dla mnie rzeczą prostą.
+  faktu, nie jest dla mnie proste.
 
 \end{frame}
 % ##################
@@ -733,12 +693,13 @@ eprint=true,
   % ładunku elektrycznego.
 
   Reguła nadwyboru pól asymptotycznych $\vecEasm$, $\vecBasm$, przynajmniej
-  dla układu opisującego proces rozpraszania, oznacza, że~gdy w~jednej
-  chwili~$t$ ustalimy pola asymptotyczne, to już \alert{nigdy} nie możemy
-  ich zmienić. Postać tych pól ustalamy, choć zwykle nie jesteśmy tego
-  świadomi, podając dla wybranej chwili~$t$, gęstość
-  ładunku~$\rho( \vecx, t )$, gęstość prądu~$\vecj( \vecx, t )$ oraz pola
-  $\vecE( \vecx, t )$ i~$\vecB( \vecx, t )$.
+  dla układu
+  opisującego proces rozpraszania, oznacza, że~gdy w~jednej chwili~$t$
+  ustalimy pola asymptotyczne, to już \alert{nigdy} nie możemy ich zmienić.
+  Postać tych pól ustalamy, choć zwykle nie jesteśmy tego świadomi, podając
+  dla wybranej chwili~$t$, gęstość ładunku~$\rho( \vecx, t )$, gęstość
+  prądu~$\vecj( \vecx, t )$ oraz pola $\vecE( \vecx, t )$
+  i~$\vecB( \vecx, t )$.
 
   Przez analogię możemy powiedzieć, że~zbiór układów fizycznych rozpada~się
   na~rozłączne klasy „ponumerowane” postacią pól asymptotyczny
@@ -774,7 +735,7 @@ eprint=true,
   rozważania, możemy powiedzieć coś takiego. Elektrodynamika jest
   „symetryczna” względem wartości ładunku elektrycznego, bo teoria dopuszcza
   wszystkie jego wartości. Jednak każdy konkretny \alert{układ} nie jest
-  symetryczny w~tym sensie, bo~ma ustaloną wartość tego ładunku.
+  symetryczny w~tym sensie, bo~ma ustalony ładunek elektryczny.
 
   Tak samo elektrodynamika jako teoria jest symetryczna względem
   transformacji Lorentza, ale~każdy konkretny układ już tej symetrii jest
@@ -840,7 +801,7 @@ eprint=true,
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-13}
     P^{ \HorSpaceOne \mu } P_{ \mu } \psi  = m^{ \HorSpaceOne 2 } \psi, \quad
-    \psi \in \Hcal
+    \psi \in \Hcal,
   \end{equation}
   Argument Buchholza wskazuje, że~dla elektrodynamiki kwantowej taki
   stan~$\psi$ istnieje tylko dla $m^{ 2 } = 0$, czyli rozważony układ jest
@@ -848,13 +809,15 @@ eprint=true,
 
   Dlaczego tak jest? Intuicyjnie jego rozumowanie, po ogromny uproszczeniu,
   przebiega mniej więcej tak. Jeśli $\vecEasm \neq 0$ lub~$\vecBasm \neq 0$, to
-  elektron musi cały czas emitować niskoenergetyczne („miękkie”) fotony,
-  aby podtrzymać istnienie pól asymptotycznych.
+  elektron musi cały czas emitować niskoenergetyczne fotony, aby podtrzymać
+  istnienie pól asymptotycznych.
 
-  W~skutek emisji miękkich fotonu elektron doznaje lekkiego odrzutu, który
-  zmienia jego ruch. Wygląda to tak, jakby masa elektronu fluktuowała
-  w~czasie jego ruchu, nie może więc on być stanem własnym operatora
-  $P^{ \mu } P_{ \mu }$ do dyskretnej wartości własnej~$m^{ \HorSpaceOne 2 }$.
+
+  W~skutek emisji niskoenergetycznego fotonu elektron doznaje lekkiego
+  odrzutu, który zmienia jego ruch. Wygląda to tak, jakby masa
+  elektronu fluktuowała w~czasie jego ruchu, nie może więc on być stanem
+  własnym operatora $P^{ \mu } P_{ \mu }$ do dyskretnej wartości
+  własnej~$m^{ \HorSpaceOne 2 }$.
 
 \end{frame}
 % ##################
@@ -887,7 +850,7 @@ eprint=true,
   grupy Lorentza określają dwie liczby: $m^{ \HorSpaceOne 2 }$ i~$s$. Jak
   wynika z~zapisu, każdą taką reprezentację można jednoznacznie skojarzyć
   z~cząstką swobodną, która ma zadany kwadrat masy i~spin (przez relację
-  „$S^{ 2 } = s ( s + 1 )$”).
+  $S^{ 2 } = s ( s + 1 )$).
 
 \end{frame}
 % ##################
@@ -915,8 +878,7 @@ eprint=true,
       quantum fields and the~formation~of photon clouds}}
   \parencite{Mund-Rehren-Schroer-Infraparticle-quantum-fiels-ETC-Pub-2022}.
   W~pracy tej omówione są takie zagadnienia jak reguła nadwyboru pól
-  asymptotycznych, „rozmycie” masy cząstek naładowanych czy złamanie
-  symetrii Lorentza.
+  asymptotycznych, „rozmycie” masy czy złamanie symetrii Lorentza.
 
 \end{frame}
 % ##################
@@ -925,121 +887,121 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Problemy podczerwone w~teorii rozpraszania}
+% ##################
+\begin{frame}
+  \frametitle{Problemy podczerwone w~teorii rozpraszania}
 
 
-%   Rozważmy podstawowy problem z~teorii rozpraszania. Chcemy obliczyć
-%   przekrój czynny na proces rozpraszania w~którym przechodzimy ze~stanu
-%   dwóch elektronów~$\alpha$ do~stanu~$\beta$, oznaczamy go
-%   $\sigma_{ \HorSpaceOne \alpha, \HorSpaceOne \beta }$. Zachodzi,trochę symboliczna relacja
+  Rozważmy podstawowy problem z~teorii rozpraszania. Chcemy obliczyć
+  przekrój czynny na proces rozpraszania w~którym przechodzimy ze~stanu
+  dwóch elektronów~$\alpha$ do~stanu~$\beta$, oznaczamy go
+  $\sigma_{ \HorSpaceOne \alpha, \HorSpaceOne \beta }$. Zachodzi,trochę symboliczna relacja
 
-%   \vspace{-2.1em}
-
-
-%   \begin{equation}
-%     \label{eq:Glowne-rodzaje-problemow-podczerwonych-14}
-%     \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta } \sim
-%     \absOne{ S_{ \alpha, \HorSpaceOne \beta } }^{ 2 },
-%   \end{equation}
-
-%   \vspace{-1.8em}
+  \vspace{-2.1em}
 
 
-%   gdzie $S_{ \alpha, \HorSpaceOne \beta }$ to odpowiedni element macierzy~$S$. Elementu
-%   tego nie możemy obliczyć bezpośrednio, ze~względu na rozbieżności
-%   podczerwone, takie jak te zaznaczone na~slajdzie
-%   \eqref{sld-Problemy-podczerwone-i-nadfioletowe}, musimy więc wprowadzić
-%   parametr obcięcia $\varepsilon$. Poprzez wprowadzenie go blokujemy powstanie
-%   fotonów o~energii mniejszej niż~$\varepsilon$.
+  \begin{equation}
+    \label{eq:Glowne-rodzaje-problemow-podczerwonych-14}
+    \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta } \sim
+    \absOne{ S_{ \alpha, \HorSpaceOne \beta } }^{ 2 },
+  \end{equation}
 
-%   Nasza wiedza fizyczna wymaga, by na końcu przejść z~$\varepsilon$ do~zera,
-%   co daje nam
-
-%   \vspace{-2.3em}
+  \vspace{-1.8em}
 
 
-%   \begin{equation}
-%     \label{eq:Glowne-rodzaje-problemow-podczerwonych-15}
-%     \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta } \sim
-%     \lim_{ \varepsilon \searrow 0 }
-%     \absOne{ S_{ \alpha, \HorSpaceOne \beta }^{ \HorSpaceOne \varepsilon } }^{ 2 } = 0.
-%   \end{equation}
+  gdzie $S_{ \alpha, \HorSpaceOne \beta }$ to odpowiedni element macierzy~$S$. Elementu
+  tego nie możemy obliczyć bezpośrednio, ze~względu na rozbieżności
+  podczerwone, takie jak te zaznaczone na~slajdzie
+  \eqref{sld-Problemy-podczerwone-i-nadfioletowe}, musimy więc wprowadzić
+  parametr obcięcia $\varepsilon$. Poprzez wprowadzenie go blokujemy powstanie
+  fotonów o~energii mniejszej niż~$\varepsilon$.
 
-%   \vspace{-1.7em}
+  Nasza wiedza fizyczna wymaga, by na końcu przejść z~$\varepsilon$ do~zera,
+  co daje nam
 
-
-%   Mało który wynik fizyki teoretycznej jest tak sprzeczny z~rzeczywistością
-%   jak ten. Ale~się nie poddajemy.
-
-% \end{frame}
-% % ##################
+  \vspace{-2.3em}
 
 
+  \begin{equation}
+    \label{eq:Glowne-rodzaje-problemow-podczerwonych-15}
+    \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta } \sim
+    \lim_{ \varepsilon \searrow 0 }
+    \absOne{ S_{ \alpha, \HorSpaceOne \beta }^{ \HorSpaceOne \varepsilon } }^{ 2 } = 0.
+  \end{equation}
+
+  \vspace{-1.7em}
 
 
+  Mało który wynik fizyki teoretycznej jest tak sprzeczny z~rzeczywistością
+  jak ten. Ale~się nie poddajemy.
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Problemy podczerwone w~teorii rozpraszania}
-
-
-%   D.R. Yennie, S.C. Frautschi i~H.~Suura podali przepis rachunkowy na
-%   obliczenie, tzw. inkluzywnego przekroju czynnego, który na poziomie
-%   zgodności teorii z~eksperymentem rozwiązuje ten problem bardzo dobrze
-%   \parencite{Yennie-Frautschi-Suura-The-infrared-divergence-ETC-Pub-1961}.
-%   Idea ich podejścia jest następująca.
-
-%   Gdyby foton miał masę spoczynkową $m > 0$, to wówczas elektron
-%   potrzebowałby mieć energię kinetyczną $E_{ \text{kin} } \geq m$, aby móc
-%   wytworzyć pojedynczy foton. Ponieważ jednak foton jest bezmasowy, to
-%   elektron o~dowolnej energii $E_{ \text{kin} } > 0$ jest w~stanie
-%   wytworzyć \alert{dowolną} ilość fotonów, pod warunkiem, że~ich sumaryczna
-%   energia jest odpowiednio mała. Z~drugiej strony czułość każdego detektora
-%   jest skończona i~nie jest w~stanie on wykrywać fotonów o~energii niższej,
-%   niż pewna energia progowa $E_{ \HorSpaceOne \text{thre} } > 0$.
-%   % thre - threshold
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Problemy podczerwone w~teorii rozpraszania}
+% ##################
+\begin{frame}
+  \frametitle{Problemy podczerwone w~teorii rozpraszania}
 
 
-%   Wobec tego, należy przyjąć, że~każdy proces rozpraszania dwóch elektronów
-%   zawiera pewną liczbę miękkich fotonów (ang. \textit{soft photons}),
-%   których detektor był w~stanie zarejestrować. Nasza metoda powinna być
-%   inkluzywna ze względu na te niezarejestrowane fotony, co prowadzi nas do
-%   wzoru
-%   \begin{equation}
-%     \label{eq:Glowne-rodzaje-problemow-podczerwonych-16}
-%     \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta }^{ \HorSpaceOne \text{inc} } \sim
-%     \lim_{ \varepsilon \searrow 0 } \sum_{ n = 0 }^{ \infty }
-%     \absOne{ S_{ \alpha, \HorSpaceOne \beta_{ \HorSpaceOne n } }^{ \HorSpaceOne \varepsilon } }^{ 2 },
-%   \end{equation}
-%   gdzie $\beta_{ \HorSpaceOne n }$ oznacza stan, który poza cząstkami obecnymi
-%   w~stanie $\beta$ zawiera $n$~miękkich fotonów o~energii poniżej progu
-%   czułości detektora.
+  D.R. Yennie, S.C. Frautschi i~H.~Suura podali przepis rachunkowy na
+  obliczenie, tzw. inkluzywnego przekroju czynnego, który na poziomie
+  zgodności teorii z~eksperymentem rozwiązuje ten problem bardzo dobrze
+  \parencite{Yennie-Frautschi-Suura-The-infrared-divergence-ETC-Pub-1961}.
+  Idea ich podejścia jest następująca.
 
-%   Choć ten przepis prowadzi do bardzo dobrych przewidywań, nie potrafimy
-%   go w~sposób satysfakcjonujący wyprowadzić z~kwantowej teorii pola.
-%   Osobom zainteresowany tym tematem polecam lekturę artykułu Pawła Ducha
-%   i~Wojciecha Dybalskiego \colorhref{https://arxiv.org/abs/2307.06114}{
-%     \textit{Infrared problem in quantum electrodynamics}}
-%   \parencite{Duch-Dybalski-Infrared-problem-in-quantum-electrodynamics-Pub-2023}
-%   i~\colorhref{https://arxiv.org/abs/1906.00940}{\textit{Infrared problem\ldots}}
-%   pierwszego z~tych autorów
-%   \parencite{Duch-Infrared-problem-in-perturbative-quantum-ETC-Pub-2021}.
+  Gdyby foton miał masę spoczynkową $m > 0$, to wówczas elektron
+  potrzebowałby mieć energię kinetyczną $E_{ \text{kin} } \geq m$, aby móc
+  wytworzyć pojedynczy foton. Ponieważ jednak foton jest bezmasowy, to
+  elektron o~dowolnej energii $E_{ \text{kin} } > 0$ jest w~stanie
+  wytworzyć \alert{dowolną} ilość fotonów, pod warunkiem, że~ich sumaryczna
+  energia jest odpowiednio mała. Z~drugiej strony czułość każdego detektora
+  jest skończona i~nie jest w~stanie on wykrywać fotonów o~energii niższej,
+  niż pewna energia progowa $E_{ \HorSpaceOne \text{thre} } > 0$.
+  % thre - threshold
 
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy podczerwone w~teorii rozpraszania}
+
+
+  Wobec tego, należy przyjąć, że~każdy proces rozpraszania dwóch elektronów
+  zawiera pewną liczbę miękkich fotonów (ang. \textit{soft photons}),
+  których detektor był w~stanie zarejestrować. Nasza metoda powinna być
+  inkluzywna ze względu na te niezarejestrowane fotony, co prowadzi nas do
+  wzoru
+  \begin{equation}
+    \label{eq:Glowne-rodzaje-problemow-podczerwonych-16}
+    \sigma_{ \HorSpaceOne \alpha, \HorSpaceTwo \beta }^{ \HorSpaceOne \text{inc} } \sim
+    \lim_{ \varepsilon \searrow 0 } \sum_{ n = 0 }^{ \infty }
+    \absOne{ S_{ \alpha, \HorSpaceOne \beta_{ \HorSpaceOne n } }^{ \HorSpaceOne \varepsilon } }^{ 2 },
+  \end{equation}
+  gdzie $\beta_{ \HorSpaceOne n }$ oznacza stan, który poza cząstkami obecnymi
+  w~stanie $\beta$ zawiera $n$~miękkich fotonów o~energii poniżej progu
+  czułości detektora.
+
+  Choć ten przepis prowadzi do bardzo dobrych przewidywań, nie potrafimy
+  go w~sposób satysfakcjonujący wyprowadzić z~kwantowej teorii pola.
+  Osobom zainteresowany tym tematem polecam lekturę artykułu Pawła Ducha
+  i~Wojciecha Dybalskiego \colorhref{https://arxiv.org/abs/2307.06114}{
+    \textit{Infrared problem in quantum electrodynamics}}
+  \parencite{Duch-Dybalski-Infrared-problem-in-quantum-electrodynamics-Pub-2023}
+  i~\colorhref{https://arxiv.org/abs/1906.00940}{\textit{Infrared problem\ldots}}
+  pierwszego z~tych autorów
+  \parencite{Duch-Infrared-problem-in-perturbative-quantum-ETC-Pub-2021}.
+
+\end{frame}
+% ##################
 
 
 
@@ -1051,14 +1013,14 @@ eprint=true,
 
 
   Na chwilę obecną nie istnieje matematycznie ścisły sposób konstrukcji
-  kwantowej elektrodynamiki w~$3 + 1$ wymiarach, dlaczego więc, z~punktu
+  kwantowej elektrodynamiki w~$1 + 3$ wymiarach, dlaczego więc, z~punktu
   widzenia dla której matematyczna spójność jest ważna, warto zajmować~się
   problemami podczerwonymi, zanim taki model kwantowej elektrodynamiki
-  zostanie zbudowany? Tutaj odwołam~się do opinii prof.~Herdegena (zob.
-  str.~2,
-  \parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}).
+  zostanie zbudowany? Tutaj odwołam~się do słów prof. Herdegena (zob.
+  str.~2
+  w~\parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}).
 
-  Po pierwsze, w~granicy asymptotycznej większość dynamiki pola
+  Po pierwsze, w~granicy asymptotycznej większość elementów dynamiki pola
   powinna tracić znaczenie. Jest więc prawdopodobne, że~teoria problemów
   podczerwonych oparta na solidnych podstawach fizycznych, będzie zgodna
   z~tą wyprowadzoną z~pełnego, ścisłego modelu elektrodynamiki kwantowej
@@ -1144,7 +1106,7 @@ eprint=true,
   \frametitle{Problem pól asymptotycznych}
 
 
-  Przeciwne spojrzenie na te zagadnienia prezentuje~się następująco.
+  Przeciwne spojrzenie na ten problemy prezentuje~się następująco.
 
   \begin{itemize}
 
@@ -1158,7 +1120,7 @@ eprint=true,
   \item[2)] W~klasycznym przypadku, w~teorii rozpraszania swobodne pola
     muszą mieć silne zachowanie podczerwone i~wszystkie ich stopnie swobody
     są niezależne. W~teorii kwantowej lokalne pole swobodne ma naturalne
-    rozszerzenie, zawierające pola wykazujące silne zachowanie podczerwone.
+    rozszerzenie, zawierające pola wykazujące podczerwone zachowanie.
 
   \end{itemize}
 
@@ -1209,7 +1171,7 @@ eprint=true,
   uproszczeniu prof. Staruszkiewicz wykazał, że~istnieje funkcja
   $f\big( \HorSpaceOne \vecp, \vecEasm, \vecBasm \big)$, taka
   że~przesunięcie fazowe $\delta( \HorSpaceOne \vecp \HorSpaceOne )$ jakiego
-  dozna ta fala po przejściu przez pole
+  dozna ta fala wyraża się wzorem
 
   \vspace{-1em}
 
@@ -1218,7 +1180,7 @@ eprint=true,
     \label{eq:Pola-asymptotyczne-i-efekt-pamieci-01}
     \delta( \HorSpaceOne \vecp \HorSpaceOne ) =
     -\frac{ e }{ 2\pi }
-    \int \frac{ f\!\big( \HorSpaceOne \vecp, \vecEasm,
+    \int \frac{ f\big( \HorSpaceOne \vecp, \vecEasm,
       \vecBasm \big) }{ u( \HorSpaceOne \vecp, l ) } \,
     d^{ \HorSpaceOne 2 } l.
   \end{equation}
@@ -1333,8 +1295,9 @@ eprint=true,
   częściej przytaczane w~literaturze dotyczącej~\textsc{stw}.
 
   Obecnie jestem w~trakcie przygotowywania notatek na temat tych własności
-  do cyklu seminariów \textsc{nkf}u, starając~się możliwie uprościć ich
-  wykład, dlatego wolę dzisiaj nie wchodzić w~nie.
+  do cyklu seminariów \textsc{nkf}u, ciągle wynajdując dość proste
+  geometryczne ich wyjaśnienia, dlatego wolę~się dzisiaj nie zagłębiać~się
+  przesadnie w~ten temat.
 
 \end{frame}
 % ##################
@@ -1355,8 +1318,8 @@ eprint=true,
   i~zwykle mają tylko charakter pomocniczy w~stosunku do prawdziwie
   „fizycznych” wielkości.
 
-  Wydaje~się, że~pierwszą osobą, która postawiła pytanie o~możliwość
-  uczynienie pól asymptotycznych zmiennymi kwantowymi, był właśnie
+  Wydaje~się, że~pierwszą osobą, która postawiła pytanie o~uczynienie pól
+  asymptotycznych zmiennymi prawdziwie kwantowymi, był właśnie
   prof.~Staruszkiewicz, inspiracja zaś wypłynęła z~jego pracy o~efekcie
   pamięci. Podał on teorię, która zasadniczo sprowadza~się do kwantowej
   teorii pola Coulomba w~nieskończoności przestrzennopodobnej
@@ -1414,12 +1377,16 @@ eprint=true,
   kwantyzacji na solidnym gruncie.
 
   Dla przypadku pola elektromagnetycznego badane są jego asymptotyki
-  w~„świetlnej nieskończoności” (sferze dwuwymiarowej opisującej, gdzie
-  dotrze światło po nieskończonym czasie), korzystając z~funkcji
-  jednorodnych i~dobrych własności ich całkowania po kierunkach świetlnych.
-  Analogiczne badanie jest przeprowadzone dla czasopodobnej przyszłości dla
-  pola Diraca. Jak sam ten opis wskazuje, geometryczne własności
-  czasoprzestrzeni Minkowskiego są w~niej mocno wykorzystywane.
+  w~świetlnej nieskończoności, korzystając z~funkcji jednorodnych i~dobrych
+  własności ich całkowania po kierunkach świetlnych. Analogiczne badanie
+  jest przeprowadzone dla czasopodobnej przyszłości dla pola Diraca. Jak
+  sam ten opis wskazuje, geometryczne własności czasoprzestrzeni
+  Minkowskiego są w~niej mocno wykorzystywane.
+
+  Pomimo braku dowodów dla pewnych jawnie zapostulowanych własności
+  oddziałujące teorii pola elektromagnetycznego i~pola Diraca, poza tym jej
+  fragmentem praca jest matematycznie ścisła i~zawiera wiele interesujących
+  wyników.
 
 \end{frame}
 % ##################
@@ -1432,11 +1399,6 @@ eprint=true,
 \begin{frame}
   \frametitle{Struktura asymptotyczna klasycznej elektrodynamiki}
 
-
-  Pomimo braku dowodów dla pewnych jawnie zapostulowanych własności
-  oddziałujące teorii pola elektromagnetycznego i~pola Diraca, poza tym jej
-  fragmentem praca jest matematycznie ścisła i~zawiera wiele interesujących
-  wyników.
 
   Wśród nich należy wymienić procedurę obliczania całkowitego momentu pędu
   pola elektromagnetycznego (rozbieżne całki i~jak ich uniknąć), rozkład
@@ -1449,39 +1411,6 @@ eprint=true,
   można~się pozbyć wprowadzając nielokalną transformację pola Diraca. Jeśli
   zostanie to wykonane, to wówczas można otrzymać wyniki zgodne
   z~wcześniejszymi pracami prof. Staruszkiewicza.
-
-  % W~mojej ocenie ten artykuł jest bardzo wartościowy i~wart dokładnego
-  % studiowania w~roku $2025$, ze względu na duże zainteresowanie problemami
-  % podczerwonymi w~ostatnich latach.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Struktura asymptotyczna klasycznej elektrodynamiki}
-
-
-  % Pomimo braku dowodów dla pewnych jawnie zapostulowanych własności
-  % oddziałujące teorii pola elektromagnetycznego i~pola Diraca, poza tym jej
-  % fragmentem praca jest matematycznie ścisła i~zawiera wiele interesujących
-  % wyników.
-
-  % Wśród nich należy wymienić procedurę obliczania całkowitego momentu pędu
-  % pola elektromagnetycznego (rozbieżne całki i~jak ich uniknąć), rozkład
-  % energii i~pędu systemu na sumę energii oraz pędu asymptotycznych pól
-  % promieniowania i~materii oraz brak analogicznego wyniku dla momentu pędu.
-  % W~tym ostatnim przypadku pojawia~się człon zawierający wkład do momentu
-  % pędu zarówno od pól Coulomba jak i~od fal elektromagnetycznych.
-
-  % Należy dodać, że~tego członu łączącego wkład materii i~promieniowania
-  % można~się pozbyć wprowadzając nielokalną transformację pola Diraca. Jeśli
-  % zostanie to wykonane, to wówczas można otrzymać wyniki zgodne
-  % z~wcześniejszymi pracami prof. Staruszkiewicza.
 
   W~mojej ocenie ten artykuł jest bardzo wartościowy i~wart dokładnego
   studiowania w~roku $2025$, ze względu na duże zainteresowanie problemami
@@ -1510,11 +1439,12 @@ eprint=true,
   studiowania, podbudowanego dużą wiedzą i~zrozumieniem matematyki.
   W~poniższej dyskusji musieliśmy bardzo wiele elementów uprościć.
 
-  W~pracy tej podjęte jest problem skwantowania pola elektromagnetycznego,
-  wraz z~polem Diraca, przy przyjęciu założenia, że~pole Coulomba jest
-  nierozerwalnie związane z~elektronem. Bazuje ona przy tym bardzo mocno
-  na badaniach z~poprzedniej pracy, na temat zachowania pola
-  w~„świetlnej nieskończoności”.
+  Główny wątek tej pracy można, znów w~dużym uproszczeniu, opisać
+  w~następujący sposób. Z~omówionej poprzednio pracy prof.~Herdegena
+  wiemy jak wyglądają warunki asymptotyczne w~„świetlnej nieskończoności”.
+  Mechanika Newtona w~sformułowaniu hamiltonowskim i~nierelatywistyczna
+  mechanika kwantowa uczą nas, jak wychodząc ze struktury symplektycznej
+  klasycznej teorii sformułować warunku określające teorię kwantową.
 
 \end{frame}
 % ##################
@@ -1529,23 +1459,23 @@ eprint=true,
     elektrodynamiki}
 
 
-  Mechanika Newtona w~sformułowaniu hamiltonowskim i~nierelatywistyczna
-  mechanika kwantowa uczą nas, jak wychodząc ze struktury symplektycznej
-  klasycznej teorii sformułować warunku określające teorię kwantową.
-  W~wielkim uproszczeniu, nawias Poissona przechodzi w~komutator między
-  operatorami.
-  \begin{equation}
-    \label{eq:Wybrane-badania-ETC-01}
-    \{ \HorSpaceTen f, g \}_{ \, \text{Poi} } \leftrightarrow
-    [ \HorSpaceEleven \widehat{ f }, \widehat{ g } \, ]
-  \end{equation}
-  Zaś nawias Poissona wynika z~pewnego symplektycznego iloczynu skalarnego.
-
   Rozważmy teraz funkcje gładkie o~zwartym nośniku (znikające poza kulą
   o~skończonym promieniu), który to nośnika zawarty jest  w~„świetlnej
   nieskończoności”. Dla tych funkcji możemy określić symplektyczny iloczyn
-  skalarny, czyli można określić analog nawiasu Poissona z~mechaniki
-  Newtona.
+  skalarny.
+
+  Następnie korzystamy z~twierdzenia
+  \colorhref{https://en.wikipedia.org/wiki/Hermann_Weyl}{Weyl’a},
+  które mówi jak dla danej przestrzeni symplektycznej stworzyć algebrę
+  $C^{ \HorSpaceOne * }$
+  (zob. tom drugi książki Brattelego i~Robinsona
+  \parencite{Bratteli-Robinson-Operator-algebras-ETC-Vol-I-Pub-2002}).
+  Osoby znające trochę algebraiczną kwantową teorią pola wiedzą, że~to
+  zasadniczo pozwala nam mówić o~teorii kwantowej.
+
+  Pojawia~się problem, że~startują z~przestrzeni symplektycznej funkcji
+  o~zwartym nośniku możemy otrzymać tylko \alert{lokalne} obserwable,
+  więc z~oczywistych względów nie obejmują one pól asymptotycznych.
 
 \end{frame}
 % ##################
@@ -1593,37 +1523,12 @@ eprint=true,
     elektrodynamiki}
 
 
-  Następnie prof. Herdegen korzysta z~twierdzenia
-  \colorhref{https://en.wikipedia.org/wiki/Hermann_Weyl}{Weyl’a},
-  które mówi jak dla danej przestrzeni symplektycznej stworzyć algebrę
-  $C^{ \HorSpaceOne * }$ (zob. tom drugi książki Brattelego i~Robinsona
-  \parencite{Bratteli-Robinson-Operator-algebras-ETC-Vol-I-Pub-2002}).
-  Osoby znające trochę algebraiczną kwantową teorią pola wiedzą, że~to
-  zasadniczo pozwala nam mówić o~teorii kwantowej.
-
-  Pojawia~się problem, że~startują z~przestrzeni symplektycznej funkcji
-  o~zwartym nośniku możemy otrzymać tylko \alert{lokalne} obserwable,
-  więc z~oczywistych względów nie obejmują one pól asymptotycznych.
-
   By temu zaradzić prof.~Herdegen rozszerza algebrę pól asymptotycznych.
   w~następujący sposób. Obok funkcji gładkich o~zwartym nośniku
   w~„świetlnej nieskończoności” do przestrzeni symplektycznej dodawane
   są pewne odpowiednio szybko gasnące funkcje. Procedura ta nie jest wcale
   tak prosta jakby~się zdawało, bo trzeba zagwarantować, że~rozszerzona
   przestrzeń też jest przestrzenią symplektyczną.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Konstrukcja nielokalnej asymptotycznej
-    elektrodynamiki}
-
 
   Twierdzenie Weyl’a zastosowane do nowej przestrzeni symplektycznej daje
   nam algebrę $C^{ \HorSpaceOne * }$, z~tą różnicą, że~elementy
@@ -1636,38 +1541,8 @@ eprint=true,
   \colorhref{https://en.wikipedia.org/wiki/Direct\_integral}{całek prostych}
   przestrzeni Hilberta, ale~to temat na zupełnie osobne spotkanie.
 
-  W~ten sposób utworzona zostaje algebra i~jej reprezentację
-  na tyle dużą, by objęła operatory kreacji i~anihilacji bozonów
-  oraz~fermionów, a~także kwantowe pola asymptotyczne elektrodynamiki.
-  Znalazł też warunek na to, by w~teorii opisywanej taką algebrą ładunek
-  elektryczny był skwantowany, por. \textit{Colloraly $3.1$}
-  i~poprzedzający ją dyskusja
-  w~\parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}.
-
-  % Prace naukowe prof.~Herdegena nie ograniczają~się do problemów
-  % podczerownych, ale stanowią one główny temat jego zainteresowań. Choć nie
-  % możemy ich omówić tutaj, to chcielibyśmy wspomnieć o~kilku jego dalszych
-  % pracach ich dotyczących:
-  % \colorhref{https://arxiv.org/abs/1210.1731}{\textit{Infraparticle problem,
-  %     asymptotic fields and Haag-Ruelle theory}} z~$2013$ roku
-  % \parencite{Herdegen-Infraparticle-Problem-Asymptotic-Fields-ETC-Pub-2013},
-  % napisaną razem z~Pawłem Duchem \colorhref{https://arxiv.org/abs/1410.7665}
-  % {\textit{Massless asymptotic fields and~Haag-Ruelle theory}} z~$2014$
-  % \parencite{Duch-Herdegen-Massless-asymptotic-fields-and-ETC-Pub-2014},
-  % \colorhref{https://arxiv.org/abs/2012.14170}
-  % {\textit{Infrared problem vs gague choice: scattering~of classical Dirac
-  %     field}} z~$2021$
-  % \parencite{Herdegen-Infrared-Problem-vs-Gauge-Choice-ETC-Ver-2021},
-  % \colorhref{https://arxiv.org/abs/2107.02044}{\textit{Almost radial
-  %     gauge}} z~$2022$
-  % \parencite{Herdegen-Almost-radial-gauge-ETC-Pub-2022}
-  % i~\colorhref{https://arxiv.org/abs/2310.20560}
-  % {\textit{Undressing the~electron}} z~$2024$
-  % \parencite{Herdegen-Undressing-the-electron-Pub-2024}.
-
 \end{frame}
 % ##################
-
 
 
 
@@ -1679,28 +1554,18 @@ eprint=true,
     elektrodynamiki}
 
 
-  % Twierdzenie Weyl’a zastosowane do nowej przestrzeni symplektycznej daje
-  % nam algebrę $C^{ \HorSpaceOne * }$, z~tą różnicą, że~elementy
-  % odpowiadające gasnącym funkcją „generują” w~pewnym konkretnym sensie
-  % \alert{nielokalne} elementy tej algebry.
-
-  % Z~mojego punktu widzenia szczególnie trudną częścią pracy jest utworzenie
-  % reprezentacji tej algebry. Prof.~Herdegen jest w~stanie to zrobić
-  % korzystając z~odpowiednich
-  % \colorhref{https://en.wikipedia.org/wiki/Direct\_integral}{całek prostych}
-  % przestrzeni Hilberta, ale~to temat na zupełnie osobne spotkanie.
-
-  % W~ten sposób utworzona zostaje algebra z~reprezentacją
-  % na tyle dużą, by objęła operatory kreacji i~anihilacji bozonów
-  % i~fermionów, a~także odpowiednie pola asymptotyczne elektrodynamiki.
-  % Znalazł też warunek na to, by w~teorii opisywanej taką algebrą ładunek
-  % elektryczny był skwantowany, por. \textit{Colloraly $3.1$}
-  % i~poprzedzający ją dyskusja
-  % w~\parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}.
+  Podsumowując w~tej pracy prof.~Herdegen zbudował algebrę z~reprezentacją
+  na tyle dużą, by objęła operatory kreacji i~anihilacji bozonów
+  i~fermionów, a~także odpowiednie pola asymptotyczne elektrodynamiki.
+  Znalazł też warunek na to, by w~teorii opisywanej taką algebrą ładunek
+  elektryczny był skwantowany, por. \textit{Colloraly $3.1$}
+  i~poprzedzający ją dyskusja
+  w~\parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}.
 
   Prace naukowe prof.~Herdegena nie ograniczają~się do problemów
   podczerownych, ale stanowią one główny temat jego zainteresowań. Choć nie
-  możemy ich omówić tutaj, chcielibyśmy wymienić kilka ich z~nazwy.
+  możemy ich omówić tutaj, to chcielibyśmy wspomnieć o~kilku jego dalszych
+  pracach ich dotyczących:
   \colorhref{https://arxiv.org/abs/1210.1731}{\textit{Infraparticle problem,
       asymptotic fields and Haag-Ruelle theory}} z~$2013$ roku
   \parencite{Herdegen-Infraparticle-Problem-Asymptotic-Fields-ETC-Pub-2013},
@@ -1717,14 +1582,6 @@ eprint=true,
   i~\colorhref{https://arxiv.org/abs/2310.20560}
   {\textit{Undressing the~electron}} z~$2024$
   \parencite{Herdegen-Undressing-the-electron-Pub-2024}.
-
-  Jak wskazuje tytuł \colorhref{https://arxiv.org/abs/2310.20560}
-  {\textit{Undressing the~electron}} dotyczy ona problemu wersji
-  elektrodynamiki, w~której zdejmujemy z~elektronu chmurę „miękkich”
-  fotonów, ale pozostawiamy mu jego pole Coulombowskie.
-
-  Jak widać, problemy podczerwone i~ich badania, to dziedzina która ma
-  przed sobą przyszłość.
 
 \end{frame}
 % ##################
