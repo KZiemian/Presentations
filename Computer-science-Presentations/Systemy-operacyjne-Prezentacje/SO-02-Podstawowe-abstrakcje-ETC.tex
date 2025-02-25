@@ -1,0 +1,2860 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{Wprowadzenie do przedmiotu}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 62k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Włączanie powłoki, przypomnienie}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Powłoka BASH}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:BASH-shell}
+
+    \centering
+
+
+    \includegraphics[scale=0.23]
+    {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
+
+
+    \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
+      głównego narzędzia pracy na tym przedmiocie.}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Postęp technologiczny}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:Evolution-of-OS}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Włączanie powłoki}
+
+
+  Naszym główny narzędziem na tych zajęciach będzie powłoka \textsc{bash},
+  więc upewnijmy~się, że~umiemy ją włączyć, co na samy początku może być
+  naprawdę niewdzięcznym zadaniem. W~pierwszym kroku proszę wcisnąć
+  \texttt{Ctrl-Alt-t} i~zobaczyć, czy powłoka~się otworzyć.
+
+  Jeśli to nie zadziała, to proszę pochodzić kursorem po ekranie,
+  aż~znajdziemy okienko „Szukaj”, „Wyszukaj”, etc. Proszę tam wpisać
+  „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy wyświetli~się
+  odpowiednia ikona.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Pliki i~procesy}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pliki i~procesy}
+
+
+  Dwie podstawowe abstrakcje, których będziemy używać na tym kursie,
+  to~\textbf{pliki} i~\textbf{procesy}. Nie wnikając w~szczegóły wystarczy
+  nam stwierdzenie, że~plik czymś jest, a~proces coś robi. Warto tutaj
+  przytoczyć następujące powiedzenie, które funkcjonuje w~wielu różnych
+  wersjach, nie zawsze odnoszących się do sytemu Linux.
+
+  \textit{Wszystko w~systemie Linux jest plikiem. Jeśli coś nie jest
+    plikiem to jest procesem.}
+
+  Inaczej mówiąc, jeśli na komputerze znajdują~się jakieś dane, to są
+  wewnątrz jakiegoś pliku. Jeśli komputer coś robi, to jest za to
+  odpowiedzialny odpowiedni proces. Ponieważ pliki są mniej abstrakcyjne
+  (hehe), zaczniemy nasze zajęcia od zaznajomieniem~się z~pracą z~plikami.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rozwój GNU/Linuxa}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \label{fig:Evolution-of-OS}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.3]
+%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bardzo ważne}
+
+
+%   Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
+%   na~dowolne związany z~nimi temat. W~szczególności \alert{należy} zadawać
+%   pytania, jeśli coś jest niezrozumiałe albo niejasne. Ten kurs ma być
+%   wstępem do systemu operacyjnego GNU/Linux, \alert{nie} zakładamy, że~są
+%   Państwo doświadczonymi administratorami tego systemu. Byłoby to bardzo
+%   niewłaściwe założenie.
+
+%   Proszę pamiętać, że~gdy chodzi o~tematy związane z~zajęciami \alert{nie}
+%   ma pytań zbyt elementarnych czy głupich. Są~tylko niezadowalające
+%   odpowiedzi udzielane na~Państwa pytania. Jesteśmy tutaj by Państwu pomóc
+%   w~zaznajomieni~się z~pracą z~systemem operacyjnym na głębszym poziomie,
+%   pytania z~Państwa strony bardzo ułatwiają nam to zadanie. Zadawanie pytań
+%   nie oznacza, że~ktoś czegoś nie umie, tylko że~chce~się czegoś nauczyć.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bardzo ważne}
+
+
+%   Pytanie można i~\alert{należy} zadawać w~trakcie zajęć, po zajęciach, jak
+%   też pisząc na adres \email. Przy pisaniu na e-maila prosimy o~nadawanie
+%   tytułów postaci „Pytanie o X”, „Pytanie z przedmiotu >>Systemy
+%   operacyjne<<”,~etc. W~trakcie semestru zwykle dostaję dużą ilość
+%   wiadomości z~zestawami zadań i~pojedynczy e-mail z~nic nie mówiącym
+%   tytułem, łatwo zginie w~nich
+
+%   Pytania typu „Jaki jest obecny kierunek rozwoju gry \textit{Path~of
+%     Exile~2}?” musimy jednak zostawić na~czas po zajęciach.
+
+%   Ten kurs jest tylko \alert{wstępem} do~systemów operacyjnych. Ze~względu
+%   na rozmiar i~poziom skomplikowania tej dziedziny, dużą liczbę rzeczy
+%   będziemy musieli \alert{upraszczać}. Proszę więc pamiętać, że~choć
+%   staramy~się przekazywać rzetelną wiedzę, to to co mówimy będzie w~wielu
+%   wypadkach bardzo mocny uproszczeniem rzeczywistości.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Podstawy GNU/Linuxa: włączanie powłoki}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Powłoka BASH}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \label{fig:BASH-shell}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.23]
+%     {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
+
+
+%     \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
+%       głównego narzędzia pracy na tym przedmiocie.}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Postęp technologiczny}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \label{fig:Evolution-of-OS}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.3]
+%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Włączanie powłoki}
+
+
+%   Naszym główny narzędziem na tych zajęciach będzie powłoka \textsc{bash}.
+%   Jej włączenie na samym początku potrafi być bardzo niewdzięcznym zadaniem.
+%   W~pierwszym kroku proszę wcisnąć \texttt{Ctrl-Alt-t} i~zobaczyć, czy
+%   powłoka~się otworzyć.
+
+%   Jeśli to nie zadziała, to proszę pochodzić kursorem po ekranie,
+%   aż~znajdziemy okienko „Szukaj”, „Wyszukaj”, etc. Proszę tam wpisać
+%   „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy wyświetli~się
+%   odpowiednia ikona. O~tym czy~się różni pojęcie „powłoki” od „terminala”
+%   czy „konsoli” powiem potem. Nie jest to jakaś szczególnie ważna rzecz.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Zajęcia, konsultacje, sposób zaliczenia}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Charakter zajęć}
+
+
+%   Wykład zwykle ma bardziej charakter teoretyczny, a~te zajęcia
+%   \alert{praktyczny}. Pewna ilość teorii musi~się tu pojawić,
+%   ale~będziemy~się starali ją minimalizować.
+
+%   Możemy ustalić jeden termin na konsultacje, ale moje doświadczenie mówi,
+%   że~to nie jest dobry pomysł. W~zasadzie nikt wtedy nie przychodzi, a~ja
+%   wyznaję zasadę, że~konsultacje są dla Państwa, nie dla mnie. Jeśli Państwo
+%   chcą ustalenia takiego terminu, to najlepiej byłoby, gdy Państwo ustalili
+%   wspólnie jakiś termin, a potem przesłali mi informacji o~swoim wyborze.
+
+%   W~przeciwny razie zawsze można do mnie napisać z~prośbą o~konsultacje
+%   indywidualne, choćby pisząc na~adres \email. Ponawiam prośbę o~nadawanie
+%   e-mailom tytułów typu „Prośba o~konsultacje”, „Konsultacje z~przedmiotu
+%   Systemy operacyjne”,~etc. Po prostu e-mail z~nazwą „Systemy operacyjne”
+%   łatwo umknie mojej uwadze wśród wielu mu podobnych, a~tego nie chcę.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \label{fig:Jak-to-bywa-na-zajeciach}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.42]
+%     {./Presentations-pictures/Miscancellous-pictures/Jak-to-bywa-na-zajeciach.jpeg}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Nagrywanie zajęć}
+
+
+%   Będę~się starał nagrywać na \textsc{ms}~Teamsach każde nasze spotkanie.
+%   Proszę mi o~tym ciągle przypominać, bo jestem roztrzepany i~któregoś
+%   razu o~tym zapomnę.
+
+%   Proszę mi też zwracać uwagę, że~na ekranie czegoś nie widać,
+%   że~czcionka za mała, że~kolory kłują w~oczy, że~nagrany dźwięk
+%   jest niskiej jakości,~etc. Zajęcia są dla Państwa, naszym obowiązkiem jest
+%   dostarczyć Państwu najlepszej jakości materiały do nauki jakie jesteśmy
+%   w~stanie stworzyć.
+
+%   Niestety, jakość dźwięku to coś, na co mamy mały wpływ. Mogę~się starać
+%   mówić możliwie blisko mikrofonu, ale nie wiem co więcej mogę zrobić.
+%   Poza tym, na~pewno nie wyjdzie zbyt dobrze, bo te zajęcia często wymagają
+%   bym~się poruszał, poza tym w~którymś momencie na pewno o~tym zapomnę.
+%   Swoje uwagi na temat jakości nagrań proszę kierować do ludzi
+%   odpowiedzialnych za~sprawy studenckie na \textsc{wsz}i\textsc{b}ie.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Sposób uzyskania zaliczania}
+
+
+%   Można też uzyskać zaliczenie zaoczne, proszę~się w~tej sprawie zwrócić
+%   do~mnie, osobiście lub piszą pod adres \email. Jak poprzednio, proszę
+%   o~nadanie e-mailowi nazwy tłumaczącej jego treść.
+
+%   Zaliczenie zdobywa~się na podstawie zadań domowych i~jednego albo dwóch
+%   testów, za~które otrzymają Państwo punkty. Za każdy z~testów będzie do
+%   zdobycie 10 punktów. Punktacje zestawów zadań zależą od tego jak
+%   oszacujemy ich poziom trudności i~nie jesteśmy w~stanie podać liczby
+%   punktów do zdobycia za nie w~tym momencie.
+
+%   Zastanawiam~się czy nie dodać do tego projektu zaliczeniowego, ale są
+%   pewne problemy techniczne, które stoją mi na drodze. Na dzień dzisiejszy
+%   proszę przyjąć, że~projekt zaliczeniowego w~tym semestrze nie będzie.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Prace domowe}
+
+
+%   Zadania domowe proszę \alert{spróbować} potraktować nie jako ciężki
+%   obowiązek do odhaczenia, tylko jako możliwość nauczenia~się czegoś
+%   w~praktyce. Tak wiem, łatwo~się mówi, żeby nie traktować tego jako
+%   ciężkiego obowiązku, a~to wcale nie jest łatwe.
+
+%   Proszę jednak wiedzieć, że~prace domowe są zadawane w~pierwszym rzędzie
+%   po~to, żeby Państwo~się czegoś nauczyli przy ich robieniu. Dopiero
+%   w~drugim rzędzie, by móc Państwa ocenić. Jeśli Państwo oszukują przy
+%   oddawaniu tych zdań, to z~mojej perspektywy, oszukują Państwo przede
+%   wszystkim samych siebie.
+
+%   W~przypadku wszystkich prac domowych, to należy próbować rozwiązać je
+%   możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
+%   ale i~\alert{należy} prosić o~pomoc kolegów, korzystać z~materiałów
+%   w~internecie i~używać programów takich jak Chat\textsc{gpt}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Sposób uzyskania zaliczania}
+
+
+%   Przypominam, że~głównym celem prac domowych jest danie Państwu dodatkowej
+%   możliwość, by~się czegoś nauczyć, a~w~nauce można i~\alert{należy}
+%   korzystać z~pomocy. Po prostu niech, ich zrobienie nie ma zostać
+%   zredukowane do użycia metody Copy’ego-Pasta.
+
+%   Pod koniec semestru punkt zostaną podliczone, a~oceny wystawione według
+%   następującej skali.
+
+%   \begin{itemize}
+
+%   \item $41\%\text{--}50\%$~-- ocena dostateczna ($3.0$).
+
+%   \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
+
+%   \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
+
+%   \item $71\%\text{--}84\%$ -- ocena puls dobry ($4.5$, $4+$).
+
+%   \item $85\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Materiały do nauki}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Materiały do nauki}
+
+
+%   Na Sake będzie dostępna w~formacie \textsc{pdf} \alert{lista zagadnień do
+%     opanowania z~tego przedmiotu}, która będzie główny punktem odniesieniem
+%   przy tworzeniu pytań testowych. Jak również różne materiały do nauki,
+%   jakie to dokładnie będą materiały, nie umiem powiedzieć w~tym momencie.
+
+%   Będą tam również dostępne te prezentacje w~formacie \textsc{pdf}ów.
+%   W~formie źródłowej (plików \LaTeX a) są dostępna na serwisie GitHub.
+%   Każdy kto ma na komputerze program Git i~dostęp do internetu może je
+%   pobrać wpisując \\
+%   \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+%   Znajdują~się one w~katalogu „Systemy-operacyjne-Prezentacje”.
+
+%   Można też obejrzeć to repozytorium jak normalny człowiek. Czyli
+%   w~przeglądarce: \\
+%   \colorhref{https://github.com/KZiemian/Presentation}
+%   {https://github.com/KZiemian/Presentation}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+% % ######################################
+% \section{Systemy operacyjne wokół nas}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jakie systemy operacyjne są dziś używane?}
+
+
+%   Obecnie na komputerach osobistych dominują trzy rodziny systemów
+%   operacyjnych (\textsc{os}, ang. \textit{operating system}). Są to:
+%   \begin{itemize}
+
+%   \item GNU/Linux (w~skrócie: Linux);
+
+%   \item mac\textsc{os};
+
+%   \item Windows.
+
+%   \end{itemize}
+
+%   Gdy chodzi o~smartfony, to istnieją co~najmniej dwie duże rodziny systemów
+%   operacyjnych dla nich:
+%   \begin{itemize}
+
+%   \item Android;
+
+%   \item i\textsc{os}.
+
+%   \end{itemize}
+%   Niemniej ja nie jestem ekspertem w~kwestii smartfonów, więc nie będę
+%   wnikał w~tą tematykę.
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jakie systemy operacyjne są dziś używane?}
+
+
+%   Jeśli chodzi o~inne systemy operacyjne to możemy wymienić i~wymieniać:
+%   Fire~\textsc{os}, Free\textsc{bsd}, Free\textsc{dos}, Haiku,
+%   Harmony\textsc{os}, Heli\textsc{os}, Inferno, \textsc{minix},
+%   OpenHarmony, OpenSolaris, Phantom~\textsc{os}, Plan~9
+%   from Bell Labs, React\textsc{os}, Redox (bardzo interesujący projekt),
+%   Thesueus~\textsc{os} (inny interesujący projekt), Visopsys, etc.
+
+%   Poza tym, systemy operacyjne można podzielić na klasy, w~zależności od
+%   tego na jakim sprzęcie mają one działać. Listę podstawowych klas można
+%   znaleźć poniżej.
+
+%   \begin{itemize}
+
+%   \item Systemy operacyjne komputerów mainframowych. Ten rodzaj komputerów
+%     spotyka~się zwykle w~centrach obliczeniowych różnorakiego
+%     przeznaczenia. Tutaj często używane są specjalne dystrybucje Linuxa,
+%     jak~również systemy operacyjne tworzone specjalnie dla nich, jak~z/OS.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Różne typy systemów operacyjnych}
+
+
+%   \begin{itemize}
+
+%   \item Systemy operacyjne serwerów. Tutaj również Linux jest popularny.
+
+%   \item Systemy operacyjne komputerów osobistych. O~nich jest ten kurs.
+
+%   \item Systemy operacyjne smartfonów, jak Android czy i\textsc{os}.
+
+%   \item Wbudowane systemy operacyjne. Są to systemy operacyjne obsługujące
+%     pralki, kuchenki mikrofalowe, samochody, etc.
+
+%   \item Systemy operacyjne kart elektronicznych. Temat na inne zajęcia.
+
+%   \item Systemy operacyjne węzłów sensorowych. Przykładem węzła sensorowego
+%     są czujniki przeciwpożarowe, układy do~mierzenia temperatury, ilości
+%     opadów, etc.
+
+%   \end{itemize}
+
+%   Dodatkowo systemy operacyjne można podzielić na monolityczne,
+%   wielowarstwowe, etc.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komputery i~systemy operacyjne}
+
+
+%   Tak jak nasz świat jest pełen komputerów, tak jest pełen systemów
+%   operacyjnych. Bez wielkiej przesady można powiedzieć, że~bez systemów
+%   operacyjnych setki milionów komputerów stałby~się dla większości ludzi
+%   bezużyteczną stertą złomu.
+
+%   \alert{Nie} muszą się Państwo uczyć powyższej listy. Jedyne co chcemy by
+%   Państwo z~niej wynieśli, to świadomość, że~tematyka systemów operacyjnych
+%   jest dość skomplikowana i~należy odczuwać zdrowy respekt wobec
+%   ludzi którzy te systemy tworzą. Pamiętając, że~ci sami ludzie
+%   całkiem dużo rzeczy mocno spaprali.
+
+%   Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełna jest
+%   maszyn
+%   \colorhref{https://en.wikipedia.org/wiki/Rube\_Goldberg\_machine}{Rube
+%     Goldbergera}. Państwo już na pewno nie raz
+%   widzieli taką maszynę, a~jedną z~nich można zobaczyć
+%   \colorhref{https://www.youtube.com/watch?v=vn-g1Mn2\_3g}{tutaj}.
+%   Bardzo dużo w~informatyce można uprościć, ale coś mi mówi, że~zajmie nam
+%   to jeszcze dużo czasu.
+
+  % \begin{itemize}
+
+  % \item Systemy operacyjne serwerów. Tutaj również Linux jest popularny.
+
+  % \item Systemy operacyjne komputerów osobistych. O~nich jest ten kurs.
+
+  % \item Systemy operacyjne smartfonów, jak Android czy i\textsc{os}.
+
+  % \item Wbudowane systemy operacyjne. Są to systemy operacyjne obsługujące
+  %   pralki, kuchenki mikrofalowych, samochodach, etc.
+
+  % \item Systemy operacyjne kart elektronicznych. Temat na zupełnie inne
+  %   zajęcia.
+
+  % \item Systemy operacyjne węzłów sensorowych. Przykładem węzła sensorowego
+  %   są czujniki przeciwpożarowe, układy do~mierzenia temperatury, ilości
+  %   opadów, etc.
+
+  % \end{itemize}
+
+  % Dodatkowo systemy operacyjne można podzielić na monolityczne,
+  % wielowarstwowe, etc.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego życie jest takie skomplikowane?}
+
+
+
+
+%  Jeżeli
+%   więc w~czasie tego kursu komuś z~Państwa nasunie~się myśl „Czy naprawdę
+%   nie da~się tego zrobić prościej?”, to często odpowiedź brzmi, że~owszem,
+%   można to zrobić prościej. W~informatyce wiele rzeczy można uczynić
+%   znacznie prostszymi, ale, w~mojej skromnej ocenie, zajmie nam to jeszcze
+%   parę ładnych dekad.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Abstrakcje i~interfejsy}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest interfejs?}
+
+
+%   Do kluczowych pojęć informatyki, systemów operacyjnych w~szczególności,
+%   należą „abstrakcja” i~„interfejs”. By wyjaśnić sens w~jakim będziemy ich
+%   używać, posłużymy~się przykładem smartfona. Jest to układ elektroniczny,
+%   posiadają rozliczne kable przez które płynie prąd, akumulator,
+%   procesor,~etc. Jednak na co dzień nie muszę o~tym myśleć, obsługuję go
+%   klikając w~ikony.
+
+%   Ponieważ ikony pozwalają mi zapomnieć o~elektronicy wewnątrz smartfona,
+%   są one rodzaje abstrakcji. Ponieważ pozwalają mi~się komunikować z~nim,
+%   są~one rodzajem interfejsu. Teraz trochę ostrzej zdefiniujemy te pojęcia.
+
+%   \textbf{Interfejsem} (pl.~\textit{międzymordzie} ;)) nazywamy metodę
+%   komunikowania~się dwóch obiektów. W~tym sensie można powiedzieć,
+%   że~telefony komórkowe~są interfejsami między ludźmi, lecz my zawęzimy
+%   nasze rozważania do~interfejsów właściwych komputerom.
+  % Pojęcie abstrakcji ma w~informatyce swój specjalny posmak.
+  % Przez \textbf{abstrakcję} rozumiemy zastąpienie jednego opisu
+  % rzeczywistości i~sposobu oddziaływania na nią, inny opisem, który jest
+  % bardziej odległy od rzeczywistości, ale ma być bardziej użyteczny
+  % od~poprzedniego. Definicja ta ma bardziej przekazywać intuicję, niż
+  % ściśle definiować pojęcie, które jest w~praktyce dość nieostre, więc
+  % nie musimy~się przejmować występującymi w~niej niejasnościami.
+
+  % Jeśli nowy opis rzeczywistości jest bardziej użyteczny dla nas nisz
+  % poprzedni, to mówimy, że jest on \textbf{dobrą abstrakcją}. Jeśli nowy
+  % opis nie jest bardziej użyteczny, to mówimy, że~jest \textbf{złą
+  %   abstrakcją}.
+
+  % \textbf{Przykład.} Każdy procesor posiada zestaw wbudowanych komórek
+  % pamięci zwanych rejestrami. Ile rejestrów posiada procesor Państwa
+  % smartfona? Jeśli nie umieją Państwo odpowiedzieć na to pytanie, to
+  % znaczy, że~oprogramowanie smartfona jest dobrą abstrakcją dla
+  % znajdującego~się niżej sprzętu elektronicznego.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest abstrakcja w~informatyce?}
+
+
+%   Ikony w~smartfonie są więc interfejsem, bo pozwalają na komunikację
+%   między człowiekiem, a~tym urządzeniem.
+
+%   \textbf{Abstrakcją} będziemy nazywać zmianę sposobu opisu rzeczywistości,
+%   na taki, który jest z~jakiegoś powodu bardziej użyteczny dla danej grupy
+%   ludzi. Ikona na smartfonie jest w~tym sensie abstrakcją, bo dzięki ich
+%   istnieniu nie musimy myśleć o~tym jak płynie prąd przez smartfona.
+%   Klikamy w~ikonę i~prąd popłynie w~odpowiedni sposób, zdefiniowany przez
+%   tą abstrakcję.
+
+%   Nie będziemy bardziej precyzować tych pojęć, gdyż na tym kursie ważne
+%   jest tylko intuicyjne ich zrozumienie. Nie będziemy też
+%   specjalnie dyskutować co odróżnia dobrą abstrakcję od~złej oraz dobry
+%   interfejs od złego. Warto jednak zauważyć, że~problem dostarczenia
+%   dobrych abstrakcji i~interfejsów przewija~się przez całą informatykę.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Abstrakcje i~interfejsy są wszędzie}
+
+
+%   Warto zauważyć, że~coś może być jednocześnie abstrakcją i~interfejsem,
+%   jak ikony w~smartfonie. W~temat relacji między tymi pojęciami nie
+%   będziemy~się jednak zagłębiać.
+
+%   Abstrakcje i~interfejsy w~informatyce są wszędzie i~występują warstwowo:
+%   gdy zdejmę jedną warstwę abstrakcji (interfejsu) pod nią zwykle zobaczę
+%   kolejną warstwę abstrakcji.
+
+%   Rozpatrzmy następujący przypadek, który nie musi być specjalnie zgodny
+%   z~rzeczywistością. Załóżmy, że~mam program do przeglądania zdjęć, który
+%   oczywiście sam w~sobie jest abstrakcją. Gdy zdejmę tą warstwę abstrakcji,
+%   to ukaże mi~się kod źródłowy napisany w~języku Python. Jednak kod
+%   źródłowy w~języku Python sam jest \alert{abstrakcją}, bo sam ten język
+%   (jego interpreter) jest napisany w~języku~C. Język~C jest zaś abstrakcją
+%   wobec dialektu assemblera naszego komputer. Język assemblera też jest
+%   pewną abstrakcją, ale proszę, nie idźmy dalej.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Do czego służy system operacyjny?}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Do czego służy system operacyjny?}
+
+
+%   Komputer składa~się z~wielu części elektronicznych, takich jak procesor,
+%   dysk główny, pamięć \textsc{ram}, monitor,~etc. Każdy z~tych elementów
+%   posiada własny interfejs, dzięki któremu możemy~się z~nim komunikować,
+%   wysyłając odpowiednie polecenia i~otrzymując odpowiednie informacje
+%   zwrotne. Interfejsy te są, koniec końców, oparte o~odpowiedni przepływ
+%   prądu elektrycznego. Interfejsy te są prymitywne, niewygodne w~użyciu
+%   i~brzydkie. Możemy o~nich powiedzieć więcej, ale wątpię by Państwo byli
+%   tym zainteresowani.
+
+%   System operacyjny jest programem, który zarządza tymi nieprzyjemnymi
+%   rzeczami za nas. Inaczej mówiąc, jest on abstrakcją nałożoną na~sprzęt
+%   komputerowy. Gdy korzystamy z~dowolnego programu użytkowego, ten program
+%   kontaktuje~się przez odpowiedni interfejs z~systemem operacyjnym,
+%   a~system operacyjny komunikuje~się ze~sprzętem za pomocą interfejsu tego
+%   sprzętu. System operacyjny pełni tutaj rolę pośrednika.
+
+  % Do kluczowych pojęć informatyki, systemów operacyjnych w~szczególności,
+  % należą „abstrakcji” i~„interfejs”. Wyjaśnimy w~jakim sensie ich używamy,
+  % na przykładzie typowego smartfona. Jest to układ elektroniczny, posiadają
+  % rozliczne kable przez które płynie prąd, akumulator, procesor, etc.
+  % Jednak na co dzień nie muszę o~tym myśleć, obsługuję go klikając w~ikony.
+
+  % Ponieważ ikony pozwalają mi zapomnieć o~elektronicy wewnątrz smartfona,
+  % są one rodzaje abstrakcji. Ponieważ pozwalają mi~się komunikować z~nim,
+  % są~one rodzajem interfejsu. Teraz trochę ostrzej zdefiniujemy te pojęcia.
+
+  % \textbf{Interfejsem} (pl.~\textit{międzymordzie};)) nazywamy metodę
+  % komunikowania~się dwóch obiektów. W~tym sensie można powiedzieć,
+  % że~telefony komórkowe~są interfejsami, lecz my zawęzimy nasze rozważania
+  % do~interfejsów komputerowych.
+  % Pojęcie abstrakcji ma w~informatyce swój specjalny posmak.
+  % Przez \textbf{abstrakcję} rozumiemy zastąpienie jednego opisu
+  % rzeczywistości i~sposobu oddziaływania na nią, inny opisem, który jest
+  % bardziej odległy od rzeczywistości, ale ma być bardziej użyteczny
+  % od~poprzedniego. Definicja ta ma bardziej przekazywać intuicję, niż
+  % ściśle definiować pojęcie, które jest w~praktyce dość nieostre, więc
+  % nie musimy~się przejmować występującymi w~niej niejasnościami.
+
+  % Jeśli nowy opis rzeczywistości jest bardziej użyteczny dla nas nisz
+  % poprzedni, to mówimy, że jest on \textbf{dobrą abstrakcją}. Jeśli nowy
+  % opis nie jest bardziej użyteczny, to mówimy, że~jest \textbf{złą
+  %   abstrakcją}.
+
+  % \textbf{Przykład.} Każdy procesor posiada zestaw wbudowanych komórek
+  % pamięci zwanych rejestrami. Ile rejestrów posiada procesor Państwa
+  % smartfona? Jeśli nie umieją Państwo odpowiedzieć na to pytanie, to
+  % znaczy, że~oprogramowanie smartfona jest dobrą abstrakcją dla
+  % znajdującego~się niżej sprzętu elektronicznego.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uproszczony schemat działania programu}
+
+
+%   \begin{figure}
+
+%     \label{fig:Scheme-of-CPU}
+
+
+%     \begin{tikzpicture}
+
+%       \fill[fill=brown] (-3,0) rectangle (3,1);
+
+
+%       % \draw[color=black,dashed] (2.05,2.1) rectangle (2.65,2.7);
+
+%       % \node[color=jMathTextFGColorOfStyleLight] at (2.35,2.4)
+%       % {Sprzęt komputerowy};
+
+
+
+%       % \draw[color=black,dashed] (2.05,1.2) rectangle (2.65,1.8);
+
+%       % \node[color=jMathTextFGColorOfStyleLight] at (2.35,1.5)
+%       % {\texttt{R1}};
+
+
+
+%       % \draw[color=black,dashed] (2.05,0.3) rectangle (2.65,0.9);
+
+%       % \node[color=jMathTextFGColorOfStyleLight] at (2.35,0.6)
+%       % {\texttt{R2}};
+
+
+
+%       % \draw[color=black,dashed] (2.05,-0.6) rectangle (2.65,0);
+
+%       % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-0.3)
+%       % {\texttt{R3}};
+
+
+
+%       % \draw[color=black,dashed] (2.05,-1.5) rectangle (2.65,-0.9);
+
+%       % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-1.2)
+%       % {\texttt{R4}};
+
+
+
+%       % \draw[color=black,dashed] (2.05,-2.4) rectangle (2.65,-1.8);
+
+%       % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-2.1)
+%       % {\texttt{R5}};
+
+
+%       % \draw[color=black,dashed] (2.05,-3.3) rectangle (2.65,-2.7);
+
+%       % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-3) {R5};
+
+%     \end{tikzpicture}
+
+%     \caption{Uproszczony schemat łączenia~się programu komputerowego
+%       ze~sprzętem}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Architektura systemu operacyjnego}
+
+
+%   Ponieważ system operacyjny jest abstrakcją, jego interfejs który
+%   nam udostępnia, może być znacznie bardziej wyrafinowany, prostszy
+%   w~użyciu i~piękniejszy od~interfejsu sprzętowego.
+
+%   W~tym momencie potrzebujemy wprowadzić nowe pojęcie.
+%   \textbf{Architekturą systemu operacyjnego} nazywamy ogólny plan budowy
+%   danego systemu operacyjnego. Architektura takiego systemu jest więc
+%   zbiorem idei, których używamy do tworzenia oraz opisywania systemów
+%   operacyjnych. Jak poprzednio, nie będziemy potrzebowali ściślejszej
+%   definicji tego pojęcia.
+
+%   Podstawowa dziś architektura stosowana dzisiaj, mówi nam, że~system
+%   operacyjny może działać w~dwóch różnych trybach: trybie jądra i~trybie
+%   użytkownika. Żeby zrozumieć czemu ten podział został wprowadzony,
+%   wróćmy do zagadnienia: po co istnieje system operacyjny?
+
+  % System ten istnieje, by zdjąć z~nas obowiązek bezpośredniego zarządzania
+  % sprzętem, robienia takich rzeczy jak ręczne ustawienie wartości rejestrów
+  % procesora.
+  % Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
+  % głęboko, to robi~się naprawdę złożona i~niebanalna. Używając przed chwilą
+  % wprowadzonej terminologi, powiem, że~informatyka robi~się niebanalna, gdy
+  % zdejmiemy odpowiednio dużo poziomów abstrakcji. Na wysokim poziomie
+  % abstrakcji to czy jest on trudna czy nie, to mocno zależy od~odczuć
+  % konkretnej osoby.
+
+  % Zadajmy sobie następujące pytanie: czy włączenie komputera jest
+  % skomplikowane? Odpowiemy na to pytanie na dwóch poziomach abstrakcji.
+  % Pierwszy to poziom normalnego użytkownika, drugi to opis pochodzący
+  % z~książki Andrewa S.~Tanenbauma \textit{Systemy operacyjne. Wydanie~III}
+  % \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, dotyczący
+  % komputera z~systemem Pentium.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Architektura systemu operacyjnego}
+
+
+%   System ten istnieje, by zdjąć z~nas obowiązek bezpośredniego zarządzania
+%   sprzętem, robienia takich rzeczy jak ręczne ustawienie wartości rejestrów
+%   procesora, bo normalny użytkownik nie chce mieć nigdy do czynienia
+%   z~takimi rzeczami. Oprócz tego, że~życie użytkownika staje~się prostsze,
+%   to jest też bezpieczniejsze, bo pracując na niskim poziomie abstrakcji,
+%   łatwiej o~pomyłki i~poważne błędy. Przykładowo, potrzebuje mieć możliwość
+%   kasowania danych na dysku. Co jeśli przypadkiem zamiast skasować jeden
+%   plik rozkażę skasować całą zawartość dysku?
+
+%   Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
+%   należy zapewnić, żeby dane jednej osoby, które powinny pozostać tajne, nie
+%   były od ręki dostępne innym użytkownikom tego komputera.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jądro systemu operacyjnego}
+
+
+%   Aby zapewnić możliwie dużą wygodę, bezpieczeństwo i~tajność danych,
+%   w~obecnej architekturze systemów operacyjnych możliwe są dwa tryby
+%   działania: \textbf{tryb jądra} (ang. \textit{kernel mode})
+%   i~\textbf{tryb użytkownika} (ang. \textit{user mode}). Należy pamiętać,
+%   że~to są dwa różne tryby działania tego samego programu.
+
+%   Działając w~trybie jądra, możemy korzystać z~wszystkich możliwości jakie
+%   udostępnia nam sprzęt oraz widzimy całą pamięć. Tryb ten musi istnieć,
+%   bo~wszystkie operacje sprzętu są potrzebne do działania komputera, więc
+%   ktoś musi móc je uruchomić. Tak samo, ktoś musi mieć dostęp do całej
+%   pamięci, aby móc przydzielać ją innym.
+
+%   Następnie jest tryb użytkownika. Gdy jesteśmy w~tym trybie, system
+%   operacyjny wyłącza nam dostęp do pewny możliwości naszego komputera.
+%   W~szczególności, jeśli jakaś część pamięci jest przydzielona innemu
+%   użytkownikowi, jest ona dla nas niedostępna w~tym trybie.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jądro systemu operacyjnego}
+
+
+%   Jak tego typu ograniczenia działają w~praktyce? System operacyjny jest
+%   programem jak każdy inny, więc jego działanie zależy od~ustawień. Jeśli
+%   działając jako użytkownik chcemy zobaczyć zawartość jakiegoś fragmentu
+%   pamięci, to wysyłamy zapytanie do systemu operacyjnego o~jej wyświetlenie
+%   nam. System, który zawsze widzi całą dostępną pamięć, sprawdza, czy ma
+%   prawo udostępnić nam ten fragment pamięci. Jeśli nie to przesyła nam
+%   wiadomość, że~nie mamy uprawnień do zobaczenia zawartości tego fragmentu
+%   pamięci.
+
+%   Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
+%   z~tym komputerem zrobić wszystko. Dlatego hakerzy dokładają tylu starań,
+%   by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich uprawnień.
+%   Dlatego też takie antycheaterskie programy takie jak Vanguard, który miał
+%   być dodany choćby do
+%   \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
+%       Legends}}~są tak problematyczne
+%   (\parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}).
+
+  % Jeśli posiadamy dostęp do danego miejsca w~pamięci, to system operacyjny
+  % korzystając z~odpowiednich własności sprzętu wczyta ten fragment pamięci
+  % i~nam go da. Jeśli uzna, że~nie mam dostępu, to po prostu prześle nam
+  % informację, iż~prosimy o~rzecz do której nie mamy uprawnień.
+  % Jądro systemu operacyjnego to ta jego część, która bezpośrednio
+  % komunikuje~się ze sprzętem. Z~tego powodu jądro musi posiadać możliwość
+  % dostania~się do dowolnej części pamięci i~wykonania dowolnej czynności
+  % jaką posiada sprzęt.
+
+  % Następnie jest część peryferyjna. Jeśli jesteśmy w~części peryferyjnej,
+  % to jądro udostępnia nam tylko \alert{część} swoich możliwości.
+  % W~szczególności, jeśli jesteśmy w~części peryferyjnej to część pamięci,
+  % jak ta przydzielona innemu użytkownikowi jest dla nas niedostępna.
+
+  % Jak takie ograniczenie działa w~praktyce? System operacyjnym jest
+  % programem i~jak każdy program, działa wedle określonych reguł. Gdy jako
+  % jeden z~użytkowników komputera chcę~się dostać do określonego fragmentu
+  % pamięci, to muszę wysłać odpowiednią informację do systemu operacyjnego.
+  % System operacyjny, który widzi całą pamięć, sprawdza czy mam prawo prosić
+  % o~dostęp do tego miejsca.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jądro systemu operacyjnego}
+
+
+%   Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
+%   z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
+%   tworzącej ten program, że~nie nadużyją tych możliwości?
+
+%   Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
+%   Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
+%   cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
+%   w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
+%   użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
+%   wykryć cheatera. Alternatywą jest uruchamianie tych programów na serwerze
+%   gry, który i~tak dysponuje wszystkimi tego typu informacjami.
+
+  % Jak tego typu ograniczenia działają w~praktyce? System operacyjny jest
+  % programem jak każdy inny, więc jego działanie zależy od~ustawień. Jeśli
+  % działając jako użytkownik chcemy zobaczyć zawartość jakiegoś fragmentu
+  % pamięci, to wysyłamy zapytanie do systemu operacyjnego o~jej wyświetlenie
+  % nam. System, który zawsze widzi całą dostępną pamięć, sprawdza, czy ma
+  % prawo udostępnić nam ten fragment pamięci. Jeśli nie to przesyła nam
+  % wiadomość, że~nie mamy uprawnień by ją widzieć.
+
+  % Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
+  % z~tym komputerem zrobić wszystko. Dlatego hakerzy dokładają tylu starań,
+  % by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich uprawnień.
+  % Dlatego też takie antycheaterskie programy takie jak Vanguard, który miał
+  % być dodany choćby do
+  % \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
+  %     Legends}}~są tak problematyczne
+  % (\parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}).
+
+  % Jeśli posiadamy dostęp do danego miejsca w~pamięci, to system operacyjny
+  % korzystając z~odpowiednich własności sprzętu wczyta ten fragment pamięci
+  % i~nam go da. Jeśli uzna, że~nie mam dostępu, to po prostu prześle nam
+  % informację, iż~prosimy o~rzecz do której nie mamy uprawnień.
+  % Jądro systemu operacyjnego to ta jego część, która bezpośrednio
+  % komunikuje~się ze sprzętem. Z~tego powodu jądro musi posiadać możliwość
+  % dostania~się do dowolnej części pamięci i~wykonania dowolnej czynności
+  % jaką posiada sprzęt.
+
+  % Następnie jest część peryferyjna. Jeśli jesteśmy w~części peryferyjnej,
+  % to jądro udostępnia nam tylko \alert{część} swoich możliwości.
+  % W~szczególności, jeśli jesteśmy w~części peryferyjnej to część pamięci,
+  % jak ta przydzielona innemu użytkownikowi jest dla nas niedostępna.
+
+  % Jak takie ograniczenie działa w~praktyce? System operacyjnym jest
+  % programem i~jak każdy program, działa wedle określonych reguł. Gdy jako
+  % jeden z~użytkowników komputera chcę~się dostać do określonego fragmentu
+  % pamięci, to muszę wysłać odpowiednią informację do systemu operacyjnego.
+  % System operacyjny, który widzi całą pamięć, sprawdza czy mam prawo prosić
+  % o~dostęp do tego miejsca.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Czy ten przedmiot będzie trudny?}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czy ten przedmiot będzie trudny?}
+
+
+%   Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
+%   głęboko, to robi~się naprawdę złożona i~niebanalna. Używając przed chwilą
+%   wprowadzonej terminologi, powiem, że~informatyka robi~się niebanalna, gdy
+%   zdejmiemy odpowiednio dużo warstw abstrakcji. Na wysokim poziomie
+%   abstrakcji to czy jest on trudna czy nie, to mocno zależy od~odczuć
+%   konkretnej osoby.
+
+%   Zadajmy sobie następujące pytanie: czy włączenie komputera jest
+%   skomplikowane? Odpowiemy na to pytanie na dwóch poziomach abstrakcji.
+%   Pierwszy to poziom normalnego użytkownika, drugi to opis pochodzący
+%   z~książki Andrewa S.~Tanenbauma \textit{Systemy operacyjne. Wydanie~III}
+%   \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, dotyczący
+%   komputera z~systemem Pentium.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+
+
+%   \begin{enumerate}
+
+%   \item Wciskamy przycisk \texttt{Power}.
+
+
+
+%   \item Czekamy minutę albo dłużej.
+
+
+
+%   \item Wybieramy użytkownika i~wchodzimy na swoje konto.
+
+%   \end{enumerate}
+
+%   Co w~tym trudnego?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
+%   skomplikowany, że~trzeba wprowadzić trochę pojęć wstępnych.
+
+%   \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
+%     wyłącznie do~odczytu}. Pamięć komputera której zawartość została
+%   zapisana przez firmę, która ten fragment pamięci wyprodukowała
+%   i~użytkownik nie może zmodyfikować jej zawartości. Przynajmniej nie żadnym
+%   normalny sposobem.
+
+%   \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
+%   pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
+%   własności, że~jeśli wylosuję dowolny jej element, to czas odczytania
+%   informacje z~tego elementu nie będzie zależał od tego, który element
+%   został wylosowany. Inaczej mówiąc dostęp do dowolnego miejsca tej pamięci
+%   zajmuje tyle samo czasu.
+
+%   Tak naprawdę czas odczytu zależy w~pewnym stopniu od tego, w~jaki
+%   konkretny sposób pamięć \textsc{ram} jest odczytywana, ale jeszcze długo
+%   nie będziemy się musieli tym przejmować.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
+%   zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
+%   przykładem takiej pamięci jest \textsc{ram}.
+
+%   \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
+%   której treść jest zachowana, gdy przez układ przestaje płynąć prąd,
+%   typowym przykładem jest dysk \textsc{ssd}.
+
+%   Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
+%   które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
+%   we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
+%   komputera z~prądu. Bo~niby czemu życie ma być proste?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+%   \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
+%   Skrót pochodzi od nazwy technologi ang.~\textit{Complementary
+%     Metal-Oxide-Semiconductor}, pl.~\textit{komplementarny półprzewodnik
+%     metalowo-tlenkowy}, w~której ta pamięć jest wykonana. Musi być zasilana
+%   prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
+%   klasyfikowana jest jako nieulotna.
+
+%   \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
+%   \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
+%   na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
+%   klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[1)] Wciskamy przycisk \texttt{Power}.
+
+
+
+%   \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
+%     ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
+%     klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
+%     odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
+%     są magistrale \textsc{ISA} (ang. \textit{Industry Standard
+%       Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
+%       Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
+
+
+
+%   \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
+%     były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
+%     konfigurowane.
+
+
+
+%   \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
+%     z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
+%     system operacyjny. W~przeszłości były nimi dyskietki, płyty
+%     \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
+%     i~dyski~\textsc{ssd}.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
+%     z~wspomnianej wcześniej listy, aż~znajdzie pierwszy, który zawiera
+%     działający system operacyjny.
+
+
+
+%   \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
+%     w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
+
+
+
+
+%   \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
+%     listę partycji, by~ustalić która z~nich jest partycją aktywną.
+%     Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
+
+
+
+%   \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
+%     z~aktywnej partycji i~go uruchamia.
+
+
+
+%   \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
+%     \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
+%     do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
+%     z~odpowiedniego źródła.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rasterization and fragment operations}
+
+
+%   \begin{itemize}
+
+%   \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+%     to ładuje je do jądra systemu.
+
+
+
+%   \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+%     działające w~tle.
+
+
+
+%   \item[12)] Uruchamiane jest okno logowania.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bootowanie}
+
+
+%   W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
+%   \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
+%   całej procedury uruchamiania komputer opisanej powyżej, albo tylko
+%   stawiania systemu operacyjnego, czyli od kiedy \textsc{bios} wczytał
+%   pierwszy jego sektor do pamięci (punkt siedem i~dalej). Acz to pojęcie
+%   nie jest specjalnie ostro zdefiniowane.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+
+
+%   Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
+%   w~informatyce.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Krótka historia powstania systemu GNU/Linuxa}
+% % ######################################
+
+
+% % ######################################
+% \section{Krótka historia powstania systemu GNU/Linuxa}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ten, od którego wszystko~się zaczęło}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.09]
+%     {./PresentationsPictures/OS-heroes-Pictures/Ken-Thompson.jpg}
+
+%     \caption{Ken Thompson (ur.~1943), główny twórca systemu UNIX.}
+
+%     \label{fig:Ken-Thompson}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Wkracza Dennis Ritchie i~język~C}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.225]
+%     {./PresentationsPictures/OS-heroes-Pictures/Dennis-Ritchie.jpeg}
+
+%     \caption{Dennis Ritchie (1941--2011), współtwórca UNIXa. Na~potrzeby
+%       napisania nowej wersji tego systemu stworzył język~C, za~datę
+%       powstania tego języka możemy uważać rok~1972~r.}
+
+%     \label{fig:Dennis-Ritchie}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tak to wtedy wyglądało}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.3]
+%     {./PresentationsPictures/OS-heroes-Pictures/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
+
+%     \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
+%       PDP-11.}
+
+%     \label{fig:Ritchie-Thompson-PDP-11}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Richard Stallman, free software i~GNU}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.35]
+%     {./PresentationsPictures/OS-heroes-Pictures/Richard-Stallman.jpeg}
+
+%     \caption{Richard Matthew Stallman (ur.~1953). W~1983 rozpoczął działanie
+%       GNU Project.}
+
+%     \label{fig:Richard-M-Stallman}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tanenbaum i~jego MINIX}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.65]
+%     {./PresentationsPictures/OS-heroes-Pictures/Andrew-S-Tanenbaum.jpeg}
+
+%     \caption{Andrew S.~Tanenbaum (ur.~1944). W~roku 1988 stworzył system
+%       MINIX (ang.~\textit{mini-Unix}).}
+
+%     \label{fig:Andrew-S-Tanenbaum}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie dzięki którym powstał system GNU/Linux}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.286]
+%     {./PresentationsPictures/OS-heroes-Pictures/Linus-Torvalds.jpg}
+
+%     \caption{Linus Torvalds (ur.~1969). W~roku 1991 roku stworzył jądro
+%       systemu Linux (\textit{Linus + UNIX}).}
+
+%     \label{fig:Linus-Torvalds}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Historia powłoki BASH}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie którzy dali nam powłokę BASH}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.55]
+%     {./PresentationsPictures/OS-heroes-Pictures/Steve-Bourne.jpeg}
+
+%     \caption{Stephen Bourne (ur.~1944). W~1979~roku stworzył powłokę
+%       Bourne’a.}
+
+%     \label{fig:Stephen-Bourne}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie którzy dali nam powłokę BASH}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.05]
+%     {./PresentationsPictures/OS-heroes-Pictures/Brian-J-Fox.png}
+
+%     \caption{Brian J.~Fox (ur.~1964). W~1989~r. stworzył powłokę
+%       \textsc{bash} (ang. \textit{Bourne-Again SHell}).}
+
+%     \label{fig:Brain-J-Fox}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Maszyny, bo one też mają znaczenie}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dalekopis (ang. \textit{teletypewriter})}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.6]
+%     {./PresentationsPictures/Machines-Pictures/Hughes-telegraph.jpeg}
+
+%     \caption{Dalekopis zaprojektowany przez Davida Edwarda Hughesa
+%       (1830-1900), wyprodukowany około 1855 roku.}
+
+%     \label{fig:Dalekopis-Hughesa}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komputer PDP-7, lata 60-te XX wieku}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.2]
+%     {./PresentationsPictures/Machines-Pictures/PDP-7-with-teletype.jpeg}
+
+%     \caption{Komputer PDP-7 z~dalekopisem.}
+
+%     \label{fig:PDP-7-z-dalekopisem}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{PDP-11, lata 70-te XX-wieku}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.225]
+%     {./PresentationsPictures/Machines-Pictures/PDP-11.jpeg}
+
+%     \caption{Komputer PDP-11.}
+
+%     \label{fig:PDP-11}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dalekopis Teletype Model 33 ASR}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.028]
+%     {./PresentationsPictures/Machines-Pictures/Teletype-Model-33-ASR-01.jpeg}
+%     \includegraphics[scale=0.2]
+%     {./PresentationsPictures/Machines-Pictures/Teletype-Model-33-ASR-02.jpeg}
+
+%     \caption{Dalekopis Teletype Model~33 firmy Teletype Corporation,
+%       dostępny w~wersji komercyjnej od 1963~r. Jedna z~pierwszych urządzeń,
+%       które wspierało system kodowania ASCII. }
+
+%     \label{fig:Teletype-Model-33-ASR}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{W~jakich językach pisze~się systemy opearcyjne?}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{W~jakich językach pisze~się systemy opearcyjne?}
+
+
+%   W~pewnym uproszczeniu, wszystkie pięć wielkich rodzin systemów
+%   operacyjnych, GNU/Linux, macOS, Windows, Android oraz iOS są napisane
+%   w~języku~C.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka banalnych uwag na zakończenie}
+
+
+%   W~literaturze znajduje~się zarówno zapis „UNIX”, ale też i~„Unix”.
+%   Podobnie spotyka~się zarówno „MINIX” jak i~„Minix”, a~także warianty
+%   innych nazw. We~wszystkich tego typu przypadkach będę~się starał podążać
+%   za konwencjami używanymi w~książce Andrewa S. Tanenbauma \textit{Systemy
+%     operacyjne. Wydanie~III}
+%   \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, chyba
+%   że~względy estetyczne wymuszą użycie innej.
+
+% \end{frame}
+% % ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ten, od którego wszystko~się zaczęło}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.09]
+%     {./PresentationsPictures/OS-heroes-Pictures/Ken-Thompson.jpg}
+
+%     \caption{Ken Thompson (ur.~1943), główny twórca systemu UNIX.}
+
+%     \label{fig:Ken-Thompson}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Wkracza Dennis Ritchie i~język~C}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.225]
+%     {./PresentationsPictures/OS-heroes-Pictures/Dennis-Ritchie.jpeg}
+
+%     \caption{Dennis Ritchie (1941--2011), współtwórca UNIXa. Na~potrzeby
+%       napisania nowej wersji tego systemu stworzył język~C, za~datę
+%       powstania tego języka możemy uważać rok~1972~r.}
+
+%     \label{fig:Dennis-Ritchie}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tak to wtedy wyglądało}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.3]
+%     {./PresentationsPictures/OS-heroes-Pictures/Dennis-Ritchie-Ken-Thompson-PDP-11.jpg}
+
+%     \caption{Dennis Ritchie (stojący) i~Ken Thompson pracują na komputerze
+%       PDP-11.}
+
+%     \label{fig:Ritchie-Thompson-PDP-11}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Richard Stallman, free software i~GNU}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.35]
+%     {./PresentationsPictures/OS-heroes-Pictures/Richard-Stallman.jpeg}
+
+%     \caption{Richard Matthew Stallman (ur.~1953). W~1983 rozpoczął działanie
+%       GNU Project.}
+
+%     \label{fig:Richard-M-Stallman}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tanenbaum i~jego MINIX}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.65]
+%     {./PresentationsPictures/OS-heroes-Pictures/Andrew-S-Tanenbaum.jpeg}
+
+%     \caption{Andrew S.~Tanenbaum (ur.~1944). W~roku 1988 stworzył system
+%       MINIX (ang.~\textit{mini-Unix}).}
+
+%     \label{fig:Andrew-S-Tanenbaum}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie dzięki którym powstał system GNU/Linux}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.286]
+%     {./PresentationsPictures/OS-heroes-Pictures/Linus-Torvalds.jpg}
+
+%     \caption{Linus Torvalds (ur.~1969). W~roku 1991 roku stworzył jądro
+%       systemu Linux (\textit{Linus + UNIX}).}
+
+%     \label{fig:Linus-Torvalds}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Historia powłoki BASH}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie którzy dali nam powłokę BASH}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.55]
+%     {./PresentationsPictures/OS-heroes-Pictures/Steve-Bourne.jpeg}
+
+%     \caption{Stephen Bourne (ur.~1944). W~1979~roku stworzył powłokę
+%       Bourne’a.}
+
+%     \label{fig:Stephen-Bourne}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Ludzie którzy dali nam powłokę BASH}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.05]
+%     {./PresentationsPictures/OS-heroes-Pictures/Brian-J-Fox.png}
+
+%     \caption{Brian J.~Fox (ur.~1964). W~1989~r. stworzył powłokę
+%       \textsc{bash} (ang. \textit{Bourne-Again SHell}).}
+
+%     \label{fig:Brain-J-Fox}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Maszyny, bo one też mają znaczenie}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dalekopis (ang. \textit{teletypewriter})}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.6]
+%     {./PresentationsPictures/Machines-Pictures/Hughes-telegraph.jpeg}
+
+%     \caption{Dalekopis zaprojektowany przez Davida Edwarda Hughesa
+%       (1830-1900), wyprodukowany około 1855 roku.}
+
+%     \label{fig:Dalekopis-Hughesa}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komputer PDP-7, lata 60-te XX wieku}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.2]
+%     {./PresentationsPictures/Machines-Pictures/PDP-7-with-teletype.jpeg}
+
+%     \caption{Komputer PDP-7 z~dalekopisem.}
+
+%     \label{fig:PDP-7-z-dalekopisem}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{PDP-11, lata 70-te XX-wieku}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.225]
+%     {./PresentationsPictures/Machines-Pictures/PDP-11.jpeg}
+
+%     \caption{Komputer PDP-11.}
+
+%     \label{fig:PDP-11}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dalekopis Teletype Model 33 ASR}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.028]
+%     {./PresentationsPictures/Machines-Pictures/Teletype-Model-33-ASR-01.jpeg}
+%     \includegraphics[scale=0.2]
+%     {./PresentationsPictures/Machines-Pictures/Teletype-Model-33-ASR-02.jpeg}
+
+%     \caption{Dalekopis Teletype Model~33 firmy Teletype Corporation,
+%       dostępny w~wersji komercyjnej od 1963~r. Jedna z~pierwszych urządzeń,
+%       które wspierało system kodowania ASCII. }
+
+%     \label{fig:Teletype-Model-33-ASR}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{W~jakich językach pisze~się systemy opearcyjne?}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{W~jakich językach pisze~się systemy opearcyjne?}
+
+
+%   W~pewnym uproszczeniu, wszystkie pięć wielkich rodzin systemów
+%   operacyjnych, GNU/Linux, macOS, Windows, Android oraz iOS są napisane
+%   w~języku~C.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka banalnych uwag na zakończenie}
+
+
+%   W~literaturze znajduje~się zarówno zapis „UNIX”, ale też i~„Unix”.
+%   Podobnie spotyka~się zarówno „MINIX” jak i~„Minix”, a~także warianty
+%   innych nazw. We~wszystkich tego typu przypadkach będę~się starał podążać
+%   za konwencjami używanymi w~książce Andrewa S. Tanenbauma \textit{Systemy
+%     operacyjne. Wydanie~III}
+%   \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}, chyba
+%   że~względy estetyczne wymuszą użycie innej.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest bootstraping?}
+
+
+  Warto zacząć od wyjaśnienia skąd to angielskie słowo pochodzi.
+  \textit{Bootstrap} oznacza ucho od buta, zaś samo „bootstraping”
+  podnoszenie siebie samego z~ziemi poprzez ciągnięcie za ucha swoich butów.
+  Żeby coś takiego było możliwe, świat nasz musiałby dopuszczać dość mocne
+  złamanie trzeciej zasady dynamiki Newtona, a~nie wydaje~się by tak było.
+
+  W~informatyce termin \textit{bootstraping} odnosi~się do wielu sytuacji,
+  gdy program „uruchamia sam siebie”. Co dokładnie to znaczy, to zależy
+  od~konkretnego przypadku, niemniej informatyka zna wiele ciekawych
+  przypadków użycia procedury bootstrapingu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+% % ##################
+% \endingslide???{}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{?????}
+% % % ##################
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}
