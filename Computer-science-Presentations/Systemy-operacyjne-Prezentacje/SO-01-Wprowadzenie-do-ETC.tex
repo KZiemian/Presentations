@@ -73,6 +73,10 @@ eprint=true,
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
 
 
 
@@ -904,58 +908,72 @@ eprint=true,
 
     \begin{tikzpicture}
 
-      \fill[fill=brown] (-3,0) rectangle (3,1);
+      \fill[color=brown] (-2.5,0) rectangle (2.5,1.2);
+
+      \node[color=white,scale=1.1] at (0,0.6) {Hardware};
 
 
-      % \draw[color=black,dashed] (2.05,2.1) rectangle (2.65,2.7);
-
-      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,2.4)
-      % {Sprzęt komputerowy};
-
-
-
-      % \draw[color=black,dashed] (2.05,1.2) rectangle (2.65,1.8);
-
-      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,1.5)
-      % {\texttt{R1}};
+      \fill[color=teal] (-2.5,1.2) rectangle (2.5,1.8);
 
 
 
-      % \draw[color=black,dashed] (2.05,0.3) rectangle (2.65,0.9);
+      \draw[pointing arrow] (3.5,1.5) -- (2.5,1.5);
 
-      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,0.6)
-      % {\texttt{R2}};
+      \node at (3.7,1.5) {B};
 
+      \node at (4,1.4) {rz};
 
+      \node[rotate=20] at (4.3,1.5) {y};
 
-      % \draw[color=black,dashed] (2.05,-0.6) rectangle (2.65,0);
+      \node[rotate=-15] at (4.5,1.4) {d};
 
-      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-0.3)
-      % {\texttt{R3}};
+      \node at (4.75,1.6) {k};
 
-
-
-      % \draw[color=black,dashed] (2.05,-1.5) rectangle (2.65,-0.9);
-
-      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-1.2)
-      % {\texttt{R4}};
+      \node at (4.9,1.5) {i};
 
 
+      \node at (5.7,1.475) {interfejs};
 
-      % \draw[color=black,dashed] (2.05,-2.4) rectangle (2.65,-1.8);
-
-      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-2.1)
-      % {\texttt{R5}};
+      \node at (4.5,1) {hardware’u};
 
 
-      % \draw[color=black,dashed] (2.05,-3.3) rectangle (2.65,-2.7);
 
-      % \node[color=jMathTextFGColorOfStyleLight] at (2.35,-3) {R5};
+      \fill[color=cyan] (-2.5,1.8) rectangle (2.5,3);
+
+      \node[color=white,scale=1.1] at (0,2.4) {System operacyjny};
+
+
+      \draw[thick diagram arrow] (-2,2.1) -- (-2,0.7);
+
+      \draw[thick diagram arrow] (2,0.9) -- (2,2.3);
+
+
+
+      \fill[color=teal] (-2.5,3) rectangle (2.5,3.6);
+
+
+
+      \draw[pointing arrow] (3.5,3.3) -- (2.5,3.3);
+
+      \node[text width=8em] at (5,3.025)
+      {Piękny interfejs systemu op.};
+
+
+      \fill[color=jAxisGreen] (-2.5,3.6) rectangle (2.5,4.8);
+
+      \node[color=white,scale=1.1] at (0,4.2) {Program użytkowy};
+
+
+      \draw[thick diagram arrow] (-2,3.9) -- (-2,2.5);
+
+      \draw[thick diagram arrow] (2,2.7) -- (2,4.1);
 
     \end{tikzpicture}
 
     \caption{Uproszczony schemat łączenia~się programu komputerowego
-      ze~sprzętem}
+      ze~sprzętem, za pośrednictwem systemu operacyjnego. Rysunek wzorowany
+      na ilustracji 1.2 ze str. 34,
+      \parencite{Tannenbaum-Systemy-Operacyjne-Wydanie-III-Pub-2013}.}
 
 
   \end{figure}
