@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -218,6 +218,143 @@ eprint=true,
   aż~znajdziemy okienko „Szukaj”, „Wyszukaj”, etc. Proszę tam wpisać
   „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy wyświetli~się
   odpowiednia ikona.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Architektura systemu operacyjnego}
+
+
+  Ponieważ system operacyjny jest abstrakcją, jego interfejs który
+  nam udostępnia, może być znacznie bardziej wyrafinowany, prostszy
+  w~użyciu i~piękniejszy od~interfejsu sprzętowego.
+
+  W~tym momencie potrzebujemy wprowadzić nowe pojęcie.
+  \textbf{Architekturą systemu operacyjnego} nazywamy ogólny plan budowy
+  danego systemu operacyjnego. Architektura takiego systemu jest więc
+  zbiorem idei, których używamy do tworzenia oraz opisywania systemów
+  operacyjnych. Jak poprzednio, nie będziemy potrzebowali ściślejszej
+  definicji tego pojęcia.
+
+  Podstawowa dziś architektura stosowana dzisiaj, mówi nam, że~system
+  operacyjny może działać w~dwóch różnych trybach: trybie jądra i~trybie
+  użytkownika. Żeby zrozumieć czemu ten podział został wprowadzony,
+  wróćmy do zagadnienia: po co istnieje system operacyjny?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rola systemu operacyjnego}
+
+
+  System ten istnieje, by zdjąć z~nas obowiązek bezpośredniego zarządzania
+  sprzętem, robienia takich rzeczy jak ręczne ustawienie wartości rejestrów
+  procesora, bo normalny użytkownik nie chce mieć nigdy do czynienia
+  z~takimi rzeczami. Oprócz tego, że~życie użytkownika staje~się prostsze,
+  to jest też bezpieczniejsze, bo pracując na niskim poziomie abstrakcji,
+  łatwiej o~pomyłki i~poważne błędy. Przykładowo, potrzebuje mieć możliwość
+  kasowania danych na dysku. Co jeśli przypadkiem zamiast skasować jeden
+  plik wydamy polecenie, by~skasować całą zawartość dysku?
+
+  Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
+  należy zapewnić, żeby dane jednej osoby, które powinny pozostać tajne, nie
+  były od ręki dostępne innym użytkownikom tego komputera.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tryby działania systemu operacyjnego}
+
+
+  Aby zapewnić możliwie dużą wygodę, bezpieczeństwo i~tajność danych,
+  w~obecnej architekturze systemów operacyjnych możliwe są dwa tryby
+  działania: \textbf{tryb jądra} (ang. \textit{kernel mode})
+  i~\textbf{tryb użytkownika} (ang. \textit{user mode}). Należy pamiętać,
+  że~to są dwa różne tryby działania tego samego programu.
+
+  Działając w~trybie jądra, możemy korzystać z~wszystkich możliwości jakie
+  udostępnia nam sprzęt oraz widzimy całą pamięć. Tryb ten musi istnieć,
+  bo~wszystkie operacje sprzętu są potrzebne do działania komputera, więc
+  ktoś musi móc je uruchomić. Tak samo, ktoś musi mieć dostęp do całej
+  pamięci, aby móc przydzielać ją innym.
+
+  Następnie jest tryb użytkownika. Gdy jesteśmy w~tym trybie, system
+  operacyjny wyłącza nam dostęp do pewny możliwości naszego komputera.
+  W~szczególności, jeśli jakaś część pamięci jest przydzielona innemu
+  użytkownikowi, jest ona dla nas niedostępna w~tym trybie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak to działa?}
+
+
+  Jak tego typu ograniczenia działają w~praktyce? System operacyjny jest
+  programem jak każdy inny, więc jego działanie zależy od~ustawień. Jeśli
+  działając jako użytkownik chcemy zobaczyć zawartość jakiegoś fragmentu
+  pamięci, to wysyłamy zapytanie do systemu operacyjnego o~jej wyświetlenie
+  nam. System, który zawsze widzi całą dostępną pamięć, sprawdza, czy ma
+  prawo udostępnić nam ten fragment pamięci. Jeśli nie to przesyła nam
+  wiadomość, że~nie mamy uprawnień do zobaczenia zawartości tego fragmentu
+  pamięci.
+
+  Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
+  z~tym komputerem zrobić wszystko. Dlatego hakerzy dokładają tylu starań,
+  by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich uprawnień.
+  Dlatego też takie antycheaterskie programy takie jak Vanguard, który miał
+  być dodany choćby do
+  \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
+      Legends}}~są tak problematyczne
+  \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~bezpieczeństwem}
+
+
+  Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
+  z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
+  tworzącej ten program, że~nie nadużyją tych możliwości?
+
+  Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
+  Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
+  cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
+  w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
+  użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
+  wykryć cheatera. Alternatywą jest uruchamianie tych programów na serwerze
+  gry, który i~tak dysponuje wszystkimi tego typu informacjami.
+
 
 \end{frame}
 % ##################
@@ -2797,24 +2934,34 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Co to jest bootstraping?}
 
 
-  Warto zacząć od wyjaśnienia skąd to angielskie słowo pochodzi.
-  \textit{Bootstrap} oznacza ucho od buta, zaś samo „bootstraping”
-  podnoszenie siebie samego z~ziemi poprzez ciągnięcie za ucha swoich butów.
-  Żeby coś takiego było możliwe, świat nasz musiałby dopuszczać dość mocne
-  złamanie trzeciej zasady dynamiki Newtona, a~nie wydaje~się by tak było.
+% ######################################
+\EndingSlide{Dziękuję! Pytania?}
+% ######################################
 
-  W~informatyce termin \textit{bootstraping} odnosi~się do wielu sytuacji,
-  gdy program „uruchamia sam siebie”. Co dokładnie to znaczy, to zależy
-  od~konkretnego przypadku, niemniej informatyka zna wiele ciekawych
-  przypadków użycia procedury bootstrapingu.
 
-\end{frame}
-% ##################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Co to jest bootstraping?}
+
+
+%   Warto zacząć od wyjaśnienia skąd to angielskie słowo pochodzi.
+%   \textit{Bootstrap} oznacza ucho od buta, zaś samo „bootstraping”
+%   podnoszenie siebie samego z~ziemi poprzez ciągnięcie za ucha swoich butów.
+%   Żeby coś takiego było możliwe, świat nasz musiałby dopuszczać dość mocne
+%   złamanie trzeciej zasady dynamiki Newtona, a~nie wydaje~się by tak było.
+
+%   W~informatyce termin \textit{bootstraping} odnosi~się do wielu sytuacji,
+%   gdy program „uruchamia sam siebie”. Co dokładnie to znaczy, to zależy
+%   od~konkretnego przypadku, niemniej informatyka zna wiele ciekawych
+%   przypadków użycia procedury bootstrapingu.
+
+% \end{frame}
+% % ##################
 
 
 
