@@ -1,0 +1,1175 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{Procesy???}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 11k+, 16k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Procesy, zarys problemu}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wiadomości wstępne: rejestry}
+
+
+  Zanim powiem sobie dokładniej czym jest proces, przedyskutujemy pokrótce
+  czym są rejestry urządzeń elektronicznych, takich jak procesory, dyski
+  \textsc{ssd} czy monitory. Rejestr urządzenia elektronicznego, to
+  wbudowana w~to urządzenie pamięć, która pozwala na bardzo szybki odczyt
+  i~zapis do niej danych. Inaczej mówiąc, rejestry stanowią bardzo szybką
+  pamięć własną danego urządzenia.
+
+  Ustawiając wartości odpowiednich rejestrów na dane wartości, wydajemy
+  danemu urządzeniu odpowiednie polecenia. Przykładowo, i~ten przykład nie
+  musi być specjalnie realistyczny, ustawiając wartość przechowywaną przez
+  pewien rejestr monitora na~$1$ każemy mu~się włączyć. Jeśli wartość tego
+  rejestru ustawimy na~$0$, to rozkażemy mu~się wyłączyć. Ze zrozumiałych
+  względów, większość osób nie chce mieć nigdy bezpośredniej styczności
+  z~rejestrami urządzeń, z~których na co dzień korzysta.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest proces?}
+
+
+  Ze~względu na to, że~produkcja takiej szybkiej pamięci jest bardzo droga,
+  rejestry są zwykle bardzo małe, zawierają często tylko \alert{kilka}
+  bajtów. Problem produkcji szybkiej pamięci, która jest jednocześnie
+  odpowiednio tania, to ciągła bolączka elektroniki XXI~wieku. Przejdźmy
+  teraz do procesów.
+
+  \textit{Wszystko w~systemie Linux jest plikiem. Jeśli coś nie jest
+    plikiem to jest procesem.} Powiedzenie popularne w~środowisku
+  użytkowników tego systemu, wyjaśniające jedną z~głównych zasad
+  jego funkcjonowania.
+
+  Jak już o~tym mówiliśmy, plik czymś jest, proces coś robi. Jeśli
+  komputer z~systemem GNU/Linux coś robi, to odpowiada za~to jeden lub
+  więcej procesów. Innym określeniem procesu, jest stwierdzenie, że~jest
+  to \alert{działający program}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+
+
+  Czy jest jakaś różnica między pojęciem procesu, a~pojęciem programu?
+  To jak używamy tych terminów wskazuje na to, że~tak różnica istotnie
+  istnieje. Rozpatrzmy przykładowo grę \textit{Hollow Knight} (program
+  równie dobry jak każdy inny), którą mam zainstalowaną na dysku, ale
+  w~którą akurat teraz nie gram. Gra ta niewątpliwie jest programem, ale
+  nie jest nią związany żaden proces. Program więc może być więc istnieć
+  w~stanie biernym, jako zbiór plików na dysku, ale nie posiadać w~danej
+  chwili żadnego procesu.
+
+  Wewnętrzna budowa procesu nie jest wcale rzeczą banalną. Każdy proces,
+  z~definicji, coś robi, a~na komputerze robienie czegoś jest w~zasadzie
+  równoważne przetwarzaniu (przeliczaniu) pewnego zbioru danych. Dane te
+  muszą znajdować~się gdzieś w~pamięci komputera, więc każdy proces musi
+  posiadać przyznany mu specjalny obszar pamięci. Ten fragment pamięci
+  należący do danego procesu nazywamy \textbf{przestrzenią adresową
+    procesu}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+
+
+  Przestrzeń adresowa danego procesu zawiera skopiowany z~dysku kod programu
+  który będzie dany proces wykonywał, dane na których będzie on operował
+  oraz
+  \colorhref{https://en.wikipedia.org/wiki/Stack_(abstract_data_type)}{stos}
+  tego procesu. Ze względu na charakter kursu nie możemy~się bardziej
+  zagłębiać w~tą tematykę.
+
+  Oprócz tego proces korzysta często z~zewnętrzny wobec niego zasobów,
+  takich jak wartości które mają być wpisane do rejestrów urządzeń,
+  z~których korzysta dany proces, listę otwartych plików, etc. Przykładowo
+  program do wyświetlania zdjęć, by wyświetlić konkretne zdjęcie musi
+  otworzyć plik je zawierające oraz ustawić rejestry monitora w~taki
+  sposób, by monitor wyświetlił to zdjęcie w~odpowiednim miejscu ekranu.
+
+  Informacje tego typu, dotyczące zewnętrznych zasobów \alert{nie} są
+  zapisywane w~przestrzeni adresowej danego procesu, lecz zarządza nimi
+  sam system operacyjny. W~systemie GNU/Linux jednym z~głównych narzędzi
+  służących do tego jest tablica procesów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+
+
+  \textbf{Tablica procesów} jest tablicą używaną przez system operacyjny,
+  w~której w razie potrzeby zapisuje on wszystkie informacje potrzebne
+  do~działania danego procesu, a~które to informacje nie są zawarte w~jego
+  przestrzeni adresowej.
+
+  Cytując Andrewa S.~Tanenbauma \textit{Ogólnie proces jest kontenerem
+    zawierającym wszystkie informacje niezbędne do uruchomienia programu.},
+  str.~$72$, \parencite{Tannenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}.
+  Przez „kontener” (ang.~\textit{container}) Tanenbaum rozumie rodzaj
+  pojemnika, w~który zawarte są wszystkie potrzebne nam rzeczy.
+
+  To co powinni Państwo wynieść z~tych uwag, to fakt, że~proces jest dość
+  złożoną abstrakcją. W~dalszym ciągu zajęć nie będziemy~się zagłębiać
+  w~ten temat, skupimy~się za to na tym, jak w~praktyce pracować
+  z~procesami. Część teoretyczną ograniczy w~miarę możliwości do tych
+  pojęć, które są niezbędne w~codziennej pracy z~procesami.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Postęp technologiczny}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \label{fig:Evolution-of-OS}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.3]
+%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Pliki i~procesy}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{Rozwój GNU/Linuxa}
+
+% %   \vspace{-0.5em}
+
+
+% %   \begin{figure}
+
+% %     \label{fig:Evolution-of-OS}
+
+% %     \centering
+
+
+% %     \includegraphics[scale=0.3]
+% %     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
+
+% %   \end{figure}
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{Podstawy GNU/Linuxa: włączanie powłoki}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{}
+% % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Dziękuję! Pytania?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}
