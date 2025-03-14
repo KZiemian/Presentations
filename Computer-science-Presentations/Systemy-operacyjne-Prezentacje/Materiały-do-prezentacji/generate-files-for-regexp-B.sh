@@ -6,6 +6,11 @@ echo "Zawartość pliku „Data-02.dat”." >> Data-02.dat
 echo "Zawartość pliku „Data-03.dat”." >> Data-03.dat
 echo "Zawartość pliku „Data-04.dat”." >> Data-04.dat
 echo "Zawartość pliku „Data-05.dat”." >> Data-05.dat
+echo "Zawartość pliku „Data-06.dat”." >> Data-06.dat
+echo "Zawartość pliku „Data-07.dat”." >> Data-07.dat
+echo "Zawartość pliku „Data-08.dat”." >> Data-08.dat
+echo "Zawartość pliku „Data-09.dat”." >> Data-09.dat
+echo "Zawartość pliku „Data-10.dat”." >> Data-10.dat
 
 echo "Zawartość pliku „File-01.txt”." >> File-01.txt
 echo "Zawartość pliku „File-02.txt”." >> File-02.txt

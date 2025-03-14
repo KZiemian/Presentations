@@ -5,6 +5,11 @@ rm Data-02.dat
 rm Data-03.dat
 rm Data-04.dat
 rm Data-05.dat
+rm Data-06.dat
+rm Data-07.dat
+rm Data-08.dat
+rm Data-09.dat
+rm Data-10.dat
 
 rm File-01.txt
 rm File-02.txt
