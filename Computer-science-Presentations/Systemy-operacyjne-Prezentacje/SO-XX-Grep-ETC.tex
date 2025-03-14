@@ -84,7 +84,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Systemy operacyjne}
-\subtitle{Procesy???}
+\subtitle{Grep???}
 
 \author{Kamil Ziemian \\
   \email}
@@ -112,7 +112,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 11k+, 16k+,
+% Number of chars:
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -144,57 +144,30 @@ eprint=true,
 
 
 % ######################################
-\section{Procesy, zarys problemu}
+\section{Grep i~wyrażenia regularne}
 % ######################################
 
 
 % ##################
 \begin{frame}
-  \frametitle{Wiadomości wstępne: rejestry}
+  \frametitle{Dlaczego poświęcamy uwagę grepowi?}
 
 
-  Zanim powiem sobie dokładniej czym jest proces, przedyskutujemy pokrótce
-  czym są rejestry urządzeń elektronicznych, takich jak procesory, dyski
-  \textsc{ssd} czy monitory. Rejestr urządzenia elektronicznego, to
-  wbudowana w~to urządzenie pamięć, która pozwala na bardzo szybki odczyt
-  i~zapis do niej danych. Inaczej mówiąc, rejestry stanowią bardzo szybką
-  pamięć własną danego urządzenia.
+  Polecenie \texttt{grep} nie należy do najbardziej intuicyjnych w~użyciu,
+  ale~potrafi być przydatne. Oprócz tego jest dobrą ilustrują z~jednej
+  strony potęgi jaką oferuje nam system GNU/Linux, z~drugiej to ile
+  trudu jej zdobycie zwykle kosztuje. Oprócz tego pozwoli nam zdobyć
+  pewne umiejętności przy korzystaniu
+  z~\colorhref{https://en.wikipedia.org/wiki/Regular\_expression}{wyrażeniami
+    regularnymi} („regex” lub „regexp”, ang.~\textit{regular expression}).
 
-  Ustawiając wartości odpowiednich rejestrów na dane wartości, wydajemy
-  danemu urządzeniu odpowiednie polecenia. Przykładowo, i~ten przykład nie
-  musi być specjalnie realistyczny, ustawiając wartość przechowywaną przez
-  pewien rejestr monitora na~$1$ każemy mu~się włączyć. Jeśli wartość tego
-  rejestru ustawimy na~$0$, to rozkażemy mu~się wyłączyć. Ze zrozumiałych
-  względów, większość osób nie chce mieć nigdy bezpośredniej styczności
-  z~rejestrami urządzeń, z~których na co dzień korzysta.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czym jest proces?}
-
-
-  Ze~względu na to, że~produkcja takiej szybkiej pamięci jest bardzo droga,
-  rejestry są zwykle bardzo małe, zawierają często tylko \alert{kilka}
-  bajtów. Problem produkcji szybkiej pamięci, która jest jednocześnie
-  odpowiednio tania, to ciągła bolączka elektroniki XXI~wieku. Przejdźmy
-  teraz do procesów.
-
-  \textit{Wszystko w~systemie Linux jest plikiem. Jeśli coś nie jest
-    plikiem to jest procesem.} Powiedzenie popularne w~środowisku
-  użytkowników tego systemu, wyjaśniające jedną z~głównych zasad
-  jego funkcjonowania.
-
-  Jak już o~tym mówiliśmy, plik czymś jest, proces coś robi. Jeśli
-  komputer z~systemem GNU/Linux coś robi, to odpowiada za~to jeden lub
-  więcej procesów. Innym określeniem procesu, jest stwierdzenie, że~jest
-  to \alert{działający program}.
+  Wyrażenia regularne, można postrzegać jako ulepszoną wersję wyszukiwania
+  tekstu w~dokumencie, czyli słynnego \texttt{Ctrl-f}. W~najprostszym
+  wypadku, działają dokładnie tak jak \texttt{Ctrl-f}: przesyłamy im
+  jakiś napis i~znajdują one jego wystąpienia w~tekście. Różnica polega na
+  tym, że~za pomocą specjalnej składni, możemy im szukać bardziej złożonych
+  ciągów symboli, niż po prostu podany tekst, jednak do tego przejdziemy
+  w~swoim czasie.
 
 \end{frame}
 % ##################
@@ -205,54 +178,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+  \frametitle{Problemy z~wyrażeniami regularnymi}
 
 
-  Czy jest jakaś różnica między pojęciem procesu, a~pojęciem programu?
-  To jak używamy tych terminów wskazuje na to, że~tak różnica istotnie
-  istnieje. Rozpatrzmy przykładowo grę \textit{Hollow Knight} (program
-  równie dobry jak każdy inny), którą mam zainstalowaną na dysku, ale
-  w~którą akurat teraz nie gram. Gra ta niewątpliwie jest programem, ale
-  nie jest nią związany żaden proces. Program więc może być więc istnieć
-  w~stanie biernym, jako zbiór plików na dysku, ale nie posiadać w~danej
-  chwili żadnego procesu.
+  Wyrażenia regularne mają dwie podstawowe wady. Po pierwsze są trudne
+  i~w~pisaniu, a~jeszcze bardziej w~czytaniu. Po~drugie, istnieją dziesiątki
+  sposobów notowania wyrażeń regularny, które służą do tego samego, ale mają
+  inną składnię. W~połączeniu z~ich nieczytelnością, sprawia to,
+  iż~korzystanie z~nich wymaga zwykle bardzo dużo pracy z~naszej strony,
+  a~błędy popełnić jest bardzo łatwo. Warto tutaj przytoczyć jedną
+  z~mądrości informatyki.
 
-  Wewnętrzna budowa procesu nie jest wcale rzeczą banalną. Każdy proces,
-  z~definicji, coś robi, a~na komputerze robienie czegoś jest w~zasadzie
-  równoważne przetwarzaniu (przeliczaniu) pewnego zbioru danych. Dane te
-  muszą znajdować~się gdzieś w~pamięci komputera, więc każdy proces musi
-  posiadać przyznany mu specjalny obszar pamięci. Ten fragment pamięci
-  należący do danego procesu nazywamy \textbf{przestrzenią adresową
-    procesu}.
+  \textit{Pewien programista miał problem. Stwierdził „Użyję wyrażeń
+    regularnych.” Teraz ma dwa problemy.}
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
-
-
-  Przestrzeń adresowa danego procesu zawiera skopiowany z~dysku kod programu
-  który będzie dany proces wykonywał, dane na których będzie on operował
-  oraz
-  \colorhref{https://en.wikipedia.org/wiki/Stack_(abstract_data_type)}{stos}
-  tego procesu. W~systemach z~rodziny \textsc{unix}a część pamięci
-  zawierającej sam program nazywa~się \textbf{segmentem tekstu},
-  ta zawierające dane na których będzie operował \textbf{segmentem danych},
-  zaś ostatnia \textbf{segmentem stosu}. Ze względu na charakter kursu nie
-  możemy~się bardziej zagłębiać w~tą tematykę.
-
-  Oprócz tego proces korzysta często z~zewnętrzny wobec niego zasobów,
-  takich jak wartości które mają być wpisane do rejestrów urządzeń,
-  z~których korzysta dany proces, listę otwartych plików, etc. Przykładowo
-  program do wyświetlania zdjęć, by wyświetlić konkretne zdjęcie musi
-  otworzyć plik je zawierające oraz ustawić rejestry monitora w~taki
-  sposób, by monitor wyświetlił to zdjęcie w~odpowiednim miejscu ekranu.
+  Choć wyrażenia regularne potrafią być bardzo użyteczne, to jednak nie
+  należy ich stosować, jeśli dany problem da~się rozwiązać w~sposób
+  prostszy. Nie dotyczy to oczywiście najprostszych wyrażeń regularnych,
+  które można stosować równie często jak \texttt{Ctrl-f}.
 
 \end{frame}
 % ##################
@@ -263,24 +206,22 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+  \frametitle{Mem dla ilustracji problemu}
+
+  \vspace{-0.5em}
 
 
-  Dane dotyczące zewnętrznych zasobów \alert{nie} są przechowywane
-  w~przestrzeni adresowej danego procesu, lecz zarządza nimi sam system
-  operacyjny. W~systemie GNU/Linux jednym z~głównych narzędzi
-  służących do tego jest tablica procesów.
+  \begin{figure}
 
-  \textbf{Tablica procesów} jest tablicą używaną przez system operacyjny,
-  w~której w razie potrzeby zapisuje on wszystkie informacje potrzebne
-  do~działania danego procesu, a~które to informacje nie są zawarte w~jego
-  przestrzeni adresowej.
+    \label{fig:How-to-regex}
 
-  Cytując Andrewa S.~Tanenbauma: \textit{Ogólnie proces jest kontenerem
-    zawierającym wszystkie informacje niezbędne do uruchomienia programu.},
-  str.~$72$, \parencite{Tannenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}.
-  Przez „kontener” (ang.~\textit{container}) Tanenbaum rozumie rodzaj
-  pojemnika, w~który zawarte są wszystkie potrzebne nam rzeczy.
+    \centering
+
+
+    \includegraphics[scale=0.18]
+    {./Presentations-pictures/Miscancellous-pictures/How-to-regex.jpg}
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -291,14 +232,22 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Jaki stąd morał?}
+  \frametitle{Co ja robię?}
+
+  \vspace{-0.5em}
 
 
-  To co powinni Państwo wynieść z~tych uwag, to fakt, że~proces jest dość
-  złożoną abstrakcją. W~dalszym ciągu zajęć nie będziemy~się zagłębiać
-  w~ten temat, skupimy~się za to na tym, jak w~praktyce pracować
-  z~procesami. Część teoretyczną ograniczy w~miarę możliwości do tych
-  pojęć, które są niezbędne w~codziennej pracy z~procesami.
+  \begin{figure}
+
+    \label{fig:How-to-regex}
+
+    \centering
+
+
+    \includegraphics[scale=0.52]
+    {./Presentations-pictures/Miscancellous-pictures/Lost-in-regex.png}
+
+  \end{figure}
 
 \end{frame}
 % ##################
@@ -307,53 +256,216 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
 
 
+  \textit{I~have a natural revulsion to any operating system that shows so
+    little plannning as to have to named all of its commands after digestive
+    noises (awk, grep, fsck, nroff).} \\
+    Autor nieznany, str.~$147$,
+    \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
 
-% \end{frame}
-% % ##################
+  Nazwa polecenia \texttt{grep} pochodzi od~\textit{Global REgular
+    expression Print}, czyli na polski to byłoby coś w~stylu „globalny
+  wypisywacz wyrażeń regularnych”. Jest to niezwykle rozbudowane polecenie
+  i~moglibyśmy spędzić kilka zajęć na pracy z~nim, na~tym przedmiocie
+  ograniczymy~się do stosunkowo podstawowych przypadków. Więcej informacji
+  o~\texttt{grep}ie można znaleźć choćby tutaj
+  \parencite{Pankaj-Wailia-Mastering-Grep-command-in-Linux-Unix-ETC-Ver-2025}.
 
+  W~katalogu \texttt{Materiały-do-prezentacji\textbackslash
+    SO-XX-Grep\textbackslash} można znaleźć plik \textit{Lorem-ipsum.txt}
+  na którym będziemy pracować. Zawarty w~nim tekst ten został wygenerowany
+  za pomocą strony \textit{Lorem ipsum}
+  \colorhref{https://www.lipsum.com/}{https://www.lipsum.com/}.
 
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Postęp technologiczny}
-
-%   \vspace{-0.5em}
-
-
-%   \begin{figure}
-
-%     \label{fig:Evolution-of-OS}
-
-%     \centering
-
-
-%     \includegraphics[scale=0.3]
-%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+  Teksty typu \textit{Lorem ipsum} są używany w~przemyśle wydawniczym od
+  XVI wieku, jak tekst do~testowania różnych układów strony, więc czemu by
+  nie użyć ich i~tutaj?
+
+  Załóżmy, że~jesteśmy w~katalogu, gdzie znajduje~się plik
+  \textit{Lorem-ipsum.txt}. Zaczniemy od najprostszego użycia polecenia
+  \texttt{grep}, będzie nim \\
+  \texttt{\$ grep "in" Lorem-ipsum.txt} \\
+  Od razu należy zaznaczyć, że~polecenie \texttt{grep} potrzebuje mnie dwa
+  argumenty: najpierw tekst który ma wyszukać, potem miejsce, gdzie go ma
+  wyszukać. (O~pewnych subtelnościach tego związanych z~przekierowaniami,
+  powiem sobie później.) Jeśli wprowadzimy za mało argumentów, to powłoka
+  może zacząć~się dziwnie zachowywać, wtedy należy spróbować użyć
+  pojedynczego \texttt{Ctrl-d} lub poprosić nas o~pomoc. Od~tego jesteśmy.
+
+\end{frame}
+% ##################
 
 
 
-% \end{frame}
-% % ##################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+  Przyjrzyjmy~się rezultatowi tego polecenia. \\
+  \texttt{\$ grep "in"{} Lorem-ipsum.txt} \\
+  \texttt{Lorem ipsum dolor sit amet, consectetur
+    adipisc{\color{red} in}g elit. Integer at est erat.} \\
+  \texttt{vitae. In ultrices turpis et arcu venenatis, at feugiat elit
+    lac{\color{red} in}ia. Quisque} \\
+  \texttt{t{\color{red} in}cidunt vitae massa euismod maximus. Vestibulum
+    sed eros vel arcu iaculis} \\
+  \hspace{1em} $\vdots$ \\
+  Resztę linii wyniku pominęliśmy dla przejrzystość. Jak widzimy,
+  \texttt{grep} wyszukuje wszystkie linie w~których znajduje~się ciąg
+  symboli „in”, niezależnie czy jest to pojedyncze słowo, czy część
+  większego i~wyróżnia znaleziony fragment odpowiednim kolorem. Jeśli
+  znaleziony tekst nie wyświetla~się komuś na kolorowo, proszę spróbować
+  polecenia \\
+  \texttt{\$ grep --color "in"{} Lorem-ipsum.txt}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+  Wynik staje~się łatwiejszy do czytania, jeśli do~\texttt{grep}a prześlemy
+  flagę \texttt{-n}, która sprawia, że~polecenie wypisuje numery
+  odpowiednich wierszy z~pliku: \\
+  \texttt{\$ grep -n "in"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 1:}Lorem ipsum dolor sit amet, consectetur
+    adipisc{\color{red} in}g elit. Integer at est erat.} \\
+  \texttt{{\color{green}6:}vitae. In ultrices turpis et arcu venenatis, at
+    feugiat elit lac{\color{red} in}ia. Quisque} \\
+  \texttt{{\color{green}11:}t{\color{red} in}cidunt vitae massa euismod
+    maximus. Vestibulum sed eros vel arcu iaculis} \\
+  \hspace{1em} $\vdots$
+
+  W~dalszych przykładach będziemy standardowo dodawać flagę~\texttt{-n}, by
+  uczynić zwracane rezultaty prostszymi w~czytaniu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyszukiwanie całych wyrazów}
+
+
+  Jak widzieliśmy, normalnie \texttt{grep} wyszukuje ciąg symboli,
+  niezależnie, czy tworzą one w~tekście osoby wyraz, czy nie. Żeby
+  wyszukać tylko te wiersze, w~których dany ciąg symboli pojawia~się
+  tylko jako osobne słowo, używamy flagi~\texttt{-w}: \\
+  \texttt{\$ grep -n -w "in"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 14:}quis interdum. Integer at orci at neque
+    pulvinar pretium. Donec {\color{red} in} elementum} \\
+  \texttt{{\color{green} 24:}massa et rhoncus aliquam. Suspendisse rhoncus
+    nunc {\color{red} in} finibus mattis.} \\
+  \texttt{{\color{green}37:}vel aliquet. Proin {\color{red} in} hendrerit
+    elit, a finibus ipsum. Integer sollicitudin} \\
+  \hspace{1em} $\vdots$ \\
+
+  % Tak jak wyjaśniliśmy wcześniej, flagi tego typu można łączyć, tak~że
+  % polecenia: \\
+  % \texttt{\$ grep -nw "in"{} Lorem-ipsum.txt} \\
+  % \texttt{\$ grep -wn "in"{} Lorem-ipsum.txt} \\
+  % znaczą to samo. Jednak dla podkreślenia, że~testujemy tylko flagę
+  % \texttt{-w} umieściliśmy ją osobno. Tą samą konwencję będziemy stosować
+  % również dalej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyszukiwanie całych wyrazów}
+
+
+  Tak jak wyjaśniliśmy wcześniej, flagi tego typu można odpowiednio łączyć,
+  tak~że polecenia: \\
+  \texttt{\$ grep -nw "in"{} Lorem-ipsum.txt} \\
+  \texttt{\$ grep -wn "in"{} Lorem-ipsum.txt} \\
+  znaczą to samo. Jednak dla podkreślenia, że~testujemy tylko flagę
+  \texttt{-w} umieściliśmy ją osobno. Tą samą konwencję będziemy stosować
+  również dalej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Duże i~małe litery}
+
+
+  Domyślnie \texttt{grep} uwzględnia w~wyszukiwaniu wielkość liter, co
+  obrazują poniższe przykłady. \\
+  \texttt{\$ grep -n "Du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 32:}{\color{red} Du}is fringilla dictum leo id
+    interdum. Ut sit amet sem a nunc porttitor} \\
+  \hspace{1em} $\vdots$ \\
+  \texttt{\$ grep -n "du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 8:}consectetur a sapien vitae, euismod
+    biben{\color{red} du}m eros.} \\
+  \hspace{1em} $\vdots$
+
+  By~\texttt{grep} ignorował różnicę między małymi i~dużymi literami,
+  należy mu przesłać flagę \texttt{-i}: \\
+  \texttt{\$ grep -n -i "Du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 8:}consectetur a sapien vitae, euismod
+    biben{\color{red} du}m eros.} \\
+  \hspace{1em} $\vdots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zliczanie dopasowany linii}
+
+
+  By~\texttt{grep} wypisał w~jakiej liczbie linii został znaleziony zadany
+  ciąg symboli (do ilu linii został dopasowany wzorzec) dajemy mu
+  flagę~\texttt{-c}: \\
+  \texttt{\$ grep -n -c "Du"{} Lorem-ipsum.txt} \\
+  \texttt{$6$}
+
+\end{frame}
+% ##################
 
 
 

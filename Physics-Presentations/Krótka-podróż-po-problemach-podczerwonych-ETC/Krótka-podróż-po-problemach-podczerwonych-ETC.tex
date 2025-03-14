@@ -103,7 +103,7 @@ eprint=true,
 
 
 % ------------------------------------------------------------------------------------------------------------------
-\title{Krótki przewodni po problemach podczerwonych
+\title{Krótki przewodnik po problemach podczerwonych
   w~elektrodynamice kwantowej}
 
 \author{Kamil Ziemian \\
@@ -307,21 +307,21 @@ eprint=true,
   równy~$e$.
 
   Czysto matematycznie ma sens następujące wyrażenie
-  % nc od not conserved, brak zachowanego ładunku
+  % np od not physical, brak zachowanego ładunku
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-02}
-    \psi_{ \HorSpaceTwo \text{nc} } =
+    \psi_{ \HorSpaceTwo \text{np} } =
     \frac{ 1 }{ \sqrt{ 2 } } \psi_{ \HorSpaceTwo 0 } +
     \frac{ 1 }{ \sqrt{ 2 } } \psi_{ \HorSpaceTwo 1 }, \quad
     \psi_{ \HorSpaceTwo 0 } \in \Hcal_{ \HorSpaceTwo 0 }, \,
     \psi_{ \HorSpaceTwo 1 } \in \Hcal_{ \HorSpaceTwo e }.
   \end{equation}
-  Czy ten stan ma sens fizyczny? W~zależności od wyniku pomiaru
-  dostawalibyśmy stan zawierający całkowity ładunek elektryczny równy
-  $0$ lub $e$, co jest sprzeczne z~zasadą zachowania ładunku. Wobec tego
-  stwierdzamy, że~\alert{fizycznie} superpozycja stanów
-  $\psi_{ \HorSpaceOne a }$, $\psi_{ \HorSpaceOne b }$ jest dopuszczona wtedy i~tylko
-  wtedy, gdy $\psi_{ \HorSpaceOne a }, \psi_{ \HorSpaceOne b } \in \Hcal_{ \HorSpaceTwo 0 }$
+  Czy ten stan ma sens fizyczny? W~stanie tym mielibyśmy \alert{klasyczną}
+  niepewność wartości ładunku elektrycznego, co jest zagadnieniem z~fizyki
+  statycznej. Wobec tego stwierdzamy, że~\alert{fizycznie} superpozycja
+  stanów $\psi_{ \HorSpaceOne a }$, $\psi_{ \HorSpaceOne b }$ jest dopuszczona wtedy
+  i~tylko wtedy,
+  gdy $\psi_{ \HorSpaceOne a }, \psi_{ \HorSpaceOne b } \in \Hcal_{ \HorSpaceTwo 0 }$
   lub $\psi_{ \HorSpaceOne a }, \psi_{ \HorSpaceOne b } \in \Hcal_{ \HorSpaceTwo e }$.
 
 \end{frame}
@@ -879,11 +879,10 @@ eprint=true,
 
   Intuicyjne wyjaśnienia łamania symetrii Lorentzowskiej w~tym obrazie
   jest następujące. Chmury fotonów zmieniają kształt pod wpływem
-  transformacji Lorentza, więc wyróżnione są te układy odniesienia,
-  w~których chmury te są sferycznie symetryczne.
+  transformacji Lorentza i~dlatego
 
   Ma to znaczenie dla ważnego wyniku
-  \colorhref{https://en.wikipedia.org/wiki/Eugene\_Wigner}{Eugena Wignera}
+  \colorhref{https://en.wikipedia.org/wiki/Eugene\_Wigner}{Eugena Wignera}.
   Pokazał on, że~każdą nieredukowalną, skończenie wymiarową reprezentację
   grupy Lorentza określają dwie liczby: $m^{ \HorSpaceOne 2 }$ i~$s$. Jak
   wynika z~zapisu, każdą taką reprezentację można jednoznacznie skojarzyć
@@ -1220,8 +1219,7 @@ eprint=true,
     \delta( \HorSpaceOne \vecp \HorSpaceOne ) =
     -\frac{ e }{ 2\pi }
     \int \frac{ f\!\big( \HorSpaceOne \vecp, \vecEasm,
-      \vecBasm \big) }{ u( \HorSpaceOne \vecp, l ) } \,
-    d^{ \HorSpaceOne 2 } l.
+      \vecBasm \big) }{ u( \HorSpaceOne \vecp, l ) } \, d\Omega.
   \end{equation}
   W~notacji relatywistycznej możemy zapisać
   $u( \HorSpaceOne \vecp, l ) = p \cdot l$.
