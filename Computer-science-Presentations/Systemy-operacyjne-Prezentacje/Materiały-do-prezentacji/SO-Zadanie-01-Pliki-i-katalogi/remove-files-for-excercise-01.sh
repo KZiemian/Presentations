@@ -57,4 +57,4 @@ rm File-05-C.txt
 rm File-05-D.txt
 rm File-05-E.txt
 
-rm Jakis-plik.txt
+rm Normal-file.txt

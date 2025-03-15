@@ -58,4 +58,4 @@ echo "Zawartość pliku „File-05-C.txt”." >> File-05-C.txt
 echo "Zawartość pliku „File-05-D.txt”." >> File-05-D.txt
 echo "Zawartość pliku „File-05-E.txt”." >> File-05-E.txt
 
-echo "Zawartość pliku „Jakis-plik.txt”." >> Jakis-plik.txt
+echo "Zawartość pliku „Normal-file.txt”." >> Normal-file.txt

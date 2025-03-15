@@ -1,16 +1,17 @@
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 % Basic configuration of Beamera class and Jagiellonian theme
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
 
+% Options: t - align frame text to the top.
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
 \usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
@@ -18,10 +19,10 @@
 
 
 
-% ---------------------------------------
-% Procesing configuration files of Jagiellonian theme loceted in directory
-% "preambule".
-% ---------------------------------------
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
 
@@ -39,17 +40,38 @@
 
 
 
-% ------------------------------
-% Importing packages, libraries and setting their configuration.
-% ------------------------------
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
 
 
 
 
 
-% ------------------------------
-% Special configuration for this particular presentation.
-% ------------------------------
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
 
 
 
@@ -60,15 +82,16 @@
 
 
 
-% ---------------------------------------------------------------------
-\title{?????}
-\subtitle{?????}
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{Grep???}
 
-\author{Kamil Ziemian}
+\author{Kamil Ziemian \\
+  \email}
 
 
 % \date{}
-% ---------------------------------------------------------------------
+% ------------------------------------------------------------------------------------------------------------------
 
 
 
@@ -80,7 +103,7 @@
 
 
 % ####################################################################
-% Beginning of the document.
+% Beginning of the document
 \begin{document}
 % ####################################################################
 
@@ -88,9 +111,11 @@
 
 
 
+% ######################################
+% Number of chars: 20k+,
 % Text is adjusted to the left and words are broken at the end of the line.
-% Number of chars: 62k+.
 \RaggedRight
+% ######################################
 
 
 

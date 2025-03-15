@@ -84,7 +84,9 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Systemy operacyjne}
-\subtitle{Podstawowe abstrakcje systemów operacyjnych}
+\subtitle{Podstawowe abstrakcje, korzystanie z~powłoki
+  \textsc{bash}, etc.
+}
 
 \author{Kamil Ziemian \\
   \email}
@@ -112,7 +114,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 62k+,
+% Number of chars: 62k+, 70k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -138,6 +140,11 @@ eprint=true,
 
 \end{frame}
 % ##################
+
+
+
+
+
 
 
 
@@ -210,20 +217,22 @@ eprint=true,
   \frametitle{Włączanie powłoki}
 
 
-  Naszym główny narzędziem na tych zajęciach będzie powłoka \textsc{bash},
-  więc upewnijmy~się, że~umiemy ją włączyć, co na samy początku może być
-  naprawdę niewdzięcznym zadaniem. W~pierwszym kroku proszę wcisnąć
-  \texttt{Ctrl-Alt-t} i~zobaczyć, czy powłoka~się otworzyć.
+  Naszym główny narzędziem na tych zajęciach będzie powłoka
+  (ang. \textit{shell}) \textsc{bash}, więc upewnijmy~się, że~umiemy ją
+  włączyć, co na samy początku może być naprawdę niewdzięcznym zadaniem.
+  W~pierwszym kroku proszę wcisnąć \texttt{Ctrl-Alt-t} i~zobaczyć, czy
+  powłoka~się otworzyć.
 
   Jeśli to nie zadziała, to proszę pochodzić kursorem po ekranie,
   aż~znajdziemy okienko „Szukaj”, „Wyszukaj”, etc. Proszę tam wpisać
   „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy wyświetli~się
   odpowiednia ikona.
 
-  Pracując z~poziomu powłoki, często przypadkiem, natkniemy~się na problemy
-  trybów działania systemu operacyjnego oraz różnych poziomów dostępu.
-  Z~tego powodu wyjaśnimy teraz kilka pojęć dotyczących systemów
-  operacyjnych.
+  Istnieje wiele wartych uwagi materiałów do nauki \textsc{bash}a, niekiedy
+  dość już wiekowych. Przykładowo, można sięgnąć do tutorialu
+  Gilesa Orra
+  \colorhref{https://tldp.org/HOWTO/Bash-Prompt-HOWTO/index.html}
+  {\textit{Bash Prompt HOWTO}} \parencite{Orr-Bash-Prompt-HOWTO-Ver-2003}.
 
 \end{frame}
 % ##################
@@ -237,17 +246,18 @@ eprint=true,
   \frametitle{Architektura systemu operacyjnego}
 
 
+  Pracując z~poziomu powłoki nie raz natkniemy~się na problemy
+  trybów działania systemu operacyjnego oraz różnych poziomów dostępu.
+  Często będzie to wynikiem przypadku i~możemy~się poczuć zagubienie,
+  czemu komputer działa w~taki sposób? Z~tego powodu wyjaśnimy teraz kilka
+  pojęć dotyczących systemów operacyjnych.
+
   W~tym momencie potrzebujemy wprowadzić nowe pojęcie.
   \textbf{Architekturą systemu operacyjnego} nazywamy ogólny plan budowy
   danego systemu operacyjnego. Architektura takiego systemu jest więc
   zbiorem idei, których używamy do tworzenia oraz opisywania systemów
   operacyjnych. Jak poprzednio, nie będziemy potrzebowali ściślejszej
   definicji tego pojęcia.
-
-  Podstawowa dziś architektura stosowana dzisiaj, mówi nam, że~system
-  operacyjny może działać w~dwóch różnych trybach: trybie jądra i~trybie
-  użytkownika. Żeby zrozumieć czemu ten podział został wprowadzony,
-  wróćmy do zagadnienia: po co istnieje system operacyjny?
 
 \end{frame}
 % ##################
@@ -261,6 +271,13 @@ eprint=true,
   \frametitle{Rola systemu operacyjnego}
 
 
+  Podstawowa dziś architektura stosowana dzisiaj, mówi nam, że~system
+  operacyjny może działać w~dwóch podstawowych trybach: trybie jądra
+  i~trybie użytkownika. Oprócz tego dany system operacyjny może wprowadzać
+  inne tryby i~poziomy dostępu, o~kilku z~nich powiemy później. Żeby
+  zrozumieć czemu ten podział został wprowadzony, wróćmy do zagadnienia:
+  po co istnieje system operacyjny?
+
   System ten istnieje, by zdjąć z~nas obowiązek bezpośredniego zarządzania
   sprzętem, robienia takich rzeczy jak ręczne ustawienie wartości rejestrów
   procesora, bo normalny użytkownik nie chce mieć nigdy do czynienia
@@ -269,10 +286,6 @@ eprint=true,
   łatwiej o~pomyłki i~poważne błędy. Przykładowo, potrzebuje mieć możliwość
   kasowania danych na dysku. Co jeśli przypadkiem zamiast skasować jeden
   plik wydamy polecenie, by~skasować całą zawartość dysku?
-
-  Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
-  należy zapewnić, żeby dane jednej osoby, które powinny pozostać tajne, nie
-  były od ręki dostępne innym użytkownikom tego komputera.
 
 \end{frame}
 % ##################
@@ -286,6 +299,10 @@ eprint=true,
   \frametitle{Tryby działania systemu operacyjnego}
 
 
+  Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
+  należy zapewnić, żeby dane jednej osoby, które powinny pozostać tajne, nie
+  były od ręki dostępne innym użytkownikom tego komputera.
+
   Aby zapewnić możliwie dużą wygodę, bezpieczeństwo i~tajność danych,
   w~obecnej architekturze systemów operacyjnych możliwe są dwa tryby
   działania: \textbf{tryb jądra} (ang. \textit{kernel mode})
@@ -297,11 +314,6 @@ eprint=true,
   bo~wszystkie operacje sprzętu są potrzebne do działania komputera, więc
   ktoś musi móc je uruchomić. Tak samo, ktoś musi mieć dostęp do całej
   pamięci, aby móc przydzielać ją innym.
-
-  Następnie jest tryb użytkownika. Gdy jesteśmy w~tym trybie, system
-  operacyjny wyłącza nam dostęp do pewny możliwości naszego komputera.
-  W~szczególności, jeśli jakaś część pamięci jest przydzielona innemu
-  użytkownikowi, jest ona dla nas niedostępna w~tym trybie.
 
 \end{frame}
 % ##################
@@ -315,6 +327,11 @@ eprint=true,
   \frametitle{Jak to działa?}
 
 
+  Następnie jest tryb użytkownika. Gdy jesteśmy w~tym trybie, system
+  operacyjny wyłącza nam dostęp do pewny możliwości naszego komputera.
+  W~szczególności, jeśli jakaś część pamięci jest przydzielona innemu
+  użytkownikowi, jest ona dla nas niedostępna w~tym trybie.
+
   Jak tego typu ograniczenia działają w~praktyce? System operacyjny jest
   programem jak każdy inny, więc jego działanie zależy od~ustawień. Jeśli
   działając jako użytkownik chcemy zobaczyć zawartość jakiegoś fragmentu
@@ -323,15 +340,6 @@ eprint=true,
   prawo udostępnić nam ten fragment pamięci. Jeśli nie to przesyła nam
   wiadomość, że~nie mamy uprawnień do zobaczenia zawartości tego fragmentu
   pamięci.
-
-  Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
-  z~tym komputerem zrobić wszystko. Dlatego hakerzy dokładają tylu starań,
-  by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich uprawnień.
-  Dlatego też takie antycheaterskie programy takie jak Vanguard, który miał
-  być dodany choćby do
-  \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
-      Legends}}~są tak problematyczne
-  \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
 
 \end{frame}
 % ##################
@@ -345,6 +353,15 @@ eprint=true,
   \frametitle{Problemy z~bezpieczeństwem}
 
 
+  Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
+  z~tym komputerem zrobić wszystko. Dlatego hakerzy dokładają tylu starań,
+  by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich uprawnień.
+  Dlatego też takie antycheaterskie programy takie jak Vanguard, który miał
+  być dodany choćby do
+  \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
+      Legends}}~są tak problematyczne
+  \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
+
   Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
   z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
   tworzącej ten program, że~nie nadużyją tych możliwości?
@@ -354,7 +371,41 @@ eprint=true,
   cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
   w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
   użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
-  wykryć cheatera. Alternatywą jest uruchamianie tych programów na serwerze
+  wykryć cheatera.%  Alternatywą jest uruchamianie tych programów na serwerze
+  % gry, który i~tak dysponuje wszystkimi tego typu informacjami.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~bezpieczeństwem}
+
+
+  % Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
+  % z~tym komputerem zrobić wszystko. Dlatego hakerzy dokładają tylu starań,
+  % by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich uprawnień.
+  % Dlatego też takie antycheaterskie programy takie jak Vanguard, który miał
+  % być dodany choćby do
+  % \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
+  %     Legends}}~są tak problematyczne
+  % \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
+
+  % Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
+  % z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
+  % tworzącej ten program, że~nie nadużyją tych możliwości?
+
+  % Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
+  % Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
+  % cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
+  % w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
+  % użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
+  % wykryć cheatera.
+  Alternatywą jest uruchamianie tych programów na serwerze
   gry, który i~tak dysponuje wszystkimi tego typu informacjami.
 
 \end{frame}
@@ -391,10 +442,10 @@ eprint=true,
 
   Inaczej mówiąc, jeśli na komputerze znajdują~się jakieś dane, to są
   wewnątrz jakiegoś pliku. Jeśli komputer coś robi, to jest za to
-  odpowiedzialny odpowiedni proces. Ponieważ pliki są mniej abstrakcyjne
-  (hehe), zaczniemy nasze zajęcia od zaznajomieniem~się z~pracą z~plikami
-  pod powłoką \textsc{bash}. Przyjmujemy przy tym, że~znają Państwo pewne
-  pojęcia z~systemu Windows.
+  odpowiedzialny odpowiedni proces. Zrozumienie tego na tym poziomie jest
+  wystarczające na~potrzeby tych zajęć. W~przyszłości może zajrzymy pod
+  warstwę abstrakcji plików i~procesów, by~się przekonać, że~ich wewnętrzna
+  budowa wcale nie jest banalna.
 
 \end{frame}
 % ##################
@@ -403,317 +454,217 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Rozwój GNU/Linuxa}
+% ##################
+\begin{frame}
+  \frametitle{Pliki i~procesy}
 
-%   \vspace{-0.5em}
 
+  Ponieważ pliki są mniej abstrakcyjne (hehe), zaczniemy nasze zajęcia od
+  zaznajomieniem~się z~pracą z~plikami pod powłoką \textsc{bash}.
+  Przyjmujemy przy tym, że~znają Państwo pewne pojęcia z~systemu Windows.
 
-%   \begin{figure}
+\end{frame}
+% ##################
 
-%     \label{fig:Evolution-of-OS}
 
-%     \centering
 
 
-%     \includegraphics[scale=0.3]
-%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
 
-%   \end{figure}
 
-% \end{frame}
-% % ##################
 
 
 
 
+% ######################################
+\section{Podstawy poruszania~się w~powłoce BASH}
+% ######################################
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Bardzo ważne}
 
 
-%   Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-%   na~dowolne związany z~nimi temat. W~szczególności \alert{należy} zadawać
-%   pytania, jeśli coś jest niezrozumiałe albo niejasne. Ten kurs ma być
-%   wstępem do systemu operacyjnego GNU/Linux, \alert{nie} zakładamy, że~są
-%   Państwo doświadczonymi administratorami tego systemu. Byłoby to bardzo
-%   niewłaściwe założenie.
+% ##################
+\begin{frame}
+  \frametitle{Zaczynamy}
 
-%   Proszę pamiętać, że~gdy chodzi o~tematy związane z~zajęciami \alert{nie}
-%   ma pytań zbyt elementarnych czy głupich. Są~tylko niezadowalające
-%   odpowiedzi udzielane na~Państwa pytania. Jesteśmy tutaj by Państwu pomóc
-%   w~zaznajomieni~się z~pracą z~systemem operacyjnym na głębszym poziomie,
-%   pytania z~Państwa strony bardzo ułatwiają nam to zadanie. Zadawanie pytań
-%   nie oznacza, że~ktoś czegoś nie umie, tylko że~chce~się czegoś nauczyć.
 
-% \end{frame}
-% % ##################
+  Zacznijmy od przyjęcia, że~pracujemy na komputerze jako użytkownik,
+  którego nazwa w~systemie operacyjnym została ustawiona jako
+  \texttt{adam}. Jeśli włączymy konsolę zobaczymy pewnie coś takiego: \\
+  \texttt{adam:$\sim$\$} \\
+  Od tego momentu będziemy skracali ten znak zachęty (ang. \textit{prompt})
+  do symbolu \texttt{\$}. Przepisywanie pełnej jego postaci wnosi bardzo
+  mało informacji, za~to zabiera sporo miejsca.
 
+  Na początku zajmiemy~się tym, jak poruszać~się po systemie plików
+  i~katalogów. Na pewno wiedzą Państwo, że~na komputerze znajdują~się
+  katalogi (ang.~\textit{directories}), zwane też folderami, które zawierają
+  pliki i~inne katalogi. Z~punktu widzenia systemu GNU/Linux
+  katalog jest plikiem jak każdy inny, jedynie jest to plik specjalnego
+  typu. Dla tego systemu wszystko jest plikiem lub procesem.
 
+\end{frame}
+% ##################
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Bardzo ważne}
 
 
-%   Pytanie można i~\alert{należy} zadawać w~trakcie zajęć, po zajęciach, jak
-%   też pisząc na adres \email. Przy pisaniu na e-maila prosimy o~nadawanie
-%   tytułów postaci „Pytanie o X”, „Pytanie z przedmiotu >>Systemy
-%   operacyjne<<”,~etc. W~trakcie semestru zwykle dostaję dużą ilość
-%   wiadomości z~zestawami zadań i~pojedynczy e-mail z~nic nie mówiącym
-%   tytułem, łatwo zginie w~nich
+% ##################
+\begin{frame}
+  \frametitle{Polecenia}
 
-%   Pytania typu „Jaki jest obecny kierunek rozwoju gry \textit{Path~of
-%     Exile~2}?” musimy jednak zostawić na~czas po zajęciach.
 
-%   Ten kurs jest tylko \alert{wstępem} do~systemów operacyjnych. Ze~względu
-%   na rozmiar i~poziom skomplikowania tej dziedziny, dużą liczbę rzeczy
-%   będziemy musieli \alert{upraszczać}. Proszę więc pamiętać, że~choć
-%   staramy~się przekazywać rzetelną wiedzę, to to co mówimy będzie w~wielu
-%   wypadkach bardzo mocny uproszczeniem rzeczywistości.
+  Podstawy działania katalogów w~systemie GNU/Linux są w~zasadzie takie
+  same jak w~systemie Windows, musimy~się jedynie przyzwyczaić do innych
+  konwencji używanych w~tym systemie. Dużo większym wyzwaniem zapewne
+  będzie zamienienie środowiska graficznego (\textsc{gui},
+  ang.~\textit{Graphic User Interface}) na pracę spod poziomu powłoki.
 
-% \end{frame}
-% % ##################
+  Podstawą pracy w~powłoce \textsc{bash} są polecenia (ang.
+  \textit{commands}). Bez wnikania w~szczegóły, każde polecenie posiada
+  nazwę i~wykonuje pewne działanie. By wykonać dane polecenie w~powłoce
+  należy najpierw wpisać jej nazwę, następnie zaś jej odpowiednie
+  opcje (flagi) i~argumenty. Część poleceń można wykonać bez podawania opcji
+  czy~argumentów.
 
+  Trzeba~się niestety przyzwyczaić do tego, że~nazwy poleceń, jak i~ich
+  opcji tych poleceń w~systemie GNU/Linux potrafią być dość dziwne i~trudne
+  do~zapamiętania.
 
+\end{frame}
+% ##################
 
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Polecenie \texttt{ls}}
 
 
+  Zacznijmy od~polecenia \texttt{ls}, od ang. \textit{List fileS}, które
+  wyświetla zawartość katalogu w~którym~się znajdujemy. Z~tego powodu
+  wynik działania tego polecenia będzie~się cały czas zmieniać, jednym
+  z~możliwych może być ten przedstawiony poniżej. \\
+  \texttt{\$ ls} \\
+  \texttt{{\color{jAxisBlue} Dokumenty}} \\
+  \texttt{{\color{jAxisBlue} Pobrane}} \\
+  \texttt{introduction-to-GNU-linux.pdf}
 
-% % ######################################
-% \section{Podstawy GNU/Linuxa: włączanie powłoki}
-% % ######################################
+  Obecnie jest standardem, że~powłoka używa kolorów i~różnych typów fontów,
+  by~informować nas o~typie i~własnościach pliku. W~przykładzie powyżej
+  nazwy katalogów są wyróżnione na niebiesko, trzeba jednak pamiętać,
+  że~wszystko to~zależy od~konkretnych ustawień systemu operacyjnego
+  i~łatwo może zostać zmienione.
 
+\end{frame}
+% ##################
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Powłoka BASH}
 
-%   \vspace{-0.5em}
 
 
-%   \begin{figure}
 
-%     \label{fig:BASH-shell}
+% ##################
+\begin{frame}
+  \frametitle{Postęp technologiczny}
 
-%     \centering
 
 
-%     \includegraphics[scale=0.23]
-%     {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
+\end{frame}
+% ##################
 
 
-%     \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
-%       głównego narzędzia pracy na tym przedmiocie.}
 
-%   \end{figure}
 
-% \end{frame}
-% % ##################
 
+% ##################
+\begin{frame}
+  \frametitle{Włączanie powłoki}
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Postęp technologiczny}
+\end{frame}
+% ##################
 
-%   \vspace{-0.5em}
 
 
-%   \begin{figure}
 
-%     \label{fig:Evolution-of-OS}
 
-%     \centering
 
 
-%     \includegraphics[scale=0.3]
-%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
 
-%   \end{figure}
 
-% \end{frame}
-% % ##################
 
+% ######################################
+\section{Zajęcia, konsultacje, sposób zaliczenia}
+% ######################################
 
 
+% ##################
+\begin{frame}
+  \frametitle{Charakter zajęć}
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Włączanie powłoki}
 
 
-%   Naszym główny narzędziem na tych zajęciach będzie powłoka \textsc{bash}.
-%   Jej włączenie na samym początku potrafi być bardzo niewdzięcznym zadaniem.
-%   W~pierwszym kroku proszę wcisnąć \texttt{Ctrl-Alt-t} i~zobaczyć, czy
-%   powłoka~się otworzyć.
+\end{frame}
+% ##################
 
-%   Jeśli to nie zadziała, to proszę pochodzić kursorem po ekranie,
-%   aż~znajdziemy okienko „Szukaj”, „Wyszukaj”, etc. Proszę tam wpisać
-%   „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy wyświetli~się
-%   odpowiednia ikona. O~tym czy~się różni pojęcie „powłoki” od „terminala”
-%   czy „konsoli” powiem potem. Nie jest to jakaś szczególnie ważna rzecz.
 
-% \end{frame}
-% % ##################
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
 
 
 
+\end{frame}
+% ##################
 
 
 
 
-% % ######################################
-% \section{Zajęcia, konsultacje, sposób zaliczenia}
-% % ######################################
 
+% ##################
+\begin{frame}
+  \frametitle{Nagrywanie zajęć}
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Charakter zajęć}
 
 
-%   Wykład zwykle ma bardziej charakter teoretyczny, a~te zajęcia
-%   \alert{praktyczny}. Pewna ilość teorii musi~się tu pojawić,
-%   ale~będziemy~się starali ją minimalizować.
 
-%   Możemy ustalić jeden termin na konsultacje, ale moje doświadczenie mówi,
-%   że~to nie jest dobry pomysł. W~zasadzie nikt wtedy nie przychodzi, a~ja
-%   wyznaję zasadę, że~konsultacje są dla Państwa, nie dla mnie. Jeśli Państwo
-%   chcą ustalenia takiego terminu, to najlepiej byłoby, gdy Państwo ustalili
-%   wspólnie jakiś termin, a potem przesłali mi informacji o~swoim wyborze.
+\end{frame}
+% ##################
 
-%   W~przeciwny razie zawsze można do mnie napisać z~prośbą o~konsultacje
-%   indywidualne, choćby pisząc na~adres \email. Ponawiam prośbę o~nadawanie
-%   e-mailom tytułów typu „Prośba o~konsultacje”, „Konsultacje z~przedmiotu
-%   Systemy operacyjne”,~etc. Po prostu e-mail z~nazwą „Systemy operacyjne”
-%   łatwo umknie mojej uwadze wśród wielu mu podobnych, a~tego nie chcę.
 
-% \end{frame}
-% % ##################
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Sposób uzyskania zaliczania}
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
 
-%   \vspace{-0.5em}
 
+\end{frame}
+% ##################
 
-%   \begin{figure}
 
-%     \label{fig:Jak-to-bywa-na-zajeciach}
 
-%     \centering
 
 
-%     \includegraphics[scale=0.42]
-%     {./Presentations-pictures/Miscancellous-pictures/Jak-to-bywa-na-zajeciach.jpeg}
+% ##################
+\begin{frame}
+  \frametitle{Prace domowe}
 
-%   \end{figure}
 
-% \end{frame}
-% % ##################
 
 
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Nagrywanie zajęć}
-
-
-%   Będę~się starał nagrywać na \textsc{ms}~Teamsach każde nasze spotkanie.
-%   Proszę mi o~tym ciągle przypominać, bo jestem roztrzepany i~któregoś
-%   razu o~tym zapomnę.
-
-%   Proszę mi też zwracać uwagę, że~na ekranie czegoś nie widać,
-%   że~czcionka za mała, że~kolory kłują w~oczy, że~nagrany dźwięk
-%   jest niskiej jakości,~etc. Zajęcia są dla Państwa, naszym obowiązkiem jest
-%   dostarczyć Państwu najlepszej jakości materiały do nauki jakie jesteśmy
-%   w~stanie stworzyć.
-
-%   Niestety, jakość dźwięku to coś, na co mamy mały wpływ. Mogę~się starać
-%   mówić możliwie blisko mikrofonu, ale nie wiem co więcej mogę zrobić.
-%   Poza tym, na~pewno nie wyjdzie zbyt dobrze, bo te zajęcia często wymagają
-%   bym~się poruszał, poza tym w~którymś momencie na pewno o~tym zapomnę.
-%   Swoje uwagi na temat jakości nagrań proszę kierować do ludzi
-%   odpowiedzialnych za~sprawy studenckie na \textsc{wsz}i\textsc{b}ie.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Sposób uzyskania zaliczania}
-
-
-%   Można też uzyskać zaliczenie zaoczne, proszę~się w~tej sprawie zwrócić
-%   do~mnie, osobiście lub piszą pod adres \email. Jak poprzednio, proszę
-%   o~nadanie e-mailowi nazwy tłumaczącej jego treść.
-
-%   Zaliczenie zdobywa~się na podstawie zadań domowych i~jednego albo dwóch
-%   testów, za~które otrzymają Państwo punkty. Za każdy z~testów będzie do
-%   zdobycie 10 punktów. Punktacje zestawów zadań zależą od tego jak
-%   oszacujemy ich poziom trudności i~nie jesteśmy w~stanie podać liczby
-%   punktów do zdobycia za nie w~tym momencie.
-
-%   Zastanawiam~się czy nie dodać do tego projektu zaliczeniowego, ale są
-%   pewne problemy techniczne, które stoją mi na drodze. Na dzień dzisiejszy
-%   proszę przyjąć, że~projekt zaliczeniowego w~tym semestrze nie będzie.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Prace domowe}
-
-
-%   Zadania domowe proszę \alert{spróbować} potraktować nie jako ciężki
-%   obowiązek do odhaczenia, tylko jako możliwość nauczenia~się czegoś
-%   w~praktyce. Tak wiem, łatwo~się mówi, żeby nie traktować tego jako
-%   ciężkiego obowiązku, a~to wcale nie jest łatwe.
-
-%   Proszę jednak wiedzieć, że~prace domowe są zadawane w~pierwszym rzędzie
-%   po~to, żeby Państwo~się czegoś nauczyli przy ich robieniu. Dopiero
-%   w~drugim rzędzie, by móc Państwa ocenić. Jeśli Państwo oszukują przy
-%   oddawaniu tych zdań, to z~mojej perspektywy, oszukują Państwo przede
-%   wszystkim samych siebie.
-
-%   W~przypadku wszystkich prac domowych, to należy próbować rozwiązać je
-%   możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
-%   ale i~\alert{należy} prosić o~pomoc kolegów, korzystać z~materiałów
-%   w~internecie i~używać programów takich jak Chat\textsc{gpt}.
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
