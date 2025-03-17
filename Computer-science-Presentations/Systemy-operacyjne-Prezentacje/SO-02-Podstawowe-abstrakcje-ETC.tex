@@ -84,9 +84,8 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Systemy operacyjne}
-\subtitle{Podstawowe abstrakcje, korzystanie z~powłoki
-  \textsc{bash}, etc.
-}
+\subtitle{Podstawowe abstrakcje, praca z~komputerem
+  z~poziomu powłoki \textsc{bash}}
 
 \author{Kamil Ziemian \\
   \email}
@@ -137,6 +136,71 @@ eprint=true,
 
 
   \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Ile tych GNU/Linuksów jest?}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  W~przeciwieństwie do choćby systemu Windows~$10$, który jest jednym
+  systemem operacyjnym, GNU/Linux jest tak naprawdę \alert{rodziną systemów}
+  operacyjnych. Żeby to wyjaśnić, zacznijmy od~komentarza odnośnie
+  Windowsa~$10$. System ten występuje w~kilku wersjach, w~tym sensie,
+  że~firma Microsoft wydaje kolejne updejty ;) tego systemu, jednak to~wciąż
+  jest ten sam system operacyjny, w~którym zmieniono kilka drugo-
+  i~trzeciorzędnych rzeczy.
+
+  W~przeciwieństwie do tego, GNU/Linux występuje w~rozmaitych
+  \alert{dystrybucjach}, których liczba jest trudna do ogarnięcia: antiX,
+  Astra Linux, Arch Linux, Debian, Gentoo, Ubuntu,\ldots{} Lista ta zdaje~się
+  nie mieć końca. Wyjaśnienie podobieństw i~różnic między tymi systemami
+  zajęłoby zbyt dużo czasu, dlatego ograniczymy~się do podania
+  podstawowych informacji, które pozwolą~się nam zorientować pośród nich.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Standaryzacja}
+
+
+  Obecnie, piszemy to w~$2025$, GNU/Linux jest dobrze zestandaryzowany
+  na~poziomie swoich podstawowych zasad działania i~funkcji, które oferuje
+  użytkownikom. W~istocie, wiele własności GNU/Linuxa sięga rozwijanego od
+  około $1970$~roku systemu operacyjnego \textsc{unix} i~zestawu standardów
+  dla tego systemu znanej jako \textsc{posix} (ang.~\textit{Portable
+    Operating System Interface for Unix}). Dla kontekstu, standardy
+  \textsc{posix} zaczęły być wydawane przez Instytut Inżynierów Elektryków
+  i~Elektroników (\textsc{ieee}, ang.~\textit{Institute of Electrical and
+    Electronics Engineers}) w~roku~$1988$. Dlatego też większość rzeczy,
+  które poznają Państwo na~tym kursie powinny działać w~$99\%$ dystrybucji
+  systemu GNU/Linux i~w~$100\%$ dystrybucji które są używane w~poważnych
+  firmach i~projektach.
+
+  Będziemy~się też starać wyraźnie zaznaczać, co może~się różnić między
+  różnymi dystrybucjami GNU/Linuxa.
 
 \end{frame}
 % ##################
@@ -231,8 +295,8 @@ eprint=true,
   Istnieje wiele wartych uwagi materiałów do nauki \textsc{bash}a, niekiedy
   dość już wiekowych. Przykładowo, można sięgnąć do tutorialu
   Gilesa Orra
-  \colorhref{https://tldp.org/HOWTO/Bash-Prompt-HOWTO/index.html}
-  {\textit{Bash Prompt HOWTO}} \parencite{Orr-Bash-Prompt-HOWTO-Ver-2003}.
+  \colorhref{https://www.gilesorr.com/bashprompt/howto/}
+  {\textit{Bash Prompt HOWTO}} \parencite{Orr-Bash-Prompt-HOWTO-Ver-2009}.
 
 \end{frame}
 % ##################
@@ -371,8 +435,7 @@ eprint=true,
   cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
   w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
   użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
-  wykryć cheatera.%  Alternatywą jest uruchamianie tych programów na serwerze
-  % gry, który i~tak dysponuje wszystkimi tego typu informacjami.
+  wykryć cheatera.
 
 \end{frame}
 % ##################
@@ -386,27 +449,11 @@ eprint=true,
   \frametitle{Problemy z~bezpieczeństwem}
 
 
-  % Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
-  % z~tym komputerem zrobić wszystko. Dlatego hakerzy dokładają tylu starań,
-  % by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich uprawnień.
-  % Dlatego też takie antycheaterskie programy takie jak Vanguard, który miał
-  % być dodany choćby do
-  % \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
-  %     Legends}}~są tak problematyczne
-  % \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
-
-  % Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
-  % z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
-  % tworzącej ten program, że~nie nadużyją tych możliwości?
-
-  % Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
-  % Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
-  % cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
-  % w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
-  % użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
-  % wykryć cheatera.
   Alternatywą jest uruchamianie tych programów na serwerze
-  gry, który i~tak dysponuje wszystkimi tego typu informacjami.
+  gry, który i~tak dysponuje wszystkimi tego typu informacjami. Co nie jest
+  w~interesie firmy dostarczającej te serwery, dla nich jest lepiej jak
+  serwery obsługują grę, a~wykrywaniem cheaterów zajmują~się komputery
+  graczy.
 
 \end{frame}
 % ##################
@@ -476,8 +523,33 @@ eprint=true,
 
 
 % ######################################
-\section{Podstawy poruszania~się w~powłoce BASH}
+\section{Podstawy pracy z~poziomu powłoki BASH}
 % ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość}
+
+
+  Bóg jest litościwy, \textsc{bash} nie zna tego słowa. Przekonają~się
+  Państwo o~tym wielokrotnie. Każdy z~nas popełnia literówki i~\textsc{bash}
+  bez najmniejszej krztyny litości wytknie nam każdą z~nich, albo
+  z~jej powodu zinterpretuje wszystko na~opak. Trzeba nauczyć~się
+  żyć z~tym, że~każda najmniejsza literówka może być źródłem problemu.
+
+  Poza tym, język~C, czy nawet Python dają nam dużą swobodę w~rozstawianiu
+  białych znaków w~tekście. Swoboda jaką mamy w~\textsc{bash}u, gdy chodzi
+  o~białe znaki, to wolność więźnia zamkniętego w~celi. Niby można~się
+  poruszać, ale co to za~wolność. Uczulam więc Państwa, na to by pilnować,
+  gdzie są spacje, taby i~znaki nowej linii. Jeśli coś w~\textsc{bash}u
+  nie działa, to możliwe, iż~jest to wynik spacji w~złym miejscu.
+
+\end{frame}
+% ##################
+
+
 
 
 
@@ -490,9 +562,9 @@ eprint=true,
   którego nazwa w~systemie operacyjnym została ustawiona jako
   \texttt{adam}. Jeśli włączymy konsolę zobaczymy pewnie coś takiego: \\
   \texttt{adam:$\sim$\$} \\
-  Od tego momentu będziemy skracali ten znak zachęty (ang. \textit{prompt})
-  do symbolu \texttt{\$}. Przepisywanie pełnej jego postaci wnosi bardzo
-  mało informacji, za~to zabiera sporo miejsca.
+  Od tego momentu będziemy zwykle skracali ten znak zachęty \\
+  (ang.~\textit{prompt}) do symbolu \texttt{\$}. Przepisywanie pełnej jego
+  postaci wnosi bardzo mało informacji, za~to zabiera sporo miejsca.
 
   Na początku zajmiemy~się tym, jak poruszać~się po systemie plików
   i~katalogów. Na pewno wiedzą Państwo, że~na komputerze znajdują~się
@@ -539,17 +611,52 @@ eprint=true,
 
 % ##################
 \begin{frame}
+  \frametitle{Polecenia}
+
+
+  Podstawowych poleceń systemu GNU/Linux jest około~$100$, do tego każde ma
+  kilkanaście albo więcej opcji. Z~tego powodu nauka ich jest bardzo
+  czasochłonna, a~potrafi być trudna. Teoretycznie w~każdej chwili
+  w~\textsc{bash}u możemy skorzystać z~manuala (podręcznika), gdzie są opisy
+  wszystkich poleceń. W~praktyce, żeby zrozumieć jego treść, wymagana jest
+  już dość spora wiedza.
+
+  Zdecydowaliśmy~się przyjąć następujące podejście. Naszym głównym celem
+  jest przekazanie Państwu umiejętności pracy spod powłoki \textsc{bash}
+  i~naszym głównym celem, jest by możliwie szybko osiągnęli Państwo
+  odpowiednią biegłość w~tym. Dlatego też, dość szybko wprowadzimy możliwie
+  dużo poleceń, bez zagłębiania~się w~zbyt wiele szczegółów. Niekiedy
+  będziemy wracać do wcześniej już omówionych poleceń, by uzupełnić
+  wiadomości o~nich. Wyczerpujące omówienie wszystkich podstawowych poleceń
+  i~tak zabrałoby zbyt dużo czasu, to zaś podejście uważamy, za rozsądny
+  kompromis.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
   \frametitle{Polecenie \texttt{ls}}
 
 
-  Zacznijmy od~polecenia \texttt{ls}, od ang. \textit{List fileS}, które
-  wyświetla zawartość katalogu w~którym~się znajdujemy. Z~tego powodu
-  wynik działania tego polecenia będzie~się cały czas zmieniać, jednym
-  z~możliwych może być ten przedstawiony poniżej. \\
+  Zacznijmy od~polecenia
+  \colorhref{https://linux.fandom.com/pl/wiki/Ls}{\texttt{ls}}. Jego nazwa
+  pochodzi prawdopodobnie od~ang.~\textit{List fileS}, ale są różne opinie
+  na ten temat. Polecenie to wyświetla zawartość katalogu w~którym~się
+  znajdujemy, z~tego powodu wynik działania tego polecenia będzie~się cały
+  czas zmieniać, jednym z~możliwych może być ten przedstawiony poniżej. \\
   \texttt{\$ ls} \\
-  \texttt{{\color{jAxisBlue} Dokumenty}} \\
-  \texttt{{\color{jAxisBlue} Pobrane}} \\
-  \texttt{introduction-to-GNU-linux.pdf}
+  \texttt{{\color{jAxisBlue} Dokumenty}} \quad
+  \texttt{introduction-to-GNU-linux.pdf} \quad
+  \texttt{{\color{jAxisBlue} Pobrane}}
+
+  Polecenie \texttt{ls} jest przykładem takiego polecenia, które można
+  uruchomić bez dodatkowych opcji czy argumentów, ono samo ustali w~jakim
+  katalogu jesteśmy i~wypisze jego zawartość.
 
   Obecnie jest standardem, że~powłoka używa kolorów i~różnych typów fontów,
   by~informować nas o~typie i~własnościach pliku. W~przykładzie powyżej
@@ -566,47 +673,28 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Postęp technologiczny}
+  \frametitle{Polecenie \texttt{pwd}}
 
 
+  Kolejnym poleceniem jest
+  \colorhref{https://www.arturpyszczuk.pl/commands-pwd.html}{\texttt{pwd}}
+  od ang.~\textit{Print Working Directory}, rezultat jego działania można
+  zobaczyć poniżej. \\
+  \texttt{\$ pwd} \\
+  \texttt{/home/adam}
 
-\end{frame}
-% ##################
+  Ta krótka linia zawiera bardzo dużo informacji i~potrzebujemy przynajmniej
+  kilka z~nich wyjaśnić. Sposób w~jaki pliki i~katalogi są ułożone na~dysku
+  jest zdefiniowane przez \textbf{system plików} danego systemu
+  operacyjnego i~ten używany w~systemie GNU/Linux różni~się mocno tego
+  w~systemie Windows.
 
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Włączanie powłoki}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Zajęcia, konsultacje, sposób zaliczenia}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Charakter zajęć}
-
-
-
+  Zacznijmy od kilku uwag odnośnie notacji. Jeśli pracowalibyśmy w~tym
+  ostatnim systemie i~na dysku~C znajdowałby~się
+  katalog \texttt{Systemy-operacyjne-Ćwiczenia} a~w~nim katalog
+  \texttt{Zajęcia-01}, to ścieżka do niego miałaby postać: \\
+  \texttt{C:\textbackslash\textbackslash
+    Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
 
 \end{frame}
 % ##################
@@ -617,37 +705,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
+  \frametitle{System plików}
 
 
+  Odpowiednikiem ścieżki z~systemu Windows: \\
+  \texttt{C:\textbackslash\textbackslash
+    Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+  w~systemie GNU/Linux byłaby ścieżka: \\
+  \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
+  Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
+  używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
+  używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
+  ale trzeba~się do niej przyzwyczaić.
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Nagrywanie zajęć}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Sposób uzyskania zaliczania}
-
-
-
+  Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
+  mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
+  plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
+  istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
+  w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
+  którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
+  symbolem~„\texttt{/}”.
 
 \end{frame}
 % ##################
@@ -658,10 +735,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Prace domowe}
+  \frametitle{System plików}
 
 
+  Odpowiednikiem ścieżki z~systemu Windows: \\
+  \texttt{C:\textbackslash\textbackslash
+    Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+  w~systemie GNU/Linux byłaby ścieżka: \\
+  \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
+  Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
+  używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
+  używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
+  ale trzeba~się do niej przyzwyczaić.
 
+  Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
+  mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
+  plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
+  istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
+  w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
+  którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
+  symbolem~„\texttt{/}”.
 
 \end{frame}
 % ##################
@@ -670,35 +763,238 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Sposób uzyskania zaliczania}
+% ##################
+\begin{frame}
+  \frametitle{System plików}
 
 
-%   Przypominam, że~głównym celem prac domowych jest danie Państwu dodatkowej
-%   możliwość, by~się czegoś nauczyć, a~w~nauce można i~\alert{należy}
-%   korzystać z~pomocy. Po prostu niech, ich zrobienie nie ma zostać
-%   zredukowane do użycia metody Copy’ego-Pasta.
+  Wróćmy do polecenia \\
+  \texttt{\$ pwd} \\
+  \texttt{/home/adam} \\
+  Linię \texttt{/home/adam} czytamy „W~katalogu root („\texttt{/}”)
+  znajduje~się katalog \texttt{home}, w~nim zaś znajduje~się katalog
+  \texttt{adam}.” Polecenie \texttt{pwd} podaje więc w~którym katalogu~się
+  obecnie znajdujemy, za~pomocą ścieżki, która zaczyna~się od katalogu root:
+  „\texttt{/}”.
 
-%   Pod koniec semestru punkt zostaną podliczone, a~oceny wystawione według
-%   następującej skali.
+  Katalog w~którym obecnie jesteśmy nosi nazwę \textbf{katalogu bieżącego}
+  (ang.~\textit{working directory}), a~jak powiedzieliśmy \texttt{pwd} jest
+  akronimem od~\textit{Print Working Directory}, czyli „wyświetl katalog
+  roboczy”.
 
-%   \begin{itemize}
+  Ścieżkę podającą lokalizację katalogu lub pliku nazywamy
+  \textbf{ścieżką bezwzględną}, jeśli zaczyna~się ona od katalogu root.
+  W~przeciwnym razie mówimy o~\textbf{ścieżce względnej} (podawanej
+  względem innego katalogu niż root).
 
-%   \item $41\%\text{--}50\%$~-- ocena dostateczna ($3.0$).
+\end{frame}
+% ##################
 
-%   \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
 
-%   \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
 
-%   \item $71\%\text{--}84\%$ -- ocena puls dobry ($4.5$, $4+$).
 
-%   \item $85\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
 
-%   \end{itemize}
+% ##################
+\begin{frame}
+  \frametitle{System plików}
 
-% \end{frame}
-% % ##################
+
+  Bez wielkich uproszczeń można przyjąć, że~\textsc{bash}u \alert{każdy}
+  ciąg symboli zaczynający od~symbolu „\texttt{/}” zostanie zinterpretowany
+  jako ścieżka do jakiegoś pliku lub katalogu. Z~tego powodu trzeba
+  \alert{bardzo} uważać na to~jak używamy symbolu „\texttt{/}”.
+
+  W~szczególności przy symbolu \texttt{/} trzeba bardzo uważać na spacje.
+  Ścieżka postaci \\
+  \texttt{/home/adam} \\
+  jest poprawna. Ale już ścieżka \\
+  \texttt{/ home/adam} \\
+  jest \alert{błędna}! To w~jaki sposób jest błędna, to omówimy innym
+  razem. Doświadczenie uczy, że~na początku sprawia to ludziom
+  bardzo dużo problemów.
+
+  To, że~główny katalog nosi nazwę „korzenia” (ang.~\textit{root}) nie jest
+  przypadkiem, ale do tej kwestii wrócimy innym razem.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Katalog domowy}
+
+
+  W~systemie GNU/Linux każdy użytkownik ma swój katalog domowy, w~którym
+  może przechowywać potrzebne mu pliki. Standardowo, choć mogą być wyjątki,
+  użytkownik \texttt{adam} otrzyma katalog \texttt{/home/adam}, użytkownik
+  \texttt{barbara} katalog \texttt{/home/barbara},~etc. Katalog domowy
+  bieżącego użytkownika posiada też alternatywną nazwę „$\sim$”. Stąd znak
+  zachęty \\
+  \texttt{adam:$\sim$\$} \\
+  przekazuje nam informację, że~działamy jako użytkownik \texttt{adam}
+  i~znajdujemy~się w~jego katalogu domowym.
+
+  Załóżmy, że~katalogu domowym znajduje~się katalog o~nazwie
+  \texttt{Systemy-operacyjne-Ćwiczenia}. By sprawdzić, czy tak jest
+  naprawdę możemy użyć polecenia \texttt{ls}: \\
+  \texttt{\$ ls} \\
+  \texttt{{\color{jAxisBlue} Dokumenty}} \quad
+  \texttt{introduction-to-GNU-linux.pdf} \quad
+  \texttt{{\color{jAxisBlue} Pobrane}} \\
+  \texttt{{\color{jAxisBlue} Systemy-operacyjne-Ćwiczenia}} \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenie \texttt{cd}}
+
+
+  Jeśli w~bieżącym katalogu znajduje~się katalog
+  \texttt{Systemy-operacyjne-Ćwiczenia} to możemy do niego wejść
+  używając polecenia
+  \colorhref{https://linux.fandom.com/pl/wiki/Cd}{\texttt{cd}}
+  (od ang.~\textit{Change Directory}): \\
+  \texttt{adam:$\sim$\$ cd Systemy-operacyjne-Ćwiczenia} \\
+  \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$} \\
+  Wyjątkowo zapisaliśmy pełniejszą wersję znaku zachęty, by podkreślić,
+  iż~informuje on~nas w~którym katalogu jesteśmy. Mianowicie ścieżka
+  \texttt{$\sim$/Systemy-operacyjne-Ćwiczenia} informuje nas, że~w~katalogu
+  domowych użytkownika \texttt{adam} znajduje~się katalog systemy
+  operacyjne \texttt{Systemy-operacyjne-Ćwiczenia} i~w~nim właśnie jesteśmy.
+
+  Użyte wyżej polecenie \texttt{cd} jest przykładem polecenia, które
+  pobiera argument, mianowicie nazwę katalogu do którego możemy wejść.
+  W~istocie polecenie to pozwala nam na bardzo swobodne poruszanie~się
+  po systemie plików, jeśli opanujemy dobrze zapis ścieżek w~GNU/Linuxie,
+  ale wszystko po kolei.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenie \texttt{cd}}
+
+
+  Załóżmy, że~teraz chcielibyśmy przejść do katalogu nad nami. By to zrobić
+  należy przekazać poleceniu \texttt{cd} argument \texttt{..}: \\
+  \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$ cd ..} \\
+  \texttt{adam:$\sim$\$} \\
+  Dlaczego jako argument przesyłamy akurat \texttt{..} wyjaśnimy w~swoim
+  czasie, na razie przyjmijmy, iż~tak po prostu jest. Dla lepszej
+  ilustracji tego co~zrobiliśmy, ponownie wypisaliśmy znak zachęty,
+
+  Załóżmy, że~chcemy teraz wejść do katalogu
+  \texttt{Systemy-operacyjne-Ćwiczenia} i~utworzyć tam plik
+  \texttt{Notatki-z-zajęć.txt}. By utworzyć ten plik możemy skorzystać
+  z~polecenia
+  \colorhref{https://linux.fandom.com/pl/wiki/Touch}{\texttt{touch}}. Pełna
+  sekwencja poleceń będzie wyglądać tak. \\
+  \texttt{\$ cd Systemy-operacyjne-Ćwiczenia} \\
+  \texttt{\$ touch Notatki-z-zajęć.txt} \\
+  Możemy teraz użyć polecenia \texttt{ls} by~się przekonać, czy~plik
+  \texttt{Notatki-z-zajęć.txt} został poprawnie utworzony.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Edycja plików z~pomocą programu gedit}
+
+
+  Z~komputerami nigdy nic nie wiadomo, więc warto sprawdzać, czy plik
+  został poprawnie utworzony. Teraz otworzymy go do edycji za~pomocą
+  programu \colorhref{https://gedit-text-editor.org/}{gedit}. By to zrobić
+  wpisujemy w~powłoce \\
+  \texttt{\$ gedit Notatki-z-zajęć.txt \&} \\
+  Proszę pamiętać o~dodaniu na końcu polecenia znaku
+  \alert{ampersand}:~„\&”. Inaczej Gedit zablokuje nam możliwość wpisywania
+  kolejnych poleceń do powłoki i~by ją odzyskać będziemy musieli
+  wyłączyć Gedita albo użyć kombinacji poleceń \texttt{jobs} i~\texttt{bg}.
+
+  Czemu uruchomienie gedita bez symbolu ampersanda ma takie skutki, omówimy
+  gdy będziemy dyskutowali zagadnienie procesów i~tego jak działają
+  w~systemie GNU/Linux. Nie jest to najprostszy temat na świecie.
+
+  Jeśli wszystko poszło dobrze, to na ekranie zobaczymy okienko Gedita,
+  które wygląda mniej więcej tak jak to
+  na~zdjęciu~\eqref{fig:Gedit-window}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Okienko gedita}
+
+
+  \begin{figure}
+
+    \centering
+
+    \includegraphics[scale=0.18]
+    {./Presentations-pictures/Miscancellous-pictures/gedit-window.png}
+
+    \caption{Otwarte okno Gedita.}
+
+
+    \label{fig:Gedit-window}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Edytory plików}
+
+
+  Teraz możemy do pliku \texttt{Notatki-z-zajęć.txt} wpisać tekst, choćby
+  \textit{Notatki z~przedmiotu „Systemy operacyjne”}. Proszę pamiętać, by
+  zapisywać wprowadzone zmiany, służy do tego choćby skrót~\texttt{Ctrl-s}.
+
+  Kilka słów dlaczego wybraliśmy do~edycji plików program gedit. Na~tym
+  kursie korzystamy głównie z~niego, gdyż jest on prosty w~obsłudze
+  i~w~kilka sekund po jego otwarciu użytkownik może już pisać odpowiedni
+  tekst. Zostawiamy jednak Państwu pełną swobodę w~wyborze edytora tekstu.
+  Nie jest ważne jakiego programu~się używa, ważne jest, żeby udało~się
+  wykonać zadanie jakie przed nami stoi.
+
+  Jeśli chodzi o~edytory dostępne pod systemem GNU/Linux, to w~naszej
+  ocenie warto zwrócić uwagę choćby na~dwa owiane już legendą programy
+  do edycji tekstu \colorhref{https://www.vim.org/}{vim}
+  i~\colorhref{https://www.gnu.org/software/emacs/}{GNU Emacs}.
+
+\end{frame}
+% ##################
 
 
 
@@ -1712,26 +2008,7 @@ eprint=true,
 % % ######################################
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Ten, od którego wszystko~się zaczęło}
 
-
-%   \begin{figure}
-
-%     \centering
-
-%     \includegraphics[scale=0.09]
-%     {./PresentationsPictures/OS-heroes-Pictures/Ken-Thompson.jpg}
-
-%     \caption{Ken Thompson (ur.~1943), główny twórca systemu UNIX.}
-
-%     \label{fig:Ken-Thompson}
-
-%   \end{figure}
-
-% \end{frame}
-% % ##################
 
 
 
