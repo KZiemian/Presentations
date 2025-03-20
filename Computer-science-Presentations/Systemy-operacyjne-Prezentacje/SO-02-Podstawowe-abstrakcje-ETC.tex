@@ -113,7 +113,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 62k+, 70k+,
+% Number of chars: 62k+, 70k+, 38k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -168,8 +168,14 @@ eprint=true,
   i~trzeciorzędnych rzeczy.
 
   W~przeciwieństwie do tego, GNU/Linux występuje w~rozmaitych
-  \alert{dystrybucjach}, których liczba jest trudna do ogarnięcia: antiX,
-  Astra Linux, Arch Linux, Debian, Gentoo, Ubuntu,\ldots{} Lista ta zdaje~się
+  \alert{dystrybucjach}, których liczba jest trudna do ogarnięcia:
+  \colorhref{https://antixlinux.com/}{antiX},
+  \colorhref{https://astralinux.ru/}{Astra Linux},
+  \colorhref{https://archlinux.org/}{Arch Linux},
+  \colorhref{https://canaima.softwarelibre.gob.ve/}{Canaima},
+  \colorhref{https://www.debian.org/}{Debian},
+  \colorhref{https://www.gentoo.org/}{Gentoo},
+  \colorhref{https://ubuntu.com/}{Ubuntu},\ldots{} Lista ta zdaje~się
   nie mieć końca. Wyjaśnienie podobieństw i~różnic między tymi systemami
   zajęłoby zbyt dużo czasu, dlatego ograniczymy~się do podania
   podstawowych informacji, które pozwolą~się nam zorientować pośród nich.
@@ -586,8 +592,8 @@ eprint=true,
   i~katalogów. Na pewno wiedzą Państwo, że~na komputerze znajdują~się
   katalogi (ang.~\textit{directories}), zwane też folderami, które zawierają
   pliki i~inne katalogi. Z~punktu widzenia systemu GNU/Linux
-  katalog jest plikiem jak każdy inny, jedynie jest to plik specjalnego
-  typu. Dla tego systemu wszystko jest plikiem lub procesem.
+  katalog jest plikiem, jedynie specjalnego rodzaju. Dla tego systemu
+  wszystko jest plikiem lub procesem.
 
 \end{frame}
 % ##################
@@ -1181,6 +1187,22 @@ eprint=true,
   \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
 
 
+  Poprzez dodanie odpowiednich opcji (flag) do~polecenia \texttt{mv}
+  może sprawić, że~zawsze, gdy polecenie to nadpisałoby istniejący
+  plik zostaniemy zapytani, czy naprawdę chcielibyśmy to zrobić.
+  W~tym przypadku opcja tą jest \texttt{-i}, rezultat jej działania
+  przedstawiony jest poniżej. \\
+  \texttt{\$ mv -i Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
+  \texttt{mv: zamazać 'Ważne-dane.dat'?} \\
+  Forma pytania jaką otrzymamy może być inna na Państwa komputerze.
+  Odpowiedzi twierdzącej na to pytanie, możemy udzielić wpisując
+  „\texttt{t}”, „\texttt{tak}”, „\texttt{y}” lub „\texttt{yes}”, wówczas
+  plik \texttt{Ważne-dane.dat} zostanie nadpisany. Jeśli chcemy udzielić
+  odpowiedzi przeczącej możemy wpisać „\texttt{n}”, „\texttt{nie}”
+  lub~„\texttt{no}”.
+
+  Opcje, jak sama nazwa wskazuje, zmieniają działanie polecenia i~na tym
+  kursie nie musimy wiedzieć o~nich wiele więcej.
 
 \end{frame}
 % ##################
@@ -1189,113 +1211,137 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
+% ##################
+\begin{frame}
+  \frametitle{Opcje (flagi)}
 
 
+  Ponieważ istnieje duże ryzyko, że~osoby rozpoczynają swoją przygodę
+  z~powłoką nadpiszą przez przypadek ważny plik stosując polecenie
+  \texttt{mv}, we wszystkich przykładach będziemy do niego dodawali
+  opcję~\textit{-i}. Wyjątkiem od tej zasady będą sytuacja, gdy chcemy
+  by~polecenie \texttt{mv} nadpisało już istniejący plik.
 
+  Doświadczeni użytkownicy systemu GNU/Linux już parokrotnie stracili ważne
+  dane przez~\texttt{mv}, więc używają go znacznie ostrożniej i~przez
+  to ryzyko utraty kolejnych danych tą metodą jest znacznie mniejsze.
 
-% \end{frame}
-% % ##################
+  Opcje postaci~\texttt{-i} mogą wyglądać osobliwe i~być ciężkie do
+  zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie nie
+  należy do przyjemnych, wymaga dużo zapamiętywania, częstego googlowania
+  lub~nabycie umiejętności czytania trudnego w~zrozumieniu manuala
+  (\texttt{man}).
 
+\end{frame}
+% ##################
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
 
+% ##################
+\begin{frame}
+  \frametitle{Czemu życie nie może być proste?}
 
 
+  Wszystkie te problemy nie zmieniają faktu, że~polecenia dostępne
+  w~\textsc{bash}u wraz z~ich opcjami dają nam bardzo potężne narzędzie
+  do~ręki i~ich poznanie jest niezbędne, jeśli chcemy naprawdę dobrze
+  poznać system operacyjny GNU/Linux.
 
-% \end{frame}
-% % ##################
+  O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
+  w~podczas następnych spotkań.
 
+\end{frame}
+% ##################
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
 
 
 
 
-% \end{frame}
-% % ##################
 
 
+% ######################################
+\section{Autouzupełnianie w~BASHu}
+% ######################################
 
 
+% ##################
+\begin{frame}
+  \frametitle{Autouzupełnianie w~BASHu}
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
 
+  Autouzupełnianie to jedna z~funkcjonalności \textsc{bash}a, bez których
+  nie można w~nim normalnie pracować. Jest ono standardowo przypisane
+  klawiszowi \texttt{[TAB]}, jego działanie zilustrujemy na~przykładzie
+  polecenia~\texttt{mv}, ale w~pozostałych przypadkach działa ono
+  analogicznie.
 
+  Załóżmy, że~naszym katalogu znajdują~się pliki \texttt{Dane-01.dat}
+  i~\texttt{Dane-02.dat}, przy drugi z~tych plików chcemy przenieść
+  do~katalogu \texttt{Dane-do-analizy}. Wprowadźmy w~powłoce \texttt{mv D}
+  i~wciśnijmy klawisz \texttt{[TAB]}: \\
+  \texttt{\$ mv D [TAB]} \\
+  Na~podstawie wprowadzonej litery „\texttt{D}” i~znanej zawartości
+  katalogu powłoka postara~się uzupełnić jak największą część nazwy pliku,
+  dając w~rezultacie: \\
+  \texttt{\$ mv Dane-}
 
+\end{frame}
+% ##################
 
-% \end{frame}
-% % ##################
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Autouzupełnianie w~BASHu}
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
 
+  Obecnie nasze polecenie ma postać \\
+  \texttt{\$ mv Dane-} \\
+  W~tym momencie musimy wprowadzić dodatkowe znaki, tak by powłoka otrzymała
+  informację, czy chodzi o~plik \texttt{Dane-01.dat},
+  \texttt{Dane-02.dat}, czy katalog \texttt{Dane-do-analizy/}. Po wpisaniu
+  znaku „\texttt{1}” możemy znów skorzystać z~autouzupełniania. \\
+  \texttt{\$ mv Dane-02 [TAB]} \\
+  \texttt{\$ mv Dane-02.dat}
 
+  Jeśli nie pamiętamy jak konkretnie nazywają~się pliki, które są w~danym
+  katalogu, to możemy kliknąć przycisk \texttt{[TAB]} dwa lub więcej razy,
+  wtedy powłoka pokaże nam nazwy wszystkich plików, które pasuję
+  do~dotychczas wprowadzonej nazwy. \\
+  \texttt{\$ mv Dane- [TAB] \hspace{-1em} [TAB]} \\
+  \texttt{Dane-01.dat} \quad \texttt{Dane-02.dat} \quad \texttt{Dane-do-analizy/}
 
+\end{frame}
+% ##################
 
-% \end{frame}
-% % ##################
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Autouzupełnianie w~BASHu}
 
-% % ##################
-% \begin{frame}
-%   \frametitle{}
 
+  Możemy zastosować autouzupełnianie również do nazwy katalogu do~którego
+  chcemy przenieść omawiany plik: \\
+  \texttt{\$ mv Dane-02.dat Dane-d [TAB]} \\
+  \texttt{\$ mv Dane-02.dat Dane-do-analizy/}
 
+  Praca w~powłoce bez autouzupełniana jest zupełnie nie do zniesienia,
+  dlatego polecamy Państwu potrenować użycie tej funkcjonalności w~praktyce.
+  Jak w~przypadku wielu innych rzecz, jest to najlepszy sposób by~się jej
+  nauczyć.
 
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{}
-
-
-
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
