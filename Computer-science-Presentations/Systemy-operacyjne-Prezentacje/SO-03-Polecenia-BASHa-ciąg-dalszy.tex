@@ -1,0 +1,1403 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{Polecenia \textsc{bash}a, ciąg dalszy}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 43k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\EndingSlide{Ta prezentacja jest nieskończona.}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Polecenia \textsc{bash}a, ciąg dalszy}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przesyłanie wielu argumentów do polecenia}
+
+
+  Wiele poleceń \textsc{bash}a może przyjąć jako swoje argumenty więcej
+  niż jedną nazwę obiektu, wyjaśnimy to na przykładzie. Materiały
+  dla tego przykładu można znaleźć
+  w~\texttt{Materiały-do-prezentacji/SO-03-A-Polecenia-BASHa-ETC/}.
+
+  Przyjmijmy, że~w~katalogu w~którym~się znajdujemy są pliki
+  \texttt{Data-01.dat} i~\texttt{Data-02.dat} oraz katalog
+  \texttt{Dane-do-analizy/}. Aby przenieść oba pliki z~danymi do
+  wspomnianego katalogu wystarczy jedno polecenie: \\
+  \texttt{\$ mv Data-01.dat Data-02.dat Dane-do-analizy/} \\
+  Tak samo możemy przynieść do katalogu trzy lub więcej plików. Należy
+  dodać, że~katalog do którego przenosimy te pliki, \alert{zawsze}
+  musi być ostatnim argumentem przesłanym do danego polecenia. Lepiej nie
+  sprawdzać co może~się stać w~przeciwnym wypadku.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przesyłanie wielu argumentów do polecenia}
+
+
+  Analogicznie, możemy za~pomocą jednego polecenia \texttt{touch} utworzyć
+  dwa lub więcej plików: \\
+  \texttt{\$ touch Plik-01.txt Plik-02.txt}
+
+  W~tym miejscu musimy dodać, że~istnieją znacznie potężniejsze, ale też
+  bardziej skomplikowane, metody przesyłania nazw wielu obiektów do jednego
+  polecenia. Ich omówienie odkładamy do momentu, gdy zapoznamy~się już
+  z~podstawowymi sposobami korzystania z~powłoki.
+
+  Zwykle dość łatwo poprawnie zgadnąć, czy dane polecenie może przyjąć
+  wiele argumentów, czy tylko jedne. Mianowicie, jeśli jest dość oczywiste,
+  że~dane polecenie można zastosować dla wielu argumentów, to zapewne
+  działa właśnie tak jak myślimy. Na razie takie podejście powinno nam
+  wystarczyć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki}
+
+
+  Załóżmy teraz, że~chcemy zobaczyć zawartość katalogu
+  \texttt{Dane-do-analizy/}. Żeby to zrobić możemy wejść do tego katalogu
+  i~użyć polecenia \texttt{ls} tak jak poniżej. \\
+  \texttt{\$ cd Dane-do-analizy/} \\
+  \texttt{\$ ls} \\
+  \texttt{Data-01.dat} \quad \texttt{Data-02.dat}
+
+  Taki sam rezultat otrzymamy, jeśli poleceniu \texttt{ls} prześlemy jako
+  argument nazwę katalogu, którego zawartość chcemy zobaczyć. \\
+  \texttt{\$ ls Dane-do-analizy/} \\
+  \texttt{Data-01.dat} \quad \texttt{Data-02.dat}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki}
+
+
+  Do~poleceń takich jak \texttt{ls} możemy przesyłać argumenty bardziej
+  złożone, niż tylko pojedyncze nazwy katalogów. Jeśli katalog
+  \texttt{Dane-do-analizy/} zawiera katalog \texttt{Dane-styczeń/} to
+  zawartość tego ostatniego katalogu możemy zobaczyć wpisując
+  polecenie \\
+  \texttt{\$ ls Dane-do-analizy/Dane-styczeń/} \\
+  \texttt{Data-January-01.dat} \quad \texttt{Data-January-02.dat} \\
+  \texttt{Data-January-03.dat} \quad \texttt{Data-January-04.dat}
+
+  Należy przyjąć, że~w~każdym poleceniu, którego argumentem może być nazwa
+  pliku lub katalogu, może wystąpić też dowolnie skomplikowana ścieżka do
+  niego. Ścieżka bezwzględna, zaczynająca~się od symbolu roota
+  „\texttt{/}”, jest zawsze poprawna. Jeśli chodzi o~ścieżki względne, to
+  prawie zawsze też są poprawne, acz niekiedy można~się natknąć na pewne
+  wyjątki od reguły.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki}
+
+
+  Przykładowo, by utworzyć plik \texttt{Data-January-04.dat} w~katalogu
+  \texttt{Dane-do-analizy/Dane-styczeń/} możemy użyć polecenia \\
+  \texttt{\$ touch Dane-do-analizy/Dane-styczeń/Data-Januray-04.dat}
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Architektura systemu operacyjnego}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rola systemu operacyjnego}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tryby działania systemu operacyjnego}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ######################################
+% \section{Włączanie powłoki, przypomnienie}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Powłoka BASH}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.23]
+%     {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
+
+
+%     \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
+%       głównego narzędzia pracy na tym przedmiocie.}
+
+
+%     \label{fig:BASH-shell}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Postęp technologiczny}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \label{fig:Evolution-of-OS}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.3]
+%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Problemy z~bezpieczeństwem}
+
+
+%   Alternatywą jest uruchamianie tych programów na serwerze
+%   gry, który i~tak dysponuje wszystkimi tego typu informacjami. Co nie jest
+%   w~interesie firmy dostarczającej te serwery, dla nich jest lepiej jak
+%   serwery obsługują grę, a~wykrywaniem cheaterów zajmują~się komputery
+%   graczy.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Pliki i~procesy}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pliki i~procesy}
+
+
+%   Dwie podstawowe abstrakcje, których będziemy używać na tym kursie,
+%   to~\textbf{pliki} i~\textbf{procesy}. Nie wnikając w~szczegóły wystarczy
+%   nam stwierdzenie, że~plik czymś jest, a~proces coś robi. Warto tutaj
+%   przytoczyć następujące powiedzenie, które funkcjonuje w~wielu różnych
+%   wersjach, nie zawsze odnoszących się do sytemu Linux.
+
+%   \textit{Wszystko w~systemie Linux jest plikiem. Jeśli coś nie jest
+%     plikiem to jest procesem.}
+
+%   Inaczej mówiąc, jeśli na komputerze znajdują~się jakieś dane, to są
+%   wewnątrz jakiegoś pliku. Jeśli komputer coś robi, to jest za to
+%   odpowiedzialny odpowiedni proces. Zrozumienie tego na tym poziomie jest
+%   wystarczające na~potrzeby tych zajęć. W~przyszłości może zajrzymy pod
+%   warstwę abstrakcji plików i~procesów, by~się przekonać, że~ich wewnętrzna
+%   budowa wcale nie jest banalna.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pliki i~procesy}
+
+
+%   Ponieważ pliki są mniej abstrakcyjne (hehe), zaczniemy nasze zajęcia od
+%   zaznajomieniem~się z~pracą z~plikami pod powłoką \textsc{bash}.
+%   Przyjmujemy przy tym, że~znają Państwo pewne pojęcia z~systemu Windows.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Podstawy pracy z~poziomu powłoki BASH}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{BASH nie zna słowa litość}
+
+
+%   \textit{Gdy samochody rozwijały~się tak jak komputery, to dziś
+%     Rolls-Royce kosztowałby jakieś 100\$, przejeżdżałaby milion mil na
+%     jednym galonie benzyny i~raz do roku eksplodował zabijając wszystkich
+%     w~środku.} \\
+%   Robert Cringely, \textit{InfoWorld}, tłum. swobodne, str.~221,
+%   \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+
+%   Bóg jest litościwy, \textsc{bash} nie zna tego słowa. Przekonają~się
+%   Państwo o~tym wielokrotnie. Każdy z~nas popełnia literówki i~\textsc{bash}
+%   bez najmniejszej krztyny litości wytknie nam każdą z~nich, albo
+%   z~jej powodu zinterpretuje wszystko na~opak. Trzeba nauczyć~się
+%   żyć z~tym, że~każda najmniejsza literówka może być źródłem problemu.
+
+%   Poza tym, język~C, czy nawet Python dają nam dużą swobodę w~rozstawianiu
+%   białych znaków w~tekście. Swoboda jaką mamy w~\textsc{bash}u, gdy chodzi
+%   o~białe znaki, to wolność więźnia zamkniętego w~celi. Niby można~się
+%   poruszać, ale co to za~wolność. Uczulam więc Państwa, na to by pilnować,
+%   gdzie są spacje, taby i~znaki nowej linii. Jeśli coś w~\textsc{bash}u
+%   nie działa, to możliwe, iż~jest to wynik spacji w~złym miejscu.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zaczynamy}
+
+
+%   Zacznijmy od przyjęcia, że~pracujemy na komputerze jako użytkownik,
+%   którego nazwa w~systemie operacyjnym została ustawiona jako
+%   \texttt{adam}. Jeśli włączymy konsolę zobaczymy pewnie coś takiego: \\
+%   \texttt{adam:$\sim$\$} \\
+%   Od tego momentu będziemy zwykle skracali ten znak zachęty \\
+%   (ang.~\textit{prompt}) do symbolu \texttt{\$}. Przepisywanie pełnej jego
+%   postaci wnosi bardzo mało informacji, za~to zabiera sporo miejsca.
+
+%   Na początku zajmiemy~się tym, jak poruszać~się po systemie plików
+%   i~katalogów. Na pewno wiedzą Państwo, że~na komputerze znajdują~się
+%   katalogi (ang.~\textit{directories}), zwane też folderami, które zawierają
+%   pliki i~inne katalogi. Z~punktu widzenia systemu GNU/Linux
+%   katalog jest plikiem, jedynie specjalnego rodzaju. Dla tego systemu
+%   wszystko jest plikiem lub procesem.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+%   Podstawy działania katalogów w~systemie GNU/Linux są w~zasadzie takie
+%   same jak w~systemie Windows, musimy~się jedynie przyzwyczaić do innych
+%   konwencji używanych w~tym systemie. Dużo większym wyzwaniem zapewne
+%   będzie zamienienie środowiska graficznego (\textsc{gui},
+%   ang.~\textit{Graphic User Interface}) na pracę spod poziomu powłoki.
+
+%   Podstawą pracy w~powłoce \textsc{bash} są polecenia (ang.
+%   \textit{commands}). Bez wnikania w~szczegóły, każde polecenie posiada
+%   nazwę i~wykonuje pewne działanie. By wykonać dane polecenie w~powłoce
+%   należy najpierw wpisać jej nazwę, następnie zaś jej odpowiednie
+%   opcje (flagi) i~argumenty. Część poleceń można wykonać bez podawania opcji
+%   czy~argumentów.
+
+%   Trzeba~się niestety przyzwyczaić do tego, że~nazwy poleceń, jak i~ich
+%   opcji tych poleceń w~systemie GNU/Linux potrafią być dość dziwne i~trudne
+%   do~zapamiętania.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+%   Podstawowych poleceń systemu GNU/Linux jest około~$100$, do tego każde ma
+%   kilkanaście albo więcej opcji. Z~tego powodu nauka ich jest bardzo
+%   czasochłonna, a~potrafi być trudna. Teoretycznie w~każdej chwili
+%   w~\textsc{bash}u możemy skorzystać z~manuala (podręcznika), gdzie są opisy
+%   wszystkich poleceń. W~praktyce, żeby zrozumieć jego treść, wymagana jest
+%   już dość spora wiedza.
+
+%   Zdecydowaliśmy~się przyjąć następujące podejście. Naszym głównym celem
+%   jest przekazanie Państwu umiejętności pracy spod powłoki \textsc{bash}
+%   i~naszym głównym celem, jest by możliwie szybko osiągnęli Państwo
+%   odpowiednią biegłość w~tym. Dlatego też, dość szybko wprowadzimy możliwie
+%   dużo poleceń, bez zagłębiania~się w~zbyt wiele szczegółów. Niekiedy
+%   będziemy wracać do wcześniej już omówionych poleceń, by uzupełnić
+%   wiadomości o~nich. Wyczerpujące omówienie wszystkich podstawowych poleceń
+%   i~tak zabrałoby zbyt dużo czasu, to zaś podejście uważamy, za rozsądny
+%   kompromis.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{ls}}
+
+
+%   Zacznijmy od~polecenia
+%   \colorhref{https://linux.fandom.com/pl/wiki/Ls}{\texttt{ls}}. Jego nazwa
+%   pochodzi prawdopodobnie od~ang.~\textit{List fileS}, ale są różne opinie
+%   na ten temat. Polecenie to wyświetla zawartość katalogu w~którym~się
+%   znajdujemy, z~tego powodu wynik działania tego polecenia będzie~się cały
+%   czas zmieniać, jednym z~możliwych może być ten przedstawiony poniżej. \\
+%   \texttt{\$ ls} \\
+%   \texttt{{\color{jAxisBlue} Dokumenty}} \quad
+%   \texttt{introduction-to-GNU-linux.pdf} \quad
+%   \texttt{{\color{jAxisBlue} Pobrane}}
+
+%   Polecenie \texttt{ls} jest przykładem takiego polecenia, które można
+%   uruchomić bez dodatkowych opcji czy argumentów, ono samo ustali w~jakim
+%   katalogu jesteśmy i~wypisze jego zawartość.
+
+%   Obecnie jest standardem, że~powłoka używa kolorów i~różnych typów fontów,
+%   by~informować nas o~typie i~własnościach pliku. W~przykładzie powyżej
+%   nazwy katalogów są wyróżnione na niebiesko, trzeba jednak pamiętać,
+%   że~wszystko to~zależy od~konkretnych ustawień systemu operacyjnego
+%   i~łatwo może zostać zmienione.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{pwd}}
+
+
+%   Kolejnym poleceniem jest
+%   \colorhref{https://www.arturpyszczuk.pl/commands-pwd.html}{\texttt{pwd}}
+%   od ang.~\textit{Print Working Directory}, rezultat jego działania można
+%   zobaczyć poniżej. \\
+%   \texttt{\$ pwd} \\
+%   \texttt{/home/adam}
+
+%   Ta krótka linia zawiera bardzo dużo informacji i~potrzebujemy przynajmniej
+%   kilka z~nich wyjaśnić. Sposób w~jaki pliki i~katalogi są ułożone na~dysku
+%   jest zdefiniowane przez \textbf{system plików} danego systemu
+%   operacyjnego i~ten używany w~systemie GNU/Linux różni~się mocno tego
+%   w~systemie Windows.
+
+%   Zacznijmy od kilku uwag odnośnie notacji. Jeśli pracowalibyśmy w~tym
+%   ostatnim systemie i~na dysku~C znajdowałby~się
+%   katalog \texttt{Systemy-operacyjne-Ćwiczenia} a~w~nim katalog
+%   \texttt{Zajęcia-01}, to ścieżka do niego miałaby postać: \\
+%   \texttt{C:\textbackslash\textbackslash
+%     Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+%   Odpowiednikiem ścieżki z~systemu Windows: \\
+%   \texttt{C:\textbackslash\textbackslash
+%     Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+%   w~systemie GNU/Linux byłaby ścieżka: \\
+%   \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
+%   Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
+%   używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
+%   używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
+%   ale trzeba~się do niej przyzwyczaić.
+
+%   Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
+%   mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
+%   plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
+%   istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
+%   w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
+%   którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
+%   symbolem~„\texttt{/}”.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+%   Odpowiednikiem ścieżki z~systemu Windows: \\
+%   \texttt{C:\textbackslash\textbackslash
+%     Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+%   w~systemie GNU/Linux byłaby ścieżka: \\
+%   \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
+%   Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
+%   używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
+%   używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
+%   ale trzeba~się do niej przyzwyczaić.
+
+%   Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
+%   mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
+%   plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
+%   istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
+%   w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
+%   którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
+%   symbolem~„\texttt{/}”.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+%   Wróćmy do polecenia \\
+%   \texttt{\$ pwd} \\
+%   \texttt{/home/adam} \\
+%   Linię \texttt{/home/adam} czytamy „W~katalogu root („\texttt{/}”)
+%   znajduje~się katalog \texttt{home}, w~nim zaś znajduje~się katalog
+%   \texttt{adam}.” Polecenie \texttt{pwd} podaje więc w~którym katalogu~się
+%   obecnie znajdujemy, za~pomocą ścieżki, która zaczyna~się od katalogu root:
+%   „\texttt{/}”.
+
+%   Katalog w~którym obecnie jesteśmy nosi nazwę \textbf{katalogu bieżącego}
+%   (ang.~\textit{working directory}), a~jak powiedzieliśmy \texttt{pwd} jest
+%   akronimem od~\textit{Print Working Directory}, czyli „wyświetl katalog
+%   roboczy”.
+
+%   Ścieżkę podającą lokalizację katalogu lub pliku nazywamy
+%   \textbf{ścieżką bezwzględną}, jeśli zaczyna~się ona od katalogu root.
+%   W~przeciwnym razie mówimy o~\textbf{ścieżce względnej} (podawanej
+%   względem innego katalogu niż root).
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+%   Bez wielkich uproszczeń można przyjąć, że~\textsc{bash}u \alert{każdy}
+%   ciąg symboli zaczynający od~symbolu „\texttt{/}” zostanie zinterpretowany
+%   jako ścieżka do jakiegoś pliku lub katalogu. Z~tego powodu trzeba
+%   \alert{bardzo} uważać na to~jak używamy symbolu „\texttt{/}”.
+
+%   W~szczególności przy symbolu \texttt{/} trzeba bardzo uważać na spacje.
+%   Ścieżka postaci \\
+%   \texttt{/home/adam} \\
+%   jest poprawna. Ale już ścieżka \\
+%   \texttt{/ home/adam} \\
+%   jest \alert{błędna}! To w~jaki sposób jest błędna, to omówimy innym
+%   razem. Doświadczenie uczy, że~na początku sprawia to ludziom
+%   bardzo dużo problemów.
+
+%   To, że~główny katalog nosi nazwę „korzenia” (ang.~\textit{root}) nie jest
+%   przypadkiem, ale do tej kwestii wrócimy innym razem.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Katalog domowy}
+
+
+%   W~systemie GNU/Linux każdy użytkownik ma swój katalog domowy, w~którym
+%   może przechowywać potrzebne mu pliki. Standardowo, choć mogą być wyjątki,
+%   użytkownik \texttt{adam} otrzyma katalog \texttt{/home/adam}, użytkownik
+%   \texttt{barbara} katalog \texttt{/home/barbara},~etc. Katalog domowy
+%   bieżącego użytkownika posiada też alternatywną nazwę „$\sim$”. Stąd znak
+%   zachęty \\
+%   \texttt{adam:$\sim$\$} \\
+%   przekazuje nam informację, że~działamy jako użytkownik \texttt{adam}
+%   i~znajdujemy~się w~jego katalogu domowym.
+
+%   Załóżmy, że~katalogu domowym znajduje~się katalog o~nazwie
+%   \texttt{Systemy-operacyjne-Ćwiczenia}. By sprawdzić, czy tak jest
+%   naprawdę możemy użyć polecenia \texttt{ls}: \\
+%   \texttt{\$ ls} \\
+%   \texttt{{\color{jAxisBlue} Dokumenty}} \quad
+%   \texttt{introduction-to-GNU-linux.pdf} \quad
+%   \texttt{{\color{jAxisBlue} Pobrane}} \\
+%   \texttt{{\color{jAxisBlue} Systemy-operacyjne-Ćwiczenia}} \\
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+%   Jeśli w~bieżącym katalogu znajduje~się katalog
+%   \texttt{Systemy-operacyjne-Ćwiczenia} to możemy do niego wejść
+%   używając polecenia
+%   \colorhref{https://linux.fandom.com/pl/wiki/Cd}{\texttt{cd}}
+%   (od ang.~\textit{Change Directory}): \\
+%   \texttt{adam:$\sim$\$ cd Systemy-operacyjne-Ćwiczenia} \\
+%   \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$} \\
+%   Wyjątkowo zapisaliśmy pełniejszą wersję znaku zachęty, by podkreślić,
+%   iż~informuje on~nas w~którym katalogu jesteśmy. Mianowicie ścieżka
+%   \texttt{$\sim$/Systemy-operacyjne-Ćwiczenia} informuje nas, że~w~katalogu
+%   domowych użytkownika \texttt{adam} znajduje~się katalog systemy
+%   operacyjne \texttt{Systemy-operacyjne-Ćwiczenia} i~w~nim właśnie jesteśmy.
+
+%   Użyte wyżej polecenie \texttt{cd} jest przykładem polecenia, które
+%   pobiera argument, mianowicie nazwę katalogu do którego możemy wejść.
+%   W~istocie polecenie to pozwala nam na bardzo swobodne poruszanie~się
+%   po systemie plików, jeśli opanujemy dobrze zapis ścieżek w~GNU/Linuxie,
+%   ale wszystko po kolei.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+%   Załóżmy, że~teraz chcielibyśmy przejść do katalogu nad nami. By to zrobić
+%   należy przekazać poleceniu \texttt{cd} argument \texttt{..}: \\
+%   \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$ cd ..} \\
+%   \texttt{adam:$\sim$\$} \\
+%   Dlaczego jako argument przesyłamy akurat \texttt{..} wyjaśnimy w~swoim
+%   czasie, na razie przyjmijmy, iż~tak po prostu jest. Dla lepszej
+%   ilustracji tego co~zrobiliśmy, ponownie wypisaliśmy znak zachęty,
+
+%   Załóżmy, że~chcemy teraz wejść do katalogu
+%   \texttt{Systemy-operacyjne-Ćwiczenia} i~utworzyć tam plik
+%   \texttt{Notatki-z-zajęć.txt}. By utworzyć ten plik możemy skorzystać
+%   z~polecenia
+%   \colorhref{https://linux.fandom.com/pl/wiki/Touch}{\texttt{touch}}. Pełna
+%   sekwencja poleceń będzie wyglądać tak. \\
+%   \texttt{\$ cd Systemy-operacyjne-Ćwiczenia} \\
+%   \texttt{\$ touch Notatki-z-zajęć.txt} \\
+%   Możemy teraz użyć polecenia \texttt{ls} by~się przekonać, czy~plik
+%   \texttt{Notatki-z-zajęć.txt} został poprawnie utworzony.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edycja plików z~pomocą programu gedit}
+
+
+%   Z~komputerami nigdy nic nie wiadomo, więc warto sprawdzać, czy plik
+%   został poprawnie utworzony. Teraz otworzymy go do edycji za~pomocą
+%   programu \colorhref{https://gedit-text-editor.org/}{gedit}. By to zrobić
+%   wpisujemy w~powłoce \\
+%   \texttt{\$ gedit Notatki-z-zajęć.txt \&} \\
+%   Proszę pamiętać o~dodaniu na końcu polecenia znaku
+%   \alert{ampersand}:~„\&”. Inaczej Gedit zablokuje nam możliwość wpisywania
+%   kolejnych poleceń do powłoki i~by ją odzyskać będziemy musieli
+%   wyłączyć Gedita albo użyć kombinacji poleceń \texttt{jobs} i~\texttt{bg}.
+
+%   Czemu uruchomienie gedita bez symbolu ampersanda ma takie skutki, omówimy
+%   gdy będziemy dyskutowali zagadnienie procesów i~tego jak działają
+%   w~systemie GNU/Linux. Nie jest to najprostszy temat na świecie.
+
+%   Jeśli wszystko poszło dobrze, to na ekranie zobaczymy okienko Gedita,
+%   które wygląda mniej więcej tak jak to
+%   na~zdjęciu~\eqref{fig:Gedit-window}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Okienko gedita}
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.18]
+%     {./Presentations-pictures/Miscancellous-pictures/gedit-window.png}
+
+%     \caption{Otwarte okno Gedita.}
+
+
+%     \label{fig:Gedit-window}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edytory tekstów}
+
+
+%   Teraz możemy do pliku \texttt{Notatki-z-zajęć.txt} wpisać tekst, choćby
+%   \textit{Notatki z~przedmiotu „Systemy operacyjne”}. Proszę pamiętać, by
+%   zapisywać wprowadzone zmiany, służy do tego choćby skrót~\texttt{Ctrl-s}.
+
+%   Kilka słów dlaczego wybraliśmy do~edycji plików program gedit. Na~tym
+%   kursie korzystamy głównie z~niego, gdyż jest on prosty w~obsłudze
+%   i~w~kilka sekund po jego otwarciu użytkownik może już pisać odpowiedni
+%   tekst. Zostawiamy jednak Państwu pełną swobodę w~wyborze edytora tekstu.
+%   Nie jest ważne jakiego programu~się używa, ważne jest, żeby udało~się
+%   wykonać zadanie jakie przed nami stoi.
+
+%   Jeśli chodzi o~edytory dostępne pod systemem GNU/Linux, to w~naszej
+%   ocenie warto zwrócić uwagę choćby na~dwa owiane już legendą programy
+%   do edycji tekstu \colorhref{https://www.vim.org/}{vim}
+%   i~\colorhref{https://www.gnu.org/software/emacs/}{GNU Emacs}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Dalsze informacje o~pracy z~BASHem}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pewne subtelności}
+
+
+%   Przyjmijmy, że~jesteśmy w~katalogu \texttt{Systemy-operacyjne-Ćwiczenia}
+%   i~mamy utworzony plik \texttt{Notatki-z-zajęć.txt}. Każdy system
+%   operacyjny musi podjąć decyzję, czy traktuje on duże i~małe litery
+%   jako różne symbole, czy jako dwie wersje tego samego symbolu. Problem
+%   sprowadza~się do tego, czy \texttt{Notatki-z-zajęć.txt}
+%   i~\texttt{notatki-z-zajęć.txt} są dwoma różnymi nazwami tego samego pliku,
+%   czy też są to dwie różne nazwy? Kwestia ta jest sprawą konwencji,
+%   ale~należy ją rozstrzygnąć by uniknąć nieporozumień.
+
+%   Symbol GNU/Linux przyjął, że~duże i~małe litery to \alert{różne} symbole,
+%   więc \texttt{Notatki-z-zajęć.txt} i~\texttt{notatki-z-zajęć.txt} to dwie
+%   różne nazwy. Tak jak w~systemie Windows, w~systemie GNU/Linux w~danym
+%   katalogu może być tylko jeden plik o~danej nazwie. Jest to rozsądny wybór,
+%   gdyż inaczej użytkownik łatwo by~się pogubił.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mkdir}}
+
+
+%   Na mocy tego co powiedzieliśmy wyżej, w~tym samym katalogu mogą
+%   współistnieć pliki o~nazwie \texttt{Notatki-z-zajęć.txt}
+%   i~\texttt{notatki-z-zajęć.txt}. Byłyby to \alert{różne} pliki, zawartość
+%   jednego z~nich nie miałaby nic wspólnego z~zawartością drugiego. Jednak
+%   by uniknąć bałaganu, należy unikać podobnych nazw plików.
+
+%   Powiedzmy, że~chcemy teraz utworzyć w~naszym katalogu
+%   (\texttt{Systemy-operacyjne-Ćwiczenia}) katalog \texttt{Zajęcia-01}.
+%   Służy do tego polecenie
+%   \colorhref{https://www.arturpyszczuk.pl/commands-mkdir.html}
+%   {\texttt{mkdir}}. Polecenie to wymaga do działania argumentu, którym
+%   jest nazwa katalogu, który ma zostać utworzony (logiczne): \\
+%   \texttt{\$ mkdir Zajęcia-01} \\
+%   \texttt{\$ ls} \\
+%   \directoryName{Zajęcia-01} \quad \texttt{Notatki-z-zajęć.txt} \\
+%   Powiedzmy, że~stwierdziliśmy, że~chcemy zmienić nazwę pliku
+%   \texttt{Notatki-z-zajęć.txt} na
+%   \texttt{Notatki-z-systemów-operacyjnych-01.txt} i~przenieść do katalogu
+%   \texttt{Zajęcia-01}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mv}}
+
+
+%   W~systemie GNU/Linux zarówno do zmiany nazwy pliku, jak i~przenoszenia
+%   ich między katalogami służy polecenie
+%   \colorhref{https://www.geeksforgeeks.org/mv-command-linux-examples/}
+%   {\texttt{mv}} (ang.~\textit{MoVe}). Możemy więc zmienić nazwę pliku
+%   za~pomocą polecenia: \\
+%   \texttt{\$ mv Notatki-z-zajęć.txt Notatki-z-systemów-operacyjnych-01.txt}
+
+%   Następnie możemy przenieść plik
+%   \texttt{Notatki-z-systemów-operacyjnych-01.txt} go do katalogu
+%   \texttt{Zajęcia-01} za pomocą polecenia: \\
+%   \texttt{\$ mv Notatki-z-systemów-operacyjnych-01.txt Zajęcia-01/} \\
+%   Symbol „\texttt{/}” na końcu nazwy katalogu nie jest niezbędny,
+%   ale~dobrze go tam umieszczać, bo~stanowi dodatkową informację
+%   dla~\textsc{bash}a i~użytkownika, że~konkretna nazwa jest nazwą
+%   katalogu.
+
+%   Ogólnie unikanie wszelkich niejednoznaczności jest dobrą praktyką.
+%   Dlatego dobrze jest w~ramach możliwości, jawnie zaznaczać charakter
+%   wszystkich bytów, występujących w~poleceniach.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mv}}
+
+
+%   Możemy też przenieść plik do katalogu i~zmienić jego nazwę za pomocą
+%   pojedynczego polecenia: \\
+%   \texttt{\$ mv Notatki-z-zajęć.txt
+%     Zajęcia-01/Notatki-z-systemów-operacyjnych-01.txt} \\
+%   Ponieważ polecenie \texttt{mv} może przenosić pliki tylko do istniejących
+%   już katalogów, samo potrafi wykryć co jest nazwą katalogu, a~co nową
+%   nazwą pliku. Jak z~większością poleceń GNU/Linuxa należy jednak unikać
+%   ich użycia, jeśli nie jesteśmy pewni co dane polecenie zrobi.
+
+%   Wszyscy zapewne dobrze wiemy, że w~systemie Windows, jeśli chcemy
+%   przekopiować plik o~nazwie \texttt{Dane.dat} do katalogu, który już
+%   zawiera plik o~tej nazwie, to zobaczymy komunikat typu
+%   \textit{Plik „Dane.dat” zostanie nadpisany. Czy chcesz kontynuować?}
+%   Niestety, to \alert{nie} jest domyślne działanie polecenia \texttt{mv}
+%   i~wielu innych poleceń w~systemie GNU/Linux.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zagrożenia jakie stwarza \texttt{mv}}
+
+
+%   Załóżmy więc, że~jesteśmy w~katalogu w~którym znajduje~się plik
+%   \texttt{Ważne-dane.dat} i~plik \texttt{Tekst-popularnych-piosenek.txt}.
+%   Jeśli przez przypadek wprowadzimy polecenie \\
+%   \texttt{\$ mv Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
+%   to plik \texttt{Ważne-dane.dat} zostanie nadpisany przez niezbyt ważny
+%   plik \texttt{Teksty-popularnych-piosenek.txt}. Odzyskanie pliku
+%   \texttt{Ważne-dane.dat} nie jest niemożliwe, ale jest bardzo, ale to
+%   \alert{bardzo} trudne i~wymaga sporych umiejętności pracy z~systemem
+%   GNU/Linux.
+
+%   \textit{Jesteś prawdziwym miłośnikiem ryzyka, jeśli przechowujesz ważne
+%     pliki na~komputerze z~systemem \textsc{unix}.} (Stwierdzenie to
+%   odnosi~się też do systemu GNU/Linux.) \\
+%   Robert E.~Seastrom, tłum. swobodne, str.~$261$
+%   \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+
+%   Pomimo tych problemów, polecenia takie jak \texttt{mv} są zbyt ważne,
+%   by~ich nie używać. Jak~się jednak zabezpieczyć przed takimi problemami?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
+
+
+%   Poprzez dodanie odpowiednich opcji (flag) do~polecenia \texttt{mv}
+%   może sprawić, że~zawsze, gdy polecenie to nadpisałoby istniejący
+%   plik zostaniemy zapytani, czy naprawdę chcielibyśmy to zrobić.
+%   W~tym przypadku opcja tą jest \texttt{-i}, rezultat jej działania
+%   przedstawiony jest poniżej. \\
+%   \texttt{\$ mv -i Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
+%   \texttt{mv: zamazać 'Ważne-dane.dat'?} \\
+%   Forma pytania jaką otrzymamy może być inna na Państwa komputerze.
+%   Odpowiedzi twierdzącej na to pytanie, możemy udzielić wpisując
+%   „\texttt{t}”, „\texttt{tak}”, „\texttt{y}” lub „\texttt{yes}”, wówczas
+%   plik \texttt{Ważne-dane.dat} zostanie nadpisany. Jeśli chcemy udzielić
+%   odpowiedzi przeczącej możemy wpisać „\texttt{n}”, „\texttt{nie}”
+%   lub~„\texttt{no}”.
+
+%   Opcje, jak sama nazwa wskazuje, zmieniają działanie polecenia i~na tym
+%   kursie nie musimy wiedzieć o~nich wiele więcej.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Opcje (flagi)}
+
+
+%   Ponieważ istnieje duże ryzyko, że~osoby rozpoczynają swoją przygodę
+%   z~powłoką nadpiszą przez przypadek ważny plik stosując polecenie
+%   \texttt{mv}, we wszystkich przykładach będziemy do niego dodawali
+%   opcję~\textit{-i}. Wyjątkiem od tej zasady będą sytuacja, gdy chcemy
+%   by~polecenie \texttt{mv} nadpisało już istniejący plik.
+
+%   Doświadczeni użytkownicy systemu GNU/Linux już parokrotnie stracili ważne
+%   dane przez~\texttt{mv}, więc używają go znacznie ostrożniej i~przez
+%   to ryzyko utraty kolejnych danych tą metodą jest znacznie mniejsze.
+
+%   Opcje postaci~\texttt{-i} mogą wyglądać osobliwe i~być ciężkie do
+%   zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie nie
+%   należy do przyjemnych, wymaga dużo zapamiętywania, częstego googlowania
+%   lub~nabycie umiejętności czytania trudnego w~zrozumieniu manuala
+%   (\texttt{man}).
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czemu życie nie może być proste?}
+
+
+%   Wszystkie te problemy nie zmieniają faktu, że~polecenia dostępne
+%   w~\textsc{bash}u wraz z~ich opcjami dają nam bardzo potężne narzędzie
+%   do~ręki i~ich poznanie jest niezbędne, jeśli chcemy naprawdę dobrze
+%   poznać system operacyjny GNU/Linux.
+
+%   O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
+%   w~podczas następnych spotkań.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Autouzupełnianie w~BASHu}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+%   Autouzupełnianie to jedna z~funkcjonalności \textsc{bash}a, bez których
+%   nie można w~nim normalnie pracować. Jest ono standardowo przypisane
+%   klawiszowi \texttt{[TAB]}, jego działanie zilustrujemy na~przykładzie
+%   polecenia~\texttt{mv}, ale w~pozostałych przypadkach działa ono
+%   analogicznie.
+
+%   Załóżmy, że~naszym katalogu znajdują~się pliki \texttt{Dane-01.dat}
+%   i~\texttt{Dane-02.dat}, przy drugi z~tych plików chcemy przenieść
+%   do~katalogu \texttt{Dane-do-analizy}. Wprowadźmy w~powłoce \texttt{mv D}
+%   i~wciśnijmy klawisz \texttt{[TAB]}: \\
+%   \texttt{\$ mv D [TAB]} \\
+%   Na~podstawie wprowadzonej litery „\texttt{D}” i~znanej zawartości
+%   katalogu powłoka postara~się uzupełnić jak największą część nazwy pliku,
+%   dając w~rezultacie: \\
+%   \texttt{\$ mv Dane-}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+%   Obecnie nasze polecenie ma postać \\
+%   \texttt{\$ mv Dane-} \\
+%   W~tym momencie musimy wprowadzić dodatkowe znaki, tak by powłoka otrzymała
+%   informację, czy chodzi o~plik \texttt{Dane-01.dat},
+%   \texttt{Dane-02.dat}, czy katalog \texttt{Dane-do-analizy/}. Po wpisaniu
+%   znaku „\texttt{1}” możemy znów skorzystać z~autouzupełniania. \\
+%   \texttt{\$ mv Dane-02 [TAB]} \\
+%   \texttt{\$ mv Dane-02.dat}
+
+%   Jeśli nie pamiętamy jak konkretnie nazywają~się pliki, które są w~danym
+%   katalogu, to możemy kliknąć przycisk \texttt{[TAB]} dwa lub więcej razy,
+%   wtedy powłoka pokaże nam nazwy wszystkich plików, które pasuję
+%   do~dotychczas wprowadzonej nazwy. \\
+%   \texttt{\$ mv Dane- [TAB] \hspace{-1em} [TAB]} \\
+%   \texttt{Dane-01.dat} \quad \texttt{Dane-02.dat} \quad \texttt{Dane-do-analizy/}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+%   Możemy zastosować autouzupełnianie również do nazwy katalogu do~którego
+%   chcemy przenieść omawiany plik: \\
+%   \texttt{\$ mv Dane-02.dat Dane-d [TAB]} \\
+%   \texttt{\$ mv Dane-02.dat Dane-do-analizy/}
+
+%   Praca w~powłoce bez autouzupełniana jest zupełnie nie do zniesienia,
+%   dlatego polecamy Państwu potrenować użycie tej funkcjonalności w~praktyce.
+%   Jak w~przypadku wielu innych rzecz, jest to najlepszy sposób by~się jej
+%   nauczyć.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \EndingSlide{Dziękuję! Pytania?}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Dlaczego BASH~się tak nazywa}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego BASH~się tak nazywa?}
+
+
+%   Historia zaczyna~się
+%   od~\colorhref{https://en.wikipedia.org/wiki/Stephen\_R.\_Bourne}
+%   {Steve Bourne’a}, który w~$1979$~roku napisał powłokę, która w~naturalny
+%   sposób została nazwana
+%   \colorhref{https://en.wikipedia.org/wiki/Bourne\_shell}{powłoką Bourne’a}
+%   (ang.~\textit{Bourne shell}). Bazując na niej
+%   \colorhref{https://en.wikipedia.org/wiki/Brian\_Fox\_(programmer)}
+%   {Brian Jhan Fox} napisał w~$1989$~roku \textit{Bourne Again SHell},
+%   czyli właśnie
+%   \colorhref{https://en.wikipedia.org/wiki/Bash\_(Unix\_shell)}
+%   {\textsc{bash}a}.
+
+%   Sama nazwa \textit{Bourne again shell} to również żart językowy. Nazwę tę
+%   można bowiem przetłumaczyć jako „ponownie powłoka Borne’a”, jak
+%   i~„odrodzona na nowo powłoka”. W~tym drugim przypadku mamy do czynienia
+%   z~grą słowną z~terminem
+%   \colorhref{https://billygraham.org/answers/what-is-your-definition-of-a-born-again-christian}
+%   {\textit{being born again}}, który zyskał
+%   duże znaczenie teologiczne wśród protestantów z~nurtu
+%   \colorhref{https://pl.wikipedia.org/wiki/Ewangelikalizm}{ewangelikanizmu}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \endingslide???{}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{?????}
+% % % ##################
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}
