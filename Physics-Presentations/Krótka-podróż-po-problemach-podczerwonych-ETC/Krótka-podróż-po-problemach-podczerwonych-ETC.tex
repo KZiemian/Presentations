@@ -42,6 +42,12 @@
 % ------------------------------------------------------------------------------------
 % Importing packages, libraries and setting their configuration
 % ------------------------------------------------------------------------------------
+% Package with better looking greek letters
+% Example of use: pi -> \uppi
+\usepackage{upgreek}
+% Improving look of lambda letter
+\let\oldlambda\Lambda
+\renewcommand{\lambda}{\uplambda}
 
 
 
@@ -112,7 +118,7 @@ eprint=true,
 
 % \institute{Uniwersytet Jagielloński w~Krakowie}
 
-\date[???]{???}
+\date[9 IV 2025]{9 IV 2025}
 % ------------------------------------------------------------------------------------------------------------------
 
 
@@ -168,25 +174,31 @@ eprint=true,
 
 
 
+% ######################################
+\section{Informacje wstępne}
+% ######################################
+
+
 % ##################
 \begin{frame}
   \frametitle{Informacji wstępne}
 
 
   Tematyka problemów podczerwonych (\textsc{ir}, ang. \textit{infrared
-    problems}) dotyka wielu fizycznych zagadnień i~nie może być
+    problems}) dotyka wielu zagadnień fizycznych i~nie może być
   wyczerpująco omówiona w~ramach jednego wystąpienia. Naszym
-  celem jest przedstawienie tych spośród nich, które dotyczą prac profesorów
-  Herdegena i~Staruszkiewicza, bez głębszego wnikania w~ich bardzo złożoną
-  strukturę. Będziemy przy tym stosowali wiele uproszczeń.
+  celem jest przedstawienie tych spośród nich, które związane~są z
+  badaniami profesorów Andrzeja Herdegena i~Andrzeja Staruszkiewicza, bez
+  głębszego wnikania w~ich bardzo złożoną strukturę. Różne uproszczenia są
+  w~takiej sytuacji nieuniknione.
 
-  Wiele z~tego można powtórzyć w~odniesieniu do~problemów nadfioletowych
-  (\textsc{uv}, ang. \textit{ultraviolet problems}). Musimy jednak
-  zaznaczyć, że~z~punktu widzenia przyjętego na tym wystąpieniu, problemy
-  nadfioletowe, \alert{nie} są problemami fizycznymi, lecz zagadnieniem
-  technicznym, wynikającym z~braku metod rachunkowych w~kwantowej teorii
-  pola, które są matematycznie ścisłe. Możemy o~nich porozmawiać
-  w~ramach ewentualnego~Q\&A, ale wyjaśnienie wymaga teorii dystrybucji
+  Wiele z~tych stwierdzeń można powtórzyć w~odniesieniu do~problemów
+  nadfioletowych (\textsc{uv}, ang. \textit{ultraviolet problems}). Musimy
+  jednak zaznaczyć, że~z~punktu widzenia przyjętego na tym wystąpieniu,
+  problemy nadfioletowe, \alert{nie} są problemami fizycznymi, lecz
+  zagadnieniem technicznym, wynikającym z~braku matematycznie ścisłych metod
+  rachunkowych w~kwantowej teorii pola. Możemy o~nich porozmawiać
+  w~ramach ewentualnego~Q\&A, ale wymaga to wejścia w~teorię dystrybucji
   Schwartza.
 
   % Standardowo, w~większości wzorów przyjęto „$c = 1$”
@@ -204,14 +216,16 @@ eprint=true,
   \frametitle{Informacji wstępne}
 
 
-  Większość podanych tu informacji można w~sposób w~pełni ścisły udowodnić,
-  \alert{pod warunkiem}, że~przyjmiemy pewne założenia o~naturze pól
-  kwantowych. W~obecnej chwili nie możemy stwierdzić, jaki zestaw założeń
-  o~polach kwantowych jest poprawny, więc wyniki te można kwestionować.
+  Większość przedstawionych na tym seminarium wniosków można w~sposób
+  w~pełni ścisły udowodnić, \alert{pod warunkiem}, że~przyjmiemy pewne
+  założenia o~naturze pól kwantowych. W~obecnej chwili nie możemy
+  z~całkowitą pewnością stwierdzić, jaki zestaw założeń
+  o~tych polach jest poprawny, więc wyniki te można kwestionować.
   Schematem teoretyczny o~którym należy myśleć podczas tego wystąpienia
   jest algebraiczna kwantowa teoria pola (\textsc{aqft},
-  ang.~\textit{algebraic quantum field theory}), który jest jednak bardzo
-  ogólnym schematem teoretyczny.
+  ang.~\textit{algebraic quantum field theory}). To podejście jest bardzo
+  ogólne, co stanowi pewne teoretyczne uzasadnienie, dlaczego w~ogóle warto
+  brać pod uwagę te rezultaty.
   % Tematyka problemów podczerwonych (\textsc{ir}, ang. \textit{infrared
   %   problems}) dotyka wielu fizycznych zagadnień i~nie może być
   % wyczerpująco przedstawiona w~ramach jednego wystąpienia. Naszym
@@ -227,7 +241,7 @@ eprint=true,
   % teorii pola. Możemy o~nich porozmawiać podczas~Q\&A.
 
   Standardowo, w~większości wzorów przyjęto „$c = 1$”
-  i~„\HorSpaceFour$\hbar = 1$”.
+  i~„\HorSpaceSeven$\hbar = 1$”.
 
 \end{frame}
 % ##################
@@ -295,7 +309,7 @@ eprint=true,
 
 
   Rozpatrzmy model w~którym przestrzeń Hilberta opisująca cząstki
-  naładowane jest sumą prostą dwóch przestrzeni:
+  naładowane jest sumą prostą dwóch podprzestrzeni:
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-01}
     \Hcal_{ \HorSpaceTwo \text{phy} } =
@@ -433,7 +447,7 @@ eprint=true,
 
 
   Łatwo obliczamy całki z~tych pól wektorowych po sferze $S( R )$, gdzie
-  $R$~to jej promień.
+  $R$~to promień.
 
   \vspace{-1.5em}
 
@@ -462,7 +476,7 @@ eprint=true,
   całka ta jest stała, lecz gdy masa bozonu $m > 0$, to całka ta znika
   w~granicy~$R \nearrow +\infty$. Pierwszy wynik to dobrze nam
   znane prawo Gaussa, rachunek ten zaś miał służyć pokazaniu jego związek
-  z~masą bozonu danej teorii.
+  z~masą bozonu występującego w~danej teorii.
 
 \end{frame}
 % ##################
@@ -483,8 +497,10 @@ eprint=true,
     \lim_{ R \nearrow +\infty } \int\limits_{ S( R ) } \vecE( \vecx, t ) \cdot d\vec{ \sigma } =
     4 \pi \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q,
   \end{equation}
-  jest zawsze spełniony w~teorii Clerka Maxwella, proszę przy prawa strona
-  nie zależy od wyboru chwili $t$, bo ładunek jest zachowany. Niech $\vecn$
+  jest zawsze spełniony w~teorii Clerka Maxwella. Prawa strona
+  tego wzoru nie zależy od wyboru chwili $t$, bo ładunek jest zachowany.
+
+  Niech teraz $\vecn$
   będzie dowolnym unormowanym wektorem w~$\Rbb^{ 3 }$: $\Vert \vecn \Vert = 1$.
   Określamy asymptotyczne pole elektromagnetyczne:
   \begin{equation}
@@ -510,56 +526,34 @@ eprint=true,
 \begin{frame}
   \frametitle{Kilka nieoczywistych konsekwencji}
 
-  \vspace{-1.5em}
 
+  % Standardowy rozwiązanie tego problemu polega na tym, że~elektrony
+  % „ubiera~się” w~„chmurę miękkich” fotonów. Przez „chmurę miękkich fotonów”
+  % rozumiemy taką „chmurę” fotonów, że~jej energia może być dowolnie mała.
+  % Wówczas elektrony dostają swobodę ruchu, bo dołożone chmury fotonów
+  % kompensują pola Coulomba do postaci zadanej przez $\vecEasm$, $\vecBasm$.
 
-  \begin{equation}
-    \label{eq:Glowne-rodzaje-problemow-podczerwonych-10}
-    \vecEasm :=
-    \lim_{ R \nearrow +\infty } R^{ 2 } \vecE( R \vecn, t ), \quad
-    \vecBasm :=
-    \lim_{ R \nearrow +\infty } R^{ 2 } \vecB( R \vecn, t ).
-  \end{equation}
-  Istnieje nieskończenie wiele różnych pól $\vecEasm$, $\vecBasm$
-  czyniących zadość prawu Gaussa wyrażonemu przez wzór
-  \eqref{eq:Glowne-rodzaje-problemow-podczerwonych-08}. Do pola Coulomba
-  zadanego rozkładu ładunków zawsze można dodać dowolne swobodne pole
-  elektromagnetyczne, które ucieka „do nieskończoności” i~znika
-  jak~$r^{ -2 }$ dla~$r >> 1$ (pole promieniowania).
-
-  Jak powiedziano wcześniej, dla standardowego problemu rozpraszania,
-  pola asymptotyczne nie zależą od~$t$. Prof. Herdegen stwierdził,
-  że~wobec tego, ciężko uniknąć wniosku, że~w~tym problemie wszystkie pola
-  są jakby podwładnymi pola Coulomba (str.~2,
-  \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}).
-  Pole coulombowskie~jest odpowiedzialne za „ustalenie” ładunku
-  elektrycznego, wszystkie pozostałe służą tylko „poprawieniu” ich
-  zachowania w~nieskończoności, tak by pola asymptotyczne $\vecEasm$,
-  $\vecBasm$ miały zawsze tą samą, niezależną od czasu postać.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka nieoczywistych konsekwencji}
-
+  % Prof. Herdegen stwierdził, że~wobec tego, ciężko uniknąć wniosku,
+  % że~w~tym problemie wszystkie pola są jakby „poddanymi” pól Coulomba
+  % (str.~2,
+  % \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}):
+  % pole Coulomba jest odpowiedzialne za „ustalenie” ładunku
+  % elektrycznego, wszystkie pozostałe służą tylko „poprawieniu” ich
+  % zachowania w~nieskończoności, tak by pola asymptotyczne $\vecEasm$,
+  % $\vecBasm$ miały zawsze tą samą, niezależną od czasu postać.
 
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-11}
     \lim_{ R \nearrow +\infty } \int\limits_{ S( R ) } \vecE( \vecx, t ) \cdot d\vec{ \sigma } =
     4 \pi \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q
   \end{equation}
-  Inną konsekwencją tego wzoru jest to, że~w~elektrodynamice ładunek
+  Z~wzoru tego wynika, że~w~elektrodynamice ładunek
   elektryczny nie jest wielkością lokalną. Jeśli ładunek jest skupiony
   w~ograniczonym obszarze $\Ocal$, to jego \alert{całkowitą} wartość można
   znaleźć przez całkowanie po sferze, które jest „bardzo daleko” od niego.
   W~szczególności całkowity ładunek pełnego układu możemy znaleźć poprzez
-  całkowanie „po sferze w~nieskończoności”.
+  całkowanie „po sferze w~nieskończoności”, czyli poprzez przecałkowanie pól
+  asymptotycznych $\vecEasm$, $\vecBasm$.
 
   Przyjrzyjmy~się teraz tej nielokalności z~punktu widzenia algebraicznej
   kwantowej teorii pola.
@@ -665,15 +659,15 @@ eprint=true,
   rozłączna przestrzennie z~dowolnym ograniczonym obszarem
   czasoprzestrzeni, więc są przemienne z~wszystkimi lokalnymi obserwablami.
 
-  Ten wynik jest niezwykle ważny dla prac prof. Staruszkiewicza i~Herdegena,
-  proszę więc zwrócić na niego szczególną uwagę.
-
-  Na mocy lematu Schura pola $\vecEasm$, $\vecBasm$ definiują nową regułę
-  nadwyboru, gdzie każda konfiguracja tych pól, zadaje jeden sektor.
-  Przestrzeń Hilberta rozkłada~się więc na \alert{nieprzeliczalną} sumę
-  prostą odpowiednich sektorów, wyznaczonych przez asymptotyczny kształt
-  pól. Nie będę ukrywał, że~właściwe zrozumienie sensu fizycznego tego
-  faktu, nie jest dla mnie rzeczą prostą.
+  Oznacza to, że~zarówno pola $\vecEasm$, $\vecBasm$, jak i~ładunek
+  elektryczny \alert{nie} są wielkościami lokalnymi. Co więcej, jako
+  że~są przemienne z~wszystkim obserwablami, są one w~zasadzie zmiennymi
+  klasycznymi teorii. Na mocy lematu Schura pola $\vecEasm$, $\vecBasm$
+  definiują nową regułę nadwyboru, gdzie każda konfiguracja tych pól,
+  zadaje jeden sektor. Przestrzeń Hilberta rozkłada~się więc na
+  \alert{nieprzeliczalną} sumę prostą odpowiednich sektorów, wyznaczonych
+  przez asymptotyczny kształt pól. Właściwe zrozumienie sensu fizycznego
+  tego faktu, nie jest dla mnie rzeczą prostą.
 
 \end{frame}
 % ##################
@@ -684,8 +678,97 @@ eprint=true,
 
 % ##################
 \begin{frame}
+  \frametitle{A~co z~problemem rozpraszania?}
+
+  \vspace{-1.5em}
+
+
+  \begin{equation}
+    \label{eq:Glowne-rodzaje-problemow-podczerwonych-10}
+    \vecEasm :=
+    \lim_{ R \nearrow +\infty } R^{ 2 } \vecE( R \vecn, t ), \quad
+    \vecBasm :=
+    \lim_{ R \nearrow +\infty } R^{ 2 } \vecB( R \vecn, t ).
+  \end{equation}
+  Istnieje nieskończenie wiele różnych pól $\vecEasm$, $\vecBasm$
+  czyniących zadość prawu Gaussa wyrażonemu przez wzór
+  \eqref{eq:Glowne-rodzaje-problemow-podczerwonych-08}. Do pola Coulomba
+  zadanego rozkładu ładunków zawsze można dodać dowolne swobodne pole
+  elektromagnetyczne, które ucieka „do nieskończoności” i~znika
+  jak~$r^{ -2 }$ dla~$r >> 1$ (pole promieniowania).
+
+  Wróćmy teraz do problemu rozpraszania. Załóżmy, że „w~minus
+  nieskończoności” pola asymptotyczne pochodzą \alert{tylko} od~pól
+  Coulomba. Wówczas \alert{wykluczone} byłoby oddziaływanie między
+  elektronami, co jest arcynienaturalnym wnioskiem. Wynika to z~tego,
+  że~reguła nadwyboru dla pól asymptotycznych wyznaczałaby jednoznacznie
+  ruch elektronów, który musiałby być dokładnie taki, by ich pola Coulomba
+  podtrzymywały niezależną do czasu postać pól $\vecEasm$, $\vecBasm$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Ubieranie” elektronu}
+
+
+  Standardowe sposób wybrnięcia z~tego problemu polega na tym, że~elektrony
+  „ubiera~się” w~„chmurę miękkich fotonów”. Przez „chmurę miękkich fotonów”
+  rozumiemy towarzyszącą elektronowi grupę fotonów, której energia może być
+  dowolnie zmniejszana. Foton nie posiada masy, więc takie zmniejszanie
+  energii jest możliwe.
+
+  W~takiej sytuacji elektrony odzyskują swobodę ruchu, bo dołożone chmury
+  fotonów „mieszają”~się z polami Coulomba, dając łącznie pola
+  $\vecEasm$ i~$\vecBasm$. Prof. Herdegen stwierdził, że~dla~tak
+  postawionego problemiu trudno uniknąć wniosku, że~wszystkie pola są jakby
+  „poddanymi” pól Coulomba (str.~2,
+  \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}):
+  pole Coulomba jest odpowiedzialne za „ustalenie” ładunku
+  elektrycznego, wszystkie pozostałe służą tylko „poprawieniu” ich
+  zachowania w~nieskończoności, tak by pola asymptotyczne $\vecEasm$,
+  $\vecBasm$ miały zawsze tą samą, niezależną od czasu postać.
+
+  % \begin{equation}
+  %   \label{eq:Glowne-rodzaje-problemow-podczerwonych-11}
+  %   \lim_{ R \nearrow +\infty } \int\limits_{ S( R ) } \vecE( \vecx, t ) \cdot d\vec{ \sigma } =
+  %   4 \pi \alpha_{ \HorSpaceThree \text{el} } \HorSpaceThree q
+  % \end{equation}
+  % Inną konsekwencją tego wzoru jest to, że~w~elektrodynamice ładunek
+  % elektryczny nie jest wielkością lokalną. Jeśli ładunek jest skupiony
+  % w~ograniczonym obszarze $\Ocal$, to jego \alert{całkowitą} wartość można
+  % znaleźć przez całkowanie po sferze, które jest „bardzo daleko” od niego.
+  % W~szczególności całkowity ładunek pełnego układu możemy znaleźć poprzez
+  % całkowanie „po sferze w~nieskończoności”.
+
+  % Przyjrzyjmy~się teraz tej nielokalności z~punktu widzenia algebraicznej
+  % kwantowej teorii pola.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
   \frametitle{Co to znaczy?}
 
+
+  Wiele z~prac prof.~Herdegena było poświęcone badaniu roli i~potrzeby
+  istnienia tej chmury miękkich fotonów.
 
   Puszczając trochę wodze fizycznej fantazji, możemy sobie to wytłumaczyć
   w~następujący sposób. Sama elektrodynamika nie wyznacza nam ładunku
@@ -698,7 +781,7 @@ eprint=true,
   fizycznych rozpada~się na rozłączne klasy, ponumerowany całkowitą
   wielokrotnością ładunku elementarnego~$e$ i~\alert{żaden} proces fizyczny
   nie może przeprowadzić nam układu z~jednej klasy do~drugiej. To w~pewnym
-  sensie jest oczywiste dla nas, bo jesteśmy przyzwyczajeni do własność
+  sensie jest dla nas oczywiste, bo jesteśmy przyzwyczajeni do własność
   ładunku elektrycznego.
 
   % Reguła nadwyboru pól asymptotycznych
@@ -765,21 +848,18 @@ eprint=true,
 
   Transformacja Lorentza zmienia pola $\vecEasm$, $\vecBasm$ co określa~się
   literaturze jako spontanicznym złamanie symetrii Lorentza, analogiczną do
-  tej dotyczącej bozonu Higgsa, czy ferromagnetyka. Określając konkretny
-  układ fizyczny, musimy określić, tak jak przedtem określaliśmy ładunek,
-  teraz określamy postać pól asymptotycznych, co uprzywilejowuje pewną klasę
-  układów inercjalnych.
+  tej dotyczącej bozonu Higgsa, czy ferromagnetyka. Inaczej mówiąc,
+  transformacja Lorentza zmieniają kształt chmur fotonów w~które ubrane są
+  elektrony. Określając konkretny układ fizyczny musimy podać jego ładunek
+  elektryczny, jak i~postać pól asymptotycznych (chmur miękkich fotonów).
+  To zaś uprzywilejowuje pewną klasę układów inercjalnych.
 
   Zwykle ten problem opisuje~się na poziomie algebr i~ich reprezentacji,
-  omówienie tego zajęłoby jednak sporo czasu. Kontynuując nasze luźne
+  omówienie tego zajęłoby jednak zbyt dużo czasu. Kontynuując nasze luźne
   rozważania, możemy powiedzieć coś takiego. Elektrodynamika jest
   „symetryczna” względem wartości ładunku elektrycznego, bo teoria dopuszcza
-  wszystkie jego wartości. Jednak każdy konkretny \alert{układ} nie jest
-  symetryczny w~tym sensie, bo~ma ustaloną wartość tego ładunku.
-
-  Tak samo elektrodynamika jako teoria jest symetryczna względem
-  transformacji Lorentza, ale~każdy konkretny układ już tej symetrii jest
-  pozbawiony. Jest to niewątpliwie ciekawy i~trudny temat.
+  wszystkie jego wartości. Jednak każdy konkretny \alert{układ} fizyczny
+  nie jest symetryczny w~tym sensie, bo~posiada ustaloną wartość ładunku.
 
 \end{frame}
 % ##################
@@ -793,12 +873,16 @@ eprint=true,
   \frametitle{Jaka jest masa elektronu?}
 
 
-  Jakkolwiek może istnieć sposób obejścia nieprzyjemnego wyniku, jakim jest
-  złamanie transformacji Lorentza, przez odrzucenie pewnych założeń
-  o~lokalności pola, to istnieje też drugi
-  problem, znacznie trudniejszy do obejścia. Jak wskazuje praca Detlev’a
-  Buchholza istnienie reguł nadwyboru związanej z~polami asympotycznymi,
-  sprawia, że~masa elektronu jest „rozmyta”
+  Tak samo elektrodynamika jako teoria jest symetryczna względem
+  transformacji Lorentza, ale~każdy konkretny układ jest już tej symetrii
+  pozbawiony. Jest to niewątpliwie ciekawy i~trudny temat.
+
+  Problem spontanicznego łamania symetrii Lorentza można próbować obejść,
+  przez uczynienia pola nielokalnym, jest jednak drugi problem, dużo
+  trudniejszy do usunięcia. Argumenty pochodzące głównie od Schroer’a
+  i~Buchholza wskazują, że~istnienie reguł nadwyboru związanej z~polami
+  asympotycznymi, sprawia, że~masa elektronu jest „rozmyta”
+  \parencite{Schroer-Infraparticles-in-quantum-field-theory-Pub-1963},
   \parencite{Buchholz-The-Physical-State-Space-Of-Quantum-ETC-Pub-1982}.
 
   Jak wiadomo, dla swobodnej cząstki w~\textsc{stw} musi obowiązywać
@@ -808,14 +892,7 @@ eprint=true,
     E^{ \HorSpaceOne 2 } - p^{ \HorSpaceOne 2 } =
     p^{ \HorSpaceOne \mu } p_{ \mu }  = m^{ \HorSpaceOne 2 }.
   \end{equation}
-  Gdy przechodzimy do teorii kwantowej pęd i~energia stają~się operatorami
-  $P^{ \HorSpaceOne \mu }$. Jeśli zachodzi
-  \begin{equation}
-    \label{eq:Glowne-rodzaje-problemow-podczerwonych-13}
-    P^{ \HorSpaceOne \mu } P_{ \mu } \psi  = m^{ \HorSpaceOne 2 } \psi, \quad
-    \psi \in \Hcal,
-  \end{equation}
-  to $\psi$ reprezentuje swobodną cząstkę o~„ostrej” masie $m > 0$.%  Argument
+%  Argument
   % Buchholza wskazuje, że~dla elektrodynamiki kwantowej taki stan $\psi$
   % istnieje tylko dla $m^{ 2 } = 0$, czyli jest pozbawiony elektronów!
 
@@ -835,26 +912,25 @@ eprint=true,
 \begin{frame}
   \frametitle{Jaka jest masa elektronu?}
 
-  \vspace{-1em}
 
-
+  Gdy przechodzimy do teorii kwantowej pęd i~energia stają~się operatorami
+  $P^{ \HorSpaceOne \mu }$. Jeśli zachodzi
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-13}
     P^{ \HorSpaceOne \mu } P_{ \mu } \psi  = m^{ \HorSpaceOne 2 } \psi, \quad
-    \psi \in \Hcal
+    \psi \in \Hcal,
   \end{equation}
-  Argument Buchholza wskazuje, że~dla elektrodynamiki kwantowej taki
-  stan~$\psi$ istnieje tylko dla $m^{ 2 } = 0$, czyli rozważony układ jest
-  pozbawiony elektronów i~pozytronów!
+  to $\psi$ reprezentuje swobodną cząstkę o~„ostrej” masie $m > 0$.
+  Argument Schoer’a i~Buchholza wskazuje, że~dla elektrodynamiki kwantowej
+  taki stan~$\psi$ istnieje tylko dla $m^{ 2 } = 0$, czyli gdy rozważony układ
+  jest pozbawiony elektronów i~pozytronów!
 
-  Dlaczego tak jest? Intuicyjnie jego rozumowanie, po ogromny uproszczeniu,
+  Dlaczego tak jest? Jego intuicyjnie wyjaśnie, po ogromny uproszczeniu,
   przebiega mniej więcej tak. Jeśli $\vecEasm \neq 0$ lub~$\vecBasm \neq 0$, to
-  elektron musi cały czas emitować niskoenergetyczne („miękkie”) fotony,
-  aby podtrzymać istnienie pól asymptotycznych.
-
-  W~skutek emisji miękkich fotonu elektron doznaje lekkiego odrzutu, który
-  zmienia jego ruch. Wygląda to tak, jakby masa elektronu fluktuowała
-  w~czasie jego ruchu, nie może więc on być stanem własnym operatora
+  elektron musi cały czas emitować „miękkie” fotony, aby podtrzymać
+  istnienie tych pól. Przy każdej emisji fotonu elektron doznaje lekkiego
+  odrzutu, co sprawia, że~nigdy nie porusza~się on ruchem prawdziwie
+  swobodnym, nie może więc on być stanem własnym operatora
   $P^{ \mu } P_{ \mu }$ do dyskretnej wartości własnej~$m^{ \HorSpaceOne 2 }$.
 
 \end{frame}
@@ -869,25 +945,23 @@ eprint=true,
   \frametitle{Infracząstki}
 
 
-  Cząstki które nie mają ściśle określonej masy nazywamy
-  \textbf{infracząstkami} (ang.~\textit{infraparticles})
-  lub~\textbf{cząstkami podczerwonymi}. Poglądowy obraz elektronu jako
-  infracząstki jest taki, że~jest on zawsze otoczony przez chmurę fotonów
-  („ubrany w~chmurę fotonów”). Chmura ta jest odpowiedzialna za generowanie
-  pól asymptotycznych i~przez to, iż elektron „ciągnie” tę chmurę jego masa
-  nie jest „ostro” określona.
+  Biorąc za wzór przykład elektrodynamiki, cząstki które nie mają ściśle
+  określonej masy nazywamy \textbf{infracząstkami}
+  (ang.~\textit{infraparticles}) lub~\textbf{cząstkami podczerwonymi}.
 
-  Intuicyjne wyjaśnienia łamania symetrii Lorentzowskiej w~tym obrazie
-  jest następujące. Chmury fotonów zmieniają kształt pod wpływem
-  transformacji Lorentza i~dlatego
-
-  Ma to znaczenie dla ważnego wyniku
+  Problem ten to znaczenie dla ważnego wyniku
   \colorhref{https://en.wikipedia.org/wiki/Eugene\_Wigner}{Eugena Wignera}.
-  Pokazał on, że~każdą nieredukowalną, skończenie wymiarową reprezentację
+  Pokazał on, że~każdą nieredukowalną, skończenie wymiarową reprezentacje
   grupy Lorentza określają dwie liczby: $m^{ \HorSpaceOne 2 }$ i~$s$. Jak
   wynika z~zapisu, każdą taką reprezentację można jednoznacznie skojarzyć
   z~cząstką swobodną, która ma zadany kwadrat masy i~spin (przez relację
   „$S^{ 2 } = s ( s + 1 )$”).
+
+  Niestety klasyfikacja ta \alert{nie} może obejmować infracząstek, bo
+  te z~definicji nie mają one „ostro” określonej masy. Ponieważ do tej
+  kategorii należą elektron i~pozytron, jak i~większość fermionów modelu
+  standardowego, stawia to pod znakiem zapytania wyniki niemałej ilości
+  prac obecnej w~literaturze.
 
 \end{frame}
 % ##################
@@ -901,21 +975,15 @@ eprint=true,
   \frametitle{Infracząstki}
 
 
-  Niestety klasyfikacja ta \alert{nie} może obejmować infracząstek, bo
-  te z~definicji nie mają one „ostro” określonej masy. Ponieważ do tej
-  kategorii należą elektron i~pozytron, jak i~większość fermionów modelu
-  standardowego, stawia pod znakiem zapytania wyniki niemałej ilości prac
-  obecnej w~literaturze.
-
   Temat infracząstek, choć dość niszowy w~środowisku, posiada literaturę
   zbyt dużą by móc ją choćby wymienić. Osobom zainteresowany polecamy
-  sięgnąć po dalsze informacje i~odniesienia do literatury po pracę
+  tematem, polecamy bogatą w~odniesienia do literatury przedmiotu pracę
   J.~Munda, K.H.~Rehrena i B.~Schroera
   \colorhref{https://arxiv.org/abs/2109.10342}{\textit{Infraparticle
       quantum fields and the~formation~of photon clouds}}
   \parencite{Mund-Rehren-Schroer-Infraparticle-quantum-fiels-ETC-Pub-2022}.
   W~pracy tej omówione są takie zagadnienia jak reguła nadwyboru pól
-  asymptotycznych, „rozmycie” masy cząstek naładowanych czy złamanie
+  asymptotycznych, „rozmycie” masy cząstek naładowanych czy łamanie
   symetrii Lorentza.
 
 \end{frame}
@@ -1052,10 +1120,9 @@ eprint=true,
 
   Na chwilę obecną nie istnieje matematycznie ścisły sposób konstrukcji
   kwantowej elektrodynamiki w~$3 + 1$ wymiarach, dlaczego więc, z~punktu
-  widzenia dla której matematyczna spójność jest ważna, warto zajmować~się
-  problemami podczerwonymi, zanim taki model kwantowej elektrodynamiki
-  zostanie zbudowany? Tutaj odwołam~się do opinii prof.~Herdegena (zob.
-  str.~2,
+  widzenia dla którego matematyczna spójność jest ważna, warto w~ogóle
+  zajmować~się problemami podczerwonymi? Tutaj ponownie odwołam~się do
+  opinii prof.~Herdegena (zob.~str.~2,
   \parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}).
 
   Po pierwsze, w~granicy asymptotycznej większość dynamiki pola
@@ -1081,13 +1148,13 @@ eprint=true,
   i~związanym z~nim długozasięgowym oddziaływaniom. Ponieważ to musi być
   prawdą również w, standardowo pojętej, kwantowej elektrodynamice, więc
   jest zasadne przyjąć, iż~odtworzenie teorii asymptotycznej jako pewnej
-  granicy kwantowej elektrodynamiki. W~jednej ze swoich prac prof.~Herdegen
-  badał jak w~\alert{klasycznej} elektrodynamice energia, pęd i~moment pędu
-  związane są z~ich asymptotycznymi odpowiednikami, o~czym powiem
-  trochę później
+  granicy kwantowej elektrodynamiki. Idąc tą drogą, w~jednej ze swoich prac
+  prof.~Herdegen badał jak w~\alert{klasycznej} elektrodynamice energia,
+  pęd i~moment pędu związane są z~ich asymptotycznymi odpowiednikami,
+  o~czym powiem trochę później
   (zob.~\parencite{Herdegen-Long-range-effects-in-asymptotic-ETC-Pub-1995}).
 
-  W~takiej sytuacji badanie reżimu asymptotycznego może rzucić nowe światło
+  Wobec tego badanie reżimu asymptotycznego może rzucić nowe światło
   na pełnej elektrodynamiki kwantowej, a~dziś każdy taka informacja jest
   niezwykle cenna.
 
@@ -1114,21 +1181,19 @@ eprint=true,
   \frametitle{Problem pól asymptotycznych}
 
 
-  Wróćmy do problemu roli pól asymptotycznych $\vecEasm$, $\vecBasm$
-  w~zagadnieniach rozpraszania i~ponownie odwołamy~się do
-  prof.~Herdegena, który zauważył, że~z~przytoczonych wcześniej informacji
-  wyciągane~są mocno przeciwstawne wnioski (str.~2,
+  Jak zauważył prof.~Herdegena, z~powyższych informacji o~polach asymptotycznych wyciąga~się mocno przeciwstawne wnioski (str.~2,
   \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}).
 
   \begin{itemize}
 
   \item[1)] Konkretna postać pól asymptotycznych $\vecEasm$, $\vecBasm$
-    jest w~dużej mierze kwestią konwencji. Ważne jest tylko by było
-    dla nich spełnione prawo Gaussa.
+    jest w~dużej mierze kwestią konwencji, bo to jak „ubiorę” elektron
+    zależy ode mnie. Fizyczne znaczenie ma tylko prawo Gaussa.
 
-  \item[2)] Podczerwone stopnie swobody swobodnego pola różnią~się
-    fundamentalnie od jego lokalnych stopni swobody. Warto zaznaczyć,
-    że~nadfioletowe stopnie swobody są lokalne w~podanym tu sensie.
+  \item[2)] Podczerwone (asymptotyczne) stopnie swobody swobodnego pola
+    różnią~się fundamentalnie od jego lokalnych stopni swobody. Warto
+    zaznaczyć, że~nadfioletowe stopnie swobody są lokalne w~podanym tu
+    sensie.
 
   \end{itemize}
 
@@ -1152,13 +1217,13 @@ eprint=true,
     więc odległość rzędu kilku metrów jest wystarczając by mówić o~efekcie
     „w~nieskończoności”. Ponadto efekt pamięci, odkryty w~przypadku
     elektrodynamiki przez
-    \colorhref{https://pl.wikipedia.org/wiki/Andrzej_Staruszkiewicz}{prof.~Staruszkiewicza}, pokazuje
-    istnienie obserwowalne efekty pól asymptotycznych.
+    \colorhref{https://pl.wikipedia.org/wiki/Andrzej_Staruszkiewicz}{prof.~Staruszkiewicza},
+    jest przykładem fizycznej natury pól asymptotycznych.
 
   \item[2)] W~klasycznym przypadku, w~teorii rozpraszania swobodne pola
     muszą mieć silne zachowanie podczerwone i~wszystkie ich stopnie swobody
     są niezależne. W~teorii kwantowej lokalne pole swobodne ma naturalne
-    rozszerzenie, zawierające pola wykazujące silne zachowanie podczerwone.
+    rozszerzenie, które zawiera pola podczerwone
 
   \end{itemize}
 
@@ -1188,9 +1253,10 @@ eprint=true,
   Zacznijmy od ustalenia postać pól asymptotycznych $\vecEasm$,
   $\vecBasm$. Okazuje~się, że~możemy wziąć pole elektromagnetyczne
   o~dowolnie małej energii, które posiada taką postać asymptotyczną,
-  co~ponownie unaocznia, że~pola asymptotyczne są zjawiskiem z~reżimu
-  podczerwonego. Wystarczy bowiem wziąć jedno pole które generuje
-  tego typu pola asymptotyczne i~następnie przeskalować je w~prosty sposób.
+  co~ponownie unaocznia, że~mamy do czynienia ze zjawiskiem z~reżimu
+  podczerwonego. Wystarczy wziąć jedno pole które asymptotycznie daje
+  $\vecEasm$ i~$\vecBasm$, następnie przeskalować je w~prosty sposób
+  by zmniejszyć jego energię.
 
 \end{frame}
 % ##################
@@ -1209,7 +1275,7 @@ eprint=true,
   uproszczeniu prof. Staruszkiewicz wykazał, że~istnieje funkcja
   $f\big( \HorSpaceOne \vecp, \vecEasm, \vecBasm \big)$, taka
   że~przesunięcie fazowe $\delta( \HorSpaceOne \vecp \HorSpaceOne )$ jakiego
-  dozna ta fala po przejściu przez pole
+  dozna ta fala po przejściu przez zadane pole wynosi
 
   \vspace{-1em}
 
@@ -1229,10 +1295,9 @@ eprint=true,
   jest ważne to fakt, że~przesunięcie fazowe zależy \alert{tylko
     i~wyłącznie} od pędu fali padającej i~postaci pól asymptotycznych.
   W~szczególności, ponieważ mogę dowolnie zamieszczać energię zawartą
-  w~polu elektromagnetycznym $E_{ \HorSpaceOne \text{el} }$, nie zmieniają jego
-  postaci asymptotycznej. Wynika stąd, że~przesunięcie fazowe
-  $\delta( \HorSpaceOne \vecp \HorSpaceOne )$ również nie zależy od tego tej
-  energii.
+  w~polu elektromagnetycznym, nie zmieniają jego postaci asymptotycznej,
+  to~przesunięcie fazowe $\delta( \HorSpaceOne \vecp \HorSpaceOne )$ również od
+  niej nie zależy od~wartości tej energii.
 
 \end{frame}
 % ##################
@@ -1276,7 +1341,7 @@ eprint=true,
 
 
   Na~tym musimy zakończyć to bardzo pobieżne omówienie efektu pamięci.
-  Dokładniejsze jego omówienie można znaleźć w~rozdziale $2.6$ pracy
+  Dokładniejsze jego dyskusję można znaleźć w~rozdziale $2.6$ pracy
   prof.~Herdegena
   \colorhref{https://arxiv.org/abs/2403.09234}{\textit{Infrared structure
       beyond\ldots}}
@@ -1309,7 +1374,8 @@ eprint=true,
 
 
 % ######################################
-\section{Wybrane badania prof.~Herdegena}
+\section{Wybrane prace prof.~Herdegena oraz wcześniejsze
+  wyniki prof.~Staruszkiewicza}
 % ######################################
 
 
@@ -1318,22 +1384,23 @@ eprint=true,
   \frametitle{Prof.~Staruszkiewicz i~prace prof.~Herdegena}
 
 
-  Teraz chcemy pokrótce zarysować wyniki kilku prac prof.~Herdegena
-  poświęconych problemom podczerwony. Wszystkie one mają na celu
-  rozjaśnienie problemów wymienionych w~pierwszej części niniejszego
-  wystąpienia, widać też w~nich wyraźny wpływ badań prof. Staruszkiewicza,
-  dlatego należy wspomnieć od dwóch jego badań.
+  W~tej części pokrótce omówimy wyniki kilku prac prof.~Herdegena
+  poświęconych problemom podczerwony, wszystkie one mają na celu
+  zrozumienie dotychczas omówionych zagadnień. Ponieważ widać w~nich
+  wyraźny wpływ badań prof. Staruszkiewicza, dlatego najpierw należy
+  wspomnieć o~jeszcze niektórych aspektach jego badań.
 
-  Prof. Staruszkiewicz, i~za nim prof. Herdegen, kładą duży nacisk
+  Prof. Staruszkiewicz, i~za nim prof. Herdegen, kładli duży nacisk
   na~geometryczne własności czasoprzestrzeni Minkowskiego i~ich ścisły
   związek z~równaniami ruchu pola elektromagnetycznego (wariantami równań
   Clerka Maxwella). Pozostaje ubolewać, że~geometryczne własności z~których
   korzystają i~ich związek z~teorią reprezentacji grupy Lorentza nie są
   częściej przytaczane w~literaturze dotyczącej~\textsc{stw}.
 
-  Obecnie jestem w~trakcie przygotowywania notatek na temat tych własności
-  do cyklu seminariów \textsc{nkf}u, starając~się możliwie uprościć ich
-  wykład, dlatego wolę dzisiaj nie wchodzić w~nie.
+  Obecnie jestem wciąż w~trakcie robienia notatek na temat tych własności
+  dla cyklu seminariów \textsc{nkf}u, starając~się możliwie uprościć ich
+  wykład, dlatego wolę dzisiaj nie wchodzić w~te problemy zbyt głęboko.
+  Chyba, że~ktoś jest zainteresowany.
 
 \end{frame}
 % ##################
@@ -1347,22 +1414,23 @@ eprint=true,
   \frametitle{Prof.~Staruszkiewicz i~prace prof.~Herdegena}
 
 
-  Jak już zostało to wspomniane w~pierwszej części, na gruncie algebraicznej
-  kwantowej teorii pola, pola asymptotyczne są przemienne z~wszystkimi
-  lokalnymi obserwablami. Wielkości wykazujące tę własność są
-  właściwie zmiennymi klasycznymi, które przetrwały w~teorii kwantowej
-  i~zwykle mają tylko charakter pomocniczy w~stosunku do prawdziwie
-  „fizycznych” wielkości.
-
-  Wydaje~się, że~pierwszą osobą, która postawiła pytanie o~możliwość
-  uczynienie pól asymptotycznych zmiennymi kwantowymi, był właśnie
+  Jak już zostało to wspomniane w~pierwszej części, pola $\vecEasm$,
+  $\vecBasm$ są przemienne ze wszystkimi obserwablami, dlatego należy
+  je uważać za zmienne klasyczne. Wydaje~się, że~pierwszą osobą, która
+  postawiła pytanie o~możliwość uczynienie pól asymptotycznych
+  pełnoprawnymi, kwantowymi zmiennymi teorii, był właśnie
   prof.~Staruszkiewicz, inspiracja zaś wypłynęła z~jego pracy o~efekcie
-  pamięci. Podał on teorię, która zasadniczo sprowadza~się do kwantowej
-  teorii pola Coulomba w~nieskończoności przestrzennopodobnej
+  pamięci. Sformułował on podejście do tego problemu, która zasadniczo
+  sprowadza~się do kwantowej teorii pola Coulomba w~nieskończoności
+  przestrzennopodobnej
   \parencite{Staruszkiewicz-Quantum-Mechanics-of-Phase-and-Charge-ETC-Pub-1989}.
-  Prof.~Herdegen rozwinął później jej algebraiczny formalizm
+  Prof.~Herdegen rozwinął dla niej algebraiczny formalizm w~pracach
   \parencite{Herdegen-Asymptotic-algebra-of-quantum-electrodynamics-Pub-2005},
   \parencite{Herdegen-Remarks-on-mathematical-structure-of-ETC-Pub-2022}.
+
+  Nie możemy zbyt dogłębnie wnikać w~tą teorię, warto jednak zaznaczyć,
+  że~teoria ta wykazuje intrygujące własności na poziomie reprezentacji
+  grupy Lorentza. Mam tutaj na myśli teorię reprezentacji grup.
 
 \end{frame}
 % ##################
@@ -1376,20 +1444,26 @@ eprint=true,
   \frametitle{Prof. Staruszkiewicz i~prace prof.~Herdegena}
 
 
-  Nie możemy zbyt dogłębnie wnikać w~tą teorię, warto jednak zaznaczyć,
-  że~teoria ta wykazuje intrygujące własności na poziomie reprezentacji
-  grupy Lorentza, w~sensie teorii reprezentacji grup. Mianowicie własności
-  pewnych jej reprezentacji, zależą od~wartości stałej struktury subtelnej
-  $\alpha = e^{ 2 } / ( \HorSpaceThree \hbar c ) =
-  0.007 \, 297 \, 352 \, 56 \, 43(11)$. W~teorii Staruszkiewicza
+  Mianowicie własności pewnych reprezentacji grupy symetrii teorii
+  Staruszkiewicza, zależą od~wartości stałej struktury subtelnej, której
+  fizyczna wartość to
+  $\alpha = e^{ 2 } / ( \HorSpaceThree \hbar c ) = 0.007 \, 297 \, 352 \, 56 \,
+  43(11)$. W~teorii Staruszkiewicza
   wyróżniona jest wartość $\alpha = \pi = 3.1415\ldots$, która nie ma większego związku
-  z~rzeczywistym światem. Niemniej sam fakt, że~jakaś teoria może wyróżnić
-  jakąkolwiek wartość stałej struktury subtelnej, miał na pewno spore
-  znaczenie dla osób zajmujących~się tematyką stałej struktury subtelnej.
+  z~rzeczywistym światem.
 
+  Niemniej sam fakt, że~jakaś teoria może wyróżnić
+  pewną wartość stałej struktury subtelnej, miał na pewno spore
+  znaczenie dla osób zajmujących~się tematyką tej stałej.
   Osobom bardziej zainteresowanym teorią Staruszkiewicza polecam lekturę
   rozdziału~$4$ w~cytowanej już wielokrotnie pracy
   \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}.
+
+  W~tym miejscu należy wspomnieć, że~część wyników prof.~Herdegena
+  i~prof.~Staruszkiewicza została później ponownie znaleziona przez
+  \colorhref{https://en.wikipedia.org/wiki/Andrew\_Strominger}{Andrewa
+    Stromingera} i~jego grupę, ale często w~mniej ogólnym przypadku
+  i~matematycznie mało precyzyjny sposób.
 
 \end{frame}
 % ##################
@@ -1402,6 +1476,15 @@ eprint=true,
 \begin{frame}
   \frametitle{Struktura asymptotyczna klasycznej elektrodynamiki}
 
+
+  To, że~pomimo otrzymania wiadomości, że~ich wyniki nie są nowe,
+  Strominger i~jego współpracownicy nie chcą cytować starszy prac,
+  tworzy mało komfortową sytuację. Swoją opinię na temat podejścia
+  Stromingera i~jego „trójkąta podczerwonego” prof.~Herdegen zamieścił
+  w~roz.~$2$, pracy
+  \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}.
+  Osoba chcą przyjrzeć~się temu sporowi, powinna zacząć jej lekturę
+  od~odniesień zawartych w~punkcie~$2.7$.
 
   Artykuł \colorhref{https://arxiv.org/abs/2411.13977}
   {\textit{Long-range effects in asymptotic fields and~angular momentu~of
@@ -1409,16 +1492,11 @@ eprint=true,
   badaniom asmyptotycznego zachowania klasycznego pola elektromagnetycznego
   i~pola Diraca
   \parencite{Herdegen-Long-range-effects-in-asymptotic-ETC-Pub-1995}.
-  Badanie to jest podjęte z~jawną motywacją podstawienia procedury
-  kwantyzacji na solidnym gruncie.
-
-  Dla przypadku pola elektromagnetycznego badane są jego asymptotyki
-  w~„świetlnej nieskończoności” (sferze dwuwymiarowej opisującej, gdzie
-  dotrze światło po nieskończonym czasie), korzystając z~funkcji
-  jednorodnych i~dobrych własności ich całkowania po kierunkach świetlnych.
-  Analogiczne badanie jest przeprowadzone dla czasopodobnej przyszłości dla
-  pola Diraca. Jak sam ten opis wskazuje, geometryczne własności
-  czasoprzestrzeni Minkowskiego są w~niej mocno wykorzystywane.
+  Jej jawną motywacją, jest pragnienia osadzenia kwantyzacji pola na
+  solidnym gruncie. Dla przypadku pola elektromagnetycznego
+  badane jest jego zachowanie w~„świetlnej nieskończoności” (sferze
+  dwuwymiarowej opisującej, gdzie dotrze światło po nieskończonym czasie),
+  korzystając z~funkcji jednorodnych i~ich „całek po kierunkach świetlnych”.
 
 \end{frame}
 % ##################
@@ -1432,22 +1510,21 @@ eprint=true,
   \frametitle{Struktura asymptotyczna klasycznej elektrodynamiki}
 
 
-  Pomimo braku dowodów dla pewnych jawnie zapostulowanych własności
-  oddziałujące teorii pola elektromagnetycznego i~pola Diraca, poza tym jej
-  fragmentem praca jest matematycznie ścisła i~zawiera wiele interesujących
-  wyników.
+  Analogiczne badanie jest przeprowadzone dla czasopodobnej przyszłości dla
+  pola Diraca. Jak sam ten opis wskazuje, geometryczne własności
+  czasoprzestrzeni Minkowskiego pełnią w~tej pracy bardzo dużą rolę.
 
-  Wśród nich należy wymienić procedurę obliczania całkowitego momentu pędu
+  W~pracy tej zapostulowano jawnie pewne własności oddziałujące teorii pola
+  elektromagnetycznego i~pola Diraca, dla który nie udało~się podać dowodu,
+  jednak poza tą częścią, jest ona matematycznie ścisła i~zawiera
+  wiele interesujących wyników. Wśród nich należy wymienić procedurę
+  obliczania całkowitego momentu pędu
   pola elektromagnetycznego (rozbieżne całki i~jak ich uniknąć), rozkład
   energii i~pędu systemu na sumę energii oraz pędu asymptotycznych pól
   promieniowania i~materii oraz brak analogicznego wyniku dla momentu pędu.
   W~tym ostatnim przypadku pojawia~się człon zawierający wkład do momentu
-  pędu zarówno od pól Coulomba jak i~od fal elektromagnetycznych.
-
-  Należy dodać, że~tego członu łączącego wkład materii i~promieniowania
-  można~się pozbyć wprowadzając nielokalną transformację pola Diraca. Jeśli
-  zostanie to wykonane, to wówczas można otrzymać wyniki zgodne
-  z~wcześniejszymi pracami prof. Staruszkiewicza.
+  pędu zarówno od pól Coulomba jak i~od fal elektromagnetycznych,
+  który „miesza” oba te źródła.
 
   % W~mojej ocenie ten artykuł jest bardzo wartościowy i~wart dokładnego
   % studiowania w~roku $2025$, ze względu na duże zainteresowanie problemami
@@ -1464,6 +1541,11 @@ eprint=true,
 \begin{frame}
   \frametitle{Struktura asymptotyczna klasycznej elektrodynamiki}
 
+
+  Należy dodać, że~tego członu w~momencie pędu, który łączący wkład materii
+  i~promieniowania można~się pozbyć wprowadzając nielokalną transformację
+  pola Diraca. Jeśli zostanie to wykonane, to wówczas można otrzymać wyniki
+  zgodne z~wcześniejszymi pracami prof. Staruszkiewicza.
 
   % Pomimo braku dowodów dla pewnych jawnie zapostulowanych własności
   % oddziałujące teorii pola elektromagnetycznego i~pola Diraca, poza tym jej
@@ -1604,7 +1686,7 @@ eprint=true,
   o~zwartym nośniku możemy otrzymać tylko \alert{lokalne} obserwable,
   więc z~oczywistych względów nie obejmują one pól asymptotycznych.
 
-  By temu zaradzić prof.~Herdegen rozszerza algebrę pól asymptotycznych.
+  By temu zaradzić prof.~Herdegen rozszerza algebrę pól asymptotycznych
   w~następujący sposób. Obok funkcji gładkich o~zwartym nośniku
   w~„świetlnej nieskończoności” do przestrzeni symplektycznej dodawane
   są pewne odpowiednio szybko gasnące funkcje. Procedura ta nie jest wcale
@@ -1626,7 +1708,7 @@ eprint=true,
 
   Twierdzenie Weyl’a zastosowane do nowej przestrzeni symplektycznej daje
   nam algebrę $C^{ \HorSpaceOne * }$, z~tą różnicą, że~elementy
-  odpowiadające gasnącym funkcją „generują” w~pewnym konkretnym sensie
+  odpowiadające gasnącym funkcją „generują”, w~pewnym konkretnym sensie,
   \alert{nielokalne} elementy tej algebry.
 
   Z~mojego punktu widzenia szczególnie trudną częścią pracy jest utworzenie
@@ -1637,10 +1719,10 @@ eprint=true,
 
   W~ten sposób utworzona zostaje algebra i~jej reprezentację
   na tyle dużą, by objęła operatory kreacji i~anihilacji bozonów
-  oraz~fermionów, a~także kwantowe pola asymptotyczne elektrodynamiki.
-  Znalazł też warunek na to, by w~teorii opisywanej taką algebrą ładunek
-  elektryczny był skwantowany, por. \textit{Colloraly $3.1$}
-  i~poprzedzający ją dyskusja
+  oraz~fermionów, a~także \alert{kwantowe} pola asymptotyczne
+  dla elektrodynamiki. Znalazł też warunek na to, by w~teorii opisywanej
+  taką algebrą ładunek elektryczny był skwantowany,
+  por.~\textit{Colloraly $3.1$} i~poprzedzający go dyskusja
   w~\parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}.
 
   % Prace naukowe prof.~Herdegena nie ograniczają~się do problemów
@@ -1699,7 +1781,8 @@ eprint=true,
 
   Prace naukowe prof.~Herdegena nie ograniczają~się do problemów
   podczerownych, ale stanowią one główny temat jego zainteresowań. Choć nie
-  możemy ich omówić tutaj, chcielibyśmy wymienić kilka ich z~nazwy.
+  możemy ich omówić tutaj, chcielibyśmy wymienić jeszcze jego kilka
+  artykułów.
   \colorhref{https://arxiv.org/abs/1210.1731}{\textit{Infraparticle problem,
       asymptotic fields and Haag-Ruelle theory}} z~$2013$ roku
   \parencite{Herdegen-Infraparticle-Problem-Asymptotic-Fields-ETC-Pub-2013},
@@ -1717,13 +1800,14 @@ eprint=true,
   {\textit{Undressing the~electron}} z~$2024$
   \parencite{Herdegen-Undressing-the-electron-Pub-2024}.
 
-  Jak wskazuje tytuł \colorhref{https://arxiv.org/abs/2310.20560}
-  {\textit{Undressing the~electron}} dotyczy ona problemu wersji
-  elektrodynamiki, w~której zdejmujemy z~elektronu chmurę „miękkich”
-  fotonów, ale pozostawiamy mu jego pole Coulombowskie.
+  Praca \colorhref{https://arxiv.org/abs/2310.20560}
+  {\textit{Undressing the~electron}} dotyczy następującego zagadnienia.
+  Jeśli pola asymptotyczne są w~pełni kwantowe, nie potrzebujemy mieć chmur
+  miękkich fotonów, możemy więc „zdjąć” je z~elektronu, pozostawiając mu
+  tylko pole Coulomba.
 
-  Jak widać, problemy podczerwone i~ich badania, to dziedzina która ma
-  przed sobą przyszłość.
+  Problemy podczerwone i~ich badania, to dziedzina która wciąż
+  ma przed sobą przyszłość.
 
 \end{frame}
 % ##################

@@ -84,7 +84,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Systemy operacyjne}
-\subtitle{Podstawowe abstrakcje, praca z~komputerem
+\subtitle{2.~Podstawowe abstrakcje, praca z~komputerem
   z~poziomu powłoki \textsc{bash}}
 
 \author{Kamil Ziemian \\
@@ -207,11 +207,10 @@ eprint=true,
   w~roku~$1988$.
 
   Dlatego też większość rzeczy, które poznają Państwo na~tym kursie powinny
-  działać w~$99\%$ dystrybucji
-  systemu GNU/Linux i~w~$100\%$ dystrybucji które są używane w~poważnych
-  firmach i~projektach.
-  Będziemy~się też starać wyraźnie zaznaczać, czym mogą~się różnić
-  poszczególne dystrybucje GNU/Linuxa.
+  działać w~$99\%$ dystrybucji systemu GNU/Linux i~w~$100\%$ dystrybucji
+  które są używane w~poważnych firmach i~projektach. Będziemy~się też
+  starać wyraźnie zaznaczać, czym mogą~się różnić poszczególne dystrybucje
+  GNU/Linuxa.
 
 \end{frame}
 % ##################
@@ -226,7 +225,7 @@ eprint=true,
 
 
 % ######################################
-\section{Włączanie powłoki, przypomnienie}
+\section{Włączanie powłoki i~tryby działania}
 % ######################################
 
 
@@ -386,8 +385,7 @@ eprint=true,
 
   Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
   należy zagwarantować, żeby dane jednej osoby, które powinny pozostać
-  tajne, nie
-  były od ręki dostępne innym jego użytkownikom.
+  tajne, nie były od ręki dostępne innym jego użytkownikom.
 
   Aby zapewnić możliwie dużą wygodę, bezpieczeństwo i~tajność danych,
   w~obecnej architekturze systemów operacyjnych dostępne są dwa główne tryby
@@ -427,6 +425,10 @@ eprint=true,
   prawo udostępnić nam ten konkretny fragment. Jeśli nie to przesyła nam
   wiadomość, że~nie mamy uprawnień do zobaczenia zawartości tej części
   pamięci.
+
+  Więcej informacji w~temacie tych dwóch trybów działania można znaleźć
+  w~tym wideo
+  \parencite{Daves-Garage-Kernel-Mode-vs-User-Mode-Why-it-ETC-Ver-2024}.
 
 \end{frame}
 % ##################
@@ -546,7 +548,7 @@ eprint=true,
 
 
 % ######################################
-\section{BASH nie zna słowa „litość”}
+\section{BASH nie zna słowa „litość”. Część~I}
 % ######################################
 
 
@@ -627,8 +629,8 @@ eprint=true,
 
 
   Zacznijmy od przyjęcia, że~pracujemy na komputerze jako użytkownik,
-  którego nazwa w~systemie operacyjnym została wybarana jako
-  \texttt{adam}. Jeśli włączymy konsolę zobaczymy pewnie coś takiego: \\
+  którego nazwa w~systemie operacyjnym została wybrana jako \texttt{adam}.
+  Jeśli włączymy konsolę zobaczymy pewnie coś takiego: \\
   \texttt{adam:$\sim$\$} \\
   Od tego momentu będziemy zwykle skracali ten znak zachęty \\
   (ang.~\textit{prompt}) do symbolu \texttt{\$}. Przepisywanie pełnej jego
@@ -684,20 +686,19 @@ eprint=true,
 
   Podstawowych poleceń systemu GNU/Linux jest około~$100$, do tego każde ma
   kilkanaście albo więcej opcji. Z~tego powodu nauka ich jest bardzo
-  czasochłonna i~niełatwa. Teoretycznie w~każdej chwili
-  w~\textsc{bash}u możemy skorzystać z~manuala (podręcznika), gdzie są opisy
-  wszystkich poleceń. W~praktyce, żeby zrozumieć jego treść, wymagana jest
-  już dość spora wiedza.
+  czasochłonna i~niełatwa. Teoretycznie w~każdej chwili w~\textsc{bash}u
+  możemy skorzystać z~manuala (podręcznika), gdzie są opisy wszystkich
+  poleceń. W~praktyce, żeby zrozumieć jego treść, wymagana jest już dość
+  spora wiedza.
 
   Zdecydowaliśmy~się przyjąć następujące podejście. Naszym głównym celem
   jest przekazanie Państwu umiejętności pracy spod powłoki \textsc{bash}
   w~możliwie krótki i~bezbolesny sposób. Dlatego też, dość szybko
-  wprowadzimy możliwie
-  dużo poleceń, bez zagłębiania~się w~zbyt wiele szczegółów. Niekiedy
-  będziemy wracać do wcześniej już omówionych poleceń, by uzupełnić
-  wiadomości o~nich. Wyczerpujące omówienie wszystkich podstawowych poleceń
-  i~tak zabrałoby zbyt dużo czasu, to zaś podejście uważamy, za rozsądny
-  kompromis.
+  wprowadzimy możliwie dużo poleceń, bez zagłębiania~się w~zbyt wiele
+  szczegółów. Niekiedy będziemy wracać do wcześniej już omówionych poleceń,
+  by uzupełnić wiadomości o~nich. Wyczerpujące omówienie wszystkich
+  podstawowych poleceń i~tak zabrałoby zbyt dużo czasu, to zaś podejście
+  uważamy, za rozsądny kompromis.
 
 \end{frame}
 % ##################
@@ -1273,14 +1274,15 @@ eprint=true,
   by~polecenie \texttt{mv} nadpisało już istniejący plik.
 
   Doświadczeni użytkownicy systemu GNU/Linux już parokrotnie stracili ważne
-  dane przez~\texttt{mv}, więc używają go znacznie ostrożniej i~przez
-  to ryzyko utraty kolejnych danych tą metodą jest znacznie mniejsze.
+  dane przez niewłaściwe użycie polecenia~\texttt{mv}, więc używają go
+  znacznie ostrożniej i~przez to ryzyko utraty kolejnych danych tą metodą
+  jest znacznie mniejsze.
 
-  Opcje postaci~\texttt{-i} mogą wyglądać osobliwe i~być ciężkie do
-  zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie nie
-  należy do przyjemnych, wymaga dużo zapamiętywania, częstego googlowania
-  lub~nabycie umiejętności czytania trudnego w~zrozumieniu manuala
-  (\texttt{man}).
+  Opcje poleceń takie jak~\texttt{-i} mogą wyglądać dziwnie i~być ciężkie
+  do zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie
+  nie należy do przyjemnych, wymaga dużo zapamiętywania, częstego
+  googlowania lub~nabycie umiejętności czytania trudnego w~zrozumieniu
+  manuala (\texttt{man}). Do tego tematu jeszcze nie raz wrócimy.
 
 \end{frame}
 % ##################
@@ -1300,7 +1302,7 @@ eprint=true,
   poznać system operacyjny GNU/Linux.
 
   O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
-  w~podczas następnych spotkań.
+  podczas następnych spotkań.
 
 \end{frame}
 % ##################
@@ -1333,7 +1335,7 @@ eprint=true,
   Materiały pomocnicze do~tego zadania znajdują~się w~katalogu
   \texttt{Materiały-do-prezentacji/SO-02-Podstawowe-ETC-Przykład/}.
   W~katalogu tym znajdują~się pliki \texttt{Data-01.dat}
-  i~\texttt{Data-02.dat}, przy czym drugi z~tych plików chcemy przenieść
+  i~\texttt{Data-02.dat}, przy czym drugi z~nich chcemy przenieść
   do~katalogu \texttt{Data-for-analysis/}.
 
   Wprowadźmy w~powłoce \texttt{mv D} i~wciśnijmy klawisz \texttt{[TAB]}: \\
@@ -1392,6 +1394,124 @@ eprint=true,
   dlatego polecamy Państwu potrenować użycie tej funkcjonalności w~praktyce.
   Jak w~przypadku wielu innych rzecz, jest to najlepszy sposób by~się jej
   nauczyć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{BASH nie zna słowa „litość”. Część~II}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Litość? Jaka litość?}
+
+
+  Powłoka \textsc{bash} nie zna słowa litość. Powiedzmy, że~chcemy
+  zmienić nazwę pliku \texttt{Data-01.dat} na \texttt{Data-January-04.dat}
+  i~wpisujemy polecenie: \\
+  \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
+  Wciskamy klawisz \texttt{Enter} i~widzimy coś takiego: \\
+  \texttt{mv: cel 'Data-January-04.dat nie jest katalogiem} \\
+  I~w~naszej głowie pojawia~się pytanie „Co~się dzieje?” Od razu zauważmy,
+  że~na Państwa komputerach treść otrzymanego komunikatu może być inna.
+  Problemowi okazuje~się być winna jest temu jedna, jedyna spacja między
+  symbolem „\texttt{-}” oraz~„\texttt{i}”.
+
+  Jeśli opcja zaczyna~się symbolem „\texttt{-}” to po nim
+  \alert{nie może być spacji}! Poprawna wersja tego polecenia to \\
+  \texttt{\$ mv -i Data-01.dat Data-January-04.dat}
+
+  Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
+  zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Logika BASHa? Jaka logika?}
+
+
+  Problem bierze~się stąd, że~jeśli wprowadzimy niepoprawne polecenie
+  \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
+  to \textsc{bash} zinterpretuje „\texttt{-}”, „\texttt{i}” oraz
+  „\texttt{Data-01.dat}” jako nazwy \alert{plików}, które ma przenieść
+  do katalogu o~nazwie „\texttt{Data-January-04.dat}” i~zgłasza problem,
+  że~plik \texttt{Data-January-04.dat} nie jest katalogiem.
+
+  Polecenie \texttt{mv} zostało w~taki sposób napisane, że~oczekuje,
+  iż~przesłana do niej opcja zaczyna~się od symbolu „\texttt{-}”,
+  a~natychmiast po tym symbolu litera oznaczająca konkretną opcję.
+  W~przeciwnym razie zinterpretuje następujące po nim napisy jako nazwy
+  odpowiednich plików lub katalogów i~spróbuje wykonać na nich odpowiednią
+  operację.
+
+  Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
+  zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
+
+  Musimy podkreślić, że~w~tym co napisaliśmy jest wiele uproszczeń,
+  ale~nie chcieliśmy wchodzić teraz w~zbyt wiele szczegółów.
+
+  % Proszę pamiętać, że~\texttt{mv} jest programem, napisanym prawdopodobnie
+  % w~języku~C, który jakiś programista kiedyś stworzył i~ten twórca
+  % zdecydował, że~tak ma działać
+
+  % Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
+  % zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia też ktoś napisał}
+
+
+  % Problem bierze~się stąd, że~jeśli wprowadzimy niepoprawne polecenie
+  % \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
+  % to \textsc{bash} zinterpretuje „\texttt{-}”, „\texttt{i}” oraz
+  % „\texttt{Data-01.dat}” jako nazwy \alert{plików}, które ma przenieść
+  % do katalogu o~nazwie „\texttt{Data-January-04.dat}” i~zgłasza problem,
+  % że~plik \texttt{Data-January-04.dat} nie jest katalogiem.
+
+  % Polecenie \texttt{mv} zostało w~taki sposób napisane, że~oczekuje,
+  % iż~przesłana do niej opcja zaczyna~się od symbolu „\texttt{-}”,
+  % a~natychmiast po tym symbolu litera oznaczająca konkretną opcję.
+  % W~przeciwnym razie zinterpretuje następujące po nim napisy jako nazwy
+  % odpowiednich plików lub katalogów i~spróbuje wykonać na nich odpowiednią
+  % operację.
+
+  % Musimy podkreślić, że~w~tym co napisaliśmy jest wiele uproszczeń,
+  % ale~nie chcieliśmy wchodzić teraz w~zbyt wiele szczegółów.
+
+  Proszę pamiętać, że~polecenie \texttt{mv} jest programem, napisanym
+  prawdopodobnie w~języku~C, który jakiś programista kiedyś stworzył i~ten
+  człowiek zdecydował, że~to polecenie ma działać tak, a~nie inaczej.
+  Często nie należy~się doszukiwać zbyt wiele logiki w~działaniu poleceń,
+  one są takie, bo~tak po prostu wyszło.
+
+  Gdybyśmy dziś tworzyli jakiś system operacyjny i~jego powłokę „od zera”,
+  to pewnie byśmy zaprojektowali je inaczej. Trzeba wszak uczyć~się na
+  własnych błędach ;).
 
 \end{frame}
 % ##################
