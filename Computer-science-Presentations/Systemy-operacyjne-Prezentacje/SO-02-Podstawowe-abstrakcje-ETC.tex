@@ -625,6 +625,82 @@ eprint=true,
 
 % ##################
 \begin{frame}
+  \frametitle{Kilka słów wstępnych i~ostrzeżeń}
+
+
+  Przed chwilą mówiliśmy, że~\textsc{bash} nie zna słowa litość i~każda
+  drobna zmiana może wszystko zniszczyć. Jednocześnie nasza swoboda nie jest
+  całkiem zerowa (choć może często sprawiać takie wrażenie), więc
+  podając tutaj różne polecenia, musimy zdecydować~się na pewno konwencje.
+  Proszę więc mieć świadomość, że~\alert{pewne} zmiany można wprowadzić
+  do~poleceń i~nie zmienią one sposób ich działania.
+
+  Jednak zasady które mówią co \alert{można} zmienić w~poleceniu
+  \textsc{bash}a, bez obrócenia wszystkiego w~ruiny, są często nieintuicyjne
+  i~skomplikowane. Ponieważ zaś zawsze $1000$ różnych rzeczy może zepsuć
+  dane polecenie, zdecydowaliśmy, że~w~tym kursie będziemy starali~się
+  podawać te wersje poleceń, które my uważamy za~optymalne i~które działają
+  poprawnie, nie zaś wnikać w~pokrętne zasady „możesz zmienić to tak i~tak,
+  ale~już nie w~ten sposób”.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka słów wstępnych i~ostrzeżeń}
+
+
+  Testowanie różnych wariantów tych poleceń, sprawdzanie który ich wariant
+  działa, a~który nie, jest oczywiście czymś dobrym, co pozwala lepiej
+  zrozumieć powłokę \textsc{bash}, więc bardzo nasz cieszy, gdy ktoś tego
+  próbuje. Zajmuje to jednak czas, a~większość ludzi pragnie by „komputer
+  zrobił to co trzeba”, nie zaś zgłębiać wszystkie niuanse jego pracy.
+  Biorąc to wszystko pod uwagę, uznaliśmy, że~obecne sposób wykładu jest
+  dobrym wyborem.
+
+  Wszystko utrudnia dodatkowy fakt, że~od czasu do czasu można~się natknąć
+  na~dwa warianty poleceń \textsc{bash}a, które działają tak samo, tylko,
+  że~to nie do końca prawda. Działają tak samo w~$90\%$ przypadków,
+  w~pozostały~$10\%$, działają inaczej. By uniknąć niekończących~się
+  dywagacji na temat dzielenia włosa na czworo w~\textsc{bash}u, proszę
+  przyjąć, że~jeśli polecenie nie działa jak trzeba, należy~się upewnić,
+  iż~są one \alert{dokładnie} takie jak podano tutaj.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka słów wstępnych i~ostrzeżeń}
+
+
+  Do problemu, której wersji poleceń/kodu \textsc{bash}a należy używać,
+  wrócimy jeszcze przy okazji pisania skryptów dla tej powłoki. To jednak
+  na tą chwilę dość odległy temat.
+
+  Pomimo tego, że~staramy~się dokładnie przetestować wszystkie podane
+  w~tych wykładach polecenia \textsc{bash}a, nie możemy wykluczyć tego,
+  że~popełnimy jakiś błąd. Dlatego bardzo prosimy by każdy, kto taki
+  znajdzie, przesłał go nam pod adres \email.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
   \frametitle{Zaczynamy}
 
 
@@ -1303,97 +1379,6 @@ eprint=true,
 
   O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
   podczas następnych spotkań.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Autouzupełnianie w~BASHu}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Autouzupełnianie w~BASHu}
-
-
-  Autouzupełnianie to jedna z~funkcjonalności \textsc{bash}a, bez których
-  nie można w~nim normalnie pracować. Jest ono standardowo przypisane
-  klawiszowi \texttt{[TAB]}, jego działanie zilustrujemy na~przykładzie
-  polecenia~\texttt{mv}, ale w~pozostałych przypadkach działa ono
-  analogicznie.
-
-  Materiały pomocnicze do~tego zadania znajdują~się w~katalogu
-  \texttt{Materiały-do-prezentacji/SO-02-Podstawowe-ETC-Przykład/}.
-  W~katalogu tym znajdują~się pliki \texttt{Data-01.dat}
-  i~\texttt{Data-02.dat}, przy czym drugi z~nich chcemy przenieść
-  do~katalogu \texttt{Data-for-analysis/}.
-
-  Wprowadźmy w~powłoce \texttt{mv D} i~wciśnijmy klawisz \texttt{[TAB]}: \\
-  \texttt{\$ mv D [TAB]} \\
-  Na~podstawie wprowadzonej litery „\texttt{D}” i~znanej zawartości
-  katalogu powłoka postara~się uzupełnić jak największą część nazwy pliku,
-  dając w~rezultacie: \\
-  \texttt{\$ mv Data-}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Autouzupełnianie w~BASHu}
-
-
-  Obecnie nasze polecenie ma postać \\
-  \texttt{\$ mv Data-} \\
-  W~tym momencie musimy wprowadzić dodatkowe znaki, tak by powłoka otrzymała
-  informację, czy chodzi o~plik \texttt{Data-01.dat},
-  \texttt{Data-02.dat}, czy katalog \texttt{Data-for-analysis/}. Po wpisaniu
-  znaku „\texttt{1}” możemy znów skorzystać z~autouzupełniania. \\
-  \texttt{\$ mv Data-02 [TAB]} \\
-  \texttt{\$ mv Data-02.dat}
-
-  Jeśli nie pamiętamy jak konkretnie nazywają~się pliki, które są w~danym
-  katalogu, to możemy kliknąć przycisk \texttt{[TAB]} dwa lub więcej razy,
-  wtedy powłoka pokaże nam nazwy wszystkich plików, które pasuję
-  do~dotychczas wprowadzonej nazwy. \\
-  \texttt{\$ mv Data- [TAB] \hspace{-1em} [TAB]} \\
-  \texttt{Data-01.dat} \quad \texttt{Data-02.dat} \quad \texttt{Data-for-analysis/}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Autouzupełnianie w~BASHu}
-
-
-  Możemy zastosować autouzupełnianie również do nazwy katalogu do~którego
-  chcemy przenieść omawiany plik: \\
-  \texttt{\$ mv Data-02.dat Data-f [TAB]} \\
-  \texttt{\$ mv Data-02.dat Data-for-analysis/}
-
-  Praca w~powłoce bez autouzupełniana jest zupełnie nie do zniesienia,
-  dlatego polecamy Państwu potrenować użycie tej funkcjonalności w~praktyce.
-  Jak w~przypadku wielu innych rzecz, jest to najlepszy sposób by~się jej
-  nauczyć.
 
 \end{frame}
 % ##################

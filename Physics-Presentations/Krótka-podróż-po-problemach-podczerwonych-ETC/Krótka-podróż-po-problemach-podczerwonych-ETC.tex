@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -109,7 +109,7 @@ eprint=true,
 
 
 % ------------------------------------------------------------------------------------------------------------------
-\title{Krótki przewodnik po problemach podczerwonych
+\title{Krótki podróż po problemach podczerwonych
   w~elektrodynamice kwantowej}
 
 \author{Kamil Ziemian \\
@@ -216,7 +216,7 @@ eprint=true,
   \frametitle{Informacji wstępne}
 
 
-  Większość przedstawionych na tym seminarium wniosków można w~sposób
+  Prawie wszystkie przedstawione na tym seminarium rezultaty można w~sposób
   w~pełni ścisły udowodnić, \alert{pod warunkiem}, że~przyjmiemy pewne
   założenia o~naturze pól kwantowych. W~obecnej chwili nie możemy
   z~całkowitą pewnością stwierdzić, jaki zestaw założeń
@@ -324,7 +324,7 @@ eprint=true,
   % np od not physical, brak zachowanego ładunku
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-02}
-    \psi_{ \HorSpaceTwo \text{np} } =
+    \psi_{ \HorSpaceTwo \text{nphy} } =
     \frac{ 1 }{ \sqrt{ 2 } } \psi_{ \HorSpaceTwo 0 } +
     \frac{ 1 }{ \sqrt{ 2 } } \psi_{ \HorSpaceTwo 1 }, \quad
     \psi_{ \HorSpaceTwo 0 } \in \Hcal_{ \HorSpaceTwo 0 }, \,
@@ -552,8 +552,8 @@ eprint=true,
   w~ograniczonym obszarze $\Ocal$, to jego \alert{całkowitą} wartość można
   znaleźć przez całkowanie po sferze, które jest „bardzo daleko” od niego.
   W~szczególności całkowity ładunek pełnego układu możemy znaleźć poprzez
-  całkowanie „po sferze w~nieskończoności”, czyli poprzez przecałkowanie pól
-  asymptotycznych $\vecEasm$, $\vecBasm$.
+  całkowanie „po sferze w~nieskończoności”, czyli poprzez przecałkowanie
+  pola asymptotycznego $\vecEasm$.
 
   Przyjrzyjmy~się teraz tej nielokalności z~punktu widzenia algebraicznej
   kwantowej teorii pola.
@@ -879,7 +879,7 @@ eprint=true,
 
   Problem spontanicznego łamania symetrii Lorentza można próbować obejść,
   przez uczynienia pola nielokalnym, jest jednak drugi problem, dużo
-  trudniejszy do usunięcia. Argumenty pochodzące głównie od Schroer’a
+  trudniejszy do usunięcia. Argumenty pochodzące głównie od Schroera
   i~Buchholza wskazują, że~istnienie reguł nadwyboru związanej z~polami
   asympotycznymi, sprawia, że~masa elektronu jest „rozmyta”
   \parencite{Schroer-Infraparticles-in-quantum-field-theory-Pub-1963},
@@ -889,7 +889,7 @@ eprint=true,
   dobrze znana relacja
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-12}
-    E^{ \HorSpaceOne 2 } - p^{ \HorSpaceOne 2 } =
+    E^{ \HorSpaceOne 2 } - \vecp^{ \HorSpaceThree 2 } =
     p^{ \HorSpaceOne \mu } p_{ \mu }  = m^{ \HorSpaceOne 2 }.
   \end{equation}
 %  Argument
@@ -913,7 +913,7 @@ eprint=true,
   \frametitle{Jaka jest masa elektronu?}
 
 
-  Gdy przechodzimy do teorii kwantowej pęd i~energia stają~się operatorami
+  Gdy przechodzimy do teorii kwantowej energia i~pęd stają~się operatorami
   $P^{ \HorSpaceOne \mu }$. Jeśli zachodzi
   \begin{equation}
     \label{eq:Glowne-rodzaje-problemow-podczerwonych-13}
@@ -921,13 +921,13 @@ eprint=true,
     \psi \in \Hcal,
   \end{equation}
   to $\psi$ reprezentuje swobodną cząstkę o~„ostrej” masie $m > 0$.
-  Argument Schoer’a i~Buchholza wskazuje, że~dla elektrodynamiki kwantowej
+  Argument Schoera i~Buchholza wskazuje, że~dla elektrodynamiki kwantowej
   taki stan~$\psi$ istnieje tylko dla $m^{ 2 } = 0$, czyli gdy rozważony układ
   jest pozbawiony elektronów i~pozytronów!
 
   Dlaczego tak jest? Jego intuicyjnie wyjaśnie, po ogromny uproszczeniu,
   przebiega mniej więcej tak. Jeśli $\vecEasm \neq 0$ lub~$\vecBasm \neq 0$, to
-  elektron musi cały czas emitować „miękkie” fotony, aby podtrzymać
+  elektron musi cały czas emitować miękkie fotony, aby podtrzymać
   istnienie tych pól. Przy każdej emisji fotonu elektron doznaje lekkiego
   odrzutu, co sprawia, że~nigdy nie porusza~się on ruchem prawdziwie
   swobodnym, nie może więc on być stanem własnym operatora
@@ -959,8 +959,8 @@ eprint=true,
 
   Niestety klasyfikacja ta \alert{nie} może obejmować infracząstek, bo
   te z~definicji nie mają one „ostro” określonej masy. Ponieważ do tej
-  kategorii należą elektron i~pozytron, jak i~większość fermionów modelu
-  standardowego, stawia to pod znakiem zapytania wyniki niemałej ilości
+  kategorii należą elektron i~pozyton, jak i~większość fermionów Modelu
+  Standardowego, stawia to pod znakiem zapytania wyniki niemałej ilości
   prac obecnej w~literaturze.
 
 \end{frame}
@@ -1125,12 +1125,12 @@ eprint=true,
   opinii prof.~Herdegena (zob.~str.~2,
   \parencite{Herdegen-Semidirect-product-of-CCR-and-CAR-algebras-ETC-Pub-1998}).
 
-  Po pierwsze, w~granicy asymptotycznej większość dynamiki pola
-  powinna tracić znaczenie. Jest więc prawdopodobne, że~teoria problemów
+  Po pierwsze, w~granicy asymptotycznej większość dynamicznych stopni
+  swobody pola powinna tracić znaczenie. Jest więc prawdopodobne, że~teoria
+  problemów
   podczerwonych oparta na solidnych podstawach fizycznych, będzie zgodna
   z~tą wyprowadzoną z~pełnego, ścisłego modelu elektrodynamiki kwantowej
-  (miejmy nadzieję, że~taki kiedyś zostanie zbudowany), pomimo że~on
-  sam nie jest dziś znany.
+  (miejmy nadzieję, że~zostanie on kiedyś skonstruowany).
 
 \end{frame}
 % ##################
@@ -1155,8 +1155,8 @@ eprint=true,
   (zob.~\parencite{Herdegen-Long-range-effects-in-asymptotic-ETC-Pub-1995}).
 
   Wobec tego badanie reżimu asymptotycznego może rzucić nowe światło
-  na pełnej elektrodynamiki kwantowej, a~dziś każdy taka informacja jest
-  niezwykle cenna.
+  na pełny model elektrodynamiki kwantowej, a~dziś każdy taka informacja
+  jest niezwykle cenna.
 
 \end{frame}
 % ##################
@@ -1181,8 +1181,10 @@ eprint=true,
   \frametitle{Problem pól asymptotycznych}
 
 
-  Jak zauważył prof.~Herdegena, z~powyższych informacji o~polach asymptotycznych wyciąga~się mocno przeciwstawne wnioski (str.~2,
+  Jak zauważył prof.~Herdegena, z~powyższych informacji o~polach
+  asymptotycznych wyciąga~się mocno przeciwstawne wnioski (str.~2,
   \parencite{Herdegen-Infrared-structure-beyond-locality-ETC-Ver-2024}).
+  Pierwszy ich zestaw jest następujący.
 
   \begin{itemize}
 
@@ -1192,8 +1194,8 @@ eprint=true,
 
   \item[2)] Podczerwone (asymptotyczne) stopnie swobody swobodnego pola
     różnią~się fundamentalnie od jego lokalnych stopni swobody. Warto
-    zaznaczyć, że~nadfioletowe stopnie swobody są lokalne w~podanym tu
-    sensie.
+    zaznaczyć, że~nadfioletowe stopnie swobody są lokalne w~sensie którego
+    tu używamy.
 
   \end{itemize}
 
@@ -1430,7 +1432,8 @@ eprint=true,
 
   Nie możemy zbyt dogłębnie wnikać w~tą teorię, warto jednak zaznaczyć,
   że~teoria ta wykazuje intrygujące własności na poziomie reprezentacji
-  grupy Lorentza. Mam tutaj na myśli teorię reprezentacji grup.
+  grupy Lorentza. By nie było niedomówień, mam tutaj na myśli matematyczną
+  teorię reprezentacji grup.
 
 \end{frame}
 % ##################
@@ -1515,7 +1518,7 @@ eprint=true,
   czasoprzestrzeni Minkowskiego pełnią w~tej pracy bardzo dużą rolę.
 
   W~pracy tej zapostulowano jawnie pewne własności oddziałujące teorii pola
-  elektromagnetycznego i~pola Diraca, dla który nie udało~się podać dowodu,
+  elektromagnetycznego i~pola Diraca, których dowód nie został znaleziony,
   jednak poza tą częścią, jest ona matematycznie ścisła i~zawiera
   wiele interesujących wyników. Wśród nich należy wymienić procedurę
   obliczania całkowitego momentu pędu
@@ -1593,9 +1596,9 @@ eprint=true,
 
   W~pracy tej podjęte jest problem skwantowania pola elektromagnetycznego,
   wraz z~polem Diraca, przy przyjęciu założenia, że~pole Coulomba jest
-  nierozerwalnie związane z~elektronem. Bazuje ona przy tym bardzo mocno
-  na badaniach z~poprzedniej pracy, na temat zachowania pola
-  w~„świetlnej nieskończoności”.
+  nierozerwalnie związane z~elektronem. Należy zaznaczyć, że~bazuje ona
+  bardzo mocno na~wynikach właśnie omówionej pracy, które dotyczą zachowania
+  pola elektromagnetycznego w~„świetlnej nieskończoności”.
 
 \end{frame}
 % ##################

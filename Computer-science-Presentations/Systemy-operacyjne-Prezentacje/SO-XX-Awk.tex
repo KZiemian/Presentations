@@ -112,7 +112,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 43k+,
+% Number of chars: 50k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -231,7 +231,9 @@ eprint=true,
   jest książka S.~Kenlona, D.~Morrissa i~R.~Younga
   \colorhref{https://opensource.com/downloads/awk-ebook}
   {\textit{A~practical guide to~learning \texttt{awk}}}
-\parencite{Kenlon-Morriss-Young-A-practical-guide-to-learning-awk-Ver-2025}.
+  \parencite{Kenlon-Morriss-Young-A-practical-guide-to-learning-awk-Ver-2025}.
+  Niestety, ten e-book zawiera dużo błędów w~przykładach, pisałem w~tej
+  sprawie do \href{opensource.com}{opensource.com}.
 
 \end{frame}
 % ##################
@@ -255,10 +257,10 @@ eprint=true,
   \frametitle{Korzystanie z~\texttt{awk}a}
 
 
-  Główny przypadkiem użycia polecenia \texttt{awk} jaki będziemy~się
-  zajmować, jest użycie go do przetwarzania tekstu zawartego w~pewnym pliku.
-  O~tym jako wykorzystywać \texttt{awk}a do przetwarzania tekstu, który
-  nie jest zapisany wewnątrz jakiegoś pliku omówimy pod koniec.
+  Główny zastosowaniem polecenia \texttt{awk}, przynajmniej z~naszego
+  punktu widzenia, jest przetwarzania tekstu zawartego
+  w~pewnym pliku. O~tym jako wykorzystywać \texttt{awk}a do przetwarzania
+  tekstu, który nie jest zapisany wewnątrz jakiegoś pliku ????
 
   Podstawowa forma polecenia \texttt{awk} jest następująca: \\
   \texttt{\$ awk [opcje] 'wzorzec \{działanie\}' nazwa-pliku} \\
@@ -290,8 +292,14 @@ eprint=true,
   to kod języka \texttt{awk}, który opisuje co należy zrobić z~każdą linią
   tekstu do~której dopasowano „\texttt{wzorzec}”.
 
+  \texttt{\$ awk '\{ print \}' Fruits.txt} \\
+  \texttt{\$ awk '\{ print \$0 \}' Fruits.txt} \\
+  \texttt{\$ awk '\{ print \$1 \}' Fruits.txt} \\
 
-
+  \texttt{\$ awk '\{ print \$1, \$2 \}' Fruits.txt} \\
+  Proszę zobaczyć, co~się stanie jeśli pominiemy przecinek pomiędzy
+  \texttt{\$1} i~\texttt{\$2}: \\
+  \texttt{\$ awk '\{ print \$1 \$2\}' Fruits.txt} \\
 
 \end{frame}
 % ##################
@@ -300,26 +308,25 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Architektura systemu operacyjnego}
+% ##################
+\begin{frame}
+  \frametitle{???}
 
 
-%   Pracując z~poziomu powłoki nie raz natkniemy~się na problemy
-%   trybów działania systemu operacyjnego oraz różnych poziomów dostępu.
-%   Często będzie to wynikiem przypadku i~możemy~się poczuć zagubienie,
-%   gdy przestanie działać w~zrozumiały sposób. Z~tego powodu wyjaśnimy teraz
-%   kilka pojęć dotyczących systemów operacyjnych.
+  Wyrażenie zwraca jakąś wartość. \\
+  \texttt{\$ awk '\{ print \$(1 + 1) \}' Fruits.txt} \\
+  Jak się komuś nudzi, to może spróbować. \\
+  \texttt{\$ awk '\{ print \$(sqrt(9)) \}' Fruits.txt} \\
+  Acz odradzamy takie przekombinowane rozwiązania.
 
-%   W~tym momencie potrzebujemy wprowadzić nowe pojęcie.
-%   \textbf{Architekturą systemu operacyjnego} nazywamy ogólny plan budowy
-%   danego systemu operacyjnego. Architektura takiego systemu jest więc
-%   zbiorem idei, których używamy do tworzenia oraz opisywania systemów
-%   operacyjnych. Jak poprzednio, nie będziemy potrzebowali ściślejszej
-%   definicji tego pojęcia.
+  \texttt{\$ awk '\$2 == "yellow" \{ print \$0 \}' Fruits.txt}
 
-% \end{frame}
-% % ##################
+  \texttt{\$ awk '\$3 > 5 \{ print $0 \}' Fruits.txt } \\
+
+
+
+\end{frame}
+% ##################
 
 
 
@@ -441,19 +448,17 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Problemy z~bezpieczeństwem}
+% ##################
+\begin{frame}
+  \frametitle{????}
 
 
-%   Alternatywą jest uruchamianie tych programów na serwerze
-%   gry, który i~tak dysponuje wszystkimi tego typu informacjami. Co nie jest
-%   w~interesie firmy dostarczającej te serwery, dla niej jest lepiej jak
-%   serwery obsługują grę, a~wykrywaniem cheaterów zajmują~się komputery
-%   graczy.
+  \texttt{\$ awk -F"," \{ print \$0 \} Fruits.csv} \\
+  W~pewnych implementacja równoważnie można napisać \\
+  \texttt{\$ awk --field-separator"," \{ print \$0 \} Fruits.csv}
 
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
