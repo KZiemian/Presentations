@@ -1,0 +1,2 @@
+banana     yellow 6
+pineapple  yellow 5

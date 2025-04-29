@@ -112,7 +112,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 50k+,
+% Number of chars: 43k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -123,14 +123,6 @@ eprint=true,
 
 % ######################################
 \maketitle
-% ######################################
-
-
-
-
-
-% ######################################
-\EndingSlide{Ta prezentacja wciąż nie jest ukończona.}
 % ######################################
 
 
@@ -211,17 +203,8 @@ eprint=true,
   jego funkcjonalności, które są szczególnie przydatne w~pracy z~plikami
   tekstowymi. Nie należy jednak wynieść stąd błędnego wrażenia,
   że~\texttt{awk} nie jest dużym językiem programowania. Jest on
-  stosunkowo mały, jednak wciąż na tyle duży, by móc pochłonąć trzy albo
+  stosunkowo mały, jednak wciąż na tyle duży, by móc pochłonąć, trzy albo
   więcej spotkań.
-
-  Warto wyjaśnić, skąd wzięła~się osobliwa nazwa tego programu. Jest to
-  mianowicie akronim od nazwisk jego twórców:
-  \colorhref{https://en.wikipedia.org/wiki/Alfred\_Aho}{Alfreda Aho}
-  (ur.~$1941$),
-  \colorhref{https://en.wikipedia.org/wiki/Peter\_J.\_Weinberger}
-  {Petera Weinbergera} (ur.~$1942$)
-  i~\colorhref{https://en.wikipedia.org/wiki/Brian\_Kernighan}
-  {Briana Kernighana} (ur.~$1942$).
 
 \end{frame}
 % ##################
@@ -235,26 +218,20 @@ eprint=true,
   \frametitle{Materiały do nauki \texttt{awk}a}
 
 
-  Polecenie i~język \texttt{awk} jest częścią standardu \textsc{posix}, stąd
-  każdy może wciąć definiujący go dokument i~napisać, choćby w~C
-  czy Pythonie, jego własną wersję. Czyli stworzyć własną implementację
-  \texttt{awk}a. Obecnie istnieją trzy główne programy, realizujące
-  działanie standardu \texttt{awk}a, co trochę utrudnia jego naukę. Są to
-  \colorhref{}{GNU Awk} (w~skrócie:
-  \texttt{gawk}), \colorhref{}{\texttt{mawk}}
-  i~\colorhref{}{\texttt{nawk}}. Niestety, nie
-  każde polecenie, które działa dla \texttt{gawk}a, działa w~\texttt{mawk}u,
-  etc. Jednak rdzeń zgodny z~\textsc{posix}em jest obecny w~nich wszystkich,
-  co do pewnego stopnia łagodzi różnorakie wynikłe, z~braku pełnej
-  kompatybilności tych trzech programów.
+  Warto wyjaśnić, skąd wzięła~się osobliwa nazwa tego programu. Jest to
+  mianowicie akronim od nazwisk jego twórców:
+  \colorhref{https://en.wikipedia.org/wiki/Alfred\_Aho}{Alfreda Aho}
+  (ur.~$1941$),
+  \colorhref{https://en.wikipedia.org/wiki/Peter\_J.\_Weinberger}
+  {Petera Weinbergera} (ur.~$1942$)
+  i~\colorhref{https://en.wikipedia.org/wiki/Brian\_Kernighan}
+  {Briana Kernighana} (ur.~$1942$).
 
   Główny źródłem na którym oparta jest ta prezentacja tego polecenia/języka
   jest książka S.~Kenlona, D.~Morrissa i~R.~Younga
   \colorhref{https://opensource.com/downloads/awk-ebook}
   {\textit{A~practical guide to~learning \texttt{awk}}}
-  \parencite{Kenlon-Morriss-Young-A-practical-guide-to-learning-awk-Ver-2025}.
-  Niestety, ten e-book zawiera dużo błędów w~przykładach, pisałem w~tej
-  sprawie do \href{opensource.com}{opensource.com}.
+\parencite{Kenlon-Morriss-Young-A-practical-guide-to-learning-awk-Ver-2025}.
 
 \end{frame}
 % ##################
@@ -275,311 +252,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Podstawy korzystania z~\texttt{awk}a}
+  \frametitle{Korzystanie z~\texttt{awk}a}
 
 
-  Główny zastosowaniem polecenia \texttt{awk}, przynajmniej z~naszego
-  punktu widzenia, jest przetwarzania tekstu zawartego w~pewnym pliku.
-  O~tym jako używać \texttt{awk}a do przetwarzania
-  tekstu, który nie jest zapisany wewnątrz jakiegoś pliku wspomnimy
-  krótko w~swoim czasie.
+  Główny przypadkiem użycia polecenia \texttt{awk} jaki będziemy~się
+  zajmować, jest użycie go do przetwarzania tekstu zawartego w~pewnym pliku.
+  O~tym jako wykorzystywać \texttt{awk}a do przetwarzania tekstu, który
+  nie jest zapisany wewnątrz jakiegoś pliku omówimy pod koniec.
 
-  Zaczniemy od~kilku przykładów. Potrzebny nam będzie plik
-  \texttt{Fruits-etc.txt} znajdujący~się w~katalogu
-  \texttt{Materiały-do-prezentaji/SO-Ćwiczenia-03-Awk/}. Zawiera on
-  dwanaście linii poniższej postaci. \\
-  \begin{tabular}{l l l}
-    name & color & amount \\
-    apple & red & 4 \\
-    banana & yellow & 6 \\
-    strawberry & red & 3
-  \end{tabular}
-
-  By wypisać jego zawartość na ekranie możemy użyć polecenia \\
-  \texttt{\$ awk '\{ print \}' Fruits-etc.txt} \\
-  Proszę przetestować jego działanie.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rekordy i~pola}
-
-
-  Plik \texttt{Fruits-etc.txt} jest podzielony na trzy kolumny
-  i~\texttt{awk} pozwala nam sprawnie pracować z~nimi. Aby wypisać tylko
-  pierwszą kolumnę możemy użyć polecenia \\
-  \texttt{\$ awk '\{ print \$1 \}' Fruits-etc.txt} \\
-  Analogicznie by wypisać pierwszą i~drugą kolumnę możemy skrzystać
-  z~polecenia \\
-  \texttt{\$ awk '\{ print \$1, \$2 \}' Fruits-etc.txt}
-
-  Proszę sprawdzić, co~się stanie jeśli pominiemy przecinek pomiędzy
-  symbolami kolumn „\texttt{\$1}„ i~„\texttt{\$2}”, rezultat może być
-  trochę zaskakujący. \\
-  \texttt{\$ awk '\{ print \$1 \$2 \}' Fruits-etc.txt}
-
-  Polecenie \texttt{awk} dzieli swoje dane wejściowe na \textbf{rekordy}
-  (ang.~\textit{records}), zaś rekordy na \textbf{pola}
-  (ang.~\textit{fields}). Standardowo rekord odpowiada jednej linii
-  tekstu i~nie będziemy rozpatrywali innych przypadków. Nauka \texttt{awk}a
-  już bez tego potrafi być trudna.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rekordy i~pola}
-
-
-  Domyślnie, kązdy rekord (linia tekstu) dzielony jest na pola przez
-  spacje i~inne białe znaki. Stąd każda linia w~pliku
-  \texttt{Fruits-etc.txt} jest podzielona na trzy pola, które naturalnie
-  ustawione są w~kolumny. Później powiem jak sprawić, by \texttt{awk} użył
-  innych znaków jak separtorów pól (ang.~\textit{field separators}).
-
-  Metodę pracy \texttt{awk}a możemy teraz opisać w~następujący sposób.
-  Dzieli on dane wejściowe na linie (rekordy), następnie zaś na każdej
-  z~linii wykonuje zadane działanie. Jak można już było zauważyć,
-  \texttt{awk} przetwarza linie od góry do dołu. Przy czym składnia
-  \texttt{awk}a jest taka, że~treść działania musi być ujęta w nawiasy
-  wąsate \texttt{ \{ {} \} }.
-
-  Tym samym polecenie \\
-  \texttt{\$ awk '\{ print \$1 \}' Fruits-etc.txt} \\
-  czytamy w~następujący sposób. Przejdź plik \texttt{Fruits-etc.txt} linia
-  po~linii, wypisując na wyjściu pierwsze pole każdej z~nich. Nietrudno
-  zauważyć, że~będzie to oznaczało wypisanie pierwszej kolumny pliku.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Wyrażenia}
-
-
-  W~\texttt{awk}u bierząca linia jest oznaczana przez \texttt{\$0}, dlatego
-  też wypisanie by zobaczyć cały plik na ekranie, możemy użyć polecenia \\
-  \texttt{\$ awk '\{ print \$0 \}' Fruits-etc.txt}
-
-
-  Oznaczenia pól są \alert{wyrażeniami}, czyli \texttt{awk} oblicza
-  wartość każdego z~ich wartość i~przekazuje ją dalej. Dletego też
-  polecenie \\
-  \texttt{\$ awk '\{ print \$(1 + 1) \}' Fruits-etc.txt} \\
-  wypisze w~poprawny sposób drugą kolumnę pliku. Jak się komuś nudzi, to
-  może spróbować następującego polecenia. \\
-  \texttt{\$ awk '\{ print \$(sqrt(9)) \}' Fruits-etc.txt} \\
-  Odradzamy używanie tak przekombinowanych rozwiązań, chyba że~dla własnej
-  rozrywki.
-
-  W~\texttt{awk}u możemy też kożystać z~dobrze  znanych w~informatyce
-  operatorów porównania: \texttt{==}, \texttt{!=}, \texttt{>=}, \texttt{=<},
-  \texttt{>}, \texttt{<}. W~większości wypadków, ich zrozumienie powinno być
-  dość intuicyjne.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Filtrowanie danych}
-
-
-  Jeśli przykładowo chcemy zobaczyć tylko te linię, które opisują
-  owoc i~warzywa koloru żółtego, używamy polecenia \\
-  \texttt{\$ awk '\$2 == "yellow" \{ print \$0 \}' Fruits-etc.txt} \\
-  Jeśli chcemy zobaczyć wszystkie owoce i~warzywa, które \alert{nie} są
-  żółte, to użyjemy polecenia \\
-  \texttt{\$ awk '\$2 != "yellow" \{ print \$0 \}' Fruits-etc.txt} \\
-  Ostatnie polecenie wypisze również, poprawnie rozumiejąc treść polecenia,
-  również linię \\
-  \begin{tabular}{l l l}
-    name & color & amount \\
-  \end{tabular} \\
-  Oczywiście, można zaprogramować \texttt{awk}a, by nie wyświetlił nam
-  pierwszej linii, sposoby by to zrobić poznamy później.
-
-  Należy sobie jednak postawić pytanie, czy jeśli wszystkim czego pragniemy
-  jest usunięcie pierwszej linii, to czy zaprogramowanie takie zachowania
-  \texttt{awk}a nie pochłonie więcej energii, niż unięcie jej ręcznie?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Filtrowanie danych}
-
-
-  Jak bowiem wiadomo, jedno z~mądrości informatyków głosi \textit{nigdy
-    nie trać pięciu minut na zadanie, na którego automatyzajcę możesz
-    poświęcić osiem godzin.}
-
-  Przyjrzyjmy~się jeszcze poniższemu poleceniu, które wybiera
-  wszystkie owoce i~warzywa, których mamy pięć i~więcej. \\
-  \texttt{\$ awk '\$3 >= 5 \{ print \$0 \}' Fruits-etc.txt } \\
-  Jeśli chcemy zapisać je wszystkie do osobnego pliku, to możemy skorzystać
-  z~przekierowań, o~których mówiliśmy już wcześniej. \\
-  \texttt{\$ awk '\$3 >= 5 \{ print \$0 \}' Fruits-etc.txt >
-    Yellow-things-to-eat.txt} \\
-  Linie te są teraz zapisane w~pliku
-  \texttt{Yellow-things-to-eat.txt}.
-
-  Wszystkie te własności możemy oczywiście łączyć, w~najróżniejszy sposób.
-  Przykładowo, poniższe polecenie zapisuje do~pliku nazwę i~liczbę
-  wszystkich żółtych owoców i~warzyw. \\
-  \texttt{\$ awk '\$2 == "yellow" \{ print \$1, \$3 \} Fruits-etc.txt}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Filtrowanie danych}
-
-
-  Jak bowiem wiadomo, jedno z~mądrości informatyków głosi \textit{nigdy
-    nie trać pięciu minut na zadanie, na którego automatyzajcę możesz
-    poświęcić osiem godzin.}
-
-  Przyjrzyjmy~się jeszcze poniższemu poleceniu, które wybiera
-  wszystkie owoce i~warzywa, których mamy pięć i~więcej. \\
-  \texttt{\$ awk '\$3 >= 5 \{ print \$0 \}' Fruits-etc.txt } \\
-  Jeśli chcemy zapisać je wszystkie do osobnego pliku, to możemy skorzystać
-  z~przekierowań, o~których mówiliśmy już wcześniej. \\
-  \texttt{\$ awk '\$3 >= 5 \{ print \$0 \}' Fruits-etc.txt >
-    \textbackslash} \\
-  \texttt{> Yellow-things-to-eat.txt} \\
-  Linie te są teraz zapisane w~pliku
-  \texttt{Yellow-things-to-eat.txt}.
-
-  Wszystkie omawiane własności możemy łączyć ze sobą w~najróżniejszych
-  konfiguracjach, również tych niezbyt oczywistych na pierwszy rzut oka.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Filtrowanie danych}
-
-
-  Przykładowo, poniższe polecenie zapisuje do~pliku nazwę i~liczbę
-  wszystkich żółtych owoców i~warzyw. \\
-  \texttt{\$ awk '\$2 == "yellow" \{ print \$1, \$3 \} Fruits-etc.txt
-    > \textbackslash} \\
-  \texttt{> Yellow-things-to-eat.txt}.
-
-  \texttt{\$ awk -F"," \{ print \$0 \} Fruits.csv} \\
-  W~pewnych implementacja równoważnie można napisać \\
-  \texttt{\$ awk --field-separator"," \{ print \$0 \} Fruits.csv}
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Przeszukiwanie według wzorca}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Przeszukiwanie według wzorca}
-
-
-  Na chwilę zajmiemy~się trochę bardziej teoretycznymi sprawiami
-  związanymi z~\texttt{awk}iem. Podstawowa forma jego ma następującą
-  postać: \\
+  Podstawowa forma polecenia \texttt{awk} jest następująca: \\
   \texttt{\$ awk [opcje] 'wzorzec \{działanie\}' nazwa-pliku} \\
   Jak sama nazwa wskazuje „\texttt{opcje}” można pominąć. Nazwa
   „\texttt{wzorzec}” oznacza wzorzec, którego \texttt{awk} będzie
-  poszukiwał. Jeśli \texttt{awk} znajdzie \texttt{wzorzec} w~danej linii
-  (rekordzie), to wykona na tej linii czynności zdefiniowane w~poleceniu
-  \texttt{działąnie}. Również \texttt{wzorzec} może zostać pominięty, wtedy
-  \texttt{awk} wypisze  każdą linię tekstu zawartą w~pliku który mu
-  podaliśmy („\texttt{nazwa-pliku}”).
+  poszukiwał. Domyślnie, jeśli polecenie to znajdzie \texttt{wzorzec}
+  w~danej linii, to wypisze na ekranie całą linię. Również \texttt{wzorzec}
+  może zostać pominięty, domyślnie \texttt{awk} wypisze wtedy każdą linię
+  tekstu zawartą w~pliku „\texttt{nazwa-pliku}”.
 
-  % By przesadnie nie komplikować rozważań, będziemy przyjmować,
-  % iż~\texttt{awk} ma wypisać każdą linię do której dopasował
-  % „\texttt{wzorzec}”, chyba, że~jawnie zostanie stwierdzone inaczej.
-
-  Warto dodać, że~działanie jak \texttt{awk} ma wykonać na linii pasującej
-  do wzorca, musi być umieszczone wewnątrz nawiasów wąsatych \texttt{\{ \}}.
-  Ich brak spowoduje błąd składni (ang. \textit{syntax error})
-  \texttt{awk}a. Co tu mówić, jego informacje o~błędach nie są specjalnie
-  pomocne, więc unikajmy ich jak tylko możemy.
-
-
-  Dla \texttt{awk}a wszystkie dane są ciągiem rekordów ang.
-  \textit{records}, a~każdy rekord jest ciągiem pól \textit{fields}.
-
-  Separator pól .
-
-
-  \texttt{\$ awk '/re/ \{ print \$0 \}' Fruits-etc.txt}
-  Sterowane danymi \textit{data-driven}.
-
-  Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
-  z~tym komputerem zrobić wszystko. Z~tego powodu hakerzy dokładają tylu
-  starań, by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich
-  uprawnień. Dlatego też takie antycheaterskie programy takie jak Vanguard,
-  który miał być dodany choćby do
-  \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
-      Legends}}~są tak problematyczne
-  \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
-
-  Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
-  z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
-  tworzącej ten program, że~nie nadużyje tych możliwości?
-
-  Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
-  Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
-  cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
-  w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
-  użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
-  wykryć cheatera.
+  By przesadnie nie komplikować rozważań, będziemy przyjmować,
+  iż~\texttt{awk} ma wypisać każdą linię do której dopasował
+  „\texttt{wzorzec}”, chyba, że~jawnie zostanie stwierdzone inaczej.
 
 \end{frame}
 % ##################
@@ -590,13 +282,178 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{????}
+  \frametitle{Włączanie powłoki}
+
+
+  \texttt{\$ awk [opcje] 'wzorzec \{działanie\}' nazwa-pliku} \\
+  W~nawiasach wąsatych \texttt{\{ \}} umieszczamy „\texttt{działanie}”, jest
+  to kod języka \texttt{awk}, który opisuje co należy zrobić z~każdą linią
+  tekstu do~której dopasowano „\texttt{wzorzec}”.
 
 
 
 
 \end{frame}
 % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Architektura systemu operacyjnego}
+
+
+%   Pracując z~poziomu powłoki nie raz natkniemy~się na problemy
+%   trybów działania systemu operacyjnego oraz różnych poziomów dostępu.
+%   Często będzie to wynikiem przypadku i~możemy~się poczuć zagubienie,
+%   gdy przestanie działać w~zrozumiały sposób. Z~tego powodu wyjaśnimy teraz
+%   kilka pojęć dotyczących systemów operacyjnych.
+
+%   W~tym momencie potrzebujemy wprowadzić nowe pojęcie.
+%   \textbf{Architekturą systemu operacyjnego} nazywamy ogólny plan budowy
+%   danego systemu operacyjnego. Architektura takiego systemu jest więc
+%   zbiorem idei, których używamy do tworzenia oraz opisywania systemów
+%   operacyjnych. Jak poprzednio, nie będziemy potrzebowali ściślejszej
+%   definicji tego pojęcia.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rola systemu operacyjnego}
+
+
+%   Podstawowa dziś architektura stosowana dzisiaj, mówi nam, że~system
+%   operacyjny może działać w~dwóch podstawowych trybach: trybie jądra
+%   i~trybie użytkownika. Oprócz tego dany system operacyjny może wprowadzać
+%   inne tryby i~poziomy dostępu, o~kilku z~nich powiemy później. Żeby
+%   zrozumieć czemu ten podział został wprowadzony, wróćmy do zagadnienia:
+%   po co istnieje system operacyjny?
+
+%   System operacyjny istnieje, by zdjąć z~nas obowiązek bezpośredniego
+%   zarządzania sprzętem, robienia takich rzeczy jak ręczne ustawienie
+%   wartości rejestrów procesora, od~których normalny użytkownik chce~się
+%   trzymać z~daleka. Oprócz tego, że~życie użytkownika staje~się przez to
+%   prostsze,
+%   to jest też bezpieczniejsze, bo pracując na niskim poziomie abstrakcji,
+%   łatwiej o~pomyłki i~poważne błędy. Przykładowo, potrzebuje mieć możliwość
+%   kasowania danych na dysku. Co jeśli przypadkiem zamiast usunąć jeden
+%   plik wydamy polecenie, by~skasować całą zawartość dysku?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tryby działania systemu operacyjnego}
+
+
+%   Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
+%   należy zagwarantować, żeby dane jednej osoby, które powinny pozostać
+%   tajne, nie były od ręki dostępne innym jego użytkownikom.
+
+%   Aby zapewnić możliwie dużą wygodę, bezpieczeństwo i~tajność danych,
+%   w~obecnej architekturze systemów operacyjnych dostępne są dwa główne tryby
+%   działania: \textbf{tryb jądra} (ang. \textit{kernel mode})
+%   i~\textbf{tryb użytkownika} (ang. \textit{user mode}). Należy pamiętać,
+%   że~to są dwa różne tryby działania tego samego programu.
+
+%   Pracując w~trybie jądra, możemy korzystać z~wszystkich możliwości jakie
+%   udostępnia nam sprzęt oraz mam dostęp do całej pamięci. Tryb ten musi
+%   istnieć, bo~wszystkie operacje sprzętu są potrzebne do działania
+%   komputera, więc
+%   ktoś musi mieć możliwość je uruchomić. Tak samo, ktoś musi mieć dostęp do
+%   całej pamięci, aby móc przydzielać ją innym.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Tryb użytkownika}
+
+
+%   Przejdźmy teraz do trybu użytkownika. Gdy jesteśmy w~tym trybie, system
+%   operacyjny wyłącza nam dostęp do pewny możliwości naszego komputera.
+%   W~szczególności, jeśli jakaś część pamięci jest przydzielona innemu
+%   użytkownikowi, jest ona dla nas niedostępna.
+
+%   Jak tego typu ograniczenia działają w~praktyce? System operacyjny jest
+%   programem jak każdy inny, więc jego działanie zależy od~ustawień. Jeśli
+%   działając jako użytkownik chcemy zobaczyć zawartość jakiegoś fragmentu
+%   pamięci, to wysyłamy zapytanie do systemu operacyjnego o~jej wyświetlenie
+%   nam. System, który zawsze widzi całą dostępną pamięć, sprawdza, czy ma
+%   prawo udostępnić nam ten konkretny fragment. Jeśli nie to przesyła nam
+%   wiadomość, że~nie mamy uprawnień do zobaczenia zawartości tej części
+%   pamięci.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Problemy z~bezpieczeństwem}
+
+
+%   Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
+%   z~tym komputerem zrobić wszystko. Z~tego powodu hakerzy dokładają tylu
+%   starań, by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich
+%   uprawnień. Dlatego też takie antycheaterskie programy takie jak Vanguard,
+%   który miał być dodany choćby do
+%   \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
+%       Legends}}~są tak problematyczne
+%   \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
+
+%   Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
+%   z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
+%   tworzącej ten program, że~nie nadużyje tych możliwości?
+
+%   Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
+%   Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
+%   cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
+%   w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
+%   użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
+%   wykryć cheatera.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Problemy z~bezpieczeństwem}
+
+
+%   Alternatywą jest uruchamianie tych programów na serwerze
+%   gry, który i~tak dysponuje wszystkimi tego typu informacjami. Co nie jest
+%   w~interesie firmy dostarczającej te serwery, dla niej jest lepiej jak
+%   serwery obsługują grę, a~wykrywaniem cheaterów zajmują~się komputery
+%   graczy.
+
+% \end{frame}
+% % ##################
 
 
 

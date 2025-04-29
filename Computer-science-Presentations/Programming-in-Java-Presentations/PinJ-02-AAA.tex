@@ -1,0 +1,1099 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{3.~Polecenia \textsc{bash}a, ciąg dalszy}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 43k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\EndingSlide{Ta prezentacja wciąż nie jest ukończona.}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Polecenia \textsc{bash}a, ciąg dalszy}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przesyłanie wielu argumentów do polecenia}
+
+
+  Wiele poleceń \textsc{bash}a może przyjąć jako swoje argumenty więcej
+  niż jedną nazwę obiektu, wyjaśnimy to na przykładzie. Materiały
+  dla tego przykładu można znaleźć
+  w~\texttt{Materiały-do-prezentacji/SO-03-A-Polecenia-BASHa-ETC/}.
+
+  W~katalogu \texttt{SO-03-A-Polecenia-BASHa-ETC/} w~którym~się znajdujemy
+  są m.in. pliki \texttt{Data-01.dat} i~\texttt{Data-02.dat} oraz katalog
+  \texttt{Data-for-analysis/}. Aby przenieść oba pliki z~danymi do
+  wspomnianego katalogu wystarczy jedno polecenie: \\
+  \texttt{\$ mv Data-01.dat Data-02.dat Data-for-analysis/} \\
+  Tak samo możemy przynieść do katalogu trzy lub więcej plików: \\
+  \texttt{\$ mv Data-01.dat Data-02.dat Data-03.dat Data-for-analysis/}
+
+  Należy dodać, że~katalog do którego przenosimy dwa lub więcej plików,
+  \alert{zawsze} musi być ostatnim argumentem przesłanym do~\texttt{mv}. \\
+  \texttt{\$ mv Data-01.dat Data-for-analysis/ Data-02.dat} \\
+  \texttt{mv: cel 'Data-02.dat' nie jest katalogiem}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przesyłanie wielu argumentów do polecenia}
+
+
+  \texttt{\$ mv Data-01.dat Data-for-analysis/ Data-02.dat} \\
+  Problem z~powyższym poleceniem polega na tym, że~twórcy polecenia
+  \texttt{mv}, nie potrafili wymyślić, co w~zasadzie miałoby takie jego
+  wywołanie znaczyć. Nie możemy przenieść pliku \texttt{Data-01.dat}
+  i~katalogu \texttt{Data-for-analysis/} do pliku \texttt{Data-02.dat},
+  bo przecież plik nie służy do przechowywania plików lub katalogów.
+
+  Może więc użytkownik chciał zmienić nazwę jednego z~tych plików?
+  Jeśli tak, to którego i~na co? Czyżby chciał zmienić nazwę pliku
+  \texttt{Data-01.dat} na nazwę katalogu \texttt{Data-for-analysis/}?
+  Rozważania tego typu pokazują, że~decyzja twórców tego polecenia,
+  by~uznać, że~przesłanie do~\texttt{mv} trzech lub więcej argumentów,
+  przy czym ostatni z~nich \alert{nie} jest katalogiem, uznać za błąd
+  użytkownika, była bardzo rozsądna.
+
+  % Analogicznie, możemy za~pomocą jednego polecenia \texttt{touch} utworzyć
+  % dwa lub więcej plików: \\
+  % \texttt{\$ touch File-01.txt File-02.txt}
+
+  % W~tym miejscu musimy dodać, że~istnieją znacznie potężniejsze, ale też
+  % bardziej skomplikowane, metody przesyłania nazw wielu obiektów do jednego
+  % polecenia. Ich omówienie odkładamy do momentu, gdy zapoznamy~się już
+  % z~podstawowymi sposobami korzystania z~powłoki.
+
+  % Zwykle dość łatwo poprawnie zgadnąć, czy dane polecenie może przyjąć
+  % wiele argumentów, czy tylko jedne. Mianowicie, jeśli jest dość oczywiste,
+  % że~dane polecenie można zastosować dla wielu argumentów, to zapewne
+  % działa właśnie tak jak myślimy. Na razie takie podejście powinno nam
+  % wystarczyć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przesyłanie wielu argumentów do polecenia}
+
+
+  % \texttt{\$ mv Data-01.dat Data-for-analysis/ Data-02.dat} \\
+  % Problem z~powyższym poleceniem polega na tym, że~twórcy polecenia
+  % \texttt{mv}, nie potrafili wymyślić, co w~zasadzie miałoby takie jego
+  % wywołanie znaczyć. Nie możemy przenieść pliku \texttt{Data-01.dat}
+  % i~katalogu \texttt{Data-for-analysis/} do pliku \texttt{Data-02.dat},
+  % bo przecież plik nie służy do przechowywania plików lub katalogów.
+
+  % Może więc użytkownik chciał zmienić nazwę jednego z~tych plików?
+  % Jeśli tak, to którego i~na co? Czyżby chciał zmienić nazwę pliku
+  % \texttt{Data-01.dat} na nazwę katalogu \texttt{Data-for-analysis/}?
+  % Rozważania tego typu pokazują, że~decyzja twórców tego polecenia,
+  % by~uznać, że~przesłanie do~\texttt{mv} trzech lub więcej argumentów,
+  % przy czym ostatni z~nich \alert{nie} jest katalogiem, uznać za błąd
+  % użytkownika, była bardzo rozsądna.
+
+  Analogicznie, możemy za~pomocą jednego polecenia \texttt{touch} utworzyć
+  dwa lub więcej plików: \\
+  \texttt{\$ touch File-01.txt File-02.txt}
+
+  W~tym miejscu musimy dodać, że~istnieją znacznie potężniejsze, ale też
+  bardziej skomplikowane, metody przesyłania nazw wielu obiektów do jednego
+  polecenia. Ich omówienie odkładamy do momentu, gdy zapoznamy~się już
+  z~podstawowymi sposobami korzystania z~powłoki.
+
+  Zwykle dość łatwo poprawnie zgadnąć, czy dane polecenie może przyjąć
+  wiele argumentów, czy tylko jedne. Mianowicie, jeśli jest dość oczywiste,
+  że~dane polecenie można zastosować dla wielu argumentów, to zapewne
+  działa właśnie tak jak myślimy. Na razie takie podejście powinno nam
+  wystarczyć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki do plików oraz katalogów}
+
+
+  Załóżmy teraz, że~w~katalogu \texttt{Data-for-analysis/} chcemy utworzyć
+  katalog \texttt{Data-January/}. Żeby to zrobić możemy wejść do tego
+  katalogu i~użyć tam polecenia \texttt{mkdir} tak jak przedstawiono to
+  poniżej. \\
+  \texttt{\$ cd Data-for-analysis/} \\
+  \texttt{\$ mkdir Data-January/}
+
+  Taki sam rezultat otrzymamy, jeśli poleceniu \texttt{mkdir} prześlemy jako
+  argument ścieżkę katalogu, który chcemy utworzyć. \\
+  \texttt{\$ mkdir Data-for-analysis/Data-January/} \\
+  Zauważmy, że~do polecenia tego przesłaliśmy ścieżkę do~katalogu,
+  który \alert{jeszcze} nie istniał. Jest to zupełnie normalne, wszak
+  polecenie to służy do tworzenia nowych katalogów. To~i~inne polecenia,
+  które służą do tworzenia plików oraz katalogów, w~$99.999\%$ przypadków
+  poprawnie „domyślą~się” co mają utworzyć.
+
+  % Oczywiście ścieżki przesyłane do~\texttt{mkdir} mogą być dużo dłuższe.
+  % Długość ścieżki nie ma naprawdę znaczenia, byleby tylko wskazywała ona
+  % na~poprawną lokalizację miejsca, gdzie ma zostać utworzony katalog.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki do plików oraz katalogów}
+
+
+  Oczywiście ścieżki przesyłane do~\texttt{mkdir} mogą być dużo dłuższe.
+  Długość ścieżki nie ma naprawdę znaczenia, byleby tylko wskazywała ona
+  na~poprawną lokalizację miejsca, gdzie ma zostać utworzony katalog.
+
+  Należy jednak zaznaczyć, że~polecenie \texttt{mkdir} zostało napisane tak,
+  że~może utworzyć tylko ostatni katalog pojawiający~się w~danej ścieżce.
+  Przykładowo, jeśli wpiszemy \\
+  \texttt{\$ mkdir Data-for-analysis/Data-February/Special-data/} \\
+  to zobaczymy komunikat typu \\
+  \texttt{mkdir: nie można utworzyć katalogu
+    „Data-for-analysis/Data-February/Special-data/: Nie ma takiego
+    pliku ani katalogu}
+
+  Jest tak dlatego, że~wymagałoby to utworzenia najpierw katalogu
+  \texttt{Data-February/}, a~potem utworzenia wewnątrz niego katalogu
+  \texttt{Special-data/}. Ponieważ jednak \texttt{mkdir} stworzono w~taki
+  sposób, że~ma prawo utworzyć tylko ten katalog, który jest na końcu
+  podanej ścieżki, czyli \texttt{Special-data/}, więc polecenie to zgłasza
+  błąd.
+  % Załóżmy teraz, że~w~katalogu \texttt{Data-for-analysis/} chcemy utworzyć
+  % katalog \texttt{Data-January/}. Żeby to zrobić możemy wejść do tego
+  % katalogu i~użyć tam polecenia \texttt{mkdir} tak jak przedstawiono to
+  % poniżej. \\
+  % \texttt{\$ cd Data-for-analysis/} \\
+  % \texttt{\$ mkdir Data-January/}
+
+  % Taki sam rezultat otrzymamy, jeśli poleceniu \texttt{mkdir} prześlemy jako
+  % argument ścieżkę katalogu, który chcemy utworzyć. \\
+  % \texttt{\$ mkdir Data-for-analysis/Data-January/} \\
+  % Zauważmy, że~do polecenia tego przesłaliśmy ścieżkę do~katalogu,
+  % który \alert{jeszcze} nie istniał. Jest to zupełnie normalne, wszak
+  % polecenie to służy do tworzenia nowych katalogów. To~i~inne polecenia,
+  % które służą do tworzenia plików oraz katalogów, w~$99.999\%$ przypadków
+  % poprawnie „domyślą~się” co mają utworzyć.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki}
+
+
+  Dla porządku zaznaczymy, że~pojedyncze polecenie \texttt{mkdir} może bez
+  problemu utworzyć dwa lub więcej katalogów, jeśli tylko podamy ich nazwy
+  (ścieżki) jako dwa osobne argumenty. Przykładowo \\
+  \texttt{\$ mkdir Data-February/ Data-March/} \\
+  utworzy w~katalogu w~którym~się znajdujemy dwa katalogi o~wymienionych
+  wyżej nazwach.
+
+  Co jednak jeśli katalog \texttt{Data-February/} jeszcze nie istnieje,
+  a~my wprowadzimy następujące polecenie? \\
+  \texttt{\$ mkdir Data-February/ Data-February/Special-data/} \\
+  Mówiąc zupełnie otwarcie, tego typu polecenia każdy musi przetestować
+  na~własną odpowiedzialność. My stoimy na stanowisku, że~najlepiej jest
+  takich rzeczy unikać, bo zysk z~ich stosowania jest niewielki, za~to
+  problemy do jakich mogą prowadzić, potrafią być bardzo duże. Jedna
+  z~mądrości informatyki mądrze mówi: \\
+  \texttt{Better to be clear, than clever.}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki}
+
+
+  W~ogólności, należy przyjąć, że~w~każdym poleceniu, którego argumentem
+  może być nazwa pliku lub katalogu, może wystąpić też dowolnie
+  skomplikowana ścieżka do~niego. Zawsze możemy jako argumentu polecenia
+  przesłać ścieżkę bezwzględna, czyli taką, która zaczyna~się od symbolu
+  katalogu root „\texttt{/}”. Jeśli chodzi o~ścieżki względne, to prawie
+  zawsze są one poprawnymi argumentami, acz niekiedy można~się natknąć na
+  pewne wyjątki od~tej reguły.
+
+  Rozpatrzmy teraz odrobinę inny przykład. Załóżmy teraz, że~w~katalogu
+  gdzie jesteśmy, znajduje~się katalog \texttt{Data-for-analysis/}
+  i~chcemy zobaczyć jego zawartość. Jak poprzednio, żeby to zrobić wystarczy
+  wpisać polecenie \\
+  \texttt{\$ ls Data-for-analysis/} \\
+  \texttt{Data-01.dat} \quad \texttt{Data-02.dat} \\
+  Również tutaj, długość ścieżki nie ma znaczenie, ważne jest jedynie,
+  czy~jest ona poprawna.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia i~ścieżki}
+
+
+  Przykładowo, zakładając, że~poniższa ścieżka do~katalogu
+  \texttt{Data-for-analysis/} jest poprawna, możemy ten sam rezultat uzyskać
+  pisząc \\
+  \texttt{ls /home/adam/Data-directory/Data-for-analysis/}
+
+  Niektórym z~Państwa może~się pojawić w~głowie takie pytanie. „Dlaczego
+  teraz przesłaliśmy argument do polecenia \texttt{ls}, choć wcześniej
+  wywoływaliśmy je bez żadnego argumentu?” Nie wchodząc w~szczegóły,
+  w~poprzednich przypadkach polecenie \texttt{ls} samo znajdowało sobie
+  argument, a~był nim bieżący katalog. To powinno być dość proste
+  do~zrozumienia z~kontekstu, dlatego nie będziemy zbyt często
+  zagłębiać~się w~tego typu kwestie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Usuwanie katalogów: polecenie \texttt{rmdir}}
+
+
+  Dla zupełności wykładu, wspomnimy trochę o~tym jak możemy usunąć
+  niepotrzebny katalog. Do usuwania katalogów należy w~pierwszy rzędzie
+  użyć bardzo bezpiecznego polecenia \texttt{rmdir}: \\
+  \texttt{\$ rmdir Niepotrzebny-katalog/} \\
+  Polecenie to odmówi usunięcia danego katalogu, jeśli nie jest on~pusty,
+  chroni więc nas przed usunięciem katalogu zawierającym ważne dane.
+
+  Oczywiście, czasem tym czego chcemy jest usunięcie katalogu wraz
+  z~plikami które \alert{zawiera}. To oczywiście też jest do za pomocą
+  polecenia powłoki \textsc{bash}, ale ponieważ to polecenie jest
+  niebezpieczne w~użyciu omówimy je dopiero za~jakiś czas.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Jeszcze o~poruszaniu~się po katalogach}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rola systemu operacyjnego}
+
+
+  Zacznijmy od~przyjęcia, że~jak poprzednio znajdujemy~się w~katalogu
+  \texttt{SO-03-A-Polecenia-BASHa-ETC/}. Tak jak system Windows,
+  GNU/Linux posiada koncepcję plików ukrytych, czyli takich, które
+  normalnie nie~są widoczne dla użytkownika. Ze~względów historycznych,
+  przyjęto zasadę, że~jeśli nazwa pliku zaczyna~się od symbolu~„\texttt{.}”
+  to plik jest niewidocznych od użytkownika.
+
+  By zobaczyć wszystkie pliki, które zawiera dany katalog należy
+  do~polecenia \texttt{ls} przesłać opcję~\texttt{-a}
+  (od ang.~\textit{all}). \\
+  \texttt{\$ ls -a} \\
+  \texttt{.} \quad \texttt{..} \quad \texttt{Data-01.dat} \quad
+  \texttt{Data-02.dat} \quad \directoryName{\texttt{Data-for-analysis}} \\
+  Widzimy, że~w~katalogu tym mamy dwa pliki ukryte, o~dość osobliwych
+  nazwach, jedna kropka i~dwie kropki. Pliki te znajdują~się w~praktycznie
+  każdym katalogu w~systemie GNU/Linux, a~ich nazwy to pewnie zaszłość
+  historyczna z~lat $70$-tych XX wieku, kiedy pamięć była bardzo mała
+  i~każdy symbol~się liczył.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pliki „\texttt{.}” i~„\texttt{..}”}
+
+
+  Zgodnie z~zasadą, że~w~systemie GNU/Linux wszystko jest plikiem, a~co nie
+  jest plikiem jest procesem, pliki „\texttt{.}” i~„\texttt{..}” pozwalają
+  systemowi zarządzać katalogami. Katalog to wszak tylko inny rodzaj pliku.
+
+  Zacznijmy od~pliku „\texttt{.}”. Plik ten oznacza po prostu katalog
+  w~którym~się znajdujemy. Co więcej możemy za jego pomocą przejść
+  do~katalogu w~którym jesteśmy (czyli nic nie zrobić), za pomocą
+  polecenia: \\
+  \texttt{\$ cd .} \\
+  Jakkolwiek z~praktycznego punktu widzenia to polecenie jest bezużyteczne,
+  warto wiedzieć, że~istnieje i~działa poprawnie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Powłoka BASH}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Postęp technologiczny}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Problemy z~bezpieczeństwem}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Pliki i~procesy}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pliki i~procesy}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pliki i~procesy}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Podstawy pracy z~poziomu powłoki BASH}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{BASH nie zna słowa litość}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zaczynamy}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{ls}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{pwd}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Katalog domowy}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edycja plików z~pomocą programu gedit}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Okienko gedita}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edytory tekstów}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Dalsze informacje o~pracy z~BASHem}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pewne subtelności}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mkdir}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mv}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mv}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zagrożenia jakie stwarza \texttt{mv}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Opcje (flagi)}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czemu życie nie może być proste?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Autouzupełnianie w~BASHu}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \EndingSlide{Dziękuję! Pytania?}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Dlaczego BASH~się tak nazywa}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego BASH~się tak nazywa?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \endingslide???{}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{?????}
+% % % ##################
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

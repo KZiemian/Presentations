@@ -1,0 +1,2 @@
+apple      red    4
+strawberry red    3

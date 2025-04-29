@@ -1,0 +1,1402 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{?. Grep}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 20k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Ta prezentacja wciąż nie jest ukończona.}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Podstawy korzystania z~\texttt{grep}a}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego poświęcamy uwagę \texttt{grep}owi?}
+
+
+  Polecenie \texttt{grep} nie należy do najbardziej intuicyjnych w~użyciu,
+  ale~potrafi być przydatne. Oprócz tego jest dobrą ilustrują z~jednej
+  strony potęgi jaką oferuje nam system GNU/Linux, z~drugiej to ile
+  trudu jej zdobycie zwykle kosztuje. Oprócz tego pozwoli nam zdobyć
+  pewne umiejętności przy korzystaniu
+  z~\colorhref{https://en.wikipedia.org/wiki/Regular\_expression}{wyrażeniami
+    regularnymi} („regex” lub „regexp”, ang.~\textit{regular expression}).
+
+  Wyrażenia regularne, można postrzegać jako ulepszoną wersję wyszukiwania
+  tekstu w~dokumencie, czyli słynnego \texttt{Ctrl-f}. W~najprostszym
+  wypadku, działają dokładnie tak jak \texttt{Ctrl-f}: przesyłamy im
+  jakiś napis i~znajdują one jego wystąpienia w~tekście. Różnica polega na
+  tym, że~za pomocą specjalnej składni, możemy im szukać bardziej złożonych
+  ciągów symboli, niż po prostu konkretny tekst, do tego jednak przejdziemy
+  po ogólnym omówieniu \texttt{grep}a.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~wyrażeniami regularnymi}
+
+
+  Wyrażenia regularne mają dwie podstawowe wady. Po pierwsze są trudne
+  i~w~pisaniu, a~jeszcze bardziej w~czytaniu. Po~drugie, istnieją dziesiątki
+  sposobów notowania wyrażeń regularny, które służą do tego samego, ale mają
+  inną składnię. W~połączeniu z~ich nieczytelnością, sprawia to,
+  iż~korzystanie z~nich wymaga zwykle bardzo dużo pracy z~naszej strony,
+  a~błędy popełnić jest bardzo łatwo. Warto tutaj przytoczyć jedną
+  z~mądrości informatyki.
+
+  \textit{Pewien programista miał problem. Stwierdził „Użyję wyrażeń
+    regularnych.” Teraz ma dwa problemy.}
+
+  Choć wyrażenia regularne potrafią być bardzo użyteczne, to jednak nie
+  należy ich stosować, jeśli dany problem da~się rozwiązać w~sposób
+  prostszy. Nie dotyczy to oczywiście najprostszych wyrażeń regularnych,
+  które można stosować równie często jak \texttt{Ctrl-f}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mem dla ilustracji problemu}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:How-to-regex}
+
+    \centering
+
+
+    \includegraphics[scale=0.18]
+    {./Presentations-pictures/Miscancellous-pictures/How-to-regex.jpg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co ja robię?}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \label{fig:How-to-regex}
+
+    \centering
+
+
+    \includegraphics[scale=0.52]
+    {./Presentations-pictures/Miscancellous-pictures/Lost-in-regex.png}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+  \textit{I~have a natural revulsion to any operating system that shows so
+    little plannning as to have to named all of its commands after digestive
+    noises (awk, grep, fsck, nroff).} \\
+    Autor nieznany, str.~$147$,
+    \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+
+  Nazwa polecenia \texttt{grep} pochodzi od~\textit{Global REgular
+    expression Print}, czyli na polski to byłoby coś w~stylu „globalny
+  wypisywacz wyrażeń regularnych”. Jest to niezwykle rozbudowane polecenie
+  i~moglibyśmy spędzić kilka zajęć na pracy z~nim, na~tym przedmiocie
+  ograniczymy~się do stosunkowo podstawowych przypadków. Więcej informacji
+  o~\texttt{grep}ie można znaleźć choćby tutaj
+  \parencite{Pankaj-Wailia-Mastering-Grep-command-in-Linux-Unix-ETC-Ver-2025}.
+
+  W~katalogu \texttt{Materiały-do-prezentacji\textbackslash
+    SO-XX-Grep\textbackslash} można znaleźć plik \textit{Lorem-ipsum.txt}
+  na którym będziemy pracować. Zawarty w~nim tekst ten został wygenerowany
+  za pomocą strony \textit{Lorem ipsum}
+  \colorhref{https://www.lipsum.com/}{https://www.lipsum.com/}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+  Teksty typu \textit{Lorem ipsum} są używany w~przemyśle wydawniczym od
+  XVI wieku, jak tekst do~testowania różnych układów strony, więc czemu by
+  nie użyć ich i~tutaj?
+
+  Załóżmy, że~jesteśmy w~katalogu, gdzie znajduje~się plik
+  \textit{Lorem-ipsum.txt}. Zaczniemy od najprostszego użycia polecenia
+  \texttt{grep} \\
+  \texttt{\$ grep "in"{} Lorem-ipsum.txt} \\
+  Od razu należy zaznaczyć, że~polecenie \texttt{grep} potrzebuje mnie dwa
+  argumenty: najpierw tekst który ma wyszukać, potem miejsce, gdzie go ma
+  wyszukać. (O~pewnych subtelnościach tego związanych z~przekierowaniami,
+  powiem sobie później.) Jeśli wprowadzimy za mało argumentów, to powłoka
+  może zacząć~się dziwnie zachowywać, wtedy należy spróbować użyć
+  pojedynczego \texttt{Ctrl-d} lub poprosić nas o~pomoc. Od~tego jesteśmy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+  Przyjrzyjmy~się rezultatowi tego polecenia. \\
+  \texttt{\$ grep "in"{} Lorem-ipsum.txt} \\
+  \texttt{Lorem ipsum dolor sit amet, consectetur
+    adipisc{\color{red} in}g elit. Integer at est erat.} \\
+  \texttt{vitae. In ultrices turpis et arcu venenatis, at feugiat elit
+    lac{\color{red} in}ia. Quisque} \\
+  \texttt{t{\color{red} in}cidunt vitae massa euismod maximus. Vestibulum
+    sed eros vel arcu iaculis} \\
+  \hspace{1em} $\vdots$ \\
+  Resztę linii wyniku pominęliśmy dla przejrzystość. Jak widzimy,
+  \texttt{grep} wyszukuje wszystkie linie w~których znajduje~się ciąg
+  symboli „in”, niezależnie czy jest to pojedyncze słowo, czy część
+  większego i~wyróżnia znaleziony fragment odpowiednim kolorem. Jeśli
+  znaleziony tekst nie wyświetla~się komuś na kolorowo, proszę spróbować
+  polecenia \\
+  \texttt{\$ grep --color "in"{} Lorem-ipsum.txt}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+  Wynik staje~się łatwiejszy do czytania, jeśli do~\texttt{grep}a prześlemy
+  flagę \texttt{-n}, która sprawia, że~polecenie wypisuje numery
+  odpowiednich wierszy z~pliku: \\
+  \texttt{\$ grep -n "in"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 1}{\color{jAxisBlue} :}Lorem ipsum dolor sit amet,
+    consectetur adipisc{\color{red} in}g elit. Integer at est erat.} \\
+  \texttt{{\color{green} 6}{\color{jAxisBlue} :}vitae. In ultrices turpis et
+    arcu venenatis, at feugiat elit lac{\color{red} in}ia. Quisque} \\
+  \texttt{{\color{green} 11}{\color{jAxisBlue} :}t{\color{red} in}cidunt
+    vitae massa euismod maximus. Vestibulum sed eros vel arcu iaculis} \\
+  \hspace{1em} $\vdots$
+
+  W~dalszych przykładach będziemy standardowo dodawać flagę~\texttt{-n}, by
+  uczynić zwracane rezultaty prostszymi w~czytaniu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyszukiwanie całych wyrazów}
+
+
+  Jak widzieliśmy, normalnie \texttt{grep} wyszukuje ciąg symboli,
+  niezależnie, czy tworzą one w~tekście osoby wyraz, czy nie. Żeby
+  wyszukać tylko te wiersze, w~których dany ciąg symboli pojawia~się
+  tylko jako osobne słowo, używamy flagi~\texttt{-w}: \\
+  \texttt{\$ grep -n -w "in"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 14}{\color{jAxisBlue} :}quis interdum. Integer at
+    orci at neque pulvinar pretium. Donec {\color{red} in} elementum} \\
+  \texttt{{\color{green} 24}{\color{jAxisBlue} :}massa et rhoncus aliquam.
+    Suspendisse rhoncus nunc {\color{red} in} finibus mattis.} \\
+  \texttt{{\color{green}37}{\color{jAxisBlue} :}vel aliquet. Proin
+    {\color{red} in} hendrerit elit, a finibus ipsum. Integer
+    sollicitudin} \\
+  \hspace{1em} $\vdots$ \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyszukiwanie całych wyrazów}
+
+
+  Tak jak wyjaśniliśmy wcześniej, flagi tego typu można odpowiednio łączyć,
+  tak~że polecenia: \\
+  \texttt{\$ grep -nw "in"{} Lorem-ipsum.txt} \\
+  \texttt{\$ grep -wn "in"{} Lorem-ipsum.txt} \\
+  znaczą to samo. W~poprzednich przykładach dla podkreślenia, że~testujemy
+  tylko flagę \texttt{-w} napisaliśmy ją osobno. Tą samą konwencję
+  będziemy stosować również dalej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Duże i~małe litery}
+
+
+  Domyślnie \texttt{grep} uwzględnia w~wyszukiwaniu wielkość liter, co
+  obrazują poniższe przykłady. \\
+  \texttt{\$ grep -n "Du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
+    fringilla dictum leo id
+    interdum. Ut sit amet sem a nunc porttitor} \\
+  \hspace{1em} $\vdots$ \\
+  \texttt{\$ grep -n "du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 8}{\color{jAxisBlue} :}consectetur a sapien vitae,
+    euismod biben{\color{red} du}m eros.} \\
+  \hspace{1em} $\vdots$
+
+  By~\texttt{grep} ignorował różnicę między małymi i~dużymi literami,
+  należy mu przesłać flagę \texttt{-i}: \\
+  \texttt{\$ grep -n -i "Du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 8}{\color{jAxisBlue} :}consectetur a sapien vitae,
+    euismod biben{\color{red} du}m eros.} \\
+  \hspace{1em} $\vdots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zliczanie dopasowany linii}
+
+
+  By~polecenie \texttt{grep} wypisało w~jakiej liczbie linii został
+  znaleziony zadany ciąg symboli (do ilu linii został dopasowany wzorzec)
+  dajemy mu flagę~\texttt{-c}: \\
+  \texttt{\$ grep -n -c "Du"{} Lorem-ipsum.txt} \\
+  \texttt{$6$}
+
+  Jak już wiemy, domyślnie \texttt{grep} wypisuje linie w~których znalazł
+  dany ciąg symboli. By~zobaczyć linie \alert{nie} zawierające tego ciągu
+  należy użyć flagi~\texttt{-v}: \\
+  \texttt{\$ grep -n -v "Du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 1}{\color{jAxisBlue} :}Lorem ipsum dolor sit amet,
+    consectetur adipiscing elit. Integer at est erat.} \\
+  \texttt{{\color{green} 2}{\color{jAxisBlue} :}Phasellus gravida ligula
+    eros, eget ornare purus consequat vitae. Quisque} \\
+  \hspace{1em} $\vdots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  Powiedzmy, że~oprócz linii w~której znaleziono ciąg symboli, chcemy
+  zobaczyć też linię która następuje zaraz za~nią. W~tym celu do polecenia
+  dodajemy flagę \texttt{-A 1}. Analogicznie, by zobaczyć dwie linie
+  następujące po każdej linii w~której znaleziono ten ciąg dodajemy
+  flagę \texttt{-A 2}, gdy chcemy zobaczyć trzy linie flagę
+  \texttt{-A 3}.
+
+  \texttt{\$ grep -n -A 1 "Du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
+    fringilla dictum leo id interdum. Ut sit amet sem a nunc porttitor} \\
+  \texttt{{\color{green} 33}{\color{jAxisBlue} -}vestibulum.} \\
+  \texttt{{\color{jAxisBlue} -{}-}} \\
+  \texttt{{\color{green} 46}{\color{jAxisBlue} :}nisi. Maecenas euismod
+    magna et est iaculis sollicitudin. {\color{red} Du}is turpis elit,} \\
+  \texttt{{\color{green} 47}{\color{jAxisBlue} -}vulputate quis felis vel,
+    laoreet suscipit diam. Sed vitae diam eu felis} \\
+  \hspace{1em} $\vdots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  Aby zobaczyć wiersz, który znajduje~się przed tym w~którym znaleziono
+  szukany ciąg symboli, używamy flagi \texttt{-B 1}. Analogicznie działają
+  flagi \texttt{-B 2}, \texttt{-B 3}, etc.
+
+  \texttt{\$ grep -n -B 1 "Du"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 31}{\color{jAxisBlue}:}Maecenas bibendum egestas
+    condimentum. Nunc lobortis ac tellus at malesuada.} \\
+  \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
+    fringilla dictum leo id interdum. Ut sit amet sem a nunc porttitor} \\
+  \texttt{{\color{jAxisBlue} -{}-}} \\
+  \texttt{{\color{green} 45}{\color{jAxisBlue}-}suscipit. Nullam at neque
+    nulla. Proin quis rhoncus dolor. Nam quis tellus} \\
+  \texttt{{\color{green}46}{\color{jAxisBlue} :}nisi. Maecenas euismod
+    magna et est iaculis} \\
+  \texttt{sollicitudin. {\color{red} Du}is turpis elit,}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozwój GNU/Linuxa}
+
+
+  Tekst który wyszykujemy \texttt{grep}em nie musi~się składać tylko
+  i~wyłącznie z~liter, co obrazuje przykład poniżej.
+
+  \texttt{\$ grep -n "na sem"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 5}{\color{jAxisBlue} :}eleifend commodo. Etiam
+    ornare congue erat, dapibus} \\
+  \texttt{porttitor mag{\color{red}na sem}per} \\
+  \texttt{{\color{green} 120}{\color{jAxisBlue} :}sollicitudin sapien.
+    Integer et mag{\color{red}na sem}per, commodo nunc vel, eleifend}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Polecenie \texttt{grep} i~wyrażenia regularne}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+  Do tej pory pracowaliśmy z~ciągami symboli, które reprezentowały „same
+  siebie”, teraz przejdziemy do bardziej zaawansowanych sposobów określania
+  ciągów symboli, zwanych
+  \colorhref{https://en.wikipedia.org/wiki/Regular_expression}
+  {wyrażeniami regularnymi}.
+  Rozpoczniemy od wyrażenia
+  \texttt{"\hspace{0.2em}$\hat{}$\hspace{0.2em}te"}. Symbol
+  „\hspace{0.3em}$\hat{}$\hspace{0.3em}” oznacza, że~\texttt{grep} będzie
+  szukał ciągu „\texttt{te}”, który rozpoczyna linię tekstu. \\
+  \texttt{\$ grep -n "\hspace{0.2em}$\hat{}$\hspace{0.2em}te"{}
+    Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 62}{\color{jAxisBlue} :}{\color{red} te}mpor
+    commodo, sapien leo bibendum augue, nec bibendum nibh nunc vitae} \\
+  \texttt{{\color{green} 99}{\color{jAxisBlue} :}{\color{red} te}llus nec
+    metus tincidunt tincidunt blandit vitae enim. Phasellus cursus}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+  Jeśli chcemy by \texttt{grep} szukał tylko ciągu symboli tylko na końcu
+  linii, to~kończymy ten ciąg znakiem „\texttt{\$}”. \\
+  \texttt{\$ grep -n "ue\$"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 2}{\color{jAxisBlue} :}Phasellus gravida ligula
+    eros, eget ornare purus} \\
+  \texttt{consequat vitae. Quisq{\color{red} ue}} \\
+  \texttt{{\color{green} 6}{\color{jAxisBlue} :}vitae. In ultrices turpis
+    et arcu venenatis, at feugiat elit lacinia. Quisq{\color{red} ue}} \\
+  \hspace{1em} $\vdots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+  Jak już mówiliśmy, notacja wyrażeń regularnych nie jest spójna między
+  programami i~musimy~się nauczyć z~tym żyć. W~\textsc{bash}u symbolem,
+  który oznacza dowolny pojedynczy symbol jest „\texttt{?}”, ale
+  w~\texttt{grep}ie jest nim kropka „\texttt{.}”. Czemu życie nie może być
+  proste?
+
+  Wobec tego wyrażenie regularne \texttt{"n.c"} wyszukuje ciąg symboli
+  który zaczyna~się od~„\texttt{n}”, potem następuje jeden pojedynczy
+  symbol, następnie zaś mamy symbol „\texttt{c}”. \\
+  \texttt{\$ grep -n "n.c"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 10}{\color{jAxisBlue} :}Do{\color{red}nec}
+    vehicula scelerisque efficitur. In laoreet} \\
+  \texttt{faucibus volutpat. Aliquam} \\
+  \texttt{{\color{green}13}{\color{jAxisBlue} :}convallis enim est, id
+    porta mauris lobortis eget. Do{\color{red}nec} tincidunt vel orci} \\
+  \hspace{1em} $\vdots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+  Tak jak w~\textsc{bash}u, nawias kwadratowy „\texttt{[abcde]}” oznacza,
+  że~w~danym miejscu musi być \alert{dokładnie jedna} z~liter „a”, „b”,
+  „c”, „d” albo „e”. Również w~\texttt{grep}ie można zastąpić ten
+  nawias przez „\texttt{[a-e]}”.
+
+  \texttt{\$ grep -n "[a-e]us"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green}5}{\color{jAxisBlue} :}eleifend commodo. Etiam
+    ornare congue erat, dapi{\color{red} bus}} \\
+  \texttt{porttitor magna semper} \\
+  \texttt{{\color{green} 10}{\color{jAxisBlue} :}Donec vehicula scelerisque
+    efficitur. In laoreet} \\
+  \texttt{fauci{\color{red} bus} volutpat. Aliquam} \\
+  \hspace{1em} $\vdots$
+
+  Również wyrażenia regularne „\texttt{[Ab]}”, „\texttt{[012345]}”
+  i~„\texttt{[0-5]} działają tak samo jak w~\textsc{bash}u, nie będziemy
+  więc ich osobno omawiać.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Funkcjonalności \texttt{grep}a można łączyć}
+
+
+  Oczywiście, wyrażenia regularne można łączyć z~flagami \texttt{grep}a.
+  Jeśli więc chcemy znaleźć wszystkie ciągi symboli pasujące do wyrażenia
+  regularnego \texttt{"n.c"}, które tworzą osobny wyraz to użyjemy
+  polecenia \\
+  \texttt{\$ grep -n -w "n.c"{} Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 21}{\color{jAxisBlue} :}{\color{red} nec} ante
+    maximus tincidunt a vitae justo. Sed vitae convallis metus. Integer} \\
+  \texttt{{\color{green} 22}{\color{jAxisBlue} :}mollis orci
+    {\color{red} nec} urna dapibus, vel pellentesque ipsum porttitor. Nulla
+    eu} \\
+  \hspace{1em} $\vdots$
+
+  Jak łatwo się domyślić wyrażenie regularne \texttt{"n..c"} szuka dowolnego
+  ciągu symboli, który zaczyna~się od „\texttt{n}”, kończy na~„\texttt{c}”,
+  a~pośrodku są dwa, dokładnie dwa, dowolne symbole.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozbudowane wyrażenia regularne}
+
+
+  Różne rodzaje wyrażeń regularnych można ze sobą łączyć, co zdaniem
+  krytyków prowadzi do zupełnie niezrozumiałych ciągów symboli.
+
+  Przykładowo, rozpatrzymy wciąż stosunkowo proste wyrażenie regularne
+  \texttt{"\hspace{0.2em}$\hat{}$\hspace{0.1em}.n"}. Oznacza ono ciąg
+  symboli, który znajduje~się na~początku linii, pierwszy symbol tego ciągu
+  jest dowolny, a~drugim jest~„\texttt{n}”. Mówiąc inaczej, to wyrażenie
+  wyszukuje wszystkie linie, których drugą literą jest~„\texttt{n}”. \\
+  \texttt{\$ grep -n "\hspace{0.2em}$\hat{}$\hspace{0.1em}.n"{}
+    Lorem-ipsum.txt} \\
+  \texttt{{\color{green} 30}{\color{jAxisBlue} :}{\color{red}In} varius
+    rutrum efficitur. Suspendisse pretium at augue eget pellentesque.} \\
+  \texttt{{\color{green} 98}{\color{jAxisBlue} :}{\color{red} In}teger leo
+    nunc, semper id eros a, commodo iaculis dui. Etiam sit amet} \\
+  \hspace{1em} $\vdots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+% % ######################################
+% \section{}
+% % ######################################
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Dziękuję! Pytania?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

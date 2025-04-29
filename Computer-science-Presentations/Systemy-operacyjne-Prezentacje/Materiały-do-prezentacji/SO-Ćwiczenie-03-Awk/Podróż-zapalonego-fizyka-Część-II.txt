@@ -1,0 +1,103 @@
+Z Kielc muszę jechać do Warszawy, a stamtąd, niestety, muszę lecieć do
+Berlina. Preferowałbym nie lecieć teraz samolotem, ale cóż zrobić. Skoro
+jednak lecę do Niemiec, to warto posłuchać niemieckiej muzyki, wracam więc do
+zespołu Helloween. Tym razem czas na płytę „Keeper of the Seven Keys: Part I”,
+jeden z najbardziej cenionych albumów power metalowych jakie do tej pory
+zostały nagrane. Przesłuchałem kilka razy „Initiation” i „I'm Alive”. Niestety
+muszę jechać dość szybko, tak mniej więcej 27.8 m/s albo szybciej. Inaczej
+nie zdążę na czas, nie mogę się więc cieszyć tym co widzę, pozostaje więc
+skupienie się na muzyce.
+
+„A Little Time” to pierwszy utwór na płycie, który przykuł moją uwagę. Bije z
+niego energia, którą lubię. Jak zwykle, łatwo wyczuć, że z utworu bije
+energia, ale już znacznie trudniej powiedzieć, co konkretnie sprawia,
+że utwór wywiera na tobie takie wrażenie. Od czasu do czasu nachodzi mnie
+ochota by przyjrzeć się muzyce od bardziej naukowej (czy to dobre słowo?)
+strony, ale zawsze inne rzeczy okazują się dużo ważniejsze. Mam jednak
+nadzieję, że wiemy już sporo o tym jak działa muzyka i czemu wywiera na nas
+taki wpływ.
+
+Skoro i tak muszę jeszcze jechać autem, czemu by nie oddać się teraz
+rozważaniom na temat muzyki? Gdy mowa o dźwiękach w muzyce, wiąże się je
+zwykle z falami, ale nawet powiedzenie co to znaczy „fala” w tym kontekście,
+nie jest wcale zadaniem prostym. Zwykle by to wyjaśnić pokazuje się
+zaczepioną na obu końcach strunę, która drga tworząc różne kształty i te
+kształty nazywa się falami. Dobrze, ale co począć wtedy z różnorakimi
+równaniami falowymi znanymi w fizyce?
+
+Rozważając to wszystko przeszedłem do utworu „Twilight of the Gods”. Niech
+lepiej każdy go sam oceni, bo ja wiem, że teraz nie mogę być wobec niego
+obiektywny. Obiektywne ocenienie jednego utworu muzycznego, to na tyle mało
+ważna sprawa, że nie ma sensu by próbować pozbyć się swoich uprzedzeń wobec
+tego typu piosnek, a skoro jasno to stwierdziłem, to można przejść do innych
+tematów. Wróćmy więc do równania falowego. Niestety, nigdy nie zrozumiałem
+go na tyle dobrze, jak pragnąłem. Pamiętam jak ostatni raz sięgnąłem do
+książki H. Marcinkowskiej „Wstęp do teorii równań różniczkowych cząstkowych”,
+ale szybko się przekonałem, iż w pewnych jej miejscach korzysta się z teorii
+funkcji analitycznych jednej zmiennej zespolonej, a wtedy znałem ją bardzo
+słabo. Może by więc sięgnąć do niej po powrocie do domu? Zobaczymy jak wtedy
+to będzie wyglądać.
+
+W każdym razie, równanie falowe posiada zarówno rozwiązania postaci funkcji
+trygonometrycznych typu sinus lub cosinus, ale też funkcje które nie
+posiadają żadnej okresowości. Ale skoro są rozwiązaniami najbardziej
+podstawowego rozwiązania opisującego fale sinusoidalne, to jest zasadne
+również je nazywać falami. A może nie? Dobrze byłoby mieć w takiej sytuacji
+książkę F.C. Crawforda „Fale” i zobaczyć jak on definiuje oraz klasyfikuje
+fale. Pewien jak to fizyk, robi to bardzo intuicyjne. Jednak jego książka,
+na pewno dałaby dobre podstawy do bardziej precyzyjny rozważań nad naturą
+fal. Dla muzyki podstawą wydają się być fale, które reprezentują ruch
+periodyczny. Ciekawe jak daleko można dojść korzystając tylko z tej idei?
+
+Podczas tych rozmyślań przeszedłem do piosenki „A Tale That Wasn't Right”. To
+smutny, melancholijny utwór. Te słowa jakoś nie oddają nastroju jaki ma ten
+utwór, ale jakoś lepsze nie przychodzą mi do głowy. Dobrze, żeby ktoś bardziej
+czujący muzykę, niż ja, siadł i opisał wszystkie utwory na tej płycie. Wtedy
+nie musiałbym się przejmować tym, ile moim rozważaniom brakuje. Znowu muszę
+zrobić wymówkę i powiedzieć, że ostatnio staram się wyjątkowo mocno unikać
+utworów, z których płynie smutek, tak jak z tej „opowieści, która nie była
+taka jak powinna być”. Czy to w ogóle dobre tłumaczenie tego tytułu?
+
+Następny utworem jest „Future World”, ten utwór też ma taką energię w sobie.
+Gdy go słucham, zwłaszcza początku, to chciałbym zwiększyć prędkość samochodu
+do 36 m/s. Wracając jednak do muzyki, ciekawe co wiem dziś o fizyce
+powstawania dźwięku w różnych instrumentach? Który instrument jest fizycznie
+najlepiej poznany? Tyle ciekawych pytań na które chciałbym znać odpowiedź.
+Z tego co pamiętam z jednego artykułu, to nie objedzie się bez szeregów
+Fouriera, ale coś mi mówi, że na nich samych się nie skończy. Ciekawe czy
+aerodynamika, jako teoria ruchu gazów, się tutaj przydaje?
+
+Kolejny utwór na płycie to trwający ponad 780 sekund „Halloween”. Utwór o tym
+tytule, chyba nie ma tekstu wartego czytania, ale muzycznie, to jest coś
+niesamowitego. Musiałbym go przesłuchać tak z 10 razy, by móc w ogóle ogarnąć
+muzyczną strukturę tego utworu. Chciałbym by ktoś kompetentny opisał ten
+utwór, bo struktura utworów muzycznych mnie intryguje. Czy tutaj fizyka
+ma cokolwiek do powiedzenia? Czy to raczej część estetyki muzycznej? Nie
+umiem dziś na to odpowiedzieć.
+
+Terminologia muzyczna sprawia mi duże trudności, gdy chodzi o jej
+przyswojenie, ale wydaje mi się, że jeśli podzielę częstotliwość danego
+dźwięku, przez częstotliwość dźwięku niższego od niego o pół tonu to dostanę,
+w przybliżeniu, pierwiastek z 2 stopnia 12-tego, czyli w przybliżeniu
+1.0594630943. Taką liczbę da się jeszcze zapamiętać, ale jak wyglądają
+jej do kolejne potęgi? Trzeba to będzie sprawdzić na komputerze, gdy w końcu
+dojadę do Warszawy.
+
+Niedługo dojadę do Warszawy i będę musiał gdzieś zostawić samochód na kilka
+dni. A potem lot samolotem. Zastanawiałem się jakie z jaką prędkością latają
+samoloty pasażerskie, więc sięgnąłem do internetu i strona
+https://airadvisor.com/pl/blog/predkosc-samolotu powiada, że typowa prędkość
+samolotów pasażerski w trakcie lotu, zawiera się między 222 m/s a 250 m/s.
+Fizyka samolotów to też bardzo ciekawa sprawa, ale też nie wiem o niej
+wiele. Pamiętam, że dynamika cieczy i gazów, czyli hydrodynamika
+i aerodynamika, to ogromnie trudne działy fizyki, gdzie wiele ważnych
+problemów wciąż pozostaje nierozwiązanych. Warto byłoby sprawdzić, co
+dziś wiemy o fizyce lotu samolotów.
+
+Nie pamiętam ile razy wysłuchałem utworu „Halloween”, pamiętam jednak, że
+zaraz przed dojazdem do Warszawy, włączyłem nie trwający nawet 120 sekund,
+ostatni utwór z płyty „Keeper of the Seven Keys”, czyli „Follow the Sign”.
+Muszę pochwalić jego twórców, że w tak krótki czasie, zawarli tyle muzyki.
+Wraz z tym utworem, chyba kończy się moja znajomość z tym albumem. Czas też
+kończyć, tą część mojej opowieści. Wszak trzeba będzie na komputerze
+przeliczyć kolejne potęgi liczby 1.0594630943.

@@ -1,0 +1,114 @@
+Poniższy tekst, jest zapisem podróży jaką zapalony fizyk, do którego wszyscy
+mówią „Wojtek”, odbył po Polsce i okolicach. Jak to z fizykami bywa, jego
+opowieść jest przeplatana różnymi informacjami osobliwej treści.
+
+Spod hotelu w Lublinie wyjechałem z prędkością 9 m/s. Gdy opuściłem miasto
+przyśpieszyłem do 95 km/h. Zupełnie nie pamiętał, czy taka prędkość jest
+w ogóle dozwolona. Moim celem był Tarnów. Po drodze zwolniłem do 24 m/s.
+Gdy dojechałem do Tarnowa oszacowałem za pomocą prostego pręta pod jakim
+kątem względem ziemi znajduje się Słońce. Było to około 0.75 radiana, ale
+pomiar był obarczony sporą niepewnością, który mógł nawet wynosić 0.05
+radiana.
+
+W sklepie kupiłem 0.5 kg mięsa, 0.2 kg masła i 2 bagietki. Potem przez `1500
+sekund spacerowałem po ulicy Krakowskiej (zapomniałem zapisać niepewności
+tego pomiaru). Potem wsiadłem do samochodu i przed wyruszeniem w drogę,
+sprawdziłem miernik poziomu paliwa. Wskazywał 0.36 pełnego stanu, z
+niepewnością nie większą niż 0.05 pełnego stanu. Pojechałem więc na stację
+i zatankowałem od pełna. Muszę sprawdzić ile litrów pojemności ma bak mojego
+auta. Wiecznie o tym zapominam.
+
+Ruszyłem w kierunku Bochni, najpierw z prędkością 11 m/s, poza miastem
+przyśpieszyłem do 26 m/s. Przyszło mi do głowy, że nie wiem z jaką
+niepewnością powinienem notować te wyniki? Zajmę się tym problemem, gdy wrócę
+z podróży. Gdy o tym myślałem, zwolniłem do 40 km/h albo 11.111... m/s,
+oczywiście w granicach niepewności. Potem przyśpieszyłem 19.444... m/s.
+Muszę się nauczyć na pamięć jaka jest dozwolona prędkość w takich warunkach.
+
+Zatrzymałem się na chwilę w Bochni, odwiedziłem basen. Lubię do niego
+zaglądać nawet, gdy się nie kąpię. Jeśli przyjąć, że basem na 5 metrów
+szerokości, 10 długości i 2 głębokości, to pomieści on 100 metrów
+sześciennych wody, czyli 100 000 litrów. Ale jakie są wymiary basenu
+w Bochni? I ile wody tam naprawdę jest, bo trzeba uwzględnić, że przecież
+jest ona filtrowana i musi być w ciągłym obiegu. A może to nie jest prawdą
+w przypadku tego basenu? Niestety, nie znam się na tego typu rzeczach.
+
+Wróciłem do samochodu i stwierdziłem, iż spróbuję dojechać do Myślenic i tam
+przenocować. Czy prędkość 25 m/s powinna mi spokojnie wystarczyć do tego celu.
+Włączyłem w odtwarzaczu płytę zespołu Helloween „Better Than Raw”.
+Przesłucham ją ostatni raz i dam komuś w prezencie. Tam się nie będzie
+marnować, a nie jak u mnie zbierać kurz na półce. Ciekawe z jaką prędkością
+się ona obraca w napędzie? Gdy ostatni raz mierzyłem płytę CD linijką to
+miała ona 119 minimetrów, plus minus jeden minimetr. Lub przechodząc na układ
+SI, daje to nam 0.119 metra. Biorąc pi jako w przybliżeniu 3.1415 i
+przyjmując, że płytka obraca się raz na sekundę to dawałoby to jakieś 0.373
+m/s, czyli w przybliżeniu 1.3 km/h. Oczywiście, wynik ten obliczyłem już
+po tym jak zawitałem do Myślenic.
+
+W trakcie tych rozważań zdążyłem wysłuchać kilka razy utworów „Push”,
+„Falling Higher” i „Hey Lord!”. Nie rozumiem tekstu „Falling Higher”, ale po
+krótkiej jego lekturze, wygląda na to, że wcale nie potrzebuję wiedzieć o
+czym on jest. Tekst „Hey Lord!” jest za to prosty w zrozumieniu. Przynajmniej
+w głównej swojej myśli, bo jakieś niuanse zawsze mogą umknąć. Wracając do
+obliczeń, gdy o tym myślę, za rzadko obliczam niepewność pomiarową, muszę
+sięgnąć do książki „Teoria pomiarów” pod red. Szydłowskiego, by nauczyć się
+robić o poprawnie. W tej jednak podróży, takie wstępne oszacowania danej
+wielkości, nawet bez znanej niepewności, powinny być wystarczające.
+
+Dojechałem w końcu do Myślenic, gdzie spędziłem noc w kolejnym hotelu. Przed
+snem wyciągnąłem mojego laptopa i napisałem prosty program w C, który mi
+obliczył kilka wyrażeń matematycznych. Jakoś to tak wyszło, że żaden
+program mający służyć za kalkulator mnie się nie chwycił, nawet ten na
+smartfonie, a jak chcę cokolwiek bardzie skomplikowanego policzyć, o piszę
+niewiarygodnie prosty program w C. Muszę obejrzeć kilka wideo na kanale
+dr-Jonas-Birch, bo mam wrażenie, że moja znajomość C wymaga odświeżenie, gdy
+chodzi o coś bardziej skomplikowanego, niż proste obliczenia matematyczne.
+
+Następnego dnia wstałem około 8 (a jaka to była godzina czasu
+astronomicznego?), zjadłem śniadanie dumając ile może ważyć to co jem i
+wypiję? Chyba powinienem kupić sobie wagę kuchenną, by wyrobić sobie intuicję,
+ile to jest 10 g, czy w SI 0.01 kg. Ale ten pomysł musi poczekać na swoją
+kolej. Potem wsiadłem w auto i z prędkością 20.833 m/s pojechałem do Krakowa.
+Na ulicy Karmelickiej jest tam antykwariat z książkami, który lubię odwiedzać,
+może znajdę tam jakąś ciekawą książkę do fizyki matematycznej? A na pewno
+porozmawiam chwilę z właścicielem, to są zawsze miłe spotkania.
+
+Na Karmelickiej jest też bardzo sympatyczna restauracja Doskoi z japoński i
+nie tylko jedzeniem. Po wizycie w antykwariacie poszedłem tam zjeść zupę
+miso i jedną z ich mis ryżowych. Zupa miso zawsze dobrze smakuje, ale
+najlepsza jest w zimną pogodę. Gdy jeszcze byłem na studiach i miałem
+przedmiot o matematycznych metodach fizyki, tam robiliśmy równanie
+przewodnictwa cieplnego. Pamiętam jak wtedy zastanawiałem się, jak za jego
+pomocą rozwiązać problem stygnięcia zupy. Trzeba na początku ustalić jaki
+ma mieć talerz w którym ta zupa ma się znaleźć, najprostszy byłby talerz
+w kształcie walca. Jednak wolałbym wiedzieć, jak stygnie zupa w talerzu, który
+ma kształt misy, takim kształcie który otrzymamy jak utniemy płaszczyzną
+fragment sfery.
+
+Zaletą restauracji jest niewątpliwie to, że podają ci masę jaką ma twój
+posiłek, można więc robić sensowne statystyki. Nie podają niepewności
+pomiarowej, ale można z tym żyć. Wszak to restauracja dla normalnych ludzi,
+a nie dla maniaków obliczeń.
+
+Po jedzeniu, zupa miso jak zwykle pyszna, wsiadłem do auta i z prędkością
+8.333 m/s wyjechałem z miasta. Kierowałem się do Kielc. Kiedy ja tam ostatnio
+byłem, czy kiedykolwiek obszedłem to miasto? Chyba nie. Mam teraz nadzieję
+spotkać tam mojego znajomego. Przez COVIDa-19 i całą izolację jego tendencja
+by siedzieć i pracować tylko się pogłębiła, przez co strasznie rzadko się
+widujemy.
+
+W samochodzie dalej słuchałem utworów z „Better Than Raw”: „Don't Spite On My
+Mind”, „Revelation” i „Time”. Następny jest „I can”, jak siądę przed
+laptopem, to będę musiał zobaczyć teledysk do tego utworu. Pamiętam, że
+wokalista jechał w nim samochodem z zawiązanymi oczami i śpiewał. Nie wiem,
+czy cokolwiek w tym teledysku ma sens, ale jestem pewien, że tak gdy wtedy
+jak ja byłem nastolatkiem, tak i dziś wielu nastolatków go polubi. Chciałbym
+bez czułostek, nostalgii i sentymentalizmu zostawić tą muzykę za sobą,
+dlatego teraz słucham tych utworów, by móc je przemyśleć jeszcze raz
+i wtedy umieścić w przeszłości.
+
+Do Kielc dojechałem z średnią prędkością 22.222 m/s. Moja podróż jeszcze się
+nie skończyła, ale ta część notatek z niej zmierza ku końcowi, zapisałem już
+wystarczająco dużo. Wszak jest tyle innych rzeczy do zrobienia, jak
+zgłębienie języka C. Kanał dr-jonas-birch czeka na nas. Spróbujcie sami
+na niego zajrzeć: https://www.youtube.com/@dr-Jonas-Birch.
