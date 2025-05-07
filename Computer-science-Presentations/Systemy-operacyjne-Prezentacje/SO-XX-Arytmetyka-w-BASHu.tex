@@ -1,0 +1,935 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{System plików}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 20k+, 9k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{?????}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{?????}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{????}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{?????}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ##################
+% \section{????}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{????}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{????}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{??????}
+
+
+
+
+
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+% ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

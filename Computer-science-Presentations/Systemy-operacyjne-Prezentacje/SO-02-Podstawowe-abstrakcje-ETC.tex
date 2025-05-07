@@ -502,7 +502,22 @@ eprint=true,
   \frametitle{System Artemis}
 
 
+  Wiemy, że~dla wielu osób zainstalowanie na swoim komputerze systemu
+  GNU/Linux, może być sporym wyzwaniem, dlatego tutaj wyjaśnimy, jak
+  można~się zalogować do niego z~poziomu systemu Windows. Dokładniej,
+  pokażemy, jak połączyć~się przez internet do komputerów dysponujących
+  systemem GNU/Linux, poprzez uczelniany system Artemis. Chciałbym przy tym
+  bardzo podziękować panu Tomaszowi Molęckiemu z~działu \textsc{it}
+  \textsc{wsz}i\textsc{b}u za~udzielenie mi informacji na temat tej
+  procedury.
 
+  Pierwszy krok polega na pobraniu programu
+  \colorhref{https://winscp.net/eng/download.php}{Win\textsc{scp}}. Gdy
+  już mamy go dostępnego, znajdujemy okno logowania, które wypełniamy
+  zgodnie ze~zdjęciem widocznym na następnym slajdzie. Dane logowania
+  wpisujemy takie same jak dla systemu SUSZI. Gdy to jest gotowe, klikamy
+  na przycisk logowania. W~razie problemów proszę napisać do nas (\email),
+  lub pana Molęckiego.
 
 \end{frame}
 % ##################
@@ -523,15 +538,15 @@ eprint=true,
     \centering
 
 
-    \includegraphics[scale=0.23]
-    {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
+    \includegraphics[scale=0.45]
+    {./Presentations-pictures/Miscancellous-pictures/Artemis.jpg}
 
 
-    \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
-      głównego narzędzia pracy na tym przedmiocie.}
+    \caption{Logowanie~się do systemu Artemis za pomocą programu
+      Win\textsc{scp}}.
 
 
-    \label{fig:BASH-shell}
+    \label{fig:Artemis-system}
 
   \end{figure}
 
@@ -659,6 +674,33 @@ eprint=true,
 
   Błędy w~przykładach też mogą~się zdarzać, prosimy by pisać o~nich do nas
   po adres \email.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Z~BASHem dzieje~się coś dziwnego}
+
+
+  Błędne wprowadzenie jakiegoś polecenia może spowodować, że~\textsc{bash}
+  przestanie reagować, lub będzie reagował zupełnie nie tak jak tego
+  oczekujemy. Ponieważ \textsc{bash} nie wiem czym jest litość, w~zależności
+  od tego co konkretnie~się zepsuło, dokładna procedura naprawy jest inna.
+
+  Jednak w~większości przypadków, by wrócić do normalnej pracy wystarczy
+  wcisnąć \alert{raz} \texttt{Ctrl-d}. Należy zaznaczyć, że~wciśnięcie
+  \texttt{Ctrl-d} \alert{więcej niż raz} może spowodować zamknięcie powłoki
+  \textsc{bash} i~potrzeby zrobienia kilku rzeczy ponownie. Z~tego też
+  powodu, początkujący \alert{nigdy} nie powinni używać tego skrótu, jeśli
+  wszystko działa jak trzeba.
+
+  Mimo tych zastrzeżeń, \texttt{Ctrl-d} jest jednym z~naszych najlepszych
+  przyjaciół.
 
 \end{frame}
 % ##################
@@ -1507,13 +1549,6 @@ eprint=true,
   Musimy podkreślić, że~w~tym co napisaliśmy jest wiele uproszczeń,
   ale~nie chcieliśmy wchodzić teraz w~zbyt wiele szczegółów.
 
-  % Proszę pamiętać, że~\texttt{mv} jest programem, napisanym prawdopodobnie
-  % w~języku~C, który jakiś programista kiedyś stworzył i~ten twórca
-  % zdecydował, że~tak ma działać
-
-  % Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
-  % zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
-
 \end{frame}
 % ##################
 
@@ -1526,23 +1561,6 @@ eprint=true,
   \frametitle{Polecenia też ktoś napisał}
 
 
-  % Problem bierze~się stąd, że~jeśli wprowadzimy niepoprawne polecenie
-  % \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
-  % to \textsc{bash} zinterpretuje „\texttt{-}”, „\texttt{i}” oraz
-  % „\texttt{Data-01.dat}” jako nazwy \alert{plików}, które ma przenieść
-  % do katalogu o~nazwie „\texttt{Data-January-04.dat}” i~zgłasza problem,
-  % że~plik \texttt{Data-January-04.dat} nie jest katalogiem.
-
-  % Polecenie \texttt{mv} zostało w~taki sposób napisane, że~oczekuje,
-  % iż~przesłana do niej opcja zaczyna~się od symbolu „\texttt{-}”,
-  % a~natychmiast po tym symbolu litera oznaczająca konkretną opcję.
-  % W~przeciwnym razie zinterpretuje następujące po nim napisy jako nazwy
-  % odpowiednich plików lub katalogów i~spróbuje wykonać na nich odpowiednią
-  % operację.
-
-  % Musimy podkreślić, że~w~tym co napisaliśmy jest wiele uproszczeń,
-  % ale~nie chcieliśmy wchodzić teraz w~zbyt wiele szczegółów.
-
   Proszę pamiętać, że~polecenie \texttt{mv} jest programem, napisanym
   prawdopodobnie w~języku~C, który jakiś programista kiedyś stworzył i~ten
   człowiek zdecydował, że~to polecenie ma działać tak, a~nie inaczej.
@@ -1552,38 +1570,6 @@ eprint=true,
   Gdybyśmy dziś tworzyli jakiś system operacyjny i~jego powłokę „od zera”,
   to pewnie byśmy zaprojektowali je inaczej. Trzeba wszak uczyć~się na
   własnych błędach ;).
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Konwencje}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Konwencja zapisu nazwy katalogów}
-
-
-  Jak już widzieliśmy, jeśli chcemy przejść do~katalogu \texttt{Systemy-} \\
-  \texttt{operacyjne-Ćwiczenia} to możemy użyć jednej z~dwóch
-  równoważnych nazw tego katalogu. \\
-  \texttt{\$ cd Systemy-operacyjne-Ćwiczenia/} \\
-  \texttt{\$ cd Systemy-operacyjne-Ćwiczenia}
-
-  W~dalszym ciągu tych notatek będziemy preferowali nazwy katalogów
-  kończą~się symbolem „\texttt{/}”, gdyż przekazują one dodatkową
-  informację, że~dany obiekt jest katalogiem.
 
 \end{frame}
 % ##################
