@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{light}
 \fi
 
 
@@ -166,19 +166,7 @@ eprint=true,
   \frametitle{Wyszukiwanie całych wyrazów}
 
 
-  Jak widzieliśmy, normalnie \texttt{grep} wyszukuje ciąg symboli,
-  niezależnie, czy tworzą one w~tekście osoby wyraz, czy nie. Żeby
-  wyszukać tylko te wiersze, w~których dany ciąg symboli pojawia~się
-  tylko jako osobne słowo, używamy flagi~\texttt{-w}: \\
-  \texttt{\$ grep -n -w "in"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 14}{\color{jAxisBlue} :}quis interdum. Integer at
-    orci at neque pulvinar pretium. Donec {\color{red} in} elementum} \\
-  \texttt{{\color{green} 24}{\color{jAxisBlue} :}massa et rhoncus aliquam.
-    Suspendisse rhoncus nunc {\color{red} in} finibus mattis.} \\
-  \texttt{{\color{green}37}{\color{jAxisBlue} :}vel aliquet. Proin
-    {\color{red} in} hendrerit elit, a finibus ipsum. Integer
-    sollicitudin} \\
-  \hspace{1em} $\vdots$ \\
+
 
 \end{frame}
 % ##################
@@ -370,9 +358,9 @@ eprint=true,
 
   Tak jak poprzednio, nie będziemy zagłębiać~się w~ciemny gąszcz detali,
   tłumaczących co można zrobić, a~czego nie, zamiast tego podamy jaki
-  pisać kod dla \textsc{bash}a, który w~naszej opinii jest optymalny
-  i~działa poprawnie. Wydaje nam~się, że~takie podejście, jest optymalnym
-  rozwiązaniem, gdy weźmiemy pod uwagę charakter tego kursu.
+  pisać kod \textsc{bash}a, który w~naszej opinii jest optymalny
+  i~działa poprawnie. Uważamy, że~takie podejście jest optymalnym
+  rozwiązaniem, biorąc pod uwagę warunki tego kursu.
 
   O~wszystkich znalezionych tu błędach, proszę nas informować pod adresem
   \email.
@@ -474,84 +462,149 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Jak zobaczyć szerszy kontekst?}
+% ##################
+\begin{frame}
+  \frametitle{Ćwiczenie~1}
 
 
-%   Powiedzmy, że~oprócz linii w~której znaleziono ciąg symboli, chcemy
-%   zobaczyć też linię która następuje zaraz za~nią. W~tym celu do polecenia
-%   dodajemy flagę \texttt{-A 1}. Analogicznie, by zobaczyć dwie linie
-%   następujące po każdej linii w~której znaleziono ten ciąg dodajemy
-%   flagę \texttt{-A 2}, gdy chcemy zobaczyć trzy linie flagę
-%   \texttt{-A 3}.
+  To ćwiczenie będzie wymagało trochę programowania w~języku~C,
+  proszę to potraktować jako powtórkę z~tego języka. Jeśli w~treści jest
+  napisane, że~należy utworzyć dany katalog, a~Państwo już utworzyli, to
+  proszę pominąć ten fragment.
 
-%   \texttt{\$ grep -n -A 1 "Du"{} Lorem-ipsum.txt} \\
-%   \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
-%     fringilla dictum leo id interdum. Ut sit amet sem a nunc porttitor} \\
-%   \texttt{{\color{green} 33}{\color{jAxisBlue} -}vestibulum.} \\
-%   \texttt{{\color{jAxisBlue} -{}-}} \\
-%   \texttt{{\color{green} 46}{\color{jAxisBlue} :}nisi. Maecenas euismod
-%     magna et est iaculis sollicitudin. {\color{red} Du}is turpis elit,} \\
-%   \texttt{{\color{green} 47}{\color{jAxisBlue} -}vulputate quis felis vel,
-%     laoreet suscipit diam. Sed vitae diam eu felis} \\
-%   \hspace{1em} $\vdots$
+  W~pierwszy kroku tworzymy katalog w~katalogu domowym katalog
+  \texttt{Praca-z-danymi/}, które incjalizujemy jako repozytorium Gita.
+  Następnie tworzymy tam katalogi \texttt{Skrypty-BASHa-do-danych/},
+  \texttt{Generowanie-danych/} i~\texttt{Dane-do-analizy/Miesiąc-Rok/},
+  przy czym za~\texttt{Miesiąc} i~\texttt{Rok} wstawiamy obecny miesiąc
+  i~rok.
 
-% \end{frame}
-% % ##################
+  W~\texttt{Generowanie-danych/} piszemy programy w~języku~C o~nazwie
+  \texttt{sin-with-noise.c}, który generuje nam wartości funkcji $\sin$
+  „zaszumione” przez pseudolosowe wyniki generowane przez funkcję
+  $\text{rand}$ z~biblioteki \texttt{stdlib}. Proszę przy tym ustawić by
+  szum generował liczby $-0.5$, $-0.49$, $-0.48$, $-0.47$, \ldots,
+  $0.49$,~$0.5$. Jeśli jest to trudne, to proszę poprosić prowadzącego
+  o~pomoc.
 
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Jak zobaczyć szerszy kontekst?}
-
-
-%   Aby zobaczyć wiersz, który znajduje~się przed tym w~którym znaleziono
-%   szukany ciąg symboli, używamy flagi \texttt{-B 1}. Analogicznie działają
-%   flagi \texttt{-B 2}, \texttt{-B 3}, etc.
-
-%   \texttt{\$ grep -n -B 1 "Du"{} Lorem-ipsum.txt} \\
-%   \texttt{{\color{green} 31}{\color{jAxisBlue}:}Maecenas bibendum egestas
-%     condimentum. Nunc lobortis ac tellus at malesuada.} \\
-%   \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
-%     fringilla dictum leo id interdum. Ut sit amet sem a nunc porttitor} \\
-%   \texttt{{\color{jAxisBlue} -{}-}} \\
-%   \texttt{{\color{green} 45}{\color{jAxisBlue}-}suscipit. Nullam at neque
-%     nulla. Proin quis rhoncus dolor. Nam quis tellus} \\
-%   \texttt{{\color{green}46}{\color{jAxisBlue} :}nisi. Maecenas euismod
-%     magna et est iaculis} \\
-%   \texttt{sollicitudin. {\color{red} Du}is turpis elit,}
-
-% \end{frame}
-% % ##################
+\end{frame}
+% ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Rozwój GNU/Linuxa}
+% ##################
+\begin{frame}
+  \frametitle{Ćwiczenie~1}
 
 
-%   Tekst który wyszykujemy \texttt{grep}em nie musi~się składać tylko
-%   i~wyłącznie z~liter, co obrazuje przykład poniżej.
+  Program \texttt{sin-with-noise.c} ma generować zaszumione wartości funkcji
+  $\sin$ dla argumentów od $x = -20.0$ do $20.0$ z~krokiem $0.1$.
+  Wartości te ma zapisywać do pliku \texttt{Data-sin.dat}. Jeśli ktoś
+  ma problem z~pracą z~plikami z~poziomu języka~C, co bywa trudne, to niech
+  program ten wypisze te wyniki na ekranie.
 
-%   \texttt{\$ grep -n "na sem"{} Lorem-ipsum.txt} \\
-%   \texttt{{\color{green} 5}{\color{jAxisBlue} :}eleifend commodo. Etiam
-%     ornare congue erat, dapibus} \\
-%   \texttt{porttitor mag{\color{red}na sem}per} \\
-%   \texttt{{\color{green} 120}{\color{jAxisBlue} :}sollicitudin sapien.
-%     Integer et mag{\color{red}na sem}per, commodo nunc vel, eleifend}
+  Następnie w~katalogu \texttt{Skrypty-BASHa-do-danych/} tworzymy
+  skrypt \texttt{generate-data-with-noise-Sin.sh}, który kompiluje plik
+  \texttt{sin-with-noise.c}, tworząc plik wykonywalny
+  \texttt{generatingDataSin.out}. Następnie skrypt ma uruchomić program
+  \texttt{generatingDataSin.out} i~wyniku jego działania zaszumione
+  dane mają~się znaleźć w~pliku \texttt{Data-sin.dat}.
+  Jeśli \texttt{generatingDataSin.out} wypisuje wyniki na ekranie, to
+  można je zapisać w~danym pliku korzystając z~przekierowania.
 
-% \end{frame}
-% % ##################
+  Przy pisaniu wszystkich tych poleceń dobrze jest korzystać z~zmiennej
+  środowiskowej \texttt{HOME} i~utworzyć własne zmienne zawierające
+  ścieżki do~konkretnych katalogów i~plików.
+
+\end{frame}
+% ##################
 
 
 
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ćwiczenie~1}
+
+
+  W~następnym kroku skrypt \textsc{bash}a ma przenieść plik
+  \texttt{Data-sin.dat} do~katalogu \texttt{Miesiąc-Rok/}.
+
+  Kolejny element ćwiczenia polega na~sprawdzeniu czy zmienna środowiskowa
+  \texttt{PATH} zawiera katalog \texttt{\$HOME/bin}. Proszę pamiętać,
+  że~aby zobaczyć jak dokładnie wygląda ta ścieżka należy użyć polecenia \\
+  \texttt{\$ echo \$HOME/bin} \\
+  zaś zawartość zmiennej \texttt{PATH} sprawdzamy poleceniem \\
+  \texttt{\$ echo \$PATH} \\
+  Jeśli zmienna \texttt{PATH} nie zawiera pożądanej ścieżki, to na końcu
+  pliku \texttt{\$HOME/.bashrc} dodajemy linię: \\
+  \texttt{PATH=\$HOME/bin:\$PATH} \\
+  i~restartujemy powłokę. Po restarcie sprawdzamy czy \texttt{PATH}
+  zawiera pożądaną ścieżkę. Jeśli nie, to szukamy błędu w~pliku
+  \texttt{.bashrc} lub prosimy prowadzącego o~pomoc.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ćwiczenie~1}
+
+
+  Proszę sprawdzić, czy na komputerze jest obecny katalog
+  \texttt{\$HOME/bin}. Jeśli go nie ma, to proszę go utworzyć.
+
+  Jeśli w~tym momencie zmienna \texttt{PATH} zawiera ścieżkę
+  do~\texttt{\$HOME/bin}, to tworzymy link symboliczny do pliku
+  \texttt{generate-data-with-noise-Sin.sh}, którym jest plik
+  \texttt{\$HOME/bin/generateDataSin}. Proszę do tworzenia linku
+  symbolicznego użyć ścieżek bezwzględnych, bo inaczej można utknąć
+  na pewnych subtelnościach pracy \texttt{bash}a.
+
+  Następnie proszę sprawdzić, czy wykonanie polecenia \\
+  \texttt{\$ generateDataSin} \\
+  poprawnie tworzy plik \texttt{Data-01.dat} w~katalogu
+  \texttt{Miesiąc-Rok/}.
+
+  Na koniec proszę wystawić na scenę pliki \texttt{sin-with-noise.c},
+  \texttt{Miesiąc-Rok/Data-sin.dat}
+  oraz~\texttt{generate-data-with-noise-Sin.sh} i~je skommitować.
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ćwiczenie~2}
+
+
+  Ćwiczenie to polega na powtórzeniu poprzedniego, tym razem jednak
+  tworzymy plik \texttt{exp-with-noise.c}, gdzie funkcja $\exp$ jest
+  zaszumiana przez pseudolosowy sygnał z~zakresu $-1.0$, $-0.99$, \ldots,
+  $0.99$, $1.0$. Odpowiedni program ma generować zaszumione wartości
+  funkcji $\exp$ dla $x = -10.0$ do~$x = 10.0$ z~krokiem $0.1$.
+
+  Następnie tworzymy skrypt \texttt{generate-data-with-noise-exp.sh}, który
+  kompiluje \texttt{exp-with-noise.c} tworząc plik
+  \texttt{generatingDataExp.out}, który z~kolei tworzy plik
+  \texttt{Data-exp.dat}. Do skryptu \textsc{bash}a tworzymy symboliczny
+  link \texttt{\$HOME/bin/generateDataSin}. Tak jak poprzednio wystawiamy
+  na~scenę odpowiednie pliki i~kommitujemy.
+
+\end{frame}
+% ##################
 
 
 
@@ -564,51 +617,13 @@ eprint=true,
 % % ######################################
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Wyrażenia regularne \texttt{grep}a}
-
-
-%   Do tej pory pracowaliśmy z~ciągami symboli, które reprezentowały „same
-%   siebie”, teraz przejdziemy do bardziej zaawansowanych sposobów określania
-%   ciągów symboli, zwanych
-%   \colorhref{https://en.wikipedia.org/wiki/Regular_expression}
-%   {wyrażeniami regularnymi}.
-%   Rozpoczniemy od wyrażenia
-%   \texttt{"\hspace{0.2em}$\hat{}$\hspace{0.2em}te"}. Symbol
-%   „\hspace{0.3em}$\hat{}$\hspace{0.3em}” oznacza, że~\texttt{grep} będzie
-%   szukał ciągu „\texttt{te}”, który rozpoczyna linię tekstu. \\
-%   \texttt{\$ grep -n "\hspace{0.2em}$\hat{}$\hspace{0.2em}te"{}
-%     Lorem-ipsum.txt} \\
-%   \texttt{{\color{green} 62}{\color{jAxisBlue} :}{\color{red} te}mpor
-%     commodo, sapien leo bibendum augue, nec bibendum nibh nunc vitae} \\
-%   \texttt{{\color{green} 99}{\color{jAxisBlue} :}{\color{red} te}llus nec
-%     metus tincidunt tincidunt blandit vitae enim. Phasellus cursus}
-
-% \end{frame}
-% % ##################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Wyrażenia regularne \texttt{grep}a}
 
 
-%   Jeśli chcemy by \texttt{grep} szukał tylko ciągu symboli tylko na końcu
-%   linii, to~kończymy ten ciąg znakiem „\texttt{\$}”. \\
-%   \texttt{\$ grep -n "ue\$"{} Lorem-ipsum.txt} \\
-%   \texttt{{\color{green} 2}{\color{jAxisBlue} :}Phasellus gravida ligula
-%     eros, eget ornare purus} \\
-%   \texttt{consequat vitae. Quisq{\color{red} ue}} \\
-%   \texttt{{\color{green} 6}{\color{jAxisBlue} :}vitae. In ultrices turpis
-%     et arcu venenatis, at feugiat elit lacinia. Quisq{\color{red} ue}} \\
-%   \hspace{1em} $\vdots$
-
-% \end{frame}
-% % ##################
 
 
 
