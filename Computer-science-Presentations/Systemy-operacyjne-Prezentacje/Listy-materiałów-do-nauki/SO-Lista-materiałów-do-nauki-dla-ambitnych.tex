@@ -1,0 +1,208 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration and packages
+% ------------------------------------------------------------------------------------------------------------------
+% Package for discovering wrong and outdated usage of LaTeX.
+% More information to be found in l2tabu English version.
+\RequirePackage[l2tabu, orthodox]{nag}
+% Class of LaTeX document: [size of paper, size of font]{document class}
+\documentclass[a4paper,11pt]{article}
+
+
+
+% ------------------------------------------------------
+% Packages not tied to particular normal language
+% ------------------------------------------------------
+% This package should improved spaces in the text.
+\usepackage{microtype}
+% Add few important symbols, like text Celcius degree
+\usepackage{textcomp}
+
+
+
+% ------------------------------------------------------
+% Polonization of LaTeX document
+% ------------------------------------------------------
+% Basic polonization of the text
+\usepackage[MeX]{polski}
+% Switching on UTF-8 encoding
+\usepackage[utf8]{inputenc}
+% Adding font Latin Modern
+\usepackage{lmodern}
+% Package is need for fonts Latin Modern
+\usepackage[T1]{fontenc}
+
+
+
+% ------------------------------------------------------
+% Setting margins
+% ------------------------------------------------------
+\usepackage[a4paper, total={14cm, 25cm}]{geometry}
+
+
+
+% ------------------------------------------------------
+% Setting vertical spaces in the text
+% ------------------------------------------------------
+% Setting space between lines
+\renewcommand{\baselinestretch}{1.1}
+
+% Setting space between lines in tables
+\renewcommand{\arraystretch}{1.4}
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{SO-Listy-materiałów-do-nauki-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% You need to put them in the same directory as .tex file
+% ------------------------------------------------------
+% Package containing local settings and commands for LaTeX
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text
+\usepackage{./Local-packages/general-commands}
+
+% Package containing commands and other code useful for working with
+% mathematical text
+% \usepackage{math-commands}
+
+
+
+
+
+% ------------------------------------------------------
+% Package "hyperref"
+% They advised to put it on the end of preambule
+% ------------------------------------------------------
+% It allows you to use hyperlinks in the text
+\usepackage{hyperref}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+% Title and author of the text
+\title{Podstawy informatyki z~językiem~C \\
+  {\Large Lista materiałów do nauki}}
+
+\author{Kamil Ziemian \\
+  \email}
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Title of the text
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\section{Informacje ogólne}
+
+\label{sec:Informacje-ogólne}
+% ######################################
+
+
+Niniejsza lista została napisana z~myślą o ???% tych, którzy dopiero zaczynają
+% swoją przygodę z~informatyką i~programowaniem. Dlatego staraliśmy~się
+% uczynić ją stosunkowo krótką i~dobierać głównie proste materiały do~nauki.
+% Niewątpliwie można ją jeszcze pod wieloma względami poprawić.
+
+Jeśli mieliby Państwo jakiekolwiek pytanie odnośnie języka~systemów
+operacyjnych, lub nie mogli zrozumieć jakiegoś fragmentu materiałów,
+proszę do mnie napisać pod adres~\email. Również wszelkie uwagi odnośnie
+tego dokumentu są mile widziane, proszę je kierować pod adres \email.
+W~szczególności proszę przesyłać informacje, że~któreś hiperlinki nie
+działają poprawnie. Taka jest natura rzeczy w~internecie, że~są usuwane lub
+przenoszone w~inne miejsca.
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{???}
+
+\label{sec:Informacje-ogólne}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+
+% End of the document
+\end{document}

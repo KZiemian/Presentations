@@ -17,11 +17,6 @@
 *.blg
 *.run.xml
 
-# ignore all picture files of these types
-#*.jpg
-#*.jpeg
-#*.png
-
 # ignore Emacs backup files
 *~
 
@@ -33,3 +28,6 @@ auto/
 
 # ignore directory with Jagiellonia theme default pictures
 JagiellonianPictures-directories
+
+# ignore specific pitctures
+W_Ross_Ashbys_1948_Homeostat.jpeg
