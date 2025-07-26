@@ -6,7 +6,7 @@ int main() {
 
   int intVar1 = 3;
 
-  printf("intVar1: %d.\n", intVar1);
+  printf("intVar1 == %d.\n", intVar1);
 
   /* W C by używać zmiennej musimy najpierw najpierw ją zdefiniować.
      Robimy to przez podanie typu, a potem nazwy, następnie możemy przypisać
