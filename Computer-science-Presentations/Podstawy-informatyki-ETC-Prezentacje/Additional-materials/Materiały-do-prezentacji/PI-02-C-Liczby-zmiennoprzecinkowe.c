@@ -8,7 +8,7 @@ int main() {
      numerycznych, który zajmuje się takimi rzeczami. */
 
   printf("Wypisz liczbę zmiennoprzecinkową: %f.\n", 0.5);
-  /* %f od „floating-point number”, liczba zmiennoprzecinkowa. */
+  /* %f pochodzi od „floating-point number”, „liczba zmiennoprzecinkowa”. */
   printf("Wypisz liczbę zmiennoprzecinkową: %.1f.\n", 0.5);
   /* %.1f oznacza: wypisz tylko pierwszą cyfrę po przecinku.
      Analogicznie wypisz dwie cyfry, trzy cyfry, etc. */

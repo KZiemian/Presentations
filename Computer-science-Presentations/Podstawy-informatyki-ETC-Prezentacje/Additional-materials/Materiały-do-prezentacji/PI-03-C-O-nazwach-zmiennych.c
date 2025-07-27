@@ -12,8 +12,8 @@ int main() {
   int intVar1 = 0;
   int intvar1 = 1;
 
-  printf("intVar1 = %d.\n", intVar1);
-  printf("intvar1 = %d.\n", intvar1);
+  printf("intVar1 == %d.\n", intVar1);
+  printf("intvar1 == %d.\n", intvar1);
 
 
 

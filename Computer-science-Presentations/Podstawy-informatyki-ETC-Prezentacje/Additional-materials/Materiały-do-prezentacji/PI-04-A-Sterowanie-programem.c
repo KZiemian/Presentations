@@ -20,10 +20,10 @@ int main() {
 
   if (intVar1 < 5) {
     /* Jeśli (intVar1 < 5) jest prawdą, to zostanie zrobione to. */
-    printf("intVar1 = %d, jest to mniej niż 5.\n", intVar1);
+    printf("intVar1 == %d, jest to liczba mniejsza niż 5.\n", intVar1);
   } else {
     /* Jeśli (intVar1 < 5) nie jest prawdziwe, to zostanie zrobione to. */
-    printf("intVar1 = %d, jest to liczba równa lub większa od 5.\n",
+    printf("intVar1 == %d, jest to liczba równa lub większa od 5.\n",
 	   intVar1);
   }
 

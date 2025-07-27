@@ -6,7 +6,7 @@ int main() {
   int intVar1 = 7;
 
   if (intVar1 > 5) {
-    printf("intVar1 = %d, jest to liczba większa niż 5.\n", intVar1);
+    printf("intVar1 == %d, jest to liczba większa niż 5.\n", intVar1);
   }
 
   printf("Koniec pierwszej instrukcji warunkowej if.\n\n");
@@ -14,9 +14,9 @@ int main() {
 
 
   if (intVar1 < 10) {
-    printf("intVar1 = %d, jest to liczba mniejsza niż 10.\n", intVar1);
+    printf("intVar1 == %d, jest to liczba mniejsza niż 10.\n", intVar1);
   } else {
-    printf("intVar1 = %d, jest to liczba równa lub większa od 10.\n",
+    printf("intVar1 == %d, jest to liczba równa lub większa od 10.\n",
 	   intVar1);
   }
 
@@ -25,12 +25,12 @@ int main() {
 
 
   if (intVar1 < 7) {
-    printf("intVar1 = %d, jest to liczba mniejsza niż 7.\n", intVar1);
+    printf("intVar1 == %d, jest to liczba mniejsza niż 7.\n", intVar1);
   } else if (intVar1 < 11) {
-    printf("intVar1 = %d, jest to liczba mniejsza od 11, ale większa bądź"
+    printf("intVar1 == %d, jest to liczba mniejsza od 11, ale większa bądź"
 	   "równa 7.\n", intVar1);
   } else {
-    printf("intVar1 = %d, jest to liczba więkzzek od 11.\n", intVar1);
+    printf("intVar1 == %d, jest to liczba więkzzek od 11.\n", intVar1);
   }
 
   printf("Koniec trzeciej instrukcj warunkowej if.\n\n");

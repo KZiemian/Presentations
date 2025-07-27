@@ -9,7 +9,8 @@ int main() {
      Jak jest dziś pogoda?
 
      Jak to zrobić? Proszę puścić wodze fantazji. Jeśli program nie będzie
-     działać, to wspólnie go naprawimy. */
+     działać, to wspólnie go naprawimy. W tym miejscu warto dodać, że „\n”
+     oznacza, iż w to miejsce zostanie wstawiony znak nowej linii. */
 
   /* Tekst do wypisania na ekranie nazywamy stringiem i umieszczamy
      między znakami cudzysłowa.

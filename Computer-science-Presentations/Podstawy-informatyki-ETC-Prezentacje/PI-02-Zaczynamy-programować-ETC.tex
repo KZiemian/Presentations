@@ -304,11 +304,11 @@ eprint=true,
   Podaję je komputerowi i~on je sam zsumuje.
 
   Należy też pamiętać, że~nie każdy problem należy próbować rozwiązać
-  za~pomocą komputera. Pomimo rozwoju \textsc{ai}, przynajmniej w~naszej
-  ocenie, jedną z~ważnych umiejętności które dobry informatyk musi posiąść,
-  jest rozeznanie, czy dany problem da~się rozwiązać za~pomocą komputera,
-  czy lepiej dać sobie z~tym spokój? Odpowiedź na to pytanie nie zawsze
-  będzie łatwa, prosta, ani krótka.
+  za~pomocą komputera. Pomimo rozwoju \textsc{ai} jedną z~najważniejszy
+  umiejętności, przynajmniej w~naszej ocenie, które dobry informatyk musi
+  posiąść, jest rozeznanie, czy dany problem da~się rozwiązać za~pomocą
+  komputera, czy lepiej dać sobie z~tym spokój? Odpowiedź na to pytanie nie
+  zawsze będzie łatwa, prosta, ani krótka.
 
 \end{frame}
 % ##################
@@ -379,8 +379,13 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Zaczynamy programowanie w~języku~C}
+  \frametitle{Ostrzeżenia wstępne}
 
+
+  Jednym z~podstawowych uproszczeń, które będziemy stosować na tym kursie,
+  jest mówienie, że~język~C coś robi. Co to tak naprawdę znaczy, to osobny
+  kwestia. Mamy nadzieję, że~ten sposób mówienia, będzie dla Państwa
+  wystarczająco zrozumiały.
 
   Słowo „litość” nie jest komputerom specjalnie dobrze znane. Z~tego
   powodu, jeśli coś nie działa, to proszę sprawdzić, że~zrobili
@@ -391,6 +396,82 @@ eprint=true,
 
   Tutaj też mogą być jakieś błędy, ale staraliśmy~się je dokładnie
   sprawdzić. Nigdy nie twierdziliśmy, że~jesteśmy nieomylni.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zaczynamy programować w~języku~C}
+
+
+%   Słowo „litość” nie jest komputerom specjalnie dobrze znane. Z~tego
+%   powodu, jeśli coś nie działa, to proszę sprawdzić, że~zrobili
+%   Państwo \alert{wszystko} dokładnie tak jak zostało podane i~wszystkie
+%   polecenia są wpisane \alert{dokładnie} tak jak są tu podane. Nawet
+%   najmniejszy błąd może wszystko zepsuć, bo komputer nie wie co to litość.
+%   Choć są programy mnie i~bardziej bezlitosne.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komentarz w~języku C}
+
+
+  Język~C jak każdy normalny język programowania, pozwala pisać komentarze.
+  \textbf{Komentarz} to tekst przeznaczony dla człowieka, który język~C
+  całkowicie ignoruje. W~języku C komentarz ma postać \\
+  \texttt{/* Informacje dla człowieka. */} \\
+  Komentarz może zawierać jedną lub więcej linii tekstu: \\
+  \texttt{/* Dość długi tekst z informacją dla człowieka, dlatego \\
+    podzielony jest na dwie linie. */}
+
+  Mogą~się Państwo spotkać z~komentarzem postaci \\
+  \texttt{// Informacje dla człowieka.} \\
+  Nie ma jednak gwarancji, że~program zawierający taki komentarz będzie
+  działał. Wynika to z~tego, że~komentarz zaczynający~się od~„\texttt{//}”
+  jest poprawny w~języku~C++, blisko związanym z~C.
+
+  Jednak dokument organizacji standardów \textsc{iso} stwierdza,
+  że~jedynym poprawny komentarz w~języku C ma postać \\
+  \texttt{/* Treść komentarza. */}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komentarz w~języku C}
+
+
+  W~praktyce, C często przymyka oko i~akceptuje komentarz, który zaczyna~się
+  od symbolu~„\texttt{//}”, \alert{nie} ma jednak gwarancji, że~tak zrobi.
+  Z~tego powodu, na tych zajęciach dopuszczony jest tylko i~wyłącznie
+  komentarz postaci \\
+  \texttt{/* Treść komentarza. */}
+
+  Proszę zwrócić uwagę, że komentarz \\
+  \texttt{/* Informacje dla człowieka. */} \\
+  jest poprawny. Za to komentarz \\
+  \texttt{/ * Informacje dla człowieka. */} \\
+  jest błędem, który zepsuje cały problem.
+
+  Proszę zwrócić uwagę na różnicę między „\texttt{/*}” a~„\texttt{/ *}”.
+  Jedna głupia spacja. Bo czemu życie miałoby być proste?
 
 \end{frame}
 % ##################
@@ -419,12 +500,13 @@ eprint=true,
     typach. Niemniej jednak język~C zachował swoją zasadniczą filozofię,
     według której programista wie co robi; wymaga~się jedynie, aby jawnie
     sformułował swoje zamiary.} \\
-  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, K\&R,
-  str.~20, \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
+  Brian W.~Kernighan, Dennis M.~Ritchie, \textit{Język ANSI~C}, popularnie
+  \textit{K\&R}, str.~20,
+  \parencite{Kernighan-Ritchie-Jezyk-ANSI-C-Pub-2004}.
 
   Przetłumaczy te słowa mistrzów języka~C, na język zrozumiały dla
   normalnego człowieka. \\
-  Co może w~języku~C pójść nie tak? \\
+  Co w~języku~C może pójść nie tak? \\
   W~skrócie, wszystko.
 
   Dokładniej, program w~C może~się nie chcieć dać w~ogóle uruchomić,
@@ -436,11 +518,11 @@ eprint=true,
 
   \begin{itemize}
 
-  \item Literówka.
+  \item Brak średnika.
 
-  \item Duża litera zamiast małej.
+  \item Obecność spacji w~pewnym miejscu
 
-  \item Mała litera zamiast dużej.
+  \item Brak spacji w~pewnym miejscu.
 
   \end{itemize}
 
@@ -458,7 +540,9 @@ eprint=true,
 
   \begin{itemize}
 
-  \item Brak średnika.
+  \item Duża litera zamiast małej.
+
+  \item Mała litera zamiast dużej.
 
   \item Przecinek zamiast średnika.
 
@@ -505,6 +589,15 @@ eprint=true,
   Zmaganie~się z~nimi to niestety nieunikniona część nauki programowania
   w~C i~dowolnym innym języku.
 
+  Język~C zostawia nam pewną swobodę, w~wyborze tego jak dokładnie piszemy
+  nasz kod, dopuszczając różne \alert{style} ich tworzenia. Na tych
+  zajęciach prezentujemy styl, który uważamy za~jeden z~lepszych, acz to
+  jest kwestia gustu.
+
+  Niestety, kryteria decydujące o~tym, co jest kwestią stylu programowania,
+  a~co jest błędem, który całkowicie położy nasz program, nie są całkiem
+  oczywiste. Będziemy starali~się wyjaśniać to powoli na kolejnych zajęciach.
+
 \end{frame}
 % ##################
 
@@ -530,7 +623,16 @@ eprint=true,
   W~języku C dostępna jest funkcja \texttt{scanf}, która wczytywać dane
   z~klawiatury. Funkcji tej można używać ucząc~się języka~C, ale poza
   tym wyjątkiem \alert{nigdy}, \alert{pod żadnym pozorem}, \alert{nie wolno}
-  jej używać pisząc jakikolwiek program.
+  jej używać pisząc jakikolwiek praktyczny program. Zwłaszcza, jeśli komputer
+  na którym będziemy uruchamiać ten program jest podłączony do internetu.
+
+  Problem z~funkcją \texttt{scanf} jest taki, że~pozwala ona w~prosty sposób
+  na atak hakerski za pomocą przeładowania bufora. O~tym na czym polega
+  ten atak, powiemy sobie trochę później.
+
+  Prawdopodobnie każdy z~nas dzisiaj korzystał z~kilku programów napisanych
+  w~języku~C, które korzystają z~funkcji \texttt{scanf} i~to jest bardzo
+  poważny \alert{problem}.
 
 \end{frame}
 % ##################
