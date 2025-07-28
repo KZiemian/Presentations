@@ -5,6 +5,7 @@ int main() {
      funkcji main() (i w kilku jeszcze innych miejscach, o których sobie
      kiedyś powiemy). Jeszcze dziś można się spotkać z informacjami,
      że definiowanie zmiennych, gdzie indziej to zły pomysł. */
+
   double argument = 0.0;
   double value = 0.0;
 

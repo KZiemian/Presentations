@@ -31,6 +31,13 @@ int main() {
 
   printf("Bo niby czemu życie miałoby być proste?\n");
 
+  /* Tak jak w przypadku intów, w języku polskim przyjęło się określać
+     liczby zmiennoprzecinkowe jako „floaty” lub „dable”.
+
+     Oczywiście, życie nie może być proste i „float” jest nazwą bardziej
+     ogólną, a „dable” bardziej konkretną. Na tych zajęciach nie będziemy
+     nikogo karać za używanie ich jako synonimów. */
+
 
 
 

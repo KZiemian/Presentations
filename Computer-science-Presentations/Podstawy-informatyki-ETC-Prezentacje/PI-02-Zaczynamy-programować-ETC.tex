@@ -614,7 +614,6 @@ eprint=true,
 % ######################################
 
 
-
 % ##################
 \begin{frame}
   \frametitle{Nieszczęsna funkcja \texttt{scanf}}
@@ -632,7 +631,9 @@ eprint=true,
 
   Prawdopodobnie każdy z~nas dzisiaj korzystał z~kilku programów napisanych
   w~języku~C, które korzystają z~funkcji \texttt{scanf} i~to jest bardzo
-  poważny \alert{problem}.
+  poważny \alert{problem}. Należy dodać, że~jest \alert{więcej} funkcji
+  w~języku~C, który \alert{nie wolno} używać. Jest to efekt tego, jak stary
+  jest język~C.
 
 \end{frame}
 % ##################
@@ -646,13 +647,172 @@ eprint=true,
 
 
 
+% ######################################
+\section{Kilka słów o~liczba zmiennoprzecinkowych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby zmiennoprzecinkowe to podstępne bestie}
+
+
+  Liczby zmiennoprzecinkowe (ang.~\textit{floating-point numbers}) to
+  naprawdę podstępne bestie i~całe kursy semestralne są poświęcone
+  pracy z~nimi. Państwo może będą mieli więcej o~nich na metodach
+  numerycznych. Uważam, że~temat ten jest zbyt techniczny na kurs
+  \textit{Podstawy informatyki}, dlatego ograniczę~się do kilku podstawowych
+  faktów. Chyba, że~Państwo chcą~się w~ten temat zagłębić. Chcą Państwo?
+
+  Liczby zmiennoprzecinkowe są skomplikowane, bo mają być z~jednej strony
+  wydajne, z~drugiej strony służyć wielu praktycznym celom. Ponieważ
+  odcinek $[ 0, 1 ]$ zawiera nieskończenie wiele liczb, więc by móc operować
+  nimi wszystkim potrzebowalibyśmy nieskończenie wiele pamięci, a~to oznacza,
+  iż nie możemy tego zrobić. Potrzebujemy więc metody reprezentowania tych
+  liczb w~odpowiednio sprytny sposób. Tych metod jest wiele, różnią~się
+  szeregiem szczegółów, które nie są dla nas specjalnie ważne.
+
+\end{frame}
+% ##################
 
 
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Standard IEEE~$754$}
 
 
+  W~okresie mniej więcej $1950\text{-}1980$ prowadziło to do tego,
+  że~na komputerach różnych firm, te same programy mogły wyliczać mocno
+  różniące~się wyniki, gdyż największe błędy powstawały w~różnych ich
+  miejscach. Dzisiaj ten problem wciąż istnieje, ale dzięki podjętym
+  działaniom różnice które w~praktyce napotykamy, są w~większości przypadków
+  bardzo małe.
+
+  Żeby zaradzić temu problemowi w~$1985$ roku
+  \colorhref{https://www.ieee.org/}{Instytut Elektryków i~Inżynierów
+    Elektroników} (\textsc{ieee}, ang.~\textit{Institute~of Electrical
+    and~Electronics Engineers}) wydał dokument znany jako standard
+  \textsc{ieee}~$754$, który opisał w~jaki sposób komputer ma wykonywać
+  obliczenia na liczbach zmiennoprzecinkowych. Jeśli dwa komputery wykonują
+  działania matematyczne według zasad podanych przez ten standard, to wyniki
+  obliczeń będą na obu identyczne. W~praktyce są pewne drobne wyjątki,
+  ale to temat na inne zajęcia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby zmiennoprzecinkowe pojedynczej precyzji}
+
+
+  Standard ten precyzuje podstawowe wersje liczb zmiennoprzecinkowych, które
+  musimy krótko omówić. Pierwszy z~tych typów to \textbf{liczby
+    zmiennoprzecinkowe pojedynczej precyzji} (ang.~\textit{single-precision
+    floating-point numbers}), które mają długość $32$-bitów ($4$-bajtów).
+  Ile cyfr po przecinku może zapamiętać $32$ bitowa liczba
+  zmiennoprzecinkowa? To jest dość trudne pytanie, bo to są liczby zapisane
+  w~systemie \alert{binarnym}, więc od przypadku do przypadku, pozwalają
+  pamiętać różną liczbę \alert{dziesiętnych} cyfr po przecinku. A~to
+  dokładność w~systemie dziesiętnym nas interesuje. Standardowo liczba
+  taka pamięta $7$ albo $8$ \alert{dziesiętnych} cyfr po przecinku.
+
+  Żeby to sobie uzmysłowić, rozpatrzmy taki przykład. Dokładność trzech
+  cyfr \alert{dziesiętnych} po przecinku daje nam dokładność
+  obliczeń $10.0^{ -3 } = 0.001$. Podczas, gdy dokładność do trzech cyfr
+  \alert{binarnych} po przecinku daje nam dokładność tylko
+  $2.0^{ -3 } = 1.0 / 8.0 = 0.125$, czyli $125$ razy mniejszą!
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pojedyncza i~podwójna precyzja}
+
+
+  W~języku~C zmienną przechowującą liczbę zmiennoprzecinkową na~$32$ bitach
+  definiujemy pisząc: \\
+  \texttt{float float32Var1 = 0.0;} \\
+  Do tej pory nie używaliśmy tej definicji i~zaraz wyjaśnimy dlaczego.
+
+  Okazuje~się, że~$7$ miejsc dziesiętnych po przecinku to za mało dla
+  wielu zastosowań, więc wprowadzono drugi ważny typ liczb:
+  \textbf{liczb zmiennoprzecinkowe podwójnej precyzji}
+  (ang.~\textit{double precision floating-points numbers}). Każda
+  taka liczba zajmuje w~pamięci $64$~bity ($8$~bajtów), stąd „podwójna
+  precyzja”. Liczba ta jest oczywiście zapisana w~notacji binarnej, po
+  przeliczeniu na dziesiętną daje to dokładność około $15$ cyfr
+  (dziesiętnych) po przecinku.
+
+  To wyjaśnia czemu w~języku~C zmienną przechowującą taką liczbę
+  definiuje~się jako \\
+  \texttt{double float64Var1 = 0.0;} \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pojedyncza i~podwójna precyzja}
+
+
+  Mówiąc szczerze, nazwy „\texttt{float}” i~„\texttt{double}” używane przez
+  język~C nie są zbyt dobre. Nowoczesne języki, takie jak Go, używają
+  znacznie bardziej sensownych nazw, takich jak „\texttt{float32}”
+  i~„\texttt{float64}”. Tu ponownie wychodzi wiek języka~C. Gdy powstawał
+  na przełomie lat $60$-tych i~$70$-tych XX wieku, nie zdawano sobie dobrze
+  sprawy z~tego, jak ważne jest wybieranie właściwych nazw dla różnych
+  obiektów występujących w~danym języku.
+
+  Dlaczego do tej pory używaliśmy tylko typu \texttt{double}? Odpowiedź jest
+  stosunkowo prosta: jego większa dokładność sprawia, że~rzadziej dostajemy
+  błędne wyniki. Uznaliśmy, że~kurs \textit{Podstaw informatyki} nie jest
+  właściwym miejscem na dyskutowanie takich subtelności, jak to kiedy
+  liczby zmiennoprzecinkowe na $32$~bitach są lepsze lub gorsze od tych
+  na $64$~bitach. Lepiej jest użyć typu, który minimalizuje liczbę błędnych
+  wyników.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podsumowanie. Liczby zmiennoprzecinkowe}
+
+
+  Podane wcześniej informacje są wszystkim, co chcieliśmy Państwu przekazać
+  na tym przedmiocie o~liczbach zmiennoprzecinkowych. Jeśli ktoś chce
+  wiedzieć o~nich więcej, proszę~się do nas zgłosić na zajęciach, gdyż
+  ramy tego kursu nie pozwalają bardziej zagłębić~się w~tą tematykę.
+
+  Mamy nadzieję, że~nie musimy Państwa przekonywać, że~liczby
+  zmiennoprzecinkowe to podstępne bestie i~niebanalne byty, które
+  skrywają przed nami wiele tajemnic. Jednak szersza ich dyskusja musi
+  być odłożona na inny przedmiot, który wszak nosi nazwę
+  \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
 
 
 
