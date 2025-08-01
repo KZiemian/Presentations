@@ -1,0 +1,333 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align text to the top of the frame
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located in
+% the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+% Library improving positioning of nodes in graphs
+% \usetikzlibrary{positioning}
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% % Styles for arrows
+% \usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+% % Styles for drawing diagrams
+% \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
+% % Jagiellonian theme's colors
+% \usepackage{./Local-packages/jagiellonian-theme-colors}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Podstawy informatyki z~językiem~C}
+\subtitle{Programowanie nie jest trudne, debugowanie już tak}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 7k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Programowanie nie jest trudne. Debugowanie już tak}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Programowanie nie jest trudne. Debugowanie już
+    tak}
+
+
+  \textit{Debugowanie programu jest dwa razy trudniejsze, niż jego
+    napisanie. Jeśli więc napiszesz program w~najbardziej inteligentny
+    sposób jaki możesz, to nie jesteś wystarczająco mądry by go
+    zdebugować.} \\
+  Prawo
+  \colorhref{https://en.wikipedia.org/wiki/Brian\_Kernighan}{Kernighana}.
+
+  Proszę pamiętać, że~pisanie programów nie jest trudne, ich debugowanie już
+  tak. Pomimo tego postaram~się postawić wspólnie kilka kroków na trudnej
+  ścieżce nauki debugowania programów.
+
+  Przypomnijmy jak działa język~C. Piszemy program z~kodem źródłowym
+  w~języku~C, który ma być zawarty w~pliku, którego nazwa \alert{kończy~się
+    na~\texttt{.c}}. Następnie program zwany kompilatorem na podstawie
+  tego kodu źródłowego generuje program wykonywalny \texttt{prog.out}.
+  Kompilator to też program komputerowy, więc to my, ludzie, ustalamy
+  jego zasady pracy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Błędy}
+
+
+  Twórcy języka~C przyjęli, że~kompilator może zwrócić nam dwa rodzaje
+  wiadomości, że~coś jest nie tak: \textbf{błędy} (ang.~\textit{errors})
+  i~\textbf{ostrzeżenia} (ang.~\textit{warnings}). Różnica między nimi
+  jest następująca.
+
+  Zwrócenie błędu przez kompilator można zrozumieć, jako następująca
+  informację od niego. „Człowieku, ten kod który napisałeś w~linii
+  numer X (mniej więcej) jest tak zły, że~ja nie wygenerują ci pliku
+  wykonywalnego. Napraw ten błąd i~spróbuj jeszcze raz.”
+
+  Ze względu na to jak skomplikowany jest proces kompilacji oraz wieku
+  języka~C, informacje o~błędach często są bardzo trudne w~zrozumieniu
+  i~niezbyt precyzyjne. To naprawdę skomplikowany temat. Jedną z~rzeczy,
+  które należy rozumieć jest to, że~jeśli kompilator twierdzi, że~błąd
+  jest w~linii $20$, to on zwykle w~tej linii jest, ale kompilator
+  może~się mylić i~błąd znajduje~się wcześniej albo później. Bo dlaczego
+  życie miałoby być proste?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ostrzeżenia}
+
+
+  Jeśli kompilator zwróci ostrzeżenie, to można to rozumieć jak mówił:
+  „Kod w~tym miejscu wygląda na potencjalnie wadliwy, ale skoro tak chcesz,
+  to wygeneruję program zgodnie z~nim. Jeśli samolot spadnie przez to
+  z~nieba, to ja nie biorę za to odpowiedzialności.”
+
+  Warto dodać, że~twórcy języka Go, stwierdzili, że~kompilator nie
+  powinien zwracać ostrzeżeń, bo dzieje~się dokładnie to czego można~się
+  byłoby spodziewać. Programiści ignorują ostrzeżenia, bo czy program został
+  wygenerowany? Tak. To czym~się przejmować? Skutkiem tego istniejący
+  kod jest pełen podejrzanych miejsc, których programistą nie chciało~się
+  zwyczajnie poprawić. Z~tego powodu w~języku Go są tylko błędy, więc
+  programista musi je wszystkie poprawić.
+
+  Na tym przedmiocie obowiązuje zasada, że~każdy program ma zostać
+  doprowadzony do stanu, w~którym kompilator podczas jego przetwarzania
+  nie zgłasza żadnego ostrzeżenia. Państwo rozumieją, dlaczego takie zasady
+  przyjęliśmy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Plugawe nazwy plików}
+
+
+  W~nazwie pliku powinna być \alert{jedna i~tylko jedna kropka}, ta
+  poprzedzająca nazwę rozszerzenia pliku, czyli dla nas \texttt{.c}.
+  Jeśli ta zasada nie jest prawdą wszędzie na świecie, to na pewno jest
+  prawdą na tych zajęciach i~proszę o~tym pamiętać.
+
+  Jeśli ktoś prześle mi plik, którego nazwa zawiera więcej lub mniej niż
+  \alert{jedną} kropkę, to zastrzegam sobie prawo odesłania mu pliku
+  z~prośbą o~zmianę nazwy na~poprawniejszą. Dla mnie to nie jest sposób
+  karania, tylko metoda wyrabiania w~ludziach dobrych nawyków.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% % ############################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ############################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}

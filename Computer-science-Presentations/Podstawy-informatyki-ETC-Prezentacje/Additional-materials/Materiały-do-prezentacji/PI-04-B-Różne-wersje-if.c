@@ -46,6 +46,9 @@ int main() {
 
   printf("Koniec trzeciej instrukcji warunkowej if.\n");
 
+  /* Jeśli od nadmiaru różnych wersji instrukcji if boli Państwa głowa,
+     to proszę się tym nie martwić. Człowiek szybko do tego przywyka. */
+
 
 
 

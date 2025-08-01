@@ -13,6 +13,8 @@ int main() {
 
 
 
+  printf("Ten program przyjmuje TYLKO liczby całkowite.\n\n");
+
   printf("Podaj pierwszą liczbę: ");
 
   scanf("%d", &liczbaOdUzytkownika);

@@ -4,8 +4,8 @@ int main() {
   int intVar1 = 3;
   int intVar2 = 5;
 
-  /* Zmiennych używa się do obliczeń tak samo jak na kartce papieru
-     (prawie). */
+  /* Zmiennych używa się do obliczeń (prawie) tak samo jak na kartce
+     papieru. */
 
   printf("%d + %d == %d.\n", intVar1, intVar2, intVar1 + intVar2);
   printf("%d - %d == %d.\n", intVar1, intVar2, intVar1 - intVar2);

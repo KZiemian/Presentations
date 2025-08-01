@@ -18,8 +18,8 @@ int main() {
      zmienną y z wartością 0.0 i szukamy takiej wartości zmiennej x,
      żeby to było prawdą.
 
-  Jeśli to wydaje się zawiłe, to mam nadzieję, że poniższe przykłady to
-  jakoś wyjaśnią. Potem wyjaśnimy, czemu piszemy „3.0”, a nie „3”. */
+     Jeśli to wydaje się zawiłe, to mam nadzieję, że poniższe przykłady to
+     jakoś wyjaśnią. */
 
   int intVar1 = 2;
   /* To jest PRZYPISANIE. Od teraz zmienna intVar1 zawiera liczbę 2. */
@@ -29,18 +29,21 @@ int main() {
   /* Pytanie, jak sprawdzić, czy zmienna intVar1 zawiera liczbę 3?
      NIE możemy napisać
      intVar1 = 3
-     gdyż to by oznaczało, że PRZYPISUJEMY zmiennej intVar1 wartość 3.
-     W języku C przyjęło się używać symbolu „==”:
+     gdyż to by oznaczało, że PRZYPISUJEMY zmiennej intVar1 wartość 3
+     (zmieniamy wartość tej zmiennej). W języku C przyjęło się używać
+     symbolu „==”:
      intVar1 == 3
-     Powyższa linia sprawdza, czy zmienna intVar1 zawiera wartość 3.
-     Jeśli tak, to zwraca wartość 1, jeśli nie to 0. Dlaczego obowiązują
-     takie głupie zasady, o tym powiemy później.*/
+     Powyższa linia sprawdza, czy wartość przechowywana przez zmienną
+     intVar1 jest równa 3. Jeśli tak, to zwraca wartość 1, jeśli nie to 0.
+     Dlaczego obowiązują takie głupie zasady, o tym powiemy później. */
   printf("intVar1 == 3: %d.\n\n", intVar1 == 3);
 
   printf("intVar1 = 3.\n");
   intVar1 = 3;
 
   printf("intVar1 == 3: %d.\n", intVar1 == 3);
+
+  /* Bo czemu życie miałoby być proste? */
 
 
 
