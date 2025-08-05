@@ -26,7 +26,7 @@ int main() {
   printf("%d + %d == %d.\n", 2, 3, 2 + 3);
   printf("%d - %d == %d.\n", 2, 5, 2 - 5);
   printf("%d * %d == %d.\n", 2, 6, 2 * 6);
-  printf("%d / %d == %d.\n", 6, 2, 6 / 2);
+  printf("%d / %d == %d.\n\n", 6, 2, 6 / 2);
   /* By pozostać w zgodzie z konwencją języka C, jako symbolu oznaczającego,
      że lewa strona jest równa prawej używamy „==”.
      Proszę to na ten moment zaakceptować, potem wyjaśnimy to bardziej
@@ -38,15 +38,23 @@ int main() {
   /* Reszta z dzielenia.
      Ze względów technicznych, symbol „%” wewnątrz stringu piszemy jako „%%”.
      Mam nadzieję, że na razie nie trzeba głębszego komentarza. */
-  printf("%d %% %d == %d.\n", 5, 2, 5 % 2);
-  /* 5 % 2 = 1, bo 5 = 2 * 2 + 1.
-     „5 % 2 = 1” linię tą często czytamy jako „Pięć modulo dwa równa się
+  printf("5 == 2 * 2 + 1, więc 5 %% 2 == %d.\n", 5 % 2);
+  /* „5 % 2 = 1” linię tą często czytamy jako „Pięć modulo dwa równa się
      jeden.”, a „%” nazywamy operatorem modulo. Tak samo jako „+” nazywamy
-     operatorem dodawania, to kwestia żargonu. */
+     operatorem dodawania, do tego nazewnictwo wrócimy później. */
 
-  printf("%d %% %d == %d.\n", -10, 3, -10 % 3);
-  /* Dla liczb ujemnych to trochę bardziej zawiłe, ale -10 % 3 = -1,
-     bo -10 = (-3) * 3 + 1. */
+  printf("10 == 5 * 2 == 5 * 2 + 0, więc 10 %% 2 == %d.\n", 10 % 2);
+  printf("5 == 3 + 2, więc 5 %% 3 == %d.\n", 5 % 3);
+  printf("10 == 3 * 3 + 1, wiec 10 %% 3 == %d.\n", 10 % 3);
+
+
+  printf("\nDla liczb ujemnych, wynik operacji modul staje się mniej "
+	 "intuicyjna.\n");
+
+  printf("-5 == (-2) * 2 - 1, więc -5 %% 2 == %d.\n", -5 % 2);
+  printf("-10 == (-5) * 2 + 0, więc -10 %% 2 == %d.\n", -10 % 2);
+  printf("-5 == (-1) * 3 - 2, więc -5 %% 3 == %d.\n", -5 % 3);
+  printf("-10 == (-3) * 3 - 1, wi%d %% %d == %d.\n", -10, 3, -10 % 3);
 
 
 

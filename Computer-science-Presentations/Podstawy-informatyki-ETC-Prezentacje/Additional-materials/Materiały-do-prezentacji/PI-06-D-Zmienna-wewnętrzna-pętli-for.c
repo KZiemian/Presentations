@@ -2,7 +2,7 @@
 
 /* Jest częstym przypadkiem, że zmienna i nie ma żadnej innej roli, tylko
    zliczanie liczby obiegów pętli. Dlatego też w języku C wprowadzono
-   w pewnym momencie pojęcie zmiennej wewnętrznej pętli, która jest
+   w pewnym momencie pojęcie zmiennej wewnętrznej pętli for, która jest
    tworzona w nawiasie na początku pętli i istnieje tylko w niej. */
 
 int main() {

@@ -35,7 +35,13 @@ int main() {
 
      Jeśli ktoś używa do reprezentowania prawdy, czegoś innego niż 1, to
      inni programiści mają go prawo zamknąć w pustym pokoju bez wody
-     i jedzenia na trzy dni. */
+     i jedzenia na trzy dni.
+
+     To osobliwe utożsamienie fałszu z liczbą 0 i prawdy z liczbą 1,
+     to w dużej mierze zaszłość historyczna. Przetwarzanie liczb
+     całkowitych było początkowo jedną z najważniejszych rzeczy jaką
+     język C miał robić, więc użyto ich również do reprezentawania
+     fałszu i prawdy. */
 
   int boolFalse = 0;
   int boolTrue = 1;

@@ -16,7 +16,7 @@ int main() {
     printf("Hello, World! %d time.\n", i + 1);
   }
 
-  printf("\nPętla for uległa zakończeniu.\n");
+  printf("\nPętla for zakończyła działanie.\n");
 
   /* W języku C każda prawie każda pętla for musi posiadać zmienną,
      która zlicza ile razy pętla ta się już wykonała. W większośći przypadków
@@ -48,7 +48,7 @@ int main() {
      instrukcji printf.
      14) Wykonywana jest instrukcja printf.
      15) i++, czyli i przechodzi z 4 na 5.
-     16) i < 5 == 5 < 5. Jest to fałsz, więc kończymy pętle i przechodzi
+     16) i < 5 == 5 < 5. Jest to fałsz, więc kończymy pętle i przechodzimy
      do instrukcji podanych niżej w programie. */
 
   /* Jak mogli Państwo zauważyć, zmienna i rzeczywiście zlicza ile razy
