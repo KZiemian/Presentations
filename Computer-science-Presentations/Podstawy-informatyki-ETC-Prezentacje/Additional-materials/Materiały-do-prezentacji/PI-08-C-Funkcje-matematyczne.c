@@ -5,7 +5,8 @@
    z tym, jak można to zrobić w języku C. */
 
 /* Najpierw musimy dołączyć tą linię, która sprawi, że zostaną nam
-   udostępnione pewne funkcje, zawarte w bibliotece matematycznej. */
+   udostępnione pewne funkcje, zawarte w bibliotece matematycznej.
+   O funkcjach w języku C powiemy sobie więcej niedługo. */
 #include <math.h>
 
 /* Do tego będziemy musieli zmienić „zaklęcie”, którym kompilujemy nasz
@@ -20,9 +21,13 @@
 
 
 int main() {
+  /* Używamy tu symbolu x, bo to tradycyjne oznaczenie matematyczne dla
+     takich zmiennych. */
   double x = 0.0;
 
   while (x <= 3.14) {
+    /* Ten kod jest mam nadzieję wystarczająco jasny. Jeśli nie to proszę
+       pytać. */
     printf("sin(%.1f) = %.3f.\n", x, sin(x));
 
     x += 0.1;

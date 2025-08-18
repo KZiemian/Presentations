@@ -29,7 +29,10 @@ int main() {
 
   /* Mówimy, że w instrukcji if kod się rozgałęzia (ang. branching),
      bo możemy pójść jedną z gałęzi (ang. branch) tej instrukcji.
-     Mamy nadzieję, że nie trzeba tego bardziej tłumaczyć. */
+     Mamy nadzieję, że nie trzeba tego bardziej tłumaczyć.
+
+     Każda z gałęzi instrukcji if może zawierać dowolną liczbę lini kodu.
+     Nam w tym przykładzie wystarczyła jedna. */
 
 
 

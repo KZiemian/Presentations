@@ -17,8 +17,7 @@
    time gcc -ansi --std=c99 -pedantic PI-08-D-Przykładowy-program-04.c
    -o prog.out
 
-   Proszę pamiętać, że to polecenie należy wpisać w jednej linii.
-*/
+   Proszę pamiętać, że to polecenie należy wpisać w jednej linii. */
 
 int main() {
   /* Metoda znalezienia miejsca zerowego, której użyjemy będzie bardzo naiwna,
@@ -41,6 +40,8 @@ int main() {
   double y = 0.0;
   double step = 0.01;
 
+
+
   while (x <= 1.57) {
     y = cos(x) - x;
 
@@ -51,7 +52,7 @@ int main() {
     x += step;
   }
 
-  printf("x = %.3f.\n", x);
+  printf("x == %.3f.\n", x);
   printf("cos(%.2f) - %.2f == %.3f.\n", x, x, y);
 
 

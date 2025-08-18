@@ -987,82 +987,7 @@ eprint=true,
   \frametitle{Uproszczony schemat działania programu}
 
 
-  \begin{figure}
 
-    \label{fig:Scheme-of-CPU}
-
-
-    \begin{tikzpicture}
-
-      \fill[color=brown] (-2.5,0) rectangle (2.5,1.2);
-
-      \node[color=white,scale=1.1] at (0,0.6) {Hardware};
-
-
-      \fill[color=teal] (-2.5,1.2) rectangle (2.5,1.8);
-
-
-
-      \draw[pointing arrow] (3.5,1.5) -- (2.5,1.5);
-
-      \node at (3.7,1.5) {B};
-
-      \node at (4,1.4) {rz};
-
-      \node[rotate=20] at (4.3,1.5) {y};
-
-      \node[rotate=-15] at (4.5,1.4) {d};
-
-      \node at (4.75,1.6) {k};
-
-      \node at (4.9,1.5) {i};
-
-
-      \node at (5.7,1.475) {interfejs};
-
-      \node at (4.5,1) {hardware’u};
-
-
-
-      \fill[color=cyan] (-2.5,1.8) rectangle (2.5,3);
-
-      \node[color=white,scale=1.1] at (0,2.4) {System operacyjny};
-
-
-      \draw[thick diagram arrow] (-2,2.1) -- (-2,0.7);
-
-      \draw[thick diagram arrow] (2,0.9) -- (2,2.3);
-
-
-
-      \fill[color=teal] (-2.5,3) rectangle (2.5,3.6);
-
-
-
-      \draw[pointing arrow] (3.5,3.3) -- (2.5,3.3);
-
-      \node[text width=8em] at (5,3.025)
-      {Piękny interfejs systemu op.};
-
-
-      \fill[color=jAxisGreen] (-2.5,3.6) rectangle (2.5,4.8);
-
-      \node[color=white,scale=1.1] at (0,4.2) {Program użytkowy};
-
-
-      \draw[thick diagram arrow] (-2,3.9) -- (-2,2.5);
-
-      \draw[thick diagram arrow] (2,2.7) -- (2,4.1);
-
-    \end{tikzpicture}
-
-    \caption{Uproszczony schemat łączenia~się programu komputerowego
-      ze~sprzętem, za pośrednictwem systemu operacyjnego. Rysunek wzorowany
-      na ilustracji 1.2 ze str. 34,
-      \parencite{Tanenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}.}
-
-
-  \end{figure}
 
 \end{frame}
 % ##################
@@ -1361,11 +1286,17 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+  \frametitle{Materials used for prepering this course}
 
 
-  Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
-  w~informatyce.
+  In prepering this course we used following materials.
+
+  Bruce Eckel, \textit{Thinking in~Java. Edycja polska, wydanie~III},
+  \parencite{Eckel-Thinking-in-Java-Ed-polska-Wyd-III-Pub-2003}. \\
+  freeCodeCamp.org, \textit{Java Programming for~Beginners~-- Full Course},
+  \parencite{freeCodeCamp-org-Java-Programming-for-Beginners-ETC-Ver-2022}.
+  \\
+
 
 \end{frame}
 % ##################
