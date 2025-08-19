@@ -18,9 +18,13 @@ class Main {
 
 	System.out.println("intVar2 == " + intVar2 + ".");
 
-	// In Java we cannot define variable without initial value, which
-	// help prevents many errors.
+	// In Java we cannot USE variable without initial value before it,
+	// which help prevents many errors.
 	// int intVar3;
 	// System.out.println("intVar3 == " + intVar3 + ".");
+
+	// Defining uninitialize variable and never using it, is fine.
+	// int intVar3;
+	// System.out.println("We do nothing with intVar3.");
     }
 }

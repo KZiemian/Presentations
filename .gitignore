@@ -23,6 +23,9 @@
 # ignore auto/ cataloges created by Emacs
 auto/
 
+# ignore Java auxiliary files
+*.class
+
 # ignore Jupyter auxiliary directories
 .ipynb_checkpoints/
 

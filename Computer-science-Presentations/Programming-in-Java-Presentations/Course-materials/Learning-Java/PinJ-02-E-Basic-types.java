@@ -1,8 +1,7 @@
 class Main {
     public static void main(String[] args) {
 	// Java languages have some types that it call "basic types", we
-	// make a short introduction to some of them. At this moment it is
-	// not important why they are called this way.
+	// make a short introduction to some of them.
 
 	// Standard integer numbers.
 	int intVar1 = 10;

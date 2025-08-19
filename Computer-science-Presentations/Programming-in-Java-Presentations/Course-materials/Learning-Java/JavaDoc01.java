@@ -8,7 +8,7 @@
 // webpage that is easy to read.
 
 // We should mention that javadoc is more strict than javac. Good Java
-// source file should contain ONE public class (we didn't talk about class
+// source file should contain ONE, PUBLIC class (we didn't talk about class
 // yet, but I hope this is not a big problem) and all other code should be
 // inside it. Also, name of the file should match the name of the class.
 
@@ -16,7 +16,7 @@
 // is javaDoc01.java.
 
 /** This is javaDoc01 class. It is used for ilustrating how javadoc works. */
-public class javaDoc01 {
+public class JavaDoc01 {
     /** This is field of the class, but we didn't talk about it yet. */
     int m_intVar1;
 
