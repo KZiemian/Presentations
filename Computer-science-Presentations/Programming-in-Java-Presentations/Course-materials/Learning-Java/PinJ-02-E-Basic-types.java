@@ -26,6 +26,27 @@ class Main {
 
 	System.out.println("float64Var1 == " + float64Var1 + ".");
 
+	// Chars in Java represents single characters, but as in C and C++
+	// they have a numerical side.
+	char charVar1 = 'a';
+
+	System.out.println("charVar1 == " + charVar1 + ".");
+
+	charVar1 = 65;
+
+	System.out.println("charVar1 == " + charVar1 + ".");
+
+	// Line belowe is forbbiden in Java and it is a good thing.
+	// charVar1 = 'a' + intVar1;
+
+	// Java by design support Unicode, so this line is also valid.
+	charVar1 = 333;
+
+	System.out.println("charVar1 == " + charVar1 + ".");
+
+	// Unicode is a very big topic, maybe we discusse it in more details
+	// some time latter.
+
 	// Strings are more complicated, as it should be excpected. But at
 	// this moment we don't need to care about this that much.
 	String stringVar1 = "It is a string.";

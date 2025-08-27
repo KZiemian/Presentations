@@ -187,7 +187,7 @@ eprint=true,
   Why this timeline is important? Because language C++ was intended to be
   improved~C (this is why it is named ``C plus plus''), while Java was very
   heavily influenced by~C++. To be clear Java \alert{wasn't} designed to
-  replace C++, but both good and controversial parts of C++ influenced it
+  replace C++, but both good and bad parts of C++ influenced it
   a~lot.
 
   Current version of Java is Java $24$ released at March $2025$. Peculiar
@@ -470,7 +470,7 @@ eprint=true,
   a~bit more.
 
   Java adopted C++ way of object-oriented programming, but add it own flavor
-  of it. The~main idea of both languages is as follow. The~\textbf{object}
+  of it. The~main idea of both languages is as follow. The~object
   is a~thing that gather together data and methods that can be used to
   change a~state of data. Let use some example, we will expand on it
   in the~future.
@@ -569,33 +569,30 @@ eprint=true,
 
 
 % ######################################
-\section{Jeszcze o~poruszaniu~się po katalogach}
+\section{Classes in Java}
 % ######################################
 
 
 % ##################
 \begin{frame}
-  \frametitle{Rola systemu operacyjnego}
+  \frametitle{Objects in Java}
 
 
-  Zacznijmy od~przyjęcia, że~jak poprzednio znajdujemy~się w~katalogu
-  \texttt{SO-03-A-Polecenia-BASHa-ETC/}. Tak jak system Windows,
-  GNU/Linux posiada koncepcję plików ukrytych, czyli takich, które
-  normalnie nie~są widoczne dla użytkownika. Ze~względów historycznych,
-  przyjęto zasadę, że~jeśli nazwa pliku zaczyna~się od symbolu~„\texttt{.}”
-  to plik jest niewidocznych od użytkownika.
+  \textit{Object has a~state, behavior and identity.} (\textit{Obiekt ma
+    stan, zachowanie i~tożsamość.}) Booch, str.~$41$
+  \parencite{Eckel-Thinnking-in-Java-Ed-polska-Wyd-III-Pub-2003}.
 
-  By zobaczyć wszystkie pliki, które zawiera dany katalog należy
-  do~polecenia \texttt{ls} przesłać opcję~\texttt{-a}
-  (od ang.~\textit{all}). \\
-  \texttt{\$ ls -a} \\
-  \texttt{.} \quad \texttt{..} \quad \texttt{Data-01.dat} \quad
-  \texttt{Data-02.dat} \quad \directoryName{\texttt{Data-for-analysis}} \\
-  Widzimy, że~w~katalogu tym mamy dwa pliki ukryte, o~dość osobliwych
-  nazwach, jedna kropka i~dwie kropki. Pliki te znajdują~się w~praktycznie
-  każdym katalogu w~systemie GNU/Linux, a~ich nazwy to pewnie zaszłość
-  historyczna z~lat $70$-tych XX wieku, kiedy pamięć była bardzo mała
-  i~każdy symbol~się liczył.
+  It is quite hard to give precise definition of the~object. For
+  the~purpose~of this course we will use the following one.
+  The~\textbf{object} is a~thing created by Java language that can gather
+  together data and operations. This definition left $1000$ question open,
+  but we the proper way to think about it, it to treat it as the starting
+  point of our journey into the Java world of object-oriented programming.
+
+  We previously talked about object representing lamp, that have information
+  about state of this lamp, is it turn on or off, and methods that can turn
+  it on and off. The next concept that we need to know is class. There
+  is no extraction in saying that in Java are everywhere.
 
 \end{frame}
 % ##################
@@ -606,26 +603,25 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Pliki „\texttt{.}” i~„\texttt{..}”}
+  \frametitle{What is class?}
 
 
-  Zgodnie z~zasadą, że~w~systemie GNU/Linux wszystko jest plikiem, a~co nie
-  jest plikiem jest procesem, pliki „\texttt{.}” i~„\texttt{..}” pozwalają
-  systemowi zarządzać katalogami. Katalog to wszak tylko inny rodzaj pliku.
+  In our programs we already see a lot of word ``class'', because in~Java
+  nothing works without classes. You can think of class as the blueprint
+  from the object. For example, a car have its blueprint, project that
+  is a set of technical specifications that can be put on the paper
+  or~store in computer memory. In Java this would correspond to
+  the~definition of the class. At the same time, we can have many cars
+  build according to this blueprint, that you can drive. In our Java
+  jargon we would call them ``instances of the class''.
 
-  Zacznijmy od~pliku „\texttt{.}”. Plik ten oznacza po prostu katalog
-  w~którym~się znajdujemy. Co więcej możemy za jego pomocą przejść
-  do~katalogu w~którym jesteśmy (czyli nic nie zrobić), za pomocą
-  polecenia: \\
-  \texttt{\$ cd .} \\
-  Jakkolwiek z~praktycznego punktu widzenia to polecenie jest bezużyteczne,
-  warto wiedzieć, że~istnieje i~działa poprawnie.
+  In other words, class is an abstract idea, that describe what given object
+  is and how it behaves. Instance of the class is concrete object (we all
+  full aware that we use word ``object'') builder according to this idea.
+  Let us see some examples.
 
 \end{frame}
 % ##################
-
-
-
 
 
 

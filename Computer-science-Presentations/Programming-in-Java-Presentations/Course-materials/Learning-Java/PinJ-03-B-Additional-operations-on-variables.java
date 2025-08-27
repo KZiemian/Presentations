@@ -16,5 +16,23 @@ class Main {
 	float64Var1 += float64Var2;
 
 	System.out.println("float64Var1 == " + float64Var1 + ".");
+
+	System.out.println("\nfloat64Var1 -= 0.75;");
+
+	float64Var1 -= 0.75;
+
+	System.out.println("float64Var1 == " + float64Var1 + ".");
+
+	System.out.println("\nfloat64Var1 *= 10.0;");
+
+	float64Var1 *= 10.0;
+
+	System.out.println("float64Var1 == " + float64Var1 + ".");
+
+	System.out.println("\nfloat64Var1 /= 2.0;");
+
+	float64Var1 /= 2.0;
+
+	System.out.println("float64Var1 == " + float64Var1 + ".");
     }
 }

@@ -26,7 +26,7 @@ class Main {
 
 	// One may think "This is the only thing that have sense here.", but
 	// in computer science, we need to consider other situations,
-	// "non-sensical" according to such resoning. We will explein them
-	// and the need for them latter in the course.
+	// "non-sensical" ones. We will explein them and the need for them
+	// latter in the course.
     }
 }
