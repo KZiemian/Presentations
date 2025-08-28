@@ -12,6 +12,10 @@ class TwoNumbersVerTwo {
 	System.out.println("We are now running totally useless constructor " +
 			   "TwoNumbersVerTwo().");
     }
+
+    void showNumbers() {
+	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+    }
 }
 
 class Main {

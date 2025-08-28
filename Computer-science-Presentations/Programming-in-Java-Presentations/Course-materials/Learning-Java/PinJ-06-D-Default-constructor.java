@@ -7,6 +7,10 @@
 class TwoNumbersVerOne {
     int m_intVar1;
     int m_intVar2;
+
+    void showNumbers() {
+	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+    }
 }
 
 

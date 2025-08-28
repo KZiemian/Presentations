@@ -49,5 +49,5 @@ class Main {
 }
 
 // Setting values of the fields by hand is tediuous, so our next is how to
-// make it more pleseant. This concept is so important, that we want to
+// make it more pleseant. This concept is soo important, that we want to
 // speak about it right now.
