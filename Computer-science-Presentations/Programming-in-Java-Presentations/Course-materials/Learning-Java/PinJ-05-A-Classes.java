@@ -1,3 +1,7 @@
+// Object-oriented programming is so central to Java, that we will start
+// discussin it now, even when still didn't talk about many Java's
+// features.
+
 // We will start from quite silly, but simple example of class, that just
 // store two numbers.
 
