@@ -12,9 +12,9 @@ class Main {
 
 	// In other words System.out.println("Hello, World!") tells Java
 	// that it should
-	// 1) Find System.
-	// 2) Inside System find out.
-	// 3) Inside out find println.
+	// 1) Find object System.
+	// 2) Inside System find object out.
+	// 3) Inside object out find object println.
 	// 4) Call println with argument "Hello, World!", which result in
 	// printing "Hello, World!" on the screen of the computer.
 
