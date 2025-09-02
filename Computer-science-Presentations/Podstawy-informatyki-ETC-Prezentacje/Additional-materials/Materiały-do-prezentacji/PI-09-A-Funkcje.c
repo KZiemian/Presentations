@@ -15,6 +15,10 @@ double linearFunction(double x) {
   return 2.0 * x + 1.0;
 }
 
+
+
+
+
 int main() {
   /* Od razu poćwiczymy pętle while. Dlaczego while, a nie for? Powiemy
      sobie o tym w swoim czasie. */

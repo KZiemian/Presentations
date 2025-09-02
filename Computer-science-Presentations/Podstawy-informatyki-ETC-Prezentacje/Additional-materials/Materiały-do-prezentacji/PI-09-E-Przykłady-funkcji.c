@@ -20,8 +20,15 @@ int function2(int x, int y, int z) {
 /* Przykład funkcji, która nie pobiera żadnych argumentów, zwraca jednak
    liczbę 4. */
 int function3() {
+  /* Funkcji tego typu należy możliwie unikać. Bo niby co wartościowego ta
+     akurat funkcja robi? Nic. */
+
   return 4;
 }
+
+
+
+
 
 int main() {
   int intVar1 = 0;
@@ -37,8 +44,9 @@ int main() {
   printf("intVar1 == %d.\n\n", intVar1);
 
   printf("function3() == %d.\n", function3());
-  /* Widzimy, że funkcje nie pobierające argumentów mają sens w języku C.
-     Potrafią się czasem przydać, acz lepiej ich unikać. */
+  /* Widzimy, że w języku C można stworzyć funkcję nie pobierającą argumentów.
+     Tego typu funkcje potrafią się niekiedy przydać, acz lepiej ich
+     unikać. */
 
 
 

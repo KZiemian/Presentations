@@ -2,7 +2,7 @@
 
 /* By zilustrować użycie funkcji w kodzie, przepiszemy program szukający
    miejsca zerowego funkcji
-   function(x) = cos(x) - x
+   function(x) = cos(x) - x,
    za pomocą funkcji w języku C. Trzeba przyznać, program ten nie robi się
    od tego ciekawszy. */
 
@@ -11,6 +11,10 @@
 double function(double x) {
   return cos(x) - x;
 }
+
+
+
+
 
 int main() {
   /* Na razie proszę przymknąć oko na to, że oznaczenia się pojawiają

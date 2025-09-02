@@ -16,6 +16,10 @@ int function3() {
   return 4;
 }
 
+
+
+
+
 int main() {
   printf("function1(1, 2) == %d.\n", function1(1, 2));
 

@@ -2,25 +2,25 @@
 
 /* Funkcje to dość złożone byty, więc musimy się nad nimi trochę zatrzymać.
    Dla porządku, najpierw omówimy najważniejszą funkcję w języku C,
-   która nosi nazwę main i której używamy od pierwszego programu, który
+   która nosi nazwę main() i której używamy od pierwszego programu, który
    napisaliśmy, bo w języku C nie da się pracować inaczej.
 
-   Pierwsza rzecz, którą należy wiedzieć. W języku C funkcja main ma
+   Pierwsza rzecz, którą należy wiedzieć. W języku C funkcja main() ma
    specjalny status i niestosują się do niej pewne reguły, które
    obowiązują wszystkie inne funkcje. Powiemy o tym w swoim czasie. */
 
 /* Zgodnie z tym co powiedzieliśmy poprzednio, linię
    int main()
-   czytamy w następujący sposób. Mamy tu funkcję main, która zwraca wartość
+   czytamy w następujący sposób. Mamy tu funkcję main(), która zwraca wartość
    typu int i nie pobiera żadnych argumentów, co symbolizuje pusty nawias.
 
    Wedle zasad języka C, każdy wykonywalny program musi zawierać jedną
-   i tylko jedną funkcję main, która jest uruchamiana, gdy dany program
+   i tylko jedną funkcję main(), która jest uruchamiana, gdy dany program
    jest uruchomiony. W języku C program wykonuje tylko i wyłącznie te
-   instrukcje, które są bezpośrednio lub pośrednio obecne w funkcji main.
+   instrukcje, które są bezpośrednio lub pośrednio obecne w funkcji main().
 
    Mówiąc inaczej, uruchamienie programu napisanego w C jest równoważne,
-   uruchomieniu pewnej funkcji main. */
+   uruchomieniu pewnej funkcji main(). */
 
 int main() {
   printf("Hello, World!\n");
@@ -30,7 +30,7 @@ int main() {
 
 
   /* Zgodnie z tym co powiedzieliśmy, poniższa linia zwraca jako wartość
-     funkcji main liczbę 0. Można się zapytać: a gdzie ta funkcja zwraca
+     funkcji main() liczbę 0. Można się zapytać: a gdzie ta funkcja zwraca
      tą liczbę? Krótka odpowiedź: do powłoki. */
   return 0;
 }
