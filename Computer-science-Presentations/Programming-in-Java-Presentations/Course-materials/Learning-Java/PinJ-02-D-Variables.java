@@ -1,3 +1,4 @@
+// CHECK ENGLINSH HERE.
 class Main {
     public static void main(String[] args) {
 	// Creating variables in Java is based on this in C++ (which is based

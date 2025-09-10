@@ -4,7 +4,7 @@
    można umieścić wewnątrz funkcji. A jeśli się zastanowić to do tej pory
    większość czasu spędziliśmy pisząć kod wewnątrz funkcj main().
 
-   Najważniejszy wyjątek o jakim musimy teraz myśleć to inne funkcje.
+   Najważniejszy wyjątek o jakim musimy teraz poznać to inne funkcje.
    Z wnętrza funkcji można wywołać inną funkcję, po to w zasadzie funkcje
    isnieją, ale nie można wewnątrz jednej funkcji umieścić definicji innej
    funkcji. */

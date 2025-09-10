@@ -23,7 +23,7 @@
 % Procesing configuration files of Jagiellonian theme located
 % in the directory "preambule"
 % ------------------------------------------------------------------------------------
-\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/LanguageSettings/JagiellonianEnglishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
 
 \input{./preambule/ImportingLocalPackages.tex}
@@ -53,7 +53,7 @@ url=false,
 eprint=true,
 ]{biblatex}
 
-\addbibresource{Systemy-operacyjne-Bibliography.bib}
+\addbibresource{Programming-in-Java-Bibliography.bib}
 
 
 
@@ -73,9 +73,9 @@ eprint=true,
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
-\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+% \usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
 
-\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+% \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
 
 
@@ -87,8 +87,8 @@ eprint=true,
 
 
 % ------------------------------------------------------------------------------------------------------------------
-\title{Programowanie w~języku Java}
-\subtitle{1.~Wprowadzenie do przedmiotu}
+\title{Programming in Java}
+\subtitle{1.~Introduction to the subject}
 
 \author{Kamil Ziemian \\
   \email}
@@ -135,7 +135,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Spis treści}
+  \frametitle{Table of contents}
 
 
   \tableofcontents
@@ -148,43 +148,23 @@ eprint=true,
 
 
 % ######################################
-\section{Informacje wstępne}
+\section{Introductory information}
 % ######################################
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{Informacje wstępne}
+  \frametitle{English language warning}
 
 
+  If you spot any mistake in our use of English, please write to us at
+  \email. We try to check our writing, but achieving high quality English
+  is a~very hard task.
 
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rozwój systemu GNU/Linux}
-
-  \vspace{-0.5em}
-
-
-  \begin{figure}
-
-    \label{fig:Evolution-of-OS}
-
-    \centering
-
-
-    \includegraphics[scale=0.3]
-    {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
-
-  \end{figure}
+  Also, if the things we said are hard to understand, you should point it
+  to us immediately. We have no illusion that our English is very good.
+  Maybe, not even particularly good.
 
 \end{frame}
 % ##################
@@ -195,52 +175,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Korzystanie z~systemu GNU/Linux}
+  \frametitle{Aim of this subject}
 
 
-  Jeśli ktoś z~Państwa chce korzystać u~siebie z~systemu operacyjnego
-  GNU/Linux i~ma problem z~jego zainstalowaniem proszę~się do nas zwrócić
-  bezpośrednio, lub pisząc pod adres \email. W~przypadku e-maila proszę mu
-  nadać tytuł, który informuje o~treści wiadomości, jak
-  \textit{Prośba o~pomoc w~zainstalowaniu systemu GNU/Linux}. Zwykle
-  dostajemy dużo wiadomości z~zadaniami domowymi, jedna o~niewiele mówiącym
-  tytule \textit{Systemy operacyjne} łatwo nam umknie, a~wszak wymaga ona
-  szybkiej odpowiedzi. To naprawdę dla nas ważne, dla tego powtórzymy to
-  jeszcze parę razy.
+  The~aim~of this subject is to learn the basics of programming in Java,
+  with the main stress being put on its object-oriented side.
+  This subject is for \alert{you} not for us.
 
-  Na zajęciach nie tylko można, ale \alert{należy} zadawać pytania
-  na~dowolne związany z~nimi temat. W~szczególności \alert{należy} zadawać
-  pytania, jeśli coś jest niezrozumiałe albo niejasne. Ten kurs ma być
-  wstępem do systemu operacyjnego GNU/Linux, \alert{nie} zakładamy, że~są
-  Państwo doświadczonymi administratorami tego systemu. Byłoby to bardzo
-  niewłaściwe założenie.
+  If you have any question about the subject, you should ask it, since this
+  subject is dedicated to \alert{you}. Also, we know that it is far from
+  being perfect, we work on improving it, so all questions and comments
+  about it are welcomed.
 
-\end{frame}
-% ##################
+  Question of the type ``What is the~best boss in the Hollow Knight?'' or
+  ``What is your opinion about Hollow Knight: Silksong?'' must be left
+  for the time after the~lesson.
 
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zadawanie pytań}
-
-
-  Proszę pamiętać, że~gdy chodzi o~tematy związane z~zajęciami \alert{nie}
-  ma pytań zbyt elementarnych czy głupich. Są~tylko niezadowalające
-  odpowiedzi udzielane na~Państwa pytania. Jesteśmy tutaj by Państwu pomóc
-  w~zaznajomieni~się z~pracą z~systemem operacyjnym na głębszym poziomie,
-  pytania z~Państwa strony bardzo ułatwiają nam to zadanie. Zadawanie pytań
-  nie oznacza, że~ktoś czegoś nie umie, tylko że~chce~się czegoś nauczyć.
-
-  Pytanie można i~\alert{należy} zadawać w~trakcie zajęć, po zajęciach, jak
-  też pisząc na adres \email. Przy pisaniu na e-maila prosimy o~nadawanie
-  tytułów postaci \textit{Pytanie o~X}, \textit{Pytanie z~przedmiotu
-    „Systemy operacyjne”},~etc. Nie chcemy by tego typu wiadomości zginęły
-  wśród wielu innych, które mogą poczekać trochę dłużej, a~brak dobrego
-  tytuły niestety często do tego prowadzi. Proszę mieć pewną wyrozumiałość
-  dla nas w~tym względzie.
+  We want this curse to be maximal about writing and running programs,
+  not about learning theory. Some theory is unavoidable and also external
+  constraints can limit our ability to make this subject about running
+  programs in Java, but we will do what we can.
 
 \end{frame}
 % ##################
@@ -251,442 +205,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Będziemy wiele upraszczać}
+  \frametitle{Learning materials and requirements}
 
 
-  Pytania typu „Jaki oceniam obecny kierunek rozwoju gry \textit{Path~of
-    Exile~2}?” musimy jednak zostawić na~czas po zajęciach.
-
-  Ten kurs jest tylko \alert{wstępem} do~systemów operacyjnych. Ze~względu
-  na rozmiar i~poziom skomplikowania tej dziedziny, dużą liczbę rzeczy
-  będziemy musieli \alert{upraszczać}. Proszę więc pamiętać, że~choć
-  staramy~się przekazywać rzetelną wiedzę, to to co mówimy będzie w~wielu
-  wypadkach bardzo mocny uproszczeniem rzeczywistości.
-
-  Bardzo nas będzie cieszyło, jeśli ktoś będzie chciał zagłębić~się
-  w~tą tematykę i~w~takiej sytuacji służymy całą naszą wiedzą. Proszę~się
-  do nas zgłosić bezpośrednio, lub napisać e-maila, z~odpowiednim tytułem,
-  pod adres \email.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Podstawy GNU/Linuxa: włączanie powłoki}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Powłoka BASH}
-
-  \vspace{-0.5em}
-
-
-  \begin{figure}
-
-    \label{fig:BASH-shell}
-
-    \centering
-
-
-    \includegraphics[scale=0.23]
-    {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
-
-
-    \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
-      głównego narzędzia pracy na tym przedmiocie.}
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Postęp technologiczny}
-
-  \vspace{-0.5em}
-
-
-  \begin{figure}
-
-    \label{fig:Evolution-of-OS}
-
-    \centering
-
-
-    \includegraphics[scale=0.3]
-    {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Włączanie powłoki}
-
-
-  Naszym główny narzędziem na tych zajęciach będzie powłoka \textsc{bash}.
-  Jej włączenie na samym początku potrafi być bardzo niewdzięcznym zadaniem,
-  proszę spróbować to teraz zrobić. W~pierwszym kroku proszę wcisnąć
-  \texttt{Ctrl-Alt-t} i~zobaczyć, czy powłoka~się otworzyć.
-
-  Jeśli to nie zadziała, to proszę pochodzić kursorem po ekranie,
-  aż~znajdziemy okienko „Szukaj”, „Wyszukaj”, etc. Proszę tam wpisać
-  „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy wyświetli~się
-  odpowiednia ikona. O~tym czy~się różni pojęcie „powłoki” od „terminala”
-  czy „konsoli” powiem potem. Nie jest to jakaś szczególnie ważna rzecz.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Zajęcia, konsultacje, sposób zaliczenia}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Charakter zajęć}
-
-
-  Wykład zwykle ma bardziej charakter teoretyczny, a~te zajęcia
-  \alert{praktyczny}. Pewna ilość teorii musi~się tu pojawić,
-  ale~będziemy~się starali ją minimalizować.
-
-  Możemy ustalić jeden termin na konsultacje, ale moje doświadczenie mówi,
-  że~to nie jest dobry pomysł. W~zasadzie nikt wtedy nie przychodzi, a~ja
-  wyznaję zasadę, że~konsultacje są dla Państwa, nie dla mnie. Jeśli Państwo
-  chcą ustalenia takiego terminu, to najlepiej byłoby, gdy Państwo ustalili
-  wspólnie jakiś termin, a potem przesłali mi informacji o~swoim wyborze.
-
-  W~przeciwny razie zawsze można do mnie napisać z~prośbą o~konsultacje
-  indywidualne, choćby pisząc na~adres \email. Ponawiam prośbę o~nadawanie
-  e-mailom tytułów typu \textit{Prośba o~konsultacje}, \textit{Konsultacje
-    z~przedmiotu „Systemy operacyjne”},~etc.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
-
-  \vspace{-0.5em}
-
-
-  \begin{figure}
-
-    \label{fig:Jak-to-bywa-na-zajeciach}
-
-    \centering
-
-
-    \includegraphics[scale=0.42]
-    {./Presentations-pictures/Miscancellous-pictures/Jak-to-bywa-na-zajeciach.jpeg}
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Nagrywanie zajęć}
-
-
-  Będę~się starał nagrywać na \textsc{ms}~Teamsach każde nasze spotkanie.
-  Proszę mi o~tym ciągle przypominać, bo jestem roztrzepany i~któregoś
-  razu o~tym zapomnę.
-
-  Proszę mi też zwracać uwagę, że~na ekranie czegoś nie widać,
-  że~czcionka za mała, że~kolory kłują w~oczy, że~nagrany dźwięk
-  jest niskiej jakości,~etc. Zajęcia są dla Państwa, naszym obowiązkiem jest
-  dostarczyć Państwu najlepszej jakości materiały do nauki jakie jesteśmy
-  w~stanie w~danej chwili stworzyć.
-
-  Niestety, jakość dźwięku to coś, na co mamy mały wpływ. Mogę~się starać
-  mówić możliwie blisko mikrofonu, ale nie wiem co więcej mogę zrobić.
-  Poza tym, na~pewno nie wyjdzie zbyt dobrze, bo te zajęcia często wymagają
-  bym~się poruszał, poza tym w~którymś momencie na pewno o~tym zapomnę.
-  Swoje uwagi na temat jakości nagrań proszę kierować do ludzi
-  odpowiedzialnych za~sprawy studenckie na \textsc{wsz}i\textsc{b}ie.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Sposób uzyskania zaliczania}
-
-
-  Można uzyskać zaliczenie zaoczne, proszę~się w~tej sprawie zwrócić
-  do~mnie, osobiście lub piszą pod adres \email. Jak poprzednio, proszę
-  o~nadanie e-mailowi nazwy tłumaczącej jego treść.
-
-  Zaliczenie w~normalnym trybie zdobywa~się na podstawie zadań domowych
-  i~jednego albo dwóch testów, za~które otrzymają Państwo punkty. Za każdy
-  z~testów będzie do zdobycie 10~punktów. Test będzie zawierać 10 pytań,
-  cztery odpowiedzi na każde, jednokrotnego wyboru. Punktacje zestawów zadań
-  zależą od tego jak oszacujemy ich poziom trudności i~nie jesteśmy
-  w~stanie podać liczby punktów do zdobycia za nie w~tym momencie.
-
-  Zastanawiam~się czy nie dodać do tego projektu zaliczeniowego, ale są
-  pewne problemy techniczne, które stoją nam na drodze. Na dzień dzisiejszy
-  proszę przyjąć, że~projekt zaliczeniowego w~tym semestrze nie będzie.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Prace domowe}
-
-
-  Zadania domowe proszę \alert{spróbować} potraktować nie jako ciężki
-  obowiązek do odhaczenia, tylko jako możliwość nauczenia~się czegoś
-  w~praktyce. Tak wiem, łatwo~się mówi, żeby nie traktować tego jako
-  ciężkiego obowiązku, a~w~rzeczywistości jest to spory wysiłek.
-
-  Proszę jednak wiedzieć, że~prace domowe są zadawane w~pierwszym rzędzie
-  po~to, żeby Państwo mogli~się czegoś nauczyli przy ich robieniu. Dopiero
-  w~drugim rzędzie, by móc wystawić Państwu oceny. Jeśli Państwo oszukują
-  przy oddawaniu tych zdań, to z~naszej perspektywy, oszukują Państwo przede
-  wszystkim samych siebie.
-
-  W~przypadku wszystkich prac domowych, to należy próbować rozwiązać je
-  możliwie samodzielnie. W~razie napotkania problemów nie tylko można,
-  ale i~\alert{należy} prosić o~pomoc kolegów, korzystać z~materiałów
-  w~internecie i~używać programów takich jak Chat\textsc{gpt}. Można też
-  pisać do nas po adres \email.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Sposób uzyskania zaliczania}
-
-
-  Przypominam, że~głównym celem prac domowych jest danie Państwu dodatkowej
-  możliwość, by~się czegoś nauczyć, a~w~nauce można i~\alert{należy}
-  korzystać z~pomocy. Po prostu ich zrobienie nie ma zostać zredukowane
-  do~użycia metody Copy’ego-Pasta.
-
-  Pod koniec semestru punkt zostaną podliczone, a~oceny wystawione według
-  następującej skali.
-
-  \begin{itemize}
-
-  \item $41\%\text{--}50\%$~-- ocena dostateczna ($3.0$).
-
-  \item $51\%\text{--}60\%$ -- ocena plus dostateczna ($3.5$, $3+$).
-
-  \item $61\%\text{--}70\%$ -- ocena dobra ($4.0$).
-
-  \item $71\%\text{--}84\%$ -- ocena puls dobry ($4.5$, $4+$).
-
-  \item $85\%\text{--}100\%$ -- ocena bardzo dobry ($5.0$).
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Materiały do nauki}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Na Sake będzie dostępna w~formacie \textsc{pdf} \alert{lista zagadnień do
-    opanowania z~tego przedmiotu}, która będzie główny punktem odniesieniem
-  przy tworzeniu pytań testowych. Jak również różne materiały do nauki,
-  jakie to dokładnie będą materiały, nie umiem powiedzieć w~tym momencie.
-
-  Będą tam również dostępne te prezentacje w~formacie \textsc{pdf}ów.
-  W~formie źródłowej (plików \LaTeX a) są dostępna na serwisie GitHub.
-  Każdy kto ma na komputerze program Git i~dostęp do internetu może je
-  pobrać wpisując \\
-  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
-  Znajdują~się one w~katalogu „Systemy-operacyjne-Prezentacje”. Należy
-  dodać, że~gałąź \texttt{main} jest zwykle w~tyle
-  za~\texttt{Gałąź-robocza}.
-
-  Można też obejrzeć to repozytorium jak normalny człowiek. Czyli
-  w~przeglądarce: \\
-  \colorhref{https://github.com/KZiemian/Presentation}
-  {https://github.com/KZiemian/Presentation}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  W~tym materiałach na pewno są błędy rzeczowe. Jeśli ktoś je znajdzie,
-  \alert{bardzo, bardzo prosimy}, by przesłać na o~nich informację na adres
+  We are still developing learning materials for this course, you will
+  have access to them by Sake. We hope that this materials will help
+  you learn the basics of Java. They are by no means perfect, so please,
+  if you found any mistake in them, like bad English text, write to us at
   \email.
 
-  Będziemy~się starali wracać do tych prezentacji i~je poprawiać
-  w~przyszłości, ale z~jakiegoś powodu, pomimo kolejnych serii poprawek,
-  wciąż znajdujemy kolejne.
+  We prepared this subject assuming that you know such concepts of
+  programming as variables, arithmetic's operators, if statements and loops,
+  but we still provide a quick overview of how they work in Java. If you
+  need more explanation of them, please just ask us. This course is for
+  you learn basics~of Java, regardless of your current level of programming.
+  Everyone was a beginner at some time.
 
-  Podstawowo książką do systemów operacyjne są
-  \textit{Systemy operacyjne. Wyd.~V} Andrewa S.~Tanenbauma i~Bos Herberta.
-  Pierwszy jej rozdział to prawdziwa skarbnica wiedzy o~informatyce, którą
-  każdy informatyk powinien znać. Jeśli Państwo chcą to udostępnię na Sake
-  zdjęcia pierwszego rozdziału mojego egzemplarza, który należy do
-  trzeciego wydania tej pozycji.
-
-  \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Jeśli jakieś zdjęcia są nieczytelne, proszę do mnie napisać. Do tej
-  pory~się nikt nie skarżył, ale też chyba mało kto czytał tekst widoczny
-  na~tych zdjęciach.
-
-  Gdy chodzi o~pozycje książkowe, to my polecamy
-  \colorhref{https://helion.pl/ksiazki/jak-dziala-linux-podrecznik-administratora-wydanie-iii-brian-ward,jakli3.htm?}
-  {\textit{Jak działa Linux. Podręcznik administratora}} Briana Warda,
-  \colorhref{https://helion.pl/ksiazki/linux-wprowadzenie-do-wiersza-polecen-wydanie-ii-william-shotts,linwp2.htm?}
-  {\textit{Linux. Wprowadzenie do wiersza poleceń}} Williama Shottsa
-  i~\colorhref{https://tldp.org/LDP/intro-linux/intro-linux.pdf}
-  {\textit{Introduction to Linux~-- A Hands on Guide}} Machtelt Garrels
-  \parencite{Garrels-Introduction-to-Linux-A-Hands-on-Guide-Ver-2008}.
-  Na~stronie \colorhref{https://tldp.org/guides.html}
-  {\textit{The~Linux Documentation Guide}} poza książką pani Garrels można
-  znaleźć wiele innych bardzo wartościowych pozycji.
-
-  Jeśli chodzi o~książkę wprowadzającą dogłębnie w~tematykę systemów
-  operacyjnych to kanoniczną pozycją są
-  \colorhref{https://helion.pl/ksiazki/systemy-operacyjne-wydanie-v-andrew-s-tanenbaum-herbert-bos,sysop5.htm}
-  {\textit{Systemy operacyjne}} Andrewa S. Tanenbauma i~Herberta Bosa
-  (do trzeciego wydania autorem był sam Tanenbaum).
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Systemy operacyjne wokół nas}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Jakie systemy operacyjne są dziś używane?}
-
-
-  Obecnie na komputerach osobistych dominują trzy rodziny systemów
-  operacyjnych (\textsc{os}, ang. \textit{operating system}). Są to:
-  \begin{itemize}
-
-  \item GNU/Linux (w~skrócie: Linux);
-
-  \item mac\textsc{os};
-
-  \item Windows.
-
-  \end{itemize}
-
-  Gdy chodzi o~smartfony, to istnieją co~najmniej dwie duże rodziny systemów
-  operacyjnych dla nich:
-  \begin{itemize}
-
-  \item Android;
-
-  \item i\textsc{os}.
-
-  \end{itemize}
-  Niemniej ja nie jestem ekspertem w~kwestii smartfonów, więc nie będę
-  wnikał w~tą tematykę.
-
+  We don't assume any knowledge of object-oriented programming, which
+  is at the~heart of Java.  We will introduce it from scratch.
 
 \end{frame}
 % ##################
@@ -697,28 +233,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Jakie systemy operacyjne są dziś używane?}
+  \frametitle{Passing the subject}
 
 
-  Jeśli chodzi o~inne systemy operacyjne to możemy wymienić i~wymieniać:
-  Fire~\textsc{os}, Free\textsc{bsd}, Free\textsc{dos}, Haiku,
-  Harmony\textsc{os}, Heli\textsc{os}, Inferno, \textsc{minix},
-  OpenHarmony, OpenSolaris, Phantom~\textsc{os}, Plan~9
-  from Bell Labs, React\textsc{os}, Redox (bardzo interesujący projekt),
-  Thesueus~\textsc{os} (inny interesujący projekt), Visopsys, etc.
+  This is so important, that we should repeat it. We don't assume any
+  knowledge of object-oriented programming, which is at the~heart of Java.
+  We will introduce it from scratch. Unfortunately Java is not the best
+  language to learn for the first time object-oriented programming, so
+  previous experience with it from languages like C++ and Python will help
+  you a~lot.
 
-  Poza tym, systemy operacyjne można podzielić na klasy, w~zależności od
-  tego na jakim sprzęcie mają one działać. Listę podstawowych klas można
-  znaleźć poniżej.
+  We will have two homework lists in the semester, plus on the last meeting
+  we will have $45$~minutes live exam. Half of the mark is form homework
+  and the other half form the~live exam.
 
-  \begin{itemize}
-
-  \item Systemy operacyjne komputerów mainframowych. Ten rodzaj komputerów
-    spotyka~się zwykle w~centrach obliczeniowych różnorakiego
-    przeznaczenia. Tutaj często używane są specjalne dystrybucje Linuxa,
-    jak~również systemy operacyjne tworzone specjalnie dla nich, jak~z/OS.
-
-  \end{itemize}
+  The~live exam will be as follows. Everyone is \alert{required} to
+  physically be at it. You will get one of two exercises to solve and then
+  send a solution to email \email or give it back on the paper sheet (it all
+  depends on what room we will have at that time). In the times of
+  chat\textsc{gpt} and other such live check of your knowledge is a
+  necessity.
 
 \end{frame}
 % ##################
@@ -729,574 +263,17 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Różne typy systemów operacyjnych}
+  \frametitle{Live exam}
 
 
-  \begin{itemize}
+  The exercises will be probably along the line ``Write the~class that
+  implement class Dishwasher with following functionality. Here is the code
+  that need to run with your implementation of such class.''
 
-  \item Systemy operacyjne serwerów. Tutaj również Linux jest popularny.
-
-  \item Systemy operacyjne komputerów osobistych, nim właśnie jest
-    poświęcony ten przedmiot.
-
-  \item Systemy operacyjne smartfonów, jak Android czy i\textsc{os}.
-
-  \item Wbudowane systemy operacyjne. Są to systemy operacyjne obsługujące
-    pralki, kuchenki mikrofalowe, samochody, etc.
-
-  \item Systemy operacyjne kart elektronicznych. Temat na inne zajęcia.
-
-  \item Systemy operacyjne węzłów sensorowych. Przykładem węzła sensorowego
-    są czujniki przeciwpożarowe, układy do~mierzenia temperatury, ilości
-    opadów, etc.
-
-  \end{itemize}
-
-  Dodatkowo systemy operacyjne można podzielić na monolityczne,
-  wielowarstwowe, czasu rzeczywistego, etc.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Komputery i~systemy operacyjne}
-
-
-  Tak jak nasz świat jest pełen komputerów, tak jest pełen systemów
-  operacyjnych. Bez wielkiej przesady można powiedzieć, że~bez systemów
-  operacyjnych setki milionów komputerów stałby~się dla większości ludzi
-  bezużyteczną stertą złomu.
-
-  \alert{Nie} muszą się Państwo uczyć powyższej listy. Jedyne co chcemy by
-  Państwo z~niej wynieśli, to świadomość, że~tematyka systemów operacyjnych
-  jest dość skomplikowana i~należy odczuwać zdrowy respekt wobec
-  ludzi którzy te systemy tworzą. Pamiętając, że~ci sami ludzie
-  całkiem dużo rzeczy mocno spaprali.
-
-  Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełna jest
-  maszyn
-  \colorhref{https://en.wikipedia.org/wiki/Rube\_Goldberg\_machine}{Rube
-    Goldbergera}. Państwo już na pewno nie raz
-  widzieli taką maszynę, a~jedną z~nich można obejrzeć
-  \colorhref{https://www.youtube.com/watch?v=vn-g1Mn2\_3g}{tutaj}.
-  Bardzo dużo w~informatyce można uprościć, ale coś mi mówi, że~zajmie nam
-  to jeszcze dużo czasu.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Dlaczego GNU/Linux?}
-
-
-  Systemy operacyjne komputerów osobistych, są najbardziej widocznym typem
-  systemów dla większości ludzi. Jest jasne, że~tylko znikoma grupa ludzi
-  ma bezpośrednią styczność z~komputerami typu mainframe, więc ich systemy
-  operacyjne nie są zbyt znane. Ale dlaczego systemy operacyjne smartfonów
-  rzucają~się w~oczy mniej, niż te komputerów osobistych? W~tym momencie
-  nie umiem na~to pytanie odpowiedzieć. Niezależnie od tego, uzasadnia to
-  wybór systemów operacyjnych komputerów stacjonarnych jako głównego
-  przedmiotu zainteresowań tego kursu.
-
-  Dlaczego jednak zdecydowaliśmy~się omawiać na tych zajęciach system
-  GNU/Linux? W~zasadzie każdy duży rodzina systemów operacyjnych to osobna
-  gałąź informatyki, więc siłą rzeczy którego byśmy nie wybrali na ten kurs,
-  przekazana wiedza nie przeniesie~się w~całości na pozostałe typy systemów.
-  Skoro wybór jest nieunikniony, to co przemawia za~akurat takim?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Dlaczego GNU/Linux?}
-
-
-  Za wybraniem systemu GNU/Linux przemawia kilka względów. Zacznijmy od
-  czysto praktycznych. System ten darmowy, prowadzenie w~nim zajęć nie
-  stwarza więc bariery finansowanej dla nikogo.
-
-  Oprócz tego, jest to system niezwykle szeroko stosowany w~praktyce, od
-  superkomputerów po smartfony, więc wiedza tu zdobyta może zostać użyta
-  do rozwiązywania konkretnych życiowych problemów. W~końcu, GNU/Linux
-  jest projektem o~otwartym kodzie źródłowym, więc jeśli tylko chcemy
-  i~mamy odpowiednio dużo wytrwałości, możemy zajrzeć do każdego jego
-  zakamarka i~dowiedzieć~się o~nim wszystkiego co~się da.
-
-  Warto dodać, że~system GNU/Linux, należy do rozwijanej od lat 70-tych XX
-  wieku rodziny systemów operacyjnych Unix. Dlatego też, w~wielu wypadkach
-  zamiast mówić „To jest cecha systemu GNU/Linux.”, lepiej jest mówić „To
-  jest cecha systemu Unix.”. Oprócz tego będziemy zamiennie używali
-  nazw „GNU/Linux” i~„Linux”.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Abstrakcje i~interfejsy}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czym jest interfejs?}
-
-
-  Do kluczowych pojęć informatyki, systemów operacyjnych w~szczególności,
-  należą „abstrakcja” i~„interfejs”. By wyjaśnić sens w~jakim będziemy ich
-  używać, posłużymy~się przykładem smartfona. Jest to układ elektroniczny,
-  posiadają rozliczne kable przez które płynie prąd, procesor,
-  akumulator,~etc. Jednak na co dzień nie muszę o~tym myśleć, obsługuję go
-  klikając w~ikony.
-
-  Ponieważ ikony pozwalają mi zapomnieć o~elektronicy wewnątrz smartfona,
-  są one rodzaje abstrakcji. Ponieważ pozwalają mi~się komunikować z~nim,
-  są~one rodzajem interfejsu. Teraz trochę ostrzej zdefiniujemy te pojęcia.
-
-  \textbf{Interfejsem} (pl.~\textit{międzymordzie} ;)) nazywamy metodę
-  komunikowania~się dwóch obiektów. W~tym sensie można powiedzieć,
-  że~telefony komórkowe~są interfejsami między ludźmi, lecz my zawęzimy
-  nasze rozważania do~interfejsów właściwych samym komputerom.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czym jest abstrakcja w~informatyce?}
-
-
-  Ikony w~smartfonie są więc interfejsem, bo pozwalają na komunikację
-  między człowiekiem, a~tym urządzeniem.
-
-  \textbf{Abstrakcją} będziemy nazywać zmianę sposobu opisu rzeczywistości,
-  na taki, który jest z~jakiegoś powodu bardziej użyteczny dla danej grupy
-  ludzi. Ikona na smartfonie jest w~tym sensie abstrakcją, bo dzięki ich
-  istnieniu nie musimy myśleć o~tym jak płynie prąd przez smartfona.
-  Klikamy w~ikonę i~prąd popłynie w~odpowiedni sposób, zdefiniowany przez
-  tą abstrakcję.
-
-  Nie będziemy bardziej precyzować tych pojęć, gdyż na tym kursie ważne
-  jest tylko intuicyjne ich zrozumienie. Nie będziemy też
-  specjalnie dyskutować co odróżnia dobrą abstrakcję od~złej oraz dobry
-  interfejs od złego. Należy jednak zauważyć, że~problem dostarczenia
-  dobrych abstrakcji i~interfejsów przewija~się przez całą informatykę.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Abstrakcje i~interfejsy są wszędzie}
-
-
-  Warto zauważyć, że~coś może być jednocześnie abstrakcją i~interfejsem,
-  jak ikony w~smartfonie. W~temat relacji między tymi pojęciami nie
-  będziemy~się jednak zagłębiać.
-
-  Abstrakcje i~interfejsy w~informatyce są wszędzie i~występują warstwowo:
-  gdy zdejmę jedną warstwę abstrakcji (interfejsu) pod nią zwykle zobaczę
-  kolejną warstwę abstrakcji.
-
-  Rozpatrzmy następujący przypadek, który nie musi być specjalnie zgodny
-  z~rzeczywistością. Załóżmy, że~mam program do przeglądania zdjęć, który
-  oczywiście sam w~sobie jest abstrakcją. Gdy zdejmę tą warstwę abstrakcji,
-  to ukaże mi~się kod źródłowy napisany w~języku Python. Jednak kod
-  źródłowy w~języku Python sam jest \alert{abstrakcją}, bo sam ten język
-  (jego interpreter) jest napisany w~języku~C. Język~C jest zaś abstrakcją
-  wobec dialektu assemblera naszego komputer. Język assemblera też jest
-  pewną abstrakcją, ale proszę, nie idźmy dalej.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Do czego służy system operacyjny?}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Do czego służy system operacyjny?}
-
-
-  Komputer składa~się z~wielu części elektronicznych, takich jak procesor,
-  dysk główny, pamięć \textsc{ram}, monitor,~etc. Każdy z~tych elementów
-  posiada własny interfejs, dzięki któremu możemy~się z~nim komunikować,
-  wysyłając odpowiednie polecenia i~otrzymując odpowiednie informacje
-  zwrotne. Interfejsy te są, koniec końców, oparte o~odpowiedni przepływ
-  prądu elektrycznego. Interfejsy te są prymitywne, niewygodne w~użyciu
-  i~brzydkie. Możemy o~nich powiedzieć więcej, ale wątpię by Państwo byli
-  tym zainteresowani.
-
-  System operacyjny jest programem, który zarządza tymi nieprzyjemnymi
-  rzeczami za nas. Inaczej mówiąc, jest on abstrakcją nałożoną na~sprzęt
-  komputerowy. Gdy korzystamy z~dowolnego programu użytkowego, ten program
-  kontaktuje~się przez odpowiedni interfejs z~systemem operacyjnym,
-  a~system operacyjny komunikuje~się ze~sprzętem za pomocą interfejsu tego
-  sprzętu. System operacyjny pełni więc tutaj rolę pośrednika.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uproszczony schemat działania programu}
-
-
-
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{System operacyjny a~zarządzanie zasobami}
-
-
-  Jak powiedzieliśmy wcześniej, system operacyjny jest abstrakcją nałożoną
-  na interfejsy procesora, dysków, monitora,~etc. Jednak aby wypełniał
-  on swoją rolę jako abstrakcja, to musi być on odpowiednio
-  \alert{zarządzać} wszystkimi tymi zasobami. Musi umieć przydzielać czas
-  procesora, przestrzeń na dysku,~etc. Jest to jakby druga strona działania
-  systemu operacyjnego. Należy zaznaczyć, że~zarządzaniem tymi zasobami nie
-  jest wcale rzeczą prostą.
-
-  By sprostać temu zadaniu system operacyjny sam dzieli~się na różne,
-  jakżeby inaczej, warstwy abstrakcji. Na tych zajęciach zajrzymy pod kilka
-  z~nich, aby zobaczyć jak system tam działa i~jak korzystając z~tej wiedzy
-  możemy go kontrolować.
-
-  Ponieważ system operacyjny jest abstrakcją, jego interfejs który
-  nam udostępnia, może być znacznie bardziej wyrafinowany, prostszy
-  w~użyciu i~piękniejszy od~interfejsu sprzętowego.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Czy ten przedmiot będzie trudny?}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czy ten przedmiot będzie trudny?}
-
-
-  Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
-  głęboko, to robi~się naprawdę złożona i~niebanalna. Używając przed chwilą
-  wprowadzonej terminologi, powiem, że~informatyka robi~się niebanalna, gdy
-  zdejmiemy odpowiednio dużo warstw abstrakcji. Na wysokim poziomie
-  abstrakcji to czy jest on trudna czy nie, to mocno zależy od~odczuć
-  konkretnej osoby.
-
-  Zadajmy sobie następujące pytanie: czy włączenie komputera jest
-  skomplikowane? Odpowiemy na to pytanie na dwóch poziomach abstrakcji.
-  Pierwszy to poziom normalnego użytkownika, drugi to opis pochodzący
-  z~książki Andrewa S.~Tanenbauma \textit{Systemy operacyjne. Wydanie~III}
-  \parencite{Tanenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}, dotyczący
-  komputera z~systemem Pentium.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Włączanie komputera, poziom normalnego użytkownika}
-
-
-  \begin{enumerate}
-
-  \item Wciskamy przycisk \texttt{Power}.
-
-  \item Czekamy minutę albo dłużej.
-
-  \item Wybieramy użytkownika i~wchodzimy na swoje konto.
-
-  \end{enumerate}
-
-
-
-  Co w~tym trudnego?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
-  skomplikowany, że~trzeba najpierw wprowadzić trochę pojęć.
-
-  \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
-    wyłącznie do~odczytu}. Pamięć komputera której zawartość została
-  zapisana przez firmę, która ten fragment pamięci wyprodukowała
-  i~użytkownik nie może zmodyfikować jej zawartości. Przynajmniej nie żadnym
-  normalny sposobem.
-
-  \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
-  pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
-  własności, że~jeśli wylosuję dowolny jej element, to czas odczytania
-  informacje z~tego elementu nie będzie zależał od tego, który konkretny
-  element został wylosowany. Inaczej mówiąc dostęp do dowolnego miejsca
-  w~tej pamięci zajmuje tyle samo czasu.
-
-  Tak naprawdę czas odczytu zależy w~pewnym stopniu od tego, w~jaki
-  konkretny sposób pamięć \textsc{ram} jest odczytywana, ale jeszcze długo
-  nie będziemy się musieli tym przejmować.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
-  zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
-  przykładem takiej pamięci jest \textsc{ram}.
-
-  \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
-  której treść jest zachowana, gdy przez układ przestaje płynąć prąd,
-  typowym przykładem jest dysk \textsc{ssd}.
-
-  Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
-  które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
-  we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
-  komputera z~prądu. Bo~niby czemu życie ma być proste?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
-  Skrót pochodzi od nazwy technologi ang.~\textit{Complementary
-    Metal-Oxide-Semiconductor}, pl.~\textit{komplementarny półprzewodnik
-    metalowo-tlenkowy}, w~której ta pamięć jest wykonana. Musi być zasilana
-  prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
-  klasyfikowana jest jako nieulotna. Nie wiem czy kupuję tą terminologię.
-
-  \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
-  \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
-  na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
-  klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
-
-
-  \begin{itemize}
-
-  \item[1)] Wciskamy przycisk \texttt{Power}.
-
-  \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
-    ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
-    klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
-    odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
-    są magistrale \textsc{ISA} (ang. \textit{Industry Standard
-      Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
-      Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
-
-  \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
-    były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
-    konfigurowane.
-
-  \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
-    z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
-    system operacyjny. W~przeszłości były nimi dyskietki, płyty
-    \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
-    i~dyski~\textsc{ssd}.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
-
-
-  \begin{itemize}
-
-  \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
-    z~wspomnianej wcześniej listy, aż~znajdzie pierwszy, który zawiera
-    działający system operacyjny.
-
-  \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
-    w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
-
-  \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
-    listę partycji, by~ustalić która z~nich jest partycją aktywną.
-    Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
-
-  \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
-    z~aktywnej partycji i~go uruchamia.
-
-  \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
-    \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
-    do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
-    z~odpowiedniego źródła.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rasterization and fragment operations}
-
-
-  \begin{itemize}
-
-  \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
-    to ładuje je do jądra systemu.
-
-  \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
-    działające w~tle.
-
-  \item[12)] Uruchamiane jest okno logowania.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Bootowanie}
-
-
-  W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
-  \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
-  całej procedury uruchamiania komputer opisanej powyżej, albo tylko
-  stawiania systemu operacyjnego, czyli od kiedy \textsc{bios} wczytał
-  pierwszy jego sektor do pamięci (punkt siedem i~dalej). Acz to pojęcie
-  nie jest specjalnie ostro zdefiniowane.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materials used for prepering this course}
-
-
-  In prepering this course we used following materials.
-
-  Bruce Eckel, \textit{Thinking in~Java. Edycja polska, wydanie~III},
-  \parencite{Eckel-Thinking-in-Java-Ed-polska-Wyd-III-Pub-2003}. \\
-  freeCodeCamp.org, \textit{Java Programming for~Beginners~-- Full Course},
-  \parencite{freeCodeCamp-org-Java-Programming-for-Beginners-ETC-Ver-2022}.
-  \\
-
+  If someone wouldn't be on the live exam for \alert{a~good reason}, we will
+  organize another term, on which such a person needs to physically come
+  and solve one of two exercises under our eyes. Again, the internet,
+  smartphones and~\textsc{ai} make it necessary.
 
 \end{frame}
 % ##################
@@ -1319,8 +296,27 @@ eprint=true,
 
 
 % ######################################
-\EndingSlide{Dziękuję! Pytania?}
+\EndingSlide{Thank you. Any questions?}
 % ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Materials used for prepering this course}
+
+
+  In prepering this course we used following materials.
+
+  Bruce Eckel, \textit{Thinking in~Java. Edycja polska, wydanie~III},
+  \parencite{Eckel-Thinking-in-Java-Ed-polska-Wyd-III-Pub-2003}. \\
+  freeCodeCamp.org, \textit{Java Programming for~Beginners~-- Full Course},
+  \parencite{freeCodeCamp-org-Java-Programming-for-Beginners-ETC-Ver-2022}.
+
+\end{frame}
+% ##################
 
 
 

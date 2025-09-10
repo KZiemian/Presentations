@@ -10,7 +10,7 @@ class Lamp {
 	m_lightBubblePower = "60 W";
     }
 
-    // Is not the best constructor, but for the it can be tolerated.
+    // Is not the best constructor, but it can be tolerated for a while.
     Lamp(boolean stateOfLamp, String lightBubblePower) {
 	m_lightBubblePower = lightBubblePower;
 	m_stateOfLamp = stateOfLamp;

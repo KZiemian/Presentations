@@ -1,11 +1,11 @@
 class Main {
     public static void main(String[] args) {
-	// Java of course allow us to perform basic arithmetics operations
+	// Java of course allow us to perform basic arithmetic operations
 	// on integers and floating-point numbers.
 
 	System.out.println("2 + 3:");
 	System.out.println(2 + 3);
-	// We write it like that, to avoid to many "+" signs.
+	// We write it like that, to avoid too many "+" signs.
 
 	System.out.println("\n5 - 3:");
 	System.out.println(5 - 3);
@@ -37,13 +37,13 @@ class Main {
 	System.out.println("\n1.5 * 3.0:");
 	System.out.println(1.5 * 3.0);
 
-	System.out.println("\nDivision of floating-point numers, works " +
+	System.out.println("\nDivision of floating-point numbers, works " +
 			   "as usual.");
 	System.out.println("3.0 / 4.0:");
 	System.out.println(3.0 / 4.0);
 
-	// We already see many times, that we can join (concatenate)
-	// strings using "+" (operator +).
+	// We already see many times that we can join (concatenate) strings
+	// using the "+" operator.
 	System.out.println("\nJoining " + "strings.");
     }
 }

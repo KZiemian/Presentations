@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdbool.h>
 
 /* Czy Państwo już mniej wiecej rozumieją czym są typy zmiennych, czy należy
    to jeszcze raz omówić? */
@@ -10,6 +9,7 @@
    #include <stdbool.h>
    Nie chcemy się zbytnio zagłębiać w to co ona oznacza, powiemy o tym
    w przyszłości. */
+#include <stdbool.h>
 
 int main() {
   bool boolVar1 = false;
