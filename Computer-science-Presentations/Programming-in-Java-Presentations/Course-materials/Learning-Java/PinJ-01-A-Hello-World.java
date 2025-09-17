@@ -2,13 +2,13 @@
 // computer science that it should be your first program in a given
 // language ;).
 
-// This line below is a tricky one, but for now just write "Main" as it
-// is. We will discuss when it is the wrong name for a class.
+// This line below is a tricky one, but for now just write "Main" as it is.
+// Later we will discuss when it is the wrong name for a class.
 class Main {
     public static void main(String[] args) {
 	System.out.println("Hello, World!");
-	// Java is infamously verbose. A lot of typing regardless how small
-	// your program is.
+	// Java is infamously verbose. You need to type a lot even for
+	// simple and small programs.
     }
 }
 

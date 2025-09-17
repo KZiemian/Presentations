@@ -17,7 +17,7 @@ class Main {
 	System.out.println("!false == " + !false + ".");
 
 	// In Java, rightly so, you cannot perform logical operators on
-	// numbers.
+	// numbers. And this is a very good thing.
 	// System.out.println("1 && 1 == " + (1 && 1) + ".");
     }
 }

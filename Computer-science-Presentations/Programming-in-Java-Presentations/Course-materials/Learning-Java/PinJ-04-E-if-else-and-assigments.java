@@ -32,7 +32,7 @@ class Main {
 	// Like in C and C++ assigment operations returns assigned value.
 	// So expression
 	// boolVar1 = true
-	// while
+	// returns true, while
 	// boolVar1 = false
 	// returns false. It should be clear that putting assigments
 	// inside conditions is a very bad idea.

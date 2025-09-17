@@ -13,8 +13,8 @@ class Main {
 
 	// In Java, if you need variable for counting how many times your
 	// loop body executions was exectured, you should always define
-	// it as above, in initialization part of the loop. Such variable
-	// is in most cases named "i".
+	// it as above, in initialization part of the control statement. Such
+	// variable is in most cases named "i".
 
 	// Variable defined in initialization part of for loop exists ONLY
 	// inside the loop. Not before and not after.

@@ -4,7 +4,8 @@
 // If you know object-oriented programming from C++ or Python, you will
 // understand what the class is immediately. If you don't know object-oriented
 // programming just thinks that class is a box inside which we put different
-// things. We will talk A LOT about classes in Java, when we will be ready.
+// things. We will talk A LOT about classes in Java, after we cover basic
+// material.
 class Main {
     public static void main(String[] args) {
 	// Part of the program inside curly braces is called a code block.
@@ -21,7 +22,7 @@ class Main {
 	// 1) Find an object System.
 	// 2) Inside System find the object out.
 	// 3) Inside object out find object println.
-	// 4) Call println with the argument "Hello, World!", which result in
+	// 4) Call println with the argument "Hello, World!", which results in
 	// printing "Hello, World!" on the screen of the computer.
 
 	// Why must life be so complicated?

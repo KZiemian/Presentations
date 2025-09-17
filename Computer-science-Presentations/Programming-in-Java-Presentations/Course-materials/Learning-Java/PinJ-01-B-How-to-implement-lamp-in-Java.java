@@ -1,40 +1,40 @@
 // This code is very unprofessional, but it works. Not the worst thing in the
-// world.
+// world, but don't write such code for real life programs.
 
 class Lamp {
-    boolean m_stateOfLamp;
-    String m_lightBubblePower;
+    boolean m_stateOfLightBubble;
+    String m_powerOfLightBubble;
 
     Lamp() {
-	m_stateOfLamp = false;
-	m_lightBubblePower = "60 W";
+	m_stateOfLightBubble = false;
+	m_powerOfLightBubble = "60 W";
     }
 
     // Is not the best constructor, but it can be tolerated for a while.
-    Lamp(boolean stateOfLamp, String lightBubblePower) {
-	m_lightBubblePower = lightBubblePower;
-	m_stateOfLamp = stateOfLamp;
+    Lamp(boolean stateOfLightBubble, String powerOfLightBubble) {
+	m_powerOfLightBubble = powerOfLightBubble;
+	m_stateOfLightBubble = stateOfLightBubble;
     }
 
     void showLightBubblePower() {
-	System.out.println("Light bubble has " + m_lightBubblePower +
+	System.out.println("Light bubble has " + m_powerOfLightBubble +
 			   " of power.");
     }
 
     void showLampState() {
-	if (m_stateOfLamp == true) {
-	    System.out.println("The lamp is turn on.");
+	if (m_stateOfLightBubble == true) {
+	    System.out.println("The lamp is turned on.");
 	} else {
-	    System.out.println("The lamp is turn off.");
+	    System.out.println("The lamp is turned off.");
 	}
     }
 
     void switchLampOn() {
-	m_stateOfLamp = true;
+	m_stateOfLightBubble = true;
     }
 
     void switchLampOff() {
-	m_stateOfLamp = false;
+	m_stateOfLightBubble = false;
     }
 }
 
@@ -71,6 +71,7 @@ class Main {
 	System.out.println("\nmyLampVar1.showLampState();");
 	myLampVar1.showLampState();
 
-	// This code is very unprofessional, but it works.
+	// This code is very unprofessional, but it works. It can be
+	// tolerated, because we still just learn Java.
     }
 }

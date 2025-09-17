@@ -1,0 +1,1404 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianEnglishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Programming-in-Java-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Programming in Java}
+\subtitle{2.~Basics information about Java}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 43k+, 22k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Table~of contents}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Starting with Java}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Starting with Java}
+
+
+  We assume that we have a computer with a GNU/Linux operating system and
+  all programs that we need installed.
+
+  We open terminal, preferably \textsc{bash} and create directory
+  \texttt{Programming-in-Java\textbackslash}: \\
+  \texttt{\$ mkdir Programming-in-Java\textbackslash} \\
+  We enter this directory and create file \texttt{PinJ-01.java}. \\
+  \texttt{\$ cd Programming-in-Java\textbackslash} \\
+  \texttt{\$ touch PinJ-01.java}
+
+  The~name of the file \texttt{PinJ-01.java} is problematic for Java
+  programs, but for learning is fine. We will talk about proper names for
+  Java files, at an appropriate time.
+
+  Java is notoriously verbose, you always need a~lot of code to do anything.
+  We will see this right in the moment.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Starting with Java}
+
+
+  We open the~file \texttt{PinJ-01.java} with some text editor and write
+  inside it, what we should expect: ``Hello, World!'' program.
+
+  \texttt{class Main \{ } \\
+  \hphantom{aaaa} \texttt{public static void main(String[] args) \{ } \\
+  \hphantom{aaaaaaaa} \texttt{System.out.println("Hello, World!");} \\
+  \hphantom{aaaa} \texttt{\} } \\
+  \texttt{\} }
+
+  We now compile it using \\
+  \texttt{\$ javac PinJ-01.java} \\
+  and then run it \\
+  \texttt{\$ java Main} \\
+  If everything run smoothly, we will see on the screen \\
+  \texttt{Hello, World!}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Java background}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historical background}
+
+
+  We are afraid that now there will be some boring stuff.
+
+  $1972$, the first public version of the~C programming language was
+  released, the main designer was
+  \colorhref{https://en.wikipedia.org/wiki/Dennis\_Ritchie}{Dennis Ritchie}
+  ($1941\text{--}2011$).
+
+  $1985$, the C++ language designed by
+  \colorhref{https://en.wikipedia.org/wiki/Bjarne_Stroustrup}
+  {Bjarne Stroustrup} (b.~$1950$) enters the stage.
+
+  $1995$, the Java programming language was created
+  by~\colorhref{https://en.wikipedia.org/wiki/James\_Gosling}
+  {James Gosling} (b.~$1955$).
+
+  Why is this timeline important? Because C++ was intended to be
+  improved~C (this is why it is named ``C plus plus''), while Java was very
+  heavily influenced by~C++. To be clear Java \alert{wasn't} designed to
+  replace C++, but both good and bad parts of C++ influenced it
+  a~lot.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Java popularity}
+
+
+  Java was designed with writing web applications in mind. It was
+  programming language for the~Internet, pure and simple. In the decade
+  $2000\text{--}2010$ many people knew Java, because their web browser told
+  them that they don't have it ;).
+
+  Current version of Java is Java $24$ released in March $2025$. Peculiar
+  feature of Java is that as of today, \currentYear, four other version of
+  Java are still supported, which is a~big number for a~language.
+
+  Today, \currentYear, outside the newest release Java $24$, supported are
+  Java~$8$ (released~$2014$), Java $11$ (released~$2018$), Java $17$
+  (released~$2021$) and Java $23$ (released~$2023$).
+
+  Why so many versions? It stems mostly from the popularity of Java. If you
+  have a~lot of code written in some version of language, you want it to
+  keep working.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Sun, Oracle and Java}
+
+
+  James Gosling created Java when he was working for
+  \colorhref{https://en.wikipedia.org/wiki/Sun\_Microsystems}
+  {Sun Microsystems} and this company holds legal control over Java
+  programming language. In $2010$ Sun was acquired by
+  \colorhref{https://en.wikipedia.org/wiki/Oracle\_Corporation}
+  {Oracle Corporation} and this company now hold rights to Java.
+  It must be noted that Oracle have in many circles very bad reputation,
+  for using it position and rights to disadvantages of computer science
+  community. This of course also is true for Java.
+
+  We also should note that the situation where one company holds rights
+  to programming language is not the norm. Many languages are in public
+  domain, other are properties of companies, you should always check
+  what is the status of your language of interest.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Languages popularity at September 2025}
+
+
+  The~\colorhref{https://www.tiobe.com/tiobe-index/}{\textsc{tiobe}
+    Programming Community Index} is a~tool that tries to measure the
+  popularity of programming languages. It is worth looking at top $10$
+  languages according to \textsc{tiobe} and their percent ratings as for
+  September $2025$.
+
+  1) Python, $25.98 \text{\%}$. \\
+  2) C++, $8.80 \text{\%}$. \\
+  3) C, $8.65 \text{\%}$. \\
+  4) Java, $8.35 \text{\%}$. \\
+  5) C\#, $6.38 \text{\%}$. \\
+  6) JavaScript, $3.22 \text{\%}$. \\
+  7) Visual Basic, $2.84 \text{\%}$. \\
+  8) Go, $2.32 \text{\%}$. \\
+  9) Delphi\textbackslash Object Pascal, $2.26 \text{\%}$. \\
+  10) Perl, $2.03 \text{\%}$. \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Few trivia}
+
+
+  As \textsc{tiobe} index~creators acknowledge measuring language
+  popularity is a very hard task and their index isn't perfect, but it is
+  still a good tool to find which languages are the~most popular. From at
+  least $2002$ Java was always in the top five languages.
+
+  Java language is infamously verbose. To write any program you need to type
+  a~lot~of letters.
+
+  Java language was named after Java coffee, which is a~type of coffee
+  from
+  \colorhref{https://en.wikipedia.org/wiki/Coffee\_production\_in\_Indonesia}
+  {Indonesia}.
+
+  Language
+  \colorhref{https://en.wikipedia.org/wiki/C\_Sharp\_(programming_language)}
+  {C\#}, created in $2000$ by
+  \colorhref{https://en.wikipedia.org/wiki/Anders\_Hejlsberg}{Anders
+    Hejlsberg} (b.~$1960$), is very heavily influenced by Java. Old joke
+  says that C\# is not a~language. It is a~Microsoft environment for Java.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Few trivia}
+
+
+  There is no relation between Java and JavaScript languages. There is
+  a~joke that relation between \alert{Java} and \alert{Java}Script is like
+  between \alert{car} and \alert{car}pet.
+  \colorhref{https://en.wikipedia.org/wiki/Brendan\_Eich}{Brendan Eich}
+  (b.~$1961$) the main person behind creating JavaScript, in the interview
+  from $2016$, explained origin~of the~name in the following way
+  \parencite{Fin-JS-Brendan-Eich-CEO-of-Brave-Ver-2016}.
+
+  JavaScript was developed under the company Netscape in~$1995$. At this
+  time in USA everything related to the Internet was easy to sell and Java
+  language was among one of the~hottest things that year. Remember
+  that Java was ``the programming language of the~Internet''. According to
+  Eich, Netscape decided to include the word ``Java'' in the~name
+  ``JavaScript'', to get a~free advertisement. So, the~name ``JavaScript''
+  is basically a~gimmick, a~marketing ploy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Some technical terms}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Implementation}
+
+
+  The easiest way to tell what things like implementations means, is to use
+  some examples. Consider a~bike. We can tell that a~bike is ``vehicle with
+  two wheels that is powered by human muscle using pedals'', which is
+  definition good enough for our purpose. At the same time there are many
+  different bikes, sold by various companies, in different sizes, made with
+  different materials, colors,~etc.
+
+  We will say that the~\textbf{concept} of bike, which is its definition
+  given above, has different \textbf{implementations}: every particular bike
+  is an implementation of an abstract concept. We hope that it makes the
+  meaning~of the~word ``implementation'' clear enough.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Operators}
+
+
+  For the~purpose of this course \textbf{operator} is a~thing that takes
+  two values and returns some results computed from them. Basic examples is
+  addition operator~\texttt{+}: \\
+  \texttt{1 + 2}
+
+  We can spend two hours talking about operators, pointing to holes in our
+  definition, but for us it is good enough.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Basics information about Java}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Too many versions}
+
+
+  As we mentioned earlier, in the current year \currentYear{} there are
+  \alert{five} versions of Java: $8$, $11$, $17$, $23$ and $24$.
+  Java had changed a~lot in the time span that passed from $1995$ and old
+  code will probably not work in current versions of Java.
+
+  We will spend $90\text{\%}$ or more of our course learning Java core
+  functionalities, so our code should work in all available versions of
+  Java. But you should be aware that having \alert{five} different
+  versions~of the~language used at once is a~source of problems. If you use
+  feature from Java $17$ in version~$8$ everything will crash and other
+  ``funny'' things will happen.
+
+  The~situation can be even worse, since with probability $99.99\text{\%}$
+  there are companies that today use unsupported versions of Java. Some
+  a~good programmer wrote it around $2005$ and is still working? So why
+  should we update it?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Modern Java is fast}
+
+
+  In this course we aim at learning the core of Java. We hope that this
+  course will give you solid foundations for learning deeper layers of Java
+  and things like``How to handle different versions of Java?''. We~also
+  hope that you understand that learning core of Java is already a~big task
+  and going beyond that is already too challenging for this particular
+  course.
+
+  In the past Java was infamous for its slowness, but things have changed
+  a~lot since then and currently, new versions of Java (too many versions
+  ;)) are among the fastest languages on the market.
+
+  To be clear, you can write slow code in \alert{every} language. Slowness
+  is easy, high speed is hard. But some languages allow you \alert{only}
+  to write slow code, while others give you a~chance to make you code
+  fast. Modern Java is one of the~fastest languages in that sense.
+  At this course we will focus on writing Java code that works. The~problem
+  of writing fast code will be tackled if we find enough time.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Java Code Conventions}
+
+
+  Like most languages, Java gives us a~lot of freedom in the way
+  we can write the code. To put some order in it,
+  \colorhref{https://www.oracle.com/docs/tech/java/codeconventions.pdf}
+  {\textit{Java Code Conventions}} document was created and published
+  on~September~$12$,~$1997$. On this course we will try to follow this
+  document, but fully implementing it is for us a~thing of the~future.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{OOP, the C++ way}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{OOP, the C++ way}
+
+
+  Java is
+  \colorhref{https://en.wikipedia.org/wiki/Object-oriented\_programming}
+  {\textsc{oop}} language from top to bottom. The~acronym \textsc{oop}
+  stands of course for ``object-oriented programming'', which was one~of
+  the coolest concepts in programming for a few decades. Maybe it still is
+  today. This concept is far more vague than beginners may imagine, so we
+  should look at it for a~few moments.
+
+  C++ was probably the~first language that was object-oriented and became
+  widely used in various practical fields, so for many people
+  ``object-oriented'' is synonymous to ``it works like in C++''. Java is
+  heavily influenced by C++, so it is object-oriented in the~same
+  way as~it.
+
+  There is nothing wrong if for someone \textsc{oop} means ``it's like
+  C++'', if she/he understood that it is not the only possible way~of
+  doing \textsc{oop}. You don't need to know the other kinds of
+  \textsc{oop}, but you should be aware that they exist.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{OOP, the C++ way}
+
+
+  We shouldn't waste our time arguing ``Is language X is object-oriented
+  or~not?''. On this course we adopted broad definition~of
+  object-orientation and think that arguing about details should be
+  delegated to our free time as a~form~of leisure. What we need to know
+  instead is the~fact that C++ and Java way of implementing
+  object-orientation are of the~same kind, but not $1 \! : \! 1$ identical.
+  This topic can be a~quite subtle one, so we look at it more closely.
+
+  Java adopted C++ way of object-oriented programming, but added its own
+  flavor to it. The~main idea in both languages is as follows. The~object
+  is a~thing that gathers together data and methods that can be used to
+  change a~state of data. Let's use some examples, we will expand on it
+  in the~future.
+
+  Consider that we represent a~lamp in our program. We have some date
+  about it: the power of the light bubble, current temperature of this
+  bubble, information is it on or off, etc.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Our lamp, the~OOP way}
+
+
+  In Java code we can represent our lamp by the variable \texttt{myLamp}.
+  Inside it we have variable \texttt{m\_powerOfLightBubble} that contains
+  information about the~power of the currently used light bubble. We also
+  have methods that work on this lamp. First we have the method
+  \texttt{showLightBubblePower()}. Glossing over details, if we put in our
+  code line \\
+  \texttt{myLamp.showLightBubblePower();} \\
+  we will see on the screen something like \\
+  \texttt{Light bubble has 60 W of power.}
+
+  Consider now that the representation of our lamp has a~variable named
+  \texttt{m\_stateOfLightBubble}, which tells us is a~lamp turned on or off.
+  We also have a~method \texttt{showLampState()}, that writes on the screen
+  text informing us if the lamp is turned on or off.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Our lamp, the~OOP way}
+
+
+  In other words, if we put in our code the line \\
+  \texttt{myLamp.showLampState();} \\
+  we will see on the screen \\
+  \texttt{The lamp is turned on.} \\
+  or \\
+  \texttt{The lamp is turned off.}
+
+  It is very natural to have a~methods which turn lamps on or off, we call
+  them \texttt{switchLampOn()} and~\texttt{switchLampOff()}. We can use
+  first of them by putting in the code line \\
+  \texttt{myLamp.switchLampOn();}
+
+  This example can be already hard to understand for the people that didn't
+  encounter C++ style \textsc{oop} before, but they shouldn't be worried.
+  We will unpack it later in the~course. What is important now is the fact
+  that these ideas are used both in C++ and Java, and also in languages like
+  Python.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Our lamp, the~OOP way}
+
+
+  We use a~coding convention, in which we prefix the~name of all object
+  variables by ``\texttt{m\_}'', which stands for ``member''. This is
+  done for~pedagogical reasons, which should became clear when we advanced
+  in our knowledge of Java.
+
+  At the~same time C++ and Java are not identical and the code that
+  allows us to represent lamps in our programs is different in both
+  languages. This is basically what we mean when we say that ``one idea
+  has different implementations''.
+
+  We now need to leave our lamp and learn the basics of Java. When we will
+  know enough about it, we will wrote such code for representing our lamp
+  ourselves.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Objects and classes in Java}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Objects in Java}
+
+
+  \textit{Object has a~state, behavior and identity.} (pl.~\textit{Obiekt
+    ma stan, zachowanie i~tożsamość.}) Booch, str.~$41$
+  \parencite{Eckel-Thinking-in-Java-Ed-polska-Wyd-III-Pub-2003}.
+
+  It is quite hard to give a precise definition of the~object. For
+  the~purpose~of this course we will use the following one.
+  The~\textbf{object} is a~thing created by the Java language that can
+  gather together data and operations. This definition left $1 \, 000$
+  questions open, but the proper way to think about it is to treat it as
+  the starting point of our journey into the Java world of object-oriented
+  programming.
+
+  We previously talked about objects representing lamps, that have
+  information about the state of this lamp, is it turned on or off, and
+  methods that can turn it on and off. The next concept that we need to
+  know is class. There is no exaggeration in saying that in Java classes
+  are everywhere.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{What is class?}
+
+
+  In our programs we already see the word ``class'' many times, because
+  in~Java nothing works without classes. You can think of class as the
+  blueprint from the object. For example, a car have its blueprint, project
+  that is a set of technical specifications that can be put on the paper
+  or~store in computer memory. In Java this would correspond to
+  the~definition of the class. At the same time, we can have many cars
+  built according to this blueprint, that you can drive. In our Java
+  jargon we would call them ``instances of the class''.
+
+  In other words, class is an abstract idea that describes what a given
+  object is and how it behaves. Instance of the class is concrete object
+  (we are all fully aware that we use the word ``object'') builder
+  according to this idea. Let us see some examples.  In other words, class
+  is an abstract idea that describes what a given object is and how it
+  behaves. Instance of the class is concrete object (we all full aware that
+  we use word ``object'') built according to this idea. Let us see some
+  examples.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{References}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{What is a~reference?}
+
+
+  Concept of references is very close to the concept of pointers (C, C++),
+  but they aren't 100\% identical. So, if you understand pointers,
+  references will be easy for you.
+
+  To illustrate what is referenced, we will use an~example. Imagine
+  that you have a~friend called Joseph Smith and his phone number
+  is $123 \, 456$. So, in your phone you have a~contact named ``Joseph
+  Smith''. But, because Smith is a~handyman that can repair anything, you
+  have another contact in your phone named ``Mr. Handyman'', which
+  has the same phone number $123 \, 456$.
+
+  Is ``Joseph Smith'' different from ``Mr. Handyman''? Of course not.
+  You just created two contacts to the same person, given them two different
+  names, because you think that is useful. Regardless which contact you will
+  use, ``Joseph Smith'' or ``Mr. Handyman'', you will make a~call to the
+  same person. This is what in computer science we call \textbf{references}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{How do references work?}
+
+
+  In other words the reference is a~way of accessing concrete objects
+  and you have multiple references for one and the same object.
+
+  In our examples two contacts ``Joseph Smith'' and ``Mr. Handyman'' shared
+  the phone number. It makes sense, since this number is what really allows
+  your phone to find the phone of Joseph Smith. This is very similar to what
+  is going on in the computers. Everything in the memory of computer
+  has its address, the number that tell computer in which place of memory
+  object is, just like the phone number identifies particular phone.
+
+  You can give different names to one and the~same object, as long as you
+  pair with every name the same address in the memory. Just like you
+  can have multiple contacts to the same person in your phone, as long as
+  every such contact has the same phone number.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Null reference}
+
+
+  In Java, like in many other languages, there exists the~concept of
+  \textbf{null reference}. Imagine that you have contact in your
+  phone ``Emma Smith'', but you still didn't get her number, so you
+  left it blank. It is example of null reference: you have a~name of
+  a~person, but still don't have her phone number. So if you try to call
+  Emma Smith, your phone will signal an~error.
+
+  You can imagine that inside a~phone, your contacts look like that. \\
+  \texttt{Joseph Smith, number: $123 \, 456$.} \\
+  \texttt{Mr. Handyman, number: $123 \, 456$.} \\
+  \texttt{Emma Smith, number: null.} \\
+  The same is possible in Java. You can create a~name for something,
+  but you don't need to~assign the~address of this object (phone number) to
+  it. In such Java will assign the~address of such an~object as null. We
+  hope that analogy with contacts in your phone makes it easy to understand.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{We will show example now}
+
+
+  We will now show you an example~of how references work in practice.
+  The~main point is this. Basic types are passing by value, objects by
+  references. This is why ``coping'' objects in Java can be confusing.
+
+  Going a~bit deeper, everything that computers use must occupy some
+  memory. For example, you need a~byte to store number~$255$.
+  Objects of the~class \texttt{TwoNumbers} need at least as much space
+  as is needed to store two numbers. Every part of memory has an address
+  (phone number), so everything inside the~computer is described
+  by~the~address of the memory inside which it is stored.
+
+  Now consider that two people use your program at the same time and
+  both need the value stored inside the~variable
+  \texttt{veryImportantThing}. If this variable stores integers, and
+  integers occupy, let say, four bytes of memory each, we can just copy its
+  value to a~new part of memory and now both users have its own copy of this
+  important number. This is called \textbf{passing by value}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Passing by~reference}
+
+
+  But, if \texttt{veryImportantThing} contains a~very big object, making
+  a~copy of it becomes problematic. Believe us, managing big objects
+  inside memory can be true pain. In such cases it is reasonable
+  to use \textbf{passing by reference}. Each user gets information
+  where in memory variable \texttt{veryImportantThing} is located and both
+  can use the same object.
+
+  Because life cannot be easy, it leads to problems when both users
+  want to modify such shared objects, but how to deal with that is quite
+  an~advanced topic. We will talk about it, if we have enough time.
+
+  What is important now, is to know that small basic types like
+  \texttt{int} and \texttt{double} are passed by copy and everything
+  else is passed by reference.
+
+  Our discussion of references required a~lot of simplifications. We also
+  omitted many things that are related to it. If something is unclear
+  or you want to know more about it, tell us.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{BASH nie zna słowa litość}
+
+
+%   In language as C and C++ addresses of object are quite easy to get.
+%   In Java we also can get addresses of our objects, but we should avoid
+%   doing that. Java was built in such way, to minimize.
+
+%   // How to understand this? Every object occupied some space in
+%   // the memory of the computer, it can be in RAM or on the disk,
+%   // this is not important to us. When we write a line
+%   // twoNumbersVar2 = twoNumbersVar1;
+%   // we DON'T make copy of our object, we create two variabels
+%   // that REFERENCES the same object in the memory.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zaczynamy}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{ls}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{pwd}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Katalog domowy}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edycja plików z~pomocą programu gedit}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Okienko gedita}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edytory tekstów}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Dalsze informacje o~pracy z~BASHem}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pewne subtelności}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mkdir}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mv}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{mv}}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zagrożenia jakie stwarza \texttt{mv}}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Opcje (flagi)}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czemu życie nie może być proste?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Autouzupełnianie w~BASHu}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Autouzupełnianie w~BASHu}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \EndingSlide{Dziękuję! Pytania?}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Dlaczego BASH~się tak nazywa}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego BASH~się tak nazywa?}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \endingslide???{}
+% % ##################
+
+
+
+% % % ##################
+% % \jagiellonianendslide{?????}
+% % % ##################
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

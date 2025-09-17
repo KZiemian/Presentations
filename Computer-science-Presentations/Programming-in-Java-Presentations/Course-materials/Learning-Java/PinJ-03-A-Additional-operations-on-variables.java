@@ -19,7 +19,7 @@ class Main {
 
 	// Line
 	// intVar1 += intVar2;
-	// as one may expected have a meaning
+	// as one may expected has a meaning
 	// intVar1 = intVar1 + intVar2;
 	System.out.println("\nintVar1 += intVar2;");
 
@@ -27,7 +27,7 @@ class Main {
 
 	System.out.println("intVar1 == " + intVar1 + ".");
 
-	// Code belowe ilustrate more operations of this kind.
+	// Code below illustrates more operations of this kind.
 	System.out.println("\nintVar1 -= 7;");
 
 	intVar1 -= 7;

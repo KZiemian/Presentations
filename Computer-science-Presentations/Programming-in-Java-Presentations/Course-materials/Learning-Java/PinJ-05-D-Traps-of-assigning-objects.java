@@ -5,10 +5,10 @@ class TwoNumbers {
 
 class Main {
     public static void main(String[] args) {
-	// Assigment of variables that contains basic types is easy.
-	// But for objects can be quite confusing.
 	TwoNumbers twoNumbersVar1 = new TwoNumbers();
 	TwoNumbers twoNumbersVar2 = new TwoNumbers();
+	// We created two variables, eacho one of them is a reference to
+	// Java object.
 
 	twoNumbersVar1.m_intVar1 = 4;
 	twoNumbersVar1.m_intVar2 = 6;
@@ -41,29 +41,36 @@ class Main {
 	System.out.println("twoNumbersVar2.m_intVar2 == " +
 			   twoNumbersVar2.m_intVar2 + ".");
 
-	// How to understand this? Every object occupied some space in
-	// the memory of the computer, it can be in RAM or on the disk,
-	// this is not important to us. When we write a line
+	// How we can understand this? Variable holds a reference to an
+	// object, like a phone number, so when we write a line
 	// twoNumbersVar2 = twoNumbersVar1;
-	// we DON'T make copy of our object, we create two variabels
-	// that references the same object in the memory.
+	// we DON'T make copy of our objects. Insteed we create two variabels
+	// that REFERENCES the same object.
 
-	// You can think about having two keys to one house. Regardless
-	// which you use, you will enter the same house. In our situation
-	// these two keys are two variables: twoNumbersVar2, twoNumbersVar1.
-	// I hope that this make a problem a little bit clear.
+	// Using our previous example in the line
+	// twoNumbersVar2 = twoNumbersVar1;
+	// we copy phone number from twoNumbersVar1 to twoNumbersVar2.
+	// Regardless which contact we will use, we will call the same
+	// phone number and the same person having it.
 
 	// In short, when we assigned one variable to the other, i.e. we
 	// wrote something like
 	// intVar1 = intVar2;
-	// result depends on the type of this variables. If the type of
+	// result depends on the type of used variables. If the type of
 	// both variables is one of the basic types (boolean, int, float,
 	// double), value of one variable is copied to the other.
+	// Copy of number 1 is as good as "original" 1.
+
 	// If type of this variable is one of the classes of Java,
 	// we assign not a value (part of computer memory), but reference
-	// to this object.
+	// to this object (its phone number).
 
-	// I hope this is enough explenation for now. We will probably go
-	// back to this point some time in the future.
+	// We can now look on how referencs looks in Java.
+	System.out.println("\ntwoNumbersVar1 -> " + twoNumbersVar1 + ".");
+	System.out.println("twoNumbersVar2 -> " + twoNumbersVar2 + ".");
+	System.out.println("We see from that, that twoNumbersVar1 " +
+			   "and twoNumbersVar2 are two references to " +
+			   "the same object in Java, which is " +
+			   "TwoNumbers@someNumber.");
     }
 }
