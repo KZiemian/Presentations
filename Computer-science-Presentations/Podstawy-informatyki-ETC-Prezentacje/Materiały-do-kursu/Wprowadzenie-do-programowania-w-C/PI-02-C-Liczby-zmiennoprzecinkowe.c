@@ -2,7 +2,7 @@
 
 int main() {
   /* Liczby zmiennoprzecinkowe to w zasadzie liczby, które posiadają część
-     ułamkową. Temat jest niewiarygodnie wręcz skomplikowany, ale na razie
+     dziesiętną. Temat jest niewiarygodnie wręcz skomplikowany, ale na razie
      wystarczy nam, że są to liczby, na których jak liczymy, to w przybliżeniu
      wynik jest taki jak trzeba. Co do reszty, jest cały przedmiot metod
      numerycznych, który zajmuje się takimi rzeczami. */
@@ -29,7 +29,7 @@ int main() {
      dwa, a „2.0” liczbę ZMIENNOPRZECINKOWĄ o wartości dwa. To nie są tylko
      słowa, bo jak zapomnimy o tym to będzie boleć, patrz niżej.
 
-  Bo to jest komputer, czyli durna maszyna. */
+     Bo komputer to durna maszyna. */
 
   printf("\nCo w C może pójść nie tak? W przybliżeniu, wszystko.\n");
   printf("%d / %d == %d.\n", 5, 2, 5 / 2);

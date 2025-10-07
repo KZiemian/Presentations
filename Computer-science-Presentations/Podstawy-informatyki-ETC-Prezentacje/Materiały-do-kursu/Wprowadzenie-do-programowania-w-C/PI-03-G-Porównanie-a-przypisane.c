@@ -12,7 +12,7 @@ int main() {
   /* Natrafiamy na ten sam problem, gdy chcemy przenieść naszą notację
      matematyczną do komputera. Wówczas orientujemy się, że symbolu „=”
      używamy w dwóch znaczeniach.
-     1) Przypisania wartości. Zapis „x = 3.0” oznacza, że za „x” mam wszędzie
+     1) Przypisania wartości. Zapis „x = 3.0” oznacza, że za „x” mamy wszędzie
      podstawić liczbę 3.0.
      2) Porównania. Zapis „y = 0.0, y = x + 2.0”, oznacza, że porównujemy
      zmienną y z wartością 0.0 i szukamy takiej wartości zmiennej x,

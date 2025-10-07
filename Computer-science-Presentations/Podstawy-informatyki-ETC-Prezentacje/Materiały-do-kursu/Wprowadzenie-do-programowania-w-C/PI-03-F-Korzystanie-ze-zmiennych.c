@@ -4,7 +4,10 @@ int main() {
   /* Dawno temu w języku C, zmienne można było definiować tylko na początku
      funkcji main() (i w kilku jeszcze innych miejscach, o których sobie
      kiedyś powiemy). Jeszcze dziś można się spotkać z informacjami,
-     że definiowanie zmiennych, gdzie indziej to zły pomysł. */
+     że definiowanie zmiennych, gdzie indziej to zły pomysł.
+
+     Na tych zajęciach będziemy się trzymać tej konwencji i definiować zmienne
+     tylko na początku funkcji main() (i kilku innych miejscach). */
 
   double argument = 0.0;
   double value = 0.0;
@@ -25,8 +28,8 @@ int main() {
 
   printf("f(%.2f) == %.2f.\n", argument, value);
 
-  /* Nie jest to najlepszy sposób przeprowadzania tego typu obliczeń
-     w języku C, ale da się. O bardziej efektywnych metodach zrobienia
+  /* Nie jest to najlepszy sposób przeprowadzania tego typu obliczeń w języku
+     C, ale program działa. O bardziej efektywnych metodach zrobienia
      tego powiemy później. */
 
 

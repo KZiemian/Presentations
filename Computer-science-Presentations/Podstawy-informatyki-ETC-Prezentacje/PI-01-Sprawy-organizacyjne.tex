@@ -112,7 +112,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 23k+, 51k+,
+% Number of chars: 23k+, 51k+, 37k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -160,10 +160,11 @@ eprint=true,
   Nasz główna zasada głosi, że~to zajęcia są dla studentów, nie studenci
   dla zajęć. Tak samo my jesteśmy tu dla Państwa, a~nie Państwo dla nas.
   Jesteśmy tu po to, by pomóc Państwu stawiać pierwsze kroki w~informatyce
-  i~języku~C. W~związku z~tym, ja będziemy Państwa rozliczać tylko
-  i~wyłącznie z~umiejętności i~wiedzy, i~z~niczego innego. Wychodzimy bowiem
-  z~założenia, że~Państwo sami najlepiej wiedzą, czemu warto poświęcić swój
-  czas. (Choć sami potem często żałujemy naszych wyborów.)
+  i~programowaniu w~języku~C. W~związku z~tym, ja będziemy Państwa
+  rozliczać tylko i~wyłącznie z~umiejętności i~wiedzy, i~z~niczego innego.
+  Wychodzimy bowiem z~założenia, że~Państwo sami najlepiej wiedzą, czemu
+  warto poświęcić swój czas. (Choć sami potem często żałujemy naszych
+  wyborów.)
 
   Ponieważ jest to kurs \textit{Podstawy informatyki}, więc przyjmujemy,
   że~Państwo dopiero zaczynają swoją przygodę z~tą specyficzną dziedziną
@@ -190,15 +191,17 @@ eprint=true,
   zakładamy, że~Państwo już wszystko umieją. Byłoby to bardzo
   niewłaściwe założenie.
 
+  Naszym obowiązkiem jest przedstawiać tematykę zajęć możliwie prosto
+  i~zrozumiale. Jeśli Państwo czegoś nie rozumieją, to jest to w~pierwszym
+  rzędzie nasza wina. Choć tym, którzy nie chcą poświęcać czasu na naukę,
+  to nic nie pomoże.
+
   Proszę pamiętać, że~gdy chodzi o~tematy związane z~zajęciami
   \alert{nie} ma pytań zbyt elementarnych lub zbyt głupich. Są~tylko
   niezadowalające odpowiedzi na nie. Jesteśmy tutaj by pomóc
   Państwu w~nauce programowania w~C, pytania z~Państwa strony bardzo nam to
   zadanie ułatwiają. Zadawania pytań nie jest traktowane jako oznaka tego,
   że~ktoś czegoś nie umie, tylko że~chce~się czegoś nauczyć.
-
-  Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
-    Knight}?” musimy jednak zostawić na czas po zajęciach.
 
 \end{frame}
 % ##################
@@ -209,7 +212,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Dobre pytani}
+  \frametitle{Dobre pytania}
 
 
   W~szczególności, dobrymi pytaniami są:
@@ -235,7 +238,7 @@ eprint=true,
   bardzo proste w~postawieniu, nie oznacza, że~jest ono głupie. Prawdziwym
   problemem jest to, że~na~takie proste pytania, często bardzo trudno
   udzielić satysfakcjonującej odpowiedzi. Bo większość informatyków
-  bardziej czuje co to jest program komputerowy, niż umie to jawnie
+  bardziej czuje co to jest program komputerowy, niż umie to wprost
   wysłowić.
 
 \end{frame}
@@ -247,8 +250,11 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Co zrobimy, a~czego nie?}
+  \frametitle{Co możemy osiągnąć, a~czego nie?}
 
+
+  Pytania typu „Jaki jest najfajniejszy boss w~grze \textit{Hollow
+    Knight}?” musimy jednak zostawić na czas po zajęciach.
 
   Na tych zajęciach \alert{nie} nauczymy~się programować. Jak dobrze
   pójdzie to nauczymy~się podstaw programowania w~języku~C, ale
@@ -256,18 +262,15 @@ eprint=true,
   iż~nie ma najmniejszych szans, że~uda nam~się to \alert{wszystko}
   osiągnąć.
 
-  Co, na Państwa nieszczęście, nie oznacza, że~będzie mało materiału.
-  Mogą~się Państwo wręcz czuć przytłoczeni jego ilością. Proszę mi jednak
-  uwierzyć, że~większość tych zagadnień nie jest taka trudna, jak~się
-  może wydawać na pierwszy rzut oka. Rzeczy nowe jawią~się często jako dużo
-  trudniejsze niż są naprawdę.
+  Najważniejszą rzeczą jaką chcemy by Państwo wynieśli z~tego kursu,
+  jest rozwiązywanie pewnych problemów, poprzez pisanie programów
+  operujących na zmiennych, instrukcjach sterujących i~pętlach.
+  Jeśli nie rozumieją Państwo o~co chodzi, to cały kurs poświęcimy próbie
+  wyjaśnienia co te słowa znaczą.
 
-  Przyznam~się, że~sam staję w~tym momencie przed duży dylematem. Czy to
-  mają być \alert{podstawy informatyki} z~wykorzystaniem języka~C, czy
-  \alert{nauka programowania w~języku~C} z~podstawami informatyki. Na którą
-  część położyć większy nacisk, to jest problem przed którym stoję.
-  W~obecnej chwili zdecydowaliśmy~się iść drogą nauki języka~C. A~jaka
-  jest Państwa opinia w~tej sprawie?
+  Na Państwa nieszczęście, to że nie nauczymy się na tych zajęciach
+  programować, nie oznacza, że~będzie mało materiału. Mogą~się Państwo
+  wręcz czuć przytłoczeni jego ilością. Proszę jednak nie tracić nadziei.
 
 \end{frame}
 % ##################
@@ -281,14 +284,42 @@ eprint=true,
   \frametitle{Staramy~się podchodzić do przedmiotu praktycznie}
 
 
+  Jeśli ilość materiału do nauki wydawać~się będzie Państwu przytłaczająca,
+  proszę nie tracić nadziei. Większość tych zagadnień nie jest taka trudna,
+  jak~się może wydawać na pierwszy rzut oka. Nowe rzeczy jawią~się często
+  jako dużo trudniejsze niż są naprawdę, a~wraz z~nabywaniem doświadczenia,
+  przerabia~się je coraz szybciej.
+
+  Przyznam~się, że~sam staję w~tym momencie przed duży dylematem. Czy to
+  mają być \alert{podstawy informatyki} z~wykorzystaniem języka~C, czy
+  \alert{nauka programowania w~języku~C} z~podstawami informatyki. Na którą
+  część położyć większy nacisk, to jest problem przed którym stoję.
+  W~obecnej chwili zdecydowaliśmy~się iść drogą nauki języka~C. A~jaka
+  jest Państwa opinia w~tej sprawie? To jest dla nas bardzo ważne.
+
   Wedle naszej obserwacji większość osób na tych studiach jest nastawiona
   na praktyczną stronę informatyki: jak stworzyć program który działa
-  w~pożądany sposób? Biorąc takie podejście za punkt odniesienia,
-  staram~się prowadzić te zajęcia tak, aby najpierw mieli Państwo okazję
-  oswoić~się z~tworzeniem programów w~języku~C, nawet jeśli są one
-  bardzo proste i~nie robią nic ciekawego. Zagadnienia teoretyczne
-  i~bardziej techniczne, które dobry programista musi znać, będę w~miarę
-  możliwości omawiane na późniejszych zajęciach.
+  w~pożądany sposób? Dlatego staramy~się by te zajęcia były możliwie
+  praktyczne.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Niektóre pytania wymagają długich odpowiedzi}
+
+
+  Próbując uczynić te zajęcia możliwie praktycznymi, staram~się prowadzić
+  je tak, aby najpierw mieli Państwo okazję oswoić~się z~tworzeniem
+  programów w~języku~C, nawet jeśli są one bardzo proste i~nie robią nic
+  ciekawego. Zagadnienia teoretyczne i~bardziej techniczne, które dobry
+  programista musi znać, będę w~miarę możliwości omawiane na późniejszych
+  zajęciach.
 
   Minus tego podejścia jest następujący. W~języku~C cała maszyneria
   komputera jest delikatnie schowana pod dość cienką warstwą tego języka
@@ -306,17 +337,16 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Niektóre pytania idą zbyt głęboko}
+  \frametitle{Niektóre pytania wymagają długich odpowiedzi}
 
 
-  Dlatego jak najbardziej jesteśmy \alert{bardzo} za tym by zadawali nam
-  Państwo pytania, ale w~wielu wypadkach nie będziemy mogli na nie od razu
-  odpowiadać, bo
-  dobre wyjaśnienie zajęłoby za dużo czasu. Zawsze można~się do nas
-  zgłosić z~takimi pytaniami po zajęciach, wtedy odpowiemy najlepiej
-  jak umiemy. W~trakcie zajęć będziemy jednak często musieli powiedzieć
-  „Proszę zrobić tak i~tak. Dlaczego, wyjaśnimy to potem.”. Proszę mieć dla
-  nas wyrozumiałość w~tym względzie.
+  \alert{Bardzo} pragniemy by zadawali nam Państwo pytania, ale w~wielu
+  wypadkach nie będziemy mogli na nie od razu odpowiadać, bo dobre
+  wyjaśnienie zajęłoby za dużo czasu. Zawsze można~się do nas zgłosić
+  z~tymi problemami po zajęciach, wtedy odpowiemy najlepiej jak umiemy.
+  W~trakcie zajęć będziemy jednak często musieli powiedzieć „Proszę zrobić
+  tak i~tak. Dlaczego, wyjaśnimy to potem.”. Proszę mieć dla nas
+  wyrozumiałość w~tym względzie.
 
   Jeśli to o~czym mówimy jest tak proste, że~omawianie tego jest stratą
   Państwa czasu, proszę nas o~tym poinformować, przejdziemy do następnego
@@ -325,7 +355,25 @@ eprint=true,
 
   Proszę mieć dla nas pewną wyrozumiałość, pamiętać o~tych zastrzeżeniach
   i~próbować pomóc nam w~takim prowadzeniu zajęć, by Państwo wynieśli z~nich
-  jak najwięcej. Jak mówiliśmy, te~zajęcia są dla Państwa.
+  jak najwięcej. Jak mówiliśmy wcześniej, te~zajęcia są dla Państwa,
+  nie Państwo dla zajęć.
+
+  % Ponieważ tematyka którą poruszamy jest mimo wszystko niebanalna, więc
+  % mnóstwo rzeczy będziemy musieli mocno \alert{uprościć}. Proszę mieć to na
+  % uwadze w~trakcie zajęć i~studiując materiały do nich.
+
+  % Potrzeba uproszczeń wynika z~dwóch powodów. Po pierwsze, ograniczenia
+  % czasowe. Wiele z~zagadnień które poruszymy mogłoby być tematem
+  % semestralnego kursu. Co gorsza, wiele z~nich \alert{jest} tematem
+  % semestralnych kursów, przykładowo: praca z~liczbami zmiennoprzecinkowymi
+  % i~powiązane z~tym metody numeryczne. Po drugie, to jest kurs
+  % \textit{\alert{Podstaw} informatyki}, który ma położyć fundamenty pod
+  % Państwa umiejętności i~wiedzę w~zakresie informatyki. To~nie jest
+  % przedmiot na którym należy poświęcać czas na wnikanie we wszystkie
+  % detale oraz szczegóły, odkrywać drugie, trzecie i~czwarte dno problemu.
+
+  % Jeśli jednak ktoś chce~się bardziej zagłębić w~te temat, to po zajęciach
+  % służymy całą naszą osobą.
 
 \end{frame}
 % ##################
@@ -338,6 +386,24 @@ eprint=true,
 \begin{frame}
   \frametitle{Będziemy wiele upraszczać}
 
+
+  % \alert{Bardzo} pragniemy by zadawali nam Państwo pytania, ale w~wielu
+  % wypadkach nie będziemy mogli na nie od razu odpowiadać, bo dobre
+  % wyjaśnienie zajęłoby za dużo czasu. Zawsze można~się do nas zgłosić
+  % z~tymi problemami po zajęciach, wtedy odpowiemy najlepiej jak umiemy.
+  % W~trakcie zajęć będziemy jednak często musieli powiedzieć „Proszę zrobić
+  % tak i~tak. Dlaczego, wyjaśnimy to potem.”. Proszę mieć dla nas
+  % wyrozumiałość w~tym względzie.
+
+  % Jeśli to o~czym mówimy jest tak proste, że~omawianie tego jest stratą
+  % Państwa czasu, proszę nas o~tym poinformować, przejdziemy do następnego
+  % zagadnienia. Zrozumienie co jest dla Państwa proste, a~co trudniejsze, to
+  % jest naprawdę niełatwe zadanie.
+
+  % Proszę mieć dla nas pewną wyrozumiałość, pamiętać o~tych zastrzeżeniach
+  % i~próbować pomóc nam w~takim prowadzeniu zajęć, by Państwo wynieśli z~nich
+  % jak najwięcej. Jak mówiliśmy wcześniej, te~zajęcia są dla Państwa,
+  % nie Państwo dla zajęć.
 
   Ponieważ tematyka którą poruszamy jest mimo wszystko niebanalna, więc
   mnóstwo rzeczy będziemy musieli mocno \alert{uprościć}. Proszę mieć to na
@@ -363,6 +429,7 @@ eprint=true,
 
 
 
+
 % ##################
 \begin{frame}
   \frametitle{Naprawdę cenimy Państwa zadanie}
@@ -372,12 +439,12 @@ eprint=true,
   co~poprawić, to proszę powiedzieć nam po zajęciach lub napisać pod
   adres \email. Prosimy by w~tytule e-maila napisać \textit{Uwagi do zajęć}
   lub coś podobnego, bo inaczej może utknąć na długo w~naszej skrzynce,
-  nim go przeczytamy.
+  zanim go przeczytamy.
 
   W~chwili obecnej nie mamy złudzeń, że~nasz przedmiot jest choćby bliski
   ideałowi, próbujemy jednak go~ciągle ulepszać. Państwa zdanie jest dla
   nas naprawdę \alert{ważne}, choć oczywiście nie zawsze~się z~nim zgadzamy.
-  To jak ten przedmiot wygląda obecnie wynika częściowo z~tego co
+  To jak ten przedmiot wygląda obecnie wynika częściowo z~tego, co
   w~przeszłości zaproponowali studenci.
 
   Choć trudno w~to uwierzyć, opinie typu „Te zajęcia to jest dno!”
@@ -422,8 +489,8 @@ eprint=true,
   arytmetycznym w~komputerze. I~tak pewnie zabrakło by mu czasu, by zrobić
   wszystko co uważa za ważne.
 
-  My tego nie będziemy robić, bo trzeba jakoś omówić również liczby
-  całkowite, stringi, zmienne, typy zmiennych, konwersje typów, algebrę
+  My tego nie będziemy robić, bo trzeba omówić również liczby całkowite,
+  stringi, zmienne, typy zmiennych, konwersje typów, algebrę
   Boole’a, operatory logiczne, instrukcje warunkowe, pętle, struktur, etc.
   Nie jest pewne, czy i~tak uda nam~się to wszystko zrobić.
 
@@ -624,10 +691,10 @@ eprint=true,
   dla początkujących. Na tych zajęciach będziemy pisać programy możliwie
   proste, a~to często skutkuje nudą. Próbujemy w~miarę naszych możliwości
   ograniczać wynikający stąd poziom nudy, ale to nie jest ani proste, ani
-  łatwe.
+  łatwe dla nas.
 
   Jeśli będą~się Państwo zmagać z~tym, że~program z~zajęć jest nudny,
-  ale już zbyt na tyle skomplikowany, że~trudno zrozumieć lub napisać
+  ale już na tyle skomplikowany, że~trudno zrozumieć lub napisać
   poprawnie, proszę pamiętać, że~ciekawe programy, są jeszcze bardziej
   skomplikowane i~jeszcze bardziej podatne na błędy.
 
@@ -661,7 +728,7 @@ eprint=true,
   Zaliczenie zaoczne można jak najbardziej uzyskać, np.~przedstawiając
   kod jakiegoś swojego programu czy aplikacji wraz z~wyjaśnieniem jak
   działa. Projekt ten \alert{nie musi} być napisany w~języku~C, może być
-  w~Pythonie, JavaScripcie,~etc. Z~powodów które powinny być dla wszystkich
+  w~JavaScripcie, Pythonie,~etc. Z~powodów które powinny być dla wszystkich
   oczywiste, preferowane są jednak te stworzone w~języku C. W~trochę
   mniejszym stopniu, te w~języku~C++.
 
@@ -745,7 +812,8 @@ eprint=true,
 
   Wątpię by rozwiązywanie i~oddawanie tych prac było przyjemnością,
   ale~można spróbować o~nich myśleć jako o~wartościowym spędzaniu czasu.
-  Łatwo się to mówi, ale mimo tego warto spróbować.
+  Łatwo się to mówi, szczera prawda. Ale mimo tego warto spróbować
+  podejść do tego inaczej.
 
 \end{frame}
 % ##################
@@ -759,18 +827,19 @@ eprint=true,
   \frametitle{O~pracach domowych}
 
 
-  Ile będzie zestawów zadań? Prawdopodobnie około siedmiu.
+  Ile będzie zestawów prac domowych? Prawdopodobnie około siedmiu.
 
-  Początkowo zadania są bardzo prosto, jak na ten przedmiot. Z~czasem ich
-  trudność, jak i~punkty do zdobycia za nie rosną. Układanie dobrych
+  Początkowo prace domowe są bardzo prosto, jak na ten przedmiot. Z~czasem
+  ich trudność, jak i~punkty do zdobycia za nie rosną. Układanie dobrych
   zestawów zadań to trudna sztuka, stąd będziemy wdzięczni za~wszystkie
-  uwagi jak można je poprawić. Przypominam, że~o tych zestawach lepiej
-  myśleć jako o~sposobie na nauczenia~się tworzenia programów, a~nie
-  nieprzyjemnym obowiązku do odhaczenia. Easier said than done, wiemy o~tym.
+  uwagi jak można je poprawić, proszę je przesyłać na adres \email.
+  Przypominam, że~o tych zestawach lepiej myśleć jako o~sposobie na
+  nauczenia~się tworzenia programów, a~nie nieprzyjemnym obowiązku do
+  odhaczenia. Easier said than done, wiemy o~tym.
 
-  Jeśli dla kogoś zadania domowe to będzie za mało, co jest wspaniałą
-  wiadomością, to na listach materiałów do nauki będą zamieszczone źródła,
-  z~większą liczbą zadań do~rozwiązania.
+  Jeśli ktoś będzie chciał rozwiązywać więcej zadań, niż jest w~pracach
+  domowych, co jest wspaniałą wiadomością, to na listach materiałów do
+  nauki będą zamieszczone źródła, z~większą liczbą zadań do~rozwiązania.
 
 \end{frame}
 % ##################
@@ -820,11 +889,11 @@ eprint=true,
   programować, jeśli Państwo tępo kopiują rozwiązanie kogoś innego,
   to oszukują Państwo głównie samych siebie.
 
-  Ostrzegam, ja bardzo \alert{nie lubię} ściągania. Student który
-  oblał~$20$ poprawkę nie będzie miał u~mnie takich problemów, jak osoba
-  którą złapię na ściąganiu. Moja zasada jest taka, że~jak kogoś na tym
-  nakryję na tego typu oszustwach, to więcej niż $3.0$ u~mnie
-  \alert{nie dostanie}. Chyba, że~przymkniemy oko i~udamy, że~tego nie było.
+  Ostrzegamy. Bardzo \alert{nie lubimy} ściągania. Student który
+  oblał~$20$ poprawkę nie będzie miał u~nas takich problemów, jak osoba
+  którą złapiemy na ściąganiu. Nasza zasada jest taka, że~jak ktoś zostanie
+  nakryty na tego typu oszustwach, to więcej niż $3.0$ \alert{nie
+    dostanie}. Chyba, że~przymkniemy oko i~udamy, że~tego nie było.
   Wszystko zależy.
 
   Ściągania nie da~się całkiem wyeliminować, ale można je ograniczyć.
@@ -932,8 +1001,9 @@ eprint=true,
   \texttt{Imię-Nazwisko-Zestaw-XX-Zad-YY.c} \\
   gdzie za \texttt{XX} i~\texttt{YY} trzeba oczywiście wstawić odpowiednie
   numery zestawu i~zadania oraz przesyłać je pod adres \email. Takie
-  nazywanie plików nie jest to $100$\% obowiązkowe, ale gdy~się dostaje
-  $50$~rozwiązań jednego zestawu zadań, to naprawdę nam pomaga.
+  nazywanie plików nie jest to $100 \%$ obowiązkowe, ale
+  gdy~się dostaje $50$~rozwiązań jednego zestawu zadań, to naprawdę nam
+  pomaga.
 
 \end{frame}
 % ##################
@@ -957,8 +1027,8 @@ eprint=true,
 
   Jeśli plik kończy~się na~\texttt{.c} to prawie na pewno jest to plik
   z~kodem źródłowy w~języku~C. Jeśli plik kończy~się choćby
-  na~\texttt{.cbp} czy \texttt{.layout} to na $99.99$\% plik zupełnie
-  innego typu, którego nie należy przesyłać. Doświadczenie mówi,
+  na~\texttt{.cbp} czy \texttt{.layout} to na $99.99 \%$ jest to plik
+  zupełnie innego typu, którego nie należy przesyłać. Doświadczenie mówi,
   że~większość osób na tym kursie jest początkującymi informatykami, więc
   nic dziwnego, że~niekiedy Państwo~się mylą i~przesyłając nie ten plik
   co~trzeba.
@@ -977,11 +1047,12 @@ eprint=true,
 
   Mała dygresja. Plik pozbawiony rozszerzenia (brak kropki w~nazwie) to
   nie jest dobry pomysł. Plik ze spacją w~nazwie to proszenie~się
-  o~problemy, gdy trzeba pracować w~systemie GNU/Linux (\textsc{bash}
-  i~inne sprawy).
+  o~problemy, gdy trzeba pracować w~systemie GNU/Linux (powłoka
+  \textsc{bash} i~inne sprawy). Pod systemem Windows jest pewnie podobnie,
+  gdy pracujemy spod wiersza poleceń.
 
   Plik który ma~w~nazwie dwie lub~więcej kropek, to wymysł Szatana i~wytwór
-  piekieł, z~tego powodu do walki z~nim należy wysłać choćby Doom Marina
+  piekieł, zaś do walki z~nim należy wysłać choćby Doom Marina
   (\colorhref{https://www.youtube.com/watch?v=I5mRwzVvFGE}{wersja
     z~$2016$ roku} jest całkiem dobra, w~nowsze nie grałem). Bardzo proszę
   nie skazywać nas na obcowanie z~tymi diabelskimi pomiotami. Acz za
@@ -1058,6 +1129,10 @@ eprint=true,
   oraz~przedmiot bardzo ostrych i~intensywnych debat, więc niezwykle trudno
   jest nam podać wyważoną opinię na ten temat.
 
+  Z~naszej strony możemy powiedzieć jedynie, że~na tym kursie można
+  i~powinno~się używać \textsc{ai} jako pomocy, ale nie może to zwalniać
+  z~samodzielnej pracy. To~powinno być oczywiste.
+
 \end{frame}
 % ##################
 
@@ -1108,17 +1183,16 @@ eprint=true,
 
 
 
-
 % ##################
 \begin{frame}
-  \frametitle{Sprawdziany}
+  \frametitle{Sprawdziany na~żywo}
 
 
   Dwa razy w~semestrze, prawdopodobnie zaraz po $15$~listopada
-  i~około~$15$-tego stycznia, odbędą~się dwa sprawdziany. Ich przebieg jest
-  prosty. Przychodzą Państwo do sali, gdzie odbywają~się zajęcia, dostają
-  Państwo jedno lub więcej zadań i~muszą je samodzielnie rozwiązać. Bez
-  pomocy kolegów, bez internetu i~bez Chata\textsc{gpt}.
+  i~około $15$-tego stycznia, odbędą~się sprawdziany na żywo. Ich przebieg
+  jest prosty. Przychodzą Państwo do sali, gdzie odbywają~się zajęcia,
+  dostają Państwo jedno lub więcej zadań i~muszą je samodzielnie rozwiązać.
+  Bez pomocy kolegów, bez internetu i~bez Chata\textsc{gpt}.
 
   Obecność na tym sprawdzianie jest \alert{obowiązkowa}, chyba, że~ktoś
   przyniesie usprawiedliwienie, typu „Muszę zostać w~pracy, bo brak
@@ -1128,8 +1202,8 @@ eprint=true,
   najwyżej~$3.0$.
 
   Tak wiemy, że~czasem \alert{nie ma zajęć stacjonarnych}. Wtedy oczywiście
-  piszemy zdalnie, bo trzeba sobie jakoś radzić. Jestem bardzo przeciwny
-  temu, żeby pewne grupy miały tylko zajęcia zdalne, ale~niewiele mogę
+  piszemy zdalnie, bo trzeba sobie jakoś radzić. Jesteśmy bardzo przeciwni
+  temu, żeby pewne grupy miały tylko zajęcia zdalne, ale~niewiele możemy
   w~tej sprawie zrobić.
 
 \end{frame}
@@ -1141,7 +1215,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Sprawdziany}
+  \frametitle{Sprawdziany na~żywo}
 
 
   Jeśli ktoś nie przyjdzie na sprawdzian, to będzie możliwość napisania
@@ -1227,11 +1301,11 @@ eprint=true,
   Z~naszego doświadczenia wynika, że~ustalanie jednego terminu na
   konsultacje to nie jest dobry pomysł. W~zasadzie nikt wtedy nie
   przychodzi, a~my wyznajemy zasadę, że~konsultacje są dla Państwa, nie dla
-  nas. Jeśli Państwo chcą byśmy ustalili konkretny terminy na konsultacje,
-  to proszę jako grupa wybrać jeden konkretny i~poinformować nas o~tym
-  e-mailowo, pisząc na adres \email. W~tytule maila proszę napisać
-  \textit{Termin konsultacji} lub coś podobnego, byśmy wiedzieli, że~na ten
-  e-mail należy możliwie szybko odpowiedzieć.
+  nas. Jeśli Państwo chcą byśmy ustalili termin konsultacji, to proszę jako
+  grupa wybrać jeden konkretny i~poinformować nas o~tym e-mailowo, pisząc
+  na adres \email. W~tytule maila proszę napisać \textit{Termin
+    konsultacji} lub coś podobnego, byśmy wiedzieli, że~na ten e-mail
+  należy możliwie szybko odpowiedzieć.
 
   W~przeciwnym wypadku, jeśli ktoś z~Państwa ma problem i~chce zasięgnąć
   naszej pomocy, proszę do nas podejść po zajęciach lub napisać na
@@ -1252,9 +1326,9 @@ eprint=true,
   \frametitle{Bardzo ważne}
 
 
-  Ponawiamy prośbę o~nadanie takiemu e-mailowi tytułu typu \textit{Termin
-    konsultacji}, bo przy liczbie e-maili jakie trafiają na tę skrzynkę
-  pocztową łatwo jeden przegapić.
+  Ponawiamy prośbę o~nadanie takiemu e-mailowi tytułu typu \textit{Prośba
+    o~konsultacje}, czy coś takiego, bo przy liczbie e-maili jakie trafiają
+  na tę skrzynkę pocztową łatwo jeden przegapić.
 
   Można też napisać pod numer $883 \, 010 \, 779$. Przypominamy,
   że~wiadomości tekstowe czytamy, a~telefonów od nieznanych numerów raczej
@@ -1263,7 +1337,8 @@ eprint=true,
   Jeśli ktoś z~Państwa będzie pisał e-maila w~sprawie konsultacji, to
   będziemy wdzięczni za~napisanie z~czym konkretnie ma problem. Rozumiem
   jednak, że~często wskazanie czy nazwanie tego co sprawia komuś problem,
-  już nie jest łatwe. Sami przez to przechodziliśmy.
+  już samo w~sobie nie jest łatwe. Sami przez to przechodziliśmy, więc
+  wiemy.
 
 \end{frame}
 % ##################

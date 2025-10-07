@@ -13,7 +13,7 @@ int main() {
      jej wartość.
 
      int - typ zmiennej „standard integer”, „standardowa liczba całkowita”.
-     intVar1 - nazwa zmiennej, równie dobrze można napisać „smerfMaruda”,
+     intVar1 - nazwa zmiennej, równie dobrze można napisać „czerwonyKapturek”,
      ale lepiej by nazwa zmiennej coś nam mówiła.
 
      Linia

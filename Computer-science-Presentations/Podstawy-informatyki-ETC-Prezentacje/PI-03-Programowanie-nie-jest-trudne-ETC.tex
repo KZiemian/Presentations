@@ -179,15 +179,15 @@ eprint=true,
   \colorhref{https://en.wikipedia.org/wiki/Brian\_Kernighan}{Kernighana}.
 
   Proszę pamiętać, że~pisanie programów nie jest trudne, ich debugowanie już
-  tak. Pomimo tego postaram~się postawić wspólnie kilka kroków na trudnej
-  ścieżce nauki debugowania programów.
+  tak. Na tych zajęciach będziemy próbować wspólnie stawiać pierwsze kroki
+  na drodze nauki debugowania programów.
 
   Przypomnijmy jak działa język~C. Piszemy program z~kodem źródłowym
   w~języku~C, który ma być zawarty w~pliku, którego nazwa \alert{kończy~się
     na~\texttt{.c}}. Następnie program zwany kompilatorem na podstawie
   tego kodu źródłowego generuje program wykonywalny \texttt{prog.out}.
   Kompilator to też program komputerowy, więc to my, ludzie, ustalamy
-  jego zasady pracy.
+  jego zasady działania.
 
 \end{frame}
 % ##################
@@ -201,18 +201,18 @@ eprint=true,
   \frametitle{Błędy}
 
 
-  Twórcy języka~C przyjęli, że~kompilator może zwrócić nam dwa rodzaje
-  wiadomości, że~coś jest nie tak: \textbf{błędy} (ang.~\textit{errors})
-  i~\textbf{ostrzeżenia} (ang.~\textit{warnings}). Różnica między nimi
-  jest następująca.
+  Twórcy języka~C przyjęli, że~jeśli coś jest nie tak, to kompilator może
+  zwrócić jedną z~dwóch rodzai wiadomości: \textbf{błąd}
+  (ang.~\textit{error}) i~\textbf{ostrzeżenie} (ang.~\textit{warning}).
+  Różnica między nimi jest następująca.
 
   Zwrócenie błędu przez kompilator można zrozumieć, jako następująca
   informację od niego. „Człowieku, ten kod który napisałeś w~linii
   numer~X (mniej więcej) jest tak zły, że~ja nie wygenerują ci pliku
   wykonywalnego. Napraw ten błąd i~spróbuj jeszcze raz.”
 
-  Ze względu na to jak skomplikowany jest proces kompilacji oraz wieku
-  języka~C, informacje o~błędach często są bardzo trudne w~zrozumieniu
+  Ze względu na to jak skomplikowany jest proces kompilacji oraz na~wiek
+  języka~C, informacje o~błędach są często bardzo trudne w~zrozumieniu
   i~niezbyt precyzyjne. To naprawdę skomplikowany temat. Jedną z~rzeczy,
   które należy rozumieć jest to, że~jeśli kompilator twierdzi, że~błąd
   jest w~linii $20$, to on zwykle w~tej linii jest, ale kompilator
@@ -231,23 +231,23 @@ eprint=true,
   \frametitle{Ostrzeżenia}
 
 
-  Jeśli kompilator zwróci ostrzeżenie, to można to rozumieć jak mówił:
-  „Kod w~tym miejscu wygląda na potencjalnie wadliwy, ale skoro tak chcesz,
-  to wygeneruję program zgodnie z~nim. Jeśli samolot spadnie przez to
+  Jeśli kompilator zwróci ostrzeżenie, to można to rozumieć jakby mówił:
+  „Kod w~tym miejscu wygląda na zły, ale skoro tak chcesz, to wygeneruję
+  program wykonalny zgodnie z~tym kodem. Jeśli samolot spadnie przez to
   z~nieba, to ja nie biorę za to odpowiedzialności.”
 
   Warto dodać, że~twórcy języka Go, stwierdzili, że~kompilator nie
   powinien zwracać ostrzeżeń, bo dzieje~się dokładnie to czego można~się
-  byłoby spodziewać: programiści ignorują ostrzeżenia. Bo czy program został
-  utworzony? Tak. To czym~się przejmować? Skutkiem tego istniejący
+  było spodziewać: programiści ignorują ostrzeżenia. Bo czy program~się
+  uruchamia? Tak. To czym~się przejmować? Skutkiem tego istniejący
   kod jest pełen podejrzanych miejsc, których programistą nie chciało~się
   zwyczajnie poprawić. Z~tego powodu w~języku Go są tylko błędy, więc
   programista musi je wszystkie poprawić.
 
   Na tym przedmiocie obowiązuje zasada, że~każdy program ma zostać
   doprowadzony do stanu, w~którym kompilator podczas jego przetwarzania
-  nie zgłasza żadnego ostrzeżenia. Państwo rozumieją, dlaczego takie zasady
-  przyjęliśmy.
+  nie zgłasza żadnego ostrzeżenia. Państwo na pewno rozumieją, dlaczego
+  takie zasady przyjęliśmy.
 
 \end{frame}
 % ##################
@@ -262,10 +262,10 @@ eprint=true,
 
 
   Niestety, jedną z~problemów w~pracy z~językiem~C jest to, że~czasem
-  dostajemy od kompilatora ostrzeżenie, a~jak~się przyjrzymy, to okazuje~się
+  dostajemy od kompilatora ostrzeżenie, a~jak~się przyjrzymy, to okazuje~się,
   że~wystąpił błąd. Czyli widzimy, że~kompilator pisze „Ostrzegam ciebie\ldots”
   i~myślimy sobie „Okej, uruchomię plik i~zobaczę jak działa.”, a~pliku nie
-  ma. Co za bajzel!
+  ma. Bo czemu życie miałoby być proste?
 
   Można by powiedzieć pewne rzeczy na usprawiedliwienie kompilatora,
   ale~to temat na inny przedmiot. Przyjmijmy po prostu, że~kompilator
@@ -307,9 +307,7 @@ eprint=true,
   Dzisiejsze komputery buduje~się w~ten sposób, że~najmniejszą porcją pamięci
   jakiej możemy używać jest jeden bajt, czyli $8$~bitów. Techniczny
   termin na taką najmniejszą jednostkę pamięci nazywamy
-  \textbf{słowem} (ang.~\textit{word}). Historycznie istniały komputery,
-  których najmniejszą jednostką było powiedzmy $6$~bitów, ale to nie są
-  zajęcia z~historii informatyki.
+  \textbf{słowem} (ang.~\textit{word}).
 
 \end{frame}
 % ##################
@@ -333,7 +331,7 @@ eprint=true,
   By to zilustrować, proszę sobie wyobrazić, że~zamiast zdjęcia na dysku,
   musimy operować ręcznie na milionie~(!) bajtów które taki rysunek tworzą.
   Kopiowanie zdjęcia wyglądałoby wtedy mniej więcej tak. Weź bajty
-  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 000$ i~skopiuj
+  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 999$ i~skopiuj
   zawartość każdego z~nich do bajtów o~numerach $11 \, 000 \, 073$
   do~$12 \, 000 \, 072$. Koszmar na~jawie!
 
@@ -361,11 +359,10 @@ eprint=true,
   wygodne. Mamy nadzieję, że~takie wyjaśnienie koncepcji abstrakcji
   w~informatyce jest dla Państwa wystarczająca.
 
-  Typy zmiennych istnieją z~tego samego powodu, zamiast myśleć „Tu mam kilka
-  bajtów.”, prościej jest myśleć „Tu mam liczbę całkowitą”. Poza tym, typy
+  Typy zmiennych istnieją z~tego samego powodu, zamiast myśleć „Tu mam cztery
+  bajty.”, prościej jest myśleć „Tu mam liczbę całkowitą”. Poza tym, typy
   zmiennych pozwalają komputerowi lepiej kontrolować działanie programów,
-  to jest jednak temat rzeka, zbyt obszerny na ramy tego przedmiotu,
-  pozostaniemy na poziomie kilku ogólnych uwag.
+  to jest jednak temat rzeka, zbyt obszerny na ramy tego przedmiotu.
 
 \end{frame}
 % ##################
@@ -378,6 +375,11 @@ eprint=true,
 \begin{frame}
   \frametitle{Pożytek z~typów}
 
+
+  W~poprzednim paragrafie napisaliśmy, że~grupa czterech bajtów reprezentuje
+  liczbę całkowitą i~tak rzeczywiście często jest w~komputerach. Pojedyncza
+  liczba całkowita często zajmuje dokładnie cztery bajty w~pamięci, acz
+  nie jest to teraz super ważne.
 
   Rozpatrzmy następujący, mocno uproszczony przykład. Powiedzmy, że~używamy
   dwóch rodzajów plików: graficznych oraz tekstowych. Dzięki typom, nasz
@@ -387,15 +389,6 @@ eprint=true,
   przedmiocie napotkamy dostatecznie wiele przykładów, które pokazując,
   czemu jest to dobra rzecz.
 
-  Należy też dodać, że~w~różnych językach granica między typami jest mniej
-  lub bardziej ostra. Przykładowo, czy w~miejscu, gdzie program oczekuje
-  liczby zmiennoprzecinkowej, mogę użyć liczby całkowitej~$1$? Wedle
-  niektórych języków, tak, bo wszak wiadomo jak zamienić liczbę całkowitą~$1$
-  na liczbę zmiennoprzecinkową~$1.0$. Wedle innych języków, nie,
-  bo~taka zmiana jednego typu liczbowego na drugi, może prowadzić do
-  błędów numerycznych, których programista może nie być świadomy pisząc
-  program.
-
 \end{frame}
 % ##################
 
@@ -408,11 +401,39 @@ eprint=true,
   \frametitle{Pożytek z~typów}
 
 
+  Należy też dodać, że~w~różnych językach granica między typami jest mniej
+  lub bardziej ostra. Przykładowo, czy w~miejscu, gdzie program oczekuje
+  liczby zmiennoprzecinkowej, mogę użyć liczby całkowitej~$1$? Wedle
+  niektórych języków, tak, bo wszak wiadomo jak zamienić liczbę
+  całkowitą~$1$ na liczbę zmiennoprzecinkową~$1.0$. Wedle innych języków,
+  nie, bo~taka zmiana jednego typu liczbowego na drugi, może prowadzić do
+  błędów numerycznych, których programista może nie być świadomy pisząc
+  program.
+
   W~tym drugim typie~;) języków, programista musi jawnie poprosić
   o~\textbf{konwersje typów}. Czyli musi napisać kod, który mówi coś
-  w~stylu „Wiem, że~to jest liczba całkowita i~w~tym miejscu masz
-  ją zamienić na liczbę zmiennoprzecinkową. Ja biorę odpowiedzialność
+  w~stylu „Wiem, że~to jest liczba całkowita~$1$ i~w~tym miejscu masz
+  ją zamienić na liczbę zmiennoprzecinkową~$1.0$. Ja biorę odpowiedzialność
   za to co~się stanie.” O~konwersji typów powiem w~swoim czasie.
+
+  % Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
+  % Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
+  % pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
+  % napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
+  % gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
+  % \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pożytek z~typów}
+
 
   Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
   Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
@@ -814,9 +835,9 @@ eprint=true,
   Powstanie kodu \textsc{ascii} zaczyna~się w~$1961$ roku. Należy sobie
   uświadomić jak wówczas wyglądała świat komputerów. Komputery potrafiły
   zajmować całe pokoje, internet nie był nawet marzeniem, a~przenoszenie
-  danych z~jednego komputera polegało na nagraniu danych na kartki papieru
-  lub dysk, przeniesienia ich do budynku, gdzie znajduje~się drugi komputer
-  i~wgraniu ich do niego.
+  danych z~jednego komputera na drugi polegało na nagraniu danych na kartki
+  papieru lub dysk, przeniesienia ich do budynku, gdzie znajduje~się drugi
+  komputer i~wgraniu ich do niego.
 
   I~tu pojawia~się problem. Co jeśli na jednym komputerze zapisywaliśmy
   literę „A” jako liczbę~$1$, ale na drugim komputerze, ktoś przypisał jej
@@ -845,7 +866,7 @@ eprint=true,
     Bemer}, który w~maju $1961$~roku złożył projekt takiego standardu
   do organizacji, która dziś nosi nazwę
   \colorhref{https://en.wikipedia.org/wiki/American\_National\_Standards\_Institute}
-  {American National Standards Institute}.
+  {American National Standards Institute}, w~skrócie \textsc{ansi}.
 
   W~tamtych czasach pamięć była droga, każdy bit~się liczył, zaś bajt liczący
   osiem bitów nie był jeszcze powszechnie przyjętym standardem. Po ustaleniu,

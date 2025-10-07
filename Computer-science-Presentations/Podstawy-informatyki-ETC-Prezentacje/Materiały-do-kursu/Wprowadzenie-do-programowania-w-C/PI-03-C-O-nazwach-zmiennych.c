@@ -3,7 +3,7 @@
 int main() {
   /* Krótkie zasady rządzące nazwami zmiennych. Nazwa zmiennej w C składa się
      z dużych i małych liter alfabetu ANGIELSKIEGO (programowanie wymyślili
-     amerykanie), cyfr i znaku „_”. Zasady są takie
+     głównie Amerykanie), cyfr i znaku „_”. Zasady są takie
      1) Duże i małe litery to różne symbole, więc „intVar1” i „intvar1”
      to dwie RÓŻNE zmienne.
      2) Nazwa zmiennej NIE może zaczynać się od cyfry.

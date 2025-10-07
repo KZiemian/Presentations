@@ -1,5 +1,8 @@
 /* Pseudoanimacja napisana w C. */
 
+/* Ten kod można byłoby napisać w mądrzejszy sposób, ale to nie jest teraz
+   ważne. Ma on tylko ilustrować działanie języka C. */
+
 #include <stdio.h>
 #include <unistd.h>
 

@@ -1,6 +1,6 @@
 /* Słowo „komputer” pochodzi od angielskiego „compute”, czyli liczyć.
    Komputer jest więc maszyną do liczenia i dlatego, dość szybko musimy
-   zrozumieć, jak za jego pomocą można liczyć. */
+   zrozumieć, jak za jego pomocą można wykonywać obliczenia. */
 
 #include <stdio.h>
 
@@ -8,15 +8,15 @@ int main() {
   printf("Wypisz liczbę: %d.\n", 3);
 
   /* %d pochodzi od „decimal” czyli „dziesiętny”. Oznacza, to, że funkcja
-     printf wstawi w miejsce „%d” liczbę całkowitą podaną po przecinku,
+     printf wstawi w miejsce „%d” liczbę całkowitą podaną po stringu,
      używając do tego zapisu dziesiętnego. */
 
   /* Analogicznie możemy wypisać na ekranie więcej liczb. */
   printf("Wypisujemy dwie liczby: %d, %d.\n", 3, 5);
 
   /* Niestety, już tu zaczynaja się schody. Komputer i język C dzielą liczby
-     na znacznie więcej typów niż my, my zaś musimy się nauczyć z nich
-     korzystać. Przykładowo, C zna liczby liczby całkowite 8 bitowe,
+     na znacznie więcej typów niż my, więc siłą rzeczymusimy się nauczyć
+     z nimi pracować. Przykładowo, C zna liczby liczby całkowite 8 bitowe,
      16 bitowe, 32 bitowe, 64 bitowe oraz liczby 8 bitowe bez znaku, liczby
      16 bitowe bez znaku, liczby 32 bitowe bez znaku,... i tak bez końca.
 

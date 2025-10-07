@@ -21,8 +21,8 @@
 
 
 % ------------------------------------------------------------------------------------
-% Procesing configuration files of Jagiellonian theme located in
-% the directory "preambule"
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule".
 % ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
@@ -1140,23 +1140,32 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  \frametitle{Nieszczęsna funkcja \texttt{scanf}}
+  \frametitle{Nieszczęsna funkcja \texttt{scanf()}}
 
 
-  W~języku C dostępna jest funkcja \texttt{scanf}, która pozwala wczytywać
+  W~języku C dostępna jest funkcja \texttt{scanf()}, która pozwala wczytywać
   dane z~klawiatury. Funkcji tej można używać ucząc~się języka~C, ale poza
   tym wyjątkiem \alert{nigdy}, \alert{pod żadnym pozorem}, \alert{nie wolno}
   jej używać pisząc jakikolwiek praktyczny program. Zwłaszcza, jeśli
   program ten ma działać na komputerze podłączonym do~internetu.
 
-  Problem z~funkcją \texttt{scanf} jest taki, że~pozwala ona hacker
+  Problem z~funkcją \texttt{scanf()} jest taki, że~pozwala ona hacker
   w~prosty sposób włamać~się do programu, za pomocą ataku przez
   przeładowania bufora. O~tym na czym polega ten atak, powiemy sobie trochę
-  później, zainteresowani mogą już teraz znaleźć jego objaśnienie ???tu.
+  później, zainteresowani mogą już teraz znaleźć jego objaśnienie
+  w~kilku wideach z~kanału Low Level:
+  w~\colorhref{https://www.youtube.com/watch?v=fjMrDDj47E8}{\textit{Why
+      do hackers\ldots}}
+  \parencite{Low-Level-Why-do-hackers-love-strings-Ver-2022},
+  \colorhref{https://www.youtube.com/watch?v=qpyRz5lkRjE}
+  {\textit{\textit{How do hackers\ldots}}}
+  \parencite{Low-Level-How-do-hackers-exploit-buffers-that-are-too-ETC-Ver-2022},
+  \colorhref{https://www.youtube.com/watch?v=z6gdQt8mjn4}
+  {\textit{What ever happened\ldots}}
+  \parencite{Low-Level-What-ever-happened-to-buffer-overflows-Ver-2023}.
 
   Prawdopodobnie każdy z~nas dzisiaj korzystał z~kilku programów napisanych
-  w~języku~C, które korzystają z~funkcji \texttt{scanf} i~to jest bardzo
+  w~języku~C, które korzystają z~\texttt{scanf()} i~to jest bardzo
   poważny \alert{problem}. Należy dodać, że~jest \alert{więcej} funkcji
   w~języku~C, który \alert{nie wolno} używać. Jest to efekt tego, jak stary
   jest język~C.
@@ -1206,7 +1215,7 @@ eprint=true,
 
 
   Liczby zmiennoprzecinkowe (ang.~\textit{floating-point numbers}) to
-  naprawdę podstępne bestie i~całe kursy semestralne są poświęcone
+  naprawdę podstępne bestie i~całe semestralne kursy są poświęcone
   pracy z~nimi. Państwo może będą mieli więcej o~nich na metodach
   numerycznych. Uważam, że~temat ten jest zbyt techniczny na kurs
   \textit{Podstawy informatyki}, dlatego ograniczę~się do kilku podstawowych
@@ -1234,10 +1243,10 @@ eprint=true,
 
   W~okresie mniej więcej $1950\text{-}1980$ prowadziło to do tego,
   że~na komputerach różnych firm, te same programy mogły wyliczać mocno
-  różniące~się wyniki, gdyż największe błędy powstawały w~różnych ich
-  miejscach. Dzisiaj ten problem wciąż istnieje, ale dzięki podjętym
+  różniące~się wyniki, gdyż „te same liczby” na różnych komputerach
+  działały inaczej. Dzisiaj ten problem wciąż istnieje, ale dzięki podjętym
   działaniom różnice które w~praktyce napotykamy, są w~większości przypadków
-  bardzo małe.
+  tak małe, że~możemy o~nich nie myśleć.
 
   Żeby zaradzić temu problemowi w~$1985$ roku
   \colorhref{https://www.ieee.org/}{Instytut Elektryków i~Inżynierów
@@ -1265,12 +1274,14 @@ eprint=true,
   musimy krótko omówić. Pierwszy z~tych typów to \textbf{liczby
     zmiennoprzecinkowe pojedynczej precyzji} (ang.~\textit{single-precision
     floating-point numbers}), które mają długość $32$-bitów ($4$-bajtów).
+
   Ile cyfr po przecinku może zapamiętać $32$ bitowa liczba
-  zmiennoprzecinkowa? To jest dość trudne pytanie, bo to są liczby zapisane
-  w~systemie \alert{binarnym}, więc od przypadku do przypadku, pozwalają
-  pamiętać różną liczbę \alert{dziesiętnych} cyfr po przecinku. A~to
-  dokładność w~systemie dziesiętnym nas interesuje. Standardowo liczba
-  taka pamięta $7$ albo $8$ \alert{dziesiętnych} cyfr po przecinku.
+  zmiennoprzecinkowa? To jest dość trudne pytanie, bo w~komputerze
+  liczby te są zapisane w~systemie \alert{binarnym}, więc od przypadku do
+  przypadku, pozwalają pamiętać różną liczbę \alert{dziesiętnych} cyfr po
+  przecinku. A~to dokładność w~systemie dziesiętnym nas interesuje.
+  Standardowo liczba taka pamięta $7$ albo $8$ \alert{dziesiętnych} cyfr po
+  przecinku.
 
   Żeby to sobie uzmysłowić, rozpatrzmy taki przykład. Dokładność trzech
   cyfr \alert{dziesiętnych} po przecinku daje nam dokładność

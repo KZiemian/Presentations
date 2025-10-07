@@ -10,7 +10,9 @@ int main() {
 
      Jak to zrobić? Proszę puścić wodze fantazji. Jeśli program nie będzie
      działać, to wspólnie go naprawimy. W tym miejscu warto dodać, że „\n”
-     oznacza, iż w to miejsce zostanie wstawiony znak nowej linii. */
+     oznacza, iż w to miejsce zostanie wstawiony znak nowej linii.
+     Znak nowej linii powoduje, że powłoka, jak należałoby się spodziewać,
+     zakończy w tym miejscu linię i przejdzie do następnej. */
 
   /* Tekst do wypisania na ekranie nazywamy stringiem i umieszczamy
      między znakami cudzysłowa.
@@ -19,7 +21,7 @@ int main() {
      wrócimy do tego jeszcze w przyszłości. */
 
   /* „printf” to „print function”, funkcja do pisania rzeczy na ekranie.
-     Również tutaj można by bardzo dużo o niej opowiedzieć, ale mam nadzieję,
+     Również tutaj można by bardzo dużo o niej opowiedać, ale mam nadzieję,
      że na razie takie wyjaśnienie Państwu wystarczy. */
 
 
