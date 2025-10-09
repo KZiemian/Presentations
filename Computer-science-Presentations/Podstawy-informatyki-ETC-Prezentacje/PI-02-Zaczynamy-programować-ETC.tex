@@ -87,7 +87,7 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Zaczynamy programować w~języku~C}
+\subtitle{2. Zaczynamy programować w~języku~C}
 
 \author{Kamil Ziemian \\
   \email}
@@ -115,8 +115,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 62k+, 73k+, 43k+, 52k+, 69k+, 77k+, 32k+, 33k+, 62k+,
-% 92k+,
+% Number of chars: 37k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -164,7 +163,7 @@ eprint=true,
 
   Będziemy~się starać nagrywać każde nasze spotkanie
   na~\textsc{ms}~Teamsach. Proszę nam o~tym ciągle przypominać, bo kiedyś
-  na pewno o~tym zapomnimy.
+  na pewno zapomnimy o~włączeniu nagrywania.
 
   Proszę zwracać nam też uwagę, że~na ekranie czegoś nie widać,
   że~czcionka jest za mała, że~kolory kłują w~oczy, że~nagrany dźwięk
@@ -175,7 +174,7 @@ eprint=true,
   Niestety, jakość dźwięku to coś, na co mamy mały wpływ. Możemy~się starać
   mówić możliwie blisko mikrofonu, ale raczej niewiele więcej.
   Poza tym, to na~pewno nie wyjdzie zbyt dobrze, bo te zajęcia  wymagają
-  byśmy chodzili po sali, poza tym w~którymś momencie na pewno zapomnimy,
+  byśmy chodzili po sali, a~w~którymś momencie na pewno zapomnimy,
   że~spotkanie~się nagrywa. Swoje uwagi na temat jakości nagrań proszę
   kierować do ludzi odpowiedzialnych za~sprawy studenckie na
   \textsc{wsz}i\textsc{b}ie.
@@ -189,7 +188,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Nie lubię zbyt poważnych zajęć, ale\ldots}
+  \frametitle{Nie chcemy by zajęcia były zbyt poważne, ale\ldots}
 
   \vspace{-0.5em}
 
@@ -221,13 +220,13 @@ eprint=true,
   Jeśli ktoś ma uwagi do tych zajęć, propozycję co można zmienić,
   co~poprawić, to proszę powiedzieć to nam po zajęciach lub napisać pod
   adres \email. Ponownie prosimy by w~tytule emaila napisać
-  \textit{Uwagi do zajęć} lub coś podobnego, bo inaczej może zniknąć na
+  \textit{Uwagi do zajęć} lub coś podobnego, bo inaczej może on zniknąć na
   długo w~skrzynce pocztowej.
 
   W~chwili obecnej nie mamy złudzeń, że~forma tych zajęć jest choćby bliski
   ideałowi, próbujemy jednak ciągle ją ulepszać. Państwa zdanie jest dla
   nas naprawdę \alert{ważne}, choć oczywiście nie zawsze~się z~nim zgadzamy.
-  To jak ten przedmiot wygląda obecnie wynika częściowo z~tego co
+  To jak ten przedmiot wygląda obecnie wynika częściowo z~tego, co
   w~przeszłości zaproponowali studenci.
 
   Choć trudno w~to uwierzyć, opinie typu „Te zajęcia to jest dno!”
@@ -350,10 +349,76 @@ eprint=true,
   rozwiązywanie pewnych problemów z~wykorzystaniem komputera. Programowanie
   polega na tym, by przekazać komputerowi zestaw instrukcji, które ten ma
   wykonać, by rozwiązać dany problem. Te stwierdzenia można rozwijać
-  na~$1000$ sposobów, na początek to jednak wystarczy.
+  na~$1000$ sposobów, na początek to jednak zupełnie wystarczy.
 
-  Jak w~rzeczywistości wygląda programowanie w~języku~C, tym będziemy~się
-  zajmowali cały semestr.
+  Tym co najbardziej chcielibyśmy Państwu przekazać na tych zajęciach,
+  to umiejętność rozwiązywania pewnych problemów, za pomocą pisania
+  programu, który używa zmiennych, instrukcji warunkowych i~pętli.
+  Jeśli nie rozumieją Państwo o~co chodzi, to cały semestr będziemy
+  próbowali to wyjaśnić. Państwo ocenią, czy to się nam udało, czy nie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Kilka uwag wstępnych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ostrzeżenia}
+
+
+  Jednym z~podstawowych uproszczeń, które będziemy stosować na tym kursie,
+  jest mówienie, że~język~C coś robi. Co to tak naprawdę znaczy, to temat
+  na osobne spotkanie. Mamy nadzieję, że~ten sposób mówienia, będzie dla
+  Państwa wystarczająco zrozumiały.
+
+  Słowa takie jak „litość” czy „miłosierdzie” nie są komputerom specjalnie
+  dobrze znane. Z~tego powodu, jeśli coś nie działa, to proszę sprawdzić,
+  że~zrobili Państwo \alert{wszystko} dokładnie tak jak zostało podane
+  i~wszystkie polecenia mają \alert{dokładnie} taką samą postać jak tu.
+  Nawet najmniejszy błąd może wszystko zepsuć, bo komputer nie wie co to
+  litość. Choć są programy mnie i~bardziej bezlitosne. Proszę też pamiętać,
+  że~w~razie dowolnych trudności, jesteśmy do Państwa dyspozycji
+  (również e-mailowo: \email).
+
+  W~tych materiałach też mogą być jakieś błędy, bo jak wszyscy ludzie
+  mylimy~się. Acz nie powinno być ich zbyt dużo. W~przypadku ich
+  znalezienia, proszę napisać o~tym pod adres~\email.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kilka uwag}
+
+
+  W~naszej ocenie o~języku~C można myśleć jako o~lokalny osiłku. Jest
+  gburowaty, humorzasty, trudny do zrozumienia, jeśli mu~się narazisz, może
+  ci ostro dołożyć. Jednak warto mieć go po swojej stronie jako przyjaciela,
+  choć nawiązanie z~nim przyjaźni nie jest łatwe.
+
+  Powtórzmy to jeszcze raz. Najważniejszą rzeczą, jaką chcielibyśmy Państwu
+  przekazać na tym kursie jest umiejętność rozwiązywania pewnych problemów,
+  za pomocą pisania programów operujących na zmiennych, instrukcjach
+  sterujących i~pętlach. Co to naprawdę znaczy, cały semestr spróbujemy
+  poświęcić wyjaśnieniu tego.
 
 \end{frame}
 % ##################
@@ -370,35 +435,6 @@ eprint=true,
 % ######################################
 \section{Zaczynamy programowanie w~języku~C}
 % ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Ostrzeżenia wstępne}
-
-
-  Jednym z~podstawowych uproszczeń, które będziemy stosować na tym kursie,
-  jest mówienie, że~język~C coś robi. Co to tak naprawdę znaczy, to temat
-  na osobne spotkanie. Mamy nadzieję, że~ten sposób mówienia, będzie dla
-  Państwa wystarczająco zrozumiały.
-
-  Słowo „litość” nie jest komputerom specjalnie dobrze znane. Z~tego
-  powodu, jeśli coś nie działa, to proszę sprawdzić, że~zrobili
-  Państwo \alert{wszystko} dokładnie tak jak zostało podane i~wszystkie
-  polecenia mają \alert{dokładnie} taką samą postać jak tu. Nawet
-  najmniejszy błąd może wszystko zepsuć, bo komputer nie wie co to litość.
-  Choć są programy mnie i~bardziej bezlitosne. Proszę też pamiętać,
-  że~w~razie dowolnych problemów, jesteśmy do Państwa dyspozycji.
-
-  W~tych materiałach też mogą być jakieś błędy, nie jesteśmy bowiem
-  nieomylni. Acz nie powinno być ich zbyt dużo. W~przypadku ich
-  znalezienia, proszę napisać o~tym pod adres~\email.
-
-\end{frame}
-% ##################
-
-
-
 
 
 % ##################
@@ -426,8 +462,7 @@ eprint=true,
 
   \item Wejście do katalogu \texttt{Podstawy-informatyki-Zajęcia/}.
 
-  \item Utworzenie pliku \texttt{Hello-World.c} za pomocą edytora
-    \colorhref{https://gedit-text-editor.org/}{gedit}.
+  \item Utworzenie pliku \texttt{Hello-World.c} za pomocą edytora.
 
   \end{enumerate}
 
@@ -448,8 +483,7 @@ eprint=true,
   \item[5.] Napisanie odpowiedniego kodu języka~C w~pliku
     \texttt{Hello-World.c}.
 
-  \item[6.] Zapisanie pliku \texttt{Hello-World.c} w~programie
-    \colorhref{https://gedit-text-editor.org/}{gedit}.
+  \item[6.] Zapisanie pliku \texttt{Hello-World.c} w~edytorze.
     Proszę uwierzyć, nie zrobienie tego potrafi narobić problemów.
 
   \item[7.] Skompilowanie pliku \texttt{Hello-World.c} w~celu utworzenia
@@ -525,12 +559,50 @@ eprint=true,
   należy wpisać w~powłoce. Treść polecenia następuje po symbolu dolara,
   zaś wykonujemy je poprzez wciśnięcie klawisza \texttt{Enter}.
 
+  Symbolu „\texttt{\$}” \alert{nie} przepisujemy do powłoki. Zwykle powłoka
+  sama wyświetla go przed znakiem kursora, stąd pochodzi używana przez
+  nas konwencja.
+
   By~utworzyć katalog o~nazwie \texttt{Podstawy-informatyki-Zajęcia/}
   w~powłoce wykonujemy polecenie \\
   \texttt{\$ mkdir Podstawy-informatyki-Zajęcia/} \\
   Katalog ten będzie istniał, dopóki ktoś go nie usunie, więc ponowne
   wykonywanie powyższego polecenia jest nie tylko zbyteczne, ale
   i~szkodliwe. A~przynajmniej irytujące dla użytkownika.
+
+  % Aby wejść do omawianego katalogu używamy polecenia \\
+  % \texttt{\$ cd Podstawy-informatyki-Zajęcia/} \\
+  % Od tego momentu, wszystkie pliki które będziemy tworzyć na tych zajęciach,
+  % powinny znajdować~się właśnie w~katalogu
+  % \texttt{Podstawy-informatyki-Zajęcia/}. Dość logiczne.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Punkty 2 i~3}
+
+
+  % Przyjmujemy konwencję, że~jeśli linia zaczyna~się symbolem
+  % \texttt{\$} to oznacza ona polecenie (ang.~\textit{command}), które
+  % należy wpisać w~powłoce. Treść polecenia następuje po symbolu dolara,
+  % zaś wykonujemy je poprzez wciśnięcie klawisza \texttt{Enter}.
+
+  % Symbolu „\texttt{\$}” \alert{nie} wpisujemy do powłoki. Zwykle powłoka
+  % sama wyświetla go przed znakiem kursora, stąd pochodzi używana przez
+  % nas konwencja.
+
+  % By~utworzyć katalog o~nazwie \texttt{Podstawy-informatyki-Zajęcia/}
+  % w~powłoce wykonujemy polecenie \\
+  % \texttt{\$ mkdir Podstawy-informatyki-Zajęcia/} \\
+  % Katalog ten będzie istniał, dopóki ktoś go nie usunie, więc ponowne
+  % wykonywanie powyższego polecenia jest nie tylko zbyteczne, ale
+  % i~szkodliwe. A~przynajmniej irytujące dla użytkownika.
 
   Aby wejść do omawianego katalogu używamy polecenia \\
   \texttt{\$ cd Podstawy-informatyki-Zajęcia/} \\
@@ -578,17 +650,24 @@ eprint=true,
 
 
   Utworzymy teraz plik \texttt{Hello-World.c} za pomocą edytora
-  \colorhref{https://gedit-text-editor.org/}{gedit}. By to zrobić
-  wpisujemy w~powłoce \\
+  \colorhref{https://gedit-text-editor.org/}{gedit} lub
+  \colorhref{https://kate-editor.org/}{kate}. By to zrobić w przypadku
+  \colorhref{https://gedit-text-editor.org/}{gedit} wpisujemy w~powłoce \\
   \texttt{\$ gedit Hello-World.c \&} \\
-  Proszę pamiętać o~dodaniu na końcu polecenia znaku
-  \alert{ampersand}:~„\&”. Inaczej gedit zablokuje nam możliwość wpisywania
-  kolejnych poleceń do powłoki i~by ją odzyskać, będziemy musieli
-  wyłączyć gedita albo użyć kombinacji poleceń \texttt{jobs} i~\texttt{bg}.
+  W przypadku edytora \colorhref{https://kate-editor.org/}{kate},
+  wpisujemy \\
+  \texttt{\$ kate Hello-World.c \&}
 
-  Jeśli wszystko poszło dobrze, to na ekranie zobaczymy okienko gedita,
-  które wygląda mniej więcej tak jak to na~następnym slajdzie
-  \eqref{fig:Gedit-window}.
+  Proszę pamiętać o~dodaniu na końcu polecenia znaku
+  \alert{ampersand}:~„\&”. Inaczej edytor zablokuje nam możliwość wpisywania
+  kolejnych poleceń do powłoki i~by ją odzyskać, będziemy musieli
+  go wyłączyć albo użyć kombinacji poleceń \texttt{jobs} i~\texttt{bg}.
+
+  Jeśli wszystko poszło dobrze, to na ekranie zobaczymy okienko
+  \colorhref{https://gedit-text-editor.org/}{gedita}, które wygląda mniej
+  więcej tak jak to na~następnym slajdzie \eqref{fig:Gedit-window}.
+  Odpowiednie okienko dla \colorhref{https://kate-editor.org/}{kate}
+  jest pokazane na slajdzie???.
 
 \end{frame}
 % ##################
@@ -629,8 +708,8 @@ eprint=true,
 
 
   W~pliku \texttt{Hello-World.c} umieszczamy następujący tekst. Proszę
-  przepisać go bardzo \alert{dokładnie}, bo język~C nie jest specjalnie
-  litościwy i~nawet drobny błąd może uniemożliwić wykonanie tego programu.
+  przepisać go bardzo \alert{dokładnie}, bo język~C jest dość humorzasty
+  i~nawet drobny błąd może uniemożliwić wykonanie tego programu.
 
   \vspace{2em}
 
@@ -660,14 +739,14 @@ eprint=true,
     w~programie\ldots}
 
 
-  Niezapisywanie utworzony lub zmienionych plików, to nadspodziewanie
-  częsty błąd, proszę więc być na niego wyczulonym.
+  Niezapisywanie właśnie utworzonych lub zmienionych plików, to
+  nadspodziewanie częsty błąd, proszę więc być na niego wyczulonym.
 
-  Plik w~gedicie zapisujemy wciskając skrót~\texttt{Ctrl-s} lub wciskając
-  przycisk zapisu. Dodatkowo, jeśli nie zapisaliśmy pewnych zmian
-  wprowadzonych do pliku, to gedit umieści przy nazwie pliku widocznej na
+  Plik w~naszych edytorach zapisujemy wciskając skrót~\texttt{Ctrl-s} lub
+  wciskając przycisk zapisu. Dodatkowo, jeśli nie zapisaliśmy zmian
+  wprowadzonych do pliku, to edytor umieści przy nazwie pliku widocznej na
   górze okienka symbol gwiazdki: „\hspace{0.1em}*”. Proszę~się upewnić, iż
-  symbol ten jest nieobecny.
+  symbol ten jest tam nieobecny.
 
 \end{frame}
 % ##################
@@ -720,8 +799,9 @@ eprint=true,
   „zaklęcia” zrobi co trzeba.
 
   Powłoka \textsc{bash} już w~ogóle nie wie co to litość, więc proszę
-  przepisać ten tekst bardzo dokładnie. Jeśli ktoś napotkał jakikolwiek
-  problem, proszę nas o~tym poinformować, pomożemy go rozwiązać.
+  przepisać „zaklęcie” bardzo dokładnie. Jeśli ktoś napotkał
+  tu jakikolwiek problem, proszę nas o~tym poinformować, pomożemy go
+  rozwiązać.
 
   Jeśli wszystko~się udało, to na dysku powinien istnieć plik
   \texttt{prog.out}. W~systemie GNU/Linux by to sprawdzić możemy w~powłoce
@@ -924,14 +1004,14 @@ eprint=true,
   działać poprawnie, to należy sprawdzić, czy nie zapomnieliśmy
   skompilować nowego kodu źródłowego i~przypadkiem nie uruchamiamy wciąż
   starego programu. Nigdy też nie zaszkodzi sprawdzić, czy nie
-  zapomnieliśmy zapisać naszego kodu.
+  zapomnieliśmy zapisać kodu w~edytorze.
 
-  Kompilację i~wykonanie programu można wykonać za pomocą pojedynczej linii
-  poleceń powłoki: \\
+  Kompilację i~wykonanie programu można wykonać za pomocą pojedynczego
+  polecenia powłoki: \\
   \texttt{\$ time gcc -ansi --std=c99 -pedantic Hello-World.c} \\
   \hphantom{aaaa} \texttt{-o prog.out; ./prog.out} \\
-  Tekst ten należy wpisać w~\alert{jednej} linii powłoki. My rozbiliśmy go
-  na~dwie, tylko po to by był bardziej czytelny.
+  Tekst ten należy wpisać w~\alert{jednym} wierszu powłoki. My rozbiliśmy go
+  na~dwa wiersze, tylko po to by był bardziej czytelny.
 
   Jeśli chcemy skompilować plik o~innej nazwie, powiedzmy, że~jest nią
   \texttt{Fajny-program.c}, to używamy polecenia \\
@@ -955,7 +1035,8 @@ eprint=true,
   \texttt{/* Informacje dla człowieka. */} \\
   Komentarz może zawierać jedną lub więcej linii tekstu: \\
   \texttt{/* Dość długi tekst z informacją dla człowieka, dlatego} \\
-  \hphantom{aa} \hspace{0.01em} \texttt{podzielony jest na dwie linie. */}
+  \hspace{0.2em} \texttt{*} \hspace{0.12em} \texttt{został podzielony na
+    dwie linie. */}
 
   Mogą~się Państwo spotkać z~komentarzem postaci \\
   \texttt{// Informacje dla człowieka.} \\
@@ -1029,8 +1110,8 @@ eprint=true,
 
   Przetłumaczy te słowa mistrzów języka~C, na język zrozumiały dla
   normalnego człowieka. \\
-  Co w~języku~C może pójść nie tak? \\
-  W~skrócie, wszystko.
+  --~Co w~języku~C może pójść nie tak? \\
+  --~W~skrócie, wszystko.
 
   Dokładniej, program w~C może~się nie chcieć dać w~ogóle uruchomić,
   z~następujących powodów.
@@ -1043,7 +1124,7 @@ eprint=true,
 
   \item Brak średnika.
 
-  \item Obecność spacji w~pewnym miejscu
+  \item Obecność spacji w~pewnym miejscu.
 
   \item Brak spacji w~pewnym miejscu.
 
@@ -1090,8 +1171,9 @@ eprint=true,
   Gdy zaczynamy naukę programowania, w~C albo innym języku, to wiele czasu
   spędzamy na uczeniu~się unikaniu tego typu błędów oraz nauce korzystania
   z~narzędzi, które nam walkę z~nimi ułatwiają. Przykładowo, edytory
-  tekstu takie jak gedit, dostarczają nam od razu narzędzi takich jak
-  kolorowanie składni.
+  tekstu takie jak \colorhref{https://gedit-text-editor.org/}{gedit}
+  czy \colorhref{https://kate-editor.org/}{kate}, dostarczają nam od razu
+  narzędzi takich jak kolorowanie składni.
 
 \end{frame}
 % ##################
@@ -1106,7 +1188,7 @@ eprint=true,
 
 
   Nie należy~się zniechęcać tym, że~na początku nic nie chce nam działać
-  z~wyżej wymienionych problemów i~innych im podobnych. Im więcej mamy
+  z~wyżej wymienionych powodów i~innych im podobnych. Im więcej mamy
   doświadczenia w~programowaniu, tym rzadziej napotykamy tego typu
   problemy, aż~stają~się one dla nas prawie nieistotne. Zmaganie~się z~nimi
   to niestety nieunikniona część nauki programowania w~C i~dowolnym innym
@@ -1114,13 +1196,13 @@ eprint=true,
 
   Język~C zostawia nam pewną swobodę, w~wyborze tego jak dokładnie piszemy
   nasz kod, dopuszczając różne \alert{style} jego tworzenia. Na tych
-  zajęciach prezentujemy styl, który uważamy za~jeden z~lepszych, acz to
-  jest kwestia gustu.
+  zajęciach prezentujemy styl, który uważamy za~jeden z~lepszych, acz jest
+  to kwestia gustu.
 
   Niestety, kryteria decydujące o~tym, co jest kwestią stylu programowania,
   a~co jest błędem, który całkowicie położy nasz program, nie są całkiem
-  oczywiste. Będziemy starali~się wyjaśniać to powoli na kolejnych
-  zajęciach.
+  oczywiste. Będziemy starali~się wyjaśniać to powoli wraz z~kolejnymi
+  zajęciami.
 
 \end{frame}
 % ##################
@@ -1134,8 +1216,96 @@ eprint=true,
 
 
 % ######################################
-\section{Kilka ważnych informacji o~języku~C}
+\section{Kilka ważnych informacji}
 % ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozszerzenia nazw plików}
+
+
+  Z~pojęciem rozszerzenia nazwy pliku na pewno już~się Państwo spotkali.
+  Dobrze nazwany plik zawiera w~swojej nazwie jedną i~tylko jedną kropkę,
+  zaś rozszerzenie nazwy tego pliku, to ta właśnie kropka wraz z~całym
+  tekstem następującym po~niej. Wobec tego jeśli plik nosi nazwę
+  \texttt{Opowiadanie.txt}, to rozszerzeniem nazwy tego pliku jest
+  \texttt{.txt}. Analogicznie dla pliku o~nazwie \texttt{Hello-World.c}
+  jego rozszerzenie to~\texttt{.c}.
+
+  Rozszerzenie nazwy pliku informuje programy z~jakim rodzajem pliku mają do
+  czynienia, dlatego każdy język programowania posiada własne, właściwe
+  tylko jemu rozszerzenie. Jak już widzieliśmy, pliki napisane w~języku~C
+  mają mieć rozszerzenie~\texttt{.c}. Analogicznie, każdy program w~języku
+  C++ ma się kończyć na \texttt{.cpp} (\texttt{Hello-World.cpp}),
+  program napisany w~Pythonie na~\texttt{.py} (\texttt{Hello-World.py}),
+  w~\textsc{bash}u \texttt{.sh} (\texttt{Hello-World.sh}),~etc.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozszerzenia nazw plików}
+
+
+  Rozszerzenie nazwy pliku to nie jest jedyny sposób sprawdzenia z~jakiego
+  rodzajem pliku mamy do czynienia, ale jest jednym z~najważniejszych.
+  W~szczególności, wiele programów jak
+  \colorhref{https://gedit-text-editor.org/}{gedit} czy
+  \colorhref{https://kate-editor.org/}{kate} na podstawie rozszerzenia
+  nazwy pliku włączają nam odpowiednie narzędzia pomocnicze do programowania
+  w~języku takim jak~C. Najbardziej widocznym tego typu narzędziem
+  jest kolorowanie składni.
+
+  Nie trzeba chyba dodawać, że~pozbawianie~się tego typu pomocy przy
+  pisaniu programów w~języku~C jest wielkim błędem. Dlatego jeśli
+  ktoś na zajęciach napisze program w~języku~C, którego plik \alert{nie} ma
+  rozszerzenia~\texttt{.c}, będzie to musiał przy mnie poprawić.
+  Chyba, że~ograniczenia czasowe sprawią, że nie będę mógł stać nad taką
+  osobą i~nadzorować jak to robi. Ale proszę nie liczyć, że~zapomnę o~tej
+  zniewadze~;).
+
+  Przypadek plików nagłówkowych w~C omówimy później.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Plugawe nazwy plików}
+
+
+  To wyjaśnia, czemu nazwy plików typu \\
+  \texttt{plik-numer.1.c} \\
+  to wymysł Szatana i~wytwór piekieł. Programy z~których korzystamy
+  mogą bowiem błędnie rozpoznać \texttt{.1.c} jako rozszerzenie pliku
+  i~pozbawić nas wsparcia przy pisaniu programów w~C. To samo zresztą
+  stosuje~się do wszystkich innych języków programowania.
+
+  Podsumujmy. W~nazwie pliku powinna być \alert{jedna i~tylko jedna
+    kropka}, ta poprzedzająca nazwę rozszerzenia pliku, czyli dla nas
+  \texttt{.c}. Jeśli ta zasada nie jest prawdą wszędzie na świecie, to na
+  pewno jest prawdą na tych zajęciach i~proszę o~tym pamiętać.
+
+  Jeśli ktoś prześle nam plik, którego nazwa zawiera więcej lub mniej niż
+  \alert{jedną} kropkę, to zastrzegamy sobie prawo odesłania mu tego pliku
+  z~prośbą o~zmianę nazwy na~poprawniejszą. To nie jest forma karania
+  takiej osoby, tylko metoda wyrabiania w~ludziach dobrych nawyków.
+
+\end{frame}
+% ##################
+
+
+
 
 
 % ##################
@@ -1149,12 +1319,12 @@ eprint=true,
   jej używać pisząc jakikolwiek praktyczny program. Zwłaszcza, jeśli
   program ten ma działać na komputerze podłączonym do~internetu.
 
-  Problem z~funkcją \texttt{scanf()} jest taki, że~pozwala ona hacker
+  Problem z~funkcją \texttt{scanf()} jest taki, że~pozwala ona hakerom
   w~prosty sposób włamać~się do programu, za pomocą ataku przez
   przeładowania bufora. O~tym na czym polega ten atak, powiemy sobie trochę
   później, zainteresowani mogą już teraz znaleźć jego objaśnienie
   w~kilku wideach z~kanału Low Level:
-  w~\colorhref{https://www.youtube.com/watch?v=fjMrDDj47E8}{\textit{Why
+  \colorhref{https://www.youtube.com/watch?v=fjMrDDj47E8}{\textit{Why
       do hackers\ldots}}
   \parencite{Low-Level-Why-do-hackers-love-strings-Ver-2022},
   \colorhref{https://www.youtube.com/watch?v=qpyRz5lkRjE}
@@ -1191,184 +1361,6 @@ eprint=true,
   „Hello, World!” napisany w~języku C++. Proszę go porównać z~tym samym
   programem napisanym w~języku~C. By go uruchomić proszę w~powłoce wpisać \\
   \texttt{\$ time g++ PI-05-G-Hello-World.cpp -o prog.out; ./prog.out}
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Kilka słów o~liczbach zmiennoprzecinkowych}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Liczby zmiennoprzecinkowe to podstępne bestie}
-
-
-  Liczby zmiennoprzecinkowe (ang.~\textit{floating-point numbers}) to
-  naprawdę podstępne bestie i~całe semestralne kursy są poświęcone
-  pracy z~nimi. Państwo może będą mieli więcej o~nich na metodach
-  numerycznych. Uważam, że~temat ten jest zbyt techniczny na kurs
-  \textit{Podstawy informatyki}, dlatego ograniczę~się do kilku podstawowych
-  faktów. Chyba, że~Państwo chcą~się w~ten temat zagłębić. Chcą Państwo?
-
-  Liczby zmiennoprzecinkowe są skomplikowane, bo mają być z~jednej strony
-  wydajne, z~drugiej strony służyć wielu praktycznym celom. Ponieważ
-  odcinek $[ 0, 1 ]$ zawiera nieskończenie wiele liczb, więc by móc operować
-  nimi wszystkim potrzebowalibyśmy nieskończenie wiele pamięci, a~to oznacza,
-  iż nie możemy tego zrobić. Potrzebujemy więc metody reprezentowania tych
-  liczb w~odpowiednio sprytny sposób. Tych metod jest wiele, różnią~się
-  szeregiem szczegółów, które nie są dla nas specjalnie ważne.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Standard IEEE~$754$}
-
-
-  W~okresie mniej więcej $1950\text{-}1980$ prowadziło to do tego,
-  że~na komputerach różnych firm, te same programy mogły wyliczać mocno
-  różniące~się wyniki, gdyż „te same liczby” na różnych komputerach
-  działały inaczej. Dzisiaj ten problem wciąż istnieje, ale dzięki podjętym
-  działaniom różnice które w~praktyce napotykamy, są w~większości przypadków
-  tak małe, że~możemy o~nich nie myśleć.
-
-  Żeby zaradzić temu problemowi w~$1985$ roku
-  \colorhref{https://www.ieee.org/}{Instytut Elektryków i~Inżynierów
-    Elektroników} (\textsc{ieee}, ang.~\textit{Institute~of Electrical
-    and~Electronics Engineers}) wydał dokument znany jako standard
-  \textsc{ieee}~$754$, który opisał w~jaki sposób komputer ma wykonywać
-  obliczenia na liczbach zmiennoprzecinkowych. Jeśli dwa komputery wykonują
-  działania matematyczne według zasad podanych przez ten standard, to wyniki
-  obliczeń będą na obu identyczne. W~praktyce są pewne drobne wyjątki,
-  ale to temat na inne zajęcia.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Liczby zmiennoprzecinkowe pojedynczej precyzji}
-
-
-  Standard ten precyzuje podstawowe wersje liczb zmiennoprzecinkowych, które
-  musimy krótko omówić. Pierwszy z~tych typów to \textbf{liczby
-    zmiennoprzecinkowe pojedynczej precyzji} (ang.~\textit{single-precision
-    floating-point numbers}), które mają długość $32$-bitów ($4$-bajtów).
-
-  Ile cyfr po przecinku może zapamiętać $32$ bitowa liczba
-  zmiennoprzecinkowa? To jest dość trudne pytanie, bo w~komputerze
-  liczby te są zapisane w~systemie \alert{binarnym}, więc od przypadku do
-  przypadku, pozwalają pamiętać różną liczbę \alert{dziesiętnych} cyfr po
-  przecinku. A~to dokładność w~systemie dziesiętnym nas interesuje.
-  Standardowo liczba taka pamięta $7$ albo $8$ \alert{dziesiętnych} cyfr po
-  przecinku.
-
-  Żeby to sobie uzmysłowić, rozpatrzmy taki przykład. Dokładność trzech
-  cyfr \alert{dziesiętnych} po przecinku daje nam dokładność
-  obliczeń $10.0^{ -3 } = 0.001$. Podczas, gdy dokładność do trzech cyfr
-  \alert{binarnych} po przecinku daje nam dokładność tylko
-  $2.0^{ -3 } = 1.0 / 8.0 = 0.125$, czyli $125$ razy mniejszą!
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pojedyncza i~podwójna precyzja}
-
-
-  W~języku~C zmienną przechowującą liczbę zmiennoprzecinkową na~$32$ bitach
-  definiujemy pisząc: \\
-  \texttt{float float32Var1 = 0.0;} \\
-  Do tej pory nie używaliśmy tej definicji i~zaraz wyjaśnimy dlaczego.
-
-  Okazuje~się, że~$7$ miejsc dziesiętnych po przecinku to za mało dla
-  wielu zastosowań, więc wprowadzono drugi ważny typ liczb:
-  \textbf{liczb zmiennoprzecinkowe podwójnej precyzji}
-  (ang.~\textit{double precision floating-points numbers}). Każda
-  taka liczba zajmuje w~pamięci $64$~bity ($8$~bajtów), stąd „podwójna
-  precyzja”. Liczba ta jest oczywiście zapisana w~notacji binarnej, po
-  przeliczeniu na dziesiętną daje to dokładność około $15$ cyfr
-  (dziesiętnych) po przecinku.
-
-  To wyjaśnia czemu w~języku~C zmienną przechowującą taką liczbę
-  definiuje~się jako \\
-  \texttt{double float64Var1 = 0.0;} \\
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pojedyncza i~podwójna precyzja}
-
-
-  Mówiąc szczerze, nazwy „\texttt{float}” i~„\texttt{double}” używane przez
-  język~C nie są zbyt dobre. Nowoczesne języki, takie jak Go, używają
-  znacznie bardziej sensownych nazw, takich jak „\texttt{float32}”
-  i~„\texttt{float64}”. Tu ponownie wychodzi wiek języka~C. Gdy powstawał
-  na przełomie lat $60$-tych i~$70$-tych XX wieku, nie zdawano sobie dobrze
-  sprawy z~tego, jak ważne jest wybieranie właściwych nazw dla różnych
-  obiektów występujących w~danym języku.
-
-  Dlaczego do tej pory używaliśmy tylko typu \texttt{double}? Odpowiedź jest
-  stosunkowo prosta: jego większa dokładność sprawia, że~rzadziej dostajemy
-  błędne wyniki. Uznaliśmy, że~kurs \textit{Podstaw informatyki} nie jest
-  właściwym miejscem na dyskutowanie takich subtelności, jak to kiedy
-  liczby zmiennoprzecinkowe na $32$~bitach są lepsze lub gorsze od tych
-  na $64$~bitach. Lepiej jest użyć typu, który minimalizuje liczbę błędnych
-  wyników.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Podsumowanie. Liczby zmiennoprzecinkowe}
-
-
-  Podane wcześniej informacje są wszystkim, co chcieliśmy Państwu przekazać
-  na tym przedmiocie o~liczbach zmiennoprzecinkowych. Jeśli ktoś chce
-  wiedzieć o~nich więcej, proszę~się do nas zgłosić na zajęciach, gdyż
-  ramy tego kursu nie pozwalają bardziej zagłębić~się w~tą tematykę.
-
-  Mamy nadzieję, że~nie musimy Państwa przekonywać, że~liczby
-  zmiennoprzecinkowe to podstępne bestie i~niebanalne byty, które
-  skrywają przed nami wiele tajemnic. Jednak szersza ich dyskusja musi
-  być odłożona na inny przedmiot, nasz wszak nosi nazwę
-  \textit{Podstawy informatyki}.
 
 \end{frame}
 % ##################

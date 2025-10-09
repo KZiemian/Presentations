@@ -2,16 +2,17 @@
 
 int main() {
   /* Liczby zmiennoprzecinkowe to w zasadzie liczby, które posiadają część
-     dziesiętną. Temat jest niewiarygodnie wręcz skomplikowany, ale na razie
-     wystarczy nam, że są to liczby, na których jak liczymy, to w przybliżeniu
-     wynik jest taki jak trzeba. Co do reszty, jest cały przedmiot metod
-     numerycznych, który zajmuje się takimi rzeczami. */
+   * dziesiętną. Temat jest niewiarygodnie wręcz skomplikowany, ale na razie
+   * wystarczy nam, że są to liczby, na których jak liczymy, to w
+   * przybliżeniu wynik jest taki jak trzeba. Co do reszty, jest cały
+   * przedmiot metod numerycznych, który zajmuje się takimi rzeczami. */
 
   printf("Wypisz liczbę zmiennoprzecinkową: %f.\n", 0.5);
   /* %f pochodzi od „floating-point number”, „liczba zmiennoprzecinkowa”. */
   printf("Wypisz liczbę zmiennoprzecinkową: %.1f.\n", 0.5);
   /* %.1f oznacza: wypisz tylko pierwszą cyfrę po przecinku.
-     Analogicznie wypisz dwie cyfry, trzy cyfry, etc. */
+   * Analogicznie aby wpisać dwie cyfry po przecinku używamy %.2f,
+   * dla trzech cyfry mamy %.3f, etc. */
 
   /* Wszystko wydaje się działać dobrze. */
   printf("%.2f + %.2f == %.2f.\n", 2.0, 3.0, 2.0 + 3.0);
@@ -26,10 +27,10 @@ int main() {
   printf("%.2f / %.2f == %.2f.\n\n", 5.0, 2.0, 5.0 / 2.0);
 
   /* WAŻNE. Dla C symbol „2” oznacza liczbę całkowitą o wartości
-     dwa, a „2.0” liczbę ZMIENNOPRZECINKOWĄ o wartości dwa. To nie są tylko
-     słowa, bo jak zapomnimy o tym to będzie boleć, patrz niżej.
-
-     Bo komputer to durna maszyna. */
+   * dwa, a „2.0” liczbę ZMIENNOPRZECINKOWĄ o wartości dwa. To nie są tylko
+   * słowa, bo jak zapomnimy o tym to będzie boleć, patrz niżej.
+   *
+   * Bo komputer to durna maszyna. */
 
   printf("\nCo w C może pójść nie tak? W przybliżeniu, wszystko.\n");
   printf("%d / %d == %d.\n", 5, 2, 5 / 2);

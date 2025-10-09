@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 /* Korzystając z tego so już wiemy, możemy zmodyfikować trochę poprzedni
-   program. Po pierwsz by uprościć zapis, skorzystamy z operatora „+=”.
-
-   Po drugie, będziemy testować, czy suma podanych liczb spełnia dwa warunki.
-   1) Jest większa od kwadratu pierwszej podanej liczby.
-   2) Jest mniejsza od kwadratu ostatniej podanej liczby.
-
-   Oznacza to, że sumaLiczb musi być większa od progu dolnego i jednocześnie
-   mniejsza od progu górnego. Będziemy więc potrzebowali koniunkcji
-   logicznej, którą w języku C reprezentuje operator „&&”:
-   (progDolny < sumaLiczb) && (sumaLiczb < progGory)
-
-   Program ten pewnie wciąż jest nudny, ale jakieś postępy robimy. */
+ * program. Po pierwsz by uprościć zapis, skorzystamy z operatora „+=”.
+ *
+ * Po drugie, będziemy testować, czy suma podanych liczb spełnia dwa warunki.
+ * 1) Jest większa od kwadratu pierwszej podanej liczby.
+ * 2) Jest mniejsza od kwadratu ostatniej podanej liczby.
+ *
+ * Oznacza to, że sumaLiczb musi być większa od progu dolnego i jednocześnie
+ * mniejsza od progu górnego. Będziemy więc potrzebowali koniunkcji
+ * logicznej, którą w języku C reprezentuje operator „&&”:
+ * (progDolny < sumaLiczb) && (sumaLiczb < progGory)
+ *
+ * Program ten pewnie wciąż jest nudny, ale jakieś postępy robimy. */
 
 int main() {
   int liczbaOdUzytkownika = 0;

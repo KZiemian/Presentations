@@ -21,8 +21,8 @@
 
 
 % ------------------------------------------------------------------------------------
-% Procesing configuration files of Jagiellonian theme located in
-% the directory "preambule"
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule".
 % ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
@@ -96,7 +96,8 @@ eprint=true,
 
 % ------------------------------------------------------------------------------------------------------------------
 \title{Podstawy informatyki z~językiem~C}
-\subtitle{Programowanie nie jest trudne, debugowanie już tak}
+\subtitle{3. Programowanie nie jest trudne, debugowanie już
+  tak}
 
 \author{Kamil Ziemian \\
   \email}
@@ -247,7 +248,7 @@ eprint=true,
   Na tym przedmiocie obowiązuje zasada, że~każdy program ma zostać
   doprowadzony do stanu, w~którym kompilator podczas jego przetwarzania
   nie zgłasza żadnego ostrzeżenia. Państwo na pewno rozumieją, dlaczego
-  takie zasady przyjęliśmy.
+  przyjęliśmy takie zasady.
 
 \end{frame}
 % ##################
@@ -262,10 +263,10 @@ eprint=true,
 
 
   Niestety, jedną z~problemów w~pracy z~językiem~C jest to, że~czasem
-  dostajemy od kompilatora ostrzeżenie, a~jak~się przyjrzymy, to okazuje~się,
-  że~wystąpił błąd. Czyli widzimy, że~kompilator pisze „Ostrzegam ciebie\ldots”
-  i~myślimy sobie „Okej, uruchomię plik i~zobaczę jak działa.”, a~pliku nie
-  ma. Bo czemu życie miałoby być proste?
+  dostajemy od kompilatora ostrzeżenie, a~jak~się przyjrzymy, to
+  okazuje~się, że~wystąpił błąd. Czyli widzimy, że~kompilator pisze
+  „Ostrzegam ciebie\ldots” i~myślimy sobie „Okej, uruchomię plik i~zobaczę jak
+  działa.”. A~pliku nie ma. Bo czemu życie miałoby być proste?
 
   Można by powiedzieć pewne rzeczy na usprawiedliwienie kompilatora,
   ale~to temat na inny przedmiot. Przyjmijmy po prostu, że~kompilator
@@ -284,30 +285,32 @@ eprint=true,
 
 
 % ######################################
-\section{Typy zmiennych}
+\section{Logika i~algebry Boole’a}
 % ######################################
 
 
+
 % ##################
 \begin{frame}
-  \frametitle{Czym są typy zmiennych?}
+  \frametitle{Logika i~algebry Boole’a}
 
 
-  Widzieliśmy już kilka typów zmiennych, takich jak liczby całkowite
-  i~liczby zmiennoprzecinkowe: \\
-  \texttt{int intVar1 = 0;} \\
-  \texttt{int float64Var1 = 0.0;} \\
-  Czym jednak dokładniej jest typ zmiennej? To wbrew pozorom jest bardzo
-  głęboki problem, który pojawił~się w~rozważaniach
-  filozoficzno-matematycznych kilka dekad wcześniej, nim ludzkość
-  skonstruowała pierwszy komputer z~prawdziwego zdarzenia. Powinno być
-  oczywiste, że~na takim przedmiocie jak \textit{Podstawy informatyki}
-  możemy omówić ten temat tylko na intuicyjnym poziomie.
+  W~programowaniu niezwykle ważne jest posiadanie umiejętność operowania
+  na~pojęciach logicznej prawdy oraz fałszu i~dokonywania na nich operacji
+  iloczynu oraz sumy logicznej. Z~tego powodu zdecydowaliśmy~się przygotować
+  to krótki omówienie tych zagadnień i~włączyć je do kursu
+  \textit{Podstaw informatyki}. To, że~naszymi adresatami są informatycy
+  mocno wpłynęło na~wybór i~sposób prezentacji materiału, o~czym należy
+  pamiętać ucząc~się go. Staraliśmy~się również, by wykład był możliwie
+  prosty, stąd liczne uproszczenia i~pominięcie wielu subtelności jakie te
+  zagadnienia sobą prezentują.
 
-  Dzisiejsze komputery buduje~się w~ten sposób, że~najmniejszą porcją pamięci
-  jakiej możemy używać jest jeden bajt, czyli $8$~bitów. Techniczny
-  termin na taką najmniejszą jednostkę pamięci nazywamy
-  \textbf{słowem} (ang.~\textit{word}).
+  Tematyka ta funkcjonuje pod kilkoma nazwami: „logika”, „logika
+  matematyczna”, „klasyczny rachunek zdań”, „algebra Boole’a”,~etc.
+  Spośród wymienionych nazw jedne są bardziej, drugie mniej trafne.
+  W~informatyce pojęcie „zmiennej boolowskiej” i,~trochę mniej, „algebry
+  Boole’a”, są mocno rozpowszechnione, dlatego zdecydowaliśmy właśnie
+  ich używać.
 
 \end{frame}
 % ##################
@@ -318,51 +321,26 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Abstrakcja w~informatyce}
+  \frametitle{Logiczna prawda i~fałsz}
 
 
-  Historycznie istniały komputery, których najmniejszą jednostką było
-  powiedzmy $6$~bitów, ale to nie są zajęcia z~historii informatyki.
+  Dla algebry Boole’a podstawowe są dwie wielkości oznaczające odpowiednio
+  wartość logiczną prawdy i~fałszu. Prawdę logiczną będziemy oznaczać
+  symbolem \texttt{true}, zaś~fałsz symbolem \texttt{false}. Nazywamy
+  jej \textbf{wartościami boolowskimi} (ang. \textit{boolean values})
+  lub \textbf{wartościami logicznymi} (ang. \textit{logical values}).
 
-  Moglibyśmy korzystać komputera operując tylko na bajtach jako takich,
-  ale byłaby to męka nie do pojęcia. Jeśli ktoś z~Państwa pisał kiedyś
-  w~jakimś dialekcie assemblera, wie o~co chodzi.
+  W~praktyce istnieje wiele różnych sposobów oznaczania tych wielkości
+  w~komputerze. W~języku Go są one oznaczane przez \texttt{true}
+  i~\texttt{false}. W~języku Python przez \texttt{True} i~\texttt{False}
+  (proszę zwrócić uwagę na wielkość liter). W~języku C fałsz reprezentuj
+  liczba całkowita równa $0$, prawdą jest każda inna liczba całkowita.
+  Domyślnie w~języku~C, prawdę reprezentuje liczba~$1$.
 
-  By to zilustrować, proszę sobie wyobrazić, że~zamiast zdjęcia na dysku,
-  musimy operować ręcznie na milionie~(!) bajtów które taki rysunek tworzą.
-  Kopiowanie zdjęcia wyglądałoby wtedy mniej więcej tak. Weź bajty
-  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 999$ i~skopiuj
-  zawartość każdego z~nich do bajtów o~numerach $11 \, 000 \, 073$
-  do~$12 \, 000 \, 072$. Koszmar na~jawie!
-
-  By tego uniknąć wprowadzamy coś, co w~informatyce określamy terminem
-  \textbf{abstrakcja}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Abstrakcja w~informatyce}
-
-
-  Zdjęcie na komputerze to pewna abstrakcja, która zwalnia nas z~myślenia
-  o~nim jako o~milionie bajtów, które tworzą ten rysunek na~dysku. Inny
-  przykładem tego typu zachowania jest to, że zamiast mówić „To jest
-  zwierzę, które jest ssakiem, ma cztery nogi, ogon, futro, jest
-  drapieżnikiem,\ldots” powiemy „To jest pies.”. Takie dzielenie rzeczy na różne
-  kategorie i~operować tak wprowadzonymi kategoriami okazuje~się być bardzo
-  wygodne. Mamy nadzieję, że~takie wyjaśnienie koncepcji abstrakcji
-  w~informatyce jest dla Państwa wystarczająca.
-
-  Typy zmiennych istnieją z~tego samego powodu, zamiast myśleć „Tu mam cztery
-  bajty.”, prościej jest myśleć „Tu mam liczbę całkowitą”. Poza tym, typy
-  zmiennych pozwalają komputerowi lepiej kontrolować działanie programów,
-  to jest jednak temat rzeka, zbyt obszerny na ramy tego przedmiotu.
+  Należy pamiętać, że~to iż prawdę w~języku~C reprezentuje liczba~$1$,
+  to \alert{nie} jest własność języka~C, ale umowa między programistami.
+  Niemniej tej umowy \alert{absolutnie} nie wolno łamać, jeśli komuś
+  jest drogie zdrowie i~życie.
 
 \end{frame}
 % ##################
@@ -373,55 +351,27 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Pożytek z~typów}
+  \frametitle{Intuicyjny sens algebry Boole’a}
 
 
-  W~poprzednim paragrafie napisaliśmy, że~grupa czterech bajtów reprezentuje
-  liczbę całkowitą i~tak rzeczywiście często jest w~komputerach. Pojedyncza
-  liczba całkowita często zajmuje dokładnie cztery bajty w~pamięci, acz
-  nie jest to teraz super ważne.
+  W~języku~C można również korzystać z~protezy typu boolowskiego jaką daje
+  nam \texttt{stdbool.h}. W~języku C++ sytuacja jest w~zasadzie taka sama
+  jak w~języku~C++.
 
-  Rozpatrzmy następujący, mocno uproszczony przykład. Powiedzmy, że~używamy
-  dwóch rodzajów plików: graficznych oraz tekstowych. Dzięki typom, nasz
-  program może rozpoznać, że~chcemy zapisać coś do~pliku graficznego, ale
-  otwarliśmy plik tekstowy i~zgłosi błąd, co jest bardzo pożądanym
-  zachowaniem. Jeśli Państwo jeszcze tego nie widzą, to myślę, że~na tym
-  przedmiocie napotkamy dostatecznie wiele przykładów, które pokazując,
-  czemu jest to dobra rzecz.
+  Spróbujemy teraz wyjaśnić intuicyjny sens algebry Boole’a, wychodząc
+  od pojęcia \textbf{zdania logicznego}. Zdaniem logicznym nazywamy
+  dowolne stwierdzenie, któremu możemy przypisać wartość logicznej prawdy
+  lub fałszu. Zdaniami takimi mogą być „Jan jest na mieście.”, „Jan je
+  kanapkę.”, czy znane nam już z~języka~C wyrażenia takie jak
+  „\texttt{intVar1 == 5}”, „\texttt{intVar1 < 3}”,
+  „\texttt{intVar1 > -4}”,~etc. Zdania „Gra \textit{Nine Sols} jest
+  lepsza, niż \textit{Hollow Knight}.”, czy „Teodor Parnicki jest
+  lepszym pisarzem niż Sienkiewicz.”, nie zaliczymy do zdań logicznych,
+  bo~nie jest wcale jasne, czy są one prawdziwe czy nie.
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pożytek z~typów}
-
-
-  Należy też dodać, że~w~różnych językach granica między typami jest mniej
-  lub bardziej ostra. Przykładowo, czy w~miejscu, gdzie program oczekuje
-  liczby zmiennoprzecinkowej, mogę użyć liczby całkowitej~$1$? Wedle
-  niektórych języków, tak, bo wszak wiadomo jak zamienić liczbę
-  całkowitą~$1$ na liczbę zmiennoprzecinkową~$1.0$. Wedle innych języków,
-  nie, bo~taka zmiana jednego typu liczbowego na drugi, może prowadzić do
-  błędów numerycznych, których programista może nie być świadomy pisząc
-  program.
-
-  W~tym drugim typie~;) języków, programista musi jawnie poprosić
-  o~\textbf{konwersje typów}. Czyli musi napisać kod, który mówi coś
-  w~stylu „Wiem, że~to jest liczba całkowita~$1$ i~w~tym miejscu masz
-  ją zamienić na liczbę zmiennoprzecinkową~$1.0$. Ja biorę odpowiedzialność
-  za to co~się stanie.” O~konwersji typów powiem w~swoim czasie.
-
-  % Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
-  % Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
-  % pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
-  % napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
-  % gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
-  % \textit{Podstawy informatyki}.
+  Podstawową cechą algebry Boole’a jest możliwość łączenia zdań logicznych
+  w~większe zdania logiczne. Zademonstrujemy to na przykładzie łącznika
+  zdań~„i”.
 
 \end{frame}
 % ##################
@@ -432,52 +382,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Pożytek z~typów}
+  \frametitle{Intuicyjny sens algebry Boole’a}
 
 
-  Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
-  Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
-  pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
-  napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
-  gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
-  \textit{Podstawy informatyki}.
+  Weźmy zdania „Jan jest na mieście.” oraz „Jan je kanapkę.”. Z~pomocą
+  łącznika „i” możemy teraz utworzyć nowe zdanie \\
+  „Jan jest na mieście i~Jan je kanapkę.” \\
+  Kiedy to zdanie jest prawdziwe? Przyjmujemy, że~jest ono prawdziwe
+  tylko wtedy, gdy jednocześnie jest prawdą, że~Jan jest na mieści, jak
+  i~to, że~je kanapkę. W~każdym innym przypadku zdanie to uważamy, za
+  fałszywe. Czyli zdanie to jest fałszywe, jeśli Jan jest na mieście,
+  ale nie je kanapki. Jak również wtedy, gdy Jan je kanapkę siedząc w~domu
+  oraz gdy ja siedzi w~domu i~niczego nie je.
 
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Zapisywanie liczb w~komputerze}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Komputer to maszyna do liczenia}
-
-
-  W~samej angielskiej nazwie \textit{computer} zawiera~się informacja,
-  że~jest to maszyna przeznaczona do liczenia, więc siłą rzeczy należy
-  coś powiedzieć o~tym jak komputer zarządza liczbami. Nie będziemy przy
-  tym omawiali wszystkich zawiłości jakie dotyczą tego problemu. Na tym
-  przedmiocie chcemy przekazać tylko tyle informacji, ile jest
-  naszym zdaniem potrzebne do wyrobienia sobie podstawowych intuicji.
-  Za głębsze wniknięcie w~naturę rzeczy odpowiedzialne są inne przedmioty.
-
-  Zaczniemy od pewnie dość nudnego dla większości osób przyjrzenia~się
-  potęgom liczby~$2$. W~informatyce bardzo lubimy liczbę~$2$. By być wiernym
-  duchowni języka~C równość dwóch liczb oznaczamy symbolem $==$. \\
-  $2^{ \HorSpaceTwo 0 } == 1$ \\[0.1em]
-  $2^{ \HorSpaceTwo 1 } == 2$ \\[0.1em]
-  $2^{ \HorSpaceTwo 2 } == 4$
+  Takie rozumienie łącznika „i”~jest zgodne ze znaczeniem, jakie ten wyraz
+  często posiada w~języku polskim i~innych językach. Musimy podkreślić,
+  że~w~algebrze Boole’a łącznik „i”~ma proste znaczenie. Tworzy z~dwóch
+  zdań jedno i~to zdanie wynikowe jest prawdziwe, tylko wtedy, gdy oba
+  zdania składowa są prawdziwe.
 
 \end{frame}
 % ##################
@@ -488,51 +410,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Wybrane potęgi liczby~$2$}
+  \frametitle{Intuicyjny sens algebry Boole’a}
 
 
-  $2^{ \HorSpaceTwo 3 } == 8$ \\[0.1em]
-  $2^{ \HorSpaceTwo 4 } == 16$ \\[0.1em]
-  $2^{ \HorSpaceTwo 5 } == 32$ \\[0.1em]
-  $2^{ \HorSpaceTwo 6 } == 64$ \\[0.1em]
-  $2^{ \HorSpaceTwo 7 } == 128$ \\[0.1em]
-  $2^{ \HorSpaceTwo 8 } == 256$ \\[0.1em]
-  $2^{ \HorSpaceTwo 9 } == 512$ \\[0.1em]
-  $2^{ \HorSpaceTwo 10 } == 1 \; 024$ \\[0.1em]
-  $2^{ \HorSpaceTwo 11 } == 2 \; 048$ \\[0.1em]
-  $2^{ \HorSpaceTwo 12 } == 4 \; 096$ \\[0.1em]
-  $2^{ \HorSpaceTwo 15 } == 32 \; 768$ \\[0.1em]
-  $2^{ \HorSpaceTwo 16 } == 65 \; 536$
+  To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
+  wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
+  w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
+  Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
+  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
+  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
+  stanie~się bardziej zrozumiałe.
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Wybrane potęgi liczby~$2$}
-
-
-  Liczby $2^{ \HorSpaceTwo 16 } == 65 \; 536$
-  i~$2^{ \HorSpaceTwo 16 } - 1 == 65 \; 535$ pojawiają~się
-  często w~różnych działach techniki, gdyż często zachodzi potrzeba
-  przesyłania informacji, której podstawową jednostką są dwa bajty,
-  czyli $16$~bitów.
-
-  $2^{ \HorSpaceTwo 17 } == 131 \; 072$ \\[0.1em]
-  $2^{ \HorSpaceTwo 18 } == 262 \; 144$ \\[0.1em]
-  $2^{ \HorSpaceTwo 19 } == 524 \; 288$ \\[0.1em]
-  $2^{ \HorSpaceTwo 20 } == 1 \; 048 \; 576$ \\[0.1em]
-  $2^{ \HorSpaceTwo 21 } == 2 \; 097 \; 152$ \\[0.1em]
-  $2^{ \HorSpaceTwo 22 } == 4 \; 194 \; 304$ \\[0.1em]
-  $2^{ \HorSpaceTwo 23 } == 8 \; 388 \; 608$ \\[0.1em]
-  $2^{ \HorSpaceTwo 24 } == 16 \; 777 \; 216$ \\[0.1em]
-  $2^{ \HorSpaceTwo 25 } == 33 \; 554 \; 432$ \\[0.1em]
-  $2^{ \HorSpaceTwo 26 } == 67 \; 108 \; 864$ \\[0.1em]
-  $2^{ \HorSpaceTwo 27 } == 134 \; 217 \; 728$
+  Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
+  zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
+  jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
+  spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
+  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
+  Może ten zapis wygląda dziwnie, ale informatycy są do niego
+  przyzwyczajeni i~w~takiej czy innej formie jest powszechnie stosowany.
 
 \end{frame}
 % ##################
@@ -543,88 +438,64 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Wybrane potęgi liczby~$2$}
+  \frametitle{Intuicyjny sens algebry Boole’a}
 
 
-  $2^{ \HorSpaceTwo 28 } == 268 \; 435 \; 456$ \\[0.1em]
-  $2^{ \HorSpaceTwo 29 } == 536 \; 870 \; 912$ \\[0.1em]
-  $2^{ \HorSpaceTwo 30 } == 1 \; 073 \; 741 \; 824$ \\[0.1em]
-  $2^{ \HorSpaceTwo 31 } == 2 \; 147 \; 483 \; 648$ \\[0.1em]
-  $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$
+  By użyć bardziej informatycznego przykładu, zdanie \\
+  \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
+  oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
+  spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
+  to proszę~się nad tym chwilę zastanowić. Ewentualnie poprosić o~dalsze
+  wyjaśnienia.
 
-  Liczba $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$ jest bardzo ważna
-  dla wszystkich \\
-  systemów i~programów $32$-bitowych, czyli takich w~których
-  naturalną jednostką przesyłu informacji są właśnie $32$ bity ($4$~bajty).
-
-  $2^{ \HorSpaceTwo 63 } == 9 \; 223 \; 372 \; 036 \; 854 \; 775 \; 808 \approx
-  9 \cdot 10^{ 18 }$ \\
-  Słownie: dziewięć trylionów, dwieście dwadzieścia trzy biliardy, trzysta
-  siedemdziesiąt dwa biliony, trzydzieści sześć miliardów, osiemset
-  pięćdziesiąt cztery miliony, siedemset siedemdziesiąt pięć tysięcy,
-  osiemset osiem. \\
-  Prościej: $9$~trylionów, $223$~biliardy, $372$~biliony,
-  $36$~miliardy, $854$~miliony, $775$~tysięcy, $808$.
-
-\end{frame}
-% ##################
+  Znaczenie algebry Boole’a dla informatyki polega na tym, że~teraz
+  możemy napisać choćby następujący kod. Jego pełna wersja
 
 
+  Musimy też wskazać na pewną osobliwość spójnika \texttt{\&\&}. Rozpatrzmy
+  zdanie \\
+  „Jan je kanapkę \texttt{\&\&}
 
+  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
+  Język C i~większość najpopularniejszych języków programowania oznacza
+  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
+  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
+    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
+  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
+  za pomocą symbolu~„$\wedge$”.
 
+  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
 
-% ##################
-\begin{frame}
-  \frametitle{Wybrane potęgi liczby~$2$}
+  To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
+  wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
+  w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
+  Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
+  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
+  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
+  stanie~się bardziej zrozumiałe.
 
+  Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
+  zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
+  jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
+  spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
+  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
+  Może ten zapis wygląda dziwnie, ale informatycy są do niego
+  przyzwyczajeni.
+  By użyć bardziej informatycznego przykładu, zdanie \\
+  \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
+  oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
+  spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
+  to proszę~się nad tym chwilę zastanowić.
 
-  $2^{ \HorSpaceTwo 64 } == 18 \; 446 \; 744 \; 073 \; 709 \; 551 \; 616 \approx
-  18 \cdot 10^{ 18 }$ \\
-  Słownie: osiemnaście trylionów, czterysta czterdzieści sześć biliardów,
-  siedemset czterdzieści cztery biliony, siedemdziesiąt trzy miliardy,
-  siedemset dziewięć milionów, pięćset pięćdziesiąt jeden milionów,
-  sześćset szesnaście. \\
-  Prościej: $18$ trylionów, $446$ biliardów, $744$ biliony, $73$ miliardy,
-  $709$ milionów, $551$ tysięcy, $616$.
+  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
+  Język C i~większość najpopularniejszych języków programowania oznacza
+  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
+  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
+    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
+  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
+  za pomocą symbolu~„$\wedge$”.
 
-  Jak ktoś~się tej liczby nauczy na pamięć, to zasługuje na $5$~dodatkowych
-  punktów.
-
-  Liczba ta jest oczywiście bardzo ważna, dla systemów $64$-bitowych.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Systemy pozycyjny zapisu liczb naturalnych}
-
-
-  Sposoby zapisu liczb w~komputerze to naprawdę temat na osobny wykład,
-  taki jak metody numeryczne. My zaczniemy od~prostej dyskusji jak komputery
-  zapisują liczby naturalne, w~miarę potrzeby omawiając bardziej zaawansowane
-  tematy.
-
-  Zacznijmy od krótkiego odświeżenia najlepiej nam znanego systemu
-  pozycyjnego, czyli tego opartego o~liczbę~$10$. Liczby w~tym systemie
-  czytamy od~prawej do lewej w~następujący sposób. \\
-  $123 == 3 \cdot 10^{ \HorSpaceTwo 0 } + 2 \cdot 10^{ \HorSpaceTwo 1 } +
-  1 \cdot 10^{ \HorSpaceTwo 2 } == 3 \cdot 1 + 2 \cdot 10 + 1 \cdot 100 == 3 + 20 + 100$ \\
-  $456 == 6 \cdot 10^{ \HorSpaceTwo 0 } + 5 \cdot 10^{ \HorSpaceTwo 1 } +
-  4 \cdot 10^{ \HorSpaceTwo 2 } == 6 \cdot 1 + 5 \cdot 10 + 4 \cdot 100 == 6 + 50 + 400$ \\
-  $2345 == 5 \cdot 10^{ \HorSpaceTwo 0 } + 4 \cdot 10^{ \HorSpaceTwo 1 } +
-  3 \cdot 10^{ \HorSpaceTwo 2 } + 2 \cdot 10^{ \HorSpaceTwo 3 } == 5 \cdot 1 + 4 \cdot 10 +
-  3 \cdot 100 \, +$ \\
-  $+ \, 2 \cdot 1000 == 5 + 40 + 300 + 2000$
-
-  Wzorując~się na języku Go, liczby binarne będziemy zapisywać jako
-  $0\text{b}1$, $0\text{b}01$, $0\text{b}111$,~etc. Tak jak w~systemie
-  dziesiętnym, czytamy je od prawej do lewej. Prześledźmy teraz
-  kilka przykładów.
+  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
 
 \end{frame}
 % ##################
@@ -635,32 +506,23 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{System binarny zapisu liczb naturalnych}
+  \frametitle{Kim był Boole?}
 
 
-  $0\text{b}0 == 0 \cdot 2^{ \HorSpaceTwo 0 } == 0 \cdot 1 == 0$ \\
-  $0\text{b}1 == 1 \cdot 2^{ \HorSpaceTwo 0 } == 1 \cdot 1 == 1$ \\
-  $0\text{b}10 == 0 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
-  0 \cdot 1 + 1 \cdot 2 == 2$ \\
-  $0\text{b}11 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
-  1 \cdot 1 + 1 \cdot 2 == 1 + 2 == 3$ \\
-  $0\text{b}111 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } +
-  1 \cdot 2^{ \HorSpaceTwo 2 } == 1 \cdot 1 + 1 \cdot 2 + 1 \cdot 4 == 1 + 2 + 4 == 7$ \\
-  $0\text{b}10101 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 0 \cdot 2^{ \HorSpaceTwo 1 } +
-  1 \cdot 2^{ \HorSpaceTwo 2 } + 0 \cdot 2^{ \HorSpaceTwo 3 } + 1 \cdot 2^{ \HorSpaceTwo 4 } ==
-  1 \cdot 1 + 0 \cdot 2 + 1 \cdot 4 \, +$ \\
-  $+ \, 0 \cdot 8 + 1 \cdot 16 == 1 + 4 + 16 == 21$
+  % \begin{figure}
 
-  Jak dobrze wszyscy wiemy, jednostkę która może przechowywać wartość
-  $0$ albo $1$ nazywamy \textbf{bitem}. Bity grupujemy dziś w~\textbf{bajty},
-  jeden bajt to $2^{ \HorSpaceTwo 3 } == 8$ bitów. W~tym, że~bajt zawiera
-  $2^{ \HorSpaceTwo 3 }$ bitów widać upodobanie informatyki do potęgi
-  liczby~$2$. Skąd jednak jest to upodobanie.
+  %   \centering
 
-  Wydaje~się, że~podstawą tego są kwestie techniczne. Zbudowanie urządzenia,
-  które może przechowywać dwie różne wartości ($0$ lub $1$), jest prostsze,
-  niż takiego, które przechowywałoby trzy wartości ($0$, $1$ lub $2$).
-  Warto powiedzieć o~tym kilka słów więcej.
+  %   \includegraphics[scale=0.195]
+  %   {./Presentations-pictures/George-Boole.jpeg}
+
+  %   \caption{George Boole (1815--1864), brytyjski matematyk i~filozof.
+  %     Wprowadził metody algebraiczne do logiki. \textbf{Algebra Boole’a}
+  %   została nazwana na jego cześć.}
+
+  %   \label{fig:George-Boole}
+
+  % \end{figure}
 
 \end{frame}
 % ##################
@@ -671,59 +533,30 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{System binarny zapisu liczb naturalnych}
+  \frametitle{Algebry Boole’a w~informatyce}
 
 
-  Pozostając na bardzo ogólnym poziomie, w~XX wieku eksperymentowano
-  z~układami elektronicznymi, których podstawowa jednostka pamięci, była
-  w~stanie przechowywać jedną z~trzech wartości ($0$, $1$ lub $2$), jedną
-  z~czterech ($0$, $1$, $2$ lub $3$),~etc. Jednostki te odpowiadały temu,
-  czemu w~dzisiejszym komputerze odpowiada bit. Gdyby ludzkość
-  zdecydowała~się budować komputery w systemie trójkowym, pewnie dzisiaj
-  operowalibyśmy „bajtami” o~długości $3^{ 2 } == 9$ „bitów”.
+  Algebra Boole’a może już być Państwu znana pod nazwą „logiki”,
+  „logiki matematycznej”, „rachunku zdań”, etc. Najbardziej poprawną
+  nazwą w~tym kontekście jest \textbf{klasyczny rachunku zdań}, jednak
+  informacje o~nim ograniczymy do niezbędnego minimum. Osoby zainteresowany
+  tym tematem mogą sięgnąć do następujących pozycji.
+  \begin{itemize}
 
-  Różne względy, które są bardziej odpowiednie na bardzo obszerny wykład
-  z~elektroniki, sprawiły, iż~zdecydowaliśmy~się oprzeć pamięć komputera
-  o~jednostki dwustanowe, czyli właśnie dobrze nam znane bity. Czy tak już
-  pozostanie? Przewidywanie przyszłości jest trudne.
-
-  Zadajmy sobie teraz pytanie, ile liczb możemy zapisać za pomocą jednego
-  bitu? Dwie $0\text{b}0 == 0$ i~$0\text{b}1 == 1$. Ile zaś za pomocą
-  dwóch bitów? Cztery: $0\text{b}00 == 0$, $0\text{b}01 == 1$,
-  $0\text{b}10 == 2$ i~$0\text{b}11 == 3$.
-
-\end{frame}
-% ##################
+  \item Andrzej Grzegorczyk \textit{Zarys logiki matematycznej}
+    \parencite{Grzegorczyk-Zarys-logiki-matematycznej-Pub-1975}.
 
 
 
+  \item Willard von Ormian Quine \textit{Logika matematyczna}
+    \parencite{Quine-Logika-matematyczna-Pub-1974}.
 
 
-% ##################
-\begin{frame}
-  \frametitle{System binarny zapisu liczb naturalnych}
 
+  \item Zdzisław Kraszewski \textit{Logika. Nauka rozumowania}
+    \parencite{Kraszewski-Logika-Pub-1984}.
 
-  Zadajmy sobie jeszcze pytanie, ile liczb jesteśmy w~stanie zapisać
-  na trzech bitach? Odpowiedź to~$8$: $0\text{b}000 == 0$,
-  $0\text{b}001 == 1$, $0\text{b}010 == 2$, $0\text{b}011 == 3$,
-  $0\text{b}100 == 4$, $0\text{b}101 == 5$, $0\text{b}110 == 6$
-  i~$0\text{b}111 == 7$.
-
-  Te przykłady powinny zilustrować następujący fakt. Mając dostępne
-  $n$~bitów możemy za ich pomocą zapisać $2^{ \HorSpaceTwo n }$ stanów. Jest
-  to fakt ogólny, którego prosto dowodzi~się matematycznie, jednak
-  zajmowanie~się matematycznymi podstawami informatyki, nie należy do zakresu
-  tych zajęć. Naszym celem jest pomóc wyrobić sobie Państwu odpowiednią
-  intuicję, pozostawiając innym przedmiotom dokładniejsze omówienie tych
-  spraw.
-
-  Zwróćmy uwagę na jeszcze jeden fakt. W~tym systemie notacji liczb
-  naturalnych, mając do dyspozycji $n$~bitów jeden stan zużywamy na zapisanie
-  liczby $0 == 0\text{b}00\ldots0$, pozostałe $2^{ \HorSpaceTwo n - 1 }$ zużywamy
-  na zapisanie kolejny liczb naturalnych. Stąd, w~tym konkretnym
-  systemie, największą liczbą jaką możemy zapisać na $n$~bitach
-  jest $2^{ \HorSpaceTwo n } - 1$.
+  \end{itemize}
 
 \end{frame}
 % ##################
@@ -734,19 +567,15 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{System binarny zapisu liczb naturalnych}
+  \frametitle{Algebry Boole’a w~informatyce}
 
 
-  Maksymalna liczba naturalna, jaką w~prezentowanym systemie można zapisać
-  na $n$~bitach to $2^{ \HorSpaceTwo n - 1 }$. Ponieważ
-  $2^{ \HorSpaceOne 8 } - 1 == 256 - 1 == 255$, to wyjaśnia czemu w~wielu
-  miejscach musimy podawać liczby w~zakresie od~$0$ do~$255$. Po porostu
-  komputer na zapisanie tej liczby poświęca dokładnie jeden bajt ($8$~bitów).
-
-  System który omówiliśmy nie pozwala zapisywać choć liczb całkowitych
-  ujemnych, musi więc zostać odpowiednio rozszerzony. Jednak my nie będziemy
-  wnikać w~tego typu zagadnienia, gdyż to co powiedzieliśmy, jest na nasze
-  potrzeby wystarczające.
+  Do informatyki algebry Boole’a wprowadził je zapewne Claude E.~Shannon
+  (1916--2001), gdy zrozumiał jakie użyteczne w~projektowaniu układów
+  elektronicznych mogą być idea Boole’a, które poznał na kursie
+  z~filozofii. Obecnie są one powszechnie stosowane tak w~teorii jak
+  i~praktyce informatyki, że~każdy dobry informatyk musi~się umieć nimi
+  posługiwać.
 
 \end{frame}
 % ##################
@@ -761,32 +590,24 @@ eprint=true,
 
 
 % ######################################
-\section{Liczby i~cała reszta}
+\section{Podstawy algebry Boole’a}
 % ######################################
 
 
+
+
+
+
+
+
+
 % ##################
 \begin{frame}
-  \frametitle{Liczby i~cała reszta}
+  \frametitle{Logiczna prawda i~fałsz}
 
 
-  Do tej pory powiedzieliśmy sobie jak komputer może zapisywać liczby,
-  ale przecież komputer może oprócz liczb zapisywać również wiele innych
-  rzeczy, choć litery alfabetu, którymi ta prezentacja jest zapisana. Myśląc
-  o~takich sprawach wkraczamy na temat kodowania w~komputerze.
-
-  Zacznijmy od bardzo prostego przykładu, który może~się wydawać
-  dziwny, ale jest wbrew pozorom bardzo praktyczny. Jak można zapamiętać
-  angielskie słowo „Hello” w~komputerze? Możemy to zrobić w~następujący
-  sposób. Wiemy, że~komputer umie zapamiętywać liczby naturalne, więc
-  ponumerujmy litery alfabetu (angielskiego) kolejnymi liczbami
-  w~następujący sposób. \\
-  $\text{A} \to 1$, $\text{B} \to 2$, $\text{C} \to 3$, \ldots, $\text{Z} \to 26$,
-  $\text{a} \to 27$, $\text{b} \to 28$, $\text{c} \to 29$, \ldots,
-  $\text{z} \to 52$. \\
-  Taka odpowiedniość między literami alfabetu angielskiego, a~liczbami
-  naturalnymi nazywamy \textbf{kodowaniem}. Dokładniej, zakodowaniem
-  znaków jako liczb naturalnych.
+  W~tej prezentacji będziemy korzystali z~konwencji języka~Go, które są
+  poprawioną wersją tych stosowanych w~języku~C.
 
 \end{frame}
 % ##################
@@ -797,28 +618,20 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Kodowanie liter}
+  \frametitle{Zmienne boolowskie}
 
 
-  Możemy teraz zakodować słowo „Hello” jako ciąg liczb
-  $8 \; 31 \; 38 \; 38 \; 41$. Niedługo zobaczymy takie kodowanie w~praktyce.
-  Teraz możemy komputerowi powiedzieć „Przełącz~się na tryb, w~którym
-  każdą liczbę od $1$ do~$52$ rozumiesz jako pewną literę alfabetu
-  angielskiego. Jeśli ją napotkasz, to na ekranie wyświetl odpowiedni znak.”
+  W~informatyce oprócz wartości logiczny dużą rolę odgrywają
+  \textbf{zmiennymi boolowskimi} \textbf{zmienne logiczne}, zwane też .
+  Są~to zmienne które mogą przechowywać wartości logiczne \texttt{true}
+  i~\texttt{false}. Tak jak w~przypadku sposobu reprezentowania wartości
+  logicznych, również gdy chodzi o~zmienne sprawa ich działania zależy
+  w~dużej mierze od używanego języka.
 
-  To wbrew pozorom dobrze opisuje, jak komputery działają, co więcej,
-  język~C działa tak cały czas. Jednak zanim powiemy sobie jak język~C
-  sobie z~tym radzi, to musimy powiedzieć coś o~systemie kodowania
-  \colorhref{https://en.wikipedia.org/wiki/ASCII}{\textsc{ascii}}, który
-  w~$2025$ wciąż jest jednym z~fundamentów działania naszych komputerów.
-
-  Akronim \colorhref{https://en.wikipedia.org/wiki/ASCII}{\textsc{ascii}}
-  pochodzi od~\textit{American Standard Code for~Information Interchange},
-  czyli \textit{Standardowy Amerykański Kod do Wymiany Informacji}.
-  Jak sama nazwa wskazuje, został on stworzony przez Amerykanów na ich
-  potrzeby, co wyjaśnia dlaczego opiera~się na alfabecie angielskim.
-  Dlatego też niektórzy uważają, że~powinno~się go nazywać
-  \textsc{us-ascii}.
+  Rozpatrzmy przypadek języka~C. Ponieważ wartości logiczne reprezentują
+  w~nim liczby całkowite, więc jako zmiennej logicznej możemy użyć dowolnej
+  zmiennej która przechowuje wartości całkowitoliczbowe. Zmienne tego typu
+  w~języku~C są zwykle typu \texttt{int}.
 
 \end{frame}
 % ##################
@@ -829,25 +642,23 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Historia kodu ASCII}
+  \frametitle{Zmienne boolowskie}
 
 
-  Powstanie kodu \textsc{ascii} zaczyna~się w~$1961$ roku. Należy sobie
-  uświadomić jak wówczas wyglądała świat komputerów. Komputery potrafiły
-  zajmować całe pokoje, internet nie był nawet marzeniem, a~przenoszenie
-  danych z~jednego komputera na drugi polegało na nagraniu danych na kartki
-  papieru lub dysk, przeniesienia ich do budynku, gdzie znajduje~się drugi
-  komputer i~wgraniu ich do niego.
+  Poniżej prezentujemy przykładowy fragment programu napisanego w~języku~Go
+  operujący na zmiennych logicznych. Symbol „\texttt{//}” oznacza, że~tekst
+  na prawo od niego jest komentarzem dla człowieka i~jest zupełnie
+  ignorowany przez komputer.
 
-  I~tu pojawia~się problem. Co jeśli na jednym komputerze zapisywaliśmy
-  literę „A” jako liczbę~$1$, ale na drugim komputerze, ktoś przypisał jej
-  wartość~$33$? Wbrew pozorom takie sytuacje~się zdarzały dość często
-  i~doprowadzały, jak łatwo~się domyślić, użytkowników komputerów do
-  rozpaczy.
+  \textit{Uwaga.} To jest tylko fragment programu w~języku~Go i~ze względu
+  na brakujące części nie da~się go uruchomić.
 
-  Rozwiązanie wydawało~się dość proste. Utwórzmy standard kodowania, którym
-  będziemy~się wszyscy posługiwać i~dzięki któremu na każdym komputerze
-  literze~„A”, będzie odpowiadała ta sama liczba.
+  \texttt{// Tworzymy zmienną logiczną "boolVar" i~nadajemy jej} \\
+  \texttt{// wartość "false".} \\
+  \texttt{var boolVar bool = false} \\
+  \vspace{0.8em}
+  \texttt{// Zmieniamy wartość logiczną zmiennej "boolVar" na "true".} \\
+  \texttt{boolVar = true}
 
 \end{frame}
 % ##################
@@ -858,29 +669,22 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Historia kodu ASCII}
+  \frametitle{Wyrażenie boolowskie}
 
 
-  Wprowadzanie tej idei w~życie rozpoczął pracujący wówczas dla firmy
-  \textsc{ibm} \colorhref{https://en.wikipedia.org/wiki/Bob\_Bemer}{Bob
-    Bemer}, który w~maju $1961$~roku złożył projekt takiego standardu
-  do organizacji, która dziś nosi nazwę
-  \colorhref{https://en.wikipedia.org/wiki/American\_National\_Standards\_Institute}
-  {American National Standards Institute}, w~skrócie \textsc{ansi}.
+  \textbf{Wyrażeniem boolowskim} (ang.~\textit{boolean expression}) zwane
+  też \textbf{wyrażeniem logicznym} (ang.~\textit{logical expression})
+  zwane  to dowolne wyrażenie w~wyniku obliczenia którego zostaje zwrócona
+  wartość boolowska \texttt{true} albo \texttt{false}.
 
-  W~tamtych czasach pamięć była droga, każdy bit~się liczył, zaś bajt liczący
-  osiem bitów nie był jeszcze powszechnie przyjętym standardem. Po ustaleniu,
-  że~potrzeba im standardu dla około $100$ znaków, wzięto najmniejszą
-  liczbę bitów, która zapewnia taką liczbę stanów. Liczbą tą jest~$7$,
-  bo~$2^{ \HorSpaceTwo 7 } = 128$. Tym samy kodowanie \textsc{ascii} zawiera
-  $128$ znaków, przypisane liczbom od~$0$ do~$127$ (proszę zauważyć,
-  że~tych liczb jest dokładnie~$128$).
+  \textit{Ważne.} Wyrażenie jest tylko i~wyłącznie obiekt, który
+  \textit{zwraca} pewną wartość. W~przeciwnym razie mamy do czynienia
+  z~\textbf{poleceniem} (ang. \textit{statement}).
 
-  Pełną tabelę znaków \textsc{ascii} można znaleźć choćby
-  \colorhref{https://www.ascii-code.com/}{tutaj}. Pierwsze $32$ znaki tego
-  kodu to tzw. znaki kontrolne (ang. \textit{control characters}). Nie są to
-  znaki w~sensie języka codziennego, ile raczej symbole służące do kontroli
-  pracy komputera.
+  Przyjmujemy, że~wartości boolowskie \texttt{true} i~\texttt{false}, które
+  zwracają jako swoją wartość same siebie. Nawet jeśli wydaje~się to dziwne
+  i~przekombinowane, to taki sposób myślenia ma swoje zastosowania
+  w~informatyce.
 
 \end{frame}
 % ##################
@@ -891,24 +695,338 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Struktura kodu ASCII}
+  \frametitle{Operatory boolowskie}
 
 
-  Liczbie $0$ przypisany jest symbol null, służący do~informowania komputera,
-  że~coś uległo zakończeniu. Opowiemy sobie o~nim więcej, gdy będziemy
-  mówić o~stringach (napisach) w~języku~C. Symbol o~numerze~$2$ informuje
-  komputer, że~właśnie rozpoczyna~się pewien tekst, symbol o~numerze~$3$,
-  że~ten tekst~się właśnie kończy, symbol~$4$ oznacza zakończenie przesyłu
-  danych,~etc. Nie muszą Państwo tego pamiętać, to jest ważne tylko by
-  wyjaśnić, czemu \textsc{ascii} ma taki kształt, a~nie inny. Musiał on
-  bowiem wziąć pod uwagę wiele zagadnień technicznych, przed którymi
-  stanęli jego twórcy w~latach $60$-tych XX~wieku.
+  Jeśli funkcja o~nazwie \texttt{funBool} zwraca jako wartość zmienną
+  boolowską, to jej wywołanie \\
+  \texttt{funBool(argumenty funkcji)} \\
+  jest wyrażeniem boolowskim. Takie funkcje spotyka~się w~praktyce, jednak
+  częściej wyrażenia boolwskie tworzy~się za pomocą odpowiednich operatorów
+  logicznych.
 
-  Ostatecznie, literom alfabetu angielskiego przyporządkowano następujące
-  liczby. $\text{A} \to 65$, $\text{B} \to 66$, $\text{C} \to 67$, \ldots,
-  $\text{Z} \to 90$, $\text{a} \to 97$, $\text{b} \to 98$, $\text{c} \to 99$,
-  \ldots, $\text{z} \to 122$. Oprócz tego znakowi przecinka przyporządkowano
-  liczbę~$44$, kropce $46$, średnikowi $59$,~etc.
+  \textbf{Operatorem boolowskim} (ang. \textit{boolean operator}) lub
+  \textbf{operatorem logicznym} (ang. \textit{logcial operator})
+  nazywamy symbol reprezentujący \textbf{operacje}, która to operacja
+  pozwala z~dwóch wyrażeń boolowskich utworzyć nowe wyrażenie. Cztery
+  podstawowe, z~punktu widzenia informatyki, operatory boolowskie to:
+  logiczny iloczyn, logiczna suma, logiczna negacja i~operacja porównania.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Operatory boolowskie}
+
+
+  \textbf{Iloczyn logiczny}, zwany też \textbf{koniunkcją logiczną},
+  odpowiada zasadniczo temu co~w~języku polskim oznacza spójnik~„i”. Łączy
+  on parę dwa wyrażenie boolowskie, zwracając logiczną prawdę wtedy i~tylko
+  wtedy gdy wartość pierwszego \textit{i}~drugiego wyrażenia są~prawdziwe.
+  W~przeciwny razie zwraca logiczny fałsz.
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Iloczyn logiczny}
+
+
+  Zgodnie z~tym co powiedziano wcześniej, wyrażenie \\
+  \texttt{true \&\& false} \\
+  jest wyrażeniem boolowskim i~zwraca wartość to \texttt{false}.
+
+  Własności iloczynu logicznego można podsumować za pomocą następującej
+  tabeli, gdzie \texttt{boolVar1} i~\texttt{boolVar2} to odpowiednie zmienne
+  boolowskie. Jeśli zmienne \texttt{boolVar1} i~\texttt{boolVar2} mają
+  wartości takie jak w~dwóch pierwszych kolumnach, to wartość iloczynu
+  logicznego tych zmiennych podana jest w~trzeciej kolumnie.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    boolVar1 & boolVar2 & boolVar1 \&\& boolVar2 \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{false} \\
+    \texttt{false} & \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{false} & \texttt{false} \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tabelki operatorów logicznych}
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    boolVar1 & boolVar2 & boolVar1 \&\& boolVar2 \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{false} \\
+    \texttt{false} & \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{false} & \texttt{false} \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+  \vspace{1em}
+
+
+
+
+
+  Choć w~tabeli powyższe występują zmienne boolowskie, to jest ona
+  prawdziwa dla dowolnych wyrażeń boolowskich. Proszę przy tym pamiętać,
+  że~każda zmienna boolowska jest dla nas wyrażeniem boolowskim, ale nie
+  każde wyrażenie boolowskie jest po prostu zmienną boolowską. Niezależnie
+  od tych subtelności, jeśli wartości zwracane przez dwa wyrażenia
+  boolowskie są takie jak w~dwóch pierwszych tabelach, to ich iloczyn
+  logiczny ma wartości wyrażoną w~trzeciej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Suma logiczna}
+
+
+  \textbf{Suma logiczna}, zwana też \textbf{alternatywą logiczną} odpowiada
+  mniej więcej temu, co w~języku polskim oznacza spójnik „lub”. Łączy ona
+  dwa wyrażenia boolowskie dając nową wyrażenie, która wartość \texttt{true}
+  jeśli wartość pierwszego \textit{lub} drugiego jest równa \texttt{true}.
+
+  Podobnie jak dla iloczynu logicznego, język C i~za nim większość
+  najpopularniejszy języków programowania oznacza sumę logiczną symbolem
+  „\texttt{||}”. Ponownie, trzeba mieć na uwagę, że~w~tych językach~symbol
+  „\texttt{|}” posiada osobne znaczenie. W~Pythonie operację tą oznacza
+  symbol „\texttt{or}”. W~matematyce często stosuje~się symbol~„$\vee$”.
+
+  My będziemy go zapisywać za~pomocą symbolu „\texttt{||}”.
+
+  Na podstawie tego co powiedziano powyżej \\
+  \texttt{false || true} \\
+  jest wyrażeniem logicznym i~zwraca wartość \texttt{true}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Suma logiczna}
+
+
+  Podstawowe własności sumy logicznej podaje poniższa tabela.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \texttt{boolVar1} & \texttt{boolVar2}
+    & \texttt{boolVar1 || boolVar2} \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{true}  \\
+    \texttt{false} & \texttt{true}  & \texttt{true}  \\
+    \texttt{false} & \texttt{false} & \texttt{false} \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Negacja logiczna}
+
+
+  \textbf{Negacja logiczna} odpowiada w~przybliżeniu co polskie słowo „nie”.
+  Negacja prawdy logicznej jest fałszem, a~negacja fałszu jest prawdą.
+
+  W~językach programowania negację danego wyrażenia \texttt{expr}, zwykle
+  oznacza~się poprzez poprzedzenie go symbolem~„\texttt{!}” i~my też
+  będziemy korzystać z~tego zapisu. W~matematyce często stosuje~się symbol
+  „\texttt{$\neg$}”. Negację wyrażenia \texttt{expr} zapiszemy więc odpowiednio
+  jako \texttt{!expr} lub \texttt{$\neg$expr}.
+
+  Własności negacji logicznej podsumowuje poniższa tabelka.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|}
+    \hline
+    \texttt{boolVar1} & \texttt{!boolVar1} \\
+    \hline
+    \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{true}  \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Porównanie logiczne}
+
+
+  \textbf{Porównanie logiczne} jest prawdą, wtedy i~tylko wtedy, gdy obie
+  porównywane strony mają tą samą wartość logiczną.
+
+  W~informatyce do porównywania zwykle używamy podwójnego znaku równości
+  „\texttt{==}”, my też z~niego będziemy korzystali. Oczywiście, tutaj też
+  muszą być wyjątki od tej reguły, ale prawdziwe źródło komplikacji
+  leży gdzie indziej. Zanim o~nich powiemy, przytoczymy tabelę
+  podsumowującą własności tej operacji.
+
+  \vspace{1em}
+
+
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    \texttt{boolVar1} & \texttt{boolVar2}
+    & \texttt{boolVar1 == boolVar2} \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{false} \\
+    \texttt{false} & \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{false} & \texttt{true}  \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Porównanie logiczne}
+
+
+  Podstawowy problem z~operatorem „\texttt{==}” polega na tym,
+  że~w~większości języków służy nie tylko do porównywania wyrażeń
+  boolowskich, ale do porównywania wszystkich obiektów, których wartości
+  można porównywać. Dostajemy w~ten sposób wyrażenie boolowskie.
+
+  Przykładowo, w~języku C, Go czy w~Pythonie można za~jego pomocą
+  porównywać liczby całkowite, tworząc odpowiednie wyrażenia boolowskie.
+  Tym samym \\
+  \texttt{0 == 1} \\
+  jest w~tych językach wyrażeniem boolowskim, którego wartość logiczna jest
+  równa \texttt{false}. Proszę pamiętać, że~w~każdym z~tych języków
+  wartości logiczne są trochę inaczej reprezentowane.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Porównanie logiczne}
+
+
+  Należy zwrócić uwagę, że~operator „\texttt{==}” zwykle sprawdza równość
+  \textit{wartość} wyrażeń, nie ich \textit{identyczność}. Przykładowo,
+  załóżmy, że~mamy dwie zmienne typu \texttt{int} w~języku~C, niech~się
+  nazywają \texttt{intVar1} i~\texttt{intVar2}. Każda z~nich zawiera pewną
+  wartość i~możemy~się pytać o~równość tych wartości. Możemy~się też
+  zapytać, czy obie zmienne zajmują ten sam obszar pamięci (choćby pamięci
+  \textsc{ram}), wtedy pytamy~się o~ich identyczność.
+
+  Tym samym w~języku~C wyrażenie \\
+  \texttt{intVar1 == intVar2} \\
+  sprawdza, czy \textit{wartość} przechowywane przez obie te
+  zmienne są równe, nie czy te zmienne są identyczne. Powtórzymy,
+  identyczność zmiennych oznacza, że~są one po prostu dwiema różnymi
+  nazwami na~to~samo (ten sam obszar pamięci).
 
 \end{frame}
 % ##################
@@ -918,20 +1036,325 @@ eprint=true,
 
 
 
+
+
+
+
+% ######################################
+\section{Parsowanie i~ewalucaja wyrażeń boolowskich}
+% ######################################
+
+
+
 % ##################
 \begin{frame}
-  \frametitle{Struktura kodu ASCII}
+  \frametitle{Co to jest „parsowanie”?}
 
 
-  Ponieważ \textsc{ascii} stworzyli amerykanie, więc zawiera tylko litery
-  alfabetu angielskiego. W~jaki sposób kodowane są dziś litery takie jak
-  „ą”, czy „ć” to temat na zupełnie inny wykład.
+  Słowo „parsowanie” (ang.~\textit{parsing}) jest wzięte z~angielskiego
+  i~oznacza, przynajmniej dla nas, tyle co „analiza składniowa wyrażenia”
+  (ang. \textit{syntax analysis~of expression}), czyli ustalenie co dane
+  wyrażenie tak naprawdę znaczy. Można uznać, że~jest to mądrze brzmiące
+  słowo na zrozumienie co dany wzór znaczy.
 
-  Nie będziemy od Państwa wymagać znajomości tego wszystkiego. Nasza opowieść
-  o~\textsc{ascii} zawiera pewne uproszczenia, gdyż jej główny celem było
-  dostarczenie Państwu informacji, pozwalające zrozumieć pewne cechy
-  języka~C, które bez tego mogłyby~się wydawać, zupełnie bezsensowne.
-  Teraz zaś możemy przejść bezpośrednio do kodowania w~języku~C.
+  Przykładowo, co oznacza następujące wyrażenie arytmetyczne? \\
+  \texttt{1 + 2 * 3} \\
+  Parsowanie tego wyrażenia, które mamy tak wbite do głowy, że~pewnie o~tym
+  nie myślimy, mówi nam, że~najpierw musimy wykonać mnożenie
+  \texttt{2 * 3}, dostając liczbę \texttt{6}, następnie dodajemy do
+  niej liczbę~\texttt{1} dostając w~wyniku~\texttt{7}.
+
+  Teraz omówimy reguły parsowania wyrażeń boolowskich, ale najpierw musimy
+  wyjaśnić co to jest ewaluacja przez krótkie spięcie.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \textbf{Ewaluacja} (ang. \textit{evaluation}) oznacza obliczanie wartości
+  danego wyrażenia. Nie potrafię znaleźć lepszego tłumaczenia tego zwrotu
+  na~język polski.
+
+  \textbf{Ewaluacja przez krótkie spięcie} (ang. \textit{short-circut
+    evaluation}) to powszechnie stosowana w~informatyce technika obliczania
+  wyrażeń boolowskich będących ciągiem \texttt{\&\&} lub \texttt{||}.
+  Metody ta jest stosowana w~większości najpopularniejszy języków
+  programowania.
+
+  Rozpatrzmy wyrażenie boolowskie postaci \\
+  \texttt{boolExpr1 \&\& boolExpr2 \&\& boolExpr3 \&\& boolExpr4} \\
+  Można je przepisać jako \\
+  \texttt{boolExpr1 \&\& (boolExpr2 \&\& (boolExpr3 \&\& boolExpr4))} \\
+  Pomimo, że~nie omówiliśmy reguł obliczania tego typu wyrażeń, sens
+  powyższej notacji powinien być jasny poprzez analogię z~arytmetyką.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{boolExpr1 \&\& (boolExpr2 \&\& (boolExpr3 \&\& boolExpr4))}
+
+  Z~własności iloczynu logicznego wynika, że~jeśli co najmniej jedno
+  wyrażenie boolowskie \texttt{boolExpr1}, \texttt{boolExpr2},
+  \texttt{boolExpr3}, \texttt{boolExpr4} zwraca wartość \texttt{false}, to
+  cały iloczyn ma wartość \texttt{false}.
+
+  Wynik ten automatycznie przenosi~się na wyrażenie o~tej samej formie
+  zbudowane z~$N$ wyrażeń boolowskich: \\
+  \texttt{boolExpr1 \&\& boolExpr2 \&\& \ldots{} \&\& boolExprN}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  Rozpatrzmy teraz następujące wyrażenie. \\
+  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
+    (false || \\ }
+  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+
+  Mamy tu trzy wyrażenia w~iloczynie logicznym i~powinno być dość
+  oczywiste, że~obliczenie drugie i~trzeciego z~nich będzie
+  nasz kosztowało trochę pracy. Jednak obliczanie ich jest zupełnie
+  zbytecznie, bo skoro pierwsze wyrażenie ma wartość \texttt{false} to
+  wartość całego wyrażenie jest równa \texttt{false} i~nie musimy obliczać
+  konkretnej wartości dwóch pozostałych wyrażeń. Oszczędza to nam sporo
+  pracy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
+    (false || \\ }
+  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+
+  \textit{Uwaga.} W~rozumowaniu przedstawionym na poprzednim slajdzie
+  przyjęliśmy, że~interesuje nas tylko wartość logiczna \textit{całego}
+  wyrażenie, nie rezultaty zwrócone przez konkretne wyrazy.
+
+  Można napisać kod w~którym wartość zwrócone przez konkretne wyrażenia
+  składowe mają znaczenie, ale pisanie takiego kodu jest bardzo złą
+  praktyką. Dlatego ten przypadek będziemy ignorować.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
+    (false || \\ }
+  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+
+  % \vspace{0.8em}
+
+
+  Regułę ewaluacji przez krótkie spięcie dla iloczynu logicznego można więc
+  opisać w~następujący sposób. Jeśli na najwyższym poziomie analizowane
+  wyrażenie jest ciągiem mniejszych wyrażeń połączonych symbolem
+  \texttt{\&\&} to obliczamy je od lewej do prawej, aż~dojdziemy do końca
+  lub do pierwszego wyrażenia które zwróciło jako swoją wartość
+  \texttt{false}. W~tym ostatnim przypadku zwracamy jako wartość całego
+  wyrażenia \texttt{false} i~nie obliczamy dalszych wyrazów. W~pozostałych
+  przypadkach zwracamy \texttt{true} jako wartość całego wyrażenia.
+
+  Jeśli to wyrażenie jest dla Państwa intuicyjnie zrozumiałe, to jest to
+  ważniejsze, niż ewentualne luki w~jego sformułowaniu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ewaluacja przez krótkie spięcie}
+
+
+  \texttt{boolExpr1 || boolExpr2 || boolExpr3 || \ldots{} || boolExprN}
+
+  Analogicznie działa ewaluacja przez krótkie spięcie dla ciągu wyrażeń
+  połączonych operacją \texttt{||}. Tym razem korzystamy z~tego, że~jeśli
+  w~tym ciągu choć jedno wyrażenie ma wartość logiczną \texttt{true} to całe
+  to wyrażenie ma wartość ma wartość \texttt{true}.
+
+  Jeśli więc na najwyższym poziomie analizowane wyrażenie jest ciągiem
+  mniejszych wyrażeń połączonych operatorem \texttt{||} to obliczamy je od
+  lewej do prawej, aż~dojdziemy do końca lub do pierwszego wyrażenia które
+  zwróciło jako swoją wartość \texttt{true}. W~tym ostatnim przypadku
+  zwracamy jako wartość całego wyrażenia \texttt{true} i~nie obliczamy
+  dalszych wyrazów. W~pozostałych przypadkach zwracamy \texttt{false} jako
+  wartość całego wyrażenia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Parsowanie i~ewaluacja wyrażeń boolowskich}
+
+
+  Reguły mówiące w~jakiej kolejności obliczać wyrażenia boolowskie
+  są podane poniżej, przy czym najpierw wykonujemy te o~niższym numerze.
+  Od razu musimy zaznaczyć, że~zasady te obowiązują w~większości języków
+  programowania, acz, bo czemu życie miałoby być tak proste, zdarzają~się
+  wyjątki.
+
+  \begin{itemize}
+
+  \item[1)] Jeżeli na najwyższym poziomie wyrażenie jest ciągiem
+    \texttt{\&\&} albo \texttt{||} to dokonujemy ewaluacji przez krótkie
+    spięcie.
+
+
+
+  \item[2)] Wyrażenie w~nawiasach.
+
+
+
+  \item[2)] Negacja logiczna.
+
+
+
+  \item[3)] Iloczyn logiczny.
+
+
+
+  \item[4)] Suma logiczna.
+
+
+
+  \item[5)] Porównanie logiczne.
+
+  \end{itemize}
+
+  Tutaj ponownie, intuicyjna zrozumiałość jest ważniejsza, niż precyzyjne
+  sformułowanie tych reguł.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~1}
+
+
+  Rozpatrzmy wyrażenie \\
+  \texttt{false || true \&\& (false || !false) || !true \&\& true}
+
+  W~wyniku jego parsowania na podstawie reguł 2--5 dostajemy: \\
+  \texttt{false || (true \&\& (false || (!false))) ||
+    ((!true) \&\& true)} \\
+  Teraz stosujemy ewaluację przez krótkie spięcie. Wyrażenie \texttt{false}
+  ma wartość \texttt{false}, więc przechodzi do drugiego z~nich: \\
+  \texttt{(true \&\& (false || (!false)))} \\
+  Stosując kilkakrotnie regułę~2 dochodzimy do wniosku, że~najpierw musimy
+  obliczyć \\
+  \texttt{!false == true}. \\
+  Mamy więc \\
+  \texttt{(true \&\& (false || true))} \\
+  Znów z~reguły~2 wynika, że~najpierw należy wyliczyć \\
+  \texttt{(false || true) == true}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~1}
+
+
+  Mamy więc \\
+  \texttt{(true \&\& (false || (!false))) == true \&\& true == true}.
+
+  Z~tego wynika, że~drugi wyrażenie w \\
+  \texttt{false || true \&\& (false || !false) || !true \&\& true}, \\
+  ma wartość logiczną \texttt{true}, więc na mocy ewaluacji przez krótkie
+  spięcie, całe to wyrażenie ma wartość logiczną \texttt{true} i~nie
+  ma potrzeby obliczanie wartości trzeciego wyrażenia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Przykład~2}
+
+
+  Rozpatrzmy teraz kilka bardzo prostych, ale również bardzo użytecznych
+  w~informatyce wyrażeń boolowskich, ewaluowanych metodą krótkiego spięcia.
+
+  \texttt{boolExpr1 \&\& boolExpr2} \\
+  Załóżmy, że~\texttt{boolExpr1} zwraca nam wartość \texttt{true}. Wówczas
+  wyrażenie przyjmuje postać \\
+  \texttt{true \&\& boolExpr2}. \\
+  W~takiej sytuacji wyrażenie \texttt{boolExpr2} musi zostać obliczone i~na
+  podstawie przytoczonej tabelki dla \texttt{\&\&} możemy~się łatwo
+  przekonać, że~zachodzi zależność \\
+  \texttt{true \&\& boolExpr2 == boolExpr2}.
+
+  Jeśli \texttt{boolExpr1} zwraca wartość \texttt{false}, to~zgodnie
+  z~zasadą ewaluacji przez krótkie spięcie wartość \texttt{boolExpr2}
+  nie zostanie nigdy wyliczona.
 
 \end{frame}
 % ##################

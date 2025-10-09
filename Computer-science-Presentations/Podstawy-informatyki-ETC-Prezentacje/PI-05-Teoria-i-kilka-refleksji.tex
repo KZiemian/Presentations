@@ -1,0 +1,1988 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t -- align text to the top of the frame
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule".
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Podstawy-informatyki-ETC-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+% Library improving positioning of nodes in graphs
+% \usetikzlibrary{positioning}
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation.
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text.
+\usepackage{./Local-packages/general-commands}
+
+% % Styles for drawing diagrams
+% \usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
+% % Jagiellonian theme's colors
+% \usepackage{./Local-packages/jagiellonian-theme-colors}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Podstawy informatyki z~językiem~C}
+\subtitle{5. Teoria i~kilka refleksji}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 7k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ######################################
+\section{Typy zmiennych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym są typy zmiennych?}
+
+
+  Widzieliśmy już kilka typów zmiennych, takich jak liczby całkowite
+  i~liczby zmiennoprzecinkowe: \\
+  \texttt{int intVar1 = 0;} \\
+  \texttt{int float64Var1 = 0.0;} \\
+  Czym jednak dokładniej jest typ zmiennej? To wbrew pozorom jest bardzo
+  głęboki problem, który pojawił~się w~rozważaniach
+  filozoficzno-matematycznych kilka dekad wcześniej, nim ludzkość
+  skonstruowała pierwszy komputer z~prawdziwego zdarzenia. Powinno być
+  oczywiste, że~na takim przedmiocie jak \textit{Podstawy informatyki}
+  możemy omówić ten temat tylko na intuicyjnym poziomie.
+
+  Dzisiejsze komputery buduje~się w~ten sposób, że~najmniejszą porcją pamięci
+  jakiej możemy używać jest jeden bajt, czyli $8$~bitów. Techniczny
+  termin na taką najmniejszą jednostkę pamięci nazywamy
+  \textbf{słowem} (ang.~\textit{word}).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Abstrakcja w~informatyce}
+
+
+  Historycznie istniały komputery, których najmniejszą jednostką było
+  powiedzmy $6$~bitów, ale to nie są zajęcia z~historii informatyki.
+
+  Moglibyśmy korzystać komputera operując tylko na bajtach jako takich,
+  ale byłaby to męka nie do pojęcia. Jeśli ktoś z~Państwa pisał kiedyś
+  w~jakimś dialekcie assemblera, wie o~co chodzi.
+
+  By to zilustrować, proszę sobie wyobrazić, że~zamiast zdjęcia na dysku,
+  musimy operować ręcznie na milionie~(!) bajtów które taki rysunek tworzą.
+  Kopiowanie zdjęcia wyglądałoby wtedy mniej więcej tak. Weź bajty
+  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 999$ i~skopiuj
+  zawartość każdego z~nich do bajtów o~numerach $11 \, 000 \, 073$
+  do~$12 \, 000 \, 072$. Koszmar na~jawie!
+
+  By tego uniknąć wprowadzamy coś, co w~informatyce określamy terminem
+  \textbf{abstrakcja}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Abstrakcja w~informatyce}
+
+
+  Zdjęcie na komputerze to pewna abstrakcja, która zwalnia nas z~myślenia
+  o~nim jako o~milionie bajtów, które tworzą ten rysunek na~dysku. Inny
+  przykładem tego typu zachowania jest to, że zamiast mówić „To jest
+  zwierzę, które jest ssakiem, ma cztery nogi, ogon, futro, jest
+  drapieżnikiem,\ldots” powiemy „To jest pies.”. Takie dzielenie rzeczy na różne
+  kategorie i~operować tak wprowadzonymi kategoriami okazuje~się być bardzo
+  wygodne. Mamy nadzieję, że~takie wyjaśnienie koncepcji abstrakcji
+  w~informatyce jest dla Państwa wystarczająca.
+
+  Typy zmiennych istnieją z~tego samego powodu, zamiast myśleć „Tu mam cztery
+  bajty.”, prościej jest myśleć „Tu mam liczbę całkowitą”. Poza tym, typy
+  zmiennych pozwalają komputerowi lepiej kontrolować działanie programów,
+  to jest jednak temat rzeka, zbyt obszerny na ramy tego przedmiotu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pożytek z~typów}
+
+
+  W~poprzednim paragrafie napisaliśmy, że~grupa czterech bajtów reprezentuje
+  liczbę całkowitą i~tak rzeczywiście często jest w~komputerach. Pojedyncza
+  liczba całkowita często zajmuje dokładnie cztery bajty w~pamięci, acz
+  nie jest to teraz super ważne.
+
+  Rozpatrzmy następujący, mocno uproszczony przykład. Powiedzmy, że~używamy
+  dwóch rodzajów plików: graficznych oraz tekstowych. Dzięki typom, nasz
+  program może rozpoznać, że~chcemy zapisać coś do~pliku graficznego, ale
+  otwarliśmy plik tekstowy i~zgłosi błąd, co jest bardzo pożądanym
+  zachowaniem. Jeśli Państwo jeszcze tego nie widzą, to myślę, że~na tym
+  przedmiocie napotkamy dostatecznie wiele przykładów, które pokazując,
+  czemu jest to dobra rzecz.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pożytek z~typów}
+
+
+  Należy też dodać, że~w~różnych językach granica między typami jest mniej
+  lub bardziej ostra. Przykładowo, czy w~miejscu, gdzie program oczekuje
+  liczby zmiennoprzecinkowej, mogę użyć liczby całkowitej~$1$? Wedle
+  niektórych języków, tak, bo wszak wiadomo jak zamienić liczbę
+  całkowitą~$1$ na liczbę zmiennoprzecinkową~$1.0$. Wedle innych języków,
+  nie, bo~taka zmiana jednego typu liczbowego na drugi, może prowadzić do
+  błędów numerycznych, których programista może nie być świadomy pisząc
+  program.
+
+  W~tym drugim typie~;) języków, programista musi jawnie poprosić
+  o~\textbf{konwersje typów}. Czyli musi napisać kod, który mówi coś
+  w~stylu „Wiem, że~to jest liczba całkowita~$1$ i~w~tym miejscu masz
+  ją zamienić na liczbę zmiennoprzecinkową~$1.0$. Ja biorę odpowiedzialność
+  za to co~się stanie.” O~konwersji typów powiem w~swoim czasie.
+
+  % Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
+  % Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
+  % pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
+  % napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
+  % gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
+  % \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pożytek z~typów}
+
+
+  Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
+  Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
+  pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
+  napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
+  gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
+  \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Zapisywanie liczb w~komputerze}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komputer to maszyna do liczenia}
+
+
+  W~samej angielskiej nazwie \textit{computer} zawiera~się informacja,
+  że~jest to maszyna przeznaczona do liczenia, więc siłą rzeczy należy
+  coś powiedzieć o~tym jak komputer zarządza liczbami. Nie będziemy przy
+  tym omawiali wszystkich zawiłości jakie dotyczą tego problemu. Na tym
+  przedmiocie chcemy przekazać tylko tyle informacji, ile jest
+  naszym zdaniem potrzebne do wyrobienia sobie podstawowych intuicji.
+  Za głębsze wniknięcie w~naturę rzeczy odpowiedzialne są inne przedmioty.
+
+  Zaczniemy od pewnie dość nudnego dla większości osób przyjrzenia~się
+  potęgom liczby~$2$. W~informatyce bardzo lubimy liczbę~$2$. By być wiernym
+  duchowni języka~C równość dwóch liczb oznaczamy symbolem $==$. \\
+  $2^{ \HorSpaceTwo 0 } == 1$ \\[0.1em]
+  $2^{ \HorSpaceTwo 1 } == 2$ \\[0.1em]
+  $2^{ \HorSpaceTwo 2 } == 4$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ \HorSpaceTwo 3 } == 8$ \\[0.1em]
+  $2^{ \HorSpaceTwo 4 } == 16$ \\[0.1em]
+  $2^{ \HorSpaceTwo 5 } == 32$ \\[0.1em]
+  $2^{ \HorSpaceTwo 6 } == 64$ \\[0.1em]
+  $2^{ \HorSpaceTwo 7 } == 128$ \\[0.1em]
+  $2^{ \HorSpaceTwo 8 } == 256$ \\[0.1em]
+  $2^{ \HorSpaceTwo 9 } == 512$ \\[0.1em]
+  $2^{ \HorSpaceTwo 10 } == 1 \; 024$ \\[0.1em]
+  $2^{ \HorSpaceTwo 11 } == 2 \; 048$ \\[0.1em]
+  $2^{ \HorSpaceTwo 12 } == 4 \; 096$ \\[0.1em]
+  $2^{ \HorSpaceTwo 15 } == 32 \; 768$ \\[0.1em]
+  $2^{ \HorSpaceTwo 16 } == 65 \; 536$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  Liczby $2^{ \HorSpaceTwo 16 } == 65 \; 536$
+  i~$2^{ \HorSpaceTwo 16 } - 1 == 65 \; 535$ pojawiają~się
+  często w~różnych działach techniki, gdyż często zachodzi potrzeba
+  przesyłania informacji, której podstawową jednostką są dwa bajty,
+  czyli $16$~bitów.
+
+  $2^{ \HorSpaceTwo 17 } == 131 \; 072$ \\[0.1em]
+  $2^{ \HorSpaceTwo 18 } == 262 \; 144$ \\[0.1em]
+  $2^{ \HorSpaceTwo 19 } == 524 \; 288$ \\[0.1em]
+  $2^{ \HorSpaceTwo 20 } == 1 \; 048 \; 576$ \\[0.1em]
+  $2^{ \HorSpaceTwo 21 } == 2 \; 097 \; 152$ \\[0.1em]
+  $2^{ \HorSpaceTwo 22 } == 4 \; 194 \; 304$ \\[0.1em]
+  $2^{ \HorSpaceTwo 23 } == 8 \; 388 \; 608$ \\[0.1em]
+  $2^{ \HorSpaceTwo 24 } == 16 \; 777 \; 216$ \\[0.1em]
+  $2^{ \HorSpaceTwo 25 } == 33 \; 554 \; 432$ \\[0.1em]
+  $2^{ \HorSpaceTwo 26 } == 67 \; 108 \; 864$ \\[0.1em]
+  $2^{ \HorSpaceTwo 27 } == 134 \; 217 \; 728$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ \HorSpaceTwo 28 } == 268 \; 435 \; 456$ \\[0.1em]
+  $2^{ \HorSpaceTwo 29 } == 536 \; 870 \; 912$ \\[0.1em]
+  $2^{ \HorSpaceTwo 30 } == 1 \; 073 \; 741 \; 824$ \\[0.1em]
+  $2^{ \HorSpaceTwo 31 } == 2 \; 147 \; 483 \; 648$ \\[0.1em]
+  $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$
+
+  Liczba $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$ jest bardzo ważna
+  dla wszystkich \\
+  systemów i~programów $32$-bitowych, czyli takich w~których
+  naturalną jednostką przesyłu informacji są właśnie $32$ bity ($4$~bajty).
+
+  $2^{ \HorSpaceTwo 63 } == 9 \; 223 \; 372 \; 036 \; 854 \; 775 \; 808 \approx
+  9 \cdot 10^{ 18 }$ \\
+  Słownie: dziewięć trylionów, dwieście dwadzieścia trzy biliardy, trzysta
+  siedemdziesiąt dwa biliony, trzydzieści sześć miliardów, osiemset
+  pięćdziesiąt cztery miliony, siedemset siedemdziesiąt pięć tysięcy,
+  osiemset osiem. \\
+  Prościej: $9$~trylionów, $223$~biliardy, $372$~biliony,
+  $36$~miliardy, $854$~miliony, $775$~tysięcy, $808$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ \HorSpaceTwo 64 } == 18 \; 446 \; 744 \; 073 \; 709 \; 551 \; 616 \approx
+  18 \cdot 10^{ 18 }$ \\
+  Słownie: osiemnaście trylionów, czterysta czterdzieści sześć biliardów,
+  siedemset czterdzieści cztery biliony, siedemdziesiąt trzy miliardy,
+  siedemset dziewięć milionów, pięćset pięćdziesiąt jeden milionów,
+  sześćset szesnaście. \\
+  Prościej: $18$ trylionów, $446$ biliardów, $744$ biliony, $73$ miliardy,
+  $709$ milionów, $551$ tysięcy, $616$.
+
+  Jak ktoś~się tej liczby nauczy na pamięć, to zasługuje na $5$~dodatkowych
+  punktów.
+
+  Liczba ta jest oczywiście bardzo ważna, dla systemów $64$-bitowych.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Systemy pozycyjny zapisu liczb naturalnych}
+
+
+  Sposoby zapisu liczb w~komputerze to naprawdę temat na osobny wykład,
+  taki jak metody numeryczne. My zaczniemy od~prostej dyskusji jak komputery
+  zapisują liczby naturalne, w~miarę potrzeby omawiając bardziej zaawansowane
+  tematy.
+
+  Zacznijmy od krótkiego odświeżenia najlepiej nam znanego systemu
+  pozycyjnego, czyli tego opartego o~liczbę~$10$. Liczby w~tym systemie
+  czytamy od~prawej do lewej w~następujący sposób. \\
+  $123 == 3 \cdot 10^{ \HorSpaceTwo 0 } + 2 \cdot 10^{ \HorSpaceTwo 1 } +
+  1 \cdot 10^{ \HorSpaceTwo 2 } == 3 \cdot 1 + 2 \cdot 10 + 1 \cdot 100 == 3 + 20 + 100$ \\
+  $456 == 6 \cdot 10^{ \HorSpaceTwo 0 } + 5 \cdot 10^{ \HorSpaceTwo 1 } +
+  4 \cdot 10^{ \HorSpaceTwo 2 } == 6 \cdot 1 + 5 \cdot 10 + 4 \cdot 100 == 6 + 50 + 400$ \\
+  $2345 == 5 \cdot 10^{ \HorSpaceTwo 0 } + 4 \cdot 10^{ \HorSpaceTwo 1 } +
+  3 \cdot 10^{ \HorSpaceTwo 2 } + 2 \cdot 10^{ \HorSpaceTwo 3 } == 5 \cdot 1 + 4 \cdot 10 +
+  3 \cdot 100 \, +$ \\
+  $+ \, 2 \cdot 1000 == 5 + 40 + 300 + 2000$
+
+  Wzorując~się na języku Go, liczby binarne będziemy zapisywać jako
+  $0\text{b}1$, $0\text{b}01$, $0\text{b}111$,~etc. Tak jak w~systemie
+  dziesiętnym, czytamy je od prawej do lewej. Prześledźmy teraz
+  kilka przykładów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  $0\text{b}0 == 0 \cdot 2^{ \HorSpaceTwo 0 } == 0 \cdot 1 == 0$ \\
+  $0\text{b}1 == 1 \cdot 2^{ \HorSpaceTwo 0 } == 1 \cdot 1 == 1$ \\
+  $0\text{b}10 == 0 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
+  0 \cdot 1 + 1 \cdot 2 == 2$ \\
+  $0\text{b}11 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
+  1 \cdot 1 + 1 \cdot 2 == 1 + 2 == 3$ \\
+  $0\text{b}111 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } +
+  1 \cdot 2^{ \HorSpaceTwo 2 } == 1 \cdot 1 + 1 \cdot 2 + 1 \cdot 4 == 1 + 2 + 4 == 7$ \\
+  $0\text{b}10101 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 0 \cdot 2^{ \HorSpaceTwo 1 } +
+  1 \cdot 2^{ \HorSpaceTwo 2 } + 0 \cdot 2^{ \HorSpaceTwo 3 } + 1 \cdot 2^{ \HorSpaceTwo 4 } ==
+  1 \cdot 1 + 0 \cdot 2 + 1 \cdot 4 \, +$ \\
+  $+ \, 0 \cdot 8 + 1 \cdot 16 == 1 + 4 + 16 == 21$
+
+  Jak dobrze wszyscy wiemy, jednostkę która może przechowywać wartość
+  $0$ albo $1$ nazywamy \textbf{bitem}. Bity grupujemy dziś w~\textbf{bajty},
+  jeden bajt to $2^{ \HorSpaceTwo 3 } == 8$ bitów. W~tym, że~bajt zawiera
+  $2^{ \HorSpaceTwo 3 }$ bitów widać upodobanie informatyki do potęgi
+  liczby~$2$. Skąd jednak jest to upodobanie.
+
+  Wydaje~się, że~podstawą tego są kwestie techniczne. Zbudowanie urządzenia,
+  które może przechowywać dwie różne wartości ($0$ lub $1$), jest prostsze,
+  niż takiego, które przechowywałoby trzy wartości ($0$, $1$ lub $2$).
+  Warto powiedzieć o~tym kilka słów więcej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Pozostając na bardzo ogólnym poziomie, w~XX wieku eksperymentowano
+  z~układami elektronicznymi, których podstawowa jednostka pamięci, była
+  w~stanie przechowywać jedną z~trzech wartości ($0$, $1$ lub $2$), jedną
+  z~czterech ($0$, $1$, $2$ lub $3$),~etc. Jednostki te odpowiadały temu,
+  czemu w~dzisiejszym komputerze odpowiada bit. Gdyby ludzkość
+  zdecydowała~się budować komputery w systemie trójkowym, pewnie dzisiaj
+  operowalibyśmy „bajtami” o~długości $3^{ 2 } == 9$ „bitów”.
+
+  Różne względy, które są bardziej odpowiednie na bardzo obszerny wykład
+  z~elektroniki, sprawiły, iż~zdecydowaliśmy~się oprzeć pamięć komputera
+  o~jednostki dwustanowe, czyli właśnie dobrze nam znane bity. Czy tak już
+  pozostanie? Przewidywanie przyszłości jest trudne.
+
+  Zadajmy sobie teraz pytanie, ile liczb możemy zapisać za pomocą jednego
+  bitu? Dwie $0\text{b}0 == 0$ i~$0\text{b}1 == 1$. Ile zaś za pomocą
+  dwóch bitów? Cztery: $0\text{b}00 == 0$, $0\text{b}01 == 1$,
+  $0\text{b}10 == 2$ i~$0\text{b}11 == 3$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Zadajmy sobie jeszcze pytanie, ile liczb jesteśmy w~stanie zapisać
+  na trzech bitach? Odpowiedź to~$8$: $0\text{b}000 == 0$,
+  $0\text{b}001 == 1$, $0\text{b}010 == 2$, $0\text{b}011 == 3$,
+  $0\text{b}100 == 4$, $0\text{b}101 == 5$, $0\text{b}110 == 6$
+  i~$0\text{b}111 == 7$.
+
+  Te przykłady powinny zilustrować następujący fakt. Mając dostępne
+  $n$~bitów możemy za ich pomocą zapisać $2^{ \HorSpaceTwo n }$ stanów. Jest
+  to fakt ogólny, którego prosto dowodzi~się matematycznie, jednak
+  zajmowanie~się matematycznymi podstawami informatyki, nie należy do zakresu
+  tych zajęć. Naszym celem jest pomóc wyrobić sobie Państwu odpowiednią
+  intuicję, pozostawiając innym przedmiotom dokładniejsze omówienie tych
+  spraw.
+
+  Zwróćmy uwagę na jeszcze jeden fakt. W~tym systemie notacji liczb
+  naturalnych, mając do dyspozycji $n$~bitów jeden stan zużywamy na zapisanie
+  liczby $0 == 0\text{b}00\ldots0$, pozostałe $2^{ \HorSpaceTwo n - 1 }$ zużywamy
+  na zapisanie kolejny liczb naturalnych. Stąd, w~tym konkretnym
+  systemie, największą liczbą jaką możemy zapisać na $n$~bitach
+  jest $2^{ \HorSpaceTwo n } - 1$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Maksymalna liczba naturalna, jaką w~prezentowanym systemie można zapisać
+  na $n$~bitach to $2^{ \HorSpaceTwo n - 1 }$. Ponieważ
+  $2^{ \HorSpaceOne 8 } - 1 == 256 - 1 == 255$, to wyjaśnia czemu w~wielu
+  miejscach musimy podawać liczby w~zakresie od~$0$ do~$255$. Po porostu
+  komputer na zapisanie tej liczby poświęca dokładnie jeden bajt ($8$~bitów).
+
+  System który omówiliśmy nie pozwala zapisywać choć liczb całkowitych
+  ujemnych, musi więc zostać odpowiednio rozszerzony. Jednak my nie będziemy
+  wnikać w~tego typu zagadnienia, gdyż to co powiedzieliśmy, jest na nasze
+  potrzeby wystarczające.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Liczby i~cała reszta}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby i~cała reszta}
+
+
+  Do tej pory powiedzieliśmy sobie jak komputer może zapisywać liczby,
+  ale przecież komputer może oprócz liczb zapisywać również wiele innych
+  rzeczy, choć litery alfabetu, którymi ta prezentacja jest zapisana. Myśląc
+  o~takich sprawach wkraczamy na temat kodowania w~komputerze.
+
+  Zacznijmy od bardzo prostego przykładu, który może~się wydawać
+  dziwny, ale jest wbrew pozorom bardzo praktyczny. Jak można zapamiętać
+  angielskie słowo „Hello” w~komputerze? Możemy to zrobić w~następujący
+  sposób. Wiemy, że~komputer umie zapamiętywać liczby naturalne, więc
+  ponumerujmy litery alfabetu (angielskiego) kolejnymi liczbami
+  w~następujący sposób. \\
+  $\text{A} \to 1$, $\text{B} \to 2$, $\text{C} \to 3$, \ldots, $\text{Z} \to 26$,
+  $\text{a} \to 27$, $\text{b} \to 28$, $\text{c} \to 29$, \ldots,
+  $\text{z} \to 52$. \\
+  Taka odpowiedniość między literami alfabetu angielskiego, a~liczbami
+  naturalnymi nazywamy \textbf{kodowaniem}. Dokładniej, zakodowaniem
+  znaków jako liczb naturalnych.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kodowanie liter}
+
+
+  Możemy teraz zakodować słowo „Hello” jako ciąg liczb
+  $8 \; 31 \; 38 \; 38 \; 41$. Niedługo zobaczymy takie kodowanie w~praktyce.
+  Teraz możemy komputerowi powiedzieć „Przełącz~się na tryb, w~którym
+  każdą liczbę od $1$ do~$52$ rozumiesz jako pewną literę alfabetu
+  angielskiego. Jeśli ją napotkasz, to na ekranie wyświetl odpowiedni znak.”
+
+  To wbrew pozorom dobrze opisuje, jak komputery działają, co więcej,
+  język~C działa tak cały czas. Jednak zanim powiemy sobie jak język~C
+  sobie z~tym radzi, to musimy powiedzieć coś o~systemie kodowania
+  \colorhref{https://en.wikipedia.org/wiki/ASCII}{\textsc{ascii}}, który
+  w~$2025$ wciąż jest jednym z~fundamentów działania naszych komputerów.
+
+  Akronim \colorhref{https://en.wikipedia.org/wiki/ASCII}{\textsc{ascii}}
+  pochodzi od~\textit{American Standard Code for~Information Interchange},
+  czyli \textit{Standardowy Amerykański Kod do Wymiany Informacji}.
+  Jak sama nazwa wskazuje, został on stworzony przez Amerykanów na ich
+  potrzeby, co wyjaśnia dlaczego opiera~się na alfabecie angielskim.
+  Dlatego też niektórzy uważają, że~powinno~się go nazywać
+  \textsc{us-ascii}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kodu ASCII}
+
+
+  Powstanie kodu \textsc{ascii} zaczyna~się w~$1961$ roku. Należy sobie
+  uświadomić jak wówczas wyglądała świat komputerów. Komputery potrafiły
+  zajmować całe pokoje, internet nie był nawet marzeniem, a~przenoszenie
+  danych z~jednego komputera na drugi polegało na nagraniu danych na kartki
+  papieru lub dysk, przeniesienia ich do budynku, gdzie znajduje~się drugi
+  komputer i~wgraniu ich do niego.
+
+  I~tu pojawia~się problem. Co jeśli na jednym komputerze zapisywaliśmy
+  literę „A” jako liczbę~$1$, ale na drugim komputerze, ktoś przypisał jej
+  wartość~$33$? Wbrew pozorom takie sytuacje~się zdarzały dość często
+  i~doprowadzały, jak łatwo~się domyślić, użytkowników komputerów do
+  rozpaczy.
+
+  Rozwiązanie wydawało~się dość proste. Utwórzmy standard kodowania, którym
+  będziemy~się wszyscy posługiwać i~dzięki któremu na każdym komputerze
+  literze~„A”, będzie odpowiadała ta sama liczba.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kodu ASCII}
+
+
+  Wprowadzanie tej idei w~życie rozpoczął pracujący wówczas dla firmy
+  \textsc{ibm} \colorhref{https://en.wikipedia.org/wiki/Bob\_Bemer}{Bob
+    Bemer}, który w~maju $1961$~roku złożył projekt takiego standardu
+  do organizacji, która dziś nosi nazwę
+  \colorhref{https://en.wikipedia.org/wiki/American\_National\_Standards\_Institute}
+  {American National Standards Institute}, w~skrócie \textsc{ansi}.
+
+  W~tamtych czasach pamięć była droga, każdy bit~się liczył, zaś bajt liczący
+  osiem bitów nie był jeszcze powszechnie przyjętym standardem. Po ustaleniu,
+  że~potrzeba im standardu dla około $100$ znaków, wzięto najmniejszą
+  liczbę bitów, która zapewnia taką liczbę stanów. Liczbą tą jest~$7$,
+  bo~$2^{ \HorSpaceTwo 7 } = 128$. Tym samy kodowanie \textsc{ascii} zawiera
+  $128$ znaków, przypisane liczbom od~$0$ do~$127$ (proszę zauważyć,
+  że~tych liczb jest dokładnie~$128$).
+
+  Pełną tabelę znaków \textsc{ascii} można znaleźć choćby
+  \colorhref{https://www.ascii-code.com/}{tutaj}. Pierwsze $32$ znaki tego
+  kodu to tzw. znaki kontrolne (ang. \textit{control characters}). Nie są to
+  znaki w~sensie języka codziennego, ile raczej symbole służące do kontroli
+  pracy komputera.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Struktura kodu ASCII}
+
+
+  Liczbie $0$ przypisany jest symbol null, służący do~informowania komputera,
+  że~coś uległo zakończeniu. Opowiemy sobie o~nim więcej, gdy będziemy
+  mówić o~stringach (napisach) w~języku~C. Symbol o~numerze~$2$ informuje
+  komputer, że~właśnie rozpoczyna~się pewien tekst, symbol o~numerze~$3$,
+  że~ten tekst~się właśnie kończy, symbol~$4$ oznacza zakończenie przesyłu
+  danych,~etc. Nie muszą Państwo tego pamiętać, to jest ważne tylko by
+  wyjaśnić, czemu \textsc{ascii} ma taki kształt, a~nie inny. Musiał on
+  bowiem wziąć pod uwagę wiele zagadnień technicznych, przed którymi
+  stanęli jego twórcy w~latach $60$-tych XX~wieku.
+
+  Ostatecznie, literom alfabetu angielskiego przyporządkowano następujące
+  liczby. $\text{A} \to 65$, $\text{B} \to 66$, $\text{C} \to 67$, \ldots,
+  $\text{Z} \to 90$, $\text{a} \to 97$, $\text{b} \to 98$, $\text{c} \to 99$,
+  \ldots, $\text{z} \to 122$. Oprócz tego znakowi przecinka przyporządkowano
+  liczbę~$44$, kropce $46$, średnikowi $59$,~etc.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Struktura kodu ASCII}
+
+
+  Ponieważ \textsc{ascii} stworzyli amerykanie, więc zawiera tylko litery
+  alfabetu angielskiego. W~jaki sposób kodowane są dziś litery takie jak
+  „ą”, czy „ć” to temat na zupełnie inny wykład.
+
+  Nie będziemy od Państwa wymagać znajomości tego wszystkiego. Nasza opowieść
+  o~\textsc{ascii} zawiera pewne uproszczenia, gdyż jej główny celem było
+  dostarczenie Państwu informacji, pozwalające zrozumieć pewne cechy
+  języka~C, które bez tego mogłyby~się wydawać, zupełnie bezsensowne.
+  Teraz zaś możemy przejść bezpośrednio do kodowania w~języku~C.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Kilka słów o~liczbach zmiennoprzecinkowych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby zmiennoprzecinkowe to podstępne bestie}
+
+
+  Liczby zmiennoprzecinkowe (ang.~\textit{floating-point numbers}) to
+  naprawdę podstępne bestie i~całe semestralne kursy są poświęcone
+  pracy z~nimi. Państwo może będą mieli więcej o~nich na metodach
+  numerycznych. Uważam, że~temat ten jest zbyt techniczny na kurs
+  \textit{Podstawy informatyki}, dlatego ograniczę~się do kilku podstawowych
+  faktów. Chyba, że~Państwo chcą~się w~ten temat zagłębić. Chcą Państwo?
+
+  Liczby zmiennoprzecinkowe są skomplikowane, bo mają być z~jednej strony
+  wydajne, z~drugiej strony służyć wielu praktycznym celom. Ponieważ
+  odcinek $[ 0, 1 ]$ zawiera nieskończenie wiele liczb, więc by móc operować
+  nimi wszystkim potrzebowalibyśmy nieskończenie wiele pamięci, a~to oznacza,
+  iż nie możemy tego zrobić. Potrzebujemy więc metody reprezentowania tych
+  liczb w~odpowiednio sprytny sposób. Tych metod jest wiele, różnią~się
+  szeregiem szczegółów, które nie są dla nas specjalnie ważne.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Standard IEEE~$754$}
+
+
+  W~okresie mniej więcej $1950\text{-}1980$ prowadziło to do tego,
+  że~na komputerach różnych firm, te same programy mogły wyliczać mocno
+  różniące~się wyniki, gdyż „te same liczby” na różnych komputerach
+  działały inaczej. Dzisiaj ten problem wciąż istnieje, ale dzięki podjętym
+  działaniom różnice które w~praktyce napotykamy, są w~większości przypadków
+  tak małe, że~możemy o~nich nie myśleć.
+
+  Żeby zaradzić temu problemowi w~$1985$ roku
+  \colorhref{https://www.ieee.org/}{Instytut Elektryków i~Inżynierów
+    Elektroników} (\textsc{ieee}, ang.~\textit{Institute~of Electrical
+    and~Electronics Engineers}) wydał dokument znany jako standard
+  \textsc{ieee}~$754$, który opisał w~jaki sposób komputer ma wykonywać
+  obliczenia na liczbach zmiennoprzecinkowych. Jeśli dwa komputery wykonują
+  działania matematyczne według zasad podanych przez ten standard, to wyniki
+  obliczeń będą na obu identyczne. W~praktyce są pewne drobne wyjątki,
+  ale to temat na inne zajęcia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby zmiennoprzecinkowe pojedynczej precyzji}
+
+
+  Standard ten precyzuje podstawowe wersje liczb zmiennoprzecinkowych, które
+  musimy krótko omówić. Pierwszy z~tych typów to \textbf{liczby
+    zmiennoprzecinkowe pojedynczej precyzji} (ang.~\textit{single-precision
+    floating-point numbers}), które mają długość $32$-bitów ($4$-bajtów).
+
+  Ile cyfr po przecinku może zapamiętać $32$ bitowa liczba
+  zmiennoprzecinkowa? To jest dość trudne pytanie, bo w~komputerze
+  liczby te są zapisane w~systemie \alert{binarnym}, więc od przypadku do
+  przypadku, pozwalają pamiętać różną liczbę \alert{dziesiętnych} cyfr po
+  przecinku. A~to dokładność w~systemie dziesiętnym nas interesuje.
+  Standardowo liczba taka pamięta $7$ albo $8$ \alert{dziesiętnych} cyfr po
+  przecinku.
+
+  Żeby to sobie uzmysłowić, rozpatrzmy taki przykład. Dokładność trzech
+  cyfr \alert{dziesiętnych} po przecinku daje nam dokładność
+  obliczeń $10.0^{ -3 } = 0.001$. Podczas, gdy dokładność do trzech cyfr
+  \alert{binarnych} po przecinku daje nam dokładność tylko
+  $2.0^{ -3 } = 1.0 / 8.0 = 0.125$, czyli $125$ razy mniejszą!
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pojedyncza i~podwójna precyzja}
+
+
+  W~języku~C zmienną przechowującą liczbę zmiennoprzecinkową na~$32$ bitach
+  definiujemy pisząc: \\
+  \texttt{float float32Var1 = 0.0;} \\
+  Do tej pory nie używaliśmy tej definicji i~zaraz wyjaśnimy dlaczego.
+
+  Okazuje~się, że~$7$ miejsc dziesiętnych po przecinku to za mało dla
+  wielu zastosowań, więc wprowadzono drugi ważny typ liczb:
+  \textbf{liczb zmiennoprzecinkowe podwójnej precyzji}
+  (ang.~\textit{double precision floating-points numbers}). Każda
+  taka liczba zajmuje w~pamięci $64$~bity ($8$~bajtów), stąd „podwójna
+  precyzja”. Liczba ta jest oczywiście zapisana w~notacji binarnej, po
+  przeliczeniu na dziesiętną daje to dokładność około $15$ cyfr
+  (dziesiętnych) po przecinku.
+
+  To wyjaśnia czemu w~języku~C zmienną przechowującą taką liczbę
+  definiuje~się jako \\
+  \texttt{double float64Var1 = 0.0;} \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pojedyncza i~podwójna precyzja}
+
+
+  Mówiąc szczerze, nazwy „\texttt{float}” i~„\texttt{double}” używane przez
+  język~C nie są zbyt dobre. Nowoczesne języki, takie jak Go, używają
+  znacznie bardziej sensownych nazw, takich jak „\texttt{float32}”
+  i~„\texttt{float64}”. Tu ponownie wychodzi wiek języka~C. Gdy powstawał
+  na przełomie lat $60$-tych i~$70$-tych XX wieku, nie zdawano sobie dobrze
+  sprawy z~tego, jak ważne jest wybieranie właściwych nazw dla różnych
+  obiektów występujących w~danym języku.
+
+  Dlaczego do tej pory używaliśmy tylko typu \texttt{double}? Odpowiedź jest
+  stosunkowo prosta: jego większa dokładność sprawia, że~rzadziej dostajemy
+  błędne wyniki. Uznaliśmy, że~kurs \textit{Podstaw informatyki} nie jest
+  właściwym miejscem na dyskutowanie takich subtelności, jak to kiedy
+  liczby zmiennoprzecinkowe na $32$~bitach są lepsze lub gorsze od tych
+  na $64$~bitach. Lepiej jest użyć typu, który minimalizuje liczbę błędnych
+  wyników.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podsumowanie. Liczby zmiennoprzecinkowe}
+
+
+  Podane wcześniej informacje są wszystkim, co chcieliśmy Państwu przekazać
+  na tym przedmiocie o~liczbach zmiennoprzecinkowych. Jeśli ktoś chce
+  wiedzieć o~nich więcej, proszę~się do nas zgłosić na zajęciach, gdyż
+  ramy tego kursu nie pozwalają bardziej zagłębić~się w~tą tematykę.
+
+  Mamy nadzieję, że~nie musimy Państwa przekonywać, że~liczby
+  zmiennoprzecinkowe to podstępne bestie i~niebanalne byty, które
+  skrywają przed nami wiele tajemnic. Jednak szersza ich dyskusja musi
+  być odłożona na inny przedmiot, nasz wszak nosi nazwę
+  \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
+
+
+
+
+% ######################################
+\section{Ta prezentacja jest specyficzna}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Programowanie nie jest trudne. Debugowanie już
+    tak}
+
+
+  \textit{Debugowanie programu jest dwa razy trudniejsze, niż jego
+    napisanie. Jeśli więc napiszesz program w~najbardziej inteligentny
+    sposób jaki możesz, to nie jesteś wystarczająco mądry by go
+    zdebugować.} \\
+  Prawo
+  \colorhref{https://en.wikipedia.org/wiki/Brian\_Kernighan}{Kernighana}.
+
+  Proszę pamiętać, że~pisanie programów nie jest trudne, ich debugowanie już
+  tak. Na tych zajęciach będziemy próbować wspólnie stawiać pierwsze kroki
+  na drodze nauki debugowania programów.
+
+  Przypomnijmy jak działa język~C. Piszemy program z~kodem źródłowym
+  w~języku~C, który ma być zawarty w~pliku, którego nazwa \alert{kończy~się
+    na~\texttt{.c}}. Następnie program zwany kompilatorem na podstawie
+  tego kodu źródłowego generuje program wykonywalny \texttt{prog.out}.
+  Kompilator to też program komputerowy, więc to my, ludzie, ustalamy
+  jego zasady działania.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Błędy}
+
+
+  Twórcy języka~C przyjęli, że~jeśli coś jest nie tak, to kompilator może
+  zwrócić jedną z~dwóch rodzai wiadomości: \textbf{błąd}
+  (ang.~\textit{error}) i~\textbf{ostrzeżenie} (ang.~\textit{warning}).
+  Różnica między nimi jest następująca.
+
+  Zwrócenie błędu przez kompilator można zrozumieć, jako następująca
+  informację od niego. „Człowieku, ten kod który napisałeś w~linii
+  numer~X (mniej więcej) jest tak zły, że~ja nie wygenerują ci pliku
+  wykonywalnego. Napraw ten błąd i~spróbuj jeszcze raz.”
+
+  Ze względu na to jak skomplikowany jest proces kompilacji oraz na~wiek
+  języka~C, informacje o~błędach są często bardzo trudne w~zrozumieniu
+  i~niezbyt precyzyjne. To naprawdę skomplikowany temat. Jedną z~rzeczy,
+  które należy rozumieć jest to, że~jeśli kompilator twierdzi, że~błąd
+  jest w~linii $20$, to on zwykle w~tej linii jest, ale kompilator
+  może~się mylić i~błąd znajduje~się wcześniej albo później. Bo dlaczego
+  życie miałoby być proste?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Ostrzeżenia}
+
+
+  Jeśli kompilator zwróci ostrzeżenie, to można to rozumieć jakby mówił:
+  „Kod w~tym miejscu wygląda na zły, ale skoro tak chcesz, to wygeneruję
+  program wykonalny zgodnie z~tym kodem. Jeśli samolot spadnie przez to
+  z~nieba, to ja nie biorę za to odpowiedzialności.”
+
+  Warto dodać, że~twórcy języka Go, stwierdzili, że~kompilator nie
+  powinien zwracać ostrzeżeń, bo dzieje~się dokładnie to czego można~się
+  było spodziewać: programiści ignorują ostrzeżenia. Bo czy program~się
+  uruchamia? Tak. To czym~się przejmować? Skutkiem tego istniejący
+  kod jest pełen podejrzanych miejsc, których programistą nie chciało~się
+  zwyczajnie poprawić. Z~tego powodu w~języku Go są tylko błędy, więc
+  programista musi je wszystkie poprawić.
+
+  Na tym przedmiocie obowiązuje zasada, że~każdy program ma zostać
+  doprowadzony do stanu, w~którym kompilator podczas jego przetwarzania
+  nie zgłasza żadnego ostrzeżenia. Państwo na pewno rozumieją, dlaczego
+  takie zasady przyjęliśmy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Błąd? Ostrzeżenie? Who cares?}
+
+
+  Niestety, jedną z~problemów w~pracy z~językiem~C jest to, że~czasem
+  dostajemy od kompilatora ostrzeżenie, a~jak~się przyjrzymy, to okazuje~się,
+  że~wystąpił błąd. Czyli widzimy, że~kompilator pisze „Ostrzegam ciebie\ldots”
+  i~myślimy sobie „Okej, uruchomię plik i~zobaczę jak działa.”, a~pliku nie
+  ma. Bo czemu życie miałoby być proste?
+
+  Można by powiedzieć pewne rzeczy na usprawiedliwienie kompilatora,
+  ale~to temat na inny przedmiot. Przyjmijmy po prostu, że~kompilator
+  to dość uciążliwy przyjaciel.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Typy zmiennych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym są typy zmiennych?}
+
+
+  Widzieliśmy już kilka typów zmiennych, takich jak liczby całkowite
+  i~liczby zmiennoprzecinkowe: \\
+  \texttt{int intVar1 = 0;} \\
+  \texttt{int float64Var1 = 0.0;} \\
+  Czym jednak dokładniej jest typ zmiennej? To wbrew pozorom jest bardzo
+  głęboki problem, który pojawił~się w~rozważaniach
+  filozoficzno-matematycznych kilka dekad wcześniej, nim ludzkość
+  skonstruowała pierwszy komputer z~prawdziwego zdarzenia. Powinno być
+  oczywiste, że~na takim przedmiocie jak \textit{Podstawy informatyki}
+  możemy omówić ten temat tylko na intuicyjnym poziomie.
+
+  Dzisiejsze komputery buduje~się w~ten sposób, że~najmniejszą porcją pamięci
+  jakiej możemy używać jest jeden bajt, czyli $8$~bitów. Techniczny
+  termin na taką najmniejszą jednostkę pamięci nazywamy
+  \textbf{słowem} (ang.~\textit{word}).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Abstrakcja w~informatyce}
+
+
+  Historycznie istniały komputery, których najmniejszą jednostką było
+  powiedzmy $6$~bitów, ale to nie są zajęcia z~historii informatyki.
+
+  Moglibyśmy korzystać komputera operując tylko na bajtach jako takich,
+  ale byłaby to męka nie do pojęcia. Jeśli ktoś z~Państwa pisał kiedyś
+  w~jakimś dialekcie assemblera, wie o~co chodzi.
+
+  By to zilustrować, proszę sobie wyobrazić, że~zamiast zdjęcia na dysku,
+  musimy operować ręcznie na milionie~(!) bajtów które taki rysunek tworzą.
+  Kopiowanie zdjęcia wyglądałoby wtedy mniej więcej tak. Weź bajty
+  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 999$ i~skopiuj
+  zawartość każdego z~nich do bajtów o~numerach $11 \, 000 \, 073$
+  do~$12 \, 000 \, 072$. Koszmar na~jawie!
+
+  By tego uniknąć wprowadzamy coś, co w~informatyce określamy terminem
+  \textbf{abstrakcja}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Abstrakcja w~informatyce}
+
+
+  Zdjęcie na komputerze to pewna abstrakcja, która zwalnia nas z~myślenia
+  o~nim jako o~milionie bajtów, które tworzą ten rysunek na~dysku. Inny
+  przykładem tego typu zachowania jest to, że zamiast mówić „To jest
+  zwierzę, które jest ssakiem, ma cztery nogi, ogon, futro, jest
+  drapieżnikiem,\ldots” powiemy „To jest pies.”. Takie dzielenie rzeczy na różne
+  kategorie i~operować tak wprowadzonymi kategoriami okazuje~się być bardzo
+  wygodne. Mamy nadzieję, że~takie wyjaśnienie koncepcji abstrakcji
+  w~informatyce jest dla Państwa wystarczająca.
+
+  Typy zmiennych istnieją z~tego samego powodu, zamiast myśleć „Tu mam cztery
+  bajty.”, prościej jest myśleć „Tu mam liczbę całkowitą”. Poza tym, typy
+  zmiennych pozwalają komputerowi lepiej kontrolować działanie programów,
+  to jest jednak temat rzeka, zbyt obszerny na ramy tego przedmiotu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pożytek z~typów}
+
+
+  W~poprzednim paragrafie napisaliśmy, że~grupa czterech bajtów reprezentuje
+  liczbę całkowitą i~tak rzeczywiście często jest w~komputerach. Pojedyncza
+  liczba całkowita często zajmuje dokładnie cztery bajty w~pamięci, acz
+  nie jest to teraz super ważne.
+
+  Rozpatrzmy następujący, mocno uproszczony przykład. Powiedzmy, że~używamy
+  dwóch rodzajów plików: graficznych oraz tekstowych. Dzięki typom, nasz
+  program może rozpoznać, że~chcemy zapisać coś do~pliku graficznego, ale
+  otwarliśmy plik tekstowy i~zgłosi błąd, co jest bardzo pożądanym
+  zachowaniem. Jeśli Państwo jeszcze tego nie widzą, to myślę, że~na tym
+  przedmiocie napotkamy dostatecznie wiele przykładów, które pokazując,
+  czemu jest to dobra rzecz.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pożytek z~typów}
+
+
+  Należy też dodać, że~w~różnych językach granica między typami jest mniej
+  lub bardziej ostra. Przykładowo, czy w~miejscu, gdzie program oczekuje
+  liczby zmiennoprzecinkowej, mogę użyć liczby całkowitej~$1$? Wedle
+  niektórych języków, tak, bo wszak wiadomo jak zamienić liczbę
+  całkowitą~$1$ na liczbę zmiennoprzecinkową~$1.0$. Wedle innych języków,
+  nie, bo~taka zmiana jednego typu liczbowego na drugi, może prowadzić do
+  błędów numerycznych, których programista może nie być świadomy pisząc
+  program.
+
+  W~tym drugim typie~;) języków, programista musi jawnie poprosić
+  o~\textbf{konwersje typów}. Czyli musi napisać kod, który mówi coś
+  w~stylu „Wiem, że~to jest liczba całkowita~$1$ i~w~tym miejscu masz
+  ją zamienić na liczbę zmiennoprzecinkową~$1.0$. Ja biorę odpowiedzialność
+  za to co~się stanie.” O~konwersji typów powiem w~swoim czasie.
+
+  % Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
+  % Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
+  % pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
+  % napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
+  % gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
+  % \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pożytek z~typów}
+
+
+  Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
+  Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
+  pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
+  napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
+  gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
+  \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Zapisywanie liczb w~komputerze}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komputer to maszyna do liczenia}
+
+
+  W~samej angielskiej nazwie \textit{computer} zawiera~się informacja,
+  że~jest to maszyna przeznaczona do liczenia, więc siłą rzeczy należy
+  coś powiedzieć o~tym jak komputer zarządza liczbami. Nie będziemy przy
+  tym omawiali wszystkich zawiłości jakie dotyczą tego problemu. Na tym
+  przedmiocie chcemy przekazać tylko tyle informacji, ile jest
+  naszym zdaniem potrzebne do wyrobienia sobie podstawowych intuicji.
+  Za głębsze wniknięcie w~naturę rzeczy odpowiedzialne są inne przedmioty.
+
+  Zaczniemy od pewnie dość nudnego dla większości osób przyjrzenia~się
+  potęgom liczby~$2$. W~informatyce bardzo lubimy liczbę~$2$. By być wiernym
+  duchowni języka~C równość dwóch liczb oznaczamy symbolem $==$. \\
+  $2^{ \HorSpaceTwo 0 } == 1$ \\[0.1em]
+  $2^{ \HorSpaceTwo 1 } == 2$ \\[0.1em]
+  $2^{ \HorSpaceTwo 2 } == 4$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ \HorSpaceTwo 3 } == 8$ \\[0.1em]
+  $2^{ \HorSpaceTwo 4 } == 16$ \\[0.1em]
+  $2^{ \HorSpaceTwo 5 } == 32$ \\[0.1em]
+  $2^{ \HorSpaceTwo 6 } == 64$ \\[0.1em]
+  $2^{ \HorSpaceTwo 7 } == 128$ \\[0.1em]
+  $2^{ \HorSpaceTwo 8 } == 256$ \\[0.1em]
+  $2^{ \HorSpaceTwo 9 } == 512$ \\[0.1em]
+  $2^{ \HorSpaceTwo 10 } == 1 \; 024$ \\[0.1em]
+  $2^{ \HorSpaceTwo 11 } == 2 \; 048$ \\[0.1em]
+  $2^{ \HorSpaceTwo 12 } == 4 \; 096$ \\[0.1em]
+  $2^{ \HorSpaceTwo 15 } == 32 \; 768$ \\[0.1em]
+  $2^{ \HorSpaceTwo 16 } == 65 \; 536$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  Liczby $2^{ \HorSpaceTwo 16 } == 65 \; 536$
+  i~$2^{ \HorSpaceTwo 16 } - 1 == 65 \; 535$ pojawiają~się
+  często w~różnych działach techniki, gdyż często zachodzi potrzeba
+  przesyłania informacji, której podstawową jednostką są dwa bajty,
+  czyli $16$~bitów.
+
+  $2^{ \HorSpaceTwo 17 } == 131 \; 072$ \\[0.1em]
+  $2^{ \HorSpaceTwo 18 } == 262 \; 144$ \\[0.1em]
+  $2^{ \HorSpaceTwo 19 } == 524 \; 288$ \\[0.1em]
+  $2^{ \HorSpaceTwo 20 } == 1 \; 048 \; 576$ \\[0.1em]
+  $2^{ \HorSpaceTwo 21 } == 2 \; 097 \; 152$ \\[0.1em]
+  $2^{ \HorSpaceTwo 22 } == 4 \; 194 \; 304$ \\[0.1em]
+  $2^{ \HorSpaceTwo 23 } == 8 \; 388 \; 608$ \\[0.1em]
+  $2^{ \HorSpaceTwo 24 } == 16 \; 777 \; 216$ \\[0.1em]
+  $2^{ \HorSpaceTwo 25 } == 33 \; 554 \; 432$ \\[0.1em]
+  $2^{ \HorSpaceTwo 26 } == 67 \; 108 \; 864$ \\[0.1em]
+  $2^{ \HorSpaceTwo 27 } == 134 \; 217 \; 728$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ \HorSpaceTwo 28 } == 268 \; 435 \; 456$ \\[0.1em]
+  $2^{ \HorSpaceTwo 29 } == 536 \; 870 \; 912$ \\[0.1em]
+  $2^{ \HorSpaceTwo 30 } == 1 \; 073 \; 741 \; 824$ \\[0.1em]
+  $2^{ \HorSpaceTwo 31 } == 2 \; 147 \; 483 \; 648$ \\[0.1em]
+  $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$
+
+  Liczba $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$ jest bardzo ważna
+  dla wszystkich \\
+  systemów i~programów $32$-bitowych, czyli takich w~których
+  naturalną jednostką przesyłu informacji są właśnie $32$ bity ($4$~bajty).
+
+  $2^{ \HorSpaceTwo 63 } == 9 \; 223 \; 372 \; 036 \; 854 \; 775 \; 808 \approx
+  9 \cdot 10^{ 18 }$ \\
+  Słownie: dziewięć trylionów, dwieście dwadzieścia trzy biliardy, trzysta
+  siedemdziesiąt dwa biliony, trzydzieści sześć miliardów, osiemset
+  pięćdziesiąt cztery miliony, siedemset siedemdziesiąt pięć tysięcy,
+  osiemset osiem. \\
+  Prościej: $9$~trylionów, $223$~biliardy, $372$~biliony,
+  $36$~miliardy, $854$~miliony, $775$~tysięcy, $808$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  $2^{ \HorSpaceTwo 64 } == 18 \; 446 \; 744 \; 073 \; 709 \; 551 \; 616 \approx
+  18 \cdot 10^{ 18 }$ \\
+  Słownie: osiemnaście trylionów, czterysta czterdzieści sześć biliardów,
+  siedemset czterdzieści cztery biliony, siedemdziesiąt trzy miliardy,
+  siedemset dziewięć milionów, pięćset pięćdziesiąt jeden milionów,
+  sześćset szesnaście. \\
+  Prościej: $18$ trylionów, $446$ biliardów, $744$ biliony, $73$ miliardy,
+  $709$ milionów, $551$ tysięcy, $616$.
+
+  Jak ktoś~się tej liczby nauczy na pamięć, to zasługuje na $5$~dodatkowych
+  punktów.
+
+  Liczba ta jest oczywiście bardzo ważna, dla systemów $64$-bitowych.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Systemy pozycyjny zapisu liczb naturalnych}
+
+
+  Sposoby zapisu liczb w~komputerze to naprawdę temat na osobny wykład,
+  taki jak metody numeryczne. My zaczniemy od~prostej dyskusji jak komputery
+  zapisują liczby naturalne, w~miarę potrzeby omawiając bardziej zaawansowane
+  tematy.
+
+  Zacznijmy od krótkiego odświeżenia najlepiej nam znanego systemu
+  pozycyjnego, czyli tego opartego o~liczbę~$10$. Liczby w~tym systemie
+  czytamy od~prawej do lewej w~następujący sposób. \\
+  $123 == 3 \cdot 10^{ \HorSpaceTwo 0 } + 2 \cdot 10^{ \HorSpaceTwo 1 } +
+  1 \cdot 10^{ \HorSpaceTwo 2 } == 3 \cdot 1 + 2 \cdot 10 + 1 \cdot 100 == 3 + 20 + 100$ \\
+  $456 == 6 \cdot 10^{ \HorSpaceTwo 0 } + 5 \cdot 10^{ \HorSpaceTwo 1 } +
+  4 \cdot 10^{ \HorSpaceTwo 2 } == 6 \cdot 1 + 5 \cdot 10 + 4 \cdot 100 == 6 + 50 + 400$ \\
+  $2345 == 5 \cdot 10^{ \HorSpaceTwo 0 } + 4 \cdot 10^{ \HorSpaceTwo 1 } +
+  3 \cdot 10^{ \HorSpaceTwo 2 } + 2 \cdot 10^{ \HorSpaceTwo 3 } == 5 \cdot 1 + 4 \cdot 10 +
+  3 \cdot 100 \, +$ \\
+  $+ \, 2 \cdot 1000 == 5 + 40 + 300 + 2000$
+
+  Wzorując~się na języku Go, liczby binarne będziemy zapisywać jako
+  $0\text{b}1$, $0\text{b}01$, $0\text{b}111$,~etc. Tak jak w~systemie
+  dziesiętnym, czytamy je od prawej do lewej. Prześledźmy teraz
+  kilka przykładów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  $0\text{b}0 == 0 \cdot 2^{ \HorSpaceTwo 0 } == 0 \cdot 1 == 0$ \\
+  $0\text{b}1 == 1 \cdot 2^{ \HorSpaceTwo 0 } == 1 \cdot 1 == 1$ \\
+  $0\text{b}10 == 0 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
+  0 \cdot 1 + 1 \cdot 2 == 2$ \\
+  $0\text{b}11 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
+  1 \cdot 1 + 1 \cdot 2 == 1 + 2 == 3$ \\
+  $0\text{b}111 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } +
+  1 \cdot 2^{ \HorSpaceTwo 2 } == 1 \cdot 1 + 1 \cdot 2 + 1 \cdot 4 == 1 + 2 + 4 == 7$ \\
+  $0\text{b}10101 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 0 \cdot 2^{ \HorSpaceTwo 1 } +
+  1 \cdot 2^{ \HorSpaceTwo 2 } + 0 \cdot 2^{ \HorSpaceTwo 3 } + 1 \cdot 2^{ \HorSpaceTwo 4 } ==
+  1 \cdot 1 + 0 \cdot 2 + 1 \cdot 4 \, +$ \\
+  $+ \, 0 \cdot 8 + 1 \cdot 16 == 1 + 4 + 16 == 21$
+
+  Jak dobrze wszyscy wiemy, jednostkę która może przechowywać wartość
+  $0$ albo $1$ nazywamy \textbf{bitem}. Bity grupujemy dziś w~\textbf{bajty},
+  jeden bajt to $2^{ \HorSpaceTwo 3 } == 8$ bitów. W~tym, że~bajt zawiera
+  $2^{ \HorSpaceTwo 3 }$ bitów widać upodobanie informatyki do potęgi
+  liczby~$2$. Skąd jednak jest to upodobanie.
+
+  Wydaje~się, że~podstawą tego są kwestie techniczne. Zbudowanie urządzenia,
+  które może przechowywać dwie różne wartości ($0$ lub $1$), jest prostsze,
+  niż takiego, które przechowywałoby trzy wartości ($0$, $1$ lub $2$).
+  Warto powiedzieć o~tym kilka słów więcej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Pozostając na bardzo ogólnym poziomie, w~XX wieku eksperymentowano
+  z~układami elektronicznymi, których podstawowa jednostka pamięci, była
+  w~stanie przechowywać jedną z~trzech wartości ($0$, $1$ lub $2$), jedną
+  z~czterech ($0$, $1$, $2$ lub $3$),~etc. Jednostki te odpowiadały temu,
+  czemu w~dzisiejszym komputerze odpowiada bit. Gdyby ludzkość
+  zdecydowała~się budować komputery w systemie trójkowym, pewnie dzisiaj
+  operowalibyśmy „bajtami” o~długości $3^{ 2 } == 9$ „bitów”.
+
+  Różne względy, które są bardziej odpowiednie na bardzo obszerny wykład
+  z~elektroniki, sprawiły, iż~zdecydowaliśmy~się oprzeć pamięć komputera
+  o~jednostki dwustanowe, czyli właśnie dobrze nam znane bity. Czy tak już
+  pozostanie? Przewidywanie przyszłości jest trudne.
+
+  Zadajmy sobie teraz pytanie, ile liczb możemy zapisać za pomocą jednego
+  bitu? Dwie $0\text{b}0 == 0$ i~$0\text{b}1 == 1$. Ile zaś za pomocą
+  dwóch bitów? Cztery: $0\text{b}00 == 0$, $0\text{b}01 == 1$,
+  $0\text{b}10 == 2$ i~$0\text{b}11 == 3$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Zadajmy sobie jeszcze pytanie, ile liczb jesteśmy w~stanie zapisać
+  na trzech bitach? Odpowiedź to~$8$: $0\text{b}000 == 0$,
+  $0\text{b}001 == 1$, $0\text{b}010 == 2$, $0\text{b}011 == 3$,
+  $0\text{b}100 == 4$, $0\text{b}101 == 5$, $0\text{b}110 == 6$
+  i~$0\text{b}111 == 7$.
+
+  Te przykłady powinny zilustrować następujący fakt. Mając dostępne
+  $n$~bitów możemy za ich pomocą zapisać $2^{ \HorSpaceTwo n }$ stanów. Jest
+  to fakt ogólny, którego prosto dowodzi~się matematycznie, jednak
+  zajmowanie~się matematycznymi podstawami informatyki, nie należy do zakresu
+  tych zajęć. Naszym celem jest pomóc wyrobić sobie Państwu odpowiednią
+  intuicję, pozostawiając innym przedmiotom dokładniejsze omówienie tych
+  spraw.
+
+  Zwróćmy uwagę na jeszcze jeden fakt. W~tym systemie notacji liczb
+  naturalnych, mając do dyspozycji $n$~bitów jeden stan zużywamy na zapisanie
+  liczby $0 == 0\text{b}00\ldots0$, pozostałe $2^{ \HorSpaceTwo n - 1 }$ zużywamy
+  na zapisanie kolejny liczb naturalnych. Stąd, w~tym konkretnym
+  systemie, największą liczbą jaką możemy zapisać na $n$~bitach
+  jest $2^{ \HorSpaceTwo n } - 1$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Maksymalna liczba naturalna, jaką w~prezentowanym systemie można zapisać
+  na $n$~bitach to $2^{ \HorSpaceTwo n - 1 }$. Ponieważ
+  $2^{ \HorSpaceOne 8 } - 1 == 256 - 1 == 255$, to wyjaśnia czemu w~wielu
+  miejscach musimy podawać liczby w~zakresie od~$0$ do~$255$. Po porostu
+  komputer na zapisanie tej liczby poświęca dokładnie jeden bajt ($8$~bitów).
+
+  System który omówiliśmy nie pozwala zapisywać choć liczb całkowitych
+  ujemnych, musi więc zostać odpowiednio rozszerzony. Jednak my nie będziemy
+  wnikać w~tego typu zagadnienia, gdyż to co powiedzieliśmy, jest na nasze
+  potrzeby wystarczające.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Liczby i~cała reszta}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby i~cała reszta}
+
+
+  Do tej pory powiedzieliśmy sobie jak komputer może zapisywać liczby,
+  ale przecież komputer może oprócz liczb zapisywać również wiele innych
+  rzeczy, choć litery alfabetu, którymi ta prezentacja jest zapisana. Myśląc
+  o~takich sprawach wkraczamy na temat kodowania w~komputerze.
+
+  Zacznijmy od bardzo prostego przykładu, który może~się wydawać
+  dziwny, ale jest wbrew pozorom bardzo praktyczny. Jak można zapamiętać
+  angielskie słowo „Hello” w~komputerze? Możemy to zrobić w~następujący
+  sposób. Wiemy, że~komputer umie zapamiętywać liczby naturalne, więc
+  ponumerujmy litery alfabetu (angielskiego) kolejnymi liczbami
+  w~następujący sposób. \\
+  $\text{A} \to 1$, $\text{B} \to 2$, $\text{C} \to 3$, \ldots, $\text{Z} \to 26$,
+  $\text{a} \to 27$, $\text{b} \to 28$, $\text{c} \to 29$, \ldots,
+  $\text{z} \to 52$. \\
+  Taka odpowiedniość między literami alfabetu angielskiego, a~liczbami
+  naturalnymi nazywamy \textbf{kodowaniem}. Dokładniej, zakodowaniem
+  znaków jako liczb naturalnych.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kodowanie liter}
+
+
+  Możemy teraz zakodować słowo „Hello” jako ciąg liczb
+  $8 \; 31 \; 38 \; 38 \; 41$. Niedługo zobaczymy takie kodowanie w~praktyce.
+  Teraz możemy komputerowi powiedzieć „Przełącz~się na tryb, w~którym
+  każdą liczbę od $1$ do~$52$ rozumiesz jako pewną literę alfabetu
+  angielskiego. Jeśli ją napotkasz, to na ekranie wyświetl odpowiedni znak.”
+
+  To wbrew pozorom dobrze opisuje, jak komputery działają, co więcej,
+  język~C działa tak cały czas. Jednak zanim powiemy sobie jak język~C
+  sobie z~tym radzi, to musimy powiedzieć coś o~systemie kodowania
+  \colorhref{https://en.wikipedia.org/wiki/ASCII}{\textsc{ascii}}, który
+  w~$2025$ wciąż jest jednym z~fundamentów działania naszych komputerów.
+
+  Akronim \colorhref{https://en.wikipedia.org/wiki/ASCII}{\textsc{ascii}}
+  pochodzi od~\textit{American Standard Code for~Information Interchange},
+  czyli \textit{Standardowy Amerykański Kod do Wymiany Informacji}.
+  Jak sama nazwa wskazuje, został on stworzony przez Amerykanów na ich
+  potrzeby, co wyjaśnia dlaczego opiera~się na alfabecie angielskim.
+  Dlatego też niektórzy uważają, że~powinno~się go nazywać
+  \textsc{us-ascii}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kodu ASCII}
+
+
+  Powstanie kodu \textsc{ascii} zaczyna~się w~$1961$ roku. Należy sobie
+  uświadomić jak wówczas wyglądała świat komputerów. Komputery potrafiły
+  zajmować całe pokoje, internet nie był nawet marzeniem, a~przenoszenie
+  danych z~jednego komputera na drugi polegało na nagraniu danych na kartki
+  papieru lub dysk, przeniesienia ich do budynku, gdzie znajduje~się drugi
+  komputer i~wgraniu ich do niego.
+
+  I~tu pojawia~się problem. Co jeśli na jednym komputerze zapisywaliśmy
+  literę „A” jako liczbę~$1$, ale na drugim komputerze, ktoś przypisał jej
+  wartość~$33$? Wbrew pozorom takie sytuacje~się zdarzały dość często
+  i~doprowadzały, jak łatwo~się domyślić, użytkowników komputerów do
+  rozpaczy.
+
+  Rozwiązanie wydawało~się dość proste. Utwórzmy standard kodowania, którym
+  będziemy~się wszyscy posługiwać i~dzięki któremu na każdym komputerze
+  literze~„A”, będzie odpowiadała ta sama liczba.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Historia kodu ASCII}
+
+
+  Wprowadzanie tej idei w~życie rozpoczął pracujący wówczas dla firmy
+  \textsc{ibm} \colorhref{https://en.wikipedia.org/wiki/Bob\_Bemer}{Bob
+    Bemer}, który w~maju $1961$~roku złożył projekt takiego standardu
+  do organizacji, która dziś nosi nazwę
+  \colorhref{https://en.wikipedia.org/wiki/American\_National\_Standards\_Institute}
+  {American National Standards Institute}, w~skrócie \textsc{ansi}.
+
+  W~tamtych czasach pamięć była droga, każdy bit~się liczył, zaś bajt liczący
+  osiem bitów nie był jeszcze powszechnie przyjętym standardem. Po ustaleniu,
+  że~potrzeba im standardu dla około $100$ znaków, wzięto najmniejszą
+  liczbę bitów, która zapewnia taką liczbę stanów. Liczbą tą jest~$7$,
+  bo~$2^{ \HorSpaceTwo 7 } = 128$. Tym samy kodowanie \textsc{ascii} zawiera
+  $128$ znaków, przypisane liczbom od~$0$ do~$127$ (proszę zauważyć,
+  że~tych liczb jest dokładnie~$128$).
+
+  Pełną tabelę znaków \textsc{ascii} można znaleźć choćby
+  \colorhref{https://www.ascii-code.com/}{tutaj}. Pierwsze $32$ znaki tego
+  kodu to tzw. znaki kontrolne (ang. \textit{control characters}). Nie są to
+  znaki w~sensie języka codziennego, ile raczej symbole służące do kontroli
+  pracy komputera.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Struktura kodu ASCII}
+
+
+  Liczbie $0$ przypisany jest symbol null, służący do~informowania komputera,
+  że~coś uległo zakończeniu. Opowiemy sobie o~nim więcej, gdy będziemy
+  mówić o~stringach (napisach) w~języku~C. Symbol o~numerze~$2$ informuje
+  komputer, że~właśnie rozpoczyna~się pewien tekst, symbol o~numerze~$3$,
+  że~ten tekst~się właśnie kończy, symbol~$4$ oznacza zakończenie przesyłu
+  danych,~etc. Nie muszą Państwo tego pamiętać, to jest ważne tylko by
+  wyjaśnić, czemu \textsc{ascii} ma taki kształt, a~nie inny. Musiał on
+  bowiem wziąć pod uwagę wiele zagadnień technicznych, przed którymi
+  stanęli jego twórcy w~latach $60$-tych XX~wieku.
+
+  Ostatecznie, literom alfabetu angielskiego przyporządkowano następujące
+  liczby. $\text{A} \to 65$, $\text{B} \to 66$, $\text{C} \to 67$, \ldots,
+  $\text{Z} \to 90$, $\text{a} \to 97$, $\text{b} \to 98$, $\text{c} \to 99$,
+  \ldots, $\text{z} \to 122$. Oprócz tego znakowi przecinka przyporządkowano
+  liczbę~$44$, kropce $46$, średnikowi $59$,~etc.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Struktura kodu ASCII}
+
+
+  Ponieważ \textsc{ascii} stworzyli amerykanie, więc zawiera tylko litery
+  alfabetu angielskiego. W~jaki sposób kodowane są dziś litery takie jak
+  „ą”, czy „ć” to temat na zupełnie inny wykład.
+
+  Nie będziemy od Państwa wymagać znajomości tego wszystkiego. Nasza opowieść
+  o~\textsc{ascii} zawiera pewne uproszczenia, gdyż jej główny celem było
+  dostarczenie Państwu informacji, pozwalające zrozumieć pewne cechy
+  języka~C, które bez tego mogłyby~się wydawać, zupełnie bezsensowne.
+  Teraz zaś możemy przejść bezpośrednio do kodowania w~języku~C.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ######################################
+\section{Kilka słów o~liczbach zmiennoprzecinkowych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby zmiennoprzecinkowe to podstępne bestie}
+
+
+  Liczby zmiennoprzecinkowe (ang.~\textit{floating-point numbers}) to
+  naprawdę podstępne bestie i~całe semestralne kursy są poświęcone
+  pracy z~nimi. Państwo może będą mieli więcej o~nich na metodach
+  numerycznych. Uważam, że~temat ten jest zbyt techniczny na kurs
+  \textit{Podstawy informatyki}, dlatego ograniczę~się do kilku podstawowych
+  faktów. Chyba, że~Państwo chcą~się w~ten temat zagłębić. Chcą Państwo?
+
+  Liczby zmiennoprzecinkowe są skomplikowane, bo mają być z~jednej strony
+  wydajne, z~drugiej strony służyć wielu praktycznym celom. Ponieważ
+  odcinek $[ 0, 1 ]$ zawiera nieskończenie wiele liczb, więc by móc operować
+  nimi wszystkim potrzebowalibyśmy nieskończenie wiele pamięci, a~to oznacza,
+  iż nie możemy tego zrobić. Potrzebujemy więc metody reprezentowania tych
+  liczb w~odpowiednio sprytny sposób. Tych metod jest wiele, różnią~się
+  szeregiem szczegółów, które nie są dla nas specjalnie ważne.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Standard IEEE~$754$}
+
+
+  W~okresie mniej więcej $1950\text{-}1980$ prowadziło to do tego,
+  że~na komputerach różnych firm, te same programy mogły wyliczać mocno
+  różniące~się wyniki, gdyż „te same liczby” na różnych komputerach
+  działały inaczej. Dzisiaj ten problem wciąż istnieje, ale dzięki podjętym
+  działaniom różnice które w~praktyce napotykamy, są w~większości przypadków
+  tak małe, że~możemy o~nich nie myśleć.
+
+  Żeby zaradzić temu problemowi w~$1985$ roku
+  \colorhref{https://www.ieee.org/}{Instytut Elektryków i~Inżynierów
+    Elektroników} (\textsc{ieee}, ang.~\textit{Institute~of Electrical
+    and~Electronics Engineers}) wydał dokument znany jako standard
+  \textsc{ieee}~$754$, który opisał w~jaki sposób komputer ma wykonywać
+  obliczenia na liczbach zmiennoprzecinkowych. Jeśli dwa komputery wykonują
+  działania matematyczne według zasad podanych przez ten standard, to wyniki
+  obliczeń będą na obu identyczne. W~praktyce są pewne drobne wyjątki,
+  ale to temat na inne zajęcia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Liczby zmiennoprzecinkowe pojedynczej precyzji}
+
+
+  Standard ten precyzuje podstawowe wersje liczb zmiennoprzecinkowych, które
+  musimy krótko omówić. Pierwszy z~tych typów to \textbf{liczby
+    zmiennoprzecinkowe pojedynczej precyzji} (ang.~\textit{single-precision
+    floating-point numbers}), które mają długość $32$-bitów ($4$-bajtów).
+
+  Ile cyfr po przecinku może zapamiętać $32$ bitowa liczba
+  zmiennoprzecinkowa? To jest dość trudne pytanie, bo w~komputerze
+  liczby te są zapisane w~systemie \alert{binarnym}, więc od przypadku do
+  przypadku, pozwalają pamiętać różną liczbę \alert{dziesiętnych} cyfr po
+  przecinku. A~to dokładność w~systemie dziesiętnym nas interesuje.
+  Standardowo liczba taka pamięta $7$ albo $8$ \alert{dziesiętnych} cyfr po
+  przecinku.
+
+  Żeby to sobie uzmysłowić, rozpatrzmy taki przykład. Dokładność trzech
+  cyfr \alert{dziesiętnych} po przecinku daje nam dokładność
+  obliczeń $10.0^{ -3 } = 0.001$. Podczas, gdy dokładność do trzech cyfr
+  \alert{binarnych} po przecinku daje nam dokładność tylko
+  $2.0^{ -3 } = 1.0 / 8.0 = 0.125$, czyli $125$ razy mniejszą!
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pojedyncza i~podwójna precyzja}
+
+
+  W~języku~C zmienną przechowującą liczbę zmiennoprzecinkową na~$32$ bitach
+  definiujemy pisząc: \\
+  \texttt{float float32Var1 = 0.0;} \\
+  Do tej pory nie używaliśmy tej definicji i~zaraz wyjaśnimy dlaczego.
+
+  Okazuje~się, że~$7$ miejsc dziesiętnych po przecinku to za mało dla
+  wielu zastosowań, więc wprowadzono drugi ważny typ liczb:
+  \textbf{liczb zmiennoprzecinkowe podwójnej precyzji}
+  (ang.~\textit{double precision floating-points numbers}). Każda
+  taka liczba zajmuje w~pamięci $64$~bity ($8$~bajtów), stąd „podwójna
+  precyzja”. Liczba ta jest oczywiście zapisana w~notacji binarnej, po
+  przeliczeniu na dziesiętną daje to dokładność około $15$ cyfr
+  (dziesiętnych) po przecinku.
+
+  To wyjaśnia czemu w~języku~C zmienną przechowującą taką liczbę
+  definiuje~się jako \\
+  \texttt{double float64Var1 = 0.0;} \\
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pojedyncza i~podwójna precyzja}
+
+
+  Mówiąc szczerze, nazwy „\texttt{float}” i~„\texttt{double}” używane przez
+  język~C nie są zbyt dobre. Nowoczesne języki, takie jak Go, używają
+  znacznie bardziej sensownych nazw, takich jak „\texttt{float32}”
+  i~„\texttt{float64}”. Tu ponownie wychodzi wiek języka~C. Gdy powstawał
+  na przełomie lat $60$-tych i~$70$-tych XX wieku, nie zdawano sobie dobrze
+  sprawy z~tego, jak ważne jest wybieranie właściwych nazw dla różnych
+  obiektów występujących w~danym języku.
+
+  Dlaczego do tej pory używaliśmy tylko typu \texttt{double}? Odpowiedź jest
+  stosunkowo prosta: jego większa dokładność sprawia, że~rzadziej dostajemy
+  błędne wyniki. Uznaliśmy, że~kurs \textit{Podstaw informatyki} nie jest
+  właściwym miejscem na dyskutowanie takich subtelności, jak to kiedy
+  liczby zmiennoprzecinkowe na $32$~bitach są lepsze lub gorsze od tych
+  na $64$~bitach. Lepiej jest użyć typu, który minimalizuje liczbę błędnych
+  wyników.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podsumowanie. Liczby zmiennoprzecinkowe}
+
+
+  Podane wcześniej informacje są wszystkim, co chcieliśmy Państwu przekazać
+  na tym przedmiocie o~liczbach zmiennoprzecinkowych. Jeśli ktoś chce
+  wiedzieć o~nich więcej, proszę~się do nas zgłosić na zajęciach, gdyż
+  ramy tego kursu nie pozwalają bardziej zagłębić~się w~tą tematykę.
+
+  Mamy nadzieję, że~nie musimy Państwa przekonywać, że~liczby
+  zmiennoprzecinkowe to podstępne bestie i~niebanalne byty, które
+  skrywają przed nami wiele tajemnic. Jednak szersza ich dyskusja musi
+  być odłożona na inny przedmiot, nasz wszak nosi nazwę
+  \textit{Podstawy informatyki}.
+
+\end{frame}
+% ##################
+
+% % ############################
+% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
+% % ############################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+% End of the document
+
+\end{document}

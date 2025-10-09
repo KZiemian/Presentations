@@ -1,10 +1,10 @@
 #include <stdio.h>
 
 /* Dysponując naszą dotychczasową wiedzą, wciąż nie jesteśmy w stanie napisać
-   zbyt ciekawych programów. Pomimo nudy jaką proste programy często niosą,
-   spróbujmy zmierzyć się z programem, który pobiera trzy liczby od
-   użytkownika, następnie sprawdza, czy ich suma jest większa od kwadratu
-   pierwszej z nich. */
+ * zbyt ciekawych programów. Pomimo nudy jaką proste programy często niosą,
+ * spróbujmy zmierzyć się z programem, który pobiera trzy liczby od
+ * użytkownika, następnie sprawdza, czy ich suma jest większa od kwadratu
+ * pierwszej z nich. */
 
 int main() {
   int liczbaOdUzytkownika = 0;
@@ -20,7 +20,7 @@ int main() {
   scanf("%d", &liczbaOdUzytkownika);
 
   /* Zwiększamy wartość przechowywaną przez zmienną „sumaLiczb” o wartość
-     zmiennej „liczbaOdUzytkownika”. */
+   * zmiennej „liczbaOdUzytkownika”. */
   sumaLiczb = sumaLiczb + liczbaOdUzytkownika;
 
   wartoscProgowa = liczbaOdUzytkownika * liczbaOdUzytkownika;

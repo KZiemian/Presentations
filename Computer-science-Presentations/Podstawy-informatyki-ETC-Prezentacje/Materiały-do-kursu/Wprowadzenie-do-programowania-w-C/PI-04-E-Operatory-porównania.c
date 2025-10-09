@@ -2,8 +2,8 @@
 
 int main() {
   /* Poznaliśmy już operatory porównywania „==”, „!=”, „<”, „>”. Poza
-     tym mamy jeszcze operatory „<=” (mniejsze bądź równe) i „>=” (większe
-     bądź równe). Ich działanie nie wymaga większego tłumaczenia. */
+   * tym mamy jeszcze operatory „<=” (mniejsze bądź równe) i „>=” (większe
+   * bądź równe). Ich działanie nie wymaga większego tłumaczenia. */
 
   if ((1 + 1) <= 2) {
     printf("(1 + 1) <= 2: prawda.\n\n");

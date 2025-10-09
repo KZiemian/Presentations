@@ -1,11 +1,11 @@
 #include <stdio.h>
 /* KOMENTARZE TESTUJ OD TEGO MIEJSCA. */
 /* W programowaniu często napotykamy problem, że potrzebujemy zwiększyć
-   wartość przechowywaną przez zmienną o zadaną wartość. By to zrobić
-   w poprzednim przykładzie użyliśmy składni
-   sumaLiczb = sumaLiczb + liczbaOdUżytkownika;
-   Jednak ze względu na to jak często ten problem występuje, język C
-   dysponuje operatorem „+=”, który zastosowanie prezentujemy poniżej. */
+ * wartość przechowywaną przez zmienną o zadaną wartość. By to zrobić
+ * w poprzednim przykładzie użyliśmy składni
+ * sumaLiczb = sumaLiczb + liczbaOdUżytkownika;
+ * Jednak ze względu na to jak często ten problem występuje, język C
+ * dysponuje operatorem „+=”, który zastosowanie prezentujemy poniżej. */
 
 int main() {
   int intVar1 = 0;
