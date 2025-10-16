@@ -21,7 +21,7 @@ class Main {
 	// Note "F" in "0.5F". It is needed, since without it, "0.0" would
 	// be interpreted as double precision floating-point number,
 	// 64-bits of length.
-
+	//
 	// You can also use a small "f".
 	float32Var1 = 0.75f;
 
@@ -31,6 +31,16 @@ class Main {
 	double float64Var1 = 0.7;
 
 	System.out.println("float64Var1 == " + float64Var1 + ".");
+
+	// Boolean variable.
+	boolean boolVar1 = true;
+
+	System.out.println("boolVar1 == " + boolVar1 + ".");
+
+	boolVar1 = false;
+
+	System.out.println("boolVar1 == " + boolVar1 + ".");
+
 
 	// Chars in Java represent single characters and as in C and C++
 	// they have a numerical side.

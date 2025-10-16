@@ -1,23 +1,23 @@
-// Object-oriented programming is so central to Java, that we will start
-// discussin it now, even when still didn't talk about many Java's
+// Object-oriented programming is so central to Java that we will start
+// discussing it now, even when we still didn't talk about many Java's
 // features.
-
-// We will start from quite silly, but simple example of class, that just
-// store two numbers.
+//
+// We will start from a quite silly, but simple example of class, that just
+// stores two numbers.
 
 class TwoNumbers {
     int m_intVar1;
     int m_intVar2;
 }
-// Code above define class. It tell use that every object build according
+// Code above defines class. It tell use that every object build according
 // to the rules defined by class TwoNumbers contains inside two integer
 // numbers.
+//
+// Technical term for such internal variables is "field". So class TwoNumbers
+// have two fields with the names m_intVar1 and m_intVar2.
 
-// Technical term for such data is "field". So class TwoNumbers have two
-// fields with the names m_intVar1 and m_intVar2.
-
-// We see "class Main" many time already. We explain what it mean, when
-// we learn basic things about the classes.
+// We have seen "class Main" many times already. We explain what it means,
+// when we learn basic things about the classes.
 class Main {
     public static void main(String[] args) {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers();

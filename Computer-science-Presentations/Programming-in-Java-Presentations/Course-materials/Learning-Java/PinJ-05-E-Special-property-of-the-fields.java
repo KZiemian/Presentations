@@ -5,8 +5,8 @@ class TwoNumbers {
 
 class Main {
     public static void main(String[] args) {
-	// In Java using uninitianilize variable will bring an error,
-	// but fields of the class instance are treated in special way.
+	// In Java using an uninitialized variable will bring an error,
+	// but fields of the class instance are treated in a special way.
 	TwoNumbers twoNumbersVar1 = new TwoNumbers();
 
 	System.out.println("twoNumbersVar1.m_intVar1 == " +
@@ -14,8 +14,8 @@ class Main {
 	System.out.println("twoNumbersVar1.m_intVar2 == " +
 			   twoNumbersVar1.m_intVar2 + ".");
 
-	// When instance of the class is created and we didn't set
-	// the values of the fields, the are zeroed. More precisly defalute
+	// When an instance of the class is created and we didn't set
+	// the values of the fields, they are zeroed. More precisely default
 	// values of their types are assigned for them, for numbers such
 	// value is 0.
     }

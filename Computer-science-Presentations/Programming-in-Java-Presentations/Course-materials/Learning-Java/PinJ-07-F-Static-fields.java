@@ -1,7 +1,7 @@
 // We need for a moment go back to the fields, to explain another important
 // property of static parts of the class. Why life must be so complicated?
 
-// We again use a stupid, but simple example.
+// We again use a silly, but simple example.
 class TwoNumbersAndOneStatic {
     int m_intVar1;
     int m_intVar2;
@@ -33,13 +33,13 @@ class Main {
 	twoNumbersAndOneStaticVar2.showNumbers();
 
 	// Code above shows that, what we see many times before, that
-	// standard fields belongs to every INSTANCE of the class
+	// standard fields belong to every INSTANCE of the class
 	// and are independent of each other. On the other hand, static
 	// fields belong to the class and class has ONLY ONE copy, so also
-	// all static parts of it are also have only one copy.
+	// all static parts of it also have only one copy.
 
-	// This one copy of static variable can be accesed by all instancec
-	// of the class.
+	// There is only one copy of the static variable and can be accessed
+	// by all instances of the class.
 
 	System.out.println("\nWe now change static field of the class " +
 			   "TwoNumbersAndOneStatic.");
@@ -58,7 +58,7 @@ class Main {
     }
 }
 
-// We want to stress it again: standard methods belongs to instances of
-// the object, when static methods belongs to the class itself.
+// We want to stress it again: standard methods belong to instances of
+// the object, when static methods belong to the class itself.
 // If we dig more into the internals of Java this picture will became more
 // complicated, but at this course we don't care about it at all.

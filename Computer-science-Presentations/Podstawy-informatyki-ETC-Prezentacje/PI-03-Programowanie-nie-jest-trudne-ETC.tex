@@ -285,7 +285,46 @@ eprint=true,
 
 
 % ######################################
-\section{Logika i~algebry Boole’a}
+\section{Trochę terminologi}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Terminologia w~informatyce to nie jest nic
+    przyjemnego}
+
+
+  Powiedzmy sobie szczerze, terminologia w~informatyce potrafi dać w~kość.
+  Jednak trzeba przez to przejść, by~się całkiem nie pogubić.
+
+  Fragment kodu, który mówi językowi~C, że~ma coś zrobić nazywamy
+  \textbf{poleceniem}. Polecenia dzielą~się na \textbf{wyrażenia}
+  (ang. \textit{expression}) i~\textbf{instrukcje}. Wyrażenie robi
+  coś i~zwraca wynik, podczas gdy instrukcja tylko coś robi.
+
+  Typowy przykład wyrażenia to \\
+  \texttt{1 + 2} \\
+  które dokonuje obliczenia (coś robi) i~zwraca jako rezultat~$3$.
+  Przykładem instrukcji jest instrukcja sterująca \texttt{if}. W~pliku
+  \texttt{PI-04-F-Wyrażenia-i-instrukcje.c} znajduje~się kod ilustrujący
+  różnice między wyrażeniami, a~instrukcjami.
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Intuicyjne wprowadzenie do algebr Boole’a}
 % ######################################
 
 
@@ -449,53 +488,48 @@ eprint=true,
   wyjaśnienia.
 
   Znaczenie algebry Boole’a dla informatyki polega na tym, że~teraz
-  możemy napisać choćby następujący kod. Jego pełna wersja
+  możemy napisać choćby następujący kod. Jego pełna wersja jest w~pliku
+  \texttt{PI-04-E-Przykład-wykorzystania-iloczynu-logicznego.c}. \\[0.3em]
+  \texttt{if ((intVar1 < 3) \&\& (-5 < intVar1)) \{ } \\
+  \hphantom{aaaa} \texttt{printf("Wartość zmiennej intVar1 zawiera się "} \\
+  \hphantom{aaaaaaaaaaa}
+  \texttt{"w pożądanym zakresie.\textbackslash n");} \\
+  \texttt{ \} else \{ } \\
+  \hphantom{aaaa} \texttt{printf("Wartość zmiennej intVar1 znajduje~się
+    poza "}
+  \\
+  \hphantom{aaaaaaaaaaa} \texttt{"pożądany zakres.\textbackslash n");} \\
+  \texttt{ \} }
+  % Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
+  % Język C i~większość najpopularniejszych języków programowania oznacza
+  % go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
+  % symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
+  %   jest} iloczynem logicznym. Język Python oznacza ją za pomocą
+  % angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
+  % za pomocą symbolu~„$\wedge$”.
 
+  % My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
 
-  Musimy też wskazać na pewną osobliwość spójnika \texttt{\&\&}. Rozpatrzmy
-  zdanie \\
-  „Jan je kanapkę \texttt{\&\&}
+  % To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
+  % wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
+  % w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
+  % Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
+  % takich zawiłości języków naturalnych, czyli używanych przez ludzi,
+  % lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
+  % stanie~się bardziej zrozumiałe.
 
-  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
-  Język C i~większość najpopularniejszych języków programowania oznacza
-  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
-  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
-    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
-  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
-  za pomocą symbolu~„$\wedge$”.
-
-  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
-
-  To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
-  wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
-  w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
-  Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
-  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
-  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
-  stanie~się bardziej zrozumiałe.
-
-  Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
-  zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
-  jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
-  spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
-  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
-  Może ten zapis wygląda dziwnie, ale informatycy są do niego
-  przyzwyczajeni.
-  By użyć bardziej informatycznego przykładu, zdanie \\
-  \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
-  oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
-  spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
-  to proszę~się nad tym chwilę zastanowić.
-
-  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
-  Język C i~większość najpopularniejszych języków programowania oznacza
-  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
-  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
-    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
-  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
-  za pomocą symbolu~„$\wedge$”.
-
-  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
+  % Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
+  % zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
+  % jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
+  % spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
+  % „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
+  % Może ten zapis wygląda dziwnie, ale informatycy są do niego
+  % przyzwyczajeni.
+  % By użyć bardziej informatycznego przykładu, zdanie \\
+  % \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
+  % oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
+  % spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
+  % to proszę~się nad tym chwilę zastanowić.
 
 \end{frame}
 % ##################
@@ -506,57 +540,23 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Kim był Boole?}
+  \frametitle{Pewna osobliwości algebry Boole’a}
 
 
-  % \begin{figure}
+  Musimy wskazać na pewną osobliwość spójnika \texttt{\&\&} i~samej
+  algebry Boole’a. Rozpatrzmy zdanie \\
+  „Jan je kanapkę \texttt{\&\&} Paryż jest stolicą Francji.” \\
+  Zdanie to jest prawdziwe, jeśli oba tworzące go zdania są prawdziwe.
+  Jednak łatwo zauważyć, że~nie ma żadnego związku między tym, że~Jan
+  je kanapkę, a~tym czy dane miasto jest stolicą Francji, co może~się
+  wydawać nienaturalne.
 
-  %   \centering
-
-  %   \includegraphics[scale=0.195]
-  %   {./Presentations-pictures/George-Boole.jpeg}
-
-  %   \caption{George Boole (1815--1864), brytyjski matematyk i~filozof.
-  %     Wprowadził metody algebraiczne do logiki. \textbf{Algebra Boole’a}
-  %   została nazwana na jego cześć.}
-
-  %   \label{fig:George-Boole}
-
-  % \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Algebry Boole’a w~informatyce}
-
-
-  Algebra Boole’a może już być Państwu znana pod nazwą „logiki”,
-  „logiki matematycznej”, „rachunku zdań”, etc. Najbardziej poprawną
-  nazwą w~tym kontekście jest \textbf{klasyczny rachunku zdań}, jednak
-  informacje o~nim ograniczymy do niezbędnego minimum. Osoby zainteresowany
-  tym tematem mogą sięgnąć do następujących pozycji.
-  \begin{itemize}
-
-  \item Andrzej Grzegorczyk \textit{Zarys logiki matematycznej}
-    \parencite{Grzegorczyk-Zarys-logiki-matematycznej-Pub-1975}.
-
-
-
-  \item Willard von Ormian Quine \textit{Logika matematyczna}
-    \parencite{Quine-Logika-matematyczna-Pub-1974}.
-
-
-
-  \item Zdzisław Kraszewski \textit{Logika. Nauka rozumowania}
-    \parencite{Kraszewski-Logika-Pub-1984}.
-
-  \end{itemize}
+  Gdy łączymy dwa zdania za pomocą \texttt{\&\&} to o~prawdziwości nowo
+  powstałego zdania decyduje tylko prawdziwość lub~fałszywość zdań
+  składowych, \alert{nie} ich treść. Jest to świadomy wybór, który ma duże
+  znaczenie z~punktu widzenia informatyki. Redukuje on sprawdzenie
+  prawdziwość nowego zdania do prostego rachunku, a~w~rachunkach
+  komputery są bardzo dobre.
 
 \end{frame}
 % ##################
@@ -567,15 +567,81 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Algebry Boole’a w~informatyce}
+  \frametitle{Rachunkowa strona algebry Boole’a}
 
 
-  Do informatyki algebry Boole’a wprowadził je zapewne Claude E.~Shannon
-  (1916--2001), gdy zrozumiał jakie użyteczne w~projektowaniu układów
-  elektronicznych mogą być idea Boole’a, które poznał na kursie
-  z~filozofii. Obecnie są one powszechnie stosowane tak w~teorii jak
-  i~praktyce informatyki, że~każdy dobry informatyk musi~się umieć nimi
-  posługiwać.
+  Jest to ważne bo komputery mają naprawdę duże problemy z~operowaniem
+  na treściach zdań. Przykładowo, jeśli mamy zdanie „Paryż jest stolicą
+  Francji.”, to język~C nie posiada narzędzi, które pozwalałby ustalić, czy
+  to zdanie dotyczy osoby, mebla, czy miasta. Jeśli jednak C wie, że~to
+  zdanie jest prawdziwe, to cała reszta redukuje~się do rachunków,
+  w~których~C jest bardzo dobry.
+
+  Spójrzmy na to od innej strony. Oznaczmy przez \texttt{zdanie1} zdanie
+  „Jan je kanapkę.”, zaś przez \texttt{zdanie2} „Paryż jest stolicą
+  Francji.”. Zdanie \\
+  „Jan je kanapkę \texttt{\&\&} Paryż jest stolicą Francji.” \\
+  możemy teraz zapisać jako \\
+  \texttt{zdanie1 \&\& zdanie2} \\
+  Jeśli to zdanie jest prawdziwe to piszemy \\
+  \texttt{zdanie1 \&\& zdanie2 == true} \\
+  Jeśli zaś jest fałszywe to piszemy \\
+  \texttt{zdanie1 \&\& zdanie2 == false}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rachunkowa strona algebry Boole’a}
+
+
+  Fakt, że~połączenie dwóch zdań prawdziwych za pomocą \texttt{\&\&}
+  daje zdanie prawdziwe, zapisujemy jako \\
+  \texttt{true \&\& true == true}
+
+  Teraz wszystkie własności rachunkowe łącznika \texttt{\&\&} możemy
+  zawrzeć w~prostej tabeli.
+
+
+
+  \begingroup
+
+  \centering
+
+  \begin{tabular}{|c|c|c|}
+    \hline
+    zdanie1 & zdanie2 & zdanie1 \&\& zdanie2 \\
+    \hline
+    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
+    \texttt{true}  & \texttt{false} & \texttt{false} \\
+    \texttt{false} & \texttt{true}  & \texttt{false} \\
+    \texttt{false} & \texttt{false} & \texttt{false} \\
+    \hline
+  \end{tabular}
+
+  \endgroup
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Podsumowanie}
+
+
+  Na tym zakończymy nasze intuicyjne wprowadzenie do algebr Boole’a
+  i~przejdziemy do bardziej technicznego ich omówienia. Jeśli Państwo
+  uważają, że~to intuicyjne omówienie nie jest satysfakcjonujące to
+  proszę do nas napisać \email.
 
 \end{frame}
 % ##################
@@ -594,20 +660,25 @@ eprint=true,
 % ######################################
 
 
-
-
-
-
-
-
-
 % ##################
 \begin{frame}
-  \frametitle{Logiczna prawda i~fałsz}
+  \frametitle{Zmienne boolowskie}
 
 
-  W~tej prezentacji będziemy korzystali z~konwencji języka~Go, które są
-  poprawioną wersją tych stosowanych w~języku~C.
+  Pojęcia logicznej prawdy i~fałszu zostały już omówione i~nie będziemy
+  ich szerzej dyskutować, gdyż jest to bardziej przedmiotem filozofii, niż
+  informatyki. A~materiał z~informatyki mamy na tym kursie dość.
+
+  W~informatyce oprócz wartości logiczny \texttt{true} i~\texttt{false}
+  dużą rolę odgrywają \textbf{zmienne boolowskimi}, zwane też
+  \textbf{zmiennymi logicznymi}. Są~to zmienne które mogą przechowywać
+  wartości logiczne \texttt{true} i~\texttt{false}. Tak jak w~przypadku
+  sposobu reprezentowania wartości logicznych, również gdy chodzi
+  o~zmienne, sposób ich działania zależy w~dużej mierze od używanego języka.
+
+  Wyjątkowo zaczniemy od przytoczenia przykładu z~języka Go, gdyż pozwala
+  pracować na wartościach i~zmiennych boolowskich w~dużo prostszy
+  i~bezpieczniejszy sposób, niż język~C.
 
 \end{frame}
 % ##################
@@ -621,12 +692,7 @@ eprint=true,
   \frametitle{Zmienne boolowskie}
 
 
-  W~informatyce oprócz wartości logiczny dużą rolę odgrywają
-  \textbf{zmiennymi boolowskimi} \textbf{zmienne logiczne}, zwane też .
-  Są~to zmienne które mogą przechowywać wartości logiczne \texttt{true}
-  i~\texttt{false}. Tak jak w~przypadku sposobu reprezentowania wartości
-  logicznych, również gdy chodzi o~zmienne sprawa ich działania zależy
-  w~dużej mierze od używanego języka.
+
 
   Rozpatrzmy przypadek języka~C. Ponieważ wartości logiczne reprezentują
   w~nim liczby całkowite, więc jako zmiennej logicznej możemy użyć dowolnej
@@ -1361,17 +1427,166 @@ eprint=true,
 
 
 
-
-
-
-% % ############################
-% \jagiellonianendslide{Czy są jakieś pytania do tej części?}
-% % ############################
-
+% ##################
+\begin{frame}
+  \frametitle{Rachunkowa strona algebry Boole’a}
 
 
 
 
+  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
+  Język C i~większość najpopularniejszych języków programowania oznacza
+  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
+  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
+    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
+  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
+  za pomocą symbolu~„$\wedge$”.
+
+  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
+
+  To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
+  wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
+  w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
+  Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
+  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
+  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
+  stanie~się bardziej zrozumiałe.
+
+  Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
+  zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
+  jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
+  spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
+  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
+  Może ten zapis wygląda dziwnie, ale informatycy są do niego
+  przyzwyczajeni.
+  By użyć bardziej informatycznego przykładu, zdanie \\
+  \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
+  oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
+  spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
+  to proszę~się nad tym chwilę zastanowić.
+
+  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
+  Język C i~większość najpopularniejszych języków programowania oznacza
+  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
+  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
+    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
+  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
+  za pomocą symbolu~„$\wedge$”.
+
+  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
+
+    Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
+  Język C i~większość najpopularniejszych języków programowania oznacza
+  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
+  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
+    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
+  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
+  za pomocą symbolu~„$\wedge$”.
+
+  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
+
+  To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
+  wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
+  w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
+  Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
+  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
+  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
+  stanie~się bardziej zrozumiałe.
+
+  Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
+  zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
+  jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
+  spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
+  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
+  Może ten zapis wygląda dziwnie, ale informatycy są do niego
+  przyzwyczajeni.
+  By użyć bardziej informatycznego przykładu, zdanie \\
+  \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
+  oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
+  spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
+  to proszę~się nad tym chwilę zastanowić.
+
+\end{frame}
+% ##################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kim był Boole?}
+
+
+  % \begin{figure}
+
+  %   \centering
+
+  %   \includegraphics[scale=0.195]
+  %   {./Presentations-pictures/George-Boole.jpeg}
+
+  %   \caption{George Boole (1815--1864), brytyjski matematyk i~filozof.
+  %     Wprowadził metody algebraiczne do logiki. \textbf{Algebra Boole’a}
+  %   została nazwana na jego cześć.}
+
+  %   \label{fig:George-Boole}
+
+  % \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebry Boole’a w~informatyce}
+
+
+  Algebra Boole’a może już być Państwu znana pod nazwą „logiki”,
+  „logiki matematycznej”, „rachunku zdań”, etc. Najbardziej poprawną
+  nazwą w~tym kontekście jest \textbf{klasyczny rachunku zdań}, jednak
+  informacje o~nim ograniczymy do niezbędnego minimum. Osoby zainteresowany
+  tym tematem mogą sięgnąć do następujących pozycji.
+  \begin{itemize}
+
+  \item Andrzej Grzegorczyk \textit{Zarys logiki matematycznej}
+    \parencite{Grzegorczyk-Zarys-logiki-matematycznej-Pub-1975}.
+
+
+
+  \item Willard von Ormian Quine \textit{Logika matematyczna}
+    \parencite{Quine-Logika-matematyczna-Pub-1974}.
+
+
+
+  \item Zdzisław Kraszewski \textit{Logika. Nauka rozumowania}
+    \parencite{Kraszewski-Logika-Pub-1984}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Algebry Boole’a w~informatyce}
+
+
+  Do informatyki algebry Boole’a wprowadził je zapewne Claude E.~Shannon
+  (1916--2001), gdy zrozumiał jakie użyteczne w~projektowaniu układów
+  elektronicznych mogą być idea Boole’a, które poznał na kursie
+  z~filozofii. Obecnie są one powszechnie stosowane tak w~teorii jak
+  i~praktyce informatyki, że~każdy dobry informatyk musi~się umieć nimi
+  posługiwać.
+
+\end{frame}
+% ##################
 
 
 
@@ -1382,13 +1597,17 @@ eprint=true,
 
 
 
+% ######################################
+\appendix
+% ######################################
 
 
 
 
 
-
-
+% ######################################
+\EndingSlide{Dziękujemy! Pytania?}
+% ######################################
 
 
 

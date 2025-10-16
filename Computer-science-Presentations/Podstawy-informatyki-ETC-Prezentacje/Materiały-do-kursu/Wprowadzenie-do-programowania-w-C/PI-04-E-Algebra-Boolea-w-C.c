@@ -1,14 +1,16 @@
+/* SPRAWDŹ KOMENTARZE */
+
 #include <stdio.h>
 
-/* Co to jest operator? Mówiąc bardzo prymitywanie, operator jest to symbol
+/* Co to jest operator? Mówiąc bardzo, bardzo prosto, operator jest to symbol
  * który oblicza wartość na podstawie tego, co ma po lewej i prawej stronie.
+ * Przykłoadowo operator dodawania „+” oblicza wyrażenie
  * 3 + 5
- * Tutaj mamy przykład operatora dodawania +, który bierze liczbę po lewej
- * i po prawej, nastepnie zwraca ich sumę.
+ * zwracając jako wartość 8.
  *
- * Innymi operatorami obecnymi w języku C są dostępne są operatory -, *, /,
- * a także ==, <, > i kilka innych. Dzisiaj wyjaśnimy, co właściwie
- * zwracają jako wartość operatory takie jak „==”. */
+ * Innymi operatorami dostępnymi w języku C są operatory -, *, /, a także
+ * ==, <, > i kilka innych. Dzisiaj wyjaśnimy bardziej dogłębnie co zwracają
+ * operatory takie jak „==”. */
 
 int main() {
   /* Widzieliśmy jak za pomocą warunków, można sterować przebiegiem programu.

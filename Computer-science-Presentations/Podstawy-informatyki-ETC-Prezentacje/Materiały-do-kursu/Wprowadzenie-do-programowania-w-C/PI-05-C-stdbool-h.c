@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+/* SPRAWDŹ KOMENTARZE. */
 /* Czy Państwo już mniej wiecej rozumieją czym są typy zmiennych, czy należy
  * to jeszcze raz omówić? */
 

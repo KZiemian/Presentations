@@ -3,11 +3,12 @@ class Main {
 	// Code below doesn't work and this is a good thing. The expression
 	// intVar1 = intVar2
 	// produces value of type int and it cannot be used to evaluate
-	// condition in the if statement.
-
+	// condition in the if statement. Because condition must be a value
+	// of boolean type.
+	//
 	// int intVar1 = 0;
 	// int intVar2 = 1;
-
+	//
 	// if (intVar1 = intVar2) {
 	//     System.out.println("Both variables contains value " +
 	// 		       intVar1 + ".");
@@ -16,7 +17,7 @@ class Main {
 	//     System.out.println("intVar2 == " + intVar2 + ".");
 	// }
 
-	// Unfortunetly, this code works, but not as it should.
+	// Unfortunately, this code works, but not as it should.
 	boolean boolVar1 = false;
 
 	System.out.println("Before if-else: boolVar1 == " + boolVar1 + ".\n");
@@ -29,12 +30,12 @@ class Main {
 	    System.out.println("boolVar1 == " + boolVar1 + ".");
 	}
 
-	// Like in C and C++ assigment operations returns assigned value.
+	// Like in C and C++ assignment operations returns assigned value.
 	// So expression
 	// boolVar1 = true
 	// returns true, while
 	// boolVar1 = false
-	// returns false. It should be clear that putting assigments
+	// returns false. It should be clear that putting assignments
 	// inside conditions is a very bad idea.
     }
 }

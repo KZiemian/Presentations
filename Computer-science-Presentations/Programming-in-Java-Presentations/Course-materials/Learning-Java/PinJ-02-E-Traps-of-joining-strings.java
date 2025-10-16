@@ -3,12 +3,12 @@ class Main {
 	// We should be aware of some traps.
 	System.out.println("3 + 4 == " + (3 + 4) + ".");
 	System.out.println("3 + 4 == " + 3 + 4 + ".");
-	// In the first case parenteses (3 + 4) tells Java that it need to
+	// In the first case parenteses (3 + 4) tells Java that it needs to
 	// first compute 3 + 4, which is equal to 7 and then join strings
 	// "3 + 4 == " + "7" + "."
-	// which give us desired result "3 + 4 == 7.".
-	// In the second case Java first cast 3 and 4 into strings and then
-	// perform the operation joining them.
+	// which gives us the desired result "3 + 4 == 7.".
+	// In the second case Java first casts 3 and 4 into strings and then
+	// performs the operation joining them.
 	// "3 + 4 == " + "3" + "4" + "."
 	// which gives us "3 + 4 == 34.". Why must life be so complicated?
 

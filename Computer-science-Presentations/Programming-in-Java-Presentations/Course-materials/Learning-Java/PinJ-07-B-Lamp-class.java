@@ -1,8 +1,8 @@
-// We can now write implementation of the lamp, about we were talking at
-// the beginnig of our course.
+// We can now write the implementation of the lamp, about what we were
+// talking about at the beginning of our course.
 
-// This code is very unprofessional, but it works. Not the worst thing in the
-// world.
+// This code is very unprofessional, but it works. Not the worst thing in
+// the world.
 
 class Lamp {
     boolean m_stateOfLamp;
@@ -13,7 +13,8 @@ class Lamp {
 	m_lightBubblePower = "60 W";
     }
 
-    // It is not the best constructor, but for the it can be tolerated.
+    // It is not the best constructor, but for the classroom it can be
+    // tolerated.
     Lamp(boolean stateOfLamp, String lightBubblePower) {
 	m_lightBubblePower = lightBubblePower;
 	m_stateOfLamp = stateOfLamp;

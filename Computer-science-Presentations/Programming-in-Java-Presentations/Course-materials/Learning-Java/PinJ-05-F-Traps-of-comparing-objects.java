@@ -36,11 +36,11 @@ class Main {
 	System.out.println("Why we get these results?\n");
 
 	// In Java operators == and != used for objects (instances of some
-	// class) are compering references, not values. In other words
-	// every object take some space in computer memory and ==
-	// check if two variables points to the same place in memory.
-	// If their points to two different place in memory it return
-	// false, EVEN when the values stored in this different parts of
+	// class) are comparing references, not values. In other words
+	// every object takes some space in computer memory and ==
+	// checks if two variables point to the same place in memory.
+	// If there points to two different places in memory it returns
+	// false, EVEN when the values stored in these different parts of
 	// memory are THE SAME.
 
 	System.out.println("In Java you should compare objects using " +

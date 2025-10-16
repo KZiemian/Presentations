@@ -1,6 +1,6 @@
 class Main {
     public static void main(String[] args) {
-	// We will now look at few examples of comperesant operators.
+	// We will now look at a few more examples of comparison operators.
 	System.out.println("(0 == 0) == " + (0 == 0) + ".");
 	System.out.println("(0 == 1) == " + (0 == 1) + ".\n");
 

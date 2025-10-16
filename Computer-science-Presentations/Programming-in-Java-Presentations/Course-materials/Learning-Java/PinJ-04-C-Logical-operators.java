@@ -1,7 +1,7 @@
 class Main {
     public static void main(String[] args) {
-	// Java like C use "&&" to describe coninction, || for alternative
-	// and ! for negation.
+	// Java, like C, use symbol "&&" for conjunction, "||" for alternative
+	// and "!" for negation.
 
 	System.out.println("(true && true) == " + (true && true) + ".");
 	System.out.println("(true && false) == " + (true && false) + ".");

@@ -1,7 +1,7 @@
 class Main {
     public static void main(String[] args) {
-	// If you know how if-else work in other languages, there is basicaly
-	// nothing new to learn in Java.
+	// If you know how if-else work in other languages, there is
+	// basically nothing new to learn in Java.
 
 	int intVar1 = 3;
 

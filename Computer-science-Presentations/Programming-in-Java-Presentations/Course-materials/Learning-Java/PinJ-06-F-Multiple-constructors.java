@@ -1,11 +1,11 @@
-// To make things simpler, we will creat three versions of our stupid,
+// To make things simpler, we will create three versions of our silly,
 // but simple, class. Two numbers version 1, two numbers version 2
 // and two numbers version 3.
 class TwoNumbersVerThree {
     int m_intVar1;
     int m_intVar2;
 
-    // You can define multiple constructors for single class. Which is both
+    // You can define multiple constructors for a single class. Which is both
     // very useful and totally confusing.
     TwoNumbersVerThree() {
 	m_intVar1 = 1;
@@ -33,11 +33,13 @@ class Main {
 	System.out.println("twoNumbersVerThreeVar2:");
 	twoNumbersVerThreeVar2.showNumbers();
 
-	// Creating multiple constructors is special case of the method
-	// overloading, which is a great way to creat code that noone
-	// understand. Sometimes it can also be useful.
+	// Creating multiple constructors is a special case of the method
+	// overloading, which is a great way to create code that no one
+	// understands. Sometimes it can also be useful.
+	//
+	// But many times you just overload yourself.
     }
 }
 
-// These is a lot of things that we can speak about constructors and releted
+// These are a lot of things that we can speak about constructors and related
 // concepts, but we already had enough of it.

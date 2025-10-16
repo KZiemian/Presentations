@@ -15,10 +15,10 @@ class Main {
 	System.out.println("intVar2 == " + intVar2 + ".");
 	// As we can see operator of postincrementation in the line
 	// intVar1 = intVar2++;
-	// in the first step return value of intVar2, in our case 5,
-	// which is assigned to intVar1. Only in the second step value of
+	// in the first step return value of intVar2, in our case 5, which
+	// is assigned to intVar1. Only in the second step the value of
 	// intVar2 is incremented from 5 to 6.
-
+	//
 	// The same is true in the case of postdecrementation.
 	System.out.println("\nintVar1 = intVar2--;");
 

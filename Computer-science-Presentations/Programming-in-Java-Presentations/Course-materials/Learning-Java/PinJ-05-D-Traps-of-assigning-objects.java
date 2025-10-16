@@ -41,31 +41,31 @@ class Main {
 	System.out.println("twoNumbersVar2.m_intVar2 == " +
 			   twoNumbersVar2.m_intVar2 + ".");
 
-	// How we can understand this? Variable holds a reference to an
-	// object, like a phone number, so when we write a line
+	// How can we understand this? Variable storing TwoNumbers holds
+	// a reference to an object (a phone number), so when we write a line
 	// twoNumbersVar2 = twoNumbersVar1;
-	// we DON'T make copy of our objects. Insteed we create two variabels
-	// that REFERENCES the same object.
-
-	// Using our previous example in the line
+	// we DON'T make copies of our objects. Instead we create two
+	// variables that REFERENCES the same object.
+	//
+	// Using example of the phone number, in the line
 	// twoNumbersVar2 = twoNumbersVar1;
-	// we copy phone number from twoNumbersVar1 to twoNumbersVar2.
-	// Regardless which contact we will use, we will call the same
-	// phone number and the same person having it.
+	// we copy the phone number from twoNumbersVar1 to twoNumbersVar2.
+	// Regardless which variable we will use, we will call the same
+	// phone number and contact the same phone.
 
-	// In short, when we assigned one variable to the other, i.e. we
+	// As a result, when we assigned one variable to the other, i.e. we
 	// wrote something like
 	// intVar1 = intVar2;
 	// result depends on the type of used variables. If the type of
 	// both variables is one of the basic types (boolean, int, float,
-	// double), value of one variable is copied to the other.
+	// double, etc.), the value of one variable is copied to the other.
 	// Copy of number 1 is as good as "original" 1.
-
-	// If type of this variable is one of the classes of Java,
+	//
+	// If the type of this variable is one of the classes of Java,
 	// we assign not a value (part of computer memory), but reference
 	// to this object (its phone number).
 
-	// We can now look on how referencs looks in Java.
+	// We can now look at how references are represented in Java.
 	System.out.println("\ntwoNumbersVar1 -> " + twoNumbersVar1 + ".");
 	System.out.println("twoNumbersVar2 -> " + twoNumbersVar2 + ".");
 	System.out.println("We see from that, that twoNumbersVar1 " +

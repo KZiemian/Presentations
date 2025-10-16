@@ -1,7 +1,7 @@
 class Main {
     public static void main(String[] args) {
 	// Instruction continue end execution of the current body of the loop
-	// and go to the next iteration of it (body of the loop).
+	// and go to the next iteration of it (the body of the loop).
 
 	System.out.println("Program before the for loop.");
 
@@ -22,7 +22,7 @@ class Main {
 	System.out.println("We go inside the while loop.");
 
 	while (intVar1 < 50) {
-	    // Remeber to check when the loop will end.
+	    // Remember to check that your loop will end.
 	    intVar1++;
 
 	    if (intVar1 % 9 != 0) {

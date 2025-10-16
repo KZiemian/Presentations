@@ -9,8 +9,7 @@ class Main {
 	while (intVar1 < 5) {
 	    System.out.println("intVar1 == " + intVar1 + ".");
 
-	    // Like always, remember to check when the loop stops
-	    // and add appropriate code.
+	    // Like always, remember to check if your loop will ever stop.
 	    intVar1++;
 	}
     }

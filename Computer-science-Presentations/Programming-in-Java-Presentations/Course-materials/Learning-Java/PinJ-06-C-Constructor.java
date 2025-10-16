@@ -1,22 +1,22 @@
-// Constructor is very important concept in Java, so we will discusse it before
-// other, probably more simple concepts. Yet again, in design of Java's
-// constructor we see influence of C++.
+// Constructor is a very important concept in Java, so we will discuss it
+// before other, probably more simple things. Yet again, in design of Java's
+// constructor we see the influence of C++.
 
 class TwoNumbers {
     int m_intVar1;
     int m_intVar2;
 
-    // Constructor is a method, but very odd method. It do not return any
-    // value, but DOESN'T have a type void. The reason that Eckel give for
+    // Constructor is a method, but a very odd method. It does not return any
+    // value, but DOESN'T have a type void. The reason that Eckel gives for
     // that in his book "Thinking Java" (full bibliography is in the lecture
-    // materials) is as follow. If we would define constructor as
+    // materials) is as follows. If we would define constructor as
     // void ConstructorName()
     // one can change it to
     // int ConstructorName()
     // but we don't want that. Why? This is another thing copied from C++,
-    // so we need to check what justification people behind C++ give for this.
+    // and to be honest, we don't know how they justified such a choice.
 
-    // Second odd thing is that constructor MUST, absolutly MUST have
+    // Second odd thing is that the constructor MUST, absolutely MUST have
     // the same name as the class. No exceptions to this rule.
 
     // In the parentese after name of the method (all methods, not only
@@ -24,17 +24,18 @@ class TwoNumbers {
     // (typeOfParameter1 parameterName1, typeOfParameter2 parameterName2,
     // typeOfParameter3 parameterName3, ...)
     // Namely, the list of parameters that method will take. Like in defining
-    // variable, ever position in this list is in the form
+    // variable, every position in this list is in the form
     // "typeOfParameter parameterName".
 
-    // The choice of parameters in the case of stupid class TwoNumbers
-    // is obviousl: numbers to which we want set two fields of the class.
+    // The choice of parameters in the case of constructor of silly class
+    // TwoNumbers is obvious: numbers to which we want to set two fields of
+    // the class.
     TwoNumbers(int intValue1, int intValue2) {
 	m_intVar1 = intValue1;
 	m_intVar2 = intValue2;
     }
     // This code is in the current state quite unprofessional, but we will
-    // make it better when we lear more.
+    // make it better when we learn more.
 
     // Method showNumbers() will be useful also this time.
     void showNumbers() {

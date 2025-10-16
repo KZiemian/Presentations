@@ -1,7 +1,7 @@
 class Main {
     public static void main(String[] args) {
 	// Do we need to make some refreshment about strings?
-
+	//
 	// Strings in Java, like in many other languages, can be joined
 	// (concatenated) by using the "+" operator.
 

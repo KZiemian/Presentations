@@ -1,5 +1,5 @@
-// We can use static functions to build something ackin to the libraries of
-// functions know from other languages.
+// We can use static functions to build something akin to the libraries of
+// functions known from other languages.
 
 class MathFunctions {
     static double linearFunction(double x) {
@@ -23,7 +23,7 @@ class Main {
 	    x += 1.0;
 	}
 
-	// Adding empty line.
+	// Adding empty line for readability.
 	System.out.println("");
 
 	x = 0.0;

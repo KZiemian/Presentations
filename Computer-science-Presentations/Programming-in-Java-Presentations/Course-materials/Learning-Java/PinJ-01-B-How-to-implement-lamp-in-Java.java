@@ -1,5 +1,5 @@
-// This code is very unprofessional, but it works. Not the worst thing in the
-// world, but don't write such code for real life programs.
+// This code is very unprofessional, but it works. Not the worst thing in
+// the world, but don't write such code for real life programs.
 
 class Lamp {
     boolean m_stateOfLightBubble;
@@ -72,6 +72,6 @@ class Main {
 	myLampVar1.showLampState();
 
 	// This code is very unprofessional, but it works. It can be
-	// tolerated, because we still just learn Java.
+	// tolerated, because we are still just learning Java.
     }
 }

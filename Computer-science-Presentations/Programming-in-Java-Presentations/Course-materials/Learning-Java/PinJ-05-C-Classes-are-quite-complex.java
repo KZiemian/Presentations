@@ -24,15 +24,15 @@ class Main {
 	System.out.println("twoNumbersVar2.m_intVar2 == " +
 			   twoNumbersVar2.m_intVar2 + ".");
 
-	// This example shows that every instance of the class have it own
+	// This example shows that every instance of the class has its own
 	// set of fields.
-
-	// We can also create "common field" of the class, but we will talk
-	// about it latter. It is already complicated enough.
+	//
+	// We can also create a "common field" of the class, but we will talk
+	// about it later. It is already complicated enough.
     }
 }
 
-// Few words about coding convention. We follow convention that name of every
-// field of the class starts with "m_", from "member". This convention
-// is much more used in C++ than Java, but for educational purpose it is
-// quite fitting.
+// Few words about coding conventions. We follow the convention that the name
+// of every field of the class starts with "m_", from "member". This
+// convention is much more used in C++ than Java, but for educational
+// purposes it is quite fitting.

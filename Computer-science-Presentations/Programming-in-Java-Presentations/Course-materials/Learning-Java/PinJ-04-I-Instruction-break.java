@@ -1,6 +1,6 @@
 class Main {
     public static void main(String[] args) {
-	// Instruction break just end loop when loop execute it and go
+	// Instruction break just ends the loop once and for all and Java goes
 	// to the code further down the file.
 
 	System.out.println("Program before the for loop.\n");
@@ -34,7 +34,7 @@ class Main {
 		break;
 	    }
 
-	    // Remeber to check when the while loop will end.
+	    // Remember to check if the while loop will ever end.
 	    intVar1++;
 	}
 

@@ -1,4 +1,4 @@
-// After mind bending journey into construcors, we can go back to more
+// After a mind bending journey into constructors, we can go back to more
 // basic methods.
 
 class TwoNumbers {
@@ -20,18 +20,17 @@ class TwoNumbers {
     // can be empty, like in example before.
     int addNumbers() {
 	return m_intVar1 + m_intVar2;
-	// Keyword return is extremlny important. It literally returns
-	// value that is after it to the one that called this method.
-	// It has also second use, we will talk about it soon.
+	// Keyword return is extremely important. It literally returns
+	// value written after it to, the one that called this method.
     }
 
-    // It is often very useful to define methods, that change values of
+    // It is often very useful to define methods that change values of
     // the fields of the class instance. The code that we wrote now is
     // very unprofessional, but we will learn about making it better
     // in the future.
 
-    // This method change values of the fields, so it doesn't need to return
-    // anything. As such we declare it as void (void == don't return
+    // This method changes the values of the fields, so it doesn't need to
+    // return anything. As such we declare it as void (void == don't return
     // anything).
     void multiplyTwoNumbers(int multiplicationFactor) {
 	m_intVar1 *= multiplicationFactor;
@@ -43,7 +42,7 @@ class Main {
     public static void main(String[] args) {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
 
-	// We can see how method returns value.
+	// We can see how the method returns value.
 	System.out.println("twoNumbersVar1.addNumbers() == " +
 			   twoNumbersVar1.addNumbers() + ".\n");
 
