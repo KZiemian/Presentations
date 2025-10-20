@@ -1,36 +1,45 @@
 #include <stdio.h>
 
-/* Poznaliśmy już instrukcję sterującą if, która pozwala programowi podjąć
- * decyzję, na podstawie wartości pewnego warunku. Kolejna rzeczą jakiej
- * potrzebujemy, to możliwość powtarzania danej części kodu odpowiednią ilość
- * razy. Do tego celu w języku C mamy pętle. */
+/* Obok pętli while język C posiada jeszcze pętle for. Fakt, że język C
+ * posiada te dwie konkretne pętle nie jest specjalnie ważny. Brak jednej
+ * z nich nie ograniczyłby w żadnym wypadku siły tego języka. Jednocześnie
+ * przyjęło się używać pętli for i while w innych sytuacjach. */
 
 int main() {
-  /* Zaczniemy od prezentacji najprostszej pętli for. Pętlę tą stosujemy,
-   * gdy potrafimy w prosty sposób określić ile dokładnie razy mamy powtórzyć
-   * daną część kodu.
+  /* Zaczniemy od prezentacji działa pętli for. Pętlę tą stosujemy,
+   * gdy potrafimy w zawczasu określić ile dokładnie razy mamy powtórzyć
+   * daną część kodu. Czyli jeśli wiemy, że ten kod mamy powtórzyć 10 razy,
+   * to pętla for jest tym czego potrzebujemy.
    *
    * Poniżej pętla for która wypisuje „Hello, World!” pięć razy. */
 
   for (int i = 0; i < 5; i++) {
+    /* Również dla pętli for, ta część kodu nosi nazwę ciała pętli. */
     printf("Hello, World! %d time.\n", i + 1);
   }
+
+  /* Ze względu na to, jak powszechne są pętle for, w których zmienna „i”
+   * zaczyna odliczanie od wartości 0, tutaj również postanowiliśmy jej użyć.
+   * Równie dobrze jednak moglibyśmy użyć pętli for zaczynającej się od
+   * for (int i = 1; i <= 5; i++)
+   */
 
   printf("\nPętla for zakończyła działanie.\n");
 
   /* W języku C każda prawie każda pętla for musi posiadać zmienną,
-   * która zlicza ile razy pętla ta się już wykonała. W większośći przypadków
+   * która zlicza ile razy pętla ta się już wykonała. W większości przypadków
    * zmienna ta nazywa się „i” od ang. „iteration”, „iterować”, „powtarzać”.
    * Słowo „iterować” można uważać za synonim „powtarzać”.
    *
-   * Przyjżyjmy się nawiasowi (int i = 0; i < 5; i++), który składa się
+   * Przyjrzyjmy się nawiasowi (int i = 0; i < 5; i++), który składa się
    * z trzech instrukcji oddzielonych średnikami:
    * 1) int i = 0;
    * 2) i < 5;
    * 3) i++;
    * Ich sens wyjaśnimy, opisując jak ta pętla for działa.
-   * 1) Tworzona jest zmienna i oraz nadawana jest jej wartość 0.
-   * 2) Wykonywana jest instrukcja printf.
+   *
+   * 1) Tworzona jest zmienna „i” oraz nadawana jest jej wartość 0.
+   * 2) Wykonywana jest ciało pętli
    * 3) Wykonywana jest instrukcja i++, w skutek której wartość i zmienia się
    * z 0 na 1.
    * 4) Sprawdzany jest warunek i < 5 == 1 < 5. Jest to prawda, więc program

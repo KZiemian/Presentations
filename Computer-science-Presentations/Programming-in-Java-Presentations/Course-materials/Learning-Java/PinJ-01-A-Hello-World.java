@@ -12,6 +12,8 @@ class Main {
     }
 }
 
-// To compile and run this program type into the shell following commands.
+// Assuming that you have a GNU/Linux system with installed standard
+// compilers, to compile and run this program type the following commands
+// into the BASH shell.
 // $ javac PinJ-01-A-Hello-World.java
 // $ java PinJ-01-A-Hello-World

@@ -1,11 +1,10 @@
 #include <stdio.h>
-/* SPRAWDŹ KOMENTARZE. */
-/* Czy Państwo już mniej wiecej rozumieją czym są typy zmiennych, czy należy
+/* Czy Państwo już mniej więcej rozumieją czym są typy zmiennych, czy należy
  * to jeszcze raz omówić? */
 
 /* W pewnym momencie do języka C wprowadzono pewną protezę typu boolowskiego,
- * która jest trochę bardziej funkcjonalna w tym kontekście, niż liczby
- * całkowite. By z niej korzystać musimy dołączyć do naszego pliku linię
+ * która jest trochę bardziej funkcjonalna, niż liczby całkowite. By z niej
+ * korzystać musimy dołączyć do naszego pliku linię
  * #include <stdbool.h>
  * Nie chcemy się zbytnio zagłębiać w to co ona oznacza, powiemy o tym
  * w przyszłości. */

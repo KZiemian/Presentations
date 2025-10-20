@@ -32,18 +32,18 @@ int main() {
    *
    * Bo komputer to durna maszyna. */
 
-  printf("\nCo w C może pójść nie tak? W przybliżeniu, wszystko.\n");
+  printf("Co w C może pójść nie tak? W przybliżeniu, wszystko.\n");
   printf("%d / %d == %d.\n", 5, 2, 5 / 2);
   printf("%.2f / %.2f == %.2f.\n\n", 5.0, 2.0, 5.0 / 2.0);
 
-  printf("\nDzielenie przez zero to nie jest nigdy dobry pomysł.\n");
+  printf("Dzielenie przez zero to nie jest nigdy dobry pomysł.\n");
   /* printf("1 / 0 == %d.\n", 1 / 0); */
 
   /* printf("1.0 / 0.0 == %.2f.\n", 1.0 / 0.0); */
   printf("Jak dzielenie pójdzie źle to można się spodziewać dziwnych "
 	 "rezultatów jak:\n");
   printf("inf - infinity, nieskończoność;\n");
-  printf("NaN - Not a Number, to co wyszło nie jest liczbą.\n")
+  printf("NaN - Not a Number, to co wyszło nie jest liczbą.\n");
 
 
 

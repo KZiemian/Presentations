@@ -1,6 +1,6 @@
 /* Pseudoanimacja napisana w C. */
 
-/* Ten kod można byłoby napisać w mądrzejszy sposób, ale to nie jest teraz
+/* Ten kod można byłoby napisać w dużo lepszy sposób, ale to nie jest teraz
  * ważne. On ma tylko ilustrować działanie języka C. */
 
 #include <stdio.h>

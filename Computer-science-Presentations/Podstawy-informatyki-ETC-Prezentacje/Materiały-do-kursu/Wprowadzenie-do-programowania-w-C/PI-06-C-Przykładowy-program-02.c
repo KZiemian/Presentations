@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-/* Korzystając z tego so już wiemy, możemy zmodyfikować trochę poprzedni
- * program. Po pierwsz by uprościć zapis, skorzystamy z operatora „+=”.
+/* Korzystając z tego co już wiemy, możemy zmodyfikować trochę poprzedni
+ * program. Po pierwsze aby uprościć zapis, skorzystamy z operatora „+=”.
  *
  * Po drugie, będziemy testować, czy suma podanych liczb spełnia dwa warunki.
  * 1) Jest większa od kwadratu pierwszej podanej liczby.
@@ -25,7 +25,6 @@ int main() {
   printf("Ten program przyjmuje TYLKO liczby całkowite.\n\n");
 
   printf("Podaj pierwszą liczbę: ");
-
   scanf("%d", &liczbaOdUzytkownika);
 
   sumaLiczb += liczbaOdUzytkownika;
@@ -34,14 +33,12 @@ int main() {
 
 
   printf("Podaj drugą liczbę: ");
-
   scanf("%d", &liczbaOdUzytkownika);
 
   sumaLiczb += liczbaOdUzytkownika;
 
 
   printf("Podaj trzecią liczbę: ");
-
   scanf("%d", &liczbaOdUzytkownika);
   printf("\n");
 

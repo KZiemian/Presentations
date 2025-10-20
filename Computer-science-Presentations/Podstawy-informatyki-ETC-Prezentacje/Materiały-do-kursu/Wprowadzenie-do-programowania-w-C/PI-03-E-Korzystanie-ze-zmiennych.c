@@ -15,6 +15,8 @@ int main() {
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
+  /* Zmieniamy wartość przechowywaną przez zmienną intVar1, na tą, którą
+   * przechowuje zmienna intVar2. */
   intVar1 = intVar2;
 
   printf("intVar1 == %d.\n", intVar1);

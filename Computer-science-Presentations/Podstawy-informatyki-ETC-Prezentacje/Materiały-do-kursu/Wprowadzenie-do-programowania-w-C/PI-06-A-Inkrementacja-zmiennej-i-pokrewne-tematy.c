@@ -1,5 +1,4 @@
 #include <stdio.h>
-/* KOMENTARZE TESTUJ OD TEGO MIEJSCA. */
 /* W programowaniu często napotykamy problem, że potrzebujemy zwiększyć
  * wartość przechowywaną przez zmienną o zadaną wartość. By to zrobić
  * w poprzednim przykładzie użyliśmy składni

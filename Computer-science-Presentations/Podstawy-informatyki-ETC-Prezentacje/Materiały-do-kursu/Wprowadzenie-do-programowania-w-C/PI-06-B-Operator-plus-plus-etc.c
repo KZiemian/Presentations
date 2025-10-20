@@ -32,11 +32,11 @@ int main() {
    * w języku C jest jeszcze
    * ++intVar1;
    * który też zwiększa wartość zmiennej o 1, ale różni się od poprzedniego
-   * kodu, wpływem jak wywiera na populację demonów w naszym świecie i tym
+   * kodu, wpływem jaki wywiera na populację demonów w naszym świecie i tym
    * podobne rzeczy. Nie chcę Państwa teraz obciążać tego typu obłędnymi
    * szczegółami. */
 
-  /* Jeśli chcemy wartość zmiennej zmniejszyć o 1 to możemy napisać
+  /* Jeśli chcemy wartość zmiennej zmniejszyć o 1 to możemy użyć instrukcji
    * intVar1--;
    * (Albo --intVar1; jeśli chcemy wpłynąć na populację demonów.) */
 
@@ -56,7 +56,6 @@ int main() {
   intVar1--;
 
   printf("intVar1 == %d.\n\n", intVar1);
-
 
   /* Używanie 'intVar1++' i 'intVar1--' dla zmiennej typu int nie tworzy
    * problemów. Dla zmiennej typu float, każdy używa tych operatorów na
