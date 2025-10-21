@@ -1,3 +1,4 @@
+// CHECK COMMETS
 // If you know functions you also know that they are the stand alone objects.
 // Their existence is not dependent on the existence of other objects.
 // The normal method in Java is a quite different story.
@@ -44,21 +45,21 @@ class Main {
     // which is as object-oriented as anything in Java. We explain it more
     // using examples.
 
-    // Consider that we want to compute a simple function.
+    // We want to compute a simple function.
     // linearFunction(x) = 2.0 * x + 1.0
     // few times in our program. Attaching it to the object will be awkward.
     // Because in our context, there is no object to attach it.
-
-    // Consider this. Maybe we should create object to store this function?
-    // But, then we will have ability to create many instance of such
-    // function, while we need only one. This would be unnatural and
-    // confusing.
-
+    //
+    // We should consider few possible options. Maybe we should create
+    // object to store this function? But, then we will have ability to
+    // create many instance of such function, while we need only one. This
+    // would be unnatural and confusing.
+    //
     // Maybe we should attach it to variable x? But, there is no point in
     // creating object for such variable, since what is important
     // is a function, not such a variable. It also has downsides of
     // previous approach.
-
+    //
     // Java gives us a solution for such problems: static methods. Static
     // method is always a single object, you can't create multiple version
     // of it. Here is the static function computing mentioned above.

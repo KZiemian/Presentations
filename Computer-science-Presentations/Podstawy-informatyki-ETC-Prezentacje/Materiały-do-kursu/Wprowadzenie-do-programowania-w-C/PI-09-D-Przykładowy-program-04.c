@@ -9,7 +9,7 @@
  * Ale i tak nie jest to najlepsza motywacja na kurs „Podstawy
  * informatyki”. */
 
-/* Proszę pamiętać o dołączeniu tej linii: */
+/* Proszę pamiętać o dołączeniu tej linii. */
 #include <math.h>
 
 /* I o zmianie „magicznego zaklęcia” na

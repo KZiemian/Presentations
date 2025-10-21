@@ -24,6 +24,8 @@ class TwoNumbersVerThree {
 
 class Main {
     public static void main(String[] args) {
+	// Constructor are identifier by the number of arguments that they
+	// take. And few other things, about which we will not talk.
 	TwoNumbersVerThree twoNumbersVerThreeVar1 = new TwoNumbersVerThree();
 	TwoNumbersVerThree twoNumbersVerThreeVar2 =
 	    new TwoNumbersVerThree(3, 4);

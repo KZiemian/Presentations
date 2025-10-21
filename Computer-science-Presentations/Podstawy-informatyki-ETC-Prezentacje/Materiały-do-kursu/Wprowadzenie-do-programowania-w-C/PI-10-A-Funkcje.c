@@ -1,15 +1,15 @@
 #include <stdio.h>
 /* SPRAWDŹ KOMENTARZE. */
 /* Funkcje w języku C możemy rozumieć na dwa sposoby.
-   1) Coś co pobiera argumenty i zwraca pewną wartość.
-   2) Fragment kodu przeznaczony do wielokrotnego używania.
-
-   Funkcje występując w wielu językach programowania i są niewiarygodnie
-   użyteczne. Naturę funkcji w języku C postaramy się wyjaśnić na
-   przykładach. */
+ * 1) Coś co pobiera argumenty i zwraca pewną wartość.
+ * 2) Fragment kodu przeznaczony do wielokrotnego używania.
+ *
+ * Funkcje występując w wielu językach programowania i są niewiarygodnie
+ * użyteczne. Naturę funkcji w języku C postaramy się wyjaśnić na
+ * przykładach. */
 
 /* Zdefiniujmy własną funkcję, która przedstawia funkcję liniową znaną
-   z matematyki. */
+ * z matematyki. */
 
 double linearFunction(double x) {
   return 2.0 * x + 1.0;
@@ -21,7 +21,7 @@ double linearFunction(double x) {
 
 int main() {
   /* Od razu poćwiczymy pętle while. Dlaczego while, a nie for? Powiemy
-     sobie o tym w swoim czasie. */
+   * sobie o tym w swoim czasie. */
 
   double x = 0.0;
 
@@ -32,7 +32,7 @@ int main() {
   }
 
   /* Wszystko działa jak powinno. Ten przykład może być początkowo trudny
-     do zrozumienia, więc omówimy go teraz bardziej szczegółowo. */
+   * do zrozumienia, więc omówimy go teraz bardziej szczegółowo. */
 
 
 
