@@ -1,8 +1,8 @@
 #include <stdio.h>
 
 /* Z break blisko spokrewniona jest instrukcja continue. Zamiast kończyć
-   całą pętlę, kończy wykonywanie jej obecnego ciała i przechodzi
-   do testowania warunku pętli i jej kolejnych obiegów. */
+ * całą pętlę, kończy wykonywanie jej obecnego ciała i przechodzi
+ * do testowania warunku pętli i jej kolejnych obiegów. */
 
 int main() {
   int count = 0;
@@ -14,6 +14,8 @@ int main() {
       continue;
     }
 
+    /* Jeśli „i” jest liczbą parzystą, to continue sprawi, iż linia poniżej
+     * nie zostanie wykonana. */
     printf("Jest to liczba nieparzysta.\n");
   }
 
@@ -29,6 +31,7 @@ int main() {
     if (count % 2 == 0) {
       count++;
 
+      /* Również instrukcja continue działa tak samo w pętli for i while. */
       continue;
     }
 

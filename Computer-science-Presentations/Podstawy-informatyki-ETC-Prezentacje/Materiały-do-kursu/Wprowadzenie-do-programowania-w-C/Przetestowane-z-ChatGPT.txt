@@ -1,0 +1,84 @@
+PI-01-A-Program-pokazowy-w-C.c
+PI-02-A-Hello-World.c
+PI-02-B-Liczby.c
+
+#include <stdio.h>
+#include <stdint.h>  // For fixed-width integer types
+#include <string.h>  // For memcpy
+
+// Function to print bits of any variable
+void print_bits(void* ptr, size_t size) {
+    unsigned char* bytes = (unsigned char*)ptr;
+    for (int i = size - 1; i >= 0; i--) { // MSB to LSB
+        for (int j = 7; j >= 0; j--) {
+            printf("%d", (bytes[i] >> j) & 1);
+        }
+        printf(" ");
+    }
+    printf("\n");
+}
+
+int main() {
+    int a = 123;
+    float f = 3.14f;
+    double d = 3.14;
+    unsigned int u = 4294967295;
+
+    printf("Integer (a = %d) in bits:\n", a);
+    print_bits(&a, sizeof(a));
+
+    printf("Unsigned integer (u = %u) in bits:\n", u);
+    print_bits(&u, sizeof(u));
+
+    printf("Float (f = %.2f) in bits:\n", f);
+    print_bits(&f, sizeof(f));
+
+    printf("Double (d = %.2lf) in bits:\n", d);
+    print_bits(&d, sizeof(d));
+
+    return 0;
+}
+
+#include <stdio.h>
+#include <stdint.h>
+#include <string.h>
+
+// Function to print IEEE 754 components for float
+void print_float_components(float f) {
+    uint32_t bits;
+    memcpy(&bits, &f, sizeof(bits));
+
+    int sign = (bits >> 31) & 1;
+    int exponent = (bits >> 23) & 0xFF;
+    int mantissa = bits & 0x7FFFFF;
+
+    printf("Float %.6f in bits:\n", f);
+    printf("Sign: %d\n", sign);
+    printf("Exponent (biased 127): %d\n", exponent);
+    printf("Mantissa: 0x%06X\n\n", mantissa);
+}
+
+// Function to print IEEE 754 components for double
+void print_double_components(double d) {
+    uint64_t bits;
+    memcpy(&bits, &d, sizeof(bits));
+
+    int sign = (bits >> 63) & 1;
+    int exponent = (bits >> 52) & 0x7FF;
+    uint64_t mantissa = bits & 0xFFFFFFFFFFFFF;
+
+    printf("Double %.15lf in bits:\n", d);
+    printf("Sign: %d\n", sign);
+    printf("Exponent (biased 1023): %d\n", exponent);
+    printf("Mantissa: 0x%013lX\n\n", mantissa);
+}
+
+int main() {
+    float f = 3.14f;
+    double d = 3.14;
+
+    print_float_components(f);
+    print_double_components(d);
+
+    return 0;
+}

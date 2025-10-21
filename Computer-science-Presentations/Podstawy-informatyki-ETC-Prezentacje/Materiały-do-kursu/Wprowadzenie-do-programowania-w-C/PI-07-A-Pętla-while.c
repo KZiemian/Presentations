@@ -20,6 +20,17 @@ int main() {
     i++;
   }
 
+  /* W języku C każda prawie każda pętla for musi posiadać zmienną,
+   * która zlicza ile razy pętla ta się już wykonała. W większości przypadków
+   * zmienna ta nazywa się „i” od ang. „iteration”, „iterować”, „powtarzać”.
+   * Słowo „iterować” można uważać za synonim „powtarzać”. */
+
+  /* Istnieją sytuacje w których nawiasy wąsate w pętli while możemy opuścić,
+   * ale programowanie w C jest już wystarczająco skomplikowane by jeszcze
+   * męczyć się tego typu rzeczami. */
+
+
+
   printf("Pętla while zakończyła działanie.\n");
 
   /* Przeanalizujmy wykonanie tej pętli.
@@ -48,7 +59,9 @@ int main() {
    * wykonywanie pętli while i przechodzimy do instrukcji podanych niżej
    * w programie. */
 
-
+  /* Pętla w kółko powtarza te same czynności, dlatego właśnie nazywa się
+   * ona pętlą. Praca pętli wydaje się dość nudna i dlatego my ludzie, lubimy
+   * powierzać powtarzalne zadania programom komputerowym. */
 
 
 

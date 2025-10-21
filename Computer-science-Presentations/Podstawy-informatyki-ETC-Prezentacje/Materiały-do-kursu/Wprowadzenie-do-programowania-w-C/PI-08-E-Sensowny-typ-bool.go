@@ -3,8 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	// W przeciwieństwie do C, język Go dysponuje już w pełni funkcjonalnym
-	// typem boolowskim.
+	// W przeciwieństwie do C, język Go dysponuje już w pełni
+	// funkcjonalnym typem boolowskim.
 	var boolVar1 bool = false
 
 	fmt.Printf("boolVar1 == %v.\n", boolVar1)

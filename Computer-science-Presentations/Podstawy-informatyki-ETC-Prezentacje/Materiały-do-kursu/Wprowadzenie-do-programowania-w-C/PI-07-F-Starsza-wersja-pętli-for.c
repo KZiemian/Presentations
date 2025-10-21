@@ -1,5 +1,4 @@
 #include <stdio.h>
-
 /* W starszych wersja języka C nie było możliwe tworzenie zmiennych
  * wewnętrznych pętli for, więc zmienną taką trzeba było definiować
  * jak każdą inną. Poniższy program demonstruje jak to wyglądało. */
@@ -13,12 +12,12 @@ int main() {
 
   printf("i == %d.\n", i);
 
-  /* Tutaj nie TWORZYMY zmienne i. Instrukcja
+  /* Tutaj nie TWORZYMY zmiennej „i”. Instrukcja
    * i = 0;
    * tylko nadaje jej wartość 0. Proszę pamiętać, że aby utworzyć zmienną
    * w języku C, trzeba poprzedzić nazwę tej zmiennej nazwą jej typu. */
   for (i = 0; i < 5; i++) {
-    printf("Hello, World! %d time.\n", i);
+    printf("Hello, World! %d time.\n", i + 1);
   }
 
 

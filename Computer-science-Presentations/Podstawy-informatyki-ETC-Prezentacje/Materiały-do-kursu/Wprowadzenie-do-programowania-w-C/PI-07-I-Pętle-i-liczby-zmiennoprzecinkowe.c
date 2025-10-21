@@ -1,16 +1,14 @@
 #include <stdio.h>
-
-/* Rozpatrzmy szalenie prosty problem z obliczeń numerycznych. Zaczynamy
-   od zmiennej
-   double x = 0.0;
-   coś dla tej wartości zmiennej obliczamy, potem dodajemy do niej
-   liczbę 0.1 i ponownie coś z nią liczymy. Procedurę, aż zmienna x
-   osiągnie równą 2.0 lub większa. Czyli potrzebujemy powtórzyć tą procedurę
-   20 raz. Oczywiście, życie nie może być zbyt proste.
-
-   Ponieważ używamy liczb zmiennoprzecinkowych więc zwykle NIE trafimy
-   w ten sposób dokłanie 2.0, tylko gdzieś blisko. Przetestujemy
-   to teraz za pomocą pętli while. */
+/* Rozpatrzmy szalenie prosty problem obliczeniowy. Tworzymy zmienną
+ * double x = 0.0;
+ * coś dla tej wartości zmiennej obliczamy, potem dodajemy do niej
+ * liczbę 0.1 i ponownie coś z nią liczymy. Procedurę, aż zmienna x
+ * osiągnie równą 2.0 lub większa. Czyli potrzebujemy powtórzyć tą procedurę
+ * 20 raz. Oczywiście, życie nie może być zbyt proste.
+ *
+ * Ponieważ używamy liczb zmiennoprzecinkowych więc zwykle NIE trafimy
+ * w ten sposób dokłanie w liczbę 2.0, tylko gdzieś blisko. Przetestujemy
+ * to teraz za pomocą pętli while. */
 
 int main() {
   double x = 0.0;

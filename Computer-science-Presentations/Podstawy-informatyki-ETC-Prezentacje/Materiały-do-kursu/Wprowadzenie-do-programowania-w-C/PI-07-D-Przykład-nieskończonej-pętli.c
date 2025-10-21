@@ -1,14 +1,15 @@
 #include <stdio.h>
 
-/* Gdy piszemy pętle, musimy uważać, by nie stworzyć wbrew naszym
- * intencjom nieskończonej pętli. Czyli pętla zmiast wykonać się powiedzmy
- * pięć razy, wykonuje się nieskończenie wiele razy. Program więc nigdy nie
+/* Gdy piszemy pętle, musimy uważać, by nie stworzyć nieskończonej pętli.
+ * W większości wypadków, chcemy by pętla się zakończyła, więc taka
+ * nieskończona pętla to prawie na pewno błąd z naszej strony. Jak łatwo się
+ * domyślić, jeśli program zawiera nieskończoną pętlę, to nigdy nie
  * zakończy działania.
  *
  * Jeśli przypadkowo napisaliśmy program zawierający nieskończoną pętle
- * i uruchomiliśmy go w powłoce, to możemy go przerwać wciskająć JEDEN
+ * i uruchomiliśmy go w powłoce, to możemy go przerwać wciskając JEDEN
  * RAZ kombinacje klawiszy Ctrl-c. Kilkukrotne wciśnięcie Ctrl-c
- * zakończy pracę CAŁEJ powłoki. */
+ * zakończy pracę CAŁEJ powłoki, a tego nie chcemy. */
 
 
 int main() {

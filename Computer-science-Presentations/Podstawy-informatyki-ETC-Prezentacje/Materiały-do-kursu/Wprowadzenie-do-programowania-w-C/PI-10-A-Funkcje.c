@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+/* SPRAWDŹ KOMENTARZE. */
 /* Funkcje w języku C możemy rozumieć na dwa sposoby.
    1) Coś co pobiera argumenty i zwraca pewną wartość.
    2) Fragment kodu przeznaczony do wielokrotnego używania.

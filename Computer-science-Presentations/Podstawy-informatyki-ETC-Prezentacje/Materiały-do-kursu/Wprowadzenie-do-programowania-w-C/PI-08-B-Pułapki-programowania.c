@@ -1,14 +1,13 @@
 #include <stdio.h>
-
-/* Zobaczy co by się stało, gdybyśmy pracując tylko na intach, przeliczyli
-   najpierw stopnie Fahrenheita na Celsjusza, a potem z Celsjusza ponownie
-   na Fahrenheita.
-
-   Z wzoru
-   tempCels = 5 * (tempFahr - 32) / 9;
-   otrzymujemy wzór przeliczający temperaturę w stopniach Celsjusza
-   na temperaturę w stopniach Fahrenheita:
-   tempFahr = 9 * tempCels / 5 + 32;
+/* Zobaczmy co by się stało, gdybyśmy pracując tylko na intach, przeliczyli
+ * najpierw stopnie z skali Fahrenheita na Celsjusza, a potem z Celsjusza
+ * ponownie na Fahrenheita.
+ *
+ * Z wzoru
+ * tempCels = 5 * (tempFahr - 32) / 9;
+ * otrzymujemy wzór przeliczający temperaturę w stopniach Celsjusza
+ * na temperaturę w stopniach Fahrenheita:
+ * tempFahr = 9 * tempCels / 5 + 32;
 */
 
 int main() {
@@ -19,8 +18,7 @@ int main() {
   int tempStep = 20;
   int tempFahrComputed = 0;
 
-  /* Te zmienne będą nam potrzebne za chwilę. */
-
+  /* Te zmienne będą nam za chwilę potrzebne. */
   double tempCelsFloat = 0.0;
   double tempFahrFloat = 0.0;
   double lowerBoundFloat = 0.0;
@@ -59,9 +57,9 @@ int main() {
   }
 
   /* Widzą Państwo, że obliczenia na liczbach zmiennoprzecinkowych są dużo
-     dokładniejsze. Czemu więc użyliśmy intów? Bo inty w wielu wypadkach
-     są lepszed od floatów, ten zaś przykład ilustruje, problemy na jakie
-     możemy używając ich natrafić. */
+   * dokładniejsze. Czemu więc użyliśmy intów? Bo inty w wielu wypadkach
+   * są bardziej odpowiednie od floatów, ten zaś przykład ilustruje, problemy
+   * na jakie możemy używając ich natrafić. */
 
 
 

@@ -2,7 +2,7 @@
 
 /* Użyteczność pętli for zilustrujemy, pisząc nową wersję programu, który już
  * widzieliśmy. W tej wersji pobiera on od użytkownika trzy liczby,
- * a następnie oblicza ich sumę. */
+ * a następnie obliczamy ich sumę. */
 
 int main() {
   int liczbaOdUzytkownika = 0;

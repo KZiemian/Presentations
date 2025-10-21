@@ -6,7 +6,7 @@ double linearFunction(double x) {
 
 /* Definiowanie funkcji w języku C jest niestety trochę skomplikowane,
    a same definicje często mało czytelne, więc prześledźmy definicję
-   naszej funkcji dokładniej.
+   naszej funkcji bardzo dokładnie.
 
    Nasza funkcja pobiera pewne argumenty i zwraca pewną wartość.
    double linearFunction(double x)

@@ -1,6 +1,6 @@
 #include <stdio.h>
-
-/* Wyrażenie coś robi i zwraca wartość. Instrukcja tylko coś robi. */
+/* Wyrażenie (ang. expression) coś robi i zwraca wartość. Orzeczenie (
+   ang. statement) tylko coś robi. */
 
 int main() {
   int intVar1 = 0;
@@ -17,12 +17,16 @@ int main() {
 
   printf("intVar1 == %d.\n", intVar1);
 
-  /* Instrukcja sterująca if jest instrukcją, więc ona coś robi, ale nic
-   * nie zwraca. Z tego powodu kod poniżej sprawi, że język C zwariuje. */
+  /* Instrukcja sterująca if jest orzeczeniem (ang. if statement), więc ona
+   * coś robi, ale nic nie zwraca. Z tego powodu kod poniżej sprawi, że język
+   * C zwariuje. */
 
   /* intVar1 = if (1 < 2) { */
   /*   printf("W oczywisty sposób, prawda.\n"); */
   /* } */
+
+
+
 
 
   return 0;
