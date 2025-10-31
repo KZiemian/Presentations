@@ -213,12 +213,12 @@ eprint=true,
   wykonywalnego. Napraw ten błąd i~spróbuj jeszcze raz.”
 
   Ze względu na to jak skomplikowany jest proces kompilacji oraz na~wiek
-  języka~C, informacje o~błędach są często bardzo trudne w~zrozumieniu
-  i~niezbyt precyzyjne. To naprawdę skomplikowany temat. Jedną z~rzeczy,
-  które należy rozumieć jest to, że~jeśli kompilator twierdzi, że~błąd
-  jest w~linii $20$, to on zwykle w~tej linii jest, ale kompilator
-  może~się mylić i~błąd znajduje~się wcześniej albo później. Bo dlaczego
-  życie miałoby być proste?
+  języka~C, informacje o~błędach oraz ostrzeżeniach są często bardzo trudne
+  w~zrozumieniu i~niezbyt precyzyjne. To naprawdę zawiły temat.
+  Jedną z~rzeczy, które należy rozumieć jest to, że~jeśli kompilator
+  twierdzi, że~błąd jest w~linii $20$, to on zwykle w~tej linii jest, ale
+  kompilator może~się mylić i~błąd znajduje~się wcześniej albo później. Bo
+  dlaczego życie miałoby być proste?
 
 \end{frame}
 % ##################
@@ -248,7 +248,7 @@ eprint=true,
   Na tym przedmiocie obowiązuje zasada, że~każdy program ma zostać
   doprowadzony do stanu, w~którym kompilator podczas jego przetwarzania
   nie zgłasza żadnego ostrzeżenia. Państwo na pewno rozumieją, dlaczego
-  przyjęliśmy takie zasady.
+  przyjęliśmy takie standardy.
 
 \end{frame}
 % ##################
@@ -299,16 +299,17 @@ eprint=true,
   Jednak trzeba przez to przejść, by~się całkiem nie pogubić.
 
   Fragment kodu, który mówi językowi~C, że~ma coś zrobić nazywamy
-  \textbf{poleceniem}. Polecenia dzielą~się na \textbf{wyrażenia}
-  (ang. \textit{expression}) i~\textbf{instrukcje}. Wyrażenie robi
-  coś i~zwraca wynik, podczas gdy instrukcja tylko coś robi.
+  \textbf{instrukcją} (ang.~\textit{instruction}). Instrukcje dzielą~się na
+  \textbf{wyrażenia}(ang.~\textit{expression}) i~\textbf{orzeczenia}
+  (ang.~\textit{statement}). Wyrażenie robi coś i~zwraca wynik, podczas gdy
+  orzeczenie tylko coś robi.
 
   Typowy przykład wyrażenia to \\
   \texttt{1 + 2} \\
   które dokonuje obliczenia (coś robi) i~zwraca jako rezultat~$3$.
-  Przykładem instrukcji jest instrukcja sterująca \texttt{if}. W~pliku
+  Przykładem orzeczenia jest instrukcja sterująca \texttt{if}. W~pliku
   \texttt{PI-04-F-Wyrażenia-i-instrukcje.c} znajduje~się kod ilustrujący
-  różnice między wyrażeniami, a~instrukcjami.
+  różnice między wyrażeniami, a~orzeczeniami.
 
 
 \end{frame}
@@ -337,8 +338,8 @@ eprint=true,
   W~programowaniu niezwykle ważne jest posiadanie umiejętność operowania
   na~pojęciach logicznej prawdy oraz fałszu i~dokonywania na nich operacji
   iloczynu oraz sumy logicznej. Z~tego powodu zdecydowaliśmy~się przygotować
-  to krótki omówienie tych zagadnień i~włączyć je do kursu
-  \textit{Podstaw informatyki}. To, że~naszymi adresatami są informatycy
+  to krótki omówienie tych zagadnień i~włączyć je do materiałów
+  z~\textit{Podstaw informatyki}. To, że~naszymi adresatami są informatycy
   mocno wpłynęło na~wybór i~sposób prezentacji materiału, o~czym należy
   pamiętać ucząc~się go. Staraliśmy~się również, by wykład był możliwie
   prosty, stąd liczne uproszczenia i~pominięcie wielu subtelności jakie te
@@ -456,17 +457,18 @@ eprint=true,
   wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
   w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
   Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
-  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
-  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
-  stanie~się bardziej zrozumiałe.
+  takich zawiłości języków naturalnych, lecz pewna bardzo konkretne
+  procedury rachunkowe. To mamy nadzieję zaraz stanie~się bardziej
+  zrozumiałe wraz z~przykładami.
+
+  Przez „język naturalny” rozumiemy język taki jak angielski, francuski,
+  hiszpański,~etc., których ludzie używają do komunikacji między sobą.
 
   Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
   zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
   jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
   spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
-  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
-  Może ten zapis wygląda dziwnie, ale informatycy są do niego
-  przyzwyczajeni i~w~takiej czy innej formie jest powszechnie stosowany.
+  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.”
 
 \end{frame}
 % ##################
@@ -480,6 +482,18 @@ eprint=true,
   \frametitle{Intuicyjny sens algebry Boole’a}
 
 
+  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
+  Może ten zapis wygląda dziwnie, ale informatycy są do niego
+  przyzwyczajeni i~w~takiej czy innej formie jest powszechnie stosowany.
+  Z~czasem dla Państwa też stanie~się on bardzo naturalny.
+
+  Z~punktu widzenia języka polskiego zdanie \\
+  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
+  zapisalibyśmy raczej jako \\
+  „Jan jest na mieście \texttt{\&\&}~je kanapkę.” \\
+  Zdecydowaliśmy~się na tą bardziej osobliwą formę, by uwypuklić rachunkową
+  stronę tego zagadnienia.
+
   By użyć bardziej informatycznego przykładu, zdanie \\
   \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
   oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
@@ -487,49 +501,39 @@ eprint=true,
   to proszę~się nad tym chwilę zastanowić. Ewentualnie poprosić o~dalsze
   wyjaśnienia.
 
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zastosowanie w~programowaniu}
+
+
   Znaczenie algebry Boole’a dla informatyki polega na tym, że~teraz
-  możemy napisać choćby następujący kod. Jego pełna wersja jest w~pliku
-  \texttt{PI-04-E-Przykład-wykorzystania-iloczynu-logicznego.c}. \\[0.3em]
+  możemy napisać choćby następujący kod. Jego pełną wersję można
+  znaleźć w~materiałach do nauki, w~pliku o~nazwie \\
+  \texttt{PI-04-E-Przykład-wykorzystania-iloczynu-logicznego.c}.
+
+  \vspace{1em}
+
+
+
   \texttt{if ((intVar1 < 3) \&\& (-5 < intVar1)) \{ } \\
-  \hphantom{aaaa} \texttt{printf("Wartość zmiennej intVar1 zawiera się "} \\
-  \hphantom{aaaaaaaaaaa}
+  \hphantom{\texttt{aaaa}} \texttt{printf("Wartość zmiennej intVar1
+    zawiera~się "} \\
+  \hphantom{\texttt{aaaaaaaaaaa}}
   \texttt{"w pożądanym zakresie.\textbackslash n");} \\
   \texttt{ \} else \{ } \\
-  \hphantom{aaaa} \texttt{printf("Wartość zmiennej intVar1 znajduje~się
-    poza "}
+  \hphantom{\texttt{aaaa}} \texttt{printf("Wartość zmiennej intVar1
+    znajduje~się poza "}
   \\
-  \hphantom{aaaaaaaaaaa} \texttt{"pożądany zakres.\textbackslash n");} \\
+  \hphantom{\texttt{aaaaaaaaaaa}} \texttt{"pożądany
+    zakres.\textbackslash n");} \\
   \texttt{ \} }
-  % Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
-  % Język C i~większość najpopularniejszych języków programowania oznacza
-  % go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
-  % symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
-  %   jest} iloczynem logicznym. Język Python oznacza ją za pomocą
-  % angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
-  % za pomocą symbolu~„$\wedge$”.
-
-  % My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
-
-  % To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
-  % wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
-  % w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
-  % Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
-  % takich zawiłości języków naturalnych, czyli używanych przez ludzi,
-  % lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
-  % stanie~się bardziej zrozumiałe.
-
-  % Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
-  % zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
-  % jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
-  % spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
-  % „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
-  % Może ten zapis wygląda dziwnie, ale informatycy są do niego
-  % przyzwyczajeni.
-  % By użyć bardziej informatycznego przykładu, zdanie \\
-  % \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
-  % oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
-  % spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
-  % to proszę~się nad tym chwilę zastanowić.
 
 \end{frame}
 % ##################
@@ -551,9 +555,11 @@ eprint=true,
   je kanapkę, a~tym czy dane miasto jest stolicą Francji, co może~się
   wydawać nienaturalne.
 
-  Gdy łączymy dwa zdania za pomocą \texttt{\&\&} to o~prawdziwości nowo
-  powstałego zdania decyduje tylko prawdziwość lub~fałszywość zdań
-  składowych, \alert{nie} ich treść. Jest to świadomy wybór, który ma duże
+  Gdy łączymy dwa zdania za pomocą łącznika \texttt{\&\&} to o~prawdziwości
+  nowo powstałego zdania decyduje tylko prawdziwość lub~fałszywość zdań
+  składowych, \alert{nie} ich treść. Z~tego powodu, to czy treść
+  dwóch zdań składowych jest ze sobą powiązana, czy nie, nie ma dla nas
+  w~tym kontekście znaczenia. Jest to świadomy wybór, który ma duże
   znaczenie z~punktu widzenia informatyki. Redukuje on sprawdzenie
   prawdziwość nowego zdania do prostego rachunku, a~w~rachunkach
   komputery są bardzo dobre.
@@ -604,8 +610,10 @@ eprint=true,
   daje zdanie prawdziwe, zapisujemy jako \\
   \texttt{true \&\& true == true}
 
-  Teraz wszystkie własności rachunkowe łącznika \texttt{\&\&} możemy
-  zawrzeć w~prostej tabeli.
+  Obecnie wszystkie własności rachunkowe łącznika \texttt{\&\&}
+  możemy zapisać w~prostej tabeli.
+
+  \vspace{1em}
 
 
 
@@ -615,7 +623,7 @@ eprint=true,
 
   \begin{tabular}{|c|c|c|}
     \hline
-    zdanie1 & zdanie2 & zdanie1 \&\& zdanie2 \\
+    \texttt{zdanie1} & \texttt{zdanie2} & \texttt{zdanie1 \&\& zdanie2} \\
     \hline
     \texttt{true}  & \texttt{true}  & \texttt{true}  \\
     \texttt{true}  & \texttt{false} & \texttt{false} \\
@@ -637,6 +645,16 @@ eprint=true,
 \begin{frame}
   \frametitle{Podsumowanie}
 
+
+  Na koniec musimy wspomnieć, że~w~języku~C symbole „\texttt{\&\&}”
+  i~„\texttt{\&}” oznaczają radykalnie \alert{różne} rzeczy. Bo czemu życie
+  miałoby być proste? Operator \texttt{\&} służy do operowania na niskim
+  poziomie abstrakcji (czytaj: na poziomie, gdzie wszystko wygląda jak ciągi
+  $0$ i~$1$) i~z~tego powodu, jego zrozumienie wymaga sporo pracy.
+  Omówimy go, jeśli będziemy mieli odpowiednio dużo czasu.
+
+  Na razie proszę zapamiętać, że~można używać \texttt{\&\&}, ale kto
+  używa~\texttt{\&}, robi to na własną odpowiedzialność.
 
   Na tym zakończymy nasze intuicyjne wprowadzenie do algebr Boole’a
   i~przejdziemy do bardziej technicznego ich omówienia. Jeśli Państwo
@@ -667,9 +685,10 @@ eprint=true,
 
   Pojęcia logicznej prawdy i~fałszu zostały już omówione i~nie będziemy
   ich szerzej dyskutować, gdyż jest to bardziej przedmiotem filozofii, niż
-  informatyki. A~materiał z~informatyki mamy na tym kursie dość.
+  informatyki. A~tematów dotyczących informatyki na tym kursie mamy już
+  wystarczająco dużo.
 
-  W~informatyce oprócz wartości logiczny \texttt{true} i~\texttt{false}
+  W~informatyce oprócz wartości logicznych \texttt{true} i~\texttt{false}
   dużą rolę odgrywają \textbf{zmienne boolowskimi}, zwane też
   \textbf{zmiennymi logicznymi}. Są~to zmienne które mogą przechowywać
   wartości logiczne \texttt{true} i~\texttt{false}. Tak jak w~przypadku
@@ -677,7 +696,7 @@ eprint=true,
   o~zmienne, sposób ich działania zależy w~dużej mierze od używanego języka.
 
   Wyjątkowo zaczniemy od przytoczenia przykładu z~języka Go, gdyż pozwala
-  pracować na wartościach i~zmiennych boolowskich w~dużo prostszy
+  on pracować na wartościach i~zmiennych boolowskich w~dużo prostszy
   i~bezpieczniejszy sposób, niż język~C.
 
 \end{frame}
@@ -689,26 +708,7 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Zmienne boolowskie}
-
-
-
-
-  Rozpatrzmy przypadek języka~C. Ponieważ wartości logiczne reprezentują
-  w~nim liczby całkowite, więc jako zmiennej logicznej możemy użyć dowolnej
-  zmiennej która przechowuje wartości całkowitoliczbowe. Zmienne tego typu
-  w~języku~C są zwykle typu \texttt{int}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zmienne boolowskie}
+  \frametitle{Zmienne boolowskie w~Go}
 
 
   Poniżej prezentujemy przykładowy fragment programu napisanego w~języku~Go
@@ -717,14 +717,15 @@ eprint=true,
   ignorowany przez komputer.
 
   \textit{Uwaga.} To jest tylko fragment programu w~języku~Go i~ze względu
-  na brakujące części nie da~się go uruchomić.
+  na brakujące części nie da~się go uruchomić. Pełna jego wersja
+  znajduje~się w~pliku \texttt{PI-05-A-Zmienne-boolowskie-w-Go.go}.
 
-  \texttt{// Tworzymy zmienną logiczną "boolVar" i~nadajemy jej} \\
-  \texttt{// wartość "false".} \\
-  \texttt{var boolVar bool = false} \\
+  \texttt{// Tworzymy zmienną logiczną „boolVar1” i~nadajemy jej} \\
+  \texttt{// wartość „false”.} \\
+  \texttt{var boolVar1 bool = false} \\
   \vspace{0.8em}
-  \texttt{// Zmieniamy wartość logiczną zmiennej "boolVar" na "true".} \\
-  \texttt{boolVar = true}
+  \texttt{// Zmieniamy wartość logiczną zmiennej „boolVar1” na „true”.} \\
+  \texttt{boolVar1 = true}
 
 \end{frame}
 % ##################
@@ -735,68 +736,54 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Wyrażenie boolowskie}
+  \frametitle{Zmienne boolowskie w~C}
 
+
+  Rozpatrzmy przypadek języka~C. Ponieważ wartości logiczne reprezentują
+  w~nim liczby całkowite, więc jako zmiennej logicznej możemy użyć dowolnej
+  zmiennej która przechowuje wartości całkowitoliczbowe. Zmienne tego typu
+  w~języku~C są zwykle typu \texttt{int}. Bo czemu życie miałoby być proste?
+
+  Omówienie tych pseudoboolwskich zmiennych w~języku~C znajduje~się
+  w~plikach \texttt{PI-05-B-Zmienne-pseudoboolowskie-w-C.c} \\
+  i~\texttt{PI-05-C-stdbool-h.c}.
 
   \textbf{Wyrażeniem boolowskim} (ang.~\textit{boolean expression}) zwane
   też \textbf{wyrażeniem logicznym} (ang.~\textit{logical expression})
-  zwane  to dowolne wyrażenie w~wyniku obliczenia którego zostaje zwrócona
-  wartość boolowska \texttt{true} albo \texttt{false}.
+  to dowolne wyrażenie w~wyniku obliczenia którego zostaje zwrócona
+  wartość boolowska \texttt{true} albo \texttt{false}. Wyrażenie boolowskie
+  jest w~zasadzie bardziej informatyczną nazwą dla „zdania logicznego”,
+  warto jednak znać oba te terminy. Na~potrzeby naszego kursu jest
+  to wystarczające.
 
-  \textit{Ważne.} Wyrażenie jest tylko i~wyłącznie obiekt, który
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Operatory boolowskie}
+
+
+  Przypomnijmy, że~wyrażeniem jest tylko i~wyłącznie taka instrukcja, która
   \textit{zwraca} pewną wartość. W~przeciwnym razie mamy do czynienia
-  z~\textbf{poleceniem} (ang. \textit{statement}).
+  z~\textbf{orzeczeniem} (ang. \textit{statement}).
 
-  Przyjmujemy, że~wartości boolowskie \texttt{true} i~\texttt{false}, które
-  zwracają jako swoją wartość same siebie. Nawet jeśli wydaje~się to dziwne
-  i~przekombinowane, to taki sposób myślenia ma swoje zastosowania
-  w~informatyce.
+  Przyjmujemy, że~wartości boolowskie \texttt{true} i~\texttt{false},
+  również są wyrażeniami, które zwracają jako swoją wartość same siebie.
+  Nawet jeśli takie podejście wydaje~się to dziwne i~przekombinowane, to
+  taki sposób myślenia ma swoje zastosowania w~informatyce.
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Operatory boolowskie}
-
-
-  Jeśli funkcja o~nazwie \texttt{funBool} zwraca jako wartość zmienną
-  boolowską, to jej wywołanie \\
-  \texttt{funBool(argumenty funkcji)} \\
-  jest wyrażeniem boolowskim. Takie funkcje spotyka~się w~praktyce, jednak
-  częściej wyrażenia boolwskie tworzy~się za pomocą odpowiednich operatorów
-  logicznych.
-
-  \textbf{Operatorem boolowskim} (ang. \textit{boolean operator}) lub
-  \textbf{operatorem logicznym} (ang. \textit{logcial operator})
-  nazywamy symbol reprezentujący \textbf{operacje}, która to operacja
-  pozwala z~dwóch wyrażeń boolowskich utworzyć nowe wyrażenie. Cztery
-  podstawowe, z~punktu widzenia informatyki, operatory boolowskie to:
-  logiczny iloczyn, logiczna suma, logiczna negacja i~operacja porównania.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Operatory boolowskie}
-
-
-  \textbf{Iloczyn logiczny}, zwany też \textbf{koniunkcją logiczną},
-  odpowiada zasadniczo temu co~w~języku polskim oznacza spójnik~„i”. Łączy
-  on parę dwa wyrażenie boolowskie, zwracając logiczną prawdę wtedy i~tylko
-  wtedy gdy wartość pierwszego \textit{i}~drugiego wyrażenia są~prawdziwe.
-  W~przeciwny razie zwraca logiczny fałsz.
-
-
+  \textbf{Operatorem boolowskim} (ang.~\textit{boolean operator}) lub
+  \textbf{operatorem logicznym} (ang.~\textit{logical operator})
+  nazywamy operator, która łączy dwa wyrażenia boolowskie tworząc jedno
+  nowe wyrażenie tego typu. Cztery podstawowe z~punktu widzenia informatyki
+  operatory boolowskie to: iloczyn logiczny, suma logiczna, negacja logiczna
+  i~operator porównania. I~tutaj widzimy, że~„operator boolowski” to
+  w~zasadzie inna nazwa na „łącznik zdań”.
 
 \end{frame}
 % ##################
@@ -810,19 +797,12 @@ eprint=true,
   \frametitle{Iloczyn logiczny}
 
 
-  Zgodnie z~tym co powiedziano wcześniej, wyrażenie \\
-  \texttt{true \&\& false} \\
-  jest wyrażeniem boolowskim i~zwraca wartość to \texttt{false}.
-
-  Własności iloczynu logicznego można podsumować za pomocą następującej
-  tabeli, gdzie \texttt{boolVar1} i~\texttt{boolVar2} to odpowiednie zmienne
-  boolowskie. Jeśli zmienne \texttt{boolVar1} i~\texttt{boolVar2} mają
-  wartości takie jak w~dwóch pierwszych kolumnach, to wartość iloczynu
-  logicznego tych zmiennych podana jest w~trzeciej kolumnie.
+  \textbf{Iloczyn logiczny}, zwany też \textbf{koniunkcją logiczną},
+  to operacja której dyskusje niedawno zakończyliśmy i~który oznaczamy
+  symbolem~„\texttt{\&\&}”. Poniższa przypomnimy tabelę własności
+  tego operatora.
 
   \vspace{1em}
-
-
 
 
 
@@ -832,7 +812,7 @@ eprint=true,
 
   \begin{tabular}{|c|c|c|}
     \hline
-    boolVar1 & boolVar2 & boolVar1 \&\& boolVar2 \\
+    \texttt{zdanie1} & \texttt{zdanie2} & \texttt{zdanie1 \&\& zdanie2} \\
     \hline
     \texttt{true}  & \texttt{true}  & \texttt{true}  \\
     \texttt{true}  & \texttt{false} & \texttt{false} \\
@@ -842,49 +822,6 @@ eprint=true,
   \end{tabular}
 
   \endgroup
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Tabelki operatorów logicznych}
-
-
-  \begingroup
-
-  \centering
-
-  \begin{tabular}{|c|c|c|}
-    \hline
-    boolVar1 & boolVar2 & boolVar1 \&\& boolVar2 \\
-    \hline
-    \texttt{true}  & \texttt{true}  & \texttt{true}  \\
-    \texttt{true}  & \texttt{false} & \texttt{false} \\
-    \texttt{false} & \texttt{true}  & \texttt{false} \\
-    \texttt{false} & \texttt{false} & \texttt{false} \\
-    \hline
-  \end{tabular}
-
-  \endgroup
-
-  \vspace{1em}
-
-
-
-
-
-  Choć w~tabeli powyższe występują zmienne boolowskie, to jest ona
-  prawdziwa dla dowolnych wyrażeń boolowskich. Proszę przy tym pamiętać,
-  że~każda zmienna boolowska jest dla nas wyrażeniem boolowskim, ale nie
-  każde wyrażenie boolowskie jest po prostu zmienną boolowską. Niezależnie
-  od tych subtelności, jeśli wartości zwracane przez dwa wyrażenia
-  boolowskie są takie jak w~dwóch pierwszych tabelach, to ich iloczyn
-  logiczny ma wartości wyrażoną w~trzeciej.
 
 \end{frame}
 % ##################
@@ -900,38 +837,14 @@ eprint=true,
 
   \textbf{Suma logiczna}, zwana też \textbf{alternatywą logiczną} odpowiada
   mniej więcej temu, co w~języku polskim oznacza spójnik „lub”. Łączy ona
-  dwa wyrażenia boolowskie dając nową wyrażenie, która wartość \texttt{true}
-  jeśli wartość pierwszego \textit{lub} drugiego jest równa \texttt{true}.
+  dwa wyrażenia boolowskie dając nowe wyrażenie, która wartość \texttt{true}
+  jeśli wartość pierwszego \alert{lub} drugiego jest równa \texttt{true}.
 
   Podobnie jak dla iloczynu logicznego, język C i~za nim większość
   najpopularniejszy języków programowania oznacza sumę logiczną symbolem
-  „\texttt{||}”. Ponownie, trzeba mieć na uwagę, że~w~tych językach~symbol
-  „\texttt{|}” posiada osobne znaczenie. W~Pythonie operację tą oznacza
-  symbol „\texttt{or}”. W~matematyce często stosuje~się symbol~„$\vee$”.
-
-  My będziemy go zapisywać za~pomocą symbolu „\texttt{||}”.
-
-  Na podstawie tego co powiedziano powyżej \\
-  \texttt{false || true} \\
-  jest wyrażeniem logicznym i~zwraca wartość \texttt{true}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Suma logiczna}
-
-
-  Podstawowe własności sumy logicznej podaje poniższa tabela.
+  „\texttt{||}”. Własności tego operatora podsumowuje podana poniżej tabela.
 
   \vspace{1em}
-
-
 
 
 
@@ -941,8 +854,8 @@ eprint=true,
 
   \begin{tabular}{|c|c|c|}
     \hline
-    \texttt{boolVar1} & \texttt{boolVar2}
-    & \texttt{boolVar1 || boolVar2} \\
+    \texttt{zdanie1} & \texttt{zdanie2}
+    & \texttt{zdanie1 || zdanie2} \\
     \hline
     \texttt{true}  & \texttt{true}  & \texttt{true}  \\
     \texttt{true}  & \texttt{false} & \texttt{true}  \\
@@ -962,23 +875,47 @@ eprint=true,
 
 % ##################
 \begin{frame}
+  \frametitle{Suma logiczna}
+
+
+  Państwo powinni pamiętać, że~„\texttt{\&\&}” to iloczyn logiczny,
+  a~„\texttt{\&}” to coś zupełnie innego. Ponieważ życie nie może być
+  proste, więc tak jak „\texttt{||}” oznacza sumę logiczną, tak „\texttt{|}”
+  oznacza coś zupełnie innego. Co oznacza ten osobny symbol, powiem jeśli
+  będziemy mieli wystarczająco dużo czasu.
+
+  Intuicyjny sens sumy logicznej moglibyśmy przeanalizować w~ten sam
+  sposób, co w~przypadku iloczynu logicznego, mamy jednak nadzieję,
+  że~nie jest to potrzebne. Jeśli Państwo chcą by taka analiza~się tu
+  znalazła, proszę napisać pod adres~\email.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
   \frametitle{Negacja logiczna}
 
 
   \textbf{Negacja logiczna} odpowiada w~przybliżeniu co polskie słowo „nie”.
   Negacja prawdy logicznej jest fałszem, a~negacja fałszu jest prawdą.
 
-  W~językach programowania negację danego wyrażenia \texttt{expr}, zwykle
-  oznacza~się poprzez poprzedzenie go symbolem~„\texttt{!}” i~my też
-  będziemy korzystać z~tego zapisu. W~matematyce często stosuje~się symbol
-  „\texttt{$\neg$}”. Negację wyrażenia \texttt{expr} zapiszemy więc odpowiednio
-  jako \texttt{!expr} lub \texttt{$\neg$expr}.
+  Przedtem pisaliśmy, że~operator to coś co pobiera dwie wartości i~na
+  podstawie ich oblicza wynik. Negacja stanowi wyjątek od tej reguły,
+  bo pobiera tylko jedną wartość i~na jej podstawie zwraca wynik. Mówimy,
+  że~negacja jest \textbf{operatorem jednoargumentowym}.
+
+  W~językach programowania negację danego wyrażenia \texttt{zdanie1}, zwykle
+  oznacza~się poprzez poprzedzenie go symbolem~„\texttt{!}”, co daje
+  \texttt{!zdanie1}, i~my też będziemy korzystać z~tego zapisu.
 
   Własności negacji logicznej podsumowuje poniższa tabelka.
 
   \vspace{1em}
-
-
 
 
 
@@ -988,7 +925,7 @@ eprint=true,
 
   \begin{tabular}{|c|c|}
     \hline
-    \texttt{boolVar1} & \texttt{!boolVar1} \\
+    \texttt{zdanie1} & \texttt{!zdanie1} \\
     \hline
     \texttt{true}  & \texttt{false} \\
     \texttt{false} & \texttt{true}  \\
@@ -1006,21 +943,15 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Porównanie logiczne}
+  \frametitle{Operator porównania}
 
 
   \textbf{Porównanie logiczne} jest prawdą, wtedy i~tylko wtedy, gdy obie
-  porównywane strony mają tą samą wartość logiczną.
-
-  W~informatyce do porównywania zwykle używamy podwójnego znaku równości
-  „\texttt{==}”, my też z~niego będziemy korzystali. Oczywiście, tutaj też
-  muszą być wyjątki od tej reguły, ale prawdziwe źródło komplikacji
-  leży gdzie indziej. Zanim o~nich powiemy, przytoczymy tabelę
-  podsumowującą własności tej operacji.
+  porównywane strony mają tą samą wartość logiczną. Operator porównania
+  w~języku~C i~większości innych języków to „\texttt{==}”. Jego własności
+  podsumowuje poniższa tabela.
 
   \vspace{1em}
-
-
 
 
 
@@ -1051,21 +982,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Porównanie logiczne}
+  \frametitle{Operator porównania}
 
 
-  Podstawowy problem z~operatorem „\texttt{==}” polega na tym,
-  że~w~większości języków służy nie tylko do porównywania wyrażeń
-  boolowskich, ale do porównywania wszystkich obiektów, których wartości
-  można porównywać. Dostajemy w~ten sposób wyrażenie boolowskie.
+  W~większości języków programowania „\texttt{==}” służy nie tylko do
+  porównywania wyrażeń boolowskich, ale do porównywania wszystkich
+  obiektów, których wartości można porównywać. Dwie wartości połączone tym
+  operatorem już tworzą wyrażenie boolowskie.
 
   Przykładowo, w~języku C, Go czy w~Pythonie można za~jego pomocą
-  porównywać liczby całkowite, tworząc odpowiednie wyrażenia boolowskie.
-  Tym samym \\
-  \texttt{0 == 1} \\
+  porównywać liczby zmiennoprzecinkowe, tworząc odpowiednie wyrażenia
+  boolowskie. Tym samym \\
+  \texttt{0.25 == 0.5} \\
   jest w~tych językach wyrażeniem boolowskim, którego wartość logiczna jest
   równa \texttt{false}. Proszę pamiętać, że~w~każdym z~tych języków
   wartości logiczne są trochę inaczej reprezentowane.
+
+  Te subtelności nie powinny jednak stanowić problemu w~zrozumieniu
+  działania tego operatora.
 
 \end{frame}
 % ##################
@@ -1080,7 +1014,7 @@ eprint=true,
 
 
   Należy zwrócić uwagę, że~operator „\texttt{==}” zwykle sprawdza równość
-  \textit{wartość} wyrażeń, nie ich \textit{identyczność}. Przykładowo,
+  \alert{wartość} wyrażeń, nie ich \alert{identyczność}. Przykładowo,
   załóżmy, że~mamy dwie zmienne typu \texttt{int} w~języku~C, niech~się
   nazywają \texttt{intVar1} i~\texttt{intVar2}. Każda z~nich zawiera pewną
   wartość i~możemy~się pytać o~równość tych wartości. Możemy~się też
@@ -1089,10 +1023,11 @@ eprint=true,
 
   Tym samym w~języku~C wyrażenie \\
   \texttt{intVar1 == intVar2} \\
-  sprawdza, czy \textit{wartość} przechowywane przez obie te
-  zmienne są równe, nie czy te zmienne są identyczne. Powtórzymy,
-  identyczność zmiennych oznacza, że~są one po prostu dwiema różnymi
-  nazwami na~to~samo (ten sam obszar pamięci).
+  sprawdza, czy \alert{wartość} przechowywane przez obie te zmienne są
+  równe, nie czy te zmienne są identyczne. Powtórzymy, identyczność
+  zmiennych oznacza, że~są one po prostu dwiema różnymi nazwami na~to~samo
+  (ten sam obszar pamięci). Czy tego typu subtelności mają jakiekolwiek
+  praktyczne znaczenie? Niestety, niekiedy mają.
 
 \end{frame}
 % ##################
@@ -1101,6 +1036,91 @@ eprint=true,
 
 
 
+% ##################
+\begin{frame}
+  \frametitle{Bibliografia dla zainteresowanych}
+
+
+  Temat rachunku zdań to w~zasadzie studnia bez dna, a~my możemy na tym
+  kursie omówić tylko kilka jej najważniejszych i~najbardziej podstawowych
+  elementów. Osoby zainteresowane głębszym wniknięciem w~tą tematykę, mogą
+  sięgnąć po jedną z~poniższych pozycji lub jedną z~innych setek ksiązek
+  w~tym temacie.
+
+  \begin{itemize}
+
+  \item Andrzej Grzegorczyk \textit{Zarys logiki matematycznej}
+    \parencite{Grzegorczyk-Zarys-logiki-matematycznej-Pub-1975}.
+
+  \item Willard von Ormian Quine \textit{Logika matematyczna}
+    \parencite{Quine-Logika-matematyczna-Pub-1974}.
+
+  \item Zdzisław Kraszewski \textit{Logika. Nauka rozumowania}
+    \parencite{Kraszewski-Logika-Pub-1984}.
+
+  \end{itemize}
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Terminologia i~notacja algebry Boole’a}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Kim był Boole?}
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.195]
+    {./Presentations-pictures/George-Boole.jpeg}
+
+    \caption{George Boole (1815--1864), brytyjski matematyk i~filozof.
+      Wprowadził metody algebraiczne do logiki, zaś \textbf{algebra Boole’a}
+      została nazwana na jego cześć.}
+
+    \label{fig:George-Boole}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Notacja dla operatorów logicznych}
+
+
+  Dla porządku warto przytoczyć różne oznaczenia, jakie używamy do zapisu
+  operatorów logicznych.
+
+  W~informatyce standardowe oznaczenie na iloczyn logiczny to
+  „\texttt{\&\&}”. Język Python używa angielskiego słowa „\texttt{and}”
+  i~to pomimo tego, że~zaprojektował go
+  \colorhref{https://pl.wikipedia.org/wiki/Guido\_van\_Rossum}{Holender}.
+  W~matematyce często zapisuję ją za pomocą symbolu~„$\wedge$”.
+
+\end{frame}
+% ##################
 
 
 
@@ -1432,15 +1452,12 @@ eprint=true,
   \frametitle{Rachunkowa strona algebry Boole’a}
 
 
-
-
-  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
-  Język C i~większość najpopularniejszych języków programowania oznacza
-  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
-  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
-    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
-  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
-  za pomocą symbolu~„$\wedge$”.
+  Jeśli funkcja o~nazwie \texttt{funBool} zwraca jako wartość zmienną
+  boolowską, to jej wywołanie \\
+  \texttt{funBool(argumenty funkcji)} \\
+  jest wyrażeniem boolowskim. Takie funkcje spotyka~się w~praktyce, jednak
+  częściej wyrażenia boolwskie tworzy~się za pomocą odpowiednich operatorów
+  logicznych.
 
   My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
 
@@ -1480,8 +1497,12 @@ eprint=true,
   go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
   symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
     jest} iloczynem logicznym. Język Python oznacza ją za pomocą
-  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
-  za pomocą symbolu~„$\wedge$”.
+  angielskiego symbolu „\texttt{and}”.
+
+   W~matematyce często stosuje~się symbol
+  „\texttt{$\neg$}”. Negację wyrażenia \texttt{expr} zapiszemy więc odpowiednio
+  jako  lub \texttt{$\neg$expr}.
+
 
   My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
 
@@ -1493,45 +1514,6 @@ eprint=true,
   lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
   stanie~się bardziej zrozumiałe.
 
-  Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
-  zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
-  jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
-  spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
-  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
-  Może ten zapis wygląda dziwnie, ale informatycy są do niego
-  przyzwyczajeni.
-  By użyć bardziej informatycznego przykładu, zdanie \\
-  \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
-  oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
-  spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
-  to proszę~się nad tym chwilę zastanowić.
-
-\end{frame}
-% ##################
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kim był Boole?}
-
-
-  % \begin{figure}
-
-  %   \centering
-
-  %   \includegraphics[scale=0.195]
-  %   {./Presentations-pictures/George-Boole.jpeg}
-
-  %   \caption{George Boole (1815--1864), brytyjski matematyk i~filozof.
-  %     Wprowadził metody algebraiczne do logiki. \textbf{Algebra Boole’a}
-  %   została nazwana na jego cześć.}
-
-  %   \label{fig:George-Boole}
-
-  % \end{figure}
-
 \end{frame}
 % ##################
 
@@ -1539,35 +1521,11 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Algebry Boole’a w~informatyce}
-
-
-  Algebra Boole’a może już być Państwu znana pod nazwą „logiki”,
-  „logiki matematycznej”, „rachunku zdań”, etc. Najbardziej poprawną
-  nazwą w~tym kontekście jest \textbf{klasyczny rachunku zdań}, jednak
-  informacje o~nim ograniczymy do niezbędnego minimum. Osoby zainteresowany
-  tym tematem mogą sięgnąć do następujących pozycji.
-  \begin{itemize}
-
-  \item Andrzej Grzegorczyk \textit{Zarys logiki matematycznej}
-    \parencite{Grzegorczyk-Zarys-logiki-matematycznej-Pub-1975}.
 
 
 
-  \item Willard von Ormian Quine \textit{Logika matematyczna}
-    \parencite{Quine-Logika-matematyczna-Pub-1974}.
 
 
-
-  \item Zdzisław Kraszewski \textit{Logika. Nauka rozumowania}
-    \parencite{Kraszewski-Logika-Pub-1984}.
-
-  \end{itemize}
-
-\end{frame}
-% ##################
 
 
 
