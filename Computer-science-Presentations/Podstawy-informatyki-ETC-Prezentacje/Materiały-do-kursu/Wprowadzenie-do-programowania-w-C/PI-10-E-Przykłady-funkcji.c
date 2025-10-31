@@ -1,13 +1,13 @@
 #include <stdio.h>
 
 /* Funkcja pobierająca dwa argumenty typu int i zwracająca liczbę całkowitą,
-   czyli typu int. */
+ * czyli typu int. */
 int function1(int x, int y) {
   return x - 2 * y;
 }
 
 /* Funkcja pobierająca trzy argumenty typu int i zwracająca liczbę całkowitą,
-   czyli typu int. Dodatkowo, funkcja ta opisuje wykonane obliczenia. */
+ * czyli typu int. Dodatkowo, funkcja ta opisuje wykonane obliczenia. */
 
 int function2(int x, int y, int z) {
   int value = x + 2 * y + 3 * z;
@@ -18,10 +18,10 @@ int function2(int x, int y, int z) {
 }
 
 /* Przykład funkcji, która nie pobiera żadnych argumentów, zwraca jednak
-   liczbę 4. */
+ * liczbę 4. */
 int function3() {
   /* Funkcji tego typu należy możliwie unikać. Bo niby co wartościowego ta
-     akurat funkcja robi? Nic. */
+   * funkcja robi? Nic. */
 
   return 4;
 }
@@ -38,15 +38,15 @@ int main() {
   printf("Wywołanie funkcji function2(1, 2, 3).\n");
 
   intVar1 = function2(1, 2, 3);
-  /* Wartość zwaracaną przez funkcję, możemy przypisać do zmiennej. */
+  /* Wartość zwracaną przez funkcję, możemy przypisać do zmiennej. */
 
   printf("Po wywołaniu funkcji function2(1, 2, 3).\n");
   printf("intVar1 == %d.\n\n", intVar1);
 
   printf("function3() == %d.\n", function3());
   /* Widzimy, że w języku C można stworzyć funkcję nie pobierającą argumentów.
-     Tego typu funkcje potrafią się niekiedy przydać, acz lepiej ich
-     unikać. */
+   * Tego typu funkcje potrafią się niekiedy przydać, acz lepiej ich
+   * unikać jak długo się da. */
 
 
 

@@ -1,17 +1,17 @@
 #include <stdio.h>
 
 /* Co może zawierać ciało funkcji? Prawie cały kod jaki do tej pory pisaliśmy
-   można umieścić wewnątrz funkcji. A jeśli się zastanowić to do tej pory
-   większość czasu spędziliśmy pisząć kod wewnątrz funkcj main().
-
-   Najważniejszy wyjątek o jakim musimy teraz poznać to inne funkcje.
-   Z wnętrza funkcji można wywołać inną funkcję, po to w zasadzie funkcje
-   isnieją, ale nie można wewnątrz jednej funkcji umieścić definicji innej
-   funkcji. */
+ * można umieścić wewnątrz funkcji. A jeśli się zastanowić to do tej pory
+ * większość czasu spędziliśmy pisząc kod wewnątrz funkcji main().
+ *
+ * Najważniejszy wyjątek o jakim musimy teraz poznać to inne funkcje.
+ * Z wnętrza funkcji można wywołać inną funkcję, po to w zasadzie funkcje
+ * istnieją, ale nie można wewnątrz jednej funkcji umieścić definicji innej
+ * funkcji. */
 
 /* By pokazać, że w ciele funkcji możemy definiować zmienne i używać
-   pętli, a także wiele innych rzeczy, napiszemy teraz funkcję, która
-   wypisuje liczby całkowice od startInt do stopInt i zwraca ich sumę. */
+ * pętli, a także wiele innych rzeczy, napiszemy teraz funkcję, która
+ * wypisuje liczby całkowice od startInt do stopInt i zwraca ich sumę. */
 int showAndSumNumbers(int startInt, int stopInt) {
   int sum = 0;
 

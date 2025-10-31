@@ -1,0 +1,595 @@
+% ------------------------------------------------------------------------------------------------------------------
+% Basic configuration of Beamera class and Jagiellonian theme
+% ------------------------------------------------------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ---------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme loceted in directory
+% "preambule"
+% ---------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+% BibLaTeX
+% ---------------------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{SystemyOperacyjneBibliography.bib}
+
+
+
+
+
+% ------------------------------
+% Importing packages, libraries and setting their configuration.
+% ------------------------------
+
+
+
+
+
+% ------------------------------
+% Special configuration for this particular presentation.
+% ------------------------------
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------------------------
+\title{Systemy operacyjne}
+\subtitle{Opinie o~GNU/Linux i~powiązanych sprawach}
+
+\author{Kamil Ziemian}
+
+
+% \date{}
+% ------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 62k+, 12k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Bitewise operators}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitewise operators can be hard}
+
+
+  Since bitwise operators are often confusing for beginners, so it can be
+  valuable to spent some time on them. We start from the question, why did
+  Java have them in the first place? The answer is twofold. First of all,
+  C~has them, because C~is a~language designed to work very close to
+  hardware, so it needed a~way to configure single bits, like bits in
+  register of some machine. Do everybody know what is a~register?
+
+  Second, Java was created in $1995$ and one of their main goals at this
+  time was to wrote code for various tools used with TV adapters. Which also
+  requires working on very low level and changing single bits
+  (p.~\parencite{Eckel-Thinking-in-Java-Ed-polska-Wyd-III-Pub-2003}).
+
+  \alert{Attention.} In this section of presentations $0$ means
+  \alert{single} bit in the zeroth state, the~same is true for $1$.
+  To describe numbers in decimal base, we will add to them subscript
+  $\text{d}$: $0_{ \text{d} }, 1_{ \text{d} }, 2_{ \text{d} }, 3_{ \text{d} }, \ldots$
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitewise conjunction}
+
+
+  We first need to understand how bitwise operators work for the pair of
+  bits. We start with bitwise conjunction operator $\&$, which obey
+  following rules: \\
+  $1 \, \& \, 1 == 1$, $1 \, \& \, 0 == 1$, $0 \, \& \, 1 == 0$,
+  $0 \, \& \, 0 == 0$.
+
+  We should note that Java we \alert{cannot} use $\&\&$ or any other logical
+  operator with numbers. This is a~good decisions, a~significant improvement
+  on C and C++. Bitwise operators can be used on \alert{both} numbers
+  and boolean variables. In such case $\text{true}$ count as single bit
+  $1$ and $\text{false}$ as single~$0$. \\
+  $\text{true} \, \& \, \text{true} == \text{true}$,
+  $\text{true} \, \& \, \text{false} == \text{false}$,
+  $\text{false} \, \& \, \text{true} == \text{false}$,
+  $\text{false} \, \& \, \text{false} == \text{false}$.
+
+  We need to stress that in Java you can use bitwise operators only with
+  boolean and integer types. We will now cover the use of bitwise operators
+  for integer numbers.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitewise conjunction for integers}
+
+
+  To make our considerations easier to understand, we will use only integers
+  numbers than can be written down using for bits, which basically means
+  from $0$ to $15$. We adopt the notation inspired by language Go, in which
+  $7_{ \text{d} } == 0\text{b}0111 == 1_{ \text{d} } + 1_{ \text{d} } \cdot
+  ( 2_{ \text{d} } )^{ 1_{ \text{d} } } + 1_{ \text{d} } \cdot
+  ( 2_{ \text{d} } )^{ 2_{ \text{d} } } + 0_{ \text{d} } \cdot
+  ( 2_{ \text{d} } )^{ 3_{ \text{d} } }$. At the end of this section you
+  will find full table of numbers from $0_{ \text{d} }$ to~$15_{ \text{d} }$
+  in binary notation.
+
+  Basically bitwise operators take two numbers, perform operation on every
+  pair of the coresponding bits and return number computed in such way.
+  Simple examples should explain it clearly.
+
+  We have $7_{ \text{d} } == 0\text{b}0111$
+  and~$14_{ \text{d} } == 0\text{b}1110$. \\
+  $7_{ \text{d} } \, \& \, 14_{ \text{d} } == 0\text{b}0111 \, \& \,
+  0\text{b}1110 ==
+  0\text{b}( 0 \, \& \, 1 )( 1 \, \& \, 1 )( 1 \, \& \, 1 )
+  ( 1 \, \& \, 0 ) ==$ \\
+  $== 0\text{b}0110 == 6_{ \text{d} }$,
+  so~$7_{ \text{d} } \, \& \, 14_{ \text{d} } == 6_{ \text{d} }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitewise conjunction for integers}
+
+
+  $5_{ \text{d} } == 0\text{b}0101$, $9_{ \text{d} } == 0\text{b}1001$. \\
+  $5_{ \text{d} } \, \& \, 9_{ \text{d} } == 0\text{b}0101 \, \& \,
+  0\text{b}1001 == 0\text{b}( 0 \, \& \, 1 )( 1 \, \& \, 0 )
+  ( 0 \, \& \, 0 )( 1 \, \& \, 1 ) ==$ \\
+  $== 0\text{b}0001 == 1_{ \text{d} }$,
+  so~$5_{ \text{d} } \, \& \, 9_{ \text{d} } == 1_{ \text{d} }$.
+
+  $3_{ \text{d} } == 0\text{b}0011$, $12_{ \text{d} } == 0\text{b}1100$. \\
+  $3_{ \text{d} } \, \& \, 12_{ \text{d} } == 0\text{b}0011 \, \& \,
+  0\text{b}1100 == 0\text{b}( 0 \, \& \, 1 )( 0 \, \& \, 1 )
+  ( 1 \, \& \, 0 )( 1 \, \& \, 0 ) ==$ \\
+  $== 0\text{b}0000 == 0_{ \text{d} }$,
+  so~$3_{ \text{d} } \, \& \, 12_{ \text{d} } == 0_{ \text{d} }$.
+
+  $1_{ \text{d} } == 0\text{b}0001$, $3_{ \text{d} } == 0\text{b}0011$. \\
+  $1_{ \text{d} } \, \& \, 3_{ \text{d} } == 0\text{b}0001 \, \& \,
+  0\text{b}0011 == 0\text{b}( 0 \, \& \, 0 )( 0 \, \& \, 0 )
+  ( 0 \, \& \, 1 )( 1 \, \& \, 1 ) ==$ \\
+  $== 0\text{b}0001 == 1_{ \text{d} }$,
+  so~$1_{ \text{d} } \, \& \, 3_{ \text{d} } == 1_{ \text{d} }$.
+
+  $1_{ \text{d} } == 0\text{b}0001$, $2_{ \text{d} } == 0\text{b}0010$. \\
+  $1_{ \text{d} } \, \& \, 2_{ \text{d} } == 0\text{b}0001 \, \& \,
+  0\text{b}0010 == 0\text{b}( 0 \, \& \, 0 )( 0 \, \& \, 0 )
+  ( 0 \, \& \, 1 )( 1 \, \& \, 0 ) ==$ \\
+  $== 0\text{b}0000 == 0_{ \text{d} }$,
+  so~$1_{ \text{d} } \, \& \, 2_{ \text{d} } == 0_{ \text{d} }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitwise alternative}
+
+  $1 \, | \, 1 == 1$, $1 \, | \, 0 == 1$, $0 \, | \, 1 == 0$,
+  $0 \, | \, 0 == 0$. \\
+  $\text{true} \, | \, \text{true} == \text{true}$,
+  $\text{true} \, | \, \text{false} == \text{true}$,
+  $\text{false} \, | \, \text{true} == \text{true}$, \\
+  $\text{false} \, | \, \text{false} == \text{false}$.
+
+  $7_{ \text{d} } \, | \, 14_{ \text{d} } == 0\text{b}0111 \, | \,
+  0\text{b}1110 ==
+  0\text{b}( 0 \, | \, 1 )( 1 \, | \, 1 )( 1 \, | \, 1 )
+  ( 1 \, | \, 0 ) ==$ \\
+  $== 0\text{b}1111 == 15_{ \text{d} }$,
+  so~$7_{ \text{d} } \, \& \, 14_{ \text{d} } == 15_{ \text{d} }$.
+
+  $5_{ \text{d} } == 0\text{b}0101$, $9_{ \text{d} } == 0\text{b}1001$. \\
+  $5_{ \text{d} } \, | \, 9_{ \text{d} } == 0\text{b}0101 \, | \,
+  0\text{b}1001 == 0\text{b}( 0 \, | \, 1 )( 1 \, | \, 0 )
+  ( 0 \, | \, 0 )( 1 \, | \, 1 ) ==$ \\
+  $== 0\text{b}1101 == 13_{ \text{d} }$,
+  so~$5_{ \text{d} } \, | \, 9_{ \text{d} } == 13_{ \text{d} }$.
+
+  $3_{ \text{d} } == 0\text{b}0011$, $12_{ \text{d} } == 0\text{b}1100$. \\
+  $3_{ \text{d} } \, | \, 12_{ \text{d} } == 0\text{b}0011 \, | \,
+  0\text{b}1100 == 0\text{b}( 0 \, | \, 1 )( 0 \, | \, 1 )
+  ( 1 \, | \, 0 )( 1 \, | \, 0 ) ==$ \\
+  $== 0\text{b}1111 == 0_{ \text{d} }$,
+  so~$3_{ \text{d} } \, | \, 12_{ \text{d} } == 15_{ \text{d} }$.
+
+  $1_{ \text{d} } == 0\text{b}0001$, $3_{ \text{d} } == 0\text{b}0011$. \\
+  $1_{ \text{d} } \, | \, 3_{ \text{d} } == 0\text{b}0001 \, | \,
+  0\text{b}0011 == 0\text{b}( 0 \, | \, 0 )( 0 \, | \, 0 )
+  ( 0 \, | \, 1 )( 1 \, | \, 1 ) ==$ \\
+  $== 0\text{b}0011 == 3_{ \text{d} }$,
+  so~$1_{ \text{d} } \, | \, 3_{ \text{d} } == 3_{ \text{d} }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitwise alternative}
+
+
+
+  $1_{ \text{d} } == 0\text{b}0001$, $2_{ \text{d} } == 0\text{b}0010$. \\
+  $1_{ \text{d} } \, | \, 2_{ \text{d} } == 0\text{b}0001 \, | \,
+  0\text{b}0010 == 0\text{b}( 0 \, | \, 0 )( 0 \, | \, 0 )
+  ( 0 \, | \, 1 )( 1 \, | \, 0 ) ==$ \\
+  $== 0\text{b}0011 == 3_{ \text{d} }$,
+  so~$1_{ \text{d} } \, | \, 2_{ \text{d} } == 3_{ \text{d} }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitwise XOR}
+
+
+  $1 \; \hat{} \; 1 == 0$, $1 \; \hat{} \; 0 == 1$,
+  $0 \; \hat{} \; 1 == 1$, $0 \; \hat{} \; 0 == 0$. \\
+  $\text{true} \; \hat{} \; \text{true} == \text{false}$,
+  $\text{true} \; \hat{} \; \text{false} == \text{true}$,
+  $\text{false} \; \hat{} \; \text{true} == \text{true}$, \\
+  $\text{false} \; \hat{} \; \text{false} == \text{false}$.
+
+  $7_{ \text{d} } \; \hat{} \; 14_{ \text{d} } == 0\text{b}0111 \; \hat{} \;
+  0\text{b}1110 ==
+  0\text{b}( 0 \; \hat{} \; 1 )( 1 \; \hat{} \; 1 )( 1 \; \hat{} \; 1 )
+  ( 1 \; \hat{} \; 0 ) ==$ \\
+  $== 0\text{b}1001 == 13_{ \text{d} }$,
+  so~$7_{ \text{d} } \; \hat{} \; 14_{ \text{d} } == 13_{ \text{d} }$.
+
+  $5_{ \text{d} } == 0\text{b}0101$, $9_{ \text{d} } == 0\text{b}1001$. \\
+  $5_{ \text{d} } \; \hat{} \; 9_{ \text{d} } == 0\text{b}0101 \; \hat{} \;
+  0\text{b}1001 == 0\text{b}( 0 \; \hat{} \; 1 )( 1 \; \hat{} \; 0 )
+  ( 0 \; \hat{} \; 0 )( 1 \; \hat{} \; 1 ) ==$ \\
+  $== 0\text{b}1100 == 12_{ \text{d} }$,
+  so~$5_{ \text{d} } \; \hat{} \; 9_{ \text{d} } == 12_{ \text{d} }$.
+
+  $3_{ \text{d} } == 0\text{b}0011$, $12_{ \text{d} } == 0\text{b}1100$. \\
+  $3_{ \text{d} } \; \hat{} \; 12_{ \text{d} } == 0\text{b}0011 \; \hat{} \;
+  0\text{b}1100 == 0\text{b}( 0 \; \hat{} \; 1 )( 0 \; \hat{} \; 1 )
+  ( 1 \; \hat{} \; 0 )( 1 \; \hat{} \; 0 ) ==$ \\
+  $== 0\text{b}1111 == 15_{ \text{d} }$,
+  so~$3_{ \text{d} } \; \hat{} \; 12_{ \text{d} } == 15_{ \text{d} }$.
+
+  $1_{ \text{d} } == 0\text{b}0001$, $3_{ \text{d} } == 0\text{b}0011$. \\
+  $1_{ \text{d} } \; \hat{} \; 3_{ \text{d} } == 0\text{b}0001 \; \hat{} \;
+  0\text{b}0011 == 0\text{b}( 0 \; \hat{} \; 0 )( 0 \; \hat{} \; 0 )
+  ( 0 \; \hat{} \; 1 )( 1 \; \hat{} \; 1 ) ==$ \\
+  $== 0\text{b}0010 == 2_{ \text{d} }$,
+  so~$1_{ \text{d} } \; \hat{} \; 3_{ \text{d} } == 2_{ \text{d} }$.
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bitwise XOR}
+
+
+  $1_{ \text{d} } == 0\text{b}0001$, $2_{ \text{d} } == 0\text{b}0010$. \\
+  $1_{ \text{d} } \; \hat{} \; 2_{ \text{d} } == 0\text{b}0001 \; \hat{} \;
+  0\text{b}0010 == 0\text{b}( 0 \; \hat{} \; 0 )( 0 \; \hat{} \; 0 )
+  ( 0 \; \hat{} \; 1 )( 1 \; \hat{} \; 0 ) ==$ \\
+  $== 0\text{b}0011 == 3_{ \text{d} }$,
+  so~$1_{ \text{d} } \; \hat{} \; 2_{ \text{d} } == 3_{ \text{d} }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Decimal and binary form of numbers}
+
+
+
+  \begin{center}
+
+    \begin{tabular}{|c|c|}
+      \hline
+      Decimal & Binary \\
+      \hline
+      $0_{ \text{d} }$ & $0\text{b}0000$ \\
+      \hline
+    \end{tabular}
+
+  \end{center}
+
+\end{frame}
+% ##################
+
+
+
+
+% % ######################################
+% \section{????}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+
+
+% % % ##################
+% % \jagiellonianendslide{Dziękuję za~uwagę.}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

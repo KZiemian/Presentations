@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
+  /* SPRAWDŹ KOMENTARZE. */
   /* Do przechowywanie pojedyczego znaku z systemu ASCII służy typ char
      (ang. character, znak). Używanie zmiennej typu char do przechowywania
      znaków spoza ASCII, takich jak „ą”, jest proszeniem siebie o problem. */
