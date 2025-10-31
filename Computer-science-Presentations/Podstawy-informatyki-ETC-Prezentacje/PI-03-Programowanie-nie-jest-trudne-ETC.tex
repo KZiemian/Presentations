@@ -125,7 +125,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 7k+,
+% Number of chars: 7k+, 44k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -993,7 +993,7 @@ eprint=true,
   Przykładowo, w~języku C, Go czy w~Pythonie można za~jego pomocą
   porównywać liczby zmiennoprzecinkowe, tworząc odpowiednie wyrażenia
   boolowskie. Tym samym \\
-  \texttt{0.25 == 0.5} \\
+  \texttt{0.5 == 1.5} \\
   jest w~tych językach wyrażeniem boolowskim, którego wartość logiczna jest
   równa \texttt{false}. Proszę pamiętać, że~w~każdym z~tych języków
   wartości logiczne są trochę inaczej reprezentowane.
@@ -1073,7 +1073,7 @@ eprint=true,
 
 
 % ######################################
-\section{Terminologia i~notacja algebry Boole’a}
+\section{Terminologia i~notacja dla algebry Boole’a}
 % ######################################
 
 
@@ -1119,39 +1119,55 @@ eprint=true,
   \colorhref{https://pl.wikipedia.org/wiki/Guido\_van\_Rossum}{Holender}.
   W~matematyce często zapisuję ją za pomocą symbolu~„$\wedge$”.
 
+  Standardowe oznaczenie dla sumy logicznej to „\texttt{||}”. W~Pythonie
+  operator ten oznacza słowo „\texttt{or}”. W~matematyce często stosuje~się
+  symbol~„$\vee$”.
+
+  Negacja logiczna zwykle oznaczana jest symbolem~„\texttt{!}”.
+  W~matematyce często stosuje~się symbol „\texttt{$\neg$}”, jak
+  w~\texttt{$\neg$zdanie1}.
+
+  Warto zwrócić uwagę, że~operator „różności” to~„\texttt{!=}” właśnie
+  z~powodu tego znaczenia symbolu „\texttt{!}”. Dlaczego jednak nie wybrano
+  dla niego symbolu „\texttt{!==}”? Pewnie, by nie pisać za dużo znaków.
+
 \end{frame}
 % ##################
+
+
+
+
+
 
 
 
 
 
 % ######################################
-\section{Parsowanie i~ewalucaja wyrażeń boolowskich}
+\section{Typy zmiennych}
 % ######################################
 
 
-
 % ##################
 \begin{frame}
-  \frametitle{Co to jest „parsowanie”?}
+  \frametitle{Czym są typy zmiennych?}
 
 
-  Słowo „parsowanie” (ang.~\textit{parsing}) jest wzięte z~angielskiego
-  i~oznacza, przynajmniej dla nas, tyle co „analiza składniowa wyrażenia”
-  (ang. \textit{syntax analysis~of expression}), czyli ustalenie co dane
-  wyrażenie tak naprawdę znaczy. Można uznać, że~jest to mądrze brzmiące
-  słowo na zrozumienie co dany wzór znaczy.
+  Widzieliśmy już kilka typów zmiennych, takich jak liczby całkowite
+  i~liczby zmiennoprzecinkowe: \\
+  \texttt{int intVar1 = 0;} \\
+  \texttt{int float64Var1 = 0.0;} \\
+  Czym jednak dokładniej jest typ zmiennej? To wbrew pozorom jest bardzo
+  głęboki problem, który pojawił~się w~rozważaniach
+  filozoficzno-matematycznych kilka dekad wcześniej, nim ludzkość
+  skonstruowała pierwszy komputer z~prawdziwego zdarzenia. Powinno być
+  oczywiste, że~na takim przedmiocie jak \textit{Podstawy informatyki}
+  możemy omówić ten temat tylko na intuicyjnym poziomie.
 
-  Przykładowo, co oznacza następujące wyrażenie arytmetyczne? \\
-  \texttt{1 + 2 * 3} \\
-  Parsowanie tego wyrażenia, które mamy tak wbite do głowy, że~pewnie o~tym
-  nie myślimy, mówi nam, że~najpierw musimy wykonać mnożenie
-  \texttt{2 * 3}, dostając liczbę \texttt{6}, następnie dodajemy do
-  niej liczbę~\texttt{1} dostając w~wyniku~\texttt{7}.
-
-  Teraz omówimy reguły parsowania wyrażeń boolowskich, ale najpierw musimy
-  wyjaśnić co to jest ewaluacja przez krótkie spięcie.
+  Dzisiejsze komputery buduje~się w~ten sposób, że~najmniejszą porcją
+  pamięci jakiej możemy używać jest jeden bajt, czyli $8$~bitów. Techniczny
+  termin na taką najmniejszą jednostkę pamięci nazywamy
+  \textbf{słowem} (ang.~\textit{word}).
 
 \end{frame}
 % ##################
@@ -1162,48 +1178,25 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Ewaluacja przez krótkie spięcie}
+  \frametitle{Abstrakcja w~informatyce}
 
 
-  \textbf{Ewaluacja} (ang. \textit{evaluation}) oznacza obliczanie wartości
-  danego wyrażenia. Nie potrafię znaleźć lepszego tłumaczenia tego zwrotu
-  na~język polski.
+  Historycznie istniały komputery, których najmniejszą jednostką było
+  powiedzmy $6$~bitów, ale to nie są zajęcia z~historii informatyki.
 
-  \textbf{Ewaluacja przez krótkie spięcie} (ang. \textit{short-circut
-    evaluation}) to powszechnie stosowana w~informatyce technika obliczania
-  wyrażeń boolowskich będących ciągiem \texttt{\&\&} lub \texttt{||}.
-  Metody ta jest stosowana w~większości najpopularniejszy języków
-  programowania.
+  Moglibyśmy korzystać komputera operując tylko na bajtach jako takich,
+  ale byłaby to męka nie do pojęcia. Jeśli ktoś z~Państwa pisał kiedyś
+  w~jakimś dialekcie assemblera, wie o~co chodzi.
 
-  Rozpatrzmy wyrażenie boolowskie postaci \\
-  \texttt{boolExpr1 \&\& boolExpr2 \&\& boolExpr3 \&\& boolExpr4} \\
-  Można je przepisać jako \\
-  \texttt{boolExpr1 \&\& (boolExpr2 \&\& (boolExpr3 \&\& boolExpr4))} \\
-  Pomimo, że~nie omówiliśmy reguł obliczania tego typu wyrażeń, sens
-  powyższej notacji powinien być jasny poprzez analogię z~arytmetyką.
+  By to zilustrować, proszę sobie wyobrazić, że~zamiast zdjęciem na dysku,
+  musimy operować ręcznie na milionie~(!) bajtów które takie zdjęcie tworzą.
+  Kopiowanie zdjęcia wyglądałoby wtedy mniej więcej tak. Weź bajty
+  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 999$ i~skopiuj
+  zawartość każdego z~nich do bajtów o~numerach $11 \, 000 \, 073$
+  do~$12 \, 000 \, 072$. Koszmar na~jawie!
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Ewaluacja przez krótkie spięcie}
-
-
-  \texttt{boolExpr1 \&\& (boolExpr2 \&\& (boolExpr3 \&\& boolExpr4))}
-
-  Z~własności iloczynu logicznego wynika, że~jeśli co najmniej jedno
-  wyrażenie boolowskie \texttt{boolExpr1}, \texttt{boolExpr2},
-  \texttt{boolExpr3}, \texttt{boolExpr4} zwraca wartość \texttt{false}, to
-  cały iloczyn ma wartość \texttt{false}.
-
-  Wynik ten automatycznie przenosi~się na wyrażenie o~tej samej formie
-  zbudowane z~$N$ wyrażeń boolowskich: \\
-  \texttt{boolExpr1 \&\& boolExpr2 \&\& \ldots{} \&\& boolExprN}.
+  By tego uniknąć wprowadzamy coś, co w~informatyce określamy terminem
+  \textbf{abstrakcja}.
 
 \end{frame}
 % ##################
@@ -1214,45 +1207,24 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Ewaluacja przez krótkie spięcie}
+  \frametitle{Abstrakcja w~informatyce}
 
 
-  Rozpatrzmy teraz następujące wyrażenie. \\
-  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
-    (false || \\ }
-  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+  Zdjęcie na komputerze to pewna abstrakcja, która zwalnia nas z~myślenia
+  o~nim jako o~milionie bajtów, które tworzą to zdjęcie na~dysku. Inny
+  przykładem tego typu zachowania jest to, że zamiast mówić „To jest
+  zwierzę, które jest ssakiem, ma cztery nogi, ogon, futro, jest
+  drapieżnikiem,\ldots” powiemy „To jest pies.”. Takie dzielenie rzeczy na różne
+  kategorie i~operowanie tak wprowadzonymi kategoriami okazuje~się być
+  bardzo wygodne nie tylko w~informatyce. Mamy nadzieję, że~takie
+  wyjaśnienie koncepcji abstrakcji w~informatyce jest dla Państwa
+  wystarczająca.
 
-  Mamy tu trzy wyrażenia w~iloczynie logicznym i~powinno być dość
-  oczywiste, że~obliczenie drugie i~trzeciego z~nich będzie
-  nasz kosztowało trochę pracy. Jednak obliczanie ich jest zupełnie
-  zbytecznie, bo skoro pierwsze wyrażenie ma wartość \texttt{false} to
-  wartość całego wyrażenie jest równa \texttt{false} i~nie musimy obliczać
-  konkretnej wartości dwóch pozostałych wyrażeń. Oszczędza to nam sporo
-  pracy.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Ewaluacja przez krótkie spięcie}
-
-
-  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
-    (false || \\ }
-  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
-
-  \textit{Uwaga.} W~rozumowaniu przedstawionym na poprzednim slajdzie
-  przyjęliśmy, że~interesuje nas tylko wartość logiczna \textit{całego}
-  wyrażenie, nie rezultaty zwrócone przez konkretne wyrazy.
-
-  Można napisać kod w~którym wartość zwrócone przez konkretne wyrażenia
-  składowe mają znaczenie, ale pisanie takiego kodu jest bardzo złą
-  praktyką. Dlatego ten przypadek będziemy ignorować.
+  Typy zmiennych istnieją z~tego samego powodu. Zamiast myśleć „Tu mam
+  cztery bajty.”, prościej jest myśleć „Tu mam liczbę całkowitą”. Poza tym,
+  typy zmiennych pozwalają komputerowi lepiej kontrolować działanie
+  programów, lecz to jest jednak temat rzeka, zbyt obszerny na ramy tego
+  przedmiotu, pozostaniemy więc na poziomie kilku ogólnych uwag.
 
 \end{frame}
 % ##################
@@ -1263,27 +1235,25 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Ewaluacja przez krótkie spięcie}
+  \frametitle{Pożytek z~typów}
 
 
-  \texttt{false \&\& (false || (true \&\& false)) \&\& (true \&\&
-    (false || \\ }
-  \hphantom{aaaa}\texttt{|| (true \&\& false)))}
+  Rozpatrzmy następujący, mocno uproszczony przykład. Powiedzmy, że~używamy
+  dwóch rodzajów plików: graficznych oraz tekstowych. Dzięki typom, nasz
+  program może rozpoznać, że~chcemy zapisać coś do~pliku graficznego, ale
+  otwarliśmy plik tekstowy, więc zgłosi on błąd, co jest bardzo pożądanym
+  zachowaniem. Jeśli Państwo jeszcze nie rozumieją dlaczego, to na tym
+  przedmiocie napotkamy zapewne dostatecznie wiele przykładów, które
+  pokażą, czemu otrzymywanie błędów to dobra rzecz.
 
-  % \vspace{0.8em}
-
-
-  Regułę ewaluacji przez krótkie spięcie dla iloczynu logicznego można więc
-  opisać w~następujący sposób. Jeśli na najwyższym poziomie analizowane
-  wyrażenie jest ciągiem mniejszych wyrażeń połączonych symbolem
-  \texttt{\&\&} to obliczamy je od lewej do prawej, aż~dojdziemy do końca
-  lub do pierwszego wyrażenia które zwróciło jako swoją wartość
-  \texttt{false}. W~tym ostatnim przypadku zwracamy jako wartość całego
-  wyrażenia \texttt{false} i~nie obliczamy dalszych wyrazów. W~pozostałych
-  przypadkach zwracamy \texttt{true} jako wartość całego wyrażenia.
-
-  Jeśli to wyrażenie jest dla Państwa intuicyjnie zrozumiałe, to jest to
-  ważniejsze, niż ewentualne luki w~jego sformułowaniu.
+  Należy też dodać, że~w~różnych językach granica między typami jest mniej
+  lub bardziej ostra. Przykładowo, czy w~miejscu, gdzie program oczekuje
+  liczby zmiennoprzecinkowej, mogę użyć liczby całkowitej~$1$? Wedle
+  niektórych języków, tak, bo wszak wiadomo jak zamienić liczbę
+  całkowitą~$1$ na liczbę zmiennoprzecinkową~$1.0$. Wedle innych języków,
+  nie, bo~taka zmiana jednego typu liczbowego na drugi, może prowadzić do
+  błędów numerycznych, których programista może nie być świadomy pisząc
+  program.
 
 \end{frame}
 % ##################
@@ -1294,254 +1264,21 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Ewaluacja przez krótkie spięcie}
-
-
-  \texttt{boolExpr1 || boolExpr2 || boolExpr3 || \ldots{} || boolExprN}
-
-  Analogicznie działa ewaluacja przez krótkie spięcie dla ciągu wyrażeń
-  połączonych operacją \texttt{||}. Tym razem korzystamy z~tego, że~jeśli
-  w~tym ciągu choć jedno wyrażenie ma wartość logiczną \texttt{true} to całe
-  to wyrażenie ma wartość ma wartość \texttt{true}.
-
-  Jeśli więc na najwyższym poziomie analizowane wyrażenie jest ciągiem
-  mniejszych wyrażeń połączonych operatorem \texttt{||} to obliczamy je od
-  lewej do prawej, aż~dojdziemy do końca lub do pierwszego wyrażenia które
-  zwróciło jako swoją wartość \texttt{true}. W~tym ostatnim przypadku
-  zwracamy jako wartość całego wyrażenia \texttt{true} i~nie obliczamy
-  dalszych wyrazów. W~pozostałych przypadkach zwracamy \texttt{false} jako
-  wartość całego wyrażenia.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Parsowanie i~ewaluacja wyrażeń boolowskich}
-
-
-  Reguły mówiące w~jakiej kolejności obliczać wyrażenia boolowskie
-  są podane poniżej, przy czym najpierw wykonujemy te o~niższym numerze.
-  Od razu musimy zaznaczyć, że~zasady te obowiązują w~większości języków
-  programowania, acz, bo czemu życie miałoby być tak proste, zdarzają~się
-  wyjątki.
-
-  \begin{itemize}
-
-  \item[1)] Jeżeli na najwyższym poziomie wyrażenie jest ciągiem
-    \texttt{\&\&} albo \texttt{||} to dokonujemy ewaluacji przez krótkie
-    spięcie.
-
-
-
-  \item[2)] Wyrażenie w~nawiasach.
-
-
-
-  \item[2)] Negacja logiczna.
-
-
-
-  \item[3)] Iloczyn logiczny.
-
-
-
-  \item[4)] Suma logiczna.
-
-
-
-  \item[5)] Porównanie logiczne.
-
-  \end{itemize}
-
-  Tutaj ponownie, intuicyjna zrozumiałość jest ważniejsza, niż precyzyjne
-  sformułowanie tych reguł.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Przykład~1}
-
-
-  Rozpatrzmy wyrażenie \\
-  \texttt{false || true \&\& (false || !false) || !true \&\& true}
-
-  W~wyniku jego parsowania na podstawie reguł 2--5 dostajemy: \\
-  \texttt{false || (true \&\& (false || (!false))) ||
-    ((!true) \&\& true)} \\
-  Teraz stosujemy ewaluację przez krótkie spięcie. Wyrażenie \texttt{false}
-  ma wartość \texttt{false}, więc przechodzi do drugiego z~nich: \\
-  \texttt{(true \&\& (false || (!false)))} \\
-  Stosując kilkakrotnie regułę~2 dochodzimy do wniosku, że~najpierw musimy
-  obliczyć \\
-  \texttt{!false == true}. \\
-  Mamy więc \\
-  \texttt{(true \&\& (false || true))} \\
-  Znów z~reguły~2 wynika, że~najpierw należy wyliczyć \\
-  \texttt{(false || true) == true}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Przykład~1}
-
-
-  Mamy więc \\
-  \texttt{(true \&\& (false || (!false))) == true \&\& true == true}.
-
-  Z~tego wynika, że~drugi wyrażenie w \\
-  \texttt{false || true \&\& (false || !false) || !true \&\& true}, \\
-  ma wartość logiczną \texttt{true}, więc na mocy ewaluacji przez krótkie
-  spięcie, całe to wyrażenie ma wartość logiczną \texttt{true} i~nie
-  ma potrzeby obliczanie wartości trzeciego wyrażenia.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Przykład~2}
-
-
-  Rozpatrzmy teraz kilka bardzo prostych, ale również bardzo użytecznych
-  w~informatyce wyrażeń boolowskich, ewaluowanych metodą krótkiego spięcia.
-
-  \texttt{boolExpr1 \&\& boolExpr2} \\
-  Załóżmy, że~\texttt{boolExpr1} zwraca nam wartość \texttt{true}. Wówczas
-  wyrażenie przyjmuje postać \\
-  \texttt{true \&\& boolExpr2}. \\
-  W~takiej sytuacji wyrażenie \texttt{boolExpr2} musi zostać obliczone i~na
-  podstawie przytoczonej tabelki dla \texttt{\&\&} możemy~się łatwo
-  przekonać, że~zachodzi zależność \\
-  \texttt{true \&\& boolExpr2 == boolExpr2}.
-
-  Jeśli \texttt{boolExpr1} zwraca wartość \texttt{false}, to~zgodnie
-  z~zasadą ewaluacji przez krótkie spięcie wartość \texttt{boolExpr2}
-  nie zostanie nigdy wyliczona.
-
-\end{frame}
-% ##################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rachunkowa strona algebry Boole’a}
-
-
-  Jeśli funkcja o~nazwie \texttt{funBool} zwraca jako wartość zmienną
-  boolowską, to jej wywołanie \\
-  \texttt{funBool(argumenty funkcji)} \\
-  jest wyrażeniem boolowskim. Takie funkcje spotyka~się w~praktyce, jednak
-  częściej wyrażenia boolwskie tworzy~się za pomocą odpowiednich operatorów
-  logicznych.
-
-  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
-
-  To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
-  wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
-  w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
-  Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
-  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
-  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
-  stanie~się bardziej zrozumiałe.
-
-  Aby podkreślić, że~używamy słowa „i” w~tym konkretnym znaczeniu,
-  zamiast „i” będziemy pisać „\texttt{\&\&}”. Ten dziwaczny wybór
-  jest podyktowany tym, że~w~języku~C, jak i~większości innych języków,
-  spójnik „i” oznacza~się właśnie tym symbolem. Będziemy więc pisać \\
-  „Jan jest na mieście \texttt{\&\&}~Jan je kanapkę.” \\
-  Może ten zapis wygląda dziwnie, ale informatycy są do niego
-  przyzwyczajeni.
-  By użyć bardziej informatycznego przykładu, zdanie \\
-  \texttt{(intVar1 < 3) \&\& (-5 < intVar1)} \\
-  oznacza, że~wartość przechowywana przez zmienną \texttt{intVar1}
-  spełnia nierówność \texttt{-5 < intVar1 < 3}. Jeśli to nie jest jasne,
-  to proszę~się nad tym chwilę zastanowić.
-
-  Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
-  Język C i~większość najpopularniejszych języków programowania oznacza
-  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
-  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
-    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
-  angielskiego symbolu „\texttt{and}”. W~matematyce często zapisuję~się ją
-  za pomocą symbolu~„$\wedge$”.
-
-  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
-
-    Gdy chodzi o~notację dla iloczynu logicznego to ta jest dość zróżnicowana.
-  Język C i~większość najpopularniejszych języków programowania oznacza
-  go za~pomocą symbolu . Proszę zauważyć, że~w~tych językach
-  symbol „\texttt{\&}” oznacza pewną operację, która jednak \textit{nie
-    jest} iloczynem logicznym. Język Python oznacza ją za pomocą
-  angielskiego symbolu „\texttt{and}”.
-
-   W~matematyce często stosuje~się symbol
-  „\texttt{$\neg$}”. Negację wyrażenia \texttt{expr} zapiszemy więc odpowiednio
-  jako  lub \texttt{$\neg$expr}.
-
-
-  My~będziemy korzystać z~symbolu „\texttt{\&\&}”.
-
-  To, że~w~języku polskim słowo~„i” może występować w~innych znaczeniach,
-  wychodzi poza interesujący nas temat. Przykładowo „i”~ma inny sens
-  w~zdaniu „Weź mleko i~jajka i~mąkę.”, niż ten który właśnie omówiliśmy.
-  Jednak dla nas, jako dla informatyków, interesujące jest nie badanie
-  takich zawiłości języków naturalnych, czyli używanych przez ludzi,
-  lecz pewna bardzo konkretne procedury rachunkowe. To mamy nadzieję zaraz
-  stanie~się bardziej zrozumiałe.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Algebry Boole’a w~informatyce}
-
-
-  Do informatyki algebry Boole’a wprowadził je zapewne Claude E.~Shannon
-  (1916--2001), gdy zrozumiał jakie użyteczne w~projektowaniu układów
-  elektronicznych mogą być idea Boole’a, które poznał na kursie
-  z~filozofii. Obecnie są one powszechnie stosowane tak w~teorii jak
-  i~praktyce informatyki, że~każdy dobry informatyk musi~się umieć nimi
-  posługiwać.
+  \frametitle{Pożytek z~typów}
+
+
+  W~tym drugim typie~;) języków, programista musi jawnie poprosić
+  o~\textbf{konwersje typów}. Czyli musi napisać kod, który mówi coś
+  w~stylu „Wiem, że~to jest liczba całkowita i~w~tym miejscu masz
+  ją zamienić na liczbę zmiennoprzecinkową. Ja biorę odpowiedzialność
+  za to co~się stanie.” O~konwersji typów powiem w~swoim czasie.
+
+  Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
+  Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
+  pytania~się programisty o~pozwolenie, przy innych typach musimy~się sami
+  napracować. Wolelibyśmy uniknąć szczegółowej dyskusji tego typu zagadnień,
+  gdyż są ważniejsze rzeczy, którym należy poświęcić czas na~przedmiocie
+  \textit{Podstawy informatyki}.
 
 \end{frame}
 % ##################
