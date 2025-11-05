@@ -1,5 +1,5 @@
-// We can now write the implementation of the lamp, about what we were
-// talking about at the beginning of our course.
+// We can now write the implementation of the lamp, about which we were
+// talking very long ago.
 
 // This code is very unprofessional, but it works. Not the worst thing in
 // the world.

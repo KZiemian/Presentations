@@ -17,7 +17,7 @@ class TwoNumbers {
 // have two fields with the names m_intVar1 and m_intVar2.
 
 // We have seen "class Main" many times already. We explain what it means,
-// when we learn basic things about the classes.
+// when we learn a few things about the classes.
 class Main {
     public static void main(String[] args) {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers();

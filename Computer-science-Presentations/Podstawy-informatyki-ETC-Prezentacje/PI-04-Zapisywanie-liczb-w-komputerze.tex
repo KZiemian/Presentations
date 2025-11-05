@@ -11,7 +11,7 @@
 
 
 
-% Options: t -- align text to the top of the frame
+% Options: t -- align text to the top of the frame.
 \documentclass[10pt,t]{beamer}
 \mode<presentation>
 \usetheme[style=\PresentationStyle]{jagiellonian}
@@ -22,7 +22,7 @@
 
 % ------------------------------------------------------------------------------------
 % Procesing configuration files of Jagiellonian theme located in
-% the directory "preambule"
+% the directory "preambule".
 % ------------------------------------------------------------------------------------
 \input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
 \input{./preambule/TextposConfiguration/TextposConfiguration.tex}
@@ -150,250 +150,6 @@ eprint=true,
 
 \end{frame}
 % ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Wprowadzenie do liczb pseudolosowych}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czemu potrzebujemy liczb pseudolosowych?}
-
-
-  Zacznijmy od dyskusji problemu pozornie odległego od informatyki. Mamy
-  fabrykę, która produkuje maszynki do golenia. Wyprodukowaliśmy milion
-  maszynek, wzięliśmy jedną do ręki, ona zaś złamała~się od razu. Jeśli
-  wyślemy takie maszynki do sklepów, bo klienci przestaną je kupować, a~my
-  tego nie chcemy. Stajemy jednak przed pytaniem, ile maszynek z~miliona
-  jest tak niskiej jakości? Jeśli jest ich $900 \, 000$ to lepiej wszystkie
-  policzyć na straty, bo sprzedaż ich tylko zniszczy nam reputację. Co jeśli
-  jednak tylko $1000$ jest w~tak złym stanie i~my przypadkowo wybraliśmy
-  jedną z~nich? Wtedy oczywiście należy wysłać cały milion do sklepów, gdyż
-  $1000$ klientom którzy mieli pecha, po prostu zwrócimy maszynki na koszt
-  firmy.
-
-  Jak jednak stwierdzić, ile maszynek jest dobrych, a~ile złych? Nie
-  sprawdzimy każdej z~miliona, bo to za dużo kosztuje. Możemy jednak
-  sprawdzić spokojnie $100$. Tylko które $100$?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czemu potrzebujemy liczb pseudolosowych?}
-
-
-  Jeśli sprawdzimy ostatnie $100$ wyprodukowanych, to może się okazać,
-  że~maszyna zepsuła~się pod koniec, ostatni $1000$ maszynek jest przez to
-  do utylizacji, ale wszystkie inne są dobre. Jeśli więc będziemy mieli
-  pecha, to wyciągniemy błędny wniosek z~jakości $100$ maszynek i~zmarnujemy
-  dobre $999 \, 000$.
-
-  To może wziąć $100$ pierwszych maszynek? Ale co jeśli maszyna zepsuła~się
-  po wyprodukowaniu pierwszego tysiąca, wtedy $100$ pierwszych maszynek
-  jest dobra, a~my wyślemy do sklepów $999 \, 000$ zepsutych, co zrujnuje
-  nam reputację. To może wziąć $100$ maszynek ze środka?
-
-  Dziedziny matematyki jakimi są rachunek prawdopodobieństwa i~statystyka,
-  podpowiadają nam jakie są optymalne strategie radzenia sobie z~takimi
-  problemami. Ponieważ wątpimy, że~Państwo chcą słuchać o~tych sprawach,
-  wspominamy o~tym tylko dlatego, że~stanowi to motywację, dla tego
-  co będziemy robić.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czemu potrzebujemy liczb pseudolosowych?}
-
-
-  Jedną z~dobrych strategii poradzenia sobie z~tym problemem, jest
-  ponumerowanie wszystkich maszynek od~$1$ do~$1 \, 000 \, 000$, wylosowanie
-  $100$ liczb z~tego zakresu w~sposób losowy, następnie przetestowanie
-  tak wylosowanych maszynek. W~zależności od tego jak wiele z~tych maszynek
-  było dobrej jakości, a~ile zepsutych, podejmiemy decyzję co zrobić
-  z~całą liczącą $1 \, 000 \, 000$ sztuk produkcją. Oczywiście, może~się
-  zdarzyć, iż~mamy wielkiego pecha i~wyciągniemy zupełnie błędny wniosek,
-  ale użyta metoda pozwala bardzo mocno ograniczyć wystąpienie takich
-  sytuacji.
-
-  Dzisiaj takie analizy testowania jakości potrafią być już bardzo złożone
-  i~powyższy przykład nie powinien być traktowany jako nic więcej, niż
-  prosta ilustracja problemu. Nas zaś zostawia z~następującym pytaniem: skąd
-  wziąć $100$ liczb losowy z~zadanego przedziału?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
-
-
-  W~dzisiejszych czasach zwykle wtedy siadamy do komputera i~prosimy go
-  o~wygenerowanie nam $100$~odpowiednich liczb. I~tutaj wracamy do
-  informatyki.
-
-  Okazuje~się, że~znalezienie liczb naprawdę losowy jest niezwykle trudne.
-  Teoria prawdopodobieństwa i~statystyka pozwalają nam znaleźć prawie
-  idealne rozwiązania wielu praktycznych problemów, jeśli tylko umiem
-  znaleźć prawdziwie losowy zestaw liczb. W~poprzednim przykładzie były to
-  numery wyprodukowanych maszynek. Włożono więc bardzo wiele wysiłku
-  w~szukanie liczb (pseudo)losowych oraz testowanie, czy dany ciąg liczb
-  jest odpowiednio dobry.
-
-  Dzisiejsze wymagania nauki, techniki i~gospodarki sprawiły, że~nasze metody
-  badania czy coś jest losowe, stały~się niezwykle subtelne i~wiele źródeł
-  liczb losowych musiało zostać odrzuconych jako nie dość dobre.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
-
-
-  Przykładowo biorę monetę i~wyrzucam ciąg $\text{O}$, $\text{O}$,
-  $\text{O}$, $\text{R}$ ($\text{O}$~-- orzeł, $\text{R}$~-- reszka)
-  i~przypisuję orłowi wartość~$1$, a~reszce~$0$, dostaje więc liczbę
-  $0\text{b}1110 == 14$. Jednak moneta nie jest nigdy idealnie wyważona,
-  więc rzucając nią, będziemy dostawali, przykładowo, trochę więcej orłów,
-  niż reszek. Nasze dzisiejsze wymagania odnośnie jakości liczb losowych
-  są tak wysokie, że~tego typu odstępstwa od prawdziwej losowości, już
-  skreślają daną metodę dla nas.
-
-  Również tego przykładu nie należy traktować specjalnie poważnie. Od jego
-  zgodności z~rzeczywistością ważniejsza jest ogólna idea, która za nim
-  stoi.
-
-  Mam nadzieję, że~to Państwa przynajmniej trochę przekonało, że~liczby
-  losowe są przydatne w~wielu praktycznych problemach, również
-  w~informatyce. Jednak przykład z~fabryką maszynek jest prostszy do
-  zrozumienia, niż problemy napotykane w~informatyce.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
-
-
-  Jeśli nie umiemy znaleźć liczb naprawdę losowych, to może uda nam~się
-  znaleźć liczby, które są wystarczająco podobne do losowych? Takie
-  właśnie liczby, które nie są naprawdę losowe, ale są do nich
-  wystarczająco podobne nazywamy liczbami
-  \colorhref{https://en.wikipedia.org/wiki/Pseudorandomness}
-  {pseudolosowymi}. Generowanie takich liczb to wciąż otwarta dziedzina
-  badań, ale najbardziej podstawowe idea nie są trudne do zrozumienia.
-
-  Zacznijmy od znalezienia funkcji, która zmienia~się w~bardzo
-  „nieprzewidywalny” sposób. Przykład takiej funkcji napisanej w~języku~C,
-  można znaleźć w~pliku ????
-
-  Zaprezentowana tam funkcja \texttt{generatePseudoRandomNumber()} jest
-  funkcją deterministyczną, czyli \texttt{generatePseudoRandomNumber(0)}
-  zawsze zwraca liczbę $33$, \texttt{generatePseudoRandomNumber(1)}
-  zwraca $308$, \texttt{generatePseudoRandomNumber(2)} zwraca $34$, etc.
-  Jednak powiedzenie nawet w~przybliżeniu, ile będzie wynosiła wartość
-  tej funkcji na wybrany argumencie, nie jest zadaniem prostym.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
-
-
-  Mają już taką „nieprzewidywalną” funkcję, wybieramy liczbę zwaną
-  „ziarnem” (ang.~\textit{seed}). Wybór ziarna jest zupełnie dowolny,
-  możemy je na przykład otrzymać rzucają kostką. Następnie obliczamy
-  wartość \texttt{generatePseudoRandomNumber(ziarno)}. Myśl za tym stoi
-  jest mniej więcej taka. Jeśli mam „trochę losową” liczbę jaką jest ziarno
-  i~wrzucę ją do „nieprzewidywalnej” funkcji, to rezultat zwrócony przez tę
-  funkcję będzie „bardziej losowy”, niż to od czego zacząłem.
-
-  Istnieje wielka literatura na temat tego, co to znaczy być mniej lub
-  bardziej losowym i~jestem przekonany, że~nikt z~Państwa nie chce o~tym
-  słuchać. Na tym kursie zupełnie wystarczy intuicyjne zrozumienie tego
-  zagadnienia.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
-
-
-  Wróćmy jeszcze na chwilę do naszej funkcji generującej pseudolosowe liczby
-  \texttt{generatePseudoRandomNumber(ziarno)}. Funkcje tego typu
-  noszą nazwę \textbf{generatorów liczb pseudolosowych}, choć niewątpliwie
-  ta konkretna funkcja jest wyjątkowo kiepskim generatorem takich liczb.
-  Jestem ze sposób poprawienia działania takich funkcji jest wywołanie
-  jej na samej sobie, w~sposób pokazany w~pliku ???.
-
-  To jakiego generator liczb pseudolosowych należy użyć, zależy w~dużej
-  mierze od~tego, jak dobrych liczb tego typu potrzebujemy by~rozwiązać
-  nasz problem? Jako, że~to jest tylko kurs \textit{Podstaw informatyki},
-  chcieliśmy jedynie zarysować przed Państwem ten problem oraz pokazać,
-  jakie narzędzia daje nam w~tej kwestii język~C.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -887,6 +643,232 @@ eprint=true,
 % ##################
 
 
+
+
+
+% ######################################
+\section{Wprowadzenie do liczb pseudolosowych}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czemu potrzebujemy liczb pseudolosowych?}
+
+
+  Zacznijmy od dyskusji problemu pozornie odległego od informatyki. Mamy
+  fabrykę, która produkuje maszynki do golenia. Wyprodukowaliśmy milion
+  maszynek, wzięliśmy jedną do ręki, ona zaś złamała~się od razu. Jeśli
+  wyślemy takie maszynki do sklepów, bo klienci przestaną je kupować, a~my
+  tego nie chcemy. Stajemy jednak przed pytaniem, ile maszynek z~miliona
+  jest tak niskiej jakości? Jeśli jest ich $900 \, 000$ to lepiej wszystkie
+  policzyć na straty, bo sprzedaż ich tylko zniszczy nam reputację. Co jeśli
+  jednak tylko $1000$ jest w~tak złym stanie i~my przypadkowo wybraliśmy
+  jedną z~nich? Wtedy oczywiście należy wysłać cały milion do sklepów, gdyż
+  $1000$ klientom którzy mieli pecha, po prostu zwrócimy maszynki na koszt
+  firmy.
+
+  Jak jednak stwierdzić, ile maszynek jest dobrych, a~ile złych? Nie
+  sprawdzimy każdej z~miliona, bo to za dużo kosztuje. Możemy jednak
+  sprawdzić spokojnie $100$. Tylko które $100$?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czemu potrzebujemy liczb pseudolosowych?}
+
+
+  Jeśli sprawdzimy ostatnie $100$ wyprodukowanych, to może się okazać,
+  że~maszyna zepsuła~się pod koniec, ostatni $1000$ maszynek jest przez to
+  do utylizacji, ale wszystkie inne są dobre. Jeśli więc będziemy mieli
+  pecha, to wyciągniemy błędny wniosek z~jakości $100$ maszynek i~zmarnujemy
+  dobre $999 \, 000$.
+
+  To może wziąć $100$ pierwszych maszynek? Ale co jeśli maszyna zepsuła~się
+  po wyprodukowaniu pierwszego tysiąca, wtedy $100$ pierwszych maszynek
+  jest dobra, a~my wyślemy do sklepów $999 \, 000$ zepsutych, co zrujnuje
+  nam reputację. To może wziąć $100$ maszynek ze środka?
+
+  Dziedziny matematyki jakimi są rachunek prawdopodobieństwa i~statystyka,
+  podpowiadają nam jakie są optymalne strategie radzenia sobie z~takimi
+  problemami. Ponieważ wątpimy, że~Państwo chcą słuchać o~tych sprawach,
+  wspominamy o~tym tylko dlatego, że~stanowi to motywację, dla tego
+  co będziemy robić.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czemu potrzebujemy liczb pseudolosowych?}
+
+
+  Jedną z~dobrych strategii poradzenia sobie z~tym problemem, jest
+  ponumerowanie wszystkich maszynek od~$1$ do~$1 \, 000 \, 000$, wylosowanie
+  $100$ liczb z~tego zakresu w~sposób losowy, następnie przetestowanie
+  tak wylosowanych maszynek. W~zależności od tego jak wiele z~tych maszynek
+  było dobrej jakości, a~ile zepsutych, podejmiemy decyzję co zrobić
+  z~całą liczącą $1 \, 000 \, 000$ sztuk produkcją. Oczywiście, może~się
+  zdarzyć, iż~mamy wielkiego pecha i~wyciągniemy zupełnie błędny wniosek,
+  ale użyta metoda pozwala bardzo mocno ograniczyć wystąpienie takich
+  sytuacji.
+
+  Dzisiaj takie analizy testowania jakości potrafią być już bardzo złożone
+  i~powyższy przykład nie powinien być traktowany jako nic więcej, niż
+  prosta ilustracja problemu. Nas zaś zostawia z~następującym pytaniem: skąd
+  wziąć $100$ liczb losowy z~zadanego przedziału?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
+
+
+  W~dzisiejszych czasach zwykle wtedy siadamy do komputera i~prosimy go
+  o~wygenerowanie nam $100$~odpowiednich liczb. I~tutaj wracamy do
+  informatyki.
+
+  Okazuje~się, że~znalezienie liczb naprawdę losowy jest niezwykle trudne.
+  Teoria prawdopodobieństwa i~statystyka pozwalają nam znaleźć prawie
+  idealne rozwiązania wielu praktycznych problemów, jeśli tylko umiem
+  znaleźć prawdziwie losowy zestaw liczb. W~poprzednim przykładzie były to
+  numery wyprodukowanych maszynek. Włożono więc bardzo wiele wysiłku
+  w~szukanie liczb (pseudo)losowych oraz testowanie, czy dany ciąg liczb
+  jest odpowiednio dobry.
+
+  Dzisiejsze wymagania nauki, techniki i~gospodarki sprawiły, że~nasze metody
+  badania czy coś jest losowe, stały~się niezwykle subtelne i~wiele źródeł
+  liczb losowych musiało zostać odrzuconych jako nie dość dobre.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
+
+
+  Przykładowo biorę monetę i~wyrzucam ciąg $\text{O}$, $\text{O}$,
+  $\text{O}$, $\text{R}$ ($\text{O}$~-- orzeł, $\text{R}$~-- reszka)
+  i~przypisuję orłowi wartość~$1$, a~reszce~$0$, dostaje więc liczbę
+  $0\text{b}1110 == 14$. Jednak moneta nie jest nigdy idealnie wyważona,
+  więc rzucając nią, będziemy dostawali, przykładowo, trochę więcej orłów,
+  niż reszek. Nasze dzisiejsze wymagania odnośnie jakości liczb losowych
+  są tak wysokie, że~tego typu odstępstwa od prawdziwej losowości, już
+  skreślają daną metodę dla nas.
+
+  Również tego przykładu nie należy traktować specjalnie poważnie. Od jego
+  zgodności z~rzeczywistością ważniejsza jest ogólna idea, która za nim
+  stoi.
+
+  Mam nadzieję, że~to Państwa przynajmniej trochę przekonało, że~liczby
+  losowe są przydatne w~wielu praktycznych problemach, również
+  w~informatyce. Jednak przykład z~fabryką maszynek jest prostszy do
+  zrozumienia, niż problemy napotykane w~informatyce.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
+
+
+  Jeśli nie umiemy znaleźć liczb naprawdę losowych, to może uda nam~się
+  znaleźć liczby, które są wystarczająco podobne do losowych? Takie
+  właśnie liczby, które nie są naprawdę losowe, ale są do nich
+  wystarczająco podobne nazywamy liczbami
+  \colorhref{https://en.wikipedia.org/wiki/Pseudorandomness}
+  {pseudolosowymi}. Generowanie takich liczb to wciąż otwarta dziedzina
+  badań, ale najbardziej podstawowe idea nie są trudne do zrozumienia.
+
+  Zacznijmy od znalezienia funkcji, która zmienia~się w~bardzo
+  „nieprzewidywalny” sposób. Przykład takiej funkcji napisanej w~języku~C,
+  można znaleźć w~pliku ????
+
+  Zaprezentowana tam funkcja \texttt{generatePseudoRandomNumber()} jest
+  funkcją deterministyczną, czyli \texttt{generatePseudoRandomNumber(0)}
+  zawsze zwraca liczbę $33$, \texttt{generatePseudoRandomNumber(1)}
+  zwraca $308$, \texttt{generatePseudoRandomNumber(2)} zwraca $34$, etc.
+  Jednak powiedzenie nawet w~przybliżeniu, ile będzie wynosiła wartość
+  tej funkcji na wybrany argumencie, nie jest zadaniem prostym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
+
+
+  Mają już taką „nieprzewidywalną” funkcję, wybieramy liczbę zwaną
+  „ziarnem” (ang.~\textit{seed}). Wybór ziarna jest zupełnie dowolny,
+  możemy je na przykład otrzymać rzucają kostką. Następnie obliczamy
+  wartość \texttt{generatePseudoRandomNumber(ziarno)}. Myśl za tym stoi
+  jest mniej więcej taka. Jeśli mam „trochę losową” liczbę jaką jest ziarno
+  i~wrzucę ją do „nieprzewidywalnej” funkcji, to rezultat zwrócony przez tę
+  funkcję będzie „bardziej losowy”, niż to od czego zacząłem.
+
+  Istnieje wielka literatura na temat tego, co to znaczy być mniej lub
+  bardziej losowym i~jestem przekonany, że~nikt z~Państwa nie chce o~tym
+  słuchać. Na tym kursie zupełnie wystarczy intuicyjne zrozumienie tego
+  zagadnienia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Skąd wziąć liczby (pseudo)losowe?}
+
+
+  Wróćmy jeszcze na chwilę do naszej funkcji generującej pseudolosowe liczby
+  \texttt{generatePseudoRandomNumber(ziarno)}. Funkcje tego typu
+  noszą nazwę \textbf{generatorów liczb pseudolosowych}, choć niewątpliwie
+  ta konkretna funkcja jest wyjątkowo kiepskim generatorem takich liczb.
+  Jestem ze sposób poprawienia działania takich funkcji jest wywołanie
+  jej na samej sobie, w~sposób pokazany w~pliku ???.
+
+  To jakiego generator liczb pseudolosowych należy użyć, zależy w~dużej
+  mierze od~tego, jak dobrych liczb tego typu potrzebujemy by~rozwiązać
+  nasz problem? Jako, że~to jest tylko kurs \textit{Podstaw informatyki},
+  chcieliśmy jedynie zarysować przed Państwem ten problem oraz pokazać,
+  jakie narzędzia daje nam w~tej kwestii język~C.
+
+\end{frame}
+% ##################
 
 
 

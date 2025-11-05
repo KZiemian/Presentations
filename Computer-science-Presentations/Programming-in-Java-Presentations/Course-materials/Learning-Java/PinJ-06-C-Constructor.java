@@ -1,3 +1,7 @@
+// Setting values of the fields by hand is tedious, so our next move is
+// to learn how to make it more pleasant. This will lead us to the concept
+// soo important that we want to/need to speak about it right now.
+//
 // Constructor is a very important concept in Java, so we will discuss it
 // before other, probably more simple things. Yet again, in design of Java's
 // constructor we see the influence of C++.
@@ -15,10 +19,10 @@ class TwoNumbers {
     // int ConstructorName()
     // but we don't want that. Why? This is another thing copied from C++,
     // and to be honest, we don't know how they justified such a choice.
-
+    //
     // Second odd thing is that the constructor MUST, absolutely MUST have
     // the same name as the class. No exceptions to this rule.
-
+    //
     // In the parentese after name of the method (all methods, not only
     // the constructor) we can put
     // (typeOfParameter1 parameterName1, typeOfParameter2 parameterName2,

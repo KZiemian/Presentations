@@ -6,7 +6,7 @@ class Main {
 	System.out.println("Program before the for loop.");
 
 	for (int i = 0; i < 10; i++) {
-	    if (i % 2 == 1) {
+	    if ((i % 2) == 1) {
 		continue;
 	    }
 
@@ -25,7 +25,7 @@ class Main {
 	    // Remember to check that your loop will end.
 	    intVar1++;
 
-	    if (intVar1 % 9 != 0) {
+	    if ((intVar1 % 9) != 0) {
 		continue;
 	    }
 

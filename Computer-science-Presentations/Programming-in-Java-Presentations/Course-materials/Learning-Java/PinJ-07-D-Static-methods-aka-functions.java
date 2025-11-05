@@ -1,7 +1,7 @@
-// CHECK COMMETS
-// If you know functions you also know that they are the stand alone objects.
-// Their existence is not dependent on the existence of other objects.
-// The normal method in Java is a quite different story.
+// If you know functions from other languages you also know that they are
+// the stand alone objects. Their existence is not dependent on the
+// existence of other objects. The normal method in Java is a quite
+// different story.
 
 class TwoNumbers {
     int m_intVar1;
@@ -36,10 +36,10 @@ class Main {
     // inside that box. So if you don't have a box, you don't have
     // anything that is inside.
     //
-    // Let it stay this way. Every standard method can only be run
-    // as a part of the object to which it belongs. Something like
+    // We can say it in another way. Every standard method can only be run
+    // as a part of the object to which it belongs, something like
     // twoNumbersVar1.showNumbers();
-
+    //
     // But, what to do when we want to have functionality that shouldn't
     // be part of some object? Java have a solution to this problem,
     // which is as object-oriented as anything in Java. We explain it more
@@ -48,21 +48,22 @@ class Main {
     // We want to compute a simple function.
     // linearFunction(x) = 2.0 * x + 1.0
     // few times in our program. Attaching it to the object will be awkward.
-    // Because in our context, there is no object to attach it.
+    // Because in our context, there is no reasonable object to attach it.
     //
-    // We should consider few possible options. Maybe we should create
-    // object to store this function? But, then we will have ability to
-    // create many instance of such function, while we need only one. This
-    // would be unnatural and confusing.
+    // We should consider a few possible options for objects, to which we can
+    // try to attach linearFunction(). Maybe we should create object to store
+    // this function? But, then we will have the ability to create many
+    // instances of such a function, while we need only one. This would be
+    // both an unnatural and confusing solution.
     //
     // Maybe we should attach it to variable x? But, there is no point in
-    // creating object for such variable, since what is important
+    // creating object for storing variable x, since what is important
     // is a function, not such a variable. It also has downsides of
     // previous approach.
     //
     // Java gives us a solution for such problems: static methods. Static
     // method is always a single object, you can't create multiple version
-    // of it. Here is the static function computing mentioned above.
+    // of it. Here is the static function computing our linear function.
     static double linearFunction(double x) {
 	return 2.0 * x + 1.0;
     }
@@ -99,13 +100,13 @@ class Main {
     // run that way. There are also "helpers programs", that are not run
     // directly by users, but by other programs. So the rules are as follows.
     // 1) Every program that is directly run by the user, needs to have
-    //    one and only one main method().
+    //    one and only one main() method.
     // 2) "Helper programs" don't have a main() method.
 
     // If we run the program directly, Java is searching for the main()
     // method and runs it. This is another special property of main()
     // method: program just run it. You will never write directly the call
-    // to it, which would like something like these.
+    // to it, which would be something like these.
     // Main.main("I ", "am", "learning", "Java.");
     // More about it in a minute.
 }

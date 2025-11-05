@@ -5,10 +5,10 @@ class TwoNumbers {
     int m_intVar2;
 
     // We again and again see Java heritage from C++. We define method of
-    // the instance of the class by writing first the type that it returns
-    // then name of the method and after that parenthesis (we go back
-    // to what is in parenthesis in the second) and then body of the method
-    // inside round brackets.
+    // the instance of the class by writing first the type that it returns,
+    // then name of the method and after that parenthesis  and then body of
+    // the method inside round brackets. We go back to what is in parenthesis
+    // in the second.
 
     // In our case we are not interested in our method returning any value,
     // but in it printing text to the string. As such, we will state that
@@ -48,6 +48,10 @@ class Main {
     }
 }
 
-// Setting values of the fields by hand is tedious, so our next move is
-// to learn how to make it more pleasant. This will lead us to the concept
-// soo important that we want to/need to speak about it right now.
+// We can now say more about the "class Main" line of code. Java is language
+// that is object-oriented from top to bottom, so even method main()
+// must be part of some class. So in line
+// class Main {
+// we start defining class of the name "Main", which has a static method
+// public static void main(String[] args)
+// that Java runs by default. We hope that these things are clear enough now.

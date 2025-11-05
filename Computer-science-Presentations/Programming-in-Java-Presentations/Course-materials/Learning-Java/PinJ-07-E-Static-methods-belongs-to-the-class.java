@@ -1,6 +1,6 @@
 // We already many times said that the instance of the class is a box that
-// contains fields and methods. One of the reason why we stressed that is
-// the important property of the static fields and methods in Java. These
+// contains fields and methods. One of the reason why we stressed it so much
+// is the important property of the static fields and methods in Java. These
 // static fields and methods are inside not of instance of the class, but of
 // the CLASS itself. We hope that this example explains what this means.
 
@@ -30,12 +30,12 @@ class Main {
 
 	TwoNumbers.introduceYourselfClass();
 
-	// You can see that we not call method on the instance of the class.
-	// We didn't even created any instance of the class! We call this
-	// method on the CLASS itself. This is why it is so important
-	// to distingush fields and methods belonging to the instance of
-	// the class, from the methods and fields belonging to the instance of
-	// the class.
+	// You can see that we didn't call introduceYourselfClass() method o
+	// n the instance of the class. We didn't even created any instance
+	// of the class! We call this method on the CLASS itself. This is why
+	// it is so important to distinguish fields and methods belonging to
+	// the instance of the class, from the methods and fields belonging
+	// to the instance of the class.
 
 	// You can see that we cannot call showNumbers() on the class
 	// itself, it will cause an error.

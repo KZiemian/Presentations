@@ -1,3 +1,7 @@
+// Code below defines a class. In Java syntax is as follows. First we have
+// word "class", informing Java that we want to define a class. Then the
+// name of the class and then inside curly brackets we have code that
+// describes our class. We will talk a lot about how to define classes.
 class TwoNumbers {
     int m_intVar1;
     int m_intVar2;

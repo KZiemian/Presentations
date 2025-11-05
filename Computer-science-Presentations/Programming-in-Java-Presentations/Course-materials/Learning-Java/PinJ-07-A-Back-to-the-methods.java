@@ -16,17 +16,17 @@ class TwoNumbers {
 
     // Methods can return value. To define such method we first wrote
     // the type of returned value, then name of the method and the parentese
-    // with types and names of parameters. As said before, these parentese
-    // can be empty, like in example before.
+    // with types and names of parameters. As said before, these parentheses
+    // can be empty, like in the example below.
     int addNumbers() {
 	return m_intVar1 + m_intVar2;
 	// Keyword return is extremely important. It literally returns
-	// value written after it to, the one that called this method.
+	// value written after it, to the one that called this method.
     }
 
     // It is often very useful to define methods that change values of
-    // the fields of the class instance. The code that we wrote now is
-    // very unprofessional, but we will learn about making it better
+    // the fields of the class instance. The code that we wrote is very
+    // unprofessional, but we will learn about making it better
     // in the future.
 
     // This method changes the values of the fields, so it doesn't need to

@@ -1,6 +1,6 @@
 // To make things simpler, we will create three versions of our silly,
 // but simple, class. Two numbers version 1, two numbers version 2
-// and two numbers version 3.
+// and two numbers version 3. This time we need TwoNumbersVerTwo.
 class TwoNumbersVerTwo {
     int m_intVar1;
     int m_intVar2;

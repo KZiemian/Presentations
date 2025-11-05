@@ -14,13 +14,13 @@ class TwoNumbers {
     int addNumbers() {
 	// Instruction return has another important property. It ends
 	// execution of every method, so the code after it is never used.
-	// This behavior is logical if you think about a method as a thing
+	// This behavior is logical, if you think about methods as a thing
 	// that takes some data as input and returns a result. After
 	// method returns a result, there is nothing more to do for it,
 	// so can be ended.
 	//
-	// So every code after return is unreachable and Java considers it
-	// existence as an error.
+	// So every code after return is called "unreachable" and Java
+	// considers it existence as an error.
 
 	return m_intVar1 + m_intVar2;
 
@@ -39,10 +39,10 @@ class Main {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
 
 	System.out.println("twoNumbersVar1.addNumbers() == " +
-			   twoNumbersVar1.addNumbers() + ".\n");
+			   twoNumbersVar1.addNumbers() + ".");
 
 	// Putting return that returns nothing in the function with returning
-	// type void is correct. At some level this make sense.
+	// type void is correct. At some level this makes sense.
 	return;
 
 	// But putting unreachable code after returning nothing is an error.

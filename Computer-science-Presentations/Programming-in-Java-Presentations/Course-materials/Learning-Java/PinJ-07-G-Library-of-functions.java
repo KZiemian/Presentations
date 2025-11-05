@@ -23,7 +23,7 @@ class Main {
 	    x += 1.0;
 	}
 
-	// Adding empty line for readability.
+	// We add empty line for better readability.
 	System.out.println("");
 
 	x = 0.0;
