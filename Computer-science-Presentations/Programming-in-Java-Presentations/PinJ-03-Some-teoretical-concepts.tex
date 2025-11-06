@@ -112,7 +112,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 43k+,
+% Number of chars: 8k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -147,6 +147,196 @@ eprint=true,
 % ######################################
 \EndingSlide{This presentation isn't finished.}
 % ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Compilation of Java files}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  We now need to talk about few technicalities of Java internal working. You
+  should be aware, that it is just a sketch of very complicated problem
+  and we simplified a~lot of things. Regardless of that, some technical terms
+  and concepts need to occur.
+
+  Consider file \texttt{HelloWorld.java} that contains simple ``Hello,
+  World!'' program. Java is a~compiled language, so there exists program
+  called compiler that take our file \texttt{HelloWorld.java} and transform
+  it into the code, that can be run by our computer. Technical term
+  for such single file that can be compiled is \textbf{compilation unit},
+  alternatively \textbf{translation unit}. Every compilation unit
+  \alert{must} have extension ``\texttt{.java}''.
+
+  Compilation unit (single file) can have class declared \texttt{public}.
+  We can have compilation unit without any public class, but if it has
+  public class it can be only \alert{one}. In other words, compilation
+  unit has $0$ or $1$ public class. By definition of being public,
+  everyone have excess to such class.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+  There is an~important rule. If compilation unit \texttt{HelloWorld.java}
+  has one public class, the name of the class must be the same, as
+  the~name of this unit. In other world public class in
+  \texttt{HelloWorld.java} must be defined as \\
+  \texttt{public class HelloWorld \{ } \\
+  If you choose different name for you public class, you will cause
+  a~compilation error.
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{???}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{???}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
 
 
 
@@ -490,151 +680,6 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{???}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-
-
-
-
-
-% % ######################################
-% \section{???}
-% % ######################################
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{???}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{???}
-
-
-
-
-% \end{frame}
-% % ##################
 
 
 
