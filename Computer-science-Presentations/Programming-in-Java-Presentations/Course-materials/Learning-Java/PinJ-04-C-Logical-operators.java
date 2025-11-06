@@ -3,15 +3,17 @@ class Main {
 	// Java, like C, use symbol "&&" for conjunction, "||" for alternative
 	// and "!" for negation.
 
-	System.out.println("(true && true) == " + (true && true) + ".");
-	System.out.println("(true && false) == " + (true && false) + ".");
-	System.out.println("(false && true) == " + (false && true) + ".");
-	System.out.println("(false && false) == " + (false && false) + ".\n");
+	System.out.print("(true && true) == " + (true && true) + ".\n");
+	System.out.print("(true && false) == " + (true && false) + ".\n");
+	System.out.print("(false && true) == " + (false && true) + ".\n");
+	System.out.print("(false && false) == " + (false && false) +
+			 ".\n\n");
 
-	System.out.println("(true || true) == " + (true || true) + ".");
-	System.out.println("(true || false) == " + (true || false) + ".");
-	System.out.println("(flase || true) == " + (false || true) + ".");
-	System.out.println("(flase || false) == " + (false || false) + ".\n");
+	System.out.print("(true || true) == " + (true || true) + ".\n");
+	System.out.print("(true || false) == " + (true || false) + ".\n");
+	System.out.print("(flase || true) == " + (false || true) + ".\n");
+	System.out.print("(flase || false) == " + (false || false)
+			 + ".\n\n");
 
 	System.out.println("!true == " + !true + ".");
 	System.out.println("!false == " + !false + ".");

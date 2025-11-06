@@ -1,3 +1,4 @@
+// MAKE BETTER COMMENTS
 // In object-oriented programming there is important concept called
 // "hidding implementation" or "encapsulation". The basic idea is this.
 // When you write your source code and created executable files based on it,
@@ -70,7 +71,7 @@ class Main {
 
 
 
-	System.out.println("Write down secret number:");
+	System.out.print("Write down a secret number: ");
 	String userInput = scannerObject.nextLine();
 	// If this line below is misterious, just ignore it for a while.
 	int numberGivenByUser = Integer.parseInt(userInput);
@@ -80,14 +81,14 @@ class Main {
 	    badSecretNumberVar1.checkSecretNumber(numberGivenByUser);
 
 	if (userKnowSecretNumber == true) {
-	    System.out.println("You know secret number.");
+	    System.out.println("You know the secret number.");
 	} else {
-	    System.out.println("You don't know secret number.");
+	    System.out.println("You don't know the secret number.");
 	}
 
-	System.out.println("\n\nProblem with this code is that, we can " +
+	System.out.println("\n\nProblem with this code is that we can " +
 			   "always ask Java to show us what the value of " +
-			   "secret number is.");
+			   "the secret number is.");
 	System.out.println("The secret number is: " +
 			   badSecretNumberVar1.m_BadSecretNumber + ".");
     }

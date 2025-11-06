@@ -33,7 +33,7 @@ class Main {
 			   (twoNumbersVar1 == twoNumbersVar2) + ".");
 	System.out.println("(twoNumbersVar1 != twoNumbersVar2) == " +
 			   (twoNumbersVar1 != twoNumbersVar2) + ".");
-	System.out.println("Why we get these results?\n");
+	System.out.print("Why do we get these results?\n\n");
 
 	// In Java operators == and != used for objects (instances of some
 	// class) are comparing references, not values. In other words

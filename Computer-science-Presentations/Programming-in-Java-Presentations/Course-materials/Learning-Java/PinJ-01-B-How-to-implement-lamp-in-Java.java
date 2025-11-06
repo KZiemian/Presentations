@@ -17,15 +17,15 @@ class Lamp {
     }
 
     void showLightBubblePower() {
-	System.out.println("Light bubble has " + m_powerOfLightBubble +
+	System.out.print("Light bubble has " + m_powerOfLightBubble +
 			   " of power.");
     }
 
     void showLampState() {
 	if (m_stateOfLightBubble == true) {
-	    System.out.println("The lamp is turned on.");
+	    System.out.print("The lamp is turned on.");
 	} else {
-	    System.out.println("The lamp is turned off.");
+	    System.out.print("The lamp is turned off.");
 	}
     }
 
@@ -46,30 +46,32 @@ class Main {
 	System.out.println("Description of myLampVar1.");
 	System.out.println("myLampVar1.showLampState();");
 	myLampVar1.showLampState();
-	System.out.println("myLampVar1.showLightBubblePower();");
+	System.out.println("\nmyLampVar1.showLightBubblePower();");
 	myLampVar1.showLightBubblePower();
 
-	System.out.println("\nDescription of myLampVar2.");
+	System.out.println("\n\nDescription of myLampVar2.");
 	System.out.println("myLampVar2.showLampState();");
 	myLampVar2.showLampState();
-	System.out.println("myLampVar2.showLightBubblePower();");
+	System.out.println("\nmyLampVar2.showLightBubblePower();");
 	myLampVar2.showLightBubblePower();
 
-	System.out.println("\nSwitching myLampVar1 on and off.");
+	System.out.println("\n\n\n\nSwitching myLampVar1 on and off.");
 	System.out.println("myLampVar1.showLampState();");
 	myLampVar1.showLampState();
 
-	System.out.println("\nmyLampVar1.switchLampOn();");
+	System.out.println("\n\nmyLampVar1.switchLampOn();");
 	myLampVar1.switchLampOn();
 
-	System.out.println("\nmyLampVar1.showLampState();");
+	System.out.println("myLampVar1.showLampState();");
 	myLampVar1.showLampState();
 
-	System.out.println("\nmyLampVar1.switchLampOff();");
+	System.out.println("\n\nmyLampVar1.switchLampOff();");
 	myLampVar1.switchLampOff();
 
-	System.out.println("\nmyLampVar1.showLampState();");
+	System.out.println("myLampVar1.showLampState();");
 	myLampVar1.showLampState();
+
+	System.out.println("\n\nEnd of the program.");
 
 	// This code is very unprofessional, but it works. It can be
 	// tolerated, because we are still just learning Java.

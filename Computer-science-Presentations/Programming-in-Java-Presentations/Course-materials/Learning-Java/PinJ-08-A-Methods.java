@@ -31,7 +31,7 @@ class TwoNumbers {
     // the class instance that works on its fields. We start from simple
     // example, that is not as silly as the whole class.
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
     }
 }
 
@@ -46,16 +46,16 @@ class Main {
 	twoNumbersVar2.m_intVar1 = 3;
 	twoNumbersVar2.m_intVar2 = 4;
 
-	System.out.println("Now we use method showNumbers() to print " +
+	System.out.println("Now we use the method showNumbers() to print " +
 			   "values of the fields to the screen.");
 
-	System.out.println("twoNumbersVar1: ");
+	System.out.print("twoNumbersVar1: ");
 	twoNumbersVar1.showNumbers();
 
-	System.out.println("twoNubmersVar2: ");
+	System.out.print("\ntwoNumbersVar2: ");
 	twoNumbersVar2.showNumbers();
 
-	System.out.println("\nWe can see how methods can be usefull.");
+	System.out.println("\n\nWe can see how methods can be useful.");
 
 	// We can see that the syntax of the calling method
 	// twoNumbersVar1.showNumbers();

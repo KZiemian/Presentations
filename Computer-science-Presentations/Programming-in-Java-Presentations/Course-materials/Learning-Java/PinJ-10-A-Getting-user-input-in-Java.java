@@ -1,5 +1,5 @@
 // MAKE BETTER COMMENTS
-// Before we go further it is useful, to learn how to read user input
+// Before we go further it is useful, to learn more!!! how to read user input
 // from keybord in Java.
 
 // We will need Scanner class, so we need to import it using line below.
@@ -17,7 +17,7 @@ class Main {
 	// a keyboard.
 	Scanner scannerObject = new Scanner(System.in);
 
-	System.out.println("Enter short information:");
+	System.out.print("Enter short information: ");
 	userInput = scannerObject.nextLine();
 	// Line above tell scanner object to read line from the keybord.
 	// By line we understood sequence of characters ended by symbol of

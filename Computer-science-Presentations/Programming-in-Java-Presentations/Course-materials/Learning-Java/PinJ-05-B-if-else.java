@@ -12,7 +12,7 @@ class Main {
 
 	Scanner scannerObject = new Scanner(System.in);
 
-	System.out.println("Give us an integer number:");
+	System.out.print("Give us an integer number: ");
 
 	String userInput = scannerObject.nextLine();
 
@@ -20,18 +20,18 @@ class Main {
 
 
 	if (numberFromTheUser > 10) {
-	    System.out.println("Number you gave is equal to " +
+	    System.out.print("Number you gave is equal to " +
 			       numberFromTheUser +
-			       ", which is bigger than 10.\n");
+			       ", which is bigger than 10.\n\n");
 	} else {
-	    System.out.println("Number you gave is equalt to " +
+	    System.out.print("Number you gave is equal to " +
 			       numberFromTheUser +
-			       ", which is lesser or equal to 10.\n");
+			       ", which is lesser or equal to 10.\n\n");
 	}
 
 
 
-	System.out.println("Give us another integer number:");
+	System.out.print("Give us another integer number: ");
 
 	userInput = scannerObject.nextLine();
 

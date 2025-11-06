@@ -43,7 +43,7 @@ class TwoNumbers {
 
     // Method showNumbers() will be useful also this time.
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
     }
 }
 
@@ -52,12 +52,12 @@ class Main {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
 	TwoNumbers twoNumbersVar2 = new TwoNumbers(3, 4);
 
-	System.out.println("twoNumbersVar1: ");
+	System.out.print("twoNumbersVar1: ");
 	twoNumbersVar1.showNumbers();
 
-	System.out.println("twoNumbersVar2: ");
+	System.out.print("\ntwoNumbersVar2: ");
 	twoNumbersVar2.showNumbers();
 
-	System.out.println("\nEverything works as it should.");
+	System.out.println("\n\nEverything works as it should.");
     }
 }

@@ -19,12 +19,12 @@ class Main {
 	int numberFromTheUser = 0;
 	Scanner scannerObject = new Scanner(System.in);
 
-	System.out.println("Give us a number:");
+	System.out.print("Give us an integer number: ");
 	String userInput = scannerObject.nextLine();
 
 	numberFromTheUser = Integer.parseInt(userInput);
 
-	System.out.println("\nYou give us number: " + numberFromTheUser +
+	System.out.println("\nYou give us the number: " + numberFromTheUser +
 			   ".");
     }
 }

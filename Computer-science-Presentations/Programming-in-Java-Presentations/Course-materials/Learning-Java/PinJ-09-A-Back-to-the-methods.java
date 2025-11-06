@@ -43,19 +43,20 @@ class Main {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
 
 	// We can see how the method returns value.
-	System.out.println("twoNumbersVar1.addNumbers() == " +
-			   twoNumbersVar1.addNumbers() + ".\n");
+	System.out.print("twoNumbersVar1.addNumbers() == " +
+			   twoNumbersVar1.addNumbers() + ".\n\n");
 
-	System.out.println("Methods can change the state of the object.");
+	System.out.print("Methods can change the state of the " +
+			 "object.\n\n");
 
-	System.out.println("twoNumbersVar1:");
+	System.out.print("twoNumbersVar1: ");
 	twoNumbersVar1.showNumbers();
 
 	System.out.println("twoNumberVar1.multiplyTwoNumbers(7);");
 
 	twoNumbersVar1.multiplyTwoNumbers(7);
 
-	System.out.println("twoNumbersVar1:");
+	System.out.print("twoNumbersVar1: ");
 	twoNumbersVar1.showNumbers();
     }
 }

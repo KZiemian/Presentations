@@ -8,7 +8,7 @@ class Main {
     public static void main(String[] args) {
 	Scanner scannerObject = new Scanner(System.in);
 
-	System.out.println("Enter short information:");
+	System.out.println("Enter short information: ");
 	String userInput = scannerObject.nextLine();
 
 	System.out.println("Your infromation: " + userInput);

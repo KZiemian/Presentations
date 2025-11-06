@@ -3,7 +3,7 @@ class Main {
 	// Instruction break just ends the loop once and for all and Java goes
 	// to the code further down the file.
 
-	System.out.println("Program before the for loop.\n");
+	System.out.print("Program before the for loop.\n\n");
 
 	System.out.println("We go inside the for loop.");
 
@@ -17,7 +17,7 @@ class Main {
 	    }
 	}
 
-	System.out.println("\nCode after the for loop.\n\n");
+	System.out.print("\nCode after the for loop.\n\n\n");
 
 
 

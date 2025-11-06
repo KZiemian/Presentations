@@ -4,33 +4,33 @@ class Main {
 	// incremenation and decrementation operations.
 	int intVar1 = 0;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
-
-	System.out.println("intVar1++;\n");
-	intVar1++;
-
-	System.out.println("intVar1 == " + intVar1 + ".\n");
 
 	System.out.println("intVar1++;");
 	intVar1++;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("intVar1++;");
 	intVar1++;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
+
+	System.out.println("intVar1++;");
+	intVar1++;
+
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("intVar1--;");
 	intVar1--;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("++intVar1;");
 	++intVar1;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("--intVar1;");
 	--intVar1;

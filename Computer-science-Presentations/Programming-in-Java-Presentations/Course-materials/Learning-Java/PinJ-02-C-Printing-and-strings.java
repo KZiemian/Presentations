@@ -9,7 +9,7 @@ class Main {
 	// In this code 5 is casted into string, but we will talk about
 	// casting of types later.
 
-	System.out.println("Using string concatenation is very " +
+	System.out.println("\nUsing string concatenation is very " +
 			   "useful, when you have a long text to print " +
 			   "on the screen.");
 
@@ -18,5 +18,11 @@ class Main {
 	System.out.println("\nAdding new lines to the text can make it " +
 			   "more readable.\n" + "Especially when it is " +
 			   "quite long.");
+
+	// We can also use System.out.print(), which prints text on
+	// the screen, but doesn't add a new line at the end of the text.
+	System.out.print("\nI'm listening to a podcast ");
+	System.out.print("about the world of computer science. ");
+	System.out.print("It is very interesting.\n");
     }
 }

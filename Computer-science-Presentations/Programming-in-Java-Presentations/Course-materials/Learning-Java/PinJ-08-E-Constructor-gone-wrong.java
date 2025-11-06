@@ -9,25 +9,25 @@ class TwoNumbersVerTwo {
     // useful, but this is a very bad idea. We mention it, because you can
     // see such code in various learning materials for Java.
     TwoNumbersVerTwo() {
-	System.out.println("We are now running totally useless constructor " +
-			   "TwoNumbersVerTwo().");
+	System.out.println("We are now running a totally useless " +
+			   "constructor TwoNumbersVerTwo().");
     }
 
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
     }
 }
 
 class Main {
     public static void main(String[] args) {
-	System.out.println("Program before definig variables.\n");
+	System.out.print("Program before defining variables.\n\n");
 
 	// This code is very stupid, but it works and this is all the deal.
 	// You shouldn't never, ever write such code.
 	TwoNumbersVerTwo twoNumbersVerTwoVar1 = new TwoNumbersVerTwo();
 	TwoNumbersVerTwo twoNumbersVerTwoVar2 = new TwoNumbersVerTwo();
 
-	System.out.println("\nCode after defining variables.\n");
+	System.out.print("\nCode after defining variables.\n\n");
 
 	System.out.println("The moral is: you can write very, very " +
 			   "stupid code if you want.\n" +

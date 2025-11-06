@@ -15,7 +15,7 @@ class TwoNumbers {
     // the type is "void" (emptiness, nothing). Type void is a bit awkward,
     // but very useful in Java.
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
     }
 }
 
@@ -34,10 +34,10 @@ class Main {
 	twoNumbersVar2.m_intVar1 = 3;
 	twoNumbersVar2.m_intVar2 = 4;
 
-	System.out.println("twoNumbersVar1: ");
+	System.out.print("twoNumbersVar1: ");
 	twoNumbersVar1.showNumbers();
 
-	System.out.println("twoNumbersVar2: ");
+	System.out.print("\ntwoNumbersVar2: ");
 	twoNumbersVar2.showNumbers();
 
 	// The picture that we use to describe an instance of the class is

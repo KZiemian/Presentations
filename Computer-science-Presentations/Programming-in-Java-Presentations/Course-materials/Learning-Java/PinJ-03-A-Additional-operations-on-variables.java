@@ -3,8 +3,8 @@ class Main {
 	int intVar1 = 0;
 	int intVar2 = 1;
 
-	System.out.println("intVar1 == " + intVar1 + ".");
-	System.out.println("intVar2 == " + intVar2 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar2 == " + intVar2 + ".\n\n");
 
 	// In Java we can use well know syntax
 	// intVar1 += 3;
@@ -15,7 +15,7 @@ class Main {
 
 	intVar1 += 3;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	// Line
 	// intVar1 += intVar2;
@@ -25,32 +25,32 @@ class Main {
 
 	intVar1 += intVar2;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	// Code below illustrates more operations of this kind.
 	System.out.println("intVar1 -= 7;");
 
 	intVar1 -= 7;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("intVar1 *= -2;");
 
 	intVar1 *= -2;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("intVar1 /= 4;");
 
 	intVar1 /= 4;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("intVar1 = 10;");
 
 	intVar1 = 10;
 
-	System.out.println("intVar1 == " + intVar1 + ".\n");
+	System.out.print("intVar1 == " + intVar1 + ".\n\n");
 
 	System.out.println("intVar1 %= 4;");
 

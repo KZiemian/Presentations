@@ -30,9 +30,9 @@ class Main {
 	TwoNumbersVerThree twoNumbersVerThreeVar2 =
 	    new TwoNumbersVerThree(3, 4);
 
-	System.out.println("twoNumbersVerThreeVar1:");
+	System.out.print("twoNumbersVerThreeVar1: ");
 	twoNumbersVerThreeVar1.showNumbers();
-	System.out.println("twoNumbersVerThreeVar2:");
+	System.out.print("twoNumbersVerThreeVar2: ");
 	twoNumbersVerThreeVar2.showNumbers();
 
 	// Creating multiple constructors is a special case of the method

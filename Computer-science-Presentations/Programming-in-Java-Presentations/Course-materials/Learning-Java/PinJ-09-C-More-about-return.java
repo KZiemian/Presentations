@@ -8,7 +8,7 @@ class TwoNumbers {
     }
 
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
     }
 
     int addNumbers() {

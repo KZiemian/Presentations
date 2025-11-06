@@ -23,10 +23,10 @@ class Main {
 	// but fields of the class instance are treated in a special way.
 	TwoNumbers twoNumbersVar1 = new TwoNumbers();
 
-	System.out.println("twoNumbersVar1.m_intVar1 == " +
+	System.out.print("twoNumbersVar1.m_intVar1 == " +
 			   twoNumbersVar1.m_intVar1 + ".");
-	System.out.println("twoNumbersVar1.m_intVar2 == " +
-			   twoNumbersVar1.m_intVar2 + ".\n");
+	System.out.print("twoNumbersVar1.m_intVar2 == " +
+			   twoNumbersVar1.m_intVar2 + ".\n\n");
 
 	// When an instance of the class is created and we didn't set
 	// the values of the fields, all fields having one of the basic

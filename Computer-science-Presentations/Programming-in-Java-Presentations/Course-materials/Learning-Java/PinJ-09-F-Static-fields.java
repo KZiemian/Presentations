@@ -14,8 +14,8 @@ class TwoNumbersAndOneStatic {
     }
 
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
-	System.out.println("m_staticIntVar1 == " + m_staticIntVar1 + ".");
+	System.out.print(m_intVar1 + ", " + m_intVar2 + ". ");
+	System.out.print("m_staticIntVar1 == " + m_staticIntVar1 + ".");
     }
 }
 
@@ -26,10 +26,10 @@ class Main {
 	TwoNumbersAndOneStatic twoNumbersAndOneStaticVar2 =
 	    new TwoNumbersAndOneStatic(3, 4);
 
-	System.out.println("twoNumbersAndOneStaticVar1: ");
+	System.out.print("twoNumbersAndOneStaticVar1: ");
 	twoNumbersAndOneStaticVar1.showNumbers();
 
-	System.out.println("twoNumbersAndOneStaticVar2: ");
+	System.out.print("\ntwoNumbersAndOneStaticVar2: ");
 	twoNumbersAndOneStaticVar2.showNumbers();
 
 	// Code above shows that, what we see many times before, that
@@ -41,17 +41,17 @@ class Main {
 	// There is only one copy of the static variable and can be accessed
 	// by all instances of the class.
 
-	System.out.println("\nWe now change static field of the class " +
+	System.out.println("\nWe now change the static field of the class " +
 			   "TwoNumbersAndOneStatic.");
 	twoNumbersAndOneStaticVar1.m_staticIntVar1 = 5;
 
-	System.out.println("\ntwoNumbersAndOneStaticVar1: ");
+	System.out.print("\ntwoNumbersAndOneStaticVar1: ");
 	twoNumbersAndOneStaticVar1.showNumbers();
 
-	System.out.println("twoNumbersAndOneStaticVar2: ");
+	System.out.print("\ntwoNumbersAndOneStaticVar2: ");
 	twoNumbersAndOneStaticVar2.showNumbers();
 
-	System.out.println("\nYou can of course access static field " +
+	System.out.println("\n\nYou can of course access static fields " +
 			   "directly by the class.");
 	System.out.println("twoNumbersAndOneStatic.m_staticIntVar1: " +
 			   TwoNumbersAndOneStatic.m_staticIntVar1 + ".");

@@ -20,13 +20,14 @@ class Main {
 	// Unfortunately, this code works, but not as it should.
 	boolean boolVar1 = false;
 
-	System.out.println("Before if-else: boolVar1 == " + boolVar1 + ".\n");
+	System.out.print("Before if-else: boolVar1 == " + boolVar1 +
+			 ".\n\n");
 
 	if (boolVar1 = true) {
-	    System.out.println("boolVar1 contains value true.");
+	    System.out.println("boolVar1 contains value: true.");
 	    System.out.println("boolVar1 == " + boolVar1 + ".");
 	} else {
-	    System.out.println("boolVar1 contains value false.");
+	    System.out.println("boolVar1 contains value: false.");
 	    System.out.println("boolVar1 == " + boolVar1 + ".");
 	}
 

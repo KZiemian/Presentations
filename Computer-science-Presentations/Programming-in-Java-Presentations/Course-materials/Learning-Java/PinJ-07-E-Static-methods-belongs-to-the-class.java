@@ -19,7 +19,7 @@ class TwoNumbers {
 
     // Silly, but simple.
     static void introduceYourselfClass() {
-	System.out.println("I'm stupid, but very simple class. " +
+	System.out.println("I'm stupid, but a very simple class. " +
 			   "My name is TwoNumbers.");
     }
 }
