@@ -1144,7 +1144,7 @@ eprint=true,
 
 
 % ######################################
-\section{Typy zmiennych}
+\section{Abstrakcja i~typy zmiennych}
 % ######################################
 
 
@@ -1154,9 +1154,9 @@ eprint=true,
 
 
   Widzieliśmy już kilka typów zmiennych, takich jak liczby całkowite
-  i~liczby zmiennoprzecinkowe: \\
+  i~liczby zmiennoprzecinkowe. \\
   \texttt{int intVar1 = 0;} \\
-  \texttt{int float64Var1 = 0.0;} \\
+  \texttt{double float64Var1 = 0.0;} \\
   Czym jednak dokładniej jest typ zmiennej? To wbrew pozorom jest bardzo
   głęboki problem, który pojawił~się w~rozważaniach
   filozoficzno-matematycznych kilka dekad wcześniej, nim ludzkość
@@ -1166,8 +1166,8 @@ eprint=true,
 
   Dzisiejsze komputery buduje~się w~ten sposób, że~najmniejszą porcją
   pamięci jakiej możemy używać jest jeden bajt, czyli $8$~bitów. Techniczny
-  termin na taką najmniejszą jednostkę pamięci nazywamy
-  \textbf{słowem} (ang.~\textit{word}).
+  termin na taką najmniejszą jednostkę pamięci to \textbf{słowo}
+  (ang.~\textit{word}).
 
 \end{frame}
 % ##################
@@ -1188,15 +1188,43 @@ eprint=true,
   ale byłaby to męka nie do pojęcia. Jeśli ktoś z~Państwa pisał kiedyś
   w~jakimś dialekcie assemblera, wie o~co chodzi.
 
-  By to zilustrować, proszę sobie wyobrazić, że~zamiast zdjęciem na dysku,
-  musimy operować ręcznie na milionie~(!) bajtów które takie zdjęcie tworzą.
-  Kopiowanie zdjęcia wyglądałoby wtedy mniej więcej tak. Weź bajty
-  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 999$ i~skopiuj
-  zawartość każdego z~nich do bajtów o~numerach $11 \, 000 \, 073$
-  do~$12 \, 000 \, 072$. Koszmar na~jawie!
+  By uczynić to zrozumiałym dla osób, które nigdy nie pisały w~assemblerze,
+  przedstawimy teraz program „Hello, World!” napisany
+  w~dialekcie~$\text{x}86$. Jest to dialekt assemblera stworzony przez
+  firmę Intel i~wprowadzony do użycia w~$1972$ roku. Od tego czasu
+  tej dialekt ten był używany na niezliczonej liczbie procesorów i~jego
+  znaczenie dla świata trudno przecenić.
 
-  By tego uniknąć wprowadzamy coś, co w~informatyce określamy terminem
-  \textbf{abstrakcja}.
+  Jeśli kod na następnej stronie jest dla Państwa odpychający, to znaczy,
+  że~osiągnęliśmy nasz cel, wyjaśnienia czemu chcemy trzymać~się od takich
+  rzeczy jak najdalej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{„Hello, World!” w~assemblerze x86
+    \parencite{Anonymous-Hello-World-in-x86-Assembly-Language}}
+
+
+  \texttt{org 0x100} \\
+  \vspace{0.8em}
+
+  \texttt{mov dx, msg} \\
+  \texttt{mov ah, 9} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{mov ah, 0x4c} \\
+  \texttt{int 0x21} \\
+  \vspace{0.8em}
+
+  \texttt{msg db 'Hello, World!', 0x0d, 0x0a, '\$'}
 
 \end{frame}
 % ##################
@@ -1210,13 +1238,39 @@ eprint=true,
   \frametitle{Abstrakcja w~informatyce}
 
 
+  Weźmy inny przykład. proszę sobie wyobrazić, że~zamiast zdjęciem na dysku,
+  musimy operować ręcznie na milionie~(!) bajtów które takie zdjęcie tworzą.
+  Kopiowanie zdjęcia wyglądałoby wtedy mniej więcej tak. Weź bajty
+  o~numerach od $1 \, 555 \, 000$ do $2 \, 554 \, 999$ i~skopiuj
+  zawartość każdego z~nich do bajtów o~numerach $11 \, 000 \, 073$
+  do~$12 \, 000 \, 072$. Koszmar na~jawie!
+
+  By tego uniknąć wprowadzamy coś, co w~informatyce określamy terminem
+  \textbf{abstrakcja}. Zamiast podawać bardzo abstrakcyjną~;) definicję
+  tego terminu, odwołamy~się do przykładu.
+
   Zdjęcie na komputerze to pewna abstrakcja, która zwalnia nas z~myślenia
   o~nim jako o~milionie bajtów, które tworzą to zdjęcie na~dysku. Inny
   przykładem tego typu zachowania jest to, że zamiast mówić „To jest
   zwierzę, które jest ssakiem, ma cztery nogi, ogon, futro, jest
-  drapieżnikiem,\ldots” powiemy „To jest pies.”. Takie dzielenie rzeczy na różne
-  kategorie i~operowanie tak wprowadzonymi kategoriami okazuje~się być
-  bardzo wygodne nie tylko w~informatyce. Mamy nadzieję, że~takie
+  drapieżnikiem,\ldots” powiemy „To jest pies.”.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Abstrakcja w~informatyce}
+
+
+  Jak widzimy na przykładzie pojęcia „pies”, takie dzielenie rzeczy
+  na różne kategorie i~operowanie tak wprowadzonymi kategoriami okazuje~się
+  być bardzo wygodne nie tylko w~informatyce. Mamy nadzieję, że~takie
   wyjaśnienie koncepcji abstrakcji w~informatyce jest dla Państwa
   wystarczająca.
 
@@ -1238,22 +1292,20 @@ eprint=true,
   \frametitle{Pożytek z~typów}
 
 
-  Rozpatrzmy następujący, mocno uproszczony przykład. Powiedzmy, że~używamy
-  dwóch rodzajów plików: graficznych oraz tekstowych. Dzięki typom, nasz
-  program może rozpoznać, że~chcemy zapisać coś do~pliku graficznego, ale
-  otwarliśmy plik tekstowy, więc zgłosi on błąd, co jest bardzo pożądanym
-  zachowaniem. Jeśli Państwo jeszcze nie rozumieją dlaczego, to na tym
-  przedmiocie napotkamy zapewne dostatecznie wiele przykładów, które
-  pokażą, czemu otrzymywanie błędów to dobra rzecz.
+  Rozpatrzmy jeszcze jeden, mocno uproszczony przykład. Powiedzmy,
+  że~używamy dwóch rodzajów plików: graficznych oraz tekstowych. Dzięki
+  typom, nasz program może rozpoznać, że~chcemy zapisać coś do~pliku
+  graficznego, ale otwarliśmy plik tekstowy, więc zgłosi on błąd, co jest
+  bardzo pożądanym zachowaniem. Jeśli Państwo jeszcze nie rozumieją
+  dlaczego otrzymywanie błędów jest dobrą rzeczą, to na tym przedmiocie
+  napotkamy zapewne dostatecznie wiele przykładów, które pokażą, czemu
+  tak jest.
 
   Należy też dodać, że~w~różnych językach granica między typami jest mniej
   lub bardziej ostra. Przykładowo, czy w~miejscu, gdzie program oczekuje
   liczby zmiennoprzecinkowej, mogę użyć liczby całkowitej~$1$? Wedle
   niektórych języków, tak, bo wszak wiadomo jak zamienić liczbę
-  całkowitą~$1$ na liczbę zmiennoprzecinkową~$1.0$. Wedle innych języków,
-  nie, bo~taka zmiana jednego typu liczbowego na drugi, może prowadzić do
-  błędów numerycznych, których programista może nie być świadomy pisząc
-  program.
+  całkowitą~$1$ na liczbę zmiennoprzecinkową~$1.0$.
 
 \end{frame}
 % ##################
@@ -1267,11 +1319,14 @@ eprint=true,
   \frametitle{Pożytek z~typów}
 
 
-  W~tym drugim typie~;) języków, programista musi jawnie poprosić
-  o~\textbf{konwersje typów}. Czyli musi napisać kod, który mówi coś
-  w~stylu „Wiem, że~to jest liczba całkowita i~w~tym miejscu masz
-  ją zamienić na liczbę zmiennoprzecinkową. Ja biorę odpowiedzialność
-  za to co~się stanie.” O~konwersji typów powiem w~swoim czasie.
+  Wedle innych języków, nie, bo~taka zmiana jednego typu liczbowego na
+  drugi, może prowadzić do błędów numerycznych, których programista może
+  nie być świadomy pisząc program. W~tym ostatnim typie~;) języków,
+  programista musi jawnie poprosić o~\textbf{konwersje typów}. Czyli musi
+  napisać kod, który mówi coś w~stylu „Wiem, że~to jest liczba całkowita
+  i~w~tym miejscu masz ją zamienić na liczbę zmiennoprzecinkową. Ja biorę
+  odpowiedzialność za to co~się stanie.” O~konwersji typów powiem w~swoim
+  czasie.
 
   Język~C stosuje podejście mieszane. Bo czemu życie miałoby być proste?
   Przykładowo, liczby całkowite zamienia na zmiennoprzecinkowe bez
