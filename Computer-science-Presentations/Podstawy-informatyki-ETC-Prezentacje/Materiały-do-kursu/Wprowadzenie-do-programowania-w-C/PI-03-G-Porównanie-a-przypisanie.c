@@ -24,6 +24,7 @@ int main() {
   int intVar1 = 2;
   /* To jest PRZYPISANIE. Od teraz zmienna intVar1 zawiera liczbę 2. */
 
+  printf("Instrukcja (intVar1 = 2;) to PRZYPISANIE.\n");
   printf("Wartość zmiennej intVar1 to %d.\n", intVar1);
 
   /* Pytanie, jak sprawdzić, czy zmienna intVar1 zawiera liczbę 3?
@@ -40,12 +41,12 @@ int main() {
    * wartość 1. Jeśli jest to fałszem, to zwraca 0. Dlaczego obowiązują takie
    * głupie zasady, o tym powiemy później. Bo czemu życie miałoby być
    * proste? */
-  printf("intVar1 == 3: %d.\n\n", intVar1 == 3);
+  printf("Wartość wyrażenia (intVar1 == 3) to: %d.\n\n", intVar1 == 3);
 
   intVar1 = 3;
   printf("Wartość zmiennej intVar1 to %d.\n", intVar1);
 
-  printf("intVar1 == 3: %d.\n", intVar1 == 3);
+  printf("Wartość wyrażenia (intVar1 == 3) to: %d.\n", intVar1 == 3);
 
 
 

@@ -31,8 +31,7 @@ int main() {
   } else {
     /* Jeśli (intVar1 == 5) nie jest prawdą, to zostanie zrobione to. */
     printf("intVar1 == %d, czyli zmienna ta przechwuje wartość inną, "
-	   "niż 5.\n",
-	   intVar1);
+	   "niż 5.\n", intVar1);
   }
 
   /* Proszę uruchomić ten program kilka razy, podając różne liczby

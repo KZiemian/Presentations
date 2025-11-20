@@ -1,0 +1,1740 @@
+% ---------------------------------------------------------------------
+% Basic configuration of Beamera and Jagiellonian
+% ---------------------------------------------------------------------
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianEnglishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Możliwie-proste-wprowadzenie-do-AQFT-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Wonderful package PGF/TikZ
+% ------------------------------------------------------
+
+% Node and pics for drawing charts
+% \usepackage{./Local-packages/PGF-TikZ-Chart-nodes-and-pics}
+
+% Styles for arrows
+% \usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+% Pic for drawing functions
+% \usepackage{./Local-packages/PGF-TikZ-Functions-pics}
+
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text
+\usepackage{./Local-packages/general-commands}
+
+% Package containing commands and other code useful for working with
+% mathematical text
+\usepackage{./Local-packages/math-commands}
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{Stochastic quantization, singular stochastic
+  equaations and works of Paweł Duch}
+
+\author{Kamil Ziemian \\
+  \texttt{kziemianfvt@gmail.com}}
+
+
+% \institute{}
+
+\date[23 X 2024]{Seminar of Field Theory Department \\
+  28 XI 2024}
+% --------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 29k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+
+% ######################################
+\maketitle % Tytuł całego tekstu
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents % Spis treści
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\section{Informacje wstępne}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mathematical physicist always spoils the fun}
+
+
+  We want to define simple qunatum filed theory like $\Phi^{ 4 }$ in $d + 1$
+  dimensions, so we wrote the lagrangian
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-01}
+    \Lcal =
+    \frac{ 1 }{ 2 } \partial_{ \mu } \Phi( x ) \partial^{ \mu } \Phi( x ) - m^{ 2 } \Phi^{ 2 }( x )
+    - \frac{ \lambda }{ 4! } \Phi^{ 4 }( x ).
+  \end{equation}
+  where $\Phi( x )$ stands for $\Phi( t, x_{ 1 }, x_{ 2 }, \ldots, x_{ d } )$. Then we
+  compute action
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-02}
+    S[ \Phi( x ) ] =
+    \int_{ [ 0, 1 ] \times \Rbb_{ d } } d^{ d + 1 }x \, \Lcal[ \Phi( x ) ],
+  \end{equation}
+  and partition function
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-03}
+    Z[ J( x ) ] =
+    \int [ \Dcal \Phi( x ) ] \exp\Big( i S[ \phi( x ) ] + \int d^{ d + 1 }x \, J( x )
+    \Phi( x ) \Big),
+  \end{equation}
+  and we can do physics now. But, mathematical physicist like to spoile
+  all the fun, so we point out that measure $\Dcal \Phi( x )$ doesn't exists.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Why $\Dcal \Phi( x )$ doesn't exists?}
+
+
+  What is the problem with $\Dcal \Phi( x )$? First we need to notice, that
+  it should be a~Lebesgue's measure for the inifinite dimensional space
+  of functions, like $L^{ 2 }( \Rbb^{ d + 1 }, d^{ d + 1 }x )$. In the case~of
+  $\Rbb^{ d }$ the crucial property of Lebesgue's measure is translational
+  invariance. If we have mesurable set $A \subset \Rbb^{ d }$, then
+  \begin{equation}
+    \label{eq:Niespodziewane-teoretyczne-01}
+    \forall \vecx \in \Rbb^{ d }, \quad
+    \text{vol}( A + \vecx ) = \text{vol}( A ).
+  \end{equation}
+
+  More preciasly, we have a theorem.
+
+  \begin{theorem}
+    Let $G$ be localy compact, topogological group. There \alert{exists}
+    translational invariant, positive measure on the $G$.
+  \end{theorem}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ######################################
+% \section{Aksjomatyczna i~konstrukcyjna kwantowa teoria pola,
+%   czyli o~tym czego nie umiemy zrobić}
+% % ######################################
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego tak jest?}
+
+
+%   By wyjaśnić przyczyny tego smutnego stanu rzeczy, sięgniemy do przykładu
+%   teorii którą nazywamy $\varphi^{ 4 }$. Tutaj będzie potrzebna znajomość teorii
+%   dystrybucji Schwartza. Czy mogę założyć jej znajomość u~Państwa?
+
+%   Teoria $\varphi^{ 4 }$ zdefiniowana jest ona przez lagrangian
+%   (dla prostoty używamy standardowej w~fizyce teoretycznej konwencji
+%   do zapisu stałych fizycznych)
+
+%   \vspace{-1.5em}
+
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \begin{split}
+%       \Lcal( \varphi )
+%       &=
+%         \frac{ 1 }{ 2 } \left[ ( \partial_{ t } \varphi( t, \vecx ) )^{ 2 } -
+%         ( \partial_{ x } \varphi( t, \vecx ) )^{ 2 } - ( \partial_{ y } \varphi( t, \vecx ) )^{ 2 } -
+%         ( \partial_{ z } \varphi( t, \vecx ) )^{ 2 } \right] - \\
+%       &\hspace{1em} - \frac{ \lambda }{ 4! } \varphi( t, \vecx )^{ 4 }.
+%     \end{split}
+%   \end{equation}
+
+%   \vspace{-1.8em}
+
+
+
+%   Lagrangian ten prowadzi do równania ruchu
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \begin{split}
+%       \partial_{ t }^{ 2 } \varphi( t, \vecx ) - \partial_{ x }^{ 2 } \varphi( t, \vecx ) -
+%       \partial_{ y }^{ 2 } \varphi( t, \vecx ) - \partial_{ z }^{ 2 } \varphi( t, \vecx ) +
+%       \frac{ \lambda }{ 3! } \varphi( t, \vecx )^{ 3 } = 0.
+%     \end{split}
+%   \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Dlaczego tak jest?}
+
+%   \vspace{-1.5em}
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \begin{split}
+%       \partial_{ t }^{ 2 } \varphi( t, \vecx ) - \partial_{ x }^{ 2 } \varphi( t, \vecx ) -
+%       \partial_{ y }^{ 2 } \varphi( t, \vecx ) - \partial_{ z }^{ 2 } \varphi( t, \vecx ) +
+%       \frac{ \lambda }{ 3! } \varphi( t, \vecx )^{ 3 } = 0.
+%     \end{split}
+%   \end{equation}
+%   Gdzie jest problem? Większość podręczników do kwantowej teorii pola
+%   powie nam, że~pole $\varphi$ jest funkcją o~wartościach operatorowych, czyli
+%   $\varphi( t, \vecx )$ dla konkretnego $t$ i~$\vecx$ to operator działający
+%   w~pewnej przestrzeni Hilberta. Bardziej dokładna analiza wskazuje,
+%   że~takie podejście jest błędne.
+
+%   Pole $\varphi( t, \vecx )$ nie jest funkcją o~wartościach operatorowych,
+%   lecz \alert{dystrybucją (temperowaną) w~sensie Schwartza} o~wartościach
+%   operatorowych. Z~tego powodu wartość tej dystrybucji w~punkcie
+%   $( t, \vecx )$ jest w~ogólności pozbawiona sensu i~notacja
+%   $\varphi( t, \vecx )$ jest tylko zbiorem symboli na tablicy, bez głębszej
+%   treści. (Trochę przesadzam, ale nie tak bardzo trochę.)
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest pole kwantowe?}
+
+
+%   Skoro pole $\varphi$ jest dystrybucją, to jeśli weźmiemy jakąś funkcję
+%   klasy Schwartza $f$, to wówczas
+
+%   \vspace{-1.7em}
+
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-03}
+%     \varphi( f ), \qquad
+%     f \in \Scal( \Rbb^{ 3 } ),
+%   \end{equation}
+
+%   \vspace{-1.8em}
+
+
+
+%   jest operatorem działającym na pewnej przestrzeni Hilberta. Ten fakt
+%   jest przyczyną częstego pojawiania~się funkcji klasy Schwartza w~pewnym
+%   podręczniku do algebry liniowej, który może mieli Państwo kiedyś w~rękach.
+
+%   Wróćmy do naszego równania ruchu
+
+%   \vspace{-2em}
+
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \begin{split}
+%       \partial_{ t }^{ 2 } \varphi( t, \vecx ) - \partial_{ x }^{ 2 } \varphi( t, \vecx ) -
+%       \partial_{ y }^{ 2 } \varphi( t, \vecx ) - \partial_{ z }^{ 2 } \varphi( t, \vecx ) +
+%       \frac{ \lambda }{ 3! } \varphi( t, \vecx )^{ 3 } = 0.
+%     \end{split}
+%   \end{equation}
+%   W~tym równaniu liczymy drugą pochodną dystrybucji, co zawsze ma sens.
+%   Potem dodajemy dystrybucje, tutaj też wszystko jest dobrze. Potem
+%   podnosimy do \alert{trzeciej potęgi} dystrybucję. Oj, nie jest dobrze.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Mamy duży problem}
+
+%   \vspace{-1.5em}
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \begin{split}
+%       \partial_{ t }^{ 2 } \varphi( t, \vecx ) - \partial_{ x }^{ 2 } \varphi( t, \vecx ) -
+%       \partial_{ y }^{ 2 } \varphi( t, \vecx ) - \partial_{ z }^{ 2 } \varphi( t, \vecx ) +
+%       \frac{ \lambda }{ 3! } \varphi( t, \vecx )^{ 3 } = 0.
+%     \end{split}
+%   \end{equation}
+%   Samo mnożenie dystrybucji jest w~ogólności niewykonalne, tym bardziej
+%   nie można w~ogólności podnieść jej do trzeciej potęgi. Niemniej jeśli
+%   kogoś nie interesuje zbytnio matematyczna ścisłość, to może spokojnie
+%   rozwijać dalej całą teorię w~oparciu o~to pozbawione matematycznego sensu
+%   równanie i~swoją intuicję fizyczną.
+
+%   Ludzie niezadowoleni z~tego stanu rzeczy stworzyli aksjomatyczną kwantową
+%   teorię pola i~konstrukcyjną kwantową teorię pola. Aksjomatyczna teoria
+%   pola zajmuje~się definiowaniem tego, czym jest pole kwantowe poprzez
+%   podanie listy aksjomatów jakie to ma spełnić obiekt, by był polem
+%   kwantowym. Jest to ta sama sytuacja, gdy definiujemy grupę poprzez
+%   podanie jej własności, jak istnienie elementu $e$, który dla każdego
+%   $g \in G$ spełnia warunek $e g = g e = g$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Mamy kolejny wielki problem}
+
+
+%   Tak samo jak w~teorii grup, bazując tylko na aksjomatycznej definicji
+%   grupy możemy dowodzić pewnych jej własności (np. istnieje tylko jeden
+%   element odwrotny), tak samo w~aksjomatycznej kwantowej teorii pola,
+%   wychodząc od tych aksjomatów dowodzą własności pól kwantowych.
+%   Na obecną chwilę nie ma jednego ogólnie obowiązujący zestaw aksjomatów
+%   dla kwantowej teorii pola, z~istniejących warto wymienić
+%   \colorhref{https://en.wikipedia.org/wiki/Wightman_axioms}{aksjomaty
+%     Wightmana}
+%   i~\colorhref{https://ncatlab.org/nlab/show/Osterwalder-Schrader+theorem}{Osterwaldera-Schradera}.
+
+%   Poważna różnica polega na tym, że~mając aksjomaty teorii, grup od razu
+%   możemy podać kilka przykładów takich obiektów, podczas gdy podanie
+%   konkretnego przykładu pola kwantowego spełniającego zestaw aksjomatów
+%   jest niewiarygodnie trudnym zadaniem. Stąd istnieje osobny przedmiot
+%   badań, konstrukcyjna kwantowa teoria pola, która zajmuje~się
+%   budowanie konkretnych przykładów pól kwantowych spełniających wybrany
+%   zestaw aksjomatów.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{I to naprawdę duży problem}
+
+
+%   Według moje wiedzy, w~roku $2024$ wciąż nie jest znany \alert{żaden}
+%   przykład pola kwantowego w~$3 + 1$ wymiarach, które oddziałuje z~pole
+%   kwantowym. W~tej liczbie wymiarów znane są przykłady pola kwantowego,
+%   które oddziaływuje z~obiektami netwonowskimi, ale nie jesteśmy w~stanie
+%   zdefiniować choćby elektrodynamiki kwantowej.
+
+%   Podamy teraz kilka wybranych dat z~historii konstrukcyjnej kwantowej
+%   teorii pola.
+
+%   W~latach $1968\text{-}1972$
+%   \colorhref{https://en.wikipedia.org/wiki/James\_Glimm}{James Glimm}
+%   i~\colorhref{https://en.wikipedia.org/wiki/Arthur\_Jaffe}{Arhtur Jaffe}
+%   konstruują teorię $\varphi^{ 4 }$ w~dwóch wymiarach czasoprzestrzennych.
+
+%   $24$ maja $2000$ roku Instytut Matematyki im. Claya ogłasza swoje Problemy
+%   Millenijne. Jednym z~nich jest skonstruowanie kwantowej teorii
+%   Yanga-Millsa w~$3 + 1$ wymiarach oraz wykazanie, że~posada przerwę masową.
+%   Konstrukcja musi spełniać zbiór aksjomatów co najmniej tak
+%   silnych jak aksjomaty Wightmana lub Osterwaldera-Schradera.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Najnowsze wyniki}
+
+
+%   Autorami oficjalnego sformułowania tego Problemu Millenijnego
+%   są \colorhref{https://en.wikipedia.org/wiki/Edward\_Witten}{Edward Witten}
+%   i~\colorhref{https://en.wikipedia.org/wiki/Arthur\_Jaffe}{Arthur Jaffe}.
+%   Jest ono dostępne pod tym
+%   \colorhref{https://www.claymath.org/wp-content/uploads/2022/06/yangmills.pdf}{linkiem}.
+
+%   W~$2022$ roku
+%   \colorhref{https://sites.google.com/view/ajaychandra/home}{Ajay Chandra},
+%   \colorhref{https://ilyachevyrev.wordpress.com/}{Ilya Chevyrev},
+%   \colorhref{https://en.wikipedia.org/wiki/Martin_Hairer}{Martin Hairer}
+%   i~\colorhref{https://people.math.wisc.edu/~hshen3/}{Hao Shen} publikują
+%   na arXivie wysoce niebanalną pracę
+%   \colorhref{https://arxiv.org/abs/2201.03487}{\textit{Stochastic
+%       quantisation~of Yang-Mills-Higgs in~3D}}
+%   \parencite{Chandra-et-al-Stochastic-quantisation-of-Yang-Mills-ETC-Pub-2024},
+%   w~której pokazują jak w~pełni ściśle, choć w~dość pokręcony sposób,
+%   skonstruować kwantową teorię Yanga-Millsa wraz z~polem Higgsa, w~$2 + 1$
+%   wymiarach.
+
+%   Warto dodać, że~Martin Hairer jest laureatem Medalu Fieldsa za rok $2014$
+%   i~„Breakthrough Prize in Mathematics” za rok $2021$
+%   i~w~\colorhref{https://www.youtube.com/watch?v=4jR8Sg4PYAA}
+%   {wywiadzie} dla kanału Tom Rocks Maths z~tego samego roku stwierdził,
+%   że~ich metody działają jeśli wymiar przestrzeni jest równy
+%   „$3 + 1 - \varepsilon$”, dla $\varepsilon > 0$, zgodnie jednak z~prawem Murphy’ego,
+%   załamują~się dokładnie dla $3 + 1$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Najnowsze wyniki}
+
+
+%   Były doktorant prof. Herdegena,
+%   dr~\colorhref{https://pawelduch.github.io/}{Paweł Duch} jest obecnie
+%   członkiem \colorhref{https://www.epfl.ch/labs/propde/members/}{grupy}
+%   Martina Hairera na École Polytechnique Fédérale de Lausanne
+%   w~Szwajcarii.
+
+%   Poza tym w~konstrukcyjnej kwantowej teorii pola musimy~się
+%   zmagać z~takimi przeciwnościami losu jak:
+%   \begin{itemize}
+
+%   \item Nieośrodkowe przestrzenie Hilberta. Z~tego powodu wybór przestrzeni
+%     Hilberta dyktuje \alert{fizyczne} własności teorii.
+
+%   \item Twierdzenie Haaga o~niemożliwości zbudowania obrazu interakcji
+%     (obrazu Dirac’a), na którym opiera~się większość wyliczeń dla Modelu
+%     Standardowego. A~przynajmniej~się opierała przez kilka dekad.
+
+%   \item Całki po trajektoriach i~ich nieistnienie w~większości przypadków.
+
+%   \item I~wiele innych.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Algebraiczna kwantowa teoria pola}
+% % ######################################
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czym jest AQFT?}
+
+
+%   Algebraiczna kwantowa teoria pola jest w~zasadzie jednym z~wariantów
+%   aksjomatycznej kwantowej teorii pola. Została ona sformułowana przez
+%   Rudolfa Haaga ($1922\text{-}2016$), z~dużym wkładem ~Davida Ruelle’a
+%   (ur.~$1935$), w~latach $50$-tych i~$60$-tych XX~wieku. Jej dwie podstawowe
+%   idee można ująć w~następujący sposób.
+%   \begin{itemize}
+
+%   \item[1)] Zjawiska fizyczne są zlokalizowane w~czasie i~przestrzeni
+%     („zasada-bliskiego-działania”).
+
+%   \item[2)] Fundamentalne relacje między kwantowymi obserwablami mają
+%     charakter algebraiczny.
+
+%   \end{itemize}
+
+%   Ze względu na drugi punkt, w~\textsc{aqft} pola kwantowe są obiektem
+%   drugorzędnym, na pierwszy zaś plan wysuwają~się odpowiednie algebry
+%   obserwabli. Jeśli mamy taką algebrę, jesteśmy w~stanie odtworzyć
+%   odpowiednie pole kwantowe.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Problemy i~osiągnięcia AQFT}
+
+
+%   Tak jak wszystkie inne podejścia aksjomatyczne, \textsc{aqft} zmaga~się
+%   z~problemem braku modeli konkretnych pól kwantowych. Tym samym nie możemy
+%   wyliczyć, powiedzmy, masy protonu jako funkcji kilku mierzalnych
+%   parametrów kwarków i~gluonów, w~tym samym sensie, jak nie możemy podać
+%   liczby elementów grupy na podstawie jej definicji. To nie jest coś co
+%   wynika z~aksjomatów, tylko z~własności konkretnego bytu matematycznego,
+%   gdy już określimy go dokładnie (podając jego podstawowe parametry
+%   fizyczne).
+
+%   Chromodynamika na sieciach (obliczenia komputerowe) pozwala nam obliczyć
+%   masę protonu, ale to~temat na osobne seminarium, prowadzone przez inną
+%   osobę.
+
+%   Niemniej, na poziomie wywodzenia z~aksjomatów, \textsc{aqft}~potrafi
+%   udowodnić wiele jakościowy rezultatów zgodnych ze światem, który widzimy.
+%   Ale brak możliwości obliczenia masy protonu, sprawia, że~nie możemy być
+%   z~obecnego stanu rzeczy zadowoleni.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Lokalizacja zjawisk w~czasoprzestrzeni}
+
+%   \vspace{-0.8em}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \begin{tikzpicture}
+
+%       % x axis
+%       \draw[axis arrow] (-5,0) -- (5,0);
+
+%       \pic at (5,0) {x mark for horizontal axis 1};
+
+
+%       % t axis
+%       \draw[axis arrow] (0,-2.5) -- (0,4);
+
+%       \pic at (0,4) {t mark for vertical axis 1};
+
+
+
+%       % Light cone
+%       \fill[color=blue,opacity=0.4] (0,0) -- (3.5,3.5) -- (-3.5,3.5) -- cycle;
+
+%       \fill[color=blue,opacity=0.4] (0,0) -- (2.2,-2.2) -- (-2.2,-2.2) --
+%       cycle;
+
+%       \draw[dashed] (2.2,-2.2) -- (-3.5,3.5);
+
+%       \draw[dashed] (-2.2,-2.2) -- (3.5,3.5);
+
+
+
+%       % Region number 1
+%       \draw[dashed] plot[smooth cycle]
+%       coordinates { (1.2,0) (3,-1) (3.5,1.4) (2.5,1.2) };
+
+%       \node[scale=1.3] at (2.3,0.3) {$\Ocal_{ 1 }$};
+
+
+%       % Region number 2
+%       \draw[dashed] plot[smooth cycle]
+%       coordinates { (0.8,0) (2.9,-1.5) (4.2,1.8) (1,3) };
+
+%       \node[scale=1.3] at (2.7,1.8) {$\Ocal_{ 2 }$};
+
+
+%       % Region number 3
+%       \draw[dashed] plot[smooth cycle]
+%       coordinates { (-1,-0.2) (-2,1.2) (-3,0.3) (-2,-1) };
+
+%       \node[scale=1.3] at (-2,0.5) {$\Ocal_{ 3 }$};
+
+
+%       % Event reaching form region 3 to region 1
+%       \draw[dashed,thick,color=yellowLoc] (-1.3,0) -- (2,3.3);
+
+%       \fill[color=brown] (-1.3,0) circle [radius=0.09];
+
+%       \node[below] at (-1.3,-0.05) {$E$};
+
+%     \end{tikzpicture}
+
+%     \caption{Trzy ograniczone obszary $\Ocal_{ 1 }$, $\Ocal_{ 2 }$
+%       i~$\Ocal_{ 3 }$, oraz zjawisko $E$ wysyłające promień światła.}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Lokalizacja zjawisk w~czasoprzestrzeni}
+
+
+%   Z~punktu widzenia fizyki interpretacja tej zasady jest prosta. Każdy
+%   fizyczny pomiar trwa skończony czas i~zajmuje skończony obszar
+%   przestrzeni. Jeśli trzeba możemy zmodyfikować ten formalizm, by dopuścić
+%   nieskończone obszary, ale to rzadko jest potrzebne.
+
+%   By być dokładnym, z~każdym zjawiskiem fizycznym wiążemy otwarty
+%   i~ograniczony (w~sensie $\Rbb^{ 4 }$) podzbiór czasoprzestrzeni
+%   Minkowskiego, oznaczamy go przez $\Ocal$, w~którym może on zostać
+%   zmierzony. Ponieważ wielkości mierzone są reprezentowane przez pewną
+%   algebrę, więc obszarowi temu przypisuje algebrę $\Acal( \Ocal )$.
+
+%   Dobrze, ale na jakim zasadzie działają takie algebry? Standardowo
+%   w~mechanice kwantowej stany reprezentują wektory z~przestrzeni
+%   Hilberta $\psi \in \Hcal$, zaś obserwable operatory, przykładowo $X = x$ \\
+%   i~$P = -i \, \hbar \frac{ d }{ dx }$. Korzystając z~tego, i~nie
+%   przejmując~się zbytnio matematyką pokazujemy:
+
+%   \vspace{-2em}
+
+
+
+%   \begin{equation}
+%     [ X, P ] = XP - PX = i \, \hbar \id.
+%   \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Algebry $\MathTextFrametitleFGColor{C^{ * }}$}
+
+%   \vspace{-1em}
+
+
+
+%   \begin{equation}
+%     [ X, P ] = XP - PX = i \, \hbar \id.
+%   \end{equation}
+%   W~algebraicznej kwantowej teorii pola, jak sama nazwa wskazuje,
+%   traktuje takie \alert{algebraiczne} relacje jak te powyżej, jako
+%   najbardziej podstawowe własności obserwablami, którymi to obserwablami
+%   może być położenie i~pęd elektronu. Przestrzeń Hilberta i~reprezentacja
+%   operatorów jako $X = x$ oraz $P = -i \, \hbar \frac{ d }{ dx }$ jest
+%   wyprowadzona z~odpowiednich własności algebr.
+
+%   Tutaj potrzebujemy przywołać pojęcie algebry $C^{ * }$. Jej podstawowe
+%   cechy to wyabstrahowane własności macierzy kwadratowych $n \times n$
+%   o~wyrazach zespolonych. Dokładniej $\Acal$ jest algebrą $C^{ * }$ jeśli:
+%   \begin{itemize}
+
+%   \item[1)] $\Acal$ jest przestrzenią wektorową nad $\Cbb$ (dodawanie
+%     macierzy i~mnożenie ich przez liczbę).
+
+%   \item[2)] Zdefiniowana jest operacja mnożenia elementów z~$A$ (mnożenie
+%     macierzy).
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Algebry $\MathTextFrametitleFGColor{C^{ * }}$}
+
+
+%   \begin{itemize}
+
+%   \item[2a)] Mnożenie elementów z~$\Acal$ jest łączne.
+
+%   \item[2b)] Mnożenie jest biliniowe
+%     \begin{equation}
+%       \label{eq:Niespodziewane-teoretyczne-01}
+%       A ( \alpha B + \beta C ) = \alpha A B + \beta A C, \quad
+%       ( \alpha A + \beta B ) C = \alpha A C + \beta B C.
+%     \end{equation}
+
+%     \vspace{-1.5em}
+
+
+
+%   \item[3)] Dana jest operacja zwana inwolucją (sprzężenie hermitowskie
+%     macierzy).
+%     \begin{equation}
+%       \label{eq:Niespodziewane-teoretyczne-01}
+%       \Acal \ni A \mapsto A^{ * } \in \Acal.
+%     \end{equation}
+
+%     \vspace{-1.5em}
+
+
+
+%   \item[3a)] Inwolucja posiada następujące własności
+
+%     \vspace{-2em}
+
+
+
+%     \begin{subequations}
+
+%       \begin{align}
+%         \label{eq:Niespodziewane-teoretyczne-01}
+%         ( \alpha A )^{ * } &= \bar{ \alpha } A^{ * }, \\
+%         ( A^{ * } )^{ * } &= A, \\
+%         ( A + B )^{ * } &= A^{ * } + B^{ * },
+%       \end{align}
+
+%     \end{subequations}
+
+%     \vspace{-2em}
+
+
+
+%     gdzie $\bar{ \alpha }$ to liczba sprzężona do~$\alpha$.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Algebry $\MathTextFrametitleFGColor{C^{ * }}$}
+
+
+%   W~zbiorze macierzy diagonalizowalnych możemy wprowadzić normę wzorem
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \Vert A \Vert = \max\{ \absOne{ \lambda_{ 1 } }, \absOne{ \lambda_{ 2 } }, \ldots,
+%     \absOne{ \lambda_{ n } } \},
+%   \end{equation}
+%   gdzie $\lambda_{ i }$ to jej wartości własne. Jest to norma o~własnościach
+%   znanych z~analizy matematycznej, więc zbiór macierze stają~się przestrzeń
+%   metryczną. Dla przypadku macierzy niediagonalizowalnej trzeba ten wzór
+%   uogólnić, ale nie jest to teraz tak ważne.
+
+%   Wzorując~się na własnościach tej normy, nakładamy na algebry $C^{ * }$
+%   następujące warunki.
+
+%   \begin{itemize}
+
+%   \item[4)] $\Acal$ jest przestrzenią unormowaną z~normą $\Vert \cdot \Vert$.
+
+%   \item[4a)] Przy metryce danej przez $\Vert \cdot \Vert$, $\Acal$ jest przestrzenią
+%     zupełną.
+
+%   \item[4b)] Norma spełnia dwa dodatkowe warunki.
+
+%     \vspace{-1.7em}
+
+
+
+%     \begin{subequations}
+
+%       \begin{align}
+%         \label{eq:Niespodziewane-teoretyczne-01}
+%         \Vert A B \Vert &\leq \Vert A \Vert \, \Vert B \Vert, \\
+%         \Vert A^{ * } A \Vert &= \Vert A \Vert^{ 2 }.
+%       \end{align}
+
+%     \end{subequations}
+
+
+%   \end{itemize}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Własności algebr
+%     $\MathTextFrametitleFGColor{C^{ * }}$}
+
+
+%   Bez wnikania w~detale techniczne, każdą algebrę $C^{ * }$ możemy
+%   wyposarzyć w~element neutralny mnożenia $\UnitAlg$:
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     A \UnitAlg = \UnitAlg A.
+%   \end{equation}
+%   Dla elementu algebry $C^{ * }$ możemy zdefiniować jego widmo, obliczać
+%   relacje komutacji, przy odpowiednich założeniach zdefiniować rozkład
+%   polarny, etc.
+
+%   Teoria ta nie jest prosta dla początkujących, dlatego prof. Patryk Mach
+%   kiedyś stwierdził, że~problem z~pewnym podręcznikiem do algebry polega na
+%   tym, że~spora część jego materiału to jest teoria algebr $C^{ * }$
+%   wyłożona w~specjalny przypadku macierzy.
+
+%   Potrzebować będziemy teraz pojęcia przestrzeni dualnej do przestrzeni
+%   wektorowej. Albo jeszcze lepiej dualnej do przestrzeni unormowanej
+%   (Banach). Czy mam przypomnieć o~co chodzi?
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Definicja stanów}
+
+
+%   Niech $\Acal^{ \text{d} }$ będzie przestrzenią dualną do~$\Acal$.
+%   Element $\omega \in \Acal^{ \text{d} }$ nazywamy \textbf{stanem}, jeśli
+
+%   \vspace{-2.5em}
+
+
+
+%   \begin{subequations}
+
+%     \begin{align}
+%       \label{eq:Niespodziewane-teoretyczne-01}
+%       \omega( \UnitAlg ) &= 1 \in \Rbb, \\
+%       \omega( A^{ * } A ) &\geq 0, \quad
+%                             A \in \Acal.
+%     \end{align}
+
+%   \end{subequations}
+
+%   \vspace{-2em}
+
+
+
+%   W~\textsc{aqft} elementy algebry $\Acal( \Ocal )$ reprezentują wielkości
+%   fizyczne mierzalne w~obszarze $\Ocal$, zaś stany reprezentują, co dużo
+%   mówić, stany układu fizycznego, którego wielkości mierzymy.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Algebraiczna QFT $\MathTextFrametitleFGColor{\subset}$
+%     Lokalna Fizyka Kwantowa}
+
+
+%   Przykładowo, niech $X \in \Acal( \Ocal )$ będzie obserwablą określającą
+%   odpowiadającą położeniu elektronu, zaś $\omega \in \Acal^{ \text{d} }$
+%   będzie stanem elektronu, który porusza~się ruchem jednostajnym
+%   prostoliniowym. Wówczas
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \langle X \rangle_{ \omega } := \omega( X ),
+%   \end{equation}
+%   jest wartością oczekiwaną położenia elektronu w~stanie $\omega$, zmierzoną
+%   w~obszarze $\Ocal$. W~mechanice kwantowej zapisalibyśmy to jako
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \langle X \rangle_{ \psi } = \langle \psi | X | \psi \rangle = ( \psi, X \psi ).
+%   \end{equation}
+
+%   \vspace{-2em}
+
+
+
+%   W~tym możemy już w~zasadzie odtworzyć aparat probabilistyczny mechaniki
+%   kwantowej.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Konstrukcja GNS}
+
+
+%   Niezwykle ważny elementem nie tylko teorii algebr $C^{ * }$, i~całej
+%   współczesnej matematyki, jest \textbf{konstrukcja \textsc{gns}
+%     (Gelfand-Naimark-Segal)}, która mówi,
+%   że~jeśli dysponujemy stanem $\omega$ na algebrze $C^{ * }$, to możemy
+%   z~niej „wyciągnąć” przestrzeń Hilberta. Nie możemy
+%   wchodzić w~to jak dokładnie ona przebiega, powiedzmy pokrótce, że~chodzi
+%   o~to, by potraktować element $A, B \in \Acal$ jako wektory przestrzeni
+%   Hilberta i~zdefiniować ich iloczyn skalarny wzorem:
+
+%   \vspace{-1.5em}
+
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     ( A, B ) := \omega( A^{ * } B ).
+%   \end{equation}
+
+%   \vspace{-1.5em}
+
+
+
+%   Dla nas ważne jest to, że~dzięki temu, po odpowiednio dużej ilości
+%   pracy, możemy odtworzyć standardowy formalizm mechaniki kwantowej.
+%   Acz nie jest to takie łatwe jakby się mogło wydawać, tym co nie zgłębili
+%   arkanów analizy funkcjonalnej.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Lokalizacja algebr w~czasoprzestrzeni}
+
+%   \vspace{-0.8em}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \begin{tikzpicture}
+
+%       % x axis
+%       \draw[axis arrow] (-5,0) -- (5,0);
+
+%       \pic at (5,0) {x mark for horizontal axis 1};
+
+
+%       % t axis
+%       \draw[axis arrow] (0,-2.5) -- (0,4);
+
+%       \pic at (0,4) {t mark for vertical axis 1};
+
+
+
+%       % Light cone
+%       \fill[color=blue,opacity=0.4] (0,0) -- (3.5,3.5) -- (-3.5,3.5) -- cycle;
+
+%       \fill[color=blue,opacity=0.4] (0,0) -- (2.2,-2.2) -- (-2.2,-2.2) --
+%       cycle;
+
+%       \draw[dashed] (2.2,-2.2) -- (-3.5,3.5);
+
+%       \draw[dashed] (-2.2,-2.2) -- (3.5,3.5);
+
+
+
+%       % Region number 1
+%       \draw[dashed] plot[smooth cycle]
+%       coordinates { (1.2,0) (3,-1) (3.5,1.4) (2.5,1.2) };
+
+%       \node[scale=1.3] at (2.5,0.35) {$\Acal( \Ocal_{ 1 } )$};
+
+
+%       % Region number 2
+%       \draw[dashed] plot[smooth cycle]
+%       coordinates { (0.8,0) (2.9,-1.5) (4.2,1.8) (1,3) };
+
+%       \node[scale=1.3] at (2.9,1.9) {$\Acal( \Ocal_{ 2 } )$};
+
+
+%       % Region number 3
+%       \draw[dashed] plot[smooth cycle]
+%       coordinates { (-1,-0.2) (-2,1.2) (-3,0.3) (-2,-1) };
+
+%       \node[scale=1.3] at (-2.1,0.4) {$\Acal( \Ocal_{ 3 } )$};
+
+
+%       % Event reaching form region 3 to region 1
+%       \draw[dashed,thick,color=yellowLoc] (-1.3,0) -- (2,3.3);
+
+%       \fill[color=brown] (-1.3,0) circle [radius=0.09];
+
+%       \node[below] at (-1.3,-0.05) {$E$};
+
+%     \end{tikzpicture}
+
+%     \caption{Lokalizacja algebr w~czasoprzestrzeni.}
+
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Aksjomaty AQFT}
+
+
+%   \textbf{A.1. Warunek izotonii.} Ponieważ zbiór $\Ocal_{ 1 }$ zawiera~się
+%   $\Ocal_{ 2 }$, więc żądamy by zachodziło
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \Acal( \Ocal_{ 1 } ) \subset \Acal( \Ocal_{ 2 } ).
+%   \end{equation}
+%   Interpretacja tego jest prosta. Jeśli możemy coś zmierzyć zbiorze
+%   $\Ocal_{ 1 }$, to możemy to też zmierzyć w~większym zbiorze $\Ocal_{ 2 }$.
+
+%   \textbf{A.2. Przyczynowość Einsteina.} Zbiory $\Ocal_{ 1 }$ i~$\Ocal_{ 3 }$
+%   są tak względem siebie ułożone, że~żaden obiekt podróżujący z~prędkością
+%   mniejszą bądź równą $c$, nie może z~jednego dotrzeć do drugiego. Tym
+%   samym eksperyment przeprowadzony w~jednym z~nich nie może wpłynąć na
+%   eksperyment w~drugim. Przypominając sobie, że~dwie macierze które
+%   komutują ze sobą, można jednocześnie zdiagonalizować, żądamy by zachodziło
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     [ A, B ] = 0, \quad
+%     A \in \Acal( \Ocal_{ 1 } ), B \in \Acal( \Ocal_{ 3 } ).
+%   \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Aksjomaty AQFT}
+
+
+%   \textbf{A.3. Niezmienniczość Poincar\'{e}go.} Niech będzie dany obszar
+%   $\Ocal$ i~transformacja Poincar\'{e}go o~nazwie $\rho$, która przekształca
+%   go w~obszar $\Ucal$. Żądamy by istniał wówczas izomorfizm $\alpha( \rho )$
+%   algebr $C^{ * }$:
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \alpha( \rho ) : \Acal( \Ocal ) \to \Acal( \Ucal ).
+%   \end{equation}
+%   Izomorfizm $\alpha( \rho )$ musi spełniać pewne dodatkowe warunki, ich postać
+%   jest teraz drugorzędna.
+
+  % \textbf{A.4. Dynamika.} Niech $\Ocal \subset \Ucal$ i~niech $\Ocal$
+  % zawiera jakiś fragment hiperpłaszczyzny $h$ zdefiniowanej równaniem
+  % $t = \const$, taki że
+  % \begin{equation}
+  %   \label{eq:Niespodziewane-teoretyczne-01}
+  %   h \cap \Ocal = h \cap \Ucal.
+  % \end{equation}
+  % Wówczas żądamy by zachodziło
+  % \begin{equation}
+  %   \label{eq:Niespodziewane-teoretyczne-01}
+  %   \Acal( \Ocal ) = \Acal( \Ucal ).
+  % \end{equation}
+  % Ten dziwnie wyglądający warunek sprowadza~się do tego, że~jeśli
+  % zadamy równaniu falowemu dane początkowe na hiperpłaszczyźnie
+  % $t = \const$, to tym samym możemy znaleźć rozwiązanie obowiązujące
+  % na całej przestrzeni. W~takim razie musi być możliwe odtworzenie
+  % algebry w~całej przestrzeni, jeśli znamy ją na pewnym otwartym otoczeniu
+  % $t = \const$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Aksjomaty AQFT}
+
+
+  % \textbf{A.3. Niezmienniczość Poincar\'{e}go.} Niech będzie dany obszar
+  % $\Ocal$ i~transformacja Poincar\'{e}go o~nazwie $\rho$, która przekształca
+  % go w~zbiór $\Ucal$. Żądamy by istniał wówczas izomorfizm $\alpha( \rho )$
+  % algebr $C^{ * }$:
+  % \begin{equation}
+  %   \label{eq:Niespodziewane-teoretyczne-01}
+  %   \alpha : \Acal( \Ocal ) \to \Acal( \Ucal ).
+  % \end{equation}
+
+
+%   \textbf{A.4. Dynamika.} Niech $\Ocal \subset \Ucal$ i~niech $\Ocal$
+%   zawiera jakiś fragment hiperpłaszczyzny $h$ zdefiniowanej równaniem
+%   $t = \const$, taki że
+
+%   \vspace{-1.5em}
+
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     h \cap \Ucal \subset \Ocal.
+%   \end{equation}
+
+%   \vspace{-2em}
+
+
+
+%   Wówczas żądamy by zachodziło
+
+%   \vspace{-1.5em}
+
+
+
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-01}
+%     \Acal( \Ocal ) = \Acal( \Ucal ).
+%   \end{equation}
+
+%   \vspace{-1.8em}
+
+
+
+%   Ten dziwnie wyglądający warunek sprowadza~się do tego, że~jeśli
+%   zadamy równaniu falowemu dane początkowe na hiperpłaszczyźnie
+%   $t = \const$, to tym samym możemy znaleźć rozwiązanie obowiązujące
+%   na całej przestrzeni. W~takim razie musi być możliwe odtworzenie
+%   algebry w~całej przestrzeni, jeśli znamy ją na pewnym otwartym otoczeniu
+%   $t = \const$.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Podsumowanie}
+
+
+%   W~tym momencie podstawowe elementy formalizmu są przedstawione, możemy
+%   przystąpić do konkretnych rozważań teoretycznych.
+
+%   Oczywiście, nic nie policzymy w~$3 + 1$ wymiarach, bo żadnego konkretnego
+%   modelu nie potrafimy tu zbudować. Pozostaje liczyć na~Martina Hairer
+%   i~Paweł Ducha. ;)
+
+%   Jeśli ktoś chce~się czegoś więcej dowiedzieć, to może zapytać prof.
+%   Herdegena, albo napisać do mnie pod adres \email. To jest ciekawy temat,
+%   o~którym dobrze~się rozmawia.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Koniec}
+
+%   \vspace{7em}
+
+
+%   \begin{center}
+
+%     \Large
+
+%     Dziękuję bardzo. \\
+%     Czy są jakieś pytania?
+
+%   \end{center}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \appendix
+% % ######################################
+
+
+
+% % ###################
+% \begin{frame}
+%   \frametitle{Literatura rozszerzająca}
+
+
+%   Dobrym wprowadzeniem do zagadnień matematycznej kwantowej teorii
+%   pola jest praca Stephen J.~Summersa
+%   \colorhref{https://arxiv.org/abs/1203.3991}{\textit{A~Perspective
+%       on~Constructive Quantum Field Theory}}, prezentująca historyczny
+%   rozwój tej dziedziny
+%   \parencite{Summers-Prespective-on-Constructive-ETC-Ver-2016}.
+
+%   Podstawowy wykładem \textsc{aqft} jest książka Rudolpha Haaga
+%   \textit{Local Quantum Physics. Fields, Particles, Algebras}
+%   \parencite{Haag-Local-Quantum-Physics-Pub-1996}. Obecnie
+%   jest ona do ściągnięcia z~tej
+%   \colorhref{https://link.springer.com/book/10.1007/978-3-642-61458-3}
+%   {strony}. Trzeba zauważyć, że~tekst ten zakłada u~czytelnika dużą wiedzę
+%   oraz~umiejętności i~wymaga dogłębnego studiowania.
+
+%   Krótszym, choć wciąż wymagającym wprowadzeniem do tej dziedziny
+%   jest artykuł Christophera J.~Fewstera i~Kasi Rejzner
+%   \colorhref{https://arxiv.org/abs/1904.04051}{\textit{Algebraic Quantum
+%       Field Theory -- an~introduction}}
+%   \parencite{Fewster-Rejzner-Algebraic-Quantum-Field-Theory-an-introduction-2019}. Warta uwagi jest również napisana w~formie przeglądu praca
+%   Detleva Buchholza i~Klausa Fredenhagena
+%   \colorhref{https://arxiv.org/abs/2305.12923}{\textit{{Algebraic quantum
+%         field theory: objectives, methods, and results}}}
+%   \parencite{Buchholz-Fredenhagen-Algebraic-quantum-field-theory-ETC-2023}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Literatura rozszerzająca}
+
+
+%   Wiele można~się też dowiedzieć z~artykułów Rudolfa Haaga dostępnych
+%   na serwisie \colorhref{https://arxiv.org/abs/hep-th/0001006}{arXiv}.
+
+%   Standardową pozycją na temat algebr $C^{ * }$ i~ich zastosowania
+%   w~fizyce jest książka Ola Brattelego i~Dereka Robinsona
+%   \textit{Operator Algebras and~Quantum Statistical Mechanics}
+%   \parencite{Bratteli-Robinson-Operator-algebras-ETC-Vol-I-Pub-2002}.
+%   Lektura tej książki potrafi być jednak bardzo wymagająca.
+
+%   Warte uwagi jest również dzieło M. Takesakiego
+%   \colorhref{https://www.amazon.com/Theory-Operator-Algebras-Non-Commulative-Geometry/dp/354042248X}{\textit{Theory of Operator Algebras}}.
+
+%   Po referencje do innych poruszonych tematów można~się zwrócić
+%   pod adres \email.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Konstrukcja teorii swobodnej}
+
+
+%   Wówczas
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-20}
+%     \begin{split}
+%       \left\langle F^{ ( 1 ) }, \frac{ 1 }{ 2 } \Delta G^{ ( 1 ) } \right\rangle( \varphi )
+%       &=
+%         \frac{ 1 }{ 2 }
+%         \int d \mathrm{vol}( x ) \, d \mathrm{vol}( y ) \,
+%         F^{ ( 1 ) }( \varphi )( x ) \\
+%       &\hspace{3em} \times \Delta( x, y ) G^{ ( 1 ) }( \varphi )( y ).
+%     \end{split}
+%   \end{equation}
+%   ma przynajmniej formalny sense. Analogicznie robimy dla wyższych
+%   pochodnych.
+
+%   Możemy teraz zdefiniować operację $\star$:
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-21}
+%     F \star G =
+%     \sum\limits_{ i = 0 }^{ \infty } \frac{ i^{ n } \hbar^{ n } }{ n! }
+%     \left\langle F^{ ( n ) }, \left( \tfrac{ 1 }{ 2 } \Delta \right)^{ \otimes n }
+%       G^{ ( n ) } \right\rangle.
+%     \end{equation}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Konstrukcja teorii swobodnej}
+
+%   Inwolucja.
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-22}
+%     F^{ * }( \varphi ) = \overline{ F( \varphi ) }.
+%   \end{equation}
+
+%   \textbf{Ważne.}
+%   Do końca prezentacji będziemy pracować na poziomie tej algebry.
+
+%   \textbf{Uwaga.}
+%   Niemożliwość ograniczania~się do funkcjonałów liniowych wynika
+%   z~własności grupy renormalizacji.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Konstrukcja teorii z~oddziaływaniem}
+
+
+%   Algebra pełnej teorii
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-23}
+%     S_{ \mathrm{Full} } = S_{ \mathrm{Free} } + S_{ \mathrm{I} }.
+%   \end{equation}
+%   Aby otrzymać teorię z~oddziaływaniem potrzebujemy jedynie
+%   zmienić iloczyn $\star = \star_{ \mathrm{Free} }$ na
+%   $\star_{ \mathrm{I} } = \star_{ \mathrm{Full} }$. Biorąc wzór z teorii
+%   rozpraszania, możemy to zrobić za pomocą operatorów M\o llera
+%   $R_{ S_{ I } }$:
+%   \begin{equation}
+%     \label{eq:Niespodziewane-teoretyczne-24}
+%     F \star_{ \mathrm{I} } G :=
+%     R_{ S_{ \mathrm{I} } }^{ -1 }( R_{ S_{ \mathrm{I} } } F
+%     \star R_{ S_{ \mathrm{I} } } G ).
+%   \end{equation}
+%   Ale aby zdefiniować operatory M\o llera potrzebujemy iloczynu
+%   chronologicznego.
+
+%   \textbf{Problem.}
+%   Iloczyn chronologiczny wymaga brania iloczynów dystrybucji, co skutkuje
+%   pojawieniem się rozbieżności ultrafioletowych.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rozwinięcie perturbacyjne}
+
+%   \textbf{Zagadnienie renormalizacji.}
+%   Czasoprzestrzeń zakrzywiona nie ma określonej przestrzeni pędów,
+%   jednak można podać odpowiednią procedurę w przestrzeni położeń.
+%   Taką procedurę dla przypadku czasoprzestrzeni Minkowskiego
+%   podali Epstain i~Glaser [EG73].
+
+%   Została ona uogólniona na zadane zakrzywione czasoprzestrzenie
+%   przez Brunettiego i~Fredenhagena [BF00].
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rozwinięcie perturbacyjne}
+
+
+%   Renormalizacja przyczynowa Epstaina-Glasera [EG73].
+%   Polega na indukcyjnej konstrukcji iloczynów chronologicznych
+%   $\Tcal_{ n }$ przy której nie pojawiają się żadne
+%   rozbieżności w~ultrafiolecie. Konkretniej, rządamy by:
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item[1.] $\Tcal_{ 0 } = 1$.
+
+%   \item[2.]
+%     $\Tcal_{ 1 } = \exp\left( \int d \mathrm{vol}( x ) \,
+%       d \mathrm{vol}( y ) \, H( x, y )
+%       \frac{ \delta^{ 2 } }{ \delta \varphi( x ) \delta \varphi( y ) } \right)$.
+
+%   \item[3.]
+%     $\Tcal_{ n }( F_{ 1 }, \ldots, F_{ n } ) =
+%     \Tcal_{ k }( F_{ 1 }, \ldots, F_{ k } )
+%     \star \Tcal_{ n - k }( F_{ k + 1 },\ldots, F_{ n } )$ jeżeli funkcjonały
+%     $F_{ 1 }, \ldots, F_{ k }$ i~$F_{ k + 1 }, \ldots, F_{ n }$ są
+%     „rozdzielone przestrzennie”.
+
+%   \end{itemize}
+
+
+%   \textbf{Grupa renormalizacji.}
+%   Niejednoznaczność powyższej konstrukcji jest scharakteryzowana
+%   przez grupę renormalizacji St\"{u}ckelberga-Petermana.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Rozwinięcie perturbacyjne}
+
+
+%   Formalne rozwiązanie procedury Epstaina-Glasera [FR12]
+%   \begin{subequations}
+%     \begin{equation}
+%       \label{eq:Niespodziewane-teoretyczne-25-A}
+%       \Tcal_{ n }( F_{ 1 },\ldots, F_{ n } )( \varphi ) =
+%       e^{ \sum_{ i < j } D_{ i, j } } F( \varphi_{ 1 } ) \cdot \ldots
+%       \cdot F_{ n }( \varphi_{ n } ) |_{ \varphi_{ 1 } = \ldots = \varphi_{ n } = \varphi }.
+%     \end{equation}
+
+%     \vspace{-3em}
+
+
+
+%     \begin{equation}
+%       \begin{split}
+%         D_{ i j }
+%         &= i \, \hbar \left\langle \Delta^{ F }, \frac{ \delta^{ 2 } }{ \delta \varphi_{ i } \delta \varphi_{ j } }
+%           \right\rangle \\
+%         &= i \, \hbar \int d \mathrm{vol}( x ) \, d \mathrm{vol}( y ) \,
+%         \Delta^{ F }( x, y ) \frac{ \delta^{ 2 } }{ \delta \varphi_{ i }( x ) \delta \varphi_{ j }( y ) }.
+%       \end{split}
+%     \end{equation}
+%   \end{subequations}
+
+%   Można to oczywiście zapisać za pomocą grafów Feynmana.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Podsumowanie i~perspektywy}
+
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item Praca na poziomie algebraiczny pozwala ominąć wiele
+%     trudności.
+
+%   \item Istnieją prace dotyczące kwasiklasycznej reakcji pola
+%     na~czasoprzestrzeń.
+
+%   \item Można w~tym formalizmie opisać klasyczną teorię pola
+%     i~wówczas da się otrzymać wyniki o zbieżności badanych
+%     szeregów.
+
+%   \item Pełna Renormalizacja Epstaina-Glasera jest dobrze umotywowana
+%     fizycznie, lecz w~realnych obliczeniach jest niezwykle skomplikowana.
+%     Kluczowe więc dla całego podejścia jest to czy da się uprościć tę
+%     część teorii. Najnowsze prace skupiają się nad możliwością użycia
+%     kombinacji procedury E-G z~renormalizacją wymiarową, jednak nad
+%     zakrzywionych czasoprzestrzeniach wymaga to sformułowania
+%     w~reprezentacji położeń. Do tej pory osiągnięto pozytywne efekty
+%     w~czasoprzestrzeni Minkowskiego [DFKR13].
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}[standout]
+
+
+%   { \color{jFrametitleFGColor} Nietypowe problemy mogą wymagać
+%     niestandardowych rozwiązań. Czy to konkretne jest właściwe to czas
+%     pokaże. }
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \EndingSlide{Pytania? Dziękuję za uwagę.}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bibliografia}
+
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item [Fre09] K. Fredenhagen, \textit{The impact of~the~algebraic
+%       approach on perturbative quantum field theory}.
+%     Wystąpienie na \textit{Algebraic Quantum Field Theory~– the first 50
+%       Years}, G\"{o}ttingen 2009.
+
+%   \item [Wal09] R. M. Wald, textit{Axiomatic Quantum Field Theory
+%       in~Curved Spacetime}. Wystąpienie na \textit{Algebraic
+%       Quantum Field Theory~– the first 50 Years}, G\"{o}ttingen 2009.
+
+%   \item [Haa09] R. Haag, \textit{Local Algebras: A~look back at
+%     the~early years and~at~some successes and~missed opportunitie}.
+%     Wystąpienie na \textit{Algebraic Quantum Field Theory~– the first 50
+%     Years}, G\"{o}ttingen 2009.
+
+%   \item [FR12] K. Fredenhagen, K. Rejzner, \textit{Perturbative
+%     algebraic quantum field theory}, arXiv: 1208.1428.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Bibliografia}
+
+
+%   \begin{itemize}
+%     \RaggedRight
+
+%   \item [EG73] H. Epstein, V. Glaser, \textit{The role of locality
+%     in~perturbation theory}, Ann. Inst. H. Poincar\'{e} A
+%     \textbf{19} (1973) 211.
+
+%   \item [BF00] R. Brunetti, K. Fredenhagen, \textit{Microlocal Analysis
+%     and~Interacting Quantum Field Theories: Renormalization
+%     on~Physical Backgrounds}, Commun.Math.Phys, \textbf{208} (2000)
+%     623-661, arXiv: 9903.028.
+
+%   \item [BF09] R. Brunetti, K. Fredenhagen, \textit{Quantum Field
+%     Theory on~Curved Backgrounds}, Proceedings of the
+%     Kompaktkurs \textit{Quantenfeldtheorie auf gekruemmten Raumzeiten} held
+%     at~Universitaet Potsdam, Germany, in 8.-12.10.2007, arXiv:
+%     0901.2063.
+
+%   \item [DFKR13] M. D\"{u}etsch, K. Fredenhagen, K. J. Keller,
+%     K.~Rejzner, \textit{Dimensional Regularization in Position Space,
+%       and~a Forest Formula for Epstein-Glaser Renormalization}, arXiv:
+%     1311.5424.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% #####################################################################
+% #####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}

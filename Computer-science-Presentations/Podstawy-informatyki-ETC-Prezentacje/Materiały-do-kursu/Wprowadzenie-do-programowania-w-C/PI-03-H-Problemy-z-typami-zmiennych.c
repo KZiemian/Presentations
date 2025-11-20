@@ -9,20 +9,20 @@ int main() {
   printf("intVar1 == %d.\n", intVar1);
   printf("float64Var1 == %.2f.\n\n", float64Var1);
 
-  printf("float64Var1 == intVar1.\n");
-  printf("To powinno być okej:\n");
-
+  printf("To powinno być okej: float64Var1 = intVar1;\n");
   float64Var1 = intVar1;
 
   printf("float64Var1 == %.2f.\n\n", float64Var1);
+  /* Jest dobrze, bo jest jasne jak zamienić liczbę 1 na liczbę 1.0,
+   * a język C nie widzi zastrzeżeń przeciwko takiej operacji. */
 
   float64Var1 = 1.5;
 
+  printf("Obecne wartości zmiennych.\n");
   printf("intVar1 == %d.\n", intVar1);
   printf("float64Var1 == %.2f.\n\n", float64Var1);
 
-  printf("intVar1 == float64Var1.\n");
-  printf("To raczej nie skończy się dobrze :/.\n");
+  printf("To raczej nie skończy się :/ dobrze: intVar1 = float64Var1;\n");
 
   intVar1 = float64Var1;
 
@@ -31,12 +31,10 @@ int main() {
 
   printf("Bo niby czemu życie miałoby być proste?\n");
 
-  /* Tak jak w przypadku intów, w języku polskim przyjęło się określać
-   * liczby zmiennoprzecinkowe jako „floaty” lub „dable”.
-   *
-   * Oczywiście, życie nie może być proste i „float” jest nazwą bardziej
-   * ogólną, a „dable” bardziej konkretną. Na tych zajęciach nie będziemy
-   * nikogo karać za używanie ich jako synonimów. */
+  /* W języku C przyjęto zasadę, że jeśli przypisujemy liczbę z częścią
+   * dziesiętną (liczbę zmiennoprzecinkową) do zmiennej typu int,
+   * to by to zrobić obcinamy część ułamkową. Na pewnym poziomie ma to
+   * sporo sensu. */
 
 
 

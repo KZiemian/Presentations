@@ -2,13 +2,16 @@
 
 int main() {
   /* Przykłady korzystania ze zmiennych w C. W dużej mierze, korzystamy
-   * z nich tak, jak korzystamy z nich na papierze. */
+   * z nich tak samo jak na kartce papieru. */
   int intVar1 = 0;
   int intVar2 = 1;
 
+  printf("Początkowe wartości zmiennych.\n");
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
+  printf("Zmieniamy wartość zmiennych wykonując (intVar1 = 3) "
+	 "i (intVar5 = 5).\n");
   intVar1 = 3;
   intVar2 = 5;
 
@@ -17,11 +20,14 @@ int main() {
 
   /* Zmieniamy wartość przechowywaną przez zmienną intVar1, na tą, którą
    * przechowuje zmienna intVar2. */
+  printf("Wykonujemy (intVar1 = intVar2;).\n");
   intVar1 = intVar2;
 
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
+  printf("Wartość zmiennych możemy zmieniać dowolną liczbę razy.\n");
+  printf("Wykonujemy (intVar1 = -1) i (intVar2 = -3).\n");
   intVar1 = -1;
   intVar2 = -3;
 

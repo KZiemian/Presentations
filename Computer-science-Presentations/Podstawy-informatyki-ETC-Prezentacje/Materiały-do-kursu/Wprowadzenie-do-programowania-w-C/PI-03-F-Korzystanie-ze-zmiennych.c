@@ -38,6 +38,8 @@ int main() {
 
   printf("f(%.2f) == %.2f.\n", argument, value);
 
+  printf("Później zobaczymy jak napisać ten kod lepiej.\n\n");
+
   /* Mamy nadzieję, że sens tego kodu jest wystarczająco zrozumiały.
    *
    * Nie jest to najlepszy sposób przeprowadzania tego typu obliczeń w języku
@@ -45,11 +47,13 @@ int main() {
    * takiego programu opowiemy później. */
 
   /* Teraz pokażemy trochę mniej oczywisty sposób użycia zmiennych. */
+  printf("Trochę mniej oczywiste operacje na zmienny.\n");
 
   someParameter = 5.0;
 
   printf("someParameter == %.2f.\n", someParameter);
 
+  printf("Wykonujemy (someParameter = someParameter + 4.0;).\n");
   someParameter = someParameter + 4.0;
 
   printf("someParameter == %.2f.\n", someParameter);
@@ -70,6 +74,9 @@ int main() {
    * someParameter = 5.0 + 4.0;
    * Tym samym po tej operacji zmienna someParameter, będzie miała wartość
    * równą 9.0. */
+
+
+
 
 
   return 0;
