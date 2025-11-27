@@ -48,7 +48,7 @@ url=false,
 eprint=true,
 ]{biblatex}
 
-\addbibresource{Możliwie-proste-wprowadzenie-do-AQFT-Bibliography.bib}
+\addbibresource{Stochastic-quantization-and-singular-stochastic-equations-Bibliography.bib}
 
 
 
@@ -95,8 +95,8 @@ eprint=true,
 
 
 % ---------------------------------------------------------------------
-\title{Stochastic quantization, singular stochastic
-  equaations and works of Paweł Duch}
+\title{Stochastic quantization and singular stochastic
+  equations}
 
 \author{Kamil Ziemian \\
   \texttt{kziemianfvt@gmail.com}}
@@ -104,7 +104,7 @@ eprint=true,
 
 % \institute{}
 
-\date[23 X 2024]{Seminar of Field Theory Department \\
+\date[28 XI 2025]{Seminar of Field Theory Department \\
   28 XI 2024}
 % --------------------------------------------------------------------
 
@@ -127,7 +127,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 29k+,
+% Number of chars: 29k+, 84k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -160,39 +160,500 @@ eprint=true,
 
 
 % ######################################
-\section{Informacje wstępne}
+\section{Constructive QFT and itis problems}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Aims of our talk}
+
+
+  The aim of this talk is twofold. First, we want to justify and give
+  overview of procedure called stochastic quantization, that allow us to
+  define rigorously some models of quantum fields in $1 + 1$ and $2 + 1$
+  dimensions with some promise for future development. This procedure force
+  us to deal with \textbf{singular stochastic partial differential
+    equations} (SsPDEs for short), which are as complicated to analyze as
+  their name is long. Theory of SsPDE is now the research topic of
+  Paweł Duch, who was a member of Field Theory Department in the years
+  $2012\text{--}2018$. Explaining some of his recent results is the second
+  aim of our talk.
+
+  All these topics are very complicated and involve cutting edge
+  mathematical research, so we cannot explain them in all the glorious
+  details. Our talk is rather a very simple overview of this active field
+  of research. Also, you can get PDF of this presentation, writing me an
+  e-mail at \texttt{kziemianfvt@gmail.com}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mathematical physicists always spoils the fun}
+
+
+  We want to define a simple quantum field theory like $\Phi^{ 4 }$
+  in~$d$~dimensional Minkowski space. So we wrote the lagrangian
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-01}
+    \Lcal( x ) =
+    \frac{ 1 }{ 2 } \partial_{ \mu } \Phi( x ) \partial^{ \mu } \Phi( x ) - m^{ 2 } \Phi^{ 2 }( x )
+    - \frac{ \lambda }{ 4! } \Phi^{ 4 }( x ).
+  \end{equation}
+  where $x = [ t, x_{ 1 }, x_{ 2 }, \ldots, x_{ d - 1 } ]$ and
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-02}
+    x \cdot x = t^{ \, 2 } - x_{ 1 }^{ \, 2 } - x_{ 2 }^{ \, 2 } -
+    x_{ 3 }^{ \, 2 } - \ldots - x_{ d - 1 }^{ \, 2 }.
+  \end{equation}
+  Then we compute action
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-03}
+    S[ \Phi( x ) ] =
+    \int\limits_{ [ 0, 1 ] \times \Rbb^{ d } } d^{ d + 1 }x \, \Lcal[ \Phi( x ) ],
+  \end{equation}
+  and partition function
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-04}
+    Z[ \, J( x ) ] =
+    \int [ \Dcal \Phi( x ) ] \exp\Big( i S[ \phi( x ) ] + i \int d^{ d + 1 }x \, J( x )
+    \Phi( x ) \Big),
+  \end{equation}
+  and we can do physics now. But, mathematical physicists like to spoil
+  all the fun, so they point out that measure $[ \Dcal \Phi( x ) ]$ doesn't
+  exist.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Why $[ \Dcal \Phi( x ) ]$ doesn't exists?}
+
+
+  What is the problem with $[ \Dcal \Phi( x ) ]$? First we need to notice,
+  that it should be a~Lebesgue's measure for, let say, the infinite
+  dimensional space of functions, like $L^{ 2 }( \Rbb^{ d } )$. In the
+  case~of $\Rbb^{ d }$ the crucial property of Lebesgue's measure is
+  translational invariance. If we have measurable set $A \subset \Rbb^{ d }$, then
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-05}
+    \forall \, \vecx \in \Rbb^{ d }, \quad
+    \text{vol}( A + \vecx ) = \text{vol}( A ).
+  \end{equation}
+  More precisely, we have the following theorem. \\
+  \textit{Let $G$ be a locally compact, topological group. There
+    \alert{exists} translational invariant, positive measure on the $G$,
+    which is unique, up to multiplication by constant $c > 0$.}
+
+  Existence of Lebesgue's measure is closely tied to its translational
+  invariance, but in infinite dimensional space, we cannot have
+  translation invariant measure. Simple argument for that goes as follows.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Finite dimensional space are easy}
+
+
+  Let $K( 0, \frac{ 1 }{ 4 } )$ will be ball in our space and assume that
+  it has non-zero finite measure
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-06}
+    0 < \mu\big( K( 0, \tfrac{ 1 }{ 4 } ) \big) < +\infty.
+  \end{equation}
+  Since $K( 0, \frac{ 1 }{ 4 } ) \subset K( 0, 1 )$, it implies
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-07}
+    \mu\big( K( 0, \tfrac{ 1 }{ 4 } ) \big) \leq \mu( K( 0, 1 ) ).
+  \end{equation}
+  In three dimensional space I can take unite ball
+  $K( ( 0, 0, 0 ), \tfrac{ 1 }{ 4 } )$ and create six disjoint balls
+  contained inside $K( ( 0, 0, 0 ), 1 )$ by shifting this first ball
+  by vectors $[ \frac{ 1 }{ 2 }, 0, 0 ]$, $[ -\frac{ 1 }{ 2 }, 0, 0 ]$,
+  $[ 0, \frac{ 1 }{ 2 }, 0 ]$, $[ 0, -\frac{ 1 }{ 2 }, 0 ]$, etc. If our
+  measure is translational invariant we arrive at result
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-08}
+    6 \, \mu\big( K( ( 0, 0, 0), \tfrac{ 1 }{ 4 } ) \big) \leq
+    \mu\big( K( ( 0, 0, 0 ), 1 ) \big).
+  \end{equation}
+  Which is a perfectly fine result. But in infinite dimensional space,
+  we have a serious problem.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Infinite dimensional space are hard}
+
+
+  In infinite dimensional space like $L^{ 2 }( \Rbb^{ 3 }, d^{ 3 }x )$, we
+  have infinitely many orthogonal vectors with the length $\frac{ 1 }{ 2 }$
+  to perform such shifts. As a~result we have infinitely many disjoint
+  balls with radius $\tfrac{ 1 }{ 4 }$ that are contained
+  inside unit ball $\mu\big( K( 0, 1 ) \big)$:
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-09}
+    K( x_{ i }, \tfrac{ 1 }{ 4 } ) \subset K( 0, 1 ), \quad i \in I,
+  \end{equation}
+  where $I$ is some infinite set.
+
+  Assuming translational invariance of our measure, we get
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-10}
+    \infty \, \mu\big( K( 0, \tfrac{ 1 }{ 4 } ) \big) \leq \mu\big( K( 0, 1 ) \big).
+  \end{equation}
+  This can only be true in two situations. First
+  $\mu\big( K( 0, \tfrac{ 1 }{ 4 } ) \big) = 0$, second
+  $\mu\big( K( 0, 1 ) \big) = +\infty$. In first case we have contradiction
+  with our assumption $\mu\big( K( 0, \frac{ 1 }{ 4 } ) \big) \neq 0$, so this
+  is nonsense. In the second case, we arrived at quite reasonable, but
+  useless for all application measures, in which the unit ball in
+  infinite dimensional space has infinite volume.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Life is hard, but we don't give up}
+
+
+  We thus must abandon search for such translational measures, at least
+  in Hilbert spaces, since our reasoning was based on having orthogonal
+  vectors. More advanced analysis show us, that we should look for
+  measures not at the space of functions, but on the spaces of
+  distributions, like $\Dcal'( \Rbb^{ n } )$ and $\Scal'( \Rbb^{ n } )$.
+  But, we can't go into details.
+
+  This task is very hard, but we don't give up. It will be important
+  for the future, that because we know already how to solve the problem of
+  \alert{free} field, we can construct measure for \alert{free}
+  evolution~of such \alert{free} field. This measure is a functional
+  Guassian measure.
+
+  Since our task of finding such measures is very hard, we need to simplify
+  it a bit. First of all function in our naive measure
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-11}
+    [ \Dcal \Phi( x ) ] \exp\Big( i S[ \Phi( x ) ] \Big),
+  \end{equation}
+  we have an oscillating function $\exp( i S )$, which of course makes
+  such an expression harder to work with.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Euclidian QFT comes for rescue}
+
+
+  As textbooks of QFT tell us, we should make Wick rotation: $t = i \tau$.
+  Which means that our measure is now
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-12}
+    [ \Dcal \Phi_{ \text{Euc} }( x_{ \text{Euc} } ) ]
+    \exp\Big( -\!S_{ \text{Euc} }[ \Phi_{ \text{Euc} }( x ) ] \Big)
+  \end{equation}
+  and scalar product of our vectors
+  $x_{ \text{Euc} } = [ \tau, x_{ 1 }, x_{ 2 }, \ldots, x_{ d } ]$ is, almost, Euclidian
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-13}
+    -x_{ \text{Euc} } \cdot x_{ \text{Euc} } =
+    \tau^{ 2 } + x_{ 1 }^{ \, 2 } + x_{ 2 }^{ \, 2 } + \ldots + x_{ d }^{ \, 2 }.
+  \end{equation}
+  This is why we call it \colorhref{}{Euclidian Quantum Field Theory}
+  (EQFT for short). Because naive measure
+  \eqref{eq:Stochastic-quantization-ETC-12} is much nicer that
+  previous one with $\exp( i S )$ part, a large portion of successes of
+  constructive QFT was connected to this approach
+  \parencite{Summers-Prespective-on-Constructive-ETC-Pub-2016}.
+
+  We need to mention three more important things. First, you can think
+  about EQFT as a stochastic process in the space of distributions. Hard to
+  imagine, but you can live with that after the while.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Euclidian QFT comes for rescue}
+
+
+  Second, Guassian measure of free field in Minkowski space becomes
+  Gaussian white noise measure in EQFT. Gaussian white noise, which will
+  be denoting $\eta( x_{ \text{Euc} } )$, is a~very important concept for SsPDEs.
+
+  From the point of view of mathematical physics Wick rotation $t = i \tau$ is
+  just a bunch of lines on the slide, without any true meaning.
+  But \colorhref{https://en.wikipedia.org/wiki/Konrad\_Osterwalder}{Konrad
+    Osterwalder} and
+  \colorhref{https://en.wikipedia.org/wiki/Robert\_Schrader}{Robert
+    Schrader} proved very important reconstruction theorem, which
+  states that Euclidean quantum field in $d$~dimensions that fulfils
+  given set of requirements, can be transformed into a~quantum field in $d$
+  dimensional Minkowski space by analytical continuation
+  \parencite{Osterwalder-Schrader-Axioms-for-Euclidean-Part-I-ETC-Pub-1973},
+  \parencite{Osterwalder-Schrader-Axioms-for-Euclidean-Part-II-ETC-Pub-1975}.
+
+  This set of requirments is called
+  \colorhref{https://en.wikipedia.org/wiki/Schwinger\_function}
+  {Osterwalder-Schrader axioms}. The axioms are: temperedness, linear
+  growth condition, Euclidian covariance, positivity, symmetry
+  and cluster property, but explaining them is far beyond the scope of
+  this~talk.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Stochastic quantization}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Why stochastic quantization?}
+
+
+  Stochastic quntization was proposed by
+  \colorhref{https://en.wikipedia.org/wiki/Giorgio\_Parisi}
+  {Giorgio Parisi} and Yong-shi Wu in the context
+  of gauge fields, to avoid the problem of Gribov ambiguities, so we
+  need to speak a few words about it. Consider gauge field
+  $A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )$ and gauge function
+  $u( x_{ \text{Euc} } )$. We know, that physical situations described by
+  $A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )$ and
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-14}
+    \begin{split}
+      \widetilde{ A }_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )
+      &=
+        u( x_{ \text{Euc} } )^{ -1 } A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )
+        u( x_{ \text{Euc} } ) - \\
+      &\quad - \frac{i}{ g } u( x_{ \text{Euc} } )^{ -1 }
+        \partial_{ \mu } u( x_{ \text{Euc} } ),
+    \end{split}
+  \end{equation}
+  where $g$ is coupling constant, are the same. So even naive expression
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-15}
+    Z[ \, J^{ \sigma }( x_{ \text{Euc} } ) ] =
+    \int [ \Dcal A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } ) ]
+    \exp\Big( -S[ A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } ) ] \Big),
+  \end{equation}
+  or its Minkowski analogue are physically incorrect. Such integrals
+  counts the same physical situation many times over, because we integrate
+  over $A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )$ and all possible
+  $\widetilde{ A }_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )$ connected to it by
+  gauge transformation.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Gribov ambiguities}
+
+
+  Standard way of solving that is gauge fixing. We choose function $G$ over
+  the space of fields and integrate only over fields that fulfill equation
+  $G( A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } ) ) = 0$. Such a procedure is
+  well known from Clerk Maxwell electrodynamics. But as was first observed
+  by \colorhref{https://en.wikipedia.org/wiki/Vladimir\_Gribov}{Vladimir
+    Gribov}, the example of \alert{abelian} electrodynamics is highly
+  misleading. In the case of theory with non-abelian gauge groups there are
+  very deep topological reasons that prevent us from making ``resonable''
+  gauge fixing
+  \parencite{Gribov-Quantization-of-non-Abelian-gauge-theories-Pub-1978},
+  \parencite{Singer-Some-Remarks-on-the-Gribov-Ambiguity-Pub-1978}. As a
+  result even after imposing the condition
+  $G( A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } ) ) = 0$ we can have
+  overcounting.
+
+  Parisi and Wu propose to solve that problem, by replacing gauge fixing
+  by analysis of stochastic process in the space of \alert{all} fields
+  \parencite{Parisi-Wu-Perturbation-Theory-Without-Gauge-Fixing-Pub-1981},
+  \parencite{Damgaard-Huffel-Stochastic-quantization-Pub-1987},
+  \parencite{Gubinelli-What-is-stochastic-quanstization-ETC-Ver-2022}.
+  Simplifying their argument, you \alert{don't} fixe gauge, but evolve
+  field in the totally fake time $t_{ \text{F} }$ as a~``diffusion'' process
+  in the space of fields in such a~way, that unphysical contribution from
+  equivalent fields cancels out.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Why must life be so complicated?}
+
+
+  To be more concrete, we start from field
+  $A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )$ and add to it arguments
+  totally fake time $t_{ \text{F} }$ to get
+  $A_{ \text{Euc}, \, \mu }( t_{ \text{F} }, x_{ \text{Euc} } )$. We now evolve
+  this field in fake time according to Langevine equation
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-16}
+    \frac{ \partial A_{ \text{Euc}, \, \mu }( t_{ \text{F} }, x_{ \text{Euc} } ) }
+    { \partial t_{ \text{F} } } =
+    -\frac{ \delta S_{ \text{Euc} } }{ \delta A_{ \text{Euc}, \, \mu } } +
+    \eta( t_{ \text{F} }, x_{ \text{Euc} } ),
+  \end{equation}
+  where $\eta( t_{ \text{F} }, x_{ \text{Euc} } )$ is Gaussian white noise.
+  Parisi and Wu postulate that
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-17}
+    \lim_{ t_{ \text{F} } \to \infty }
+    [ \Dcal A_{ \text{Euc}, \, \mu }( t_{ \text{F} }, x_{ \text{Euc} } ) ] =
+    [ \Dcal A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } ) ]_{ \text{phys} },
+  \end{equation}
+  where on the right hand side you have a physical correct measure for
+  the physical field $A_{ \text{Euc}, \, \mu }( x_{ \text{Euc} } )$.
+
+  A~lot of effort was put into making these statements more rigorous.
+  The main problem is that $\eta( t_{ \text{F} }, x_{ \text{Euc} } )$ is a very
+  singular object, you can think about it as a randomly valued distribution.
+  As a result field $A_{ \text{Euc}, \, \mu }( t_{ \text{F} }, x_{ \text{Euc} } )$
+  also need to be a~distribution.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Singular stochastic PDEs (SsPDEs)}
+
+
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-18}
+    \frac{ \partial A_{ \text{Euc}, \, \mu }( t_{ \text{F} }, x_{ \text{Euc} } ) }
+    { \partial t_{ \text{F} } } =
+    -\frac{ \delta S_{ \text{Euc} } }{ \delta A_{ \text{Euc}, \, \mu } } +
+    \eta( t_{ \text{F} }, x_{ \text{Euc} } ),
+  \end{equation}
+  If we think about free theory then expression
+  $-\delta S_{ \text{Euc} } / \delta A_{ \text{Euc}, \, \mu }$ is linear in distribution
+  $A_{ \text{Euc}, \, \mu }( t_{ \text{F} }, x_{ \text{Euc} } )$, so life is great.
+  But we know that if we want to have interacting field, we will need
+  add least quadratic term in fields, something like
+  $\psi_{ \text{Euc} }( t_{ \text{F} }, x_{ \text{Euc} } )
+  A_{ \text{Euc}, \, \mu }( t_{ \text{F} }, x_{ \text{Euc} } )$. And we know that
+  in general, products of distributions have no sense.
+
+  Such stochastic PDEs that are ill posed because of products of
+  distributions are called \alert{singular stochastics PDEs} (SsPDEs)
+  and are as complicated as they name is long
+  \parencite{Duch-Lecture-notes-on-flow-equation-approach-ETC-Pub-2025}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{SsPDEs and works of Paweł Duch}
 % ######################################
 
 
 % ##################
 \begin{frame}
-  \frametitle{Mathematical physicist always spoils the fun}
+  \frametitle{Making sense of SsPDEs}
 
 
-  We want to define simple qunatum filed theory like $\Phi^{ 4 }$ in $d + 1$
-  dimensions, so we wrote the lagrangian
-  \begin{equation}
-    \label{eq:Stochastic-quantization-ETC-01}
-    \Lcal =
-    \frac{ 1 }{ 2 } \partial_{ \mu } \Phi( x ) \partial^{ \mu } \Phi( x ) - m^{ 2 } \Phi^{ 2 }( x )
-    - \frac{ \lambda }{ 4! } \Phi^{ 4 }( x ).
-  \end{equation}
-  where $\Phi( x )$ stands for $\Phi( t, x_{ 1 }, x_{ 2 }, \ldots, x_{ d } )$. Then we
-  compute action
-  \begin{equation}
-    \label{eq:Stochastic-quantization-ETC-02}
-    S[ \Phi( x ) ] =
-    \int_{ [ 0, 1 ] \times \Rbb_{ d } } d^{ d + 1 }x \, \Lcal[ \Phi( x ) ],
-  \end{equation}
-  and partition function
-  \begin{equation}
-    \label{eq:Stochastic-quantization-ETC-03}
-    Z[ J( x ) ] =
-    \int [ \Dcal \Phi( x ) ] \exp\Big( i S[ \phi( x ) ] + \int d^{ d + 1 }x \, J( x )
-    \Phi( x ) \Big),
-  \end{equation}
-  and we can do physics now. But, mathematical physicist like to spoile
-  all the fun, so we point out that measure $\Dcal \Phi( x )$ doesn't exists.
+  You encounter SsPDEs in various fields of science, so we have good
+  reasons to define them mathematically. For us especially important are
+  works of Martin Hairer who won
+  \colorhref{https://en.wikipedia.org/wiki/Fields\_Medal}{Fields Medal} in
+  $2014$ ``\textit{For his outstanding contributions to the theory of
+    stochastic partial differential equations, and in particular for
+    the creation of a theory of regularity structures for such
+    equations}''.
+
+  Hairer and his collaborators first pay attenntion to problems like
+  defining \colorhref{https://en.wikipedia.org/wiki/Kardar\%E2\%80\%93Parisi\%E2\%80\%93Zhang\_equation}
+  {KPZ equation} (named after Mehran Kadar, Giorgio Paris again ;) and
+  Yi-Cheng Zhang), but since they put more attention to QFT
+  \parencite{Hairer-Yang-Mills-and-the-Mass-Gap-Ver-2025}. In $2024$
+  he together with Ajay Changra, Ilya Chevyrev, Hao Shen published
+  article \colorhref{https://arxiv.org/abs/2201.03487}
+  {\textit{Stochastic quantisation~of Yang-Mills-Higgs in~3D}}
+  \parencite{Chandra-et-al-Stochastic-quantisation-of-Yang-Mills-ETC-Pub-2024}. In August of $2025$ Hairer, Paweł Duch, Jaeyun Yi and Wenhao Zhao
+  published on arXiv paper
+  \colorhref{https://arxiv.org/abs/2508.07776}
+  {\textit{Ergodicity of infinite volume $\Phi_{ 3 }^{ \, 4 }$ at high
+      temperature}}
+  \parencite{Duch-Hairer-Yi-Zhao-Ergodicity-of-infinite-volume-ETC-Pub-2025}.
 
 \end{frame}
 % ##################
@@ -203,26 +664,59 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Why $\Dcal \Phi( x )$ doesn't exists?}
+  \frametitle{Paweł Duch's works on flow equation approach}
 
 
-  What is the problem with $\Dcal \Phi( x )$? First we need to notice, that
-  it should be a~Lebesgue's measure for the inifinite dimensional space
-  of functions, like $L^{ 2 }( \Rbb^{ d + 1 }, d^{ d + 1 }x )$. In the case~of
-  $\Rbb^{ d }$ the crucial property of Lebesgue's measure is translational
-  invariance. If we have mesurable set $A \subset \Rbb^{ d }$, then
+  Current works of Paweł Duch focus in large part on flow equation approach
+  to SsPDES. It was inspired by renormalization group theory of
+  Kenneth Wilson and works of Antti Kupiainen, who adapted it for
+  the~case~of stochastic PDEs
+  \parencite{Wilson-Renormalization-Group-and-Critical-ETC-Part-I-Pub-1971},
+  \parencite{Kupiainen-Renormalization-Group-and-Stochastic-PDEs-Pub-2016}.
+  Because the theory of SsPDEs is very complex, for the~purpose of this
+  talk, we need to simplify a lot and introduce some notation. This notation
+  may not be the most precise, but useful in sketching the~problem.
+
+  We first fix dimension $d$ and denote $d$-dimensional torus by $T^{ d }$.
+  Let $V$ be map transforming space of continuous functions on $T^{ d }$
+  into itself:
   \begin{equation}
-    \label{eq:Niespodziewane-teoretyczne-01}
-    \forall \vecx \in \Rbb^{ d }, \quad
-    \text{vol}( A + \vecx ) = \text{vol}( A ).
+    \label{eq:Stochastic-quantization-ETC-19}
+    V: \Ccal( T^{ d } ) \to \Ccal( T^{ d } ).
   \end{equation}
+  The value of $V$ on function $\varphi \in \Ccal( T^{ d } )$ we will be denoting
+  by $V[ \varphi ]$. The derivative of $k$~order of $V$ at $\varphi$ in the direction
+  of function $\psi$ is defined as
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-20}
+    D^{ k } V[ \varphi ] \cdot \psi^{ \otimes k } :=
+    \partial_{ \tau }^{ \, k } \, V[ \varphi + \tau \psi ] \big|_{ \tau = 0 }.
+  \end{equation}
+  % Current works of Paweł Duch focus in large part on flow equation approach
+  % to SsPDES. It was inspired by renormalization group approach of
+  % Kenneth Wilson and works of Antti Kupiainen, who addapted it for
+  % the~case~of stochastic PDEs
+  % \parencite{Wilson-Renormalization-Group-and-Critical-ETC-Part-I-Pub-1971},
+  % \parencite{Kupiainen-Renormalization-Group-and-Stochastic-PDEs-Pub-2016}.
+  % Because theory of SsPDEs is very complex, for the~purpose of this talk,
+  % we need to simplified a lot and introduce some notation. This notation
+  % may not be the most precise, but useful in sketching general problem.
 
-  More preciasly, we have a theorem.
-
-  \begin{theorem}
-    Let $G$ be localy compact, topogological group. There \alert{exists}
-    translational invariant, positive measure on the $G$.
-  \end{theorem}
+  % We first fix dimension $d$ and denote $d$~dimensional torus by $T^{ d }$.
+  % Let $V$ be map transforming space of continuous functions on $T^{ d }$
+  % into itself:
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-19}
+  %   V: \Ccal( T^{ d } ) \to \Ccal( T^{ d } ).
+  % \end{equation}
+  % The value of $V$ on function $\varphi \in \Ccal( T^{ d } )$ we will be denoting
+  % by $V[ \varphi ]$. The derivative of $k$~order of $V$ at $\varphi$ in the direction
+  % of function $\psi$ is defined as
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-20}
+  %   D^{ k } V[ \varphi ] \cdot \psi^{ \otimes k } :=
+  %   \partial_{ \tau }^{ \, k } \, V[ \varphi + \tau \psi ] |_{ \tau = 0 }.
+  % \end{equation}
 
 \end{frame}
 % ##################
@@ -231,10 +725,473 @@ eprint=true,
 
 
 
-% % ######################################
-% \section{Aksjomatyczna i~konstrukcyjna kwantowa teoria pola,
-%   czyli o~tym czego nie umiemy zrobić}
-% % ######################################
+% ##################
+\begin{frame}
+  \frametitle{Toy example}
+
+
+  For the~sake of simplicity we will work with an equation without
+  time dynamics, which is nonetheless inspired by $\Phi_{ d }^{ \, 4 }$
+  theory.
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-21}
+    ( 1 - \Delta )^{ \sigma / 2 } \Phi = \eta + \lambda \Phi^{ 3 } - \infty \, \Phi,
+  \end{equation}
+  where $\Phi \in \Dcal'( \Rbb^{ d } )$. Parameter $\sigma \in ( d / 3, d / 2 ]$ for
+  technical reasons. As such $( 1 - \Delta )^{ \sigma / 2 }$ will in general be a well
+  defined pseudodifferential operator. The $\eta$ is Gaussian white noise and
+  $\infty \, \Phi$ symbolize, that due to presence of $\eta$ we need to ``subtract
+  infinity'' from the~ill defined product of distributions $\Phi^{ 3 }$.
+
+  In first step we regularize white noise introducing family of smooth
+  functions $\eta_{ \kappa }$, $\kappa \in ( 0, 1 ]$, with property
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-22}
+    \lim_{ \kappa \searrow 0 } \eta_{ \kappa } = \eta.
+  \end{equation}
+  Now $\Phi_{ \kappa }$ is a solution of the equation
+  \eqref{eq:Stochastic-quantization-ETC-21} with regularized noise.
+  % For the~sake of simplicity we will work with equation without
+  % time dynamics, which is nonetheless inspired by $\Phi_{ d }^{ \, 4 }$
+  % theory.
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-21}
+  %   ( 1 - \Delta )^{ \sigma / 2 } \Phi = \eta + \lambda \Phi^{ 3 } - \infty \Phi,
+  % \end{equation}
+  % where $\Phi \in \Dcal'( \Rbb^{ d } )$. Parameter $\sigma \in ( d / 3, d / 2 ]$ for
+  % technical reasons. As such $( 1 - \Delta )^{ \sigma / 2 }$ will in general well
+  % defined pseudodifferential operator. The $\eta$ is Gaussian white noise and
+  % $\infty \Phi$ symbolize, that due to presence of $\eta$ we need to ``subtract
+  % infinity'' from the~ill defined product of distributions $\Phi^{ 3 }$.
+
+  % In first step we regularize white noise introducing family of smooth
+  % functions $\eta_{ \kappa }$, $\kappa \in ( 0, 1 ]$, with property
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-22}
+  %   \lim_{ \kappa \searrow 0 } \eta_{ \kappa } = \eta.
+  % \end{equation}
+  % Now $\Phi_{ \kappa }$ is a solution of the equation
+  % \eqref{eq:Niespodziewane-teoretyczne-01} with regularized noise.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Toy example}
+
+
+  We now need to rewrite our problem as
+  \begin{subequations}
+    \begin{align}
+      \label{eq:Stochastic-quantization-ETC-23-A}
+      &( 1 - \Delta )^{ \sigma / 2 } \Phi_{ \kappa } = F_{ \kappa }[ \Phi_{ \kappa } ], \\
+      &F_{ \kappa }[ \varphi ] =
+        \eta_{ \kappa } + \lambda \varphi_{ \kappa }^{ \, 3 } +
+        \sum_{ i = 1 }^{ N( \sigma ) } \lambda^{ i } c_{ \kappa }^{ ( i ) } \varphi,
+    \end{align}
+  \end{subequations}
+  with $N( \sigma ) = \lfloor \sigma / ( 3 \sigma - d ) \rfloor$. We define $F_{ \kappa }$ as
+  $F_{ \kappa } : \Ccal( T^{ d } ) \to \Ccal( T^{ d } )$, by imposing boundary
+  conditions. The last expression in $F_{ \kappa }$ describe
+  standard counter terms that are needed when we take limit $\kappa \searrow 0$.
+  Their number grows to infinity as $\sigma \searrow d / 3$.
+
+  Let now $G \in L^{ 1 }( \Rbb^{ d } )$ be fundamental solution of
+  $( 1 - \Delta )^{ \sigma / 2 }$:
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-24}
+    ( 1 - \Delta )^{ \sigma / 2 } G( x ) = \delta( x ).
+  \end{equation}
+  Equation \eqref{eq:Stochastic-quantization-ETC-23-A} is now equivalent to
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-25}
+    \Phi_{ \kappa } = G * F_{ \kappa }[ \Phi_{ \kappa } ].
+  \end{equation}
+  % We now need to rewrite our problem as
+  % \begin{subequations}
+  %   \begin{align}
+  %     \label{eq:Stochastic-quantization-ETC-23}
+  %     &( 1 - \Delta )^{ \sigma / 2 } \Phi_{ \kappa } = F_{ \kappa }[ \Phi_{ \kappa } ], \\
+  %     &F_{ \kappa }[ \varphi ] =
+  %       \eta_{ \kappa } + \lambda \varphi_{ \kappa }^{ \, 3 } +
+  %       \sum_{ i = 1 }^{ N( \sigma ) } \lambda^{ i } c_{ \kappa }^{ ( i ) } \varphi,
+  %   \end{align}
+  % \end{subequations}
+  % with $N( \sigma ) = \lfloor \sigma / ( 3 \sigma - d ) \rfloor$. We define $F_{ \kappa }$ as
+  % $F_{ \kappa } : \Ccal( T^{ d } ) \to \Ccal( T^{ d } )$, by imposing boundary
+  % conditions. The last term in $F_{ \kappa }$ of second equation describe
+  % standard counter terms that are need when we take limit $\kappa \searrow 0$. As we
+  % can see the number of counter terms grow to infinity when $\sigma \searrow d / 3$.
+  % We will also interpret
+
+  % Let now $G \in L^{ 1 }( \Rbb^{ d } )$ be fundamental solution of
+  % $( 1 - \Delta )^{ \sigma / 2 }$:
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-24}
+  %   ( 1 - \Delta )^{ \sigma / 2 } G( x ) = \delta( x ).
+  % \end{equation}
+  % Equation \eqref{} is now equivalent to
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-25}
+  %   \Phi_{ \kappa } = G * F_{ \kappa }[ \Phi_{ \kappa } ].
+  % \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Coarse-grained process}
+
+
+  Next step is to find regularized families of $G_{ \mu }$ and $F_{ \kappa, \, \mu }$,
+  such that we have $\mu \in [ 0, 1 ]$, $G_{ \mu } \in L^{ 1 }( \Rbb^{ d } )$,
+  $G_{ 0 }$ is equal to fundamental solution of $( 1 - \Delta )^{ \sigma / 2 }$, namely
+  $G_{ 0 } = G$, $G_{ 1 } = 0$ and dependents on $\mu$ in sufficient regular
+  ways. About $F_{ \kappa, \, \mu }$ we assume that for all $\kappa$ and $\mu$ it is
+  polynomial in the fields,
+  $F_{ \kappa, \, \mu } : \Ccal( T^{ d } ) \to \Ccal( T^{ d } )$,
+  $F_{ \kappa, \, 0 } = F_{ \kappa }$ and depends on both $\kappa$ and $\mu$ in regular way.
+
+  Finding such a family $G_{ \mu }$ is not a problem, the main challenge is to
+  find appropriate forms of $F_{ \kappa, \, \mu }$. This unfortunately requires a
+  lot of work. In first step we define $\Phi_{ \kappa, \, \mu }$ as
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-26}
+    \Phi_{ \kappa, \, \mu } = G_{ \mu } * F_{ \kappa }[ \Phi_{ \kappa } ].
+  \end{equation}
+  It is basically taking some Wilsonian average of $\Phi_{ \kappa }$, so
+  we call it \textbf{coarse-grained process}.
+  % Next step is to find regularized families of $G_{ \mu }$ and $F_{ \kappa, \, \mu }$,
+  % such that we have $\mu \in [ 0, 1 ]$, $G_{ \mu } \in L^{ 1 }( \Rbb^{ d } )$,
+  % $G_{ 0 }$ is equal to fundamental solution of $( 1 - \Delta )^{ \sigma / 2 }$, namely
+  % $G_{ 0 } = G$, $G_{ 1 } = 0$ and dependents on $\mu$ in sufficient regular
+  % way. About $F_{ \kappa, \, \mu }$ we assume that for all $\kappa$ and $\mu$ it is
+  % polynomial in the fields,
+  % $F_{ \kappa, \, \mu } : \Ccal( T^{ d } ) \to \Ccal( T^{ d } )$,
+  % $F_{ \kappa, \, 0 } = F_{ \kappa }$ and depends on both $\kappa$ and $\mu$ in regular way.
+
+  % Finding such family $G_{ \mu }$ is not a problem, the main challenge is to
+  % find appropriate form of $F_{ \kappa, \, \mu }$. This unfortunately requires a lot
+  % of work. In first step we define $\Phi_{ \kappa, \, \mu }$ as
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-26}
+  %   \Phi_{ \kappa, \, \mu } = G_{ \mu } * F_{ \kappa }[ \Phi_{ \kappa } ].
+  % \end{equation}
+  % It is basically taking some Wilsonian average of $\Phi_{ \kappa }$, so
+  % we call it \textbf{coarse-grained process}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Effective equations}
+
+
+  We now define \textbf{remainder} $\omega_{ \kappa, \, \mu }$ by equation
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-27}
+    F_{ \kappa }[ \Phi_{ \kappa } ] = F_{ \kappa, \ \mu }[ \Phi_{ \kappa, \, \mu } ] + \omega_{ \kappa, \, \mu }.
+  \end{equation}
+  As if life wasn't hard enough, we need to define yet another complicated
+  function.
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-28}
+    H_{ \kappa, \, \mu }[ \varphi ] =
+    \partial_{ \mu } F_{ \kappa, \, \mu }[ \varphi ] +
+    \text{D} F_{ \kappa, \, \mu }[ \varphi ] \cdot \big( ( \partial_{ \mu } G_{ \mu }) *
+    F_{ \kappa, \, \mu }[ \varphi ] ) \big).
+  \end{equation}
+  We can now write a very important system of \textbf{effective equations}.
+  \begin{subequations}
+    \begin{align}
+      \label{eq:Stochastic-quantization-ETC-29}
+      \Phi_{ \kappa, \mu }
+      &=
+        -\int\limits_{ \mu }^{ 1 } ( \partial_{ \rho } G_{ \rho } ) *
+        \big( F_{ \kappa, \, \rho }[ \Phi_{ \kappa, \, \rho } ] + \omega_{ \kappa, \, \rho } \big) \,
+        \text{d}\rho, \\
+      \omega_{ \kappa, \mu }
+      &=
+        -\int\limits_{ 0 }^{ \mu } \big( H_{ \kappa, \, \rho }[ \Phi_{ \kappa, \, \rho } ] +
+        \text{D} F_{ \kappa, \, \rho }[ \Phi_{ \kappa, \, \rho } ] \cdot
+        ( ( \partial_{ \rho } G_{ \rho } ) * \omega_{ \kappa, \rho } ) \big) \, \text{d}\rho.
+    \end{align}
+  \end{subequations}
+  For the details of their derivation you can check lecture notes
+  by Paweł Duch ???.
+  % We now define \textbf{remainder} $\omega_{ \kappa, \, \mu }$ by equation
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-27}
+  %   F_{ \kappa }[ \Phi_{ \kappa } ] = F_{ \kappa, \ \mu }[ \Phi_{ \kappa, \, \mu } ] + \omega_{ \kappa, \, \mu }.
+  % \end{equation}
+  % As if life wasn't hard enough, we need to define yet another complicated
+  % function.
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-28}
+  %   H_{ \kappa, \, \mu }[ \varphi ] =
+  %   \partial_{ \mu } F_{ \kappa, \, \mu }[ \varphi ] +
+  %   \text{D} F_{ \kappa, \, \mu }[ \varphi ] \cdot \big( ( \partial_{ \mu } G_{ \mu }) *
+  %   F_{ \kappa, \, \mu }[ \varphi ] ) \big).
+  % \end{equation}
+
+  % We can now wrote very important system of \textbf{effective equations}.
+  % \begin{subequations}
+  %   \begin{align}
+  %     \label{eq:Stochastic-quantization-ETC-29}
+  %     \Phi_{ \kappa, \mu }
+  %     &=
+  %       -\int\limits_{ \mu }^{ 1 } ( \partial_{ \rho } G_{ \rho } ) *
+  %       \big( F_{ \kappa, \, \rho }[ \Phi_{ \kappa, \, \rho } ] + \omega_{ \kappa, \, \rho } \big) \,
+  %                  \text{d}\rho, \\
+  %     \omega_{ \kappa, \mu }
+  %     &=
+  %       -\int\limits_{ 0 }^{ \mu } \big( H_{ \kappa, \, \rho }[ \Phi_{ \kappa, \, \rho } ] +
+  %       \text{D} F_{ \kappa, \, \rho }[ \Phi_{ \kappa, \, \rho } ] \cdot
+  %       ( ( \partial_{ \rho } G_{ \rho } ) * \omega_{ \kappa, \rho } ) \big) \, \text{d}\rho.
+  %   \end{align}
+  % \end{subequations}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{The main idea of Hairer's approach}
+
+
+  The main idea behind the approach proposed by Martin Hairer in this
+  particular context, can be explained as follows. For $\kappa \neq 0$ effective
+  equations are equivalent to the equation from which we started, or more
+  precisely to
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-30}
+    \Phi_{ \kappa, \, \mu } = G_{ \mu } * F_{ \kappa }[ \Phi_{ \kappa } ].
+  \end{equation}
+  But, this equation breaks down for $\kappa \searrow 0$, while effective equation
+  \alert{can} still be meaningful. But, it doesn't came for free
+  and we need to find appropriate function $F_{ \kappa, \, \mu }$, obeying condition
+  $F_{ \kappa, 0 } = F_{ \kappa }$.
+
+  Paweł Duch proposed to find $F_{ \kappa, \, \mu }$ by deriving flow equations
+  for its coefficient and solving them recursively. At is base it is some
+  form of well controlled perturbation series, but more close to the spirit
+  of Bogoliubov-Epstein-Glasser approach.
+  % The main idea behind approach proposed by Martin Hairer in this particular
+  % context, can be explained as follow. For $\kappa \neq 0$ effective equations are
+  % equivalent to the equation from which we started, or more precisely to
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-30}
+  %   \Phi_{ \kappa, \, \mu } = G_{ \mu } * F_{ \kappa }[ \Phi_{ \kappa } ].
+  % \end{equation}
+  % But, this equation breaks down for $\kappa \searrow 0$, while effective equation
+  % \alert{can} still be meaningful. But, it doesn't came for free
+  % and we need to find appropriate function $F_{ \kappa, \, \mu }$, obeying condition
+  % $F_{ \kappa, 0 } = F_{ \kappa }$.
+
+  % Paweł Duch proposed to find $F_{ \kappa, \, \mu }$ by deriving flow equations
+  % for its coefficient and solve if recursively. At is base it is some form
+  % of well controlled perturbation series, but more close to the spirit
+  % of Bogoliubov-Epstein-Glasser approach.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Flow equation for $F_{ \kappa, \, \mu }$}
+
+  We know that for function $\varphi$, $F_{ \kappa, \, \mu }[ \varphi ]$ is a continuous
+  function on $T^{ d }$. But, for technical reasons is better to think about
+  it as distribution on the space of Schwartz functions
+  $\Scal( \Rbb^{ d } )$. As such we can define $F_{ \kappa, \, \mu }$ by equation
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-31}
+    \langle F_{ \kappa, \, \mu }[ \varphi ], \psi \rangle :=
+    \sum_{ i = 0 }^{ N } \sum_{ m = 0 }^{ 3i } \lambda^{ i }
+    \langle F_{ \kappa, \, \mu }^{ i, \, m }, \psi \otimes \varphi^{ \otimes k } \rangle,
+  \end{equation}
+  with $F_{ \kappa, \, \mu }^{ i, \, m }
+  \in \Scal'\big( ( \Rbb^{ d } )^{ m + 1 } \big)$. Coefficient
+  $F_{ \kappa, \, \mu }^{ i, \, m }$, which are tempered distributions, obeys
+  flow equations, which unfortunately is extremely complicated, so can only
+  show it, without explaining its full meaning. They also have more
+  indices that a normal person can handle.
+  % We know that for function $\varphi$, $F_{ \kappa, \, \mu }[ \varphi ]$ is a continuous
+  % function on $T^{ d }$. But, for technical reasons is better to think about
+  % it as distribution on the space of Schwartz functions
+  % $\Scal( \Rbb^{ d } )$. As such we can define $F_{ \kappa, \, \mu }$ by equation
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-31}
+  %   \langle F_{ \kappa, \, \mu }[ \varphi ], \psi \rangle :=
+  %   \sum_{ i = 0 }^{ N } \sum_{ m = 0 }^{ 3i } \lambda^{ i }
+  %   \langle F_{ \kappa, \, \mu }^{ i, \, m }, \psi \otimes \varphi^{ \otimes k } \rangle,
+  % \end{equation}
+  % with $F_{ \kappa, \, \mu }^{ i, \, m }
+  % \in \Scal'\big( ( \Rbb^{ d } )^{ m + 1 } \big)$. Coefficient
+  % $F_{ \kappa, \, \mu }^{ i, \, m }$, which are tempered distributions, obeys
+  % flow equations, which unfortunately is extremely complicated, so can only
+  % show it, without explaining its full meaning. They also have more
+  % indices that normal person can handle.
+  % We know that for function $\varphi$, $F_{ \kappa, \, \mu }[ \varphi ]$ is a continuous
+  % function on $T^{ d }$. But, for technical reasons is better to think about
+  % it as distribution on the space of Schwartz functions
+  % $\Scal( \Rbb^{ d } )$. As such we can define $F_{ \kappa, \, \mu }$ by equation
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-31}
+  %   \langle F_{ \kappa, \, \mu }[ \varphi ], \psi \rangle :=
+  %   \sum_{ i = 0 }^{ N } \sum_{ m = 0 }^{ 3i } \lambda^{ i }
+  %   \langle F_{ \kappa, \, \mu }^{ i, \, m }, \psi \otimes \varphi^{ \otimes k } \rangle,
+  % \end{equation}
+  % with $F_{ \kappa, \, \mu }^{ i, \, m }
+  % \in \Scal'\big( ( \Rbb^{ d } )^{ m + 1 } \big)$. Coefficient
+  % $F_{ \kappa, \, \mu }^{ i, \, m }$, which are tempered distributions obeys
+  % flow equation, which unfortunately is extremely complicated, so can only
+  % show it, without explaining it full meaning.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Flow equation for $F_{ \kappa, \, \mu }$}
+
+
+  Flow equation has the form
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-32}
+    \partial_{ \mu } F_{ \kappa, \, \mu }^{ i, \, m } =
+    -\sum_{ j = 0 }^{ i } \sum_{ k = 0 }^{ m } ( 1 + k )
+    B_{ k }( \partial_{ \mu } G_{ \mu }, F_{ \kappa, \mu }^{ j, \, 1 + k },
+    F_{ \kappa, \, \mu }^{ i - j, \, m - k } ).
+  \end{equation}
+  Functions $B_{ k }$ on the right hand side are so complicated and
+  hard to explain, that we won't even attempt to do this here. We just
+  wrote symbolic expressions for it.
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-33}
+    \begin{split}
+      & B_{ k }( G, W, U )( x; \text{d}y_{ 1 }, \text{d}y_{ 2 }, \ldots,
+      \text{d}y_{ m } ) := \\
+      & \hspace{1em} := \frac{ 1 }{ m! } \sum_{ \pi \in \Pcal_{ m } } \;
+        \int\limits_{ \Rbb^{ 2 d } } W( x; \text{d}y_{ \pi( 1 ) },
+        \text{d}y_{ \pi( 2 ) }, \ldots,  \text{d}y_{ \pi( k ) } ) G( y - z ) \times \\
+      & \hspace{8em} \times U( z; \text{d}y_{ \pi( k + 1 ) },
+        \text{d}y_{ \pi( k + 2 ) }, \ldots, \text{d}y_{ \pi( m ) } ) \, \text{d}z.
+    \end{split}
+  \end{equation}
+  At this moment you can only trust that this equation has meaning. \\
+  It has.
+  % Flow equation has the form
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-32}
+  %   \partial_{ \mu } F_{ \kappa, \, \mu }^{ i, \, m } =
+  %   -\sum_{ j = 0 }^{ i } \sum_{ k = 0 }^{ m } ( 1 + k )
+  %   B_{ k }( \partial_{ \mu } G_{ \mu }, F_{ \kappa, \mu }^{ j, \, 1 + k },
+  %   F_{ \kappa, \, \mu }^{ i - j, \, m - k } ).
+  % \end{equation}
+  % Functions $B_{ k }$ on the right hand side are so complicated and
+  % hard to explain, that we won't even attempt to do this here. We just
+  % wrote symbolic expression for it.
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-33}
+  %   \begin{split}
+  %     & B_{ k }( G, W, U )( x; \text{d}y_{ 1 }, \text{d}y_{ 2 }, \ldots,
+  %     \text{d}y_{ m } ) := \\
+  %     & \hspace{1em} := \frac{ 1 }{ m! } \sum_{ \pi \in \Pcal_{ m } } \;
+  %       \int\limits_{ \Rbb^{ 2 d } } W( x; \text{d}y_{ \pi( 1 ) },
+  %       \text{d}y_{ \pi( 2 ) }, \ldots,  \text{d}y_{ \pi( k ) } ) G( y - z ) \times \\
+  %     & \hspace{8em} \times U( z; \text{d}y_{ \pi( k + 1 ) },
+  %       \text{d}y_{ \pi( k + 2 ) }, \ldots, \text{d}y_{ \pi( m ) } ) \, \text{d}z.
+  %   \end{split}
+  % \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Recursive solution of flow equation}
+
+
+  Paweł Duch solves this equation by following a recursive procedure
+  stated below.
+
+  $0)$ Set $F_{ \kappa, \, \mu }^{ 0, \, 0 } = \eta_{ \kappa }$
+  and $F_{ \kappa, \, \mu }^{ i, \, m } = 0$ if $m > 3i$. \\
+  $1)$ We assume that $F_{ \kappa, \, \mu }^{ i, \, m }$ were constructed
+  for $i < j$ or for $i = j$ and $m > l$, for some $j$ and $l$.
+  Then \alert{set} $\partial_{ \mu } F_{ \kappa, \, \mu }^{ j, \, l }$ equal to the
+  RHS of flow equation \eqref{eq:Stochastic-quantization-ETC-32}. \\
+  $2)$ Define $F_{ \kappa, \, \mu }^{ j, \, l }$ as
+  \begin{equation}
+    \label{eq:Stochastic-quantization-ETC-34}
+    F_{ \kappa, \, \mu }^{ j, \, l } =
+    F_{ \kappa }^{ j, \, l } +
+    \int\limits_{ 0 }^{ \mu } \partial_{ \mu } F_{ \kappa, \, \mu }^{ j, \, l }.
+  \end{equation}
+  We must remember that at this moment
+  $\partial_{ \mu } F_{ \kappa, \, \mu }^{ j, \, l }$ is only defined by the~RHS of flow
+  equation.
+
+  At this moment we want to end our talk, leaving you with the message that
+  the theory of SsPDEs is an active field of research that hopefully will
+  help us construct more models of QFT at least in $2 + 1$ dimension.
+  % Paweł Duch solves this equation by following a recursive procedure
+  % stated below.
+
+  % $0)$ Set $F_{ \kappa, \, \mu }^{ 0, \, 0 } = \eta_{ \kappa }$
+  % and $F_{ \kappa, \, \mu }^{ i, \, m } = 0$ if $m > 3i$. \\
+  % $1)$ We assume that $F_{ \kappa, \, \mu }^{ i, \, m }$ were constructed
+  % for $i < j$ or for $i = j$ and $m > l$, for some $j$ and $l$.
+  % Then \alert{set} $\partial_{ \mu } F_{ \kappa, \, \mu }^{ j, \, l }$ equal to the
+  % RHS of flow equation. \\
+  % $2)$ Define $F_{ \kappa, \, \mu }^{ j, \, l }$ as
+  % \begin{equation}
+  %   \label{eq:Stochastic-quantization-ETC-34}
+  %   F_{ \kappa, \, \mu }^{ j, \, l } =
+  %   F_{ \kappa }^{ j, \, l } +
+  %   \int\limits_{ 0 }^{ \mu } \partial_{ \mu } F_{ \kappa, \, \mu }^{ j, \, l }.
+  % \end{equation}
+  % We must remember that at this moment
+  % $\partial_{ \mu } F_{ \kappa, \, \mu }^{ j, \, l }$ is only defined by RHS of flow equation.
+
+  % At this moment I want to end our talk with the thought, that theory of
+  % SsPDEs is active field of research that hopefully help us construct more
+  % models of QFT at least in $2 + 1$ dimension.
+
+\end{frame}
+% ##################
 
 
 
@@ -242,6 +1199,20 @@ eprint=true,
 
 
 
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Thank you! Questions?}
+% ######################################
 
 
 % % ##################
