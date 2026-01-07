@@ -12,31 +12,42 @@
  * Ich działanie zademonstrujemy na poniższych przykładach. */
 
 int main() {
-  int intVar1 = 0;
-  int intVar2 = 1;
+  int intVar1 = 1;
+  int intVar2 = 2;
 
-  /* Warto przypomnieć operator porównania „==”. */
+  printf("Warto przypomnieć operator porównania „==”.\n");
   printf("(1 == 1) == %d.\n", 1 == 1);
   printf("(1 == 2) == %d.\n\n", 1 == 2);
 
+  printf("Operator „!=” sprawdza, czy obie strony mają RÓŻNE wartości.\n");
   printf("(1 != 1) == %d.\n", 1 != 1);
   printf("(1 != 2) == %d.\n\n", 1 != 2);
 
+  printf("Operatory „<” sprawdza, czy po jego lewej stronie stoi liczba "
+	 "mniejsza, niż po jego prawej stronie.\n");
   printf("(1 < 1) == %d.\n", 1 < 1);
   printf("(1 < 2) == %d.\n", 1 < 2);
-  printf("(1 < 0) == %d.\n\n", 1 < 0);
+  printf("(2 < 1) == %d.\n\n", 2 < 1);
 
+  printf("Operator „<=” to operator „mniejsze bądź równe”. Zwraca "
+	 "prawdę, jeśli liczba po jego lewej stronie jest mniejsza bądź "
+	 "równa liczbie po jego prawej stronie.\n");
   printf("(1 <= 1) == %d.\n", 1 <= 1);
   printf("(1 <= 2) == %d.\n", 1 <= 2);
-  printf("(1 <= 0) == %d.\n\n", 1 <= 0);
+  printf("(2 <= 1) == %d.\n\n", 2 <= 1);
 
+  printf("Operatory „>” sprawdza, czy po jego lewej stronie stoi liczba "
+	 "większa, niż po jego prawej stronie.\n");
   printf("(1 > 1) == %d.\n", 1 > 1);
   printf("(1 > 2) == %d.\n", 1 > 2);
-  printf("(1 > 0) == %d.\n\n", 1 > 0);
+  printf("(2 > 1) == %d.\n\n", 2 > 1);
 
+  printf("Operator „>=” to operator „większe bądź równe”. Zwraca "
+	 "prawdę, jeśli liczba po jego lewej stronie jest większa bądź "
+	 "równa liczbie po jego prawej stronie.\n");
   printf("(1 >= 1) == %d.\n", 1 >= 1);
   printf("(1 >= 2) == %d.\n", 1 >= 2);
-  printf("(1 >= 0) == %d.\n\n", 1 >= 0);
+  printf("(2 >= 1) == %d.\n\n", 2 >= 1);
 
   /* Jak widzimy, jeśli prawdą jest, że spełniony jest zadany warunek,
      to język C zwraca wartość 1. Jeśli dany warunek jest fałszywy, to
@@ -46,19 +57,25 @@ int main() {
    * i zmiennymi oraz między dwoma zmiennymi. Przykłady te powinny wyjaśnić
    * tą kwestię. */
 
-  printf("Operatory porównania w działaniu ze zmiennymi.\n");
+  printf("Operatory porównania w sposób naturalny działają również "
+	 "ze zmiennymi.\n");
 
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
-  printf("(0 == intVar1) == %d.\n", 0 == intVar1);
-  printf("(0 == intVar2) == %d.\n\n", 0 == intVar2);
+  printf("(1 == intVar1) == %d.\n", 1 == intVar1);
+  printf("(1 == intVar2) == %d.\n\n", 1 == intVar2);
 
-  printf("(0 != intVar1) == %d.\n", 0 == intVar1);
-  printf("(0 != intVar2) == %d.\n\n", 0 != intVar2);
+  printf("(2 != intVar1) == %d.\n", 1 == intVar1);
+  printf("(2 != intVar2) == %d.\n\n", 1 != intVar2);
 
   printf("(intVar1 == intVar2) == %d.\n", intVar1 == intVar2);
-  printf("(intVar1 != intVar2) == %d.\n", intVar1 != intVar2);
+  printf("(intVar1 != intVar2) == %d.\n\n", intVar1 != intVar2);
+
+  printf("(intVar1 < intVar2) == %d.\n", intVar1 < intVar2);
+  printf("(intVar1 <= intVar2) == %d.\n", intVar1 <= intVar2);
+  printf("(intVar1 > intVar2) == %d.\n", intVar1 > intVar2);
+  printf("(intVar1 >= intVar2) == %d.\n", intVar1 >= intVar2);
 
 
 

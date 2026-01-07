@@ -11,12 +11,17 @@ func main() {
 	// wartość „false”.
 	var boolVar1 bool = true
 
-	fmt.Printf("boolVar1 == %v.\n", boolVar1)
+	fmt.Printf("Wypisujemy wartość zmiennej boolowskiej na ekranie.\n")
+	fmt.Printf("Wartość zmiennej boolowskiej: boolVar1 == %v.\n\n",
+		boolVar1)
 
-	// Zmieniamy
+
+	fmt.Printf("Zmieniamy wartość zmiennej boolowskiej.\n")
+	fmt.Printf("boolVar1 = false;\n")
 	boolVar1 = false
 
-	fmt.Printf("boolVar1 == %v.\n", boolVar1)
+	fmt.Printf("Wartość zmiennej boolowskiej: boolVar1 == %v.\n",
+		boolVar1)
 
 	// Ten kod sprawi, że Go zwariuje.
 	// boolVar1 = 7 * true + 3 * false

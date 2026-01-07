@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-/* Nie ma sensu uczyć się funkcji scanf() zbyt dokładnie, skoro i tak należ
+/* Nie ma sensu uczyć się funkcji scanf() zbyt dokładnie, skoro i tak należy
  * jej unikać. Na użytek tego kursu poświęcimy jej jednak trochę czasu. */
 
 int main() {
@@ -19,7 +19,7 @@ int main() {
    * Obecność symbolu „&” będziemy mogli wyjaśnić, dopiero po omówieniu
    * wskaźników. Bo czemu życie miałoby być proste? */
 
-  printf("Podałeś liczbę %d.\n\n", intVar1);
+  printf("Podałeś liczbę: %d.\n\n", intVar1);
 
 
 
@@ -30,7 +30,7 @@ int main() {
    * życie nie może być proste, więc tutaj trzeba użyć „%lf” od „long float”,
    * „długa liczba zmiennoprzecinkowa”. */
 
-  printf("Podałeś liczbę %.2f.\n", float64Var1);
+  printf("Podałeś liczbę: %.2f.\n", float64Var1);
 
 
 

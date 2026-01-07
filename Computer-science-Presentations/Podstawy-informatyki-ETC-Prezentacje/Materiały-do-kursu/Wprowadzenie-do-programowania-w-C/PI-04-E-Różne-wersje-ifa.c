@@ -49,7 +49,7 @@ int main() {
     printf("intVar1 == %d, jest to liczba większa bądź równa 20.\n", intVar1);
   }
 
-  printf("Koniec trzeciej instrukcj warunkowej if.\n\n");
+  printf("Koniec trzeciej instrukcji warunkowej if.\n\n");
 
 
 

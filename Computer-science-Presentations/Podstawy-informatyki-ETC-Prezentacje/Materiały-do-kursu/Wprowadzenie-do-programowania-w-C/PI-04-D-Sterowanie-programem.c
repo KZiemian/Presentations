@@ -30,12 +30,12 @@ int main() {
     printf("intVar1 == %d.\n", intVar1);
   } else {
     /* Jeśli (intVar1 == 5) nie jest prawdą, to zostanie zrobione to. */
-    printf("intVar1 == %d, czyli zmienna ta przechwuje wartość inną, "
+    printf("intVar1 == %d, czyli zmienna ta przechowuje wartość inną, "
 	   "niż 5.\n", intVar1);
   }
 
   /* Proszę uruchomić ten program kilka razy, podając różne liczby
-     i sprawdzić, czy program działa jak powinien. */
+   * i sprawdzić, czy program działa jak powinien. */
 
   /* Mówimy, że w instrukcji if kod się rozgałęzia (ang. branching),
    * bo możemy pójść jedną z gałęzi (ang. branch) tej instrukcji.

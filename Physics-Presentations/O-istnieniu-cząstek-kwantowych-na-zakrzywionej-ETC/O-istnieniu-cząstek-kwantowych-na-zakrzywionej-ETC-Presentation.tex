@@ -1,0 +1,933 @@
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{light}
+\fi
+
+
+
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+% ---------------------------------------
+% Configuration files of Jagiellonian loceted in catalog preambule
+% ---------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianEnglishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Stochastic-quantization-and-singular-stochastic-equations-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Special configuration for this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+% Package containing various command useful for working with a text
+\usepackage{./Local-packages/general-commands}
+
+% Package containing commands and other code useful for working with
+% mathematical text
+\usepackage{./Local-packages/math-commands}
+
+
+
+
+
+% ---------------------------------------
+% Configuration for this particular presentation
+% ---------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ---------------------------------------------------------------------
+\title{O~istnieniu cząstek kwantowych na~zakrzywionej
+  czasoprzestrzeni}
+
+\author{Kamil Ziemian \\
+  \texttt{kziemianfvt@gmail.com}}
+
+
+\date{}
+% ---------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Początek dokumentu
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% Wyrównanie do lewej z łamaniem wyrazów
+
+\RaggedRight
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents % Spis treści
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\section{Cząstki w~zakrzywionej czasoprzestrzeni}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co to jest cząstka?}
+
+
+  Zacznijmy od zadania sobie pytania, co to jest cząstka?
+  Proste: nieskończenie mała kulka poruszając~się w~przestrzeni.
+
+  Odkładając żarty na bok, każdy z~nas ma jakąś intuicję tego czym cząstka
+  jest i~na tym intuicyjnym poziomie, trudno dostrzec czemu w~danej teorii
+  takie obiekty miałyby nieistnień. Na tym seminarium będziemy starali~się
+  wyjaśnić, czemu w~konkretnym formalizmie teoretycznym, to pojęcie staje~się
+  problematyczne.
+
+  Wiemy, że~w~płaskiej czasoprzestrzeni Minkowskiego cząstka kwantowa to
+  dobrze określone pojęcie. Czasoprzestrzeń wokół nas jest prawie płaska,
+  więc to, że~w~różnych eksperymentach obserwujemy cząstki, nie powinno nas
+  dziwić. Pytanie, przed którym stajemy teraz jest to, czy jeśli krzywizna
+  czasoprzestrzenie będzie rosnąć pojęcie cząstki kwantowej zachowa swój
+  sens?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Niekwantowe cząstki w~OTW}
+
+
+  Na tym seminarium nie będziemy~się zagłębiać w~zawiłości równań Einsteina,
+  gdyż nie jest to potrzebne do zrozumienia istoty problemu. Potrzebujemy
+  jednak powiedzieć kilka rzeczy o~czasoprzestrzeniach, które będziemy
+  rozważać.
+
+  Przyjmiemy, że~geometria czasoprzestrzeni jest zadana przez
+  \alert{ustalony} rozkład materii i~od teraz będziemy rozważać tylko
+  cząstki, które \alert{nie} dają wkładu do zastanego pola grawitacyjne.
+  To oczywiście jest tylko pewnym przybliżeniem realnej sytuacji, pozwala
+  jednak postawić kilka pytań w~bardzo precyzyjny sposób.
+
+  W~takiej sytuacji rozważanie cząstek punktowych w~\textsc{otw} nie stwarza
+  żadnych problemów. Przez „niekwantowy” foton rozumiem cząstkę punktową
+  o~zerowej masie, której czteroprędkość jest zawsze wektorem świetlnym.
+  Analogicznie będziemy rozumieli elektron, którego czteroprędkość
+  jest zawsze wektorem czasopodobnym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Czy kwantowe fotony istnieją w~zakrzywionej
+  czasoprzestrzeni?}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problem przestrzeni Hilberta}
+
+
+  Zanim przejdziemy do problemu cząstek kwantowych, musimy wspomnieć o~kilku
+  kwestiach technicznych. Dla nierelatywistycznej mechaniki kwantowej
+  istnieje tylko \alert{jedna} przestrzeń Hilberta $\Hcal$ . Dla kwantowej
+  teorii pola możliwych przestrzeni Hilberta jest ich nieprzeliczalnie
+  wiele, albo jeszcze więcej.
+
+  Trochę bardziej ściśle. Twierdzenie Stone'a-von Neumanna głosi,
+  że~mechanika kwantowa żyje w~ośrodkowej przestrzeni Hilberta, a~ta jest
+  tylko jedna, z~dokładnością do transformacji unitarnej. Kwantowej teorii
+  pola nie można sformułować w~ośrodkowej przestrzeni Hilberta,
+  a~przestrzeni nieośrodkowych znamy już nieprzeliczalnie wiele.
+
+  Co więcej konstrukcje takich modeli \textsc{qft} jak $\Phi_{ d }^{ \, 4 }$,
+  dla $d = 2, 3$, dostarczają nam jawnego przykładów tego problemu.
+  Jeśli człon oddziaływania oznaczymy jako $\lambda \Phi^{ 4 } / 4!$, to dla każdej
+  wartości parametru $\lambda_{ 1 }$ potrafimy zbudować przestrzeń Hilberta tej
+  teorii, która \alert{nie} jest unitarna równoważna tej dla
+  $\lambda_{ 2 } \neq \lambda_{ 1 }$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problem przestrzeni Hilberta}
+
+
+  Jednak zmiana przestrzeni Hilberta wpływa na widmo wszystkich operatorów,
+  więc różne przestrzeni Hilberta „tej samej” teorii, odpowiadają fizycznie
+  różnym zjawiskom. Dlatego problemu „W~której przestrzeni Hilberta
+  jesteśmy?” nie możemy łatwo zignorować.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Elektrodynamika Clerka Maxwella}
+
+
+  Klasyczna elektrodynamika Clerka Maxwella relatywnie łatwo~się uogólnia
+  do przypadku zakrzywionej czasoprzestrzeni, dlatego zilustrujemy nasz
+  problem na jej przykładzie.
+
+  Pole zapisujemy za pomocą tensora Clerka Maxwell.
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-01}
+    F_{ \mu \nu }( x )
+    =
+    \begin{pmatrix}
+      \hphantom{-} 0
+      & \frac{ 1 }{ c } E_{ x }( x ) & \frac{ 1 }{ c } E_{ y }( x )
+      & \frac{ 1 }{ c } E_{ z }( x ) \\
+      -\frac{ 1 }{ c } E_{ x }( x )
+      & \hphantom{-} 0 & -B_{ z }( x ) & \hphantom{-} B_{ y }( x ) \\
+      -\frac{ 1 }{ c } E_{ y }( x )
+      & \hphantom{-} B_{ z }( x ) & \hphantom{-} 0 & -B_{ z }( x ) \\
+      -\frac{ 1 }{ c } E_{ z }( x )
+      & -B_{ y }( x ) & \hphantom{-} B_{ x }( x ) & \hphantom{-} 0
+    \end{pmatrix}
+  \end{equation}
+  Jeśli wprowadzimy czteroformę pola
+  $F( x ) = F_{ \mu \nu }( x ) \, dx^{ \mu } \wedge dx^{ \nu }$
+  i~czteroformę potencjału $A( x ) = A_{ \mu }( x ) \, dx^{ \mu }$ to
+  równania Clerka Maxwella przyjmują formę (trochę upraszczamy)
+  \begin{equation}
+    F( x ) = \widetilde{d}A( x ), \quad dF( x ) = 0.
+  \end{equation}
+  Równania te mają sens na dowolnej zakrzywionej czasoprzestrzeni.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Elektrodynamika Clerka Maxwella}
+
+
+  \begin{subequations}
+    \begin{align}
+      \label{eq:Czemu-rozwazanie-02-A}
+      &F( x ) = \widetilde{d}A( x ), \quad dF( x ) = 0, \quad
+        F( x ) = F_{ \mu \nu }( x ) \, dx^{ \mu } \wedge dx^{ \nu }, \\[0.3em]
+      \label{eq:Czemu-rozwazanie-02-B}
+      &F_{ \mu \nu }( x )
+        =
+        \begin{pmatrix}
+          \hphantom{-} 0
+          & \frac{ 1 }{ c } E_{ x }( x ) & \frac{ 1 }{ c } E_{ y }( x )
+          & \frac{ 1 }{ c } E_{ z }( x ) \\
+          -\frac{ 1 }{ c } E_{ x }( x )
+          & \hphantom{-} 0 & -B_{ z }( x ) & \hphantom{-} B_{ y }( x ) \\
+          -\frac{ 1 }{ c } E_{ y }( x )
+          & \hphantom{-} B_{ z }( x ) & \hphantom{-} 0 & -B_{ z }( x ) \\
+          -\frac{ 1 }{ c } E_{ z }( x )
+          & -B_{ y }( x ) & \hphantom{-} B_{ x }( x ) & \hphantom{-} 0
+        \end{pmatrix}
+    \end{align}
+  \end{subequations}
+
+  Te równania definiują nam elektrodynamikę na dowolnej gładkiej
+  rozmaitości. Teraz potrzeba je skwantować.
+
+  I tu pojawia się problemy. Będziemy argumentowali, że~standardowa
+  kwantyzacja pola elektromagnetycznego silnie korzysta z~własności
+  czasoprzestrzeni Minkowskiego i~dlatego nie da~się jej przenieść
+  na ogólny przypadek zakrzywionej czasoprzestrzeni.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uproszczona kwantyzacja w~czasoprzestrzeni
+    Minkowskiego}
+
+
+  1. Wybierz inercjalny układ współrzędnych.
+
+  2. Wypisz w~nim równania Clerka Maxwella na czteropotencjał jako
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-03}
+    \square \, A_{ \mu }( x ) = 0, \quad \partial^{ \nu } A_{ \nu }( x ) = 0
+  \end{equation}
+
+  \vspace{-1.5em}
+
+
+
+  3. Zapisz rozwiązanie równań Clerka Maxwella jako
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-04}
+    \begin{split}
+      A_{ \mu }( x )
+      &=
+        \int d^{ 3 }k \sum_{ \mu = \pm 1 } \frac{ 1 }{ \omega( \vec{ k } ) }
+        \left( \vec{ e }^{ \, ( \mu ) }\!( \vec{ k } ) \,
+        a_{ \vec{ k } }^{ ( \mu ) }\!( t ) \,
+        e^{ -i \omega( \vec{ k } ) t + i \vec{ k } \cdot \vec{ x } } \, + \right. \\
+      &\hspace{1.5em}
+        \left. + \, \overline{ \vece^{ \, ( \mu ) } }\!( \vec{ k } ) \,
+        \overline{ a }_{ \vec{ k } }^{ \, ( \mu ) }\!( t ) \,
+        e^{ \, i \omega( \vec{ k } ) t - i \vec{ k } \cdot \vec{ x } } \right).
+    \end{split}
+  \end{equation}
+
+  \vspace{-1em}
+
+
+
+  4. Podnieś $A_{ \mu }( x )$, $a_{ \vec{ k } }^{ ( \mu ) }\!( t )$ do rangi
+  operatorów: $\widehat{A}_{ \mu }( x )$,
+  $\widehat{a}_{ \vec{ k } }^{ \, ( \mu ) }\!( t )$.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Uproszczona kwantyzacja w~czasoprzestrzeni
+    Minkowskiego}
+
+  \vspace{-2em}
+
+
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-05}
+    \begin{split}
+      \widehat{A}_{ \mu }( x )
+      &=
+        \int d^{ 3 }k \sum_{ \mu = \pm 1 } \frac{ 1 }{ \omega( \vec{ k } ) }
+        \left( \vec{ e }^{ \, ( \mu ) }\!( \vec{ k } ) \,
+        \widehat{a}_{ \veck }^{ \, ( \mu ) }\!( t ) \,
+        e^{ -i \omega( \vec{ k } ) t + i \veck \cdot \vec{ x } } \, + \right. \\
+      &\hspace{1.5em}
+        \left. + \, \overline{ \vece^{ \, ( \mu ) } }\!( \veck ) \,
+        \big( \, \widehat{a}_{ \vec{ k } }^{ \, ( \mu ) } \!( t )
+        \big)^{ \dagger } \,
+        e^{ i \omega( \vec{ k } ) t - i \vec{ k } \cdot \vec{ x } } \right).
+    \end{split}
+  \end{equation}
+
+  \vspace{-1em}
+
+
+
+  5. Zinterpretuj operator przy
+  $\exp( -i \omega( \vec{ k } ) t + i \vec{ k } \cdot \vec{ x } )$
+  jako operator anihilacji fotonu. Poszukujemy więc stanu, który spełnia
+  równanie
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-06}
+    \widehat{a}_{ \vec{ k } }^{ \, ( \mu ) }\!( t ) | 0 \rangle = 0, \quad
+    \forall \, \vec{ k }, \mu.
+  \end{equation}
+
+  \vspace{-1em}
+
+
+
+  6. Zbuduj przestrzeń Hilberta kwantowej elektrodynamiki ze stanów
+  zawierających $0, 1, 2, 3, \ldots,$ fotonów, czyli
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-07}
+    \begin{split}
+      &| 0 \rangle, \; \big( \widehat{a}^{ \, ( \mu ) }_{ \vec{ k } }\!( t )
+        \big)^{ \dagger } | 0 \rangle, \;
+        \big( \widehat{a}^{ \, ( \mu ) }_{ \vec{ k } }\!( t ) \big)^{ \dagger }
+        \big( \widehat{a}^{ \, ( \nu ) }_{ \vec{ k }' }\!( t ) \big)^{ \dagger }
+        | 0 \rangle, \\
+      &\big( \widehat{a}^{ \, ( \mu ) }_{ \vec{ k } }\!( t ) \big)^{ \dagger }
+        \big( \widehat{a}^{ \, ( \nu ) }_{ \vec{ k }' }\!( t ) \big)^{ \dagger }
+        \big( \widehat{a}^{ \, ( \rho ) }_{ \vec{ k }'' }\!( t ) \big)^{ \dagger }
+        | 0 \rangle, \\
+      &\big( \widehat{a}^{ \, ( \mu ) }_{ \vec{ k } }\!( t ) \big)^{ \dagger }
+        \big( \widehat{a}^{ \, ( \nu ) }_{ \vec{ k }' }\!( t ) \big)^{ \dagger }
+        \big( \widehat{a}^{ \, ( \rho ) }_{ \vec{ k }'' }\!( t ) \big)^{ \dagger }
+        \big( \widehat{a}^{ \, ( \sigma ) }_{ \vec{ k }''' }\!( t ) \big)^{ \dagger }
+        | 0 \rangle, \; \ldots
+    \end{split}
+  \end{equation}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Musimy znaleźć właściwy stan próżni}
+
+
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-08}
+    \widehat{a}_{ \vec{ k } }^{ \, ( \mu ) }( t ) | 0 \rangle = 0, \quad
+    \forall \, \vec{ k }, \mu
+  \end{equation}
+  Jest zbyt wiele stanów spełniających tą relację. Wybór każdego z~nich daje
+  inną przestrzeń Hilberta budowanej wedle przepisu
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-09}
+    | 0 \rangle, \; \big( \widehat{a}^{ \, ( \mu ) }_{ \vec{ k } }\!( t )
+    \big)^{ \dagger } | 0 \rangle, \;
+    \big( \widehat{a}^{ \, ( \mu ) }_{ \vec{ k } }\!( t ) \big)^{ \dagger }
+    \big( \widehat{a}^{ \, ( \nu ) }_{ \vec{ k }' }\!( t ) \big)^{ \dagger }
+    | 0 \rangle, \ldots
+  \end{equation}
+  Każda taka przestrzeń to inna teoria fizyczna.
+
+  Ale istnieje tylko \alert{jeden} stan $| 0 \rangle$ który jest taki sam
+  w~każdym inercjalnym układzie współrzędnych. Inaczej mówiąc, spełnia
+  on relację:
+  \begin{equation}
+    \label{eq:Czemu-rozwazanie-10}
+    \widehat{U}( L, a ) | 0 \rangle = | 0 \rangle,
+  \end{equation}
+  gdzie $L$ to transformacja Lorentza, a~$a$ to czterowektor translacji, \\
+  zaś $\widehat{U}( L, a )$ to operator unitarny odpowiedzialny
+  za~implementację tej transformacji na przestrzeni Hilberta.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak duża jest nasza grupa symetrii?}
+
+
+  Samo pole kwantowe $\widehat{A}_{ \mu }( x )$ wygląda tak samo w~każdym
+  inercjalnym układzie współrzędnych, ale~istnieje tylko jeden stan
+  $| 0 \rangle$, który wygląda tak samo w~każdym z~tych układów.
+
+  Mówiąc inaczej, jest tylko jeden „stan próżni”, który jest pusty
+  w~\alert{każdym} inercjalnym układzie odniesienia. Pozostałe są puste
+  w~jednych układzie inercjalnym, a~zawierają cząstki w~innym. Możemy je
+  nazwać „dziwnymi stanami próżni”.
+
+  Tym samy otrzymaliśmy dobrze określoną elektrodynamikę kwantową
+  w~czasoprzestrzeni Minkowskiego.
+
+  Jeżeli weźmiemy jako przykład przestrzenie zakrzywionej widzialne
+  gołym okiem powierzchnie w~trzech wymiarach, to łatwo zauważyć, że~ich
+  grupa symetrii będzie zwykle mniejsza od~grupy symetrii całej przestrzeni,
+  a~często będzie składała~się z~pojedynczego elementu: odwzorowania
+  identyczności.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy to jest problem?}
+
+
+  Analogicznie, jeśli rozważymy czasoprzestrzeń \textsc{otw}, to z~tych
+  samych powodów co dla powierzchni, nie możemy liczyć na zbyt dużą grupę
+  symetrii. Są ważne wyjątki od tej reguły, acz to nie zmienia tak bardzo
+  całej sytuacji.
+
+  Jeśli zaś nie mamy tak dużej grupy symetrii, jak grupa Poincar\'{e}’ego,
+  to nie będziemy mogli znaleźć „poprawnego stanu próżni”, który jest
+  pusty w~każdym układzie odniesienia. Przypomnijmy, że~zwykle uważa~się,
+  iż~w~\textsc{otw} każdy układ odniesienia jest równie „(nie)inercjalny”.
+  Wszystkie te „stany próżni” są bardzo dziwne.
+
+  Wobec tych rozważań można wysunąć dwa poważne zastrzeżenia.
+
+  \vspace{-0.7em}
+
+
+
+  \begin{enumerate}
+    \RaggedRight
+
+  \item Przecież dobrze wiem, że~cząstki istnieją, więc to musi być błąd
+    w~naszej teorii.
+
+  \item To jest niuans matematyczny, bez znaczenia fizycznego.
+
+  \end{enumerate}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czy to jest problem?}
+
+
+  Gdy chodzi o~pierwszą kwestię, to ze względu na charakter grawitacji
+  większość obserwowanej czasoprzestrzeni jest praktycznie płaska. Więc
+  nie powinno nas specjalnie dziwić, że~formalizm rozwinięty dla
+  czasoprzestrzeni Minkowskiego działa bardzo dobrze.
+
+  Z~punktu widzenia czysto teoretycznego, ważne jest to czy teorię
+  cząstek będzie można odtworzyć w~granicy, gdy krzywizna czasoprzestrzeni
+  dąży do zera.
+
+  Odnośnie drugiej uwagi, że~te rozważania nie mają sensu fizycznego, to
+  fakt, że~w~zakrzywionej czasoprzestrzeni nie ma uniwersalnego stanu próżni
+  stoi za słynnym zjawiskiem promieniowania czarnych dziur. Słynny, bo miało
+  dobry marketing. Obliczenia ilościowe są skomplikowane, ale ten
+  efekt można podsumować w~następujący sposób. Jeśli wybierzemy „stan
+  próżni” pusty w~układzie odniesienia nieskończonej przeszłości czarnej
+  dziury, to nie będzie on pusty w~układzie odniesienia nieskończonej
+  przyszłości tej dziury.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Społeczność AQFT taka jest}
+
+
+
+  \begin{figure}
+
+    \label{fig:IT-guys-and-users}
+
+    \centering
+
+
+    \includegraphics[scale=0.48]
+    {./Presentation-pictures/AQFT-community-Im-about.jpeg}
+
+  \end{figure}
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Komentarz do 2}
+
+
+%   W~czasoprzestrzenni Minkowskiego zbiór operatorów anihilacji
+%   $a^{ ( \mu ) }_{ \vec{ k } }( t )$ wszystkich układów inercjalnych
+%   jest stosunkowo mały. Ogranicza go warunek równoważny
+%   niezmienniczości próżni:
+%   \begin{equation}
+%     \label{eq:Czemu-rozwazanie-10}
+%     U^{ \dagger }( L, a ) a^{ ( \mu ) }_{ \vec{ k } }( t ) U( L, a )
+%     =
+%     a^{ ( \mu ) }_{ \vec{ k }' }( t' ),
+%   \end{equation}
+%   przy czym $( L, a )$ przekształca $t$, $\vec{ k }$ na $t'$,
+%   $\vec{ k }'$.
+
+%   W~zakrzywionej czasoprzestrzenie zwykle nie będzie żadnego takiego
+%   ograniczenia, więc klasa operatorów anihilacji będzie zbyt duża, by
+%   znaleźć dla nich wspólną próżnię.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Trochę radykalnych wniosków}
+
+
+  Pojęcie cząstki kwantowej ma sens w układach inercjalnych w~płaskiej
+  czasoprzestrzeni. W~czasoprzestrzeni zakrzywionej mamy problem typu:
+  ile jest cząstki w~cząstce kwantowej? Można postawić pytanie: czy
+  nazywanie takiego obiektu cząstką to nie jest tylko rezultat bezwładności
+  języka?
+
+  Efekty takie jak promieniowanie czarnych dziur, każą~się nam
+  zastanowić, czy szukanie takiej „globalnej” przestrzeni Hilberta to
+  nie jest zbyt mocne wymaganie? Takie rozważania są oczywiście mile widziane
+  przez społeczność algebraicznej kwantowej teorii pola (\textsc{aqft},
+  ang.~\textit{Algebraic Quantum Field Theory}). Dlatego teraz naszkicujemy,
+  jak społeczność ta proponuje rozwiązać ten problem.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Algebraiczna QFT w~zakrzywionej czasoprzestrzeni}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Szkic podejścia algebraicznego}
+
+
+  Przypomnijmy, że~zakładamy, iż~geometria czasoprzestrzeni jest ustalona
+  i~rozważamy tylko ruch obiektów tak „lekkich”, że~ich wkład do pola
+  grawitacyjnego możemy zaniedbać. Jest to duże uproszczenie, ale problem
+  i~bez tego jest wystarczająco trudny.
+
+  W~\textsc{aqft} podstawowym obiektem są \alert{lokalne} algebry,
+  czyli algebry przypisane do ograniczonych obszarów czasoprzestrzeni
+  $\Ocal$. Dokładniej, chcemy by te obszary były zbiorami otwartymi
+  o~zwartym domknięciu i~wszystkie te pojęcia mają sens w~dowolnej
+  zakrzywionej czasoprzestrzeni.
+
+  Algebra ta $\Acal( \Ocal )$ reprezentuje wszystkie (kwantowe) wielkości
+  fizyczne, które można zmierzyć w~obszarze $\Ocal$. Jednocześnie można
+  wprowadzić \alert{lokalną} przestrzeń Hilberta, jeśli tylko znajdziemy
+  odpowiedni stan na algebrze $\Acal( \Ocal )$. Fakt ten jest treścią
+  twierdzenia \textsc{gns} (Gelfand-Naimark-Segal)
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy podejścia algebraicznego}
+
+
+  Konstrukcja \textsc{gns} powinna więc pozwolić nam odtworzyć cząstki
+  jako byty \alert{lokalne}, co zgadza~się dobrze z~naszą intuicją fizyczną.
+
+  Ten szkic raczej nie pozwali zrozumieć jak działa podejście algebraiczne,
+  dlatego należy~się kilka słów komentarza. Podstawowa trudność w~wszystkich
+  matematycznych podejścia do \textsc{qft}, takich jak \textsc{aqft}, polega
+  na skonstruowaniu konkretnego modelu. W~naszym wypadku chodzi o~zbudowanie
+  odpowiedniej rodziny algebr $\Acal( \Ocal )$. W~czterech wymiarach umiemy
+  to zrobić jedynie perturbacyjnie.
+
+  W~ogromnym uproszczeniu, problem bierze~się stąd, że~aby skonstruować model
+  pola kwantowego w~$d$ wymiarach, musimy zacząć od konstrukcji teorii
+  na $d$ wymiarowej sieci, co nie jest żadnym problemem. Następnie należy
+  wziąć granicę $L \searrow 0$, gdzie $L$ to odległość między węzłami sieci.
+  Kontrola tej granicy dla $d = 4$ przekracza obecnie nasze możliwości.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co udało~się osiągnąć?}
+
+
+  Konstrukcja algebry $\Acal( \Ocal )$ pola \alert{swobodnego} na
+  zakrzywionej czasoprzestrzeni, która ma sensowne własności, gdy chodzi
+  o~upływ czasu (mówiąc technicznie, jest globalnie hiperboliczna), jest
+  technicznie niełatwe, ale wykonalne.
+
+  Dla modeli oddziałujących udało~się zbudować szereg perturbacyjny
+  konkretnych algebr różnych pól kwantowych, ale nie udało~się wykazać, czy
+  jest on zbieżny. Omówienie ich konstrukcji przekracza znacznie ramy tego
+  wystąpienia, gdyż wymaga dyskusji własności przestrzeni globalnie
+  hiperbolicznej, rozwiązań dystrybucyjnych równań różniczkowych na
+  rozmaitościach, i~wielu innych tematów.
+
+  Kończąc, można postawić sobie pytanie, czy podejście algebraiczne jest
+  poprawnym fizycznie rozwiązaniem tego problemu? Dopiero testy
+  eksperymentalne będą mogły rozstrzygnąć to pytanie. My ze swojej strony
+  możemy tylko dodać, że~choć \textsc{aqft} zmaga~się z~wieloma poważnymi
+  problemami, potrafi zainspirować do myślenia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Pola i~cząstki}
+
+
+%   Bardziej szczegółowe omówienie tego podejścia przekracza obecnie
+%   moje możliwości.
+
+%   Czy to dobra droga? W~tej chwili nie umiem odpowiedzieć.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Dziękuję. Pytania?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bibliografia}
+
+
+  K. Fredenhagen, \textit{The impact of~the~algebraic approach on
+    perturbative quantum field theory}, [Fre09]. Wystąpienie na
+  \textit{Algebraic Quantum Field Theory – the first 50 Years},
+  G\"{o}ttingen 2009.
+
+  R.M. Wald, \textit{Axiomatic Quantum Field Theory in~Curved
+    Spacetime}, [Wal09]. Wystąpienie na \textit{Algebraic Quantum
+    Field Theory – the first 50 Years}, G\"{o}ttingen 2009.
+
+  R. Haag, \textit{Local Algebras: A~look back at the~early years
+    and~at~some successes and~missed opportunitie} [Haa09].
+  Wystąpienie na \textit{Algebraic Quantum Field Theory – the first 50
+    Years}, G\"{o}ttingen 2009.
+
+  K. Fredenhagen, K. Rejzner, \textit{Perturbative algebraic quantum
+    field theory}, arXiv: 1208.1428, [FR12].
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Bibliografia}
+
+
+  R. Brunetti, K. Fredenhagen, \textit{Microlocal Analysis
+    and~Interacting Quantum Field Theories: Renormalization
+    on~Physical Backgrounds}, Commun.Math.Phys, \textbf{208} (2000)
+  623-661, arXiv: 9903.028, [BF00].
+
+  R. Brunetti, K. Fredenhagen, \textit{Quantum Field Theory on~Curved
+    Backgrounds}, Proceedings of the Kompaktkurs „Quantenfeldtheorie
+  auf gekruemmten Raumzeiten” held at~Universitaet Potsdam, Germany,
+  in 8.-12.10.2007, arXiv: 0901.2063, [BF09].
+
+  M. D\"{u}etsch, K. Fredenhagen, K. J. Keller, K.~Rejzner,
+  \textit{Dimensional Regularization in Position Space, and~a Forest
+    Formula for Epstein-Glaser Renormalization}, arXiv: 1311.5424,
+  [DFKR13].
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% % ######################################
+% \EndingSlide{Dziękuję! Pytania?}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliografia
+% \bibliographystyle{plalpha}
+
+% \bibliography{}{}
+
+
+
+
+
+% ############################
+
+% Koniec dokumentu
+\end{document}

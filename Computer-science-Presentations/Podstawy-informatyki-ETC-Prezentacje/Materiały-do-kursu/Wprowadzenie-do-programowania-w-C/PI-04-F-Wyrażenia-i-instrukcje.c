@@ -8,13 +8,16 @@ int main() {
   /* Typowym przykładem wyrażeń, są wyrażenia arytmetyczne. Wyrażenie
    * 1 + 2
    * wykonuje operację dodawania i zwraca jej wynik. */
-  printf("1 + 2 == %d.\n", 1 + 2);
+  printf("Wyrażenie dodawania.\n");
+  printf("1 + 2 == %d.\n\n", 1 + 2);
 
   /* Ponieważ wyrażenie zwraca wartość, może ono stać po prawej stronie
    * instrukcji przypisania. Do zmiennej zostanie przypisana wartość,
    * zwrócona przez to wyrażenie. */
   intVar1 = 1 + 2;
 
+  printf("Wyrażenie może stać po prawej stronie instrukcji przypisania.\n");
+  printf("intVar1 = 1 + 2;\n");
   printf("intVar1 == %d.\n", intVar1);
 
   /* Instrukcja sterująca if jest orzeczeniem (ang. if statement), więc ona

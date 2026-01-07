@@ -1,0 +1,3 @@
+O istnieniu cząstek kwantowych na zakrzywionej czasoprzestrzeni
+
+Pojęcie cząstki klasycznej na zakrzywionej czasoprzestrzeni jest fizycznie sensowne, więc w sposób oczywisty nasuwa się myśl, że cząstka kwantowa również będzie dobrze określona. Jednak w społeczności algebraicznej QFT ten ostatni pogląd ten jest od dawna podawany krytycy, ze względu na związek pojęcia cząstki z grupą Poincarego. Na tym popularnym wystąpienie naszkicujemy problemy jakie rodzi brak grupy symetrii dla QFT oraz próby obejściach tych problemów w podejściu algebraicznym.

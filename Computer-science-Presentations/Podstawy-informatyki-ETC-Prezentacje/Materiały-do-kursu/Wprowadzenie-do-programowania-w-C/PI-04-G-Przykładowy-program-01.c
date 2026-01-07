@@ -7,6 +7,9 @@
  * pierwszej z nich. */
 
 int main() {
+  /* Poniższe zmienne odgrywają konkretne role w naszym programie, więc na tej
+   * podstawie możemy im nadać nazwy, które przekazują pewną informację.
+   * Sensu tych nazw jest prosty w zrozumieniu. Mamy taką nadzieję. */
   int liczbaOdUzytkownika = 0;
   int sumaLiczb = 0;
   int wartoscProgowa = 0;

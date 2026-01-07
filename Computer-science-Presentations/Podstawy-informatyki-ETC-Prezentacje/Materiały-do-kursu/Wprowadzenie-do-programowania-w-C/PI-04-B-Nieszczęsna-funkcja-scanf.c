@@ -12,6 +12,7 @@
  * Na zajęciach edukacyjnych scanf() można tolerować. Ale nigdy, przenigdy,
  * nie wolno jej używać w programie do praktycznych zastosowań. Zwłaszcza,
  * jeśli taki program ma działać na komputerze podłączonym do internetu.
+ * A jeśli ktoś to robi, to my nie bierzemy za to odpowiedzialności.
  *
  * Dlaczego więc używamy funkcji scanf(), skoro jest tak niebezpieczna?
  * Bo jest dość prosta w użyciu, a ten cały przedmiot jest już i tak
