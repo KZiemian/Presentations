@@ -16,8 +16,9 @@ int main() {
 
   printf("Ponieważ dla C fałsz to 0, a prawda to 1, więc ten kod jest "
 	 "poprawny.\n");
-  printf("boolVar1 = 7 * (1 < 2) + 3 * (1 < 0);");
+  printf("boolVar1 = 7 * (1 < 2) + 3 * (1 < 0);\n");
   printf("boolVar1 == %d.\n", boolVar1);
+  printf("Bo czemu życie miałoby być proste?\n");
 
 
 

@@ -51,23 +51,33 @@ int main() {
   int boolFalse = 0;
   int boolTrue = 1;
 
-  /* Poznaliśmy już operator „==”, który sprawdza, czy dwie wartości są
+  /* Operator porównania „==” już znamy, ale dla porządku warto go
+   * przypomnieć który sprawdza, czy dwie wartości są
    * identyczne, czy nie. */
+  printf("Dla porządku, przypomnijmy operator porównania „==”.\n");
   printf("1 == 1: %d.\n", 1 == 1);
   printf("1 == 2: %d.\n\n", 1 == 2);
 
 
 
   /* ! -- negacja. Negacją prawdy jest fałsz, negacją fałszu jest prawda. */
+  printf("Symbol „!” oznacza negację wyrażenia logicznego.\n");
   printf("!boolFalse == %d.\n", !boolFalse);
   printf("!boolTrue == %d.\n\n", !boolTrue);
 
 
 
-  /* != -- nie jest równe. Zwraca prawdę, jeśli wartości po obu stronach
-   * tego operatora są różne i fałsz jeśli są równe. */
+  /* Przypomnijmy również operator porównania „!=” („nie jest równe”).
+   * Zwraca prawdę, jeśli wartości po obu stronach tego operatora są różne i
+   * fałsz jeśli są równe. */
+  printf("Z tego, że „!=” oznacza „nie jest równe”. Jego forma wywodzi się "
+	 "stąd, że sam „!” oznacza negację.\n");
   printf("(0 != 0) == %d.\n", 0 != 0);
   printf("(0 != 1) == %d.\n\n", 0 != 1);
+
+  printf("Dlaczego operator „nie jest równe” to „!=”, a nie „!==”?\n");
+  printf("Za tym nie kryje się raczej nic głębszego, po prostu tak "
+	 "ustalili twórcy języka C.\n");
 
 
 

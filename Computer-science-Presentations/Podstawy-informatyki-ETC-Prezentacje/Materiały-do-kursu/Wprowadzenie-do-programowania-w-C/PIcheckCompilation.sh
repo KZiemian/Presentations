@@ -17,7 +17,7 @@
 
 
 
-# Program PI-01-B-Program-pokazowy-w-C.c doesn't output text, which requiers
+# Program PI-01-B-Program-pokazowy-w-C.c doesn't output text, that requiers
 # checking.
 
 
@@ -36,17 +36,17 @@
 
 
 
-# c_file_name="PI-02-B-Liczby.c"
-# text_output_file="PI-02-B-Text-output.txt"
+c_file_name="PI-02-B-Liczby.c"
+text_output_file="PI-02-B-Text-output.txt"
 
-# gcc -ansi --std=c99 -pedantic $c_file_name -o prog.out
-# compilation_status=$?
+gcc -ansi --std=c99 -pedantic $c_file_name -o prog.out
+compilation_status=$?
 
-# if [[ $compilation_status -eq 0 ]]; then
-#     ./prog.out >> $text_output_file
-# else
-#     echo "Problem with compiling $c_file_name."
-# fi
+if [[ $compilation_status -eq 0 ]]; then
+    ./prog.out >> $text_output_file
+else
+    echo "Problem with compiling $c_file_name."
+fi
 
 
 
@@ -259,22 +259,66 @@
 # Program from file "PI-04-G-Przykładowy-program-01.c" also take
 # input from the user.
 
-c_file_name="PI-04-G-Przykładowy-program-01.c"
+# c_file_name="PI-04-G-Przykładowy-program-01.c"
+
+# gcc -ansi --std=c99 -pedantic $c_file_name -o prog.out
+# compilation_status=$?
+
+# if [[ $compilation_status -ne 0 ]]; then
+#     echo "Problem with compiling $c_file_name."
+# fi
+
+
+# ???
+# go_file_name="PI-05-A-Zmienne-boolowskie-w-Go.go"
+
+# go run $go_file_name >> PI-05-A-Text-output.txt
+# running_status=$?
+
+# if [[ $running_status -ne 0 ]]; then
+#     echo "Problem with running $go_file_name."
+# fi
+
+
+# ????
+# c_file_name="PI-05-B-Zmienne-pseudoboolowskie-w-C.c"
+# text_output_file="PI-05-B-Text-output.txt"
+
+# gcc -ansi --std=c99 -pedantic $c_file_name -o prog.out
+# compilation_status=$?
+
+# if [[ $compilation_status -eq 0 ]]; then
+#     ./prog.out >> $text_output_file
+# else
+#     echo "Problem with compiling $c_file_name."
+# fi
+
+
+# ????
+# c_file_name="PI-05-C-Zmienne-pseudoboolowskie-i-stdbool-h.c"
+# text_output_file="PI-05-C-Text-output.txt"
+
+# gcc -ansi --std=c99 -pedantic $c_file_name -o prog.out
+# compilation_status=$?
+
+# if [[ $compilation_status -eq 0 ]]; then
+#     ./prog.out >> $text_output_file
+# else
+#     echo "Problem with compiling $c_file_name."
+# fin
+
+
+
+
+
+c_file_name="PI-13-A-Tablice.c"
+text_output_file="PI-13-A-Text-output.txt"
 
 gcc -ansi --std=c99 -pedantic $c_file_name -o prog.out
 compilation_status=$?
 
-if [[ $compilation_status -ne 0 ]]; then
+if [[ $compilation_status -eq 0 ]]; then
+    ./prog.out >> $text_output_file
+else
     echo "Problem with compiling $c_file_name."
-fi
-
-
-
-go_file_name="PI-05-A-Zmienne-boolowskie-w-Go.go"
-
-go run $go_file_name >> PI-05-A-Text-output.txt
-running_status=$?
-
-if [[ $running_status -ne 0 ]]; then
-    echo "Problem with running $go_file_name."
 fi

@@ -14,13 +14,9 @@ int main() {
   bool boolVar1 = false;
   bool boolVar2 = true;
 
+  printf("Ilustracja działania zmiennych pseudoboolowskich typu bool.\n");
   printf("boolVar1 == %d.\n", boolVar1);
-  printf("boolVar2 == %d.\n\n", boolVar2);
-
-  printf("true && true == %d.\n", true && true);
-  printf("true && false == %d.\n", true && false);
-  printf("false && true == %d.\n", false && true);
-  printf("false && false == %d.\n", false && false);
+  printf("boolVar2 == %d.\n", boolVar2);
 
 
 

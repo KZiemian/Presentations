@@ -8,12 +8,13 @@ int main() {
   printf("Wypisujemy liczbę: %d.\n", 3);
 
   /* Litera „d” w „%d” pochodzi od „decimal” czyli „dziesiętny”. Obecność
-   * symbolu „%d” w stringu mówi funkcji printf, że w to miejsce ma wstawić
-   * liczbę całkowitą podaną po stringu, używając do tego zapisu
+   * symbolu „%d” w stringu mówi funkcji printf(), że w to miejsce ma
+   * wstawić liczbę całkowitą podaną po stringu, używając do tego zapisu
    * dziesiętnego.
    *
-   * Może się wydawać dziwne, że zapis dziesiętny służy tylko do wypisywania
-   * liczb całkowitych, ale język C posiada wiele tego typu dziwactw. */
+   * Może się wydawać dziwne, że symbol oznaczający zapis dziesiętny służy
+   * tylko do tego, by napisać liczbę całkowitą, ale język C posiada wiele
+   * tego typu dziwactw. */
 
   /* Analogicznie możemy wypisać na ekranie więcej liczb. */
   printf("Wypisujemy dwie liczby: %d, %d.\n\n", 3, 5);
@@ -22,7 +23,7 @@ int main() {
    * na znacznie więcej typów niż my, więc siłą rzeczy musimy się nauczyć
    * z nimi pracować. Przykładowo, C zna liczby liczby całkowite 8 bitowe,
    * 16 bitowe, 32 bitowe, 64 bitowe oraz liczby 8 bitowe bez znaku, liczby
-   * 16 bitowe bez znaku, liczby 32 bitowe bez znaku,... i tak bez końca.
+   * 16 bitowe bez znaku, liczby 32 bitowe bez znaku,..., i tak bez końca.
    *
    * By nie pogubić się w tym co się tu dzieje, zacznijmy od najprostszego
    * typu liczb w komputerze, czyli standardowych liczb całkowitych. */
@@ -35,18 +36,20 @@ int main() {
   /* By pozostać w zgodzie z konwencją języka C, jako symbolu oznaczającego,
    * że lewa strona jest równa prawej używamy „==”.
    *
-   * Proszę to na ten moment zaakceptować, potem wyjaśnimy skąd ten wybór. */
+   * Proszę to na ten moment zaakceptować, potem wyjaśnimy skąd taki
+   * wybór. */
 
   printf("Już tutaj czeka na nas pułapka!\n");
   printf("%d / %d == %d.\n", 5, 2, 5 / 2);
   printf("Bo czemu życie miałoby być proste?\n\n");
   /* 5 / 2 == 2. W C jest tak, gdyż przyjęto, że wynik dzielenia dwóch
-   * liczb całkowitych musi być liczbą całkowitą. Dzielenie liczby
+   * liczb całkowitych ma być liczbą całkowitą. Dzielenie liczby
    * całkowitych zaprogramowano więc tak, by wynik był taki, jakbyśmy
    * dokładnie obliczyli wynik, a potem odrzucili część ułamkową.
    * Symbolicznie:
    * 5 / 2 == (2.5 -> 2).
-   * To zagadnienie jest omówione trochę bardziej szczegółowo w pozostałych
+   * To zagadnienie jest ???? omówione trochę bardziej szczegółowo
+   * w pozostałych
    * materiałach. */
 
   /* Teraz przedyskutujemy obliczanie reszta z dzielenia. Ze względów
@@ -57,6 +60,7 @@ int main() {
   /* „1 % 3 == 1” linię tą czytamy jako „Jeden modulo trzy równa się jeden.”,
    * zaś symbol „%” nazywamy operatorem modulo. Tak samo jako „+” nazywamy
    * operatorem dodawania, do tego nazewnictwo wrócimy później. */
+
   printf("2 == 0 * 3 + 2, więc 2 %% 3 == %d.\n", 2 % 3);
   printf("3 == 1 * 3 + 0, więc 3 %% 3 == %d.\n", 3 % 3);
   printf("4 == 1 * 3 + 1, więc 4 %% 3 == %d.\n", 4 % 3);
@@ -78,7 +82,7 @@ int main() {
   printf("5 == 2 * 2 + 1, więc 5 %% 2 == %d.\n\n", 5 % 2);
 
   printf("Modulo 3.\n");
-  printf("0 == 0 * 4 + 0, wiec 0 %% 4 == %d.\n", 0 % 4);
+  printf("0 == 0 * 4 + 0, więc 0 %% 4 == %d.\n", 0 % 4);
   printf("1 == 0 * 4 + 1, więc 1 %% 4 == %d.\n", 1 % 4);
   printf("2 == 0 * 4 + 2, więc 2 %% 4 == %d.\n", 2 % 4);
   printf("3 == 0 * 4 + 3, więc 3 %% 4 == %d.\n", 3 % 4);

@@ -15,14 +15,15 @@ int main() {
    * zakończy w tym miejscu wiersz tekstu i przejdzie do następnego. */
 
   /* Tekst do wypisania na ekranie nazywamy stringiem i umieszczamy
-   * między znakami cudzysłowa.
+   * między znakami cudzysłowu.
    *
    * Niestety w języku C stringi to byty trudne do używania i zrozumienia,
    * wrócimy do nich jeszcze w przyszłości. */
 
-  /* „printf” to „print function”, funkcja do pisania rzeczy na ekranie.
-   * Również tutaj można by bardzo dużo o niej opowiadać, ale mam nadzieję,
-   * że na razie takie wyjaśnienie Państwu wystarczy. */
+  /* Używamy tu funkcji printf(), której nazwa pochodzi od „print function”.
+   * Jest to funkcja do pisania rzeczy na ekranie. Również tutaj można by
+   * bardzo dużo o niej opowiadać, ale mam nadzieję, że na razie takie
+   * wyjaśnienie Państwu wystarczy. */
 
 
 
