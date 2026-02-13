@@ -6,22 +6,23 @@ int main() {
    * kiedyś powiemy). Jeszcze dziś można się spotkać z informacjami,
    * że definiowanie zmiennych w innych miejscach programu to zły pomysł.
    *
-   * Na tych zajęciach będziemy się trzymać tej konwencji i definiować zmienne
-   * tylko na początku funkcji main() (i w kilku innych miejscach). */
+   * Na tych zajęciach będziemy się zwykle trzymali tej konwencji
+   * i definiowali zmienne na początku funkcji main() i w kilku innych
+   * miejscach. */
 
   double argument = 0.0;
   double value = 0.0;
-  double someParameter = 0.0;
+  double someVariable = 0.0;
 
   printf("Kilka wartości funkcji f(x) == x^2 + 2.0 * x + 1.0.\n");
 
   value = argument * argument + 2.0 * argument + 1.0;
-  /* Instrukcja przypisania tego typu działa w następujący sposób.
+  /* Operacja przypisania tego typu działa w następujący sposób.
    * Do zmiennej po jej lewej stronie (po lewej stronie znaku „=”) zostaje
    * przypisana wartość powstała przez wzięcie jej prawej strony, czyli
    * argument * argument + 2.0 * argument + 1.0
-   * w której następnie podstawiamy za wszystkie zmienne, wartości jakie
-   * obecnie posiadają. Czyli w naszym wypadku dostajemy
+   * w której podstawiamy za wszystkie zmienne, wartości jakie obecnie
+   * posiadają. Czyli w naszym wypadku dostajemy
    * 0.0 * 0.0 + 2.0 * 0.0 + 1.0
    * Następnie wartość tego wyrażenia jest obliczana, wynosi ona 1.0 i ta
    * wartość zostaje przypisana do zmiennej value. Od teraz value == 1.0. */
@@ -46,33 +47,32 @@ int main() {
    * C, ale program działa. O bardziej efektywnych metodach napisania
    * takiego programu opowiemy później. */
 
-  /* Teraz pokażemy trochę mniej oczywisty sposób użycia zmiennych. */
-  printf("Trochę mniej oczywiste operacje na zmienny.\n");
+  printf("Teraz przedstawimy trochę mniej oczywiste operacje na zmienny.\n");
 
-  someParameter = 5.0;
+  someVariable = 5.0;
 
-  printf("someParameter == %.2f.\n", someParameter);
+  printf("someVariable == %.2f.\n", someVariable);
 
-  printf("Wykonujemy (someParameter = someParameter + 4.0;).\n");
-  someParameter = someParameter + 4.0;
+  printf("Wykonujemy (someVariable = someVariable + 4.0;).\n");
+  someVariable = someVariable + 4.0;
 
-  printf("someParameter == %.2f.\n", someParameter);
+  printf("someVariable == %.2f.\n", someVariable);
 
   /* Linia
-   * someParameter = someParameter + 4.0;
-   * może być początkowo trudna do zrozumienia, bo zmienna someParameter
+   * someVariable = someVariable + 4.0;
+   * może być początkowo trudna do zrozumienia, bo zmienna someVariable
    * występuje w niej po obu stronach instrukcji przypisania. Sens jej jest
-   * jednak taki sam  jak poprzednio. Po lewej stronie tej instrukcji
+   * jednak taki sam jak poprzednio. Po lewej stronie tej instrukcji
    * znajduje się zmienna do której przypiszemy wartość zwróconą przez
    * obliczenia obecne na jej prawej stronie. Przy czym za zmienną
-   * someParameter, zostanie podstawiona jej aktualna wartość, jaką obecnie
-   * posiada w programie.
+   * someVariable po prawej stronie operacji przypisania, zostanie
+   * podstawiona jej aktualna wartość, jaką obecnie posiada w programie.
    *
-   * Inaczej mówiąc, ponieważ someParameter == 5.0, więc linia
-   * someParameter = someParameter + 4.0;
+   * Inaczej mówiąc, ponieważ someVaraible == 5.0, więc linia
+   * someVariable = someVariable + 4.0;
    * zostanie przekształcona do postaci
-   * someParameter = 5.0 + 4.0;
-   * Tym samym po tej operacji zmienna someParameter, będzie miała wartość
+   * someVariable = 5.0 + 4.0;
+   * Tym samym po tej operacji zmienna someVariable, będzie miała wartość
    * równą 9.0. */
 
 

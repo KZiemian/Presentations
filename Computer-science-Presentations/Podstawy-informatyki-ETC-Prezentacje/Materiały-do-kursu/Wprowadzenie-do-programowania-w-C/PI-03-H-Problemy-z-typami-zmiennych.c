@@ -9,12 +9,13 @@ int main() {
   printf("intVar1 == %d.\n", intVar1);
   printf("float64Var1 == %.2f.\n\n", float64Var1);
 
-  printf("To powinno być okej: float64Var1 = intVar1;\n");
+  printf("To powinno być okej: (float64Var1 = intVar1;).\n");
   float64Var1 = intVar1;
 
-  printf("float64Var1 == %.2f.\n\n", float64Var1);
-  /* Jest dobrze, bo jest jasne jak zamienić liczbę 1 na liczbę 1.0,
-   * a język C nie widzi zastrzeżeń przeciwko takiej operacji. */
+  printf("float64Var1 == %.2f.\n", float64Var1);
+  printf("Wszystko działa, bo jest jasne jak zamienić liczbę 1 "
+	 "na liczbę 1.0, a język C nie widzi zastrzeżeń przeciwko takiej "
+	 "operacji.\n\n");
 
   float64Var1 = 1.5;
 
@@ -22,12 +23,12 @@ int main() {
   printf("intVar1 == %d.\n", intVar1);
   printf("float64Var1 == %.2f.\n\n", float64Var1);
 
-  printf("To raczej nie skończy się :/ dobrze: intVar1 = float64Var1;\n");
+  printf("To raczej nie skończy się :/ dobrze: (intVar1 = float64Var1;).\n");
 
   intVar1 = float64Var1;
 
   printf("intVar1 == %d.\n", intVar1);
-  printf("float64Var1 == %.2f.\n\n", float64Var1);
+  printf("float64Var1 == %.2f.\n", float64Var1);
 
   printf("Bo niby czemu życie miałoby być proste?\n");
 

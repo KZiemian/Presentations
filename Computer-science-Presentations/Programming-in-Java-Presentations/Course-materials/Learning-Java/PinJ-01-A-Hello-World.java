@@ -2,8 +2,9 @@
 // computer science that it should be your first program in a given
 // language ;).
 
-// This line below is a tricky one, but for now just write "Main" in the
-// place it is. Later we will discuss when it is the wrong name for a class.
+// This line below is a tricky one, but for now just write "class Main" in
+// this place as it is. Later we will discuss when it is the wrong name
+// for a class.
 class Main {
     public static void main(String[] args) {
 	System.out.println("Hello, World!");

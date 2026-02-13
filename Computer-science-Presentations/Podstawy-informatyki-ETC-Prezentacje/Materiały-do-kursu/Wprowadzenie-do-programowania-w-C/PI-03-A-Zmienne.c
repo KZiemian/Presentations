@@ -2,7 +2,7 @@
 
 int main() {
   /* Liczenie bezpośrednio na liczbach jest niewygodne, dlatego ludzkość
-   * wymyśliła zmienne symboliczne. Oto jak działają one w języku C. */
+   * wymyśliła zmienne symboliczne. Oto jak one działają w języku C. */
 
   int intVar1 = 3;
 
@@ -22,10 +22,18 @@ int main() {
    * intVar1 i wartości 3.
    *
    * Mówiąc szczerze, definiowanie zmiennych w C to nie jest nic specjalnie
-   * fajnego. */
+   * fajnego, szczególnie, gdy typy robią się bardziej złożone. */
 
-  /* „intVar1” to skrót od „integer variable number 1”.
-   * Przy czym w informatycznym języku polskim zamiast mówić „Zmienna typu
+  /* „intVar1” to skrót od „integer variable number 1”. Nazwa bierze się stąd,
+   * że jest to zmienna, która służy do tego, aby zilustrować działanie
+   * liczb całkowitych w C. Liczbę jeden na końcu nazwy dodaliśmy, bo często
+   * będziemy potrzebować kilku zmiennych przechowujących liczby całkowite,
+   * dobrze jest więc je ponumerować.
+   *
+   * Po powiedzeniu tego wszystkiego, widzimy, że nazwa intVar1  jakoś
+   * oddaje sens tej zmiennej.
+   *
+   * W informatycznym języku polskim zamiast mówić „Zmienna typu
    * liczby całkowitej/całkowitego.”, zwykle mówi się „Zmienna typu int.”.
    * Każdy zrozumie dlaczego. */
 

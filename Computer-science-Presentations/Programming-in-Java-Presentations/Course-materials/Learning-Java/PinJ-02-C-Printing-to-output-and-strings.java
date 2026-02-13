@@ -24,5 +24,10 @@ class Main {
 	System.out.print("\nI'm listening to a podcast ");
 	System.out.print("about the world of computer science. ");
 	System.out.print("It is very interesting.\n");
+
+	// What should you choose, println() or print()? It depends on what
+	// you want. We will use one that in a given context feels more
+	// natural to us. Which is of course quite a subjective choice.
+
     }
 }

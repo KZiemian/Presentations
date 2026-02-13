@@ -1,0 +1,13 @@
+Lista sprawdzonych plików .c. Sprawdzono kompilację, treść komentarzy i tekst wypisywany na ekranie.
+
+PI-01-A-Program-pokazowy-w-C.c
+PI-01-B-Program-pokazowy-w-C.c
+PI-02-A-Hello-World.c
+PI-02-B-Pisanie-tekstu-na-ekranie.c
+PI-02-C-Stringi.c
+PI-02-D-Liczby.c
+PI-02-E-Liczby-zmiennoprzecinkowe.c
+PI-03-A-Zmienne.c
+PI-03-B-Obliczenia-na-zmiennych-typu-int.c
+PI-03-C-O-nazwach-zmiennych.c
+PI-03-D-Zmienne-typu-double.c

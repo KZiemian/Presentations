@@ -1,5 +1,5 @@
 // This is a comment. Like in other programming languages, Java will
-// just ignore all that is inside a comment.
+// just ignore all text that is inside a comment.
 
 class Main {
     public static void main(String[] args) {

@@ -10,24 +10,28 @@ int main() {
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
-  printf("Zmieniamy wartość zmiennych wykonując (intVar1 = 3) "
-	 "i (intVar5 = 5).\n");
+  printf("Zmieniamy wartość zmiennych wykonując operacje (intVar1 = 3;) "
+	 "i (intVar5 = 5;).\n");
   intVar1 = 3;
   intVar2 = 5;
 
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
-  /* Zmieniamy wartość przechowywaną przez zmienną intVar1, na tą, którą
-   * przechowuje zmienna intVar2. */
-  printf("Wykonujemy (intVar1 = intVar2;).\n");
+  printf("Dla prostszego zrozumienia co się dzieje, kod operacji w całości "
+	 "zapisujemy w nawiasach okrągłych. Proszę zobaczyć w kodzie, "
+	 "jak użycie tych operacji dokładnie wygląda.\n\n");
+
+  printf("Za pomocą operacji (intVar1 = intVar2;), zmieniamy wartość "
+	 "przechowywaną w zmiennej intVar1, na tą jaką w tym momencie "
+	 "przechowuje zmienna intVar2.\n");
   intVar1 = intVar2;
 
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
   printf("Wartość zmiennych możemy zmieniać dowolną liczbę razy.\n");
-  printf("Wykonujemy (intVar1 = -1) i (intVar2 = -3).\n");
+  printf("Wykonujemy (intVar1 = -1;) i (intVar2 = -3;).\n");
   intVar1 = -1;
   intVar2 = -3;
 

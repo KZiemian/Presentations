@@ -10,7 +10,7 @@ int main() {
    * to dwie RÓŻNE zmienne.
    * 2) Nazwa zmiennej NIE może zaczynać się od cyfry.
    * 3) NIE wolno zacząć nazwy zmiennej od symbolu „_”. Chyba że wiesz
-   * co to oznacza i tego chcesz. */
+   *    co to oznacza i tego chcesz. */
   int intVar1 = 0;
   int intvar1 = 1;
 
@@ -28,9 +28,9 @@ int main() {
    * (https://en.wikipedia.org/wiki/Camel_case), czy styl_węża
    * (https://en.wikipedia.org/wiki/Snake_case). Ze względów praktycznych
    * zdecydowaliśmy się na wybór jednego stylu w którym piszemy programy
-   * na ten kurs i wybór padł na stylWielbłąda. Nie dlatego, że byłby on
-   * jakoś obiektywnie lepszy, ale dlatego, że uważamy go za jeden
-   * z dobrych stylów nazywania zmiennych.
+   * na naszych zajęciach i wybór padł na stylWielbłąda. Nie dlatego, że jest
+   * on jakoś obiektywnie lepszy od innych, ale dlatego, że uważamy go
+   * za dobry styl nazywania zmiennych.
    *
    * Dobrą nazwę zmiennej można wymyślić tylko wtedy, gdy wiemy, co dana
    * zmienna oznacza, czy mierzy poziom wody w zbiorniku, poziom

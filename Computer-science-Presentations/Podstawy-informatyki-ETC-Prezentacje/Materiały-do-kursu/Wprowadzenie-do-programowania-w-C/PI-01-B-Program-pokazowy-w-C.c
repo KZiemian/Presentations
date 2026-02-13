@@ -1,4 +1,4 @@
-/* Pseudoanimacja napisana w C. */
+/* Pseudoanimacja napisana w języku C. */
 
 /* Ten kod można byłoby napisać w dużo lepszy sposób, ale to nie jest teraz
  * ważne. On ma tylko ilustrować działanie języka C. */
@@ -75,7 +75,7 @@ int main() {
     /* Liczba znaków w wierszu: 3. */
     printf("\t\t\t\t        %c%c%c\n", symbolToShow, symbolToShow,
 	   symbolToShow);
-    /* Liczba znaków w wieszu: 1. */
+    /* Liczba znaków w wierszu: 1. */
     printf("\t\t\t\t         %c\n", symbolToShow);
 
 

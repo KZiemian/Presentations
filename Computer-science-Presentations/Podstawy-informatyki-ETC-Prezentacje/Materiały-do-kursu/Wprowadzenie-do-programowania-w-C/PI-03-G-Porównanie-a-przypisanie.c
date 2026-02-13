@@ -9,14 +9,18 @@ int main() {
    * komputer to tępa maszyna, której trzeba wyjaśnić dokładnie co się
    * dzieje, bo inaczej zgłupieje. */
 
-  /* Natrafiamy na ten sam problem, gdy chcemy przenieść naszą notację
+  /* Natrafiamy na ten właśnie problem, gdy chcemy przenieść naszą notację
    * matematyczną do komputera. Wówczas orientujemy się, że symbolu „=”
    * używamy w dwóch znaczeniach.
    * 1) Przypisania wartości. Zapis „x = 3.0” oznacza, że za „x” mamy wszędzie
-   * podstawić liczbę 3.0.
+   *    podstawić liczbę 3.0. Przykładowo mamy
+   *    f(x) = 2.0 * x + 1.0.
+   *    x = 3.0.
+   *    Stąd
+   *    f(x) = 2.0 * x + 1.0 = 2.0 * 3.0 + 1.0 = 7.0.
    * 2) Porównania. Zapis „0 = x + 2.0”, oznacza, że porównujemy
-   * prawą stronę z wartością 0.0 i szukamy takiej wartości zmiennej x,
-   * żeby to było prawdą.
+   *    prawą stronę z wartością 0.0 i szukamy takiej wartości zmiennej x,
+   *    żeby to było prawdą. W tym wypadku x = -1.0.
    *
    * Jeśli to wydaje się zawiłe, to mam nadzieję, że poniższe przykłady to
    * lepiej wyjaśnią. */
@@ -24,7 +28,7 @@ int main() {
   int intVar1 = 2;
   /* To jest PRZYPISANIE. Od teraz zmienna intVar1 zawiera liczbę 2. */
 
-  printf("Instrukcja (intVar1 = 2;) to PRZYPISANIE.\n");
+  printf("Operacja (intVar1 = 2;) to PRZYPISANIE.\n");
   printf("Wartość zmiennej intVar1 to %d.\n", intVar1);
 
   /* Pytanie, jak sprawdzić, czy zmienna intVar1 zawiera liczbę 3?
@@ -41,12 +45,12 @@ int main() {
    * wartość 1. Jeśli jest to fałszem, to zwraca 0. Dlaczego obowiązują takie
    * głupie zasady, o tym powiemy później. Bo czemu życie miałoby być
    * proste? */
-  printf("Wartość wyrażenia (intVar1 == 3) to: %d.\n\n", intVar1 == 3);
+  printf("Wartość testu (intVar1 == 3) to: %d.\n\n", intVar1 == 3);
 
   intVar1 = 3;
   printf("Wartość zmiennej intVar1 to %d.\n", intVar1);
 
-  printf("Wartość wyrażenia (intVar1 == 3) to: %d.\n", intVar1 == 3);
+  printf("Wartość testu (intVar1 == 3) to: %d.\n", intVar1 == 3);
 
 
 
