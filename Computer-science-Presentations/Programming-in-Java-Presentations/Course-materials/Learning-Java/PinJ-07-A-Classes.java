@@ -5,29 +5,32 @@
 // We will start from a quite silly, but simple example of class, that just
 // stores two numbers.
 
-class TwoNumbers {
+class TwoIntNumbers {
     int m_intVar1;
     int m_intVar2;
 }
 // Code above defines class. It tell use that every object build according
-// to the rules defined by class TwoNumbers contains inside two integer
+// to the rules defined by class TwoIntNumbers contains inside two integer
 // numbers.
 //
 // Technical term for such internal variables is "field". So class TwoNumbers
 // have two fields with the names m_intVar1 and m_intVar2.
 
 // We have seen "class Main" many times already. We explain what it means,
-// when we learn a few things about the classes.
+// when we learn a few more things about the classes.
 class Main {
     public static void main(String[] args) {
-	TwoNumbers twoNumbersVar1 = new TwoNumbers();
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 
-	twoNumbersVar1.m_intVar1 = 3;
-	twoNumbersVar1.m_intVar2 = 5;
+	System.out.print("Instructions:\n" +
+			 "twoIntNumbersVar1.m_intVar1 = 1;\n" +
+			 "twoIntNumbersVar2.m_intVar2 = 2;\n\n");
+	twoIntNumbersVar1.m_intVar1 = 1;
+	twoIntNumbersVar1.m_intVar2 = 2;
 
-	System.out.println("twoNumbersVar1.m_intVar1 == " +
-			   twoNumbersVar1.m_intVar1 + ".");
-	System.out.println("twoNumbersVar1.m_intVar2 == " +
-			   twoNumbersVar1.m_intVar2 + ".");
+	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
+			   twoIntNumbersVar1.m_intVar1 + ".");
+	System.out.println("twoIntNumbersVar1.m_intVar2 == " +
+			   twoIntNumbersVar1.m_intVar2 + ".");
     }
 }

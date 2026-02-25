@@ -1,8 +1,8 @@
-// MAKE BETTER COMMENTS
 // If you know how if-else work in other languages, there is basically
 // nothing new to learn in Java.
 //
-// We want to ask user for the input, so we need this code.
+// In this program we use if-else to check input from the user, so we need
+// to use Scanner type.
 
 import java.util.Scanner;
 

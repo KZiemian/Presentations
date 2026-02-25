@@ -127,3 +127,107 @@ text_file_to_clean_up="PinJ-04-B-Text-output.txt"
 if [[ -e $text_file_to_clean_up ]]; then
     rm $text_file_to_clean_up
 fi
+
+
+
+text_file_to_clean_up="PinJ-04-C-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-04-C-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-05-C-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-06-A-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-06-B-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-06-C-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-06-D-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-07-A-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-07-B-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-07-C-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-07-D-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-07-E-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi
+
+
+
+text_file_to_clean_up="PinJ-07-F-Text-output.txt"
+
+if [[ -e $text_file_to_clean_up ]]; then
+    rm $text_file_to_clean_up
+fi

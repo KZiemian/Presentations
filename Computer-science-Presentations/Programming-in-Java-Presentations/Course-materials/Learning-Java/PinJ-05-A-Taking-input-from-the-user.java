@@ -1,16 +1,15 @@
-// MAKE BETTER COMMENTS
-// Taking input from the user is Java is not very straightforward operation.
-// Honestly, what in Java is straightforward operation? At the same time,
-// it would be useful for us, to learn how to read numbers from the user,
-// even when code doing so, will be mysterious to us.
+// Taking input from the user in Java is not a very straightforward operation.
+// Honestly, what in Java is a straightforward operation? At the same time,
+// it would be useful for us, to learn how to read things like numbers from
+// the user, even when code doing so, will be for some time mysterious to us.
 //
-// As such this file present to you code that read integer number from
-// the keyboard and print it on the screen. If you don't understand it now,
-// just accept it as it is. We will explain it better, when we learn more
-// about Java.
+// As such this file presents to you code that reads an integer number from
+// the keyboard and prints it on the screen. If you don't understand it now,
+// just accept it as it is. We will explain it in more detail, when
+// we will be ready for Java.
 
-// For serious Java programmer this code may look bad, but our course is
-// dedicated mostly for the people that just start to learn Java.
+// For serious Java programmers this code may look bad, but our course is
+// dedicated mostly for the people that just start to learn Java
 
 import java.util.Scanner;
 
@@ -24,7 +23,7 @@ class Main {
 
 	numberFromTheUser = Integer.parseInt(userInput);
 
-	System.out.println("\nYou give us the number: " + numberFromTheUser +
+	System.out.println("You give us the number: " + numberFromTheUser +
 			   ".");
     }
 }

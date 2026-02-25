@@ -1,4 +1,4 @@
-class TwoNumbers {
+class TwoIntNumbers {
     int m_intVar1;
     int m_intVar2;
 }
@@ -9,13 +9,24 @@ class TwoNumbers {
 // slowly.
 //
 // As we said the class TwoNumbers contains two fields m_intVar1, m_intVar2 of
-// the type integers. This basically means that each instance (object build
+// the type: integers. This basically means that each instance (object build
 // according to the blueprint of the class) contains inside two numbers of
 // the type int and nothing more.
 //
-// At least nothing more that we care about on this course. Java guru can
-// said that there is some magical dust inside it as well or something like
-// that. At this course, we don't care about such advanced stuff.
+// We can explain it using analogy. You have documents that describe the
+// design of a car. It can contain drawings of car looks, technical
+// specification, like power of the engine, etc. You can put all of this
+// on a sheet of paper. Then you send this specification to the factory
+// and it builds a car according to it.
+//
+// This is basically how class works. Class is like the design of the car,
+// set of rules how to build it. The instance of the class is like
+// an actual car built in a factory. It is a real object build according
+// to the set of rules contained in the class.
+
+// Is something more in class TwoIntNumbers than two integer numbers?
+// Unfortunately it is, but we will talk about it later. For a moment,
+// think that this class has only two numbers inside.
 
 class Main {
     public static void main(String[] args) {
@@ -25,31 +36,34 @@ class Main {
 	// Because every class define a type, we define variable for holding
 	// instances of the class the same way as always:
 	// nameOfTheType nameOfVariable = valueToBeAssigned;
-	TwoNumbers twoNumbersVar1 = new TwoNumbers();
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 	// As we can see, the name of the class is at the same time the name
 	// of the type defined by this particular class.
 
 	// Unfortunately code
-	// new TwoNumbers()
+	// new TwoIntNumbers()
 	// take us inside rabbit hole that is called "constructors", but for
-	// the moment just believe us, that it creates a new object build
+	// the moment just believe us, that it creates a new object built
 	// according to the blueprint of the class TwoNumbers.
 
-	twoNumbersVar1.m_intVar1 = 7;
-	twoNumbersVar1.m_intVar2 = 9;
+	System.out.print("Instructions:\n" +
+			 "twoIntNumbersVar1.m_intVar1 = 1;\n" +
+			 "twoIntNubmersVar1.m_intVar2 = 2;\n\n");
+	twoIntNumbersVar1.m_intVar1 = 1;
+	twoIntNumbersVar1.m_intVar2 = 2;
 
-	// In Java we use "dot notation". If object twoNumbersVar1 has
+	// In Java we use "dot notation". If object twoIntNumbersVar1 has
 	// field of the name m_intVar1 we can access this field writing
-	// twoNumbersVar1.m_intVar1
+	// twoIntNumbersVar1.m_intVar1
 	// Outside that, fields behave much like plain variables. But, of
 	// course, there must be a catch and we will talk about it.
 
-	// This "dot notation" partially explains what System.out.println
+	// This "dot notation" partially explains what System.out.println()
 	// means. But this is still only a partial explanation.
 
-	System.out.println("twoNumbersVar1.m_intVar1 == " +
-			   twoNumbersVar1.m_intVar1 + ".");
-	System.out.println("twoNumbersVar1.m_intVar2 == " +
-			   twoNumbersVar1.m_intVar2 + ".");
+	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
+			   twoIntNumbersVar1.m_intVar1 + ".");
+	System.out.println("twoIntNumbersVar1.m_intVar2 == " +
+			   twoIntNumbersVar1.m_intVar2 + ".");
     }
 }

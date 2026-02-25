@@ -1,34 +1,42 @@
 class Main {
     public static void main(String[] args) {
-	// You can put a lot of code inside for control statement. But, you
-	// code should be readable to others, so keep this in mind.
+	System.out.print("You can put a lot of code inside for control " +
+			 "statement opening parenteses. But, you " +
+			 "code should be readable to others, so keep " +
+			 "this in mind.\n\n");
 
-	// This loop will run untile i >= 1000 or j == 4.
+	System.out.print("This loop will run until i >= 1000 " +
+			 "or j == 4.\n\n");
+
 	for (int i = 0, j = 0; i < 1000 && j != 4; i++, j++) {
 	    System.out.println("i == " + i + ", j == " + j + ".");
 	}
 
-	// You now see that for control statement can be quite complicated
-	// and, for precaisly this reason, may be hard to read. As such, we
-	// should avoid writing such for loops, as much as it is possible,
-	// especially if we still learning Java.
+	System.out.print("\nYou now see that for control statement " +
+			 "in Java can be quite complicated and, for " +
+			 "precisely this reason, may be hard to read. " +
+			 "As such, we should avoid writing such complex " +
+			 "for loops as much as possible, especially " +
+			 "if we are still learning Java.\n\n");
 
-	// Just for demonstrating power of for loop in Java, we will show
-	// one more example.
+	System.out.print("Just to demonstrate the power of for loop " +
+			 "in Java, we will show one more example.\n\n");
 
-	System.out.println("\nEven more advanced for loop.");
+	System.out.print("Even more advanced for loop.\n\n");
 
 	for (int i = 0, j = i + 10; i < 5; i++, j = i * 2) {
 	    System.out.println("i == " + i + ", j == " + j + ".");
 	}
 
-	// We should note important difference between C, C++ and Java.
-	// In the case of first two languages you can use "," as operator
-	// in instructions like this:
-	// intVar1 = 1, intVar2 = 2;
-	// Comma just sperate this two instructions, allowing them to be
-	// part of one expression. But, in Java this is forbidden.
-	// You can ONLY use comma inside control statement of for loop,
-	// like we see it above.
+	System.out.print("\nWe should note the important difference " +
+			 "between C, C++ and Java. In the case of first " +
+			 "two languages you can use \",\" as operator " +
+			 "in instructions like this:\n" +
+			 "intVar1 = 1, intVar2 = 2;\n" +
+			 "Comma just separates these two instructions, " +
+			 "allowing them to be parts of one expression. " +
+			 "But, in Java this is forbidden. You can ONLY " +
+			 "use the comma inside control statement of " +
+			 "the for loop, like we see it above. \n");
     }
 }

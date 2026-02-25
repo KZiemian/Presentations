@@ -1,4 +1,4 @@
-class TwoNumbers {
+class TwoIntNumbers {
     int m_intVar1;
     int m_intVar2;
 }
@@ -19,19 +19,27 @@ class BasicTypesClass {
 
 class Main {
     public static void main(String[] args) {
-	// In Java using an uninitialized variable will bring an error,
-	// but fields of the class instance are treated in a special way.
-	TwoNumbers twoNumbersVar1 = new TwoNumbers();
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 
-	System.out.print("twoNumbersVar1.m_intVar1 == " +
-			   twoNumbersVar1.m_intVar1 + ".");
-	System.out.print("twoNumbersVar1.m_intVar2 == " +
-			   twoNumbersVar1.m_intVar2 + ".\n\n");
+	System.out.print("In Java using an uninitialized variable " +
+			 "will bring an error.\n" +
+			 "But fields of the class instance are treated " +
+			 "in a special way.\n\n");
 
-	// When an instance of the class is created and we didn't set
-	// the values of the fields, all fields having one of the basic
-	// types are "zeroed". More precisely default values of their types
-	// are assigned for them, for numbers such value is 0.
+	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
+			   twoIntNumbersVar1.m_intVar1 + ".");
+	System.out.print("twoIntNumbersVar1.m_intVar2 == " +
+			   twoIntNumbersVar1.m_intVar2 + ".\n\n");
+
+	System.out.print("When an instance of the class is created " +
+			 "and we didn't give Java any information about " +
+			 "initial values of the fields, all fields " +
+			 "belonging to one of the basic types are " +
+			 "\"zeroed\". More precisely default values of " +
+			 "their types are assigned for them, for numbers " +
+			 "this value is 0, hence the name \"zeroed\".\n\n");
+
+
 
 	BasicTypesClass basicTypesClassVar = new BasicTypesClass();
 
