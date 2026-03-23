@@ -1,6 +1,6 @@
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 % Basic configuration of Beamera class and Jagiellonian theme
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
@@ -73,6 +73,9 @@ eprint=true,
 % Local configuration of this particular presentation
 \usepackage{./Local-packages/local-settings}
 
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
 
 
 
@@ -82,17 +85,17 @@ eprint=true,
 
 
 
-% ------------------------------------------------------------------------------------------------------------------
+
+% ####################################################################
 \title{Systemy operacyjne}
-\subtitle{2.~Podstawowe abstrakcje, praca z~komputerem
-  z~poziomu powłoki \textsc{bash}}
+\subtitle{2.~Wprowadzenie do pracy z~\textsc{bash}em}
 
 \author{Kamil Ziemian \\
   \email}
 
 
 % \date{}
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 
 
 
@@ -113,7 +116,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 43k+,
+% Number of chars: 43k+, 81k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -130,7 +133,7 @@ eprint=true,
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Spis treści}
 
@@ -138,86 +141,252 @@ eprint=true,
   \tableofcontents
 
 \end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Ile tych GNU/Linuksów jest?}
 % ######################################
 
 
-% ##################
+
+
+
+
+
+
+
+
+% ################################################
+\section{Materiały do nauki}
+% ################################################
+
+
+% ######################################
 \begin{frame}
-  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+  \frametitle{Materiały do nauki}
 
 
-  W~przeciwieństwie do choćby systemu Windows~$10$, który jest jednym
-  systemem operacyjnym, GNU/Linux jest tak naprawdę \alert{rodziną systemów}
-  operacyjnych. Żeby to wyjaśnić, zacznijmy od~komentarza odnośnie
-  Windowsa~$10$. System ten występuje w~kilku wersjach, w~tym sensie,
-  że~firma Microsoft wydaje kolejne updejty ;) tego systemu, jednak to~wciąż
-  jest ten sam system operacyjny, w~którym zmieniono kilka drugo-
-  i~trzeciorzędnych rzeczy.
+  W~tym miejscu, chcielibyśmy omówić krótko kilka pozycji, z~których można
+  korzystać przy nauce pracy z~systemami operacyjnymi.
 
-  W~przeciwieństwie do tego, GNU/Linux występuje w~rozmaitych
-  \alert{dystrybucjach}, których liczba jest trudna do ogarnięcia:
-  \colorhref{https://antixlinux.com/}{antiX},
-  \colorhref{https://astralinux.ru/}{Astra Linux},
-  \colorhref{https://archlinux.org/}{Arch Linux},
-  \colorhref{https://canaima.softwarelibre.gob.ve/}{Canaima},
-  \colorhref{https://www.debian.org/}{Debian},
-  \colorhref{https://www.gentoo.org/}{Gentoo},
-  \colorhref{https://ubuntu.com/}{Ubuntu},\ldots, lista ta zdaje~się
-  nie mieć końca. Wyjaśnienie podobieństw i~różnic między tymi systemami
-  zajęłoby zbyt dużo czasu, dlatego ograniczymy~się do podania
-  podstawowych informacji, które pozwolą nam~się ogólnie pośród nich
-  zorientować.
+  Brian W.~Kernighan \textit{Jak Unix tworzył historię}
+  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021} \\
+  Zaczniemy dość nietypowo, od książki która nie jest podręcznikiem
+  do systemów operacyjnych. Sam autor opisał jej treść w~następujący
+  sposób. \textit{Ta książka jest po części relacją historyczną, a~po
+    części pamiętnikiem; rodzajem spojrzenia na początki Uniksa i~próbą
+    wyjaśnienia czym Unix jest, jak~się narodził i~dlaczego jest tak ważny.
+    Bezsprzecznie nie jest to praca naukowa~-- nie znajdziesz w~niej
+    przypisów bibliograficznych~-- a~wraz z~postępem w~pisaniu nabrała
+    bardziej pamiętnikowego, a~mniej historycznego charakteru niż
+    pierwotnie planowałem} (zob. str.~$3$
+  w~\parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}).
+
+  Powstają więc dwa pytania. Po pierwsze, czemu mamy czytać książkę
+  o~systemie Unix, skoro nie używamy go na zajęciach? Po drugie, co możemy
+  wynieść z~książki pamiętnikarsko-historycznej?
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
-  \frametitle{Standaryzacja}
+  \frametitle{Materiały do nauki}
 
 
-  Obecnie, piszemy to w~$2025$, GNU/Linux jest dobrze zestandaryzowany
-  na~poziomie swoich podstawowych zasad działania i~funkcji, które oferuje
-  użytkownikom. W~istocie, wiele własności GNU/Linuxa sięga rozwijanego od
-  około $1970$~roku systemu operacyjnego
-  \colorhref{https://en.wikipedia.org/wiki/Unix}{\textsc{unix}} i~zestawu
-  standardów dla tego systemu znanej jako
-  \colorhref{https://en.wikipedia.org/wiki/POSIX}{\textsc{posix}}
-  (ang.~\textit{Portable Operating System Interface for Unix}). Dla
-  kontekstu, standardy \textsc{posix} zaczęły być wydawane przez Instytut
-  Inżynierów Elektryków i~Elektroników (\textsc{ieee},
-  ang.~\textit{Institute of Electrical and Electronics Engineers})
-  w~roku~$1988$.
+  Gdy chodzi o~pierwsze pytanie, czemu warto czytać książkę o~systemie Unix,
+  to odpowiedź jest następująca. Systemy GNU/Linux,
+  \colorhref{https://en.wikipedia.org/wiki/MacOS}{macOS},
+  \colorhref{https://en.wikipedia.org/wiki/IOS}{iOS},
+  \colorhref{https://en.wikipedia.org/wiki/Android_(operating_system)}
+  {Android} i~wiele innych, wywodzą~się od systemu Unix i~skopiowały
+  wiele jego własności oraz sposobów działania. Tym samym swoje
+  doświadczenie i~wiedzę na temat jedno z~nich, można stosunkowo łatwo
+  przenieść na inne.
 
-  Dlatego też większość rzeczy, które poznają Państwo na~tym kursie powinny
-  działać w~$99\%$ dystrybucji systemu GNU/Linux i~w~$100\%$ dystrybucji
-  które są używane w~poważnych firmach i~projektach. Będziemy~się też
-  starać wyraźnie zaznaczać, czym mogą~się różnić poszczególne dystrybucje
-  GNU/Linuxa.
+  Jeśli chodzi o~drugie pytanie, czemu czytać książkę, która nie jest
+  podręcznikiem do tego przedmiotu, to przemawia za~tym kilka kwestii.
+  \textit{Jak Unix tworzył historię} jest książką napisaną w~sposób prosty,
+  niedługą i~którą szybko~się czyta. Wprowadza ona czytelnika w~świat
+  systemów operacyjnych i~Unixa, nie od strony wysoce technicznej, lecz
+  przez opowiadania o~konkretnych problemach z~którymi~się mierzyli
+  jego twórcy i~tego jak je rozwiązywali. Należy dodać, że~sam Kernighan
+  jest bardzo wybitnym informatykiem i,~jak można było wywnioskować z~jego
+  słów, brał udział w~tworzeniu systemu Unix.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
+
+% ######################################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Książkę Kernighana można więc potraktować jako naprawdę proste,
+  przynajmniej jak na systemy operacyjne, i~niedługie wprowadzenie do
+  tematyki. W~naszej ocenie jest to też bardzo przyjemna i~lekka lektura.
+
+  Inna jej zaleta polega na tym, że~systemy operacyjne które dzisiaj znamy,
+  pełne są rozwiązań, które są często bardzo dziwaczne, które często mają
+  pochodzenie czysto historyczne. Jak sam Kernighan pisze:
+  \textit{I więcej wiemy o~tej historii [powstania systemu operacyjnego],
+    tym bardziej możemy docenić geniusz wynalazczości, który doprowadził
+    do~powstania Uniksa, a~być może także lepiej
+    zrozumieć, dlaczego współczesne systemy komputerowe wyglądają tak,
+    a~nie inaczej. W~najgorszym razie rzuca ona pewne światło na wybory,
+    które dziś mogą wydawać~się nietrafione czy wręcz zupełnie złe,
+    i~pozwala ujrzeć je jako naturalną konsekwencję ówczesnego stanu wiedzy
+    i~możliwości, wyznaczanych przez dostępne wtedy zasoby}
+  (zob. str.~$11$).
+
+  Z~naszej strony, gorąco zachęcamy do lektury tej pozycji.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Nim przejdziemy do następnych pozycji, czujemy potrzebę wspomnienia
+  o~pewnej cesze książki \textit{Jak Unix tworzył historię}. Mianowicie,
+  sięga ona w~czasy bardzo odległych, w~skali informatyki, najczęściej
+  do lat $60$-tych i~$70$-tych XX wieku. W~skutek tego jak wiele~się od tego
+  czasu zmieniło oraz jak wielki bałagan panował wtedy w~świecie komputerów,
+  pewne detale techniczne tej książki mogą być trudne do zrozumienia.
+
+  By ograniczyć~się tylko do USA, w~owych czasach na rynku było co najmniej
+  kilka firm produkujących komputery i~każda używała swoich standardów.
+  Jednostka pamięci jaką jest bajt, czyli $8$ bitów, nie był wtedy wcale
+  powszechnie stosowany. Skutkiem tego dany komputer mógł operować nie na
+  bajtach, lecz na jednostce składającej~się z~$16$ bitów, gdy podobny
+  komputer innej firmy pracował na jednostce składające~się z~$36$ bitów.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Jeśli więc przeczytamy, w~tej książce, że~dany komputer miał
+  $32\text{K}$ (oznaczenie z~książki) pamięci, to ile to jest na dzisiejsze
+  jednostki? Czy to jest $32$ kilobajtów? Czy też może komputer używał
+  jednostki składającej~się z~$16$ bitów i~wtedy jego pamięć wynosiłaby
+  $64$ kilobajty? Tego typu dwuznacznych danych jest w~tej książce wiele
+  i~można odnieść wrażenie, że~sam autor niekiedy gubił~się w~przeliczaniu
+  starych jednostek na nowe.
+
+  Na tego typu kwestie techniczne nie należy poświęcać zbyt wiele czasu
+  podczas czytania tej książki. Ważne jest to, żeby mieć orientacyjne
+  pojęcie jeśli chodzi choćby o~to, jak mała, czy jak duża była pamięć
+  danego komputera, by zrozumieć z~jakiego typu ograniczeniami zmagali~się
+  pracujący na nich ludzie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Andrew S. Tanenbaum, Herbert Bos \textit{Systemy operacyjne} \\
+  Następna pozycja jest z~przeciwnego bieguna, niż dzieło Kernighana. Jest
+  to monografia na temat działania systemów operacyjnych, długa, często
+  operująca na bardzo technicznym poziomie, jednak również wspaniale
+  napisana pozycja. Choć mogą Państwo potrzebować trochę czasu i~ponownej
+  lektury, by docenić to jak dobrze jest napisana, gdyż techniczność
+  omawianych problemów utrudnia dostrzeżenie tego.
+
+  Jest to jedna z~podstawowych pozycji, gdy chodzi o~systemy operacyjne
+  i~jej lektura pozwala zrozumieć z~jakimi zdaniami te systemy~się mierzą
+  i~jak je rozwiązują. Książka ta stanowi również skarbnicą informacji
+  na~temat tego jak działają komputery i~można ją z~czystym sumieniem
+  polecić każdemu, kto pragnie bardziej dogłębnie zrozumieć te urządzenia.
+
+  Dla zupełności, warto wspomnieć, że~do trzeciego wydania autorem był
+  sam Tanenbaum.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Machtelt Garrels \textit{Introduction to Linux~-- A Hands on Guide}
+  \parencite{Garrels-Introduction-to-Linux-A-Hands-on-Guide-Ver-2008} \\
+  Pozycja ta powstały w~ramach programu \textit{The~Linux Documentation
+    Guide}, jako darmowy podręcznik, dla osób zaczynających swoją przygodę
+  z~systemem GNU/Linux. Tę książkę i~inne pozycje dotyczące tego systemu
+  operacyjnego można pobrać ze~strony wspomnianego projektu:
+  \colorhref{https://tldp.org/guides.html}{https://tldp.org/guides.html}.
+
+  Główną jej wadą jest to, że~ostatni raz została uaktualniona
+  w~roku~$2008$, a~od tego czasu pewne rzeczy w~systemie GNU/Linux uległy
+  zmianie, choć większość zawartego w~niej materiału jest równie dobra
+  dziś jak była wtedy. Ponieważ jest ona łatwo dostępna i~stosunkowo
+  prosta w~lekturze, możemy ją polecić osobą, które poszukują materiałów
+  do nauki pracy z~tym systemem operacyjnym.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Z~innych pozycji książkowych możemy polecić
+  \colorhref{https://helion.pl/ksiazki/jak-dziala-linux-podrecznik-administratora-wydanie-iii-brian-ward,jakli3.htm?}
+  {\textit{Jak działa Linux. Podręcznik administratora}} Briana Warda,
+  \colorhref{https://helion.pl/ksiazki/linux-wprowadzenie-do-wiersza-polecen-wydanie-ii-william-shotts,linwp2.htm?}
+  {\textit{Linux. Wprowadzenie do wiersza poleceń}} Williama Shottsa.
+
+  Na Sake będą dostępne niniejsze prezentacje w~formacie w~postaci
+  \textsc{pdf}ów. W~formie źródłowej (plików \LaTeX a) są dostępna na
+  serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp do
+  internetu może je pobrać wpisując \\
+  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
+  Znajdują~się one w~katalogu „Systemy-operacyjne-Prezentacje”. Należy
+  dodać, że~gałąź \texttt{main} jest zwykle w~tyle
+  za~\texttt{Gałąź-robocza}.
+
+  Można też obejrzeć to repozytorium jak normalny człowiek. Czyli
+  w~przeglądarce: \\
+  \colorhref{https://github.com/KZiemian/Presentation}
+  {https://github.com/KZiemian/Presentation}.
+
+\end{frame}
+% ######################################
 
 
 
@@ -225,11 +394,321 @@ eprint=true,
 
 
 % ######################################
+\begin{frame}
+  \frametitle{Materiały do nauki}
+
+
+  Na~Sake będziemy się starali umieszczać również inne materiały do nauki.
+  To jakie konkretnie rzeczy będą tam dostępne, wyjdzie w~praktyce.
+
+  % NIE USUWAĆ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  % Na Sake będzie dostępna w~formacie \textsc{pdf} \alert{lista zagadnień do
+  %   opanowania z~tego przedmiotu}, która będzie główny punktem odniesieniem
+  % przy tworzeniu pytań testowych. Jak również różne materiały do nauki,
+  % jakie to dokładnie będą materiały, nie umiem powiedzieć w~tym momencie.
+
+  W~naszych materiałach na pewno są błędy rzeczowe. Jeśli ktoś je znajdzie,
+  \alert{bardzo, bardzo prosimy}, by przesłać na o~nich informację na adres
+  \email. Staram~się wracać do tych prezentacji i~je poprawiać, ale nawet
+  po kilku takich przeglądach, wciąż można w~nich znaleźć różnorakie błędy.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Czy ten przedmiot będzie trudny?}
+% ################################################
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Czy ten przedmiot będzie trudny?}
+
+
+  Zanim przejdziemy właściwej treści zajęć, chcielibyśmy zatrzymać~się
+  nad pytaniem: czy ten przedmiot będzie trudny? Jak to zwykle bywa z~tego
+  typu pytaniami, odpowiedź zależy mocno od tego, jak do tego podejdziemy.
+
+  Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
+  głęboko, to robi~się naprawdę złożona i~niebanalna. Nie zawsze musimy
+  jednak zajmować~się wszystkim szczegółami problemu jaki napotkaliśmy
+  i~wtedy życie jest prostsze.
+
+  By to zilustrować zadajmy sobie następujące pytanie: czy włączenie
+  komputera jest skomplikowane? Odpowiemy na to pytanie na dwóch poziomach.
+  Pierwszy to poziom normalnego użytkownika, drugi to opis pochodzący
+  z~książki Andrewa S.~Tanenbauma \textit{Systemy operacyjne. Wydanie~III}
+  \parencite{Tanenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}, dotyczący
+  komputera z~systemem Pentium. Przy czym „system Pentium” rozumiem
+  w~sensie, który jest opisany w~tej książce na stronie~$48$.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+
+
+  \begin{enumerate}
+
+  \item Wciskamy przycisk \texttt{Power}.
+
+  \item Czekamy minutę albo dłużej.
+
+  \item Wybieramy użytkownika i~wchodzimy na swoje konto.
+
+  \end{enumerate}
+
+
+
+  Co w~tym trudnego?
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
+  skomplikowany, że~trzeba najpierw wprowadzić trochę pojęć.
+
+  \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
+    wyłącznie do~odczytu}. Pamięć komputera której zawartość została
+  zapisana przez firmę, która ten fragment pamięci wyprodukowała
+  i~użytkownik nie może zmodyfikować jej zawartości. Przynajmniej nie żadnym
+  normalny sposobem.
+
+  \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
+  pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
+  własności, że~jeśli wylosuję dowolny jej element, to czas odczytania
+  informacje z~tego elementu nie będzie zależał od tego, który konkretny
+  element został wylosowany. Inaczej mówiąc dostęp do dowolnego miejsca
+  w~tej pamięci zajmuje tyle samo czasu.
+
+  Tak naprawdę czas odczytu zależy w~pewnym stopniu od tego, w~jaki
+  konkretny sposób pamięć \textsc{ram} jest odczytywana, ale jeszcze długo
+  nie będziemy się musieli tym przejmować.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
+  zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
+  przykładem takiej pamięci jest \textsc{ram}.
+
+  \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
+  której treść jest zachowana, gdy przez układ przestaje płynąć prąd.
+  Typowym przykładem jest dysk \textsc{ssd}.
+
+  Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
+  które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
+  we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
+  komputera z~prądu. Bo~niby czemu życie miałoby być proste?
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Kilka pojęcia}
+
+
+  \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
+  Skrót pochodzi od nazwy technologi ang.~\textit{Complementary
+    Metal-Oxide-Semiconductor}, pl.~\textit{komplementarny półprzewodnik
+    metalowo-tlenkowy}, w~której ta pamięć jest wykonana. Musi być zasilana
+  prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
+  klasyfikowana jest jako nieulotna. Nie wiem czy przekonuje mnie ta
+  terminologia.
+
+  \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
+  \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
+  na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
+  klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[1)] Wciskamy przycisk \texttt{Power}.
+
+  \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
+    ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
+    klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
+    odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
+    są magistrale \textsc{isa} (ang. \textit{Industry Standard
+      Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
+      Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
+
+  \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
+    były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
+    konfigurowane.
+
+  \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
+    z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
+    system operacyjny. W~przeszłości były nimi dyskietki, płyty
+    \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
+    i~dyski~\textsc{ssd}.
+
+  \end{itemize}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
+    z~wspomnianej wcześniej listy, aż~znajdzie pierwsze, który zawiera
+    działający system operacyjny.
+
+  \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
+    w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
+
+  \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
+    listę partycji, by~ustalić która z~nich jest partycją aktywną.
+    Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
+
+  \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
+    z~aktywnej partycji i~go uruchamia.
+
+  \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
+    \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
+    do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
+    z~odpowiedniego źródła.
+
+  \end{itemize}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+  \begin{itemize}
+
+  \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+    to ładuje je do jądra systemu.
+
+  \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+    działające w~tle.
+
+  \item[12)] Uruchamiane jest okno logowania.
+
+  \end{itemize}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Bootowanie}
+
+
+  W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
+  \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
+  całej procedury uruchamiania komputer opisanej powyżej, albo tylko
+  stawiania systemu operacyjnego, czyli procedury przeprowadzonej
+  od momentu, gdy \textsc{bios} wczytał pierwszy jego sektor do pamięci
+  (punkt siedem i~dalej). Acz to pojęcie nie jest specjalnie ostro
+  zdefiniowane.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+
+
+  Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
+  w~informatyce.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
 \section{Włączanie powłoki i~tryby działania}
+% ################################################
+
+
 % ######################################
-
-
-% ##################
 \begin{frame}
   \frametitle{Powłoka BASH}
 
@@ -254,13 +733,13 @@ eprint=true,
   \end{figure}
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Postęp technologiczny}
 
@@ -280,24 +759,23 @@ eprint=true,
   \end{figure}
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Włączanie powłoki}
 
 
   \textit{Gdy samochody rozwijały~się tak jak komputery, to dziś
     Rolls-Royce kosztowałby jakieś 100\$, przejeżdżałaby milion mil na
-    jednym galonie benzyny i~raz do roku eksplodował zabijając wszystkich
+    jednym galonie benzyny i~raz do roku eksplodował, zabijając wszystkich
     w~środku.} \\
-  Robert Cringely, \textit{InfoWorld}, tłum. swobodne, str.~221,
-  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
-
+  Robert Cringely, \textit{InfoWorld} (tłum. swobodne, por.~str.~221
+  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}).
 
   Naszym główny narzędziem na tych zajęciach będzie powłoka
   (ang. \textit{shell}) \textsc{bash}, więc upewnijmy~się, że~umiemy ją
@@ -308,7 +786,7 @@ eprint=true,
   Jeśli to nie zadziała, to proszę pochodzić kursorem po ekranie,
   aż~znajdziemy okienko „Szukaj”, „Wyszukaj” lub jeszcze jakaś inna nazwa.
   Proszę tam wpisać „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy
-  wyświetli~się odpowiednia ikona.
+  wyświetli~się odpowiednia ikona do kliknięcia.
 
   % !!!!!!! Nie usuwać.
   % Istnieje wiele wartych uwagi materiałów do nauki \textsc{bash}a, niekiedy
@@ -318,7 +796,7 @@ eprint=true,
   % {\textit{Bash Prompt HOWTO}} \parencite{Orr-Bash-Prompt-HOWTO-Ver-2009}.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
@@ -328,6 +806,8 @@ eprint=true,
 \begin{frame}
   \frametitle{Architektura systemu operacyjnego}
 
+
+  \alert{Dalsza część prezentacji wymaga zmian i poprawek.}
 
   Pracując z~poziomu powłoki nie raz natkniemy~się na problemy
   trybów działania systemu operacyjnego oraz różnych poziomów dostępu.

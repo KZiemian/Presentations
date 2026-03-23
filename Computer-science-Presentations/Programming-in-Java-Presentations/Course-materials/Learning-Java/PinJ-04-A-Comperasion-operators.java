@@ -1,8 +1,8 @@
 class Main {
     public static void main(String[] args) {
 	System.out.print("In Java comparison of two numbers results " +
-			   "in the value of the type boolean, as it " +
-			   "should be. Let\'s see some examples.\n\n");
+			 "in the value of the type boolean, as it " +
+			 "should be. Let\'s see some examples.\n\n");
 
 
 	System.out.println("Instruction: \"(0 == 0) == \" + " +
