@@ -1,0 +1,1480 @@
+% ####################################################################
+% Basic configuration of Beamera class and Jagiellonian theme
+% ####################################################################
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+\title{Systemy operacyjne}
+\subtitle{Dod.~1. Z~historii systemów operacyjnych}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ####################################################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ######################################
+% Number of chars: 43k+, 81k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ######################################
+
+
+
+
+
+% ######################################
+\maketitle
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Materiały do nauki}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Do innej prezentacji}
+
+  \textit{Wszystko to [omawiany program komputerowy] wydało mi~się
+    aż~zbyt sprytne, a~źle zrozumiany spryt jest w~programowaniu bardzo
+    złym pomysłem.} [...]
+
+  \textit{Stało~się to podstawą naszej pierwszej reguły stylu
+    programowania:} \\
+  \textit{„Pisz przejrzyście~-- nie bądź za sprytny.} \\[0.3em]
+  Str.~$29$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{UNIX i cała reszta}
+
+
+  \textit{„BŁĘDY: polecenie} \texttt{rm} \textit{zapewne powinno pytać, czy
+    plik tylko do odczytu, ma zostać usunięty.”} \\
+  \hspace{5em} \textit{--~fragment instrukcji obsługi polecenia}
+  \texttt{rm}\textit{, $3$~listopada $1971$~roku.} \\[0.3em]
+  Str.~$61$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+  \textit{Joe Ossanna napisał program o~nazwie Nroff (ang. „new Roff”),
+    w~nawiązaniu do~istniejącego programu do formatowania tekstu
+    o~nazwie Roff.} \\[0.3em]
+  Str.~$63$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+  \textit{Przy okazji warto wspomnieć, że~wywołanie systemowe}
+  \texttt{creat} \textit{rzeczywiście jest zapisywane w~ten sposób~--
+    wyłącznie z~powodu osobistych preferencji Kena Thompsona. Rob Pike
+    spytał kiedyś Kena, co zmieniłby w~Uniksie, gdyby miał pisać go od~nowa.
+    Co usłyszał? Napisałbym} \texttt{creat} \textit{z}~\texttt{e}
+  \textit{na końcu.”}. \\[0.3em]
+  Str.~$87$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Do innej prezentacji}
+
+
+  \textit{Język ten [Mowa o~języku C.] powstał na~początku lat~$70$.
+    Opierał~się na doświadczeniach Dennisa [Ritchiego] z~implementacjami
+    języków wysokiego poziomu dla Multicsa, lecz był znacznie mniej
+    rozbudowany, ponieważ większość ówczesnych komputerów miała
+    bardzo ograniczone możliwości; po prostu nie starczało im pamięci
+    ani mocy obliczeniowej do obsługi kompilator równie skomplikowanego
+    języka. Ten wymuszony minimalizm wpisywał~się w~preferencje
+    Kena i~Dennisa dotyczące prostych, jednolitych mechanizmów. Język~C
+    był też dobrze dopasowany do realnego sprzętu komputerowego~--
+    było jasne, jak przetłumaczyć go na dobry, efektywnie działający
+    kod.} \\[0.3em]
+  Str.~$79$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+  Warto zaznaczyć, że~w~procesie narodzin języka~C, przełom~lat $60$-tych
+  i~$70$-tych XX wieku, dużą rolę odegrał komputer PDP-$7$, który miał
+  mniej niż $20$ kilobajtów całkowitej pamięci. Ilustruje to do pewnego
+  stopnia skalę ograniczeń, które ukształtowały język~C.
+  Por. str.~$50$--$51$, $78$--$80$
+  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{UNIX i cała reszta}
+
+
+  \textit{Nazwa „grep” pochodzi od~dostępnego w~edytorze tekstowym}
+  \texttt{ed} \textit{polecania} \texttt{g/re/p}, \textit{które
+    wyświetla wszystkie linie pasujące do~wyrażenia regularnego}
+  \texttt{re}\textit{;} \\[0.3em]
+  Str.~$96$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+  \textit{Pewnym wariantem wyrażeń regularnych są symbole wieloznaczne
+    dla nazw plików. Choć symbole wieloznaczne~są interpretowane
+    przez powłokę, to ponieważ główna pamięć PDP-$7$ była bardzo
+    ograniczone [Była mniejsza niż $20$ kilobajtów.], w~pierwszej
+    implementacji odpowiadał za to osobny program o~nazwie}
+  \texttt{glob} \textit{(od „globalny”) wywoływany przez powłokę,
+    a~operację tworzenia listy plików na podstawie podanego wzorca
+    nazywano „globbingiem”. Nazwa} \texttt{glob} \textit{do~dziś
+    funkcjonuje w~bibliotekach kilku języków programowania, między
+    innymi w~Pythonie.} \\[0.3em]
+  Str.~$99$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{UNIX i cała reszta}
+
+
+  \textit{Jedną z~pierwszych zasług Ala (Alfreda) Aho jeśli chodzi
+    o~rozwój Uniksa było napisanie rozszerzenia do grepa, które pozwalało
+    na~stosowanie bogatszych wyrażeń regularnych, przykładowo pozwalających
+    na wyszukiwanie alternatyw w~rodzaju} \texttt{to|tamto}\textit{.}
+  \textit{Al nazwał swój program egrep od} extended
+  grep\textit{.} \\[0.3em]
+  Str.~$100$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+  \textit{BCPL (ang. } Basic Combined Programming language\textit{)
+    był kolejnym językiem z~założenia przeznaczonym do~programowania
+    systemów. Został opracowany przez Martina Richardsa, profesora
+    z~Uniwersytetu w~Cambridge, który podczas gościnnej pracy w~M.I.T.
+    w~$1966$ roku napisał dla niego kompilator. BCPL był znacznie
+    prostszy od~dowolnego dialektu PL/I i~dobrze przystosowany do~pisania
+    kodu systemu operacyjnego. Członkowie zespołu Bell Labs pracujący
+    nad Multicsem byli znakomicie zaznajomieni z~BCPL.} \\[0.3em]
+  Str.~$101$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{UNIX i cała reszta}
+
+
+  \textit{Gdy laboratorium Bell wycofało~się z~prac nad Multicsem
+    Ken Thompson uznał, że~„żaden komputer nie może~się objeść bez
+    Fortrana” i~zaczął pisać kompilator Fortrana dla PDP-$7$.
+    Wyzwanie okazało się trudne, ponieważ Unix na PDP-$7$ miał
+    tylko $4\text{K}$ $18$-bitowych słów ($8$ kilobajtów) pamięci
+    podstawowej na~programy użytkownika, takie jak kompilator.}
+
+  \textit{Ken nie poddawał~się i~w~wyniku nieustanych modyfikacji otrzymał
+    język, który mieścił~się w~PDP-$7$ i~był bardzie podobny do BCPL niż
+    do~Fortrana. Nazwał go~B. Jak wyjaśnił Dennis Ritchie w~publikacji
+    „The~Development~of the~C Language” w~$1993$ roku}: \\
+  \textit{„B~można porównać do~C bez typów;}
+  \\[0.3em]
+  Str.~$101$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Materiały do nauki}
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Materiały do nauki}
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Materiały do nauki}
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Czy ten przedmiot będzie trudny?}
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Kilka pojęcia}
+
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[5)] \textsc{bios} testuje po kolei urządzenia rozruchowe
+%     z~wspomnianej wcześniej listy, aż~znajdzie pierwsze, który zawiera
+%     działający system operacyjny.
+
+%   \item[6)] \textsc{bios} wczytuje pierwszy sektor ze~znalezionego
+%     w~poprzednim punkcie urządzenia rozruchowego do pamięci i~go uruchamia.
+
+%   \item[7)] Program z~pierwszego sektora sprawdza zapisaną na jego końcu
+%     listę partycji, by~ustalić która z~nich jest partycją aktywną.
+%     Następnie wczytuje z~tej partycji pomocniczy program rozruchowy.
+
+%   \item[8)] Pomocniczy program rozruchowy wczytuje system operacyjny
+%     z~aktywnej partycji i~go uruchamia.
+
+%   \item[9)] System operacyjny odczytuje informacje konfiguracyjne z~systemu
+%     \textsc{bios}. Dla każdego dostępnego urządzenia sprawdza, czy posiada
+%     do niego sterowniki. Jeśli nie, to prosi o~ich zainstalowanie
+%     z~odpowiedniego źródła.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Uruchamianie komputera z~systemem Pentium}
+
+
+%   \begin{itemize}
+
+%   \item[10)] Jeśli system operacyjny dysponuje wszystkimi sterownikami,
+%     to ładuje je do jądra systemu.
+
+%   \item[11)] System operacyjny tworzy tabele systemowe oraz procesy
+%     działające w~tle.
+
+%   \item[12)] Uruchamiane jest okno logowania.
+
+%   \end{itemize}
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Bootowanie}
+
+
+%   W~literaturze funkcjonuje termin \textbf{bootwoanie}, zwane też
+%   \textbf{uruchamianiem} lub \textbf{rozruchem}. Odnosi~się ono albo do
+%   całej procedury uruchamiania komputer opisanej powyżej, albo tylko
+%   stawiania systemu operacyjnego, czyli procedury przeprowadzonej
+%   od momentu, gdy \textsc{bios} wczytał pierwszy jego sektor do pamięci
+%   (punkt siedem i~dalej). Acz to pojęcie nie jest specjalnie ostro
+%   zdefiniowane.
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Czy uruchomienie komputera jest proste czy trudne?}
+
+
+%   Zależy jak do tego podchodzimy. I~tak jest z~większością rzeczy
+%   w~informatyce.
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ################################################
+% \section{Zdalne logowanie~się do GNU/Linuxa z~Windowsa}
+% % ################################################
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Korzystanie z~systemu Artemis}
+
+
+%   Wiemy, że~dla wielu osób zainstalowanie na swoim komputerze systemu
+%   GNU/Linux, może być sporym wyzwaniem, dlatego tutaj wyjaśnimy, jak
+%   można~się zalogować do niego z~poziomu systemu Windows. Dokładniej,
+%   pokażemy, jak połączyć~się przez internet do komputerów dysponujących
+%   systemem GNU/Linux, poprzez uczelniany system Artemis. Chciałbym przy tym
+%   bardzo podziękować panu Tomaszowi Molęckiemu z~działu \textsc{it}
+%   \textsc{wsz}i\textsc{b}u za~udzielenie nam informacji na temat
+%   procedury logowania~się do tego systemu.
+
+%   Pierwszy krok polega na pobraniu programu
+%   \colorhref{https://winscp.net/eng/download.php}{Win\textsc{scp}}. Gdy
+%   już mamy go dostępnego, znajdujemy okno logowania, które wypełniamy
+%   zgodnie ze~zdjęciem widocznym na następnym slajdzie. Dane logowania
+%   wpisujemy takie same jak dla systemu SUSZI. Gdy to jest gotowe, klikamy
+%   na przycisk logowania. W~razie problemów proszę pisać do nas (\email),
+%   lub pana Molęckiego.
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Korzystanie z~systemu Artemis}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.45]
+%     {./Presentations-pictures/Miscancellous-pictures/Artemis.jpg}
+
+
+%     \caption{Logowanie~się do systemu Artemis za pomocą programu
+%       Win\textsc{scp}.}
+
+
+%     \label{fig:Artemis-system}
+
+%   \end{figure}
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+% % ################################################
+% \section{Włączanie powłoki BASH}
+% % ################################################
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Powłoka BASH}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.23]
+%     {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
+
+
+%     \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
+%       głównego narzędzia pracy na tym przedmiocie.}
+
+
+%     \label{fig:BASH-shell}
+
+%   \end{figure}
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Postęp technologiczny}
+
+%   \vspace{-0.5em}
+
+
+%   \begin{figure}
+
+%     \label{fig:Evolution-of-OS}
+
+%     \centering
+
+
+%     \includegraphics[scale=0.3]
+%     {./Presentations-pictures/Miscancellous-pictures/Evolution-of-operating-systems.jpg}
+
+%   \end{figure}
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Włączanie powłoki}
+
+
+%   \textit{Gdy samochody rozwijały~się tak jak komputery, to dziś
+%     Rolls-Royce kosztowałby jakieś 100\$, przejeżdżałaby milion mil na
+%     jednym galonie benzyny i~raz do roku eksplodował, zabijając wszystkich
+%     w~środku.} \\
+%   Robert Cringely, \textit{InfoWorld}, tłum. swobodne. Por.~str.~221
+%   \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+
+%   Naszym główny narzędziem na tych zajęciach będzie powłoka
+%   (ang. \textit{shell}) \textsc{bash}, więc upewnijmy~się, że~umiemy ją
+%   włączyć, co na samy początku może być naprawdę niewdzięcznym zadaniem.
+%   W~pierwszym kroku proszę wcisnąć \texttt{Ctrl-Alt-t} i~zobaczyć, czy~się
+%   otworzy.
+
+%   Jeśli to nie zadziała, to proszę pochodzić kursorem po ekranie,
+%   aż~znajdziemy okienko „Szukaj”, „Wyszukaj” lub jeszcze jakaś inna nazwa.
+%   Proszę tam wpisać „Terminal”, „Konsola” lub „Consol” i~zobaczyć, czy
+%   wyświetli~się odpowiednia ikona do kliknięcia.
+
+%   % !!!!!!! Nie usuwać.
+%   % Istnieje wiele wartych uwagi materiałów do nauki \textsc{bash}a, niekiedy
+%   % dość już wiekowych. Przykładowo, można sięgnąć do tutorialu
+%   % Gilesa Orra
+%   % \colorhref{https://www.gilesorr.com/bashprompt/howto/}
+%   % {\textit{Bash Prompt HOWTO}} \parencite{Orr-Bash-Prompt-HOWTO-Ver-2009}.
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Z~BASHem dzieje~się coś dziwnego}
+
+
+%   Błędne wprowadzenie jakiegoś polecenia może spowodować, że~\textsc{bash}
+%   przestanie reagować, lub będzie reagował zupełnie nie tak jak tego
+%   oczekujemy. Ponieważ \textsc{bash} nie wiem czym jest litość, w~zależności
+%   od tego co konkretnie~się zepsuło, dokładna procedura naprawy jest inna.
+
+%   Jednak w~większości przypadków, by wrócić do normalnej pracy wystarczy
+%   wcisnąć \alert{raz} \texttt{Ctrl-d}. Należy zaznaczyć, że~wciśnięcie
+%   \texttt{Ctrl-d} \alert{więcej niż raz} może spowodować zamknięcie powłoki
+%   \textsc{bash} i~potrzeby zrobienia kilku rzeczy ponownie. Z~tego też
+%   powodu, początkujący \alert{nigdy} nie powinni używać tego skrótu, jeśli
+%   wszystko działa jak trzeba.
+
+%   Mimo tych zastrzeżeń, \texttt{Ctrl-d} jest jednym z~naszych najlepszych
+%   przyjaciół.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ######################################
+% \section{Podstawy pracy z~poziomu powłoki BASH}
+% % ######################################
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka słów wstępnych i~ostrzeżeń}
+
+
+%   Przed chwilą mówiliśmy, że~\textsc{bash} nie zna słowa litość i~każda
+%   drobna zmiana może wszystko zniszczyć. Jednocześnie nasza swoboda nie jest
+%   całkiem zerowa (choć może często sprawiać takie wrażenie), więc
+%   podając tutaj różne polecenia, musimy zdecydować~się na pewno konwencje.
+%   Proszę więc mieć świadomość, że~\alert{pewne} zmiany można wprowadzić
+%   do~poleceń i~nie zmienią one sposób ich działania.
+
+%   Jednak zasady które mówią co \alert{można} zmienić w~poleceniu
+%   \textsc{bash}a, bez obrócenia wszystkiego w~ruiny, są często nieintuicyjne
+%   i~skomplikowane. Ponieważ zaś zawsze $1000$ różnych rzeczy może zepsuć
+%   dane polecenie, zdecydowaliśmy, że~w~tym kursie będziemy starali~się
+%   podawać te wersje poleceń, które my uważamy za~optymalne i~które działają
+%   poprawnie, nie zaś wnikać w~pokrętne zasady „możesz zmienić to tak i~tak,
+%   ale~już nie w~ten sposób”.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka słów wstępnych i~ostrzeżeń}
+
+
+%   Testowanie różnych wariantów tych poleceń, sprawdzanie który ich wariant
+%   działa, a~który nie, jest oczywiście czymś dobrym, co pozwala lepiej
+%   zrozumieć powłokę \textsc{bash}, więc bardzo nasz cieszy, gdy ktoś tego
+%   próbuje. Zajmuje to jednak czas, a~większość ludzi pragnie by „komputer
+%   zrobił to co trzeba”, nie zaś zgłębiać wszystkie niuanse jego pracy.
+%   Biorąc to wszystko pod uwagę, uznaliśmy, że~obecne sposób wykładu jest
+%   dobrym wyborem.
+
+%   Wszystko utrudnia dodatkowy fakt, że~od czasu do czasu można~się natknąć
+%   na~dwa warianty poleceń \textsc{bash}a, które działają tak samo, tylko,
+%   że~to nie do końca prawda. Działają tak samo w~$90\%$ przypadków,
+%   w~pozostały~$10\%$, działają inaczej. By uniknąć niekończących~się
+%   dywagacji na temat dzielenia włosa na czworo w~\textsc{bash}u, proszę
+%   przyjąć, że~jeśli polecenie nie działa jak trzeba, należy~się upewnić,
+%   iż~są one \alert{dokładnie} takie jak podano tutaj.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Kilka słów wstępnych i~ostrzeżeń}
+
+
+%   Do problemu, której wersji poleceń/kodu \textsc{bash}a należy używać,
+%   wrócimy jeszcze przy okazji pisania skryptów dla tej powłoki. To jednak
+%   na tą chwilę dość odległy temat.
+
+%   Pomimo tego, że~staramy~się dokładnie przetestować wszystkie podane
+%   w~tych wykładach polecenia \textsc{bash}a, nie możemy wykluczyć tego,
+%   że~popełnimy jakiś błąd. Dlatego bardzo prosimy by każdy, kto taki
+%   znajdzie, przesłał go nam pod adres \email.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Zaczynamy}
+
+
+%   Zacznijmy od przyjęcia, że~pracujemy na komputerze jako użytkownik,
+%   którego nazwa w~systemie operacyjnym została wybrana jako \texttt{adam}.
+%   Jeśli włączymy konsolę zobaczymy pewnie coś takiego: \\
+%   \texttt{adam:$\sim$\$} \\
+%   Od tego momentu będziemy zwykle skracali ten znak zachęty \\
+%   (ang.~\textit{prompt}) do symbolu \texttt{\$}. Przepisywanie pełnej jego
+%   postaci wnosi bardzo mało informacji, za~to zabiera sporo miejsca.
+
+%   Na początku zajmiemy~się tym, jak poruszać~się po systemie plików
+%   i~katalogów. Na pewno wiedzą Państwo, że~na komputerze znajdują~się
+%   katalogi (ang.~\textit{directories}), zwane też folderami, które zawierają
+%   pliki i~inne katalogi. Z~punktu widzenia systemu GNU/Linux
+%   katalog jest plikiem, jedynie specjalnego rodzaju. Dla tego systemu
+%   wszystko jest plikiem lub procesem.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+%   Podstawy działania katalogów w~systemie GNU/Linux są w~zasadzie takie
+%   same jak w~systemie Windows, musimy~się jedynie przyzwyczaić do innych
+%   konwencji używanych w~tym systemie. Dużo większym wyzwaniem zapewne
+%   będzie zamienienie środowiska graficznego (\textsc{gui},
+%   ang.~\textit{Graphic User Interface}) na pracę z~poziomu powłoki.
+
+%   Podstawą pracy w~powłoce \textsc{bash} jest korzystanie z~poleceń (ang.
+%   \textit{commands}). Bez wnikania w~szczegóły, każde polecenie posiada
+%   nazwę i~wykonuje pewne działanie. By wykonać dane polecenie w~powłoce
+%   należy najpierw wpisać jej nazwę, następnie zaś jej odpowiednie
+%   opcje (flagi) i~argumenty. Część poleceń można wykonać bez wpisywania
+%   opcji czy~argumentów.
+
+%   Trzeba~się niestety przyzwyczaić do tego, że~nazwy poleceń, jak i~nazwy
+%   ich opcji tych poleceń w~systemie GNU/Linux potrafią być dość dziwne
+%   i~trudne do~zapamiętania.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenia}
+
+
+%   Podstawowych poleceń systemu GNU/Linux jest około~$100$, do tego każde ma
+%   kilkanaście albo więcej opcji. Z~tego powodu nauka ich jest bardzo
+%   czasochłonna i~niełatwa. Teoretycznie w~każdej chwili w~\textsc{bash}u
+%   możemy skorzystać z~manuala (podręcznika), gdzie są opisy wszystkich
+%   poleceń. W~praktyce, żeby zrozumieć jego treść, wymagana jest już dość
+%   spora wiedza.
+
+%   Zdecydowaliśmy~się przyjąć następujące podejście. Naszym głównym celem
+%   jest przekazanie Państwu umiejętności pracy spod powłoki \textsc{bash}
+%   w~możliwie krótki i~bezbolesny sposób. Dlatego też, dość szybko
+%   wprowadzimy możliwie dużo poleceń, bez zagłębiania~się w~zbyt wiele
+%   szczegółów. Niekiedy będziemy wracać do wcześniej już omówionych poleceń,
+%   by uzupełnić wiadomości o~nich. Wyczerpujące omówienie wszystkich
+%   podstawowych poleceń i~tak zabrałoby zbyt dużo czasu, to zaś podejście
+%   uważamy, za rozsądny kompromis.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{ls}}
+
+
+%   Zacznijmy od~polecenia
+%   \colorhref{https://linux.fandom.com/pl/wiki/Ls}{\texttt{ls}}. Jego nazwa
+%   pochodzi prawdopodobnie od~ang.~\textit{List fileS}, ale są różne opinie
+%   na ten temat. Polecenie to wyświetla zawartość katalogu w~którym~się
+%   znajdujemy, z~tego powodu wynik działania tego polecenia będzie~się cały
+%   czas zmieniać, jednym z~możliwych może być ten przedstawiony poniżej. \\
+%   \texttt{\$ ls} \\
+%   \texttt{{\color{jAxisBlue} Dokumenty}} \quad
+%   \texttt{introduction-to-GNU-linux.pdf} \quad
+%   \texttt{{\color{jAxisBlue} Pobrane}}
+
+%   Polecenie \texttt{ls} jest przykładem takiego polecenia, które można
+%   uruchomić bez dodatkowych opcji czy argumentów, ono samo ustali w~jakim
+%   katalogu jesteśmy i~wypisze jego zawartość.
+
+%   Obecnie jest standardem, że~powłoka używa kolorów i~różnych typów fontów,
+%   by~informować nas o~typie i~własnościach pliku. W~przykładzie powyżej
+%   nazwy katalogów są wyróżnione na niebiesko, trzeba jednak pamiętać,
+%   że~wszystko to~zależy od~konkretnych ustawień systemu operacyjnego
+%   i~łatwo może zostać zmienione.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{pwd}}
+
+
+%   Kolejnym poleceniem jest
+%   \colorhref{https://www.arturpyszczuk.pl/commands-pwd.html}{\texttt{pwd}}
+%   od ang.~\textit{Print Working Directory}, rezultat jego działania można
+%   zobaczyć poniżej. \\
+%   \texttt{\$ pwd} \\
+%   \texttt{/home/adam}
+
+%   Ta krótka linia zawiera bardzo dużo informacji i~potrzebujemy przynajmniej
+%   kilka z~nich wyjaśnić. Sposób w~jaki pliki i~katalogi są ułożone na~dysku
+%   jest zdefiniowane przez \textbf{system plików} danego systemu
+%   operacyjnego i~ten używany w~systemie GNU/Linux różni~się mocno tego
+%   w~systemie Windows.
+
+%   Zacznijmy od kilku uwag odnośnie notacji. Jeśli pracowalibyśmy w~tym
+%   ostatnim systemie i~na dysku~C znajdowałby~się
+%   katalog \texttt{Systemy-operacyjne-Ćwiczenia} a~w~nim katalog
+%   \texttt{Zajęcia-01}, to ścieżka do niego miałaby postać: \\
+%   \texttt{C:\textbackslash\textbackslash
+%     Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+%   Odpowiednikiem ścieżki z~systemu Windows: \\
+%   \texttt{C:\textbackslash\textbackslash
+%     Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+%   w~systemie GNU/Linux byłaby ścieżka: \\
+%   \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
+%   Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
+%   używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
+%   używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
+%   ale trzeba~się do niej przyzwyczaić.
+
+%   Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
+%   mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
+%   plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
+%   istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
+%   w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
+%   którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
+%   symbolem~„\texttt{/}”.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{System plików}
+
+
+% %   Odpowiednikiem ścieżki z~systemu Windows: \\
+% %   \texttt{C:\textbackslash\textbackslash
+% %     Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+% %   w~systemie GNU/Linux byłaby ścieżka: \\
+% %   \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
+% %   Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
+% %   używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
+% %   używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
+% %   ale trzeba~się do niej przyzwyczaić.
+
+% %   Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
+% %   mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
+% %   plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
+% %   istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
+% %   w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
+% %   którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
+% %   symbolem~„\texttt{/}”.
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+%   Wróćmy do polecenia \\
+%   \texttt{\$ pwd} \\
+%   \texttt{/home/adam} \\
+%   Linię \texttt{/home/adam} czytamy „W~katalogu root („\texttt{/}”)
+%   znajduje~się katalog \texttt{home}, w~nim zaś znajduje~się katalog
+%   \texttt{adam}.” Polecenie \texttt{pwd} podaje więc w~którym katalogu~się
+%   obecnie znajdujemy, za~pomocą ścieżki, która zaczyna~się od katalogu root:
+%   „\texttt{/}”.
+
+%   Katalog w~którym obecnie jesteśmy nosi nazwę \textbf{katalogu roboczego}
+%   (ang.~\textit{working directory}), a~jak powiedzieliśmy \texttt{pwd} jest
+%   akronimem od~\textit{Print Working Directory}, czyli „wyświetl katalog
+%   roboczy”.
+
+%   Ścieżkę podającą lokalizację katalogu lub pliku nazywamy
+%   \textbf{ścieżką bezwzględną}, jeśli zaczyna~się ona od katalogu root.
+%   W~przeciwnym razie mówimy o~\textbf{ścieżce względnej} (podawanej
+%   względem innego katalogu niż root).
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{System plików}
+
+
+%   Bez wielkich uproszczeń można przyjąć, że~\textsc{bash}u \alert{każdy}
+%   ciąg symboli zaczynający od~symbolu „\texttt{/}” zostanie zinterpretowany
+%   jako ścieżka do jakiegoś pliku lub katalogu. Z~tego powodu trzeba
+%   \alert{bardzo} uważać przy stosowaniu symbolu~„\texttt{/}”.
+
+%   W~szczególności, gdy stosujemy symbol „\texttt{/}”, trzeba zwracać dużą
+%   uwagę na~spacje. Ścieżka postaci \\
+%   \texttt{/home/adam} \\
+%   jest poprawna. Ale już ścieżka \\
+%   \texttt{/ home/adam} \\
+%   jest \alert{błędna}! To w~jaki sposób jest błędna, to omówimy innym
+%   razem. Doświadczenie uczy, że~na początku sprawia to ludziom
+%   bardzo dużo problemów.
+
+%   To, że~główny katalog nosi nazwę „korzenia” (ang.~\textit{root}) nie jest
+%   przypadkiem, ale do tej kwestii wrócimy innym razem.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Katalog domowy}
+
+
+%   W~systemie GNU/Linux każdy użytkownik ma swój katalog domowy, w~którym
+%   może przechowywać potrzebne mu pliki. Standardowo, choć mogą być wyjątki,
+%   użytkownik \texttt{adam} otrzyma katalog \texttt{/home/adam}, użytkownik
+%   \texttt{barbara} katalog \texttt{/home/barbara},~etc. Katalog domowy
+%   bieżącego użytkownika posiada też alternatywną nazwę „$\sim$”. Stąd znak
+%   zachęty \\
+%   \texttt{adam:$\sim$\$} \\
+%   przekazuje nam informację, że~działamy jako użytkownik \texttt{adam}
+%   i~znajdujemy~się w~jego katalogu domowym.
+
+%   Załóżmy, że~katalogu domowym znajduje~się katalog o~nazwie
+%   \texttt{Systemy-operacyjne-Ćwiczenia}. By sprawdzić, czy tak jest
+%   naprawdę możemy użyć polecenia \texttt{ls}: \\
+%   \texttt{\$ ls} \\
+%   \texttt{{\color{jAxisBlue} Dokumenty}} \quad
+%   \texttt{introduction-to-GNU-linux.pdf} \quad
+%   \texttt{{\color{jAxisBlue} Pobrane}} \\
+%   \texttt{{\color{jAxisBlue} Systemy-operacyjne-Ćwiczenia}} \\
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+%   Jeśli w~bieżącym katalogu znajduje~się katalog
+%   \texttt{Systemy-operacyjne-Ćwiczenia} to możemy do niego wejść
+%   używając polecenia
+%   \colorhref{https://linux.fandom.com/pl/wiki/Cd}{\texttt{cd}}
+%   (od ang.~\textit{Change Directory}): \\
+%   \texttt{adam:$\sim$\$ cd Systemy-operacyjne-Ćwiczenia} \\
+%   \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$} \\
+%   Wyjątkowo zapisaliśmy pełniejszą wersję znaku zachęty, by podkreślić,
+%   iż~informuje on~nas w~którym katalogu jesteśmy. Mianowicie ścieżka
+%   \texttt{$\sim$/Systemy-operacyjne-Ćwiczenia} informuje nas, że~w~katalogu
+%   domowych użytkownika \texttt{adam} znajduje~się katalog
+%   \texttt{Systemy-operacyjne-Ćwiczenia} i~w~nim właśnie jesteśmy.
+
+%   Użyte wyżej polecenie \texttt{cd} jest przykładem polecenia, które
+%   pobiera argument, mianowicie nazwę katalogu do którego możemy wejść.
+%   W~istocie polecenie to pozwala nam na bardzo swobodne poruszanie~się
+%   po systemie plików, jeśli opanujemy dobrze zapis ścieżek w~GNU/Linuxie,
+%   ale wszystko po kolei.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Polecenie \texttt{cd}}
+
+
+%   Załóżmy, że~teraz chcielibyśmy przejść do katalogu nad nami. By to zrobić
+%   należy przekazać poleceniu \texttt{cd} argument „\texttt{..}”: \\
+%   \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$ cd ..} \\
+%   \texttt{adam:$\sim$\$} \\
+%   Dlaczego jako argument przesyłamy akurat „\texttt{..}” wyjaśnimy w~swoim
+%   czasie, na razie przyjmijmy, iż~tak po prostu jest. Dla lepszej
+%   ilustracji tego co~zrobiliśmy, ponownie wypisaliśmy znak zachęty,
+
+%   Załóżmy, że~chcemy teraz wejść do katalogu
+%   \texttt{Systemy-operacyjne-Ćwiczenia} i~utworzyć tam plik
+%   \texttt{Notatki-z-zajęć.txt}. By utworzyć ten plik możemy skorzystać
+%   z~polecenia
+%   \colorhref{https://linux.fandom.com/pl/wiki/Touch}{\texttt{touch}}. Pełna
+%   sekwencja poleceń będzie wyglądać tak. \\
+%   \texttt{\$ cd Systemy-operacyjne-Ćwiczenia} \\
+%   \texttt{\$ touch Notatki-z-zajęć.txt} \\
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edycja plików z~pomocą programu gedit}
+
+
+%   Możemy teraz użyć polecenia \texttt{ls} by~się przekonać, czy~plik
+%   \texttt{Notatki-z-zajęć.txt} został poprawnie utworzony.
+%   Z~komputerami nigdy nic nie wiadomo, więc warto to sprawdzić.
+
+%   W~następnym kroku otworzymy go do edycji za~pomocą programu
+%   \colorhref{https://gedit-text-editor.org/}{gedit}. By to zrobić
+%   wpisujemy w~powłoce \\
+%   \texttt{\$ gedit Notatki-z-zajęć.txt \&} \\
+%   Proszę pamiętać o~dodaniu na końcu polecenia znaku
+%   \alert{ampersand}:~„\&”. Inaczej gedit zablokuje nam możliwość wpisywania
+%   kolejnych poleceń do powłoki i~by ją odzyskać, będziemy musieli
+%   wyłączyć gedita albo użyć kombinacji poleceń \texttt{jobs} i~\texttt{bg}.
+
+%   Czemu uruchomienie gedita bez symbolu ampersanda ma takie skutki, omówimy
+%   gdy będziemy dyskutowali zagadnienie procesów i~tego jak działają
+%   w~systemie GNU/Linux. Nie jest to najprostszy temat na świecie.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Okienko gedita}
+
+
+%   Jeśli wszystko poszło dobrze, to na ekranie zobaczymy okienko Gedita,
+%   które wygląda mniej więcej tak jak to na~zdjęciu~\eqref{fig:Gedit-window}.
+
+
+
+
+
+%   \begin{figure}
+
+%     \centering
+
+%     \includegraphics[scale=0.145]
+%     {./Presentations-pictures/Miscancellous-pictures/gedit-window.png}
+
+%     \caption{Otwarte okienko programu gedit.}
+
+
+%     \label{fig:Gedit-window}
+
+%   \end{figure}
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Edytory tekstów}
+
+
+%   Teraz możemy do pliku \texttt{Notatki-z-zajęć.txt} wpisać tekst, choćby
+%   \textit{Notatki z~przedmiotu „Systemy operacyjne”}. Proszę pamiętać, by
+%   zapisywać wprowadzone zmiany, służy do tego choćby skrót~\texttt{Ctrl-s}.
+
+%   Kilka słów dlaczego wybraliśmy do~edycji plików program gedit. Na~tym
+%   kursie korzystamy głównie z~niego, gdyż jest on prosty w~obsłudze
+%   i~w~kilka sekund po jego otwarciu użytkownik może już pisać odpowiedni
+%   tekst. Zostawiamy jednak Państwu pełną swobodę w~wyborze edytora tekstu.
+%   Nie jest ważne jakiego programu~się używa, ważne jest, żeby udało~się
+%   wykonać zadanie jakie przed nami stoi.
+
+%   Jeśli chodzi o~edytory dostępne pod systemem GNU/Linux, to w~naszej
+%   ocenie warto zwrócić uwagę choćby na~dwa owiane już legendą programy
+%   do edycji tekstu \colorhref{https://www.vim.org/}{vim}
+%   i~\colorhref{https://www.gnu.org/software/emacs/}{GNU Emacs}.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % ################################################
+% \section{Czy tylko mi~się wydaje, że~ten system jest dziwny?}
+% % ################################################
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Czy tylko mi~się wydaje, że~ten system jest dziwny?}
+
+
+%   Niejedna z~poznanych przez nas cech systemu operacyjnego, może
+%   wydawać~się nam dziwna. Czy życie nie mogłoby być prostsze, a~system
+%   operacyjny bardziej zrozumiały? Odpowiedź na oba pytania brzmi
+%   „Prawdopodobnie tak”. Dlaczego więc tak nie jest?
+
+%   Warto sobie uświadomić, że~niektórzy jeżdżą jeszcze zabytkowymi
+%   samochodami wyprodukowanymi w~latach $60$-tych XX~wieku. Prawdopodobnie
+%   gdzieś na świecie działają jakieś komputery wyprodukowane w~tych latach,
+%   ale większa jest szansa zobaczenia go w~muzeum, niż wykonującego jakąś
+%   pracę. W~przeciwieństwie do tego, pomysł z~lat $60$-tych mają~się
+%   świetnie, również w~informatyce. Pracując z~systemami często
+%   napotykamy~się na jakiś jego fragment, który wymyślono w~owym czasie,
+%   odbija on więc ówczesny stan wiedzy i~możliwości techniczne. By więc
+%   zrozumieć pewne osobliwości systemów operacyjnych warto udać~się w~krótką
+%   podróż w~przeszłość.
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Trochę historii}
+
+
+%   Główne przesłanie tej historii jest następujące. Systemy operacyjne
+%   których dziś używamy, wyewoluowały do swojej obecnej formy formy
+%   na przestrzeni dekad, wchłaniając i~łącząc pomysły pochodzące
+%   z~różnorakich źródeł. Stąd ich dzisiejszy czas może sprawiać wrażenie
+%   przestarzałego, bałaganiarskiego i~pełnego niekonsekwencji. Jest to prawdą
+%   w~przypadku w~zasadzie wszystkich popularnych systemów operacyjnych, nie
+%   tylko omawianego przez nas GNU/Linuxa.
+
+%   Zaczynamy w~późnej epoce brązu komputerów, czyli roku~$1965$.
+%   W~owym roku w~USA, uczelnia M.I.T oraz firmy General Electrics i~Bell
+%   Labs zaczynają pracę nad systemem operacyjnym
+%   \colorhref{https://en.wikipedia.org/wiki/Multics}{\textsc{multics}}
+%   (ang.~\textit{MULTiplexed Information and Computing Service}). Prace
+%   nas systemem \textsc{multics} okazały~się wyjątkowo skomplikowane i~sam
+%   projekt odniósł jedynie częściowy sukces. Z~uwagi na trudności
+%   przy tworzeniu tego systemu Bell Labs wycofały~się z~projektu
+%   w~roku $1969$.
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Ken Thompson i~jego współpracownicy}
+
+
+%   Jednym z~ludzi, który pracował z~ramienia Bell Labs nad \textsc{multics}em
+%   jest \colorhref{https://en.wikipedia.org/wiki/Ken\_Thompson}
+%   {Ken Thompson}. Po wycofaniu~się Bell Labs z~tego projektu, Thompson
+%   poszukując nowych problemów do rozwiązania, zaczyna pisać programy na
+%   znajdujący~się w~Bell Labs i~wówczas już rzadko używany komputer
+%   \colorhref{https://en.wikipedia.org/wiki/PDP-7}{PDP-$7$}.
+%   W~trackie pracy nad nimi w~pewnym momencie dochodzi do~wniosku,
+%   że~niewiele mu brakuje do stworzenia systemu operacyjnego. W~ten sposób
+%   powstaje system operacyjny \textsc{unix}, którego pierwsza wersja
+%   jest gotowa na jesień $1969$~roku.
+
+%   Sama nazwa „\textsc{unix}”,
+%   jak zgadzają~się wszyscy biorący udział w~jego tworzeniu, jest
+%   nawiązaniem, i~to dość złośliwym do nazwy „\textsc{multics}”.
+%   Związane jest to z~powszechną krytyką, że~\textsc{multics} próbował
+%   osiągnąć zbyt wiele rzeczy na raz i~to nie wyszło mu na zdrowie,
+%   a~nowy system będzie skupiał~się na robieniu kilku rzeczy dobrze. Stąd
+%   „multi” zmieniono na „unit” i~powstała nazwa \textsc{unix}, por.
+%   str.~.
+
+%   Do Thompsona w~pracy nad \textsc{unix}em dołącza wielu wybitnych
+%   informatyków, pracujących wtedy w~Bell Labs, jak
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Ken Thompson i~jego współpracownicy}
+
+
+%   System \textsc{unix} jest pierwszym bezpośrednim przodkiem używanego
+%   przez nas systemu GNU/Linux, jednak droga od jednego do~drugiego
+%   jest dość długa i~wyboista. Zdjęcie \eqref{} przedstawia Kena Thompsona
+%   i~Denisa Ritchiego pracujących na komputerze
+%   \colorhref{https://en.wikipedia.org/wiki/PDP-11}{PDP-$11$}, z~użyciem
+%   dalekopisu Teletype-33???. Współtwórca \textsc{unix}a Brian W.~Kernighan
+%   opatrzył to zdjęcie takim komentarzem.
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{Dlaczego?}
+
+
+%   Jak Państwo widzą,
+
+% \end{frame}
+% % ######################################
+
+
+
+
+
+% % ######################################
+% \begin{frame}
+%   \frametitle{To tylko część tej historii}
+
+
+%   To co przedstawiliśmy tutaj jest tylko drobnym wycinkiem historii, która
+%   doprowadziła do powstania używanych przez nas systemów operacyjnych,
+%   takich jak GNU/Linux.
+
+%   Jeśli ktoś chce lepiej poznać tę historię to powinien w~pierwszym rzędzie
+%   sięgnąć do krótkiej i~bardzo pięknej książki Briana W.~Kernighan
+%   \textit{Jak Unix tworzył historię}
+%   \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}, która była
+%   już przez nas wielokrotnie cytowana. Jak sama jej tytuł wskazuje, książka
+%   ta dotyczy głównie systemu \textsc{unix}, jego powstania i~rozwoju. Jednak
+%   w~ostatniej części, głównie w~rozdziałach ??? i~??? opisuje drogę, jaka
+%   wiodła od~\textsc{unix}, do~systemu GNU/Linux. Cała zaś książka jest
+%   kopalnią informacji na temat, tego kiedy, gdzie i~dlaczego powstały znane
+%   nam dziś części naszych systemów operacyjnych.
+
+% \end{frame}
+% % ######################################
+
+
+
+% % ##################
+% \jagiellonianendslide{?????}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

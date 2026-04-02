@@ -268,7 +268,7 @@ eprint=true,
   kilka firm produkujących komputery i~każda używała swoich standardów.
   Jednostka pamięci jaką jest bajt, czyli $8$ bitów, nie był wtedy wcale
   powszechnie stosowany. Skutkiem tego dany komputer mógł operować nie na
-  bajtach, lecz na jednostce składającej~się z~$16$ bitów, gdy podobny
+  bajtach, lecz na jednostce składającej~się z~$18$~bitów, gdy podobny
   komputer innej firmy pracował na jednostce składające~się z~$36$ bitów.
 
 \end{frame}
@@ -286,8 +286,8 @@ eprint=true,
   Jeśli więc przeczytamy, w~tej książce, że~dany komputer miał
   $32\text{K}$ (oznaczenie z~książki) pamięci, to ile to jest na dzisiejsze
   jednostki? Czy to jest $32$ kilobajtów? Czy też może komputer używał
-  jednostki składającej~się z~$16$ bitów i~wtedy jego pamięć wynosiłaby
-  $64$ kilobajty? Tego typu dwuznacznych danych jest w~tej książce wiele
+  jednostki składającej~się z~$18$ bitów i~wtedy jego pamięć wynosiłaby
+  $72$ kilobajty? Tego typu dwuznacznych danych jest w~tej książce wiele
   i~można odnieść wrażenie, że~sam autor niekiedy gubił~się w~przeliczaniu
   starych jednostek na nowe.
 
@@ -450,7 +450,7 @@ eprint=true,
   z~książki Andrewa S.~Tanenbauma \textit{Systemy operacyjne. Wydanie~III}
   \parencite{Tanenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}, dotyczący
   komputera z~systemem Pentium. Przy czym „system Pentium” rozumiem
-  w~sensie, który jest opisany w~tej książce na stronie~$48$.
+  w~sensie, który jest podany w~tej książce na stronie~$48$.
 
 \end{frame}
 % ######################################
@@ -704,7 +704,79 @@ eprint=true,
 
 
 % ################################################
-\section{Włączanie powłoki i~tryby działania}
+\section{Zdalne logowanie~się do GNU/Linuxa z~Windowsa}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~systemu Artemis}
+
+
+  Wiemy, że~dla wielu osób zainstalowanie na swoim komputerze systemu
+  GNU/Linux, może być sporym wyzwaniem, dlatego tutaj wyjaśnimy, jak
+  można~się zalogować do niego z~poziomu systemu Windows. Dokładniej,
+  pokażemy, jak połączyć~się przez internet do komputerów dysponujących
+  systemem GNU/Linux, poprzez uczelniany system Artemis. Chciałbym przy tym
+  bardzo podziękować panu Tomaszowi Molęckiemu z~działu \textsc{it}
+  \textsc{wsz}i\textsc{b}u za~udzielenie nam informacji na temat
+  procedury logowania~się do tego systemu.
+
+  Pierwszy krok polega na pobraniu programu
+  \colorhref{https://winscp.net/eng/download.php}{Win\textsc{scp}}. Gdy
+  już mamy go dostępnego, znajdujemy okno logowania, które wypełniamy
+  zgodnie ze~zdjęciem widocznym na następnym slajdzie. Dane logowania
+  wpisujemy takie same jak dla systemu SUSZI. Gdy to jest gotowe, klikamy
+  na przycisk logowania. W~razie problemów proszę pisać do nas (\email),
+  lub pana Molęckiego.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~systemu Artemis}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.45]
+    {./Presentations-pictures/Miscancellous-pictures/Artemis.jpg}
+
+
+    \caption{Logowanie~się do systemu Artemis za pomocą programu
+      Win\textsc{scp}.}
+
+
+    \label{fig:Artemis-system}
+
+  \end{figure}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Włączanie powłoki BASH}
 % ################################################
 
 
@@ -774,8 +846,8 @@ eprint=true,
     Rolls-Royce kosztowałby jakieś 100\$, przejeżdżałaby milion mil na
     jednym galonie benzyny i~raz do roku eksplodował, zabijając wszystkich
     w~środku.} \\
-  Robert Cringely, \textit{InfoWorld} (tłum. swobodne, por.~str.~221
-  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}).
+  Robert Cringely, \textit{InfoWorld}, tłum. swobodne. Por.~str.~221
+  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
 
   Naszym główny narzędziem na tych zajęciach będzie powłoka
   (ang. \textit{shell}) \textsc{bash}, więc upewnijmy~się, że~umiemy ją
@@ -802,361 +874,6 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Architektura systemu operacyjnego}
-
-
-  \alert{Dalsza część prezentacji wymaga zmian i poprawek.}
-
-  Pracując z~poziomu powłoki nie raz natkniemy~się na problemy
-  trybów działania systemu operacyjnego oraz różnych poziomów dostępu.
-  Często będzie to wynikiem przypadku i~możemy~się poczuć zagubienie,
-  gdy przestanie działać w~zrozumiały sposób. Z~tego powodu wyjaśnimy teraz
-  kilka pojęć dotyczących systemów operacyjnych.
-
-  W~tym momencie potrzebujemy wprowadzić nowe pojęcie.
-  \textbf{Architekturą systemu operacyjnego} nazywamy ogólny plan budowy
-  danego systemu operacyjnego. Architektura takiego systemu jest więc
-  zbiorem idei, których używamy do tworzenia oraz opisywania systemów
-  operacyjnych. Jak poprzednio, nie będziemy potrzebowali ściślejszej
-  definicji tego pojęcia.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rola systemu operacyjnego}
-
-
-  Podstawowa dziś architektura stosowana dzisiaj, mówi nam, że~system
-  operacyjny może działać w~dwóch podstawowych trybach: trybie jądra
-  i~trybie użytkownika. Oprócz tego dany system operacyjny może wprowadzać
-  inne tryby i~poziomy dostępu, o~kilku z~nich powiemy później. Żeby
-  zrozumieć czemu ten podział został wprowadzony, wróćmy do zagadnienia:
-  po co istnieje system operacyjny?
-
-  System operacyjny istnieje, by zdjąć z~nas obowiązek bezpośredniego
-  zarządzania sprzętem, robienia takich rzeczy jak ręczne ustawienie
-  wartości rejestrów procesora, od~których normalny użytkownik chce~się
-  trzymać z~daleka. Oprócz tego, że~życie użytkownika staje~się przez to
-  prostsze,
-  to jest też bezpieczniejsze, bo pracując na niskim poziomie abstrakcji,
-  łatwiej o~pomyłki i~poważne błędy. Przykładowo, potrzebuje mieć możliwość
-  kasowania danych na dysku. Co jeśli przypadkiem zamiast usunąć jeden
-  plik wydamy polecenie, by~skasować całą zawartość dysku?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Tryby działania systemu operacyjnego}
-
-
-  Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
-  należy zagwarantować, żeby dane jednej osoby, które powinny pozostać
-  tajne, nie były od ręki dostępne innym jego użytkownikom.
-
-  Aby zapewnić możliwie dużą wygodę, bezpieczeństwo i~tajność danych,
-  w~obecnej architekturze systemów operacyjnych dostępne są dwa główne tryby
-  działania: \textbf{tryb jądra} (ang. \textit{kernel mode})
-  i~\textbf{tryb użytkownika} (ang. \textit{user mode}). Należy pamiętać,
-  że~to są dwa różne tryby działania tego samego programu.
-
-  Pracując w~trybie jądra, możemy korzystać z~wszystkich możliwości jakie
-  udostępnia nam sprzęt oraz mam dostęp do całej pamięci. Tryb ten musi
-  istnieć, bo~wszystkie operacje sprzętu są potrzebne do działania
-  komputera, więc
-  ktoś musi mieć możliwość je uruchomić. Tak samo, ktoś musi mieć dostęp do
-  całej pamięci, aby móc przydzielać ją innym.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Tryb użytkownika}
-
-
-  Przejdźmy teraz do trybu użytkownika. Gdy jesteśmy w~tym trybie, system
-  operacyjny wyłącza nam dostęp do pewny możliwości naszego komputera.
-  W~szczególności, jeśli jakaś część pamięci jest przydzielona innemu
-  użytkownikowi, jest ona dla nas niedostępna.
-
-  Jak tego typu ograniczenia działają w~praktyce? System operacyjny jest
-  programem jak każdy inny, więc jego działanie zależy od~ustawień. Jeśli
-  działając jako użytkownik chcemy zobaczyć zawartość jakiegoś fragmentu
-  pamięci, to wysyłamy zapytanie do systemu operacyjnego o~jej wyświetlenie
-  nam. System, który zawsze widzi całą dostępną pamięć, sprawdza, czy ma
-  prawo udostępnić nam ten konkretny fragment. Jeśli nie to przesyła nam
-  wiadomość, że~nie mamy uprawnień do zobaczenia zawartości tej części
-  pamięci.
-
-  Więcej informacji w~temacie tych dwóch trybów działania można znaleźć
-  w~tym wideo
-  \parencite{Daves-Garage-Kernel-Mode-vs-User-Mode-Why-it-ETC-Ver-2024}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Problemy z~bezpieczeństwem}
-
-
-  Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
-  z~tym komputerem zrobić wszystko. Z~tego powodu hakerzy dokładają tylu
-  starań, by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich
-  uprawnień. Dlatego też takie antycheaterskie programy takie jak Vanguard,
-  który miał być dodany choćby do
-  \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
-      Legends}}~są tak problematyczne
-  \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
-
-  Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
-  z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
-  tworzącej ten program, że~nie nadużyje tych możliwości?
-
-  Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
-  Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
-  cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
-  w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
-  użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
-  wykryć cheatera.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Problemy z~bezpieczeństwem}
-
-
-  Alternatywą jest uruchamianie tych programów na serwerze
-  gry, który i~tak dysponuje wszystkimi tego typu informacjami. Co nie jest
-  w~interesie firmy dostarczającej te serwery, dla niej jest lepiej jak
-  serwery obsługują grę, a~wykrywaniem cheaterów zajmują~się komputery
-  graczy.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Zdalne logowanie~się do GNU/Linuxa z~Windowsa}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Korzystanie z~systemu Artemis}
-
-
-  Wiemy, że~dla wielu osób zainstalowanie na swoim komputerze systemu
-  GNU/Linux, może być sporym wyzwaniem, dlatego tutaj wyjaśnimy, jak
-  można~się zalogować do niego z~poziomu systemu Windows. Dokładniej,
-  pokażemy, jak połączyć~się przez internet do komputerów dysponujących
-  systemem GNU/Linux, poprzez uczelniany system Artemis. Chciałbym przy tym
-  bardzo podziękować panu Tomaszowi Molęckiemu z~działu \textsc{it}
-  \textsc{wsz}i\textsc{b}u za~udzielenie nam informacji na temat
-  procedury logowania~się do tego systemu.
-
-  Pierwszy krok polega na pobraniu programu
-  \colorhref{https://winscp.net/eng/download.php}{Win\textsc{scp}}. Gdy
-  już mamy go dostępnego, znajdujemy okno logowania, które wypełniamy
-  zgodnie ze~zdjęciem widocznym na następnym slajdzie. Dane logowania
-  wpisujemy takie same jak dla systemu SUSZI. Gdy to jest gotowe, klikamy
-  na przycisk logowania. W~razie problemów proszę pisać do nas (\email),
-  lub pana Molęckiego.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Korzystanie z~systemu Artemis}
-
-  \vspace{-0.5em}
-
-
-  \begin{figure}
-
-    \centering
-
-
-    \includegraphics[scale=0.45]
-    {./Presentations-pictures/Miscancellous-pictures/Artemis.jpg}
-
-
-    \caption{Logowanie~się do systemu Artemis za pomocą programu
-      Win\textsc{scp}.}
-
-
-    \label{fig:Artemis-system}
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Pliki i~procesy}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pliki i~procesy}
-
-
-  Dwie podstawowe abstrakcje, których będziemy używać na tym kursie,
-  to~\textbf{pliki} i~\textbf{procesy}. Nie wnikając w~szczegóły wystarczy
-  nam stwierdzenie, że~plik czymś jest, a~proces coś robi. Warto tutaj
-  przytoczyć następujące powiedzenie, które funkcjonuje w~wielu różnych
-  wersjach i~różnych systemów operacyjnych.
-
-  \textit{Wszystko w~systemie Linux jest plikiem. Jeśli coś nie jest
-    plikiem to jest procesem.}
-
-  Inaczej mówiąc, jeśli na komputerze znajdują~się jakieś dane, to są
-  wewnątrz jakiegoś pliku. Jeśli komputer coś robi, to jest za to
-  odpowiedzialny odpowiedni proces. Zrozumienie tego na tym poziomie jest
-  wystarczające na~potrzeby tych zajęć. W~przyszłości może zajrzymy pod
-  warstwę abstrakcji plików i~procesów, by~się przekonać, że~ich wewnętrzna
-  budowa wcale nie jest banalna.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pliki i~procesy}
-
-
-  Ponieważ pliki są mniej abstrakcyjne (hehe), zaczniemy nasze zajęcia od
-  zaznajomieniem~się z~pracą z~plikami pod powłoką \textsc{bash}.
-  Przyjmujemy przy tym, że~znają Państwo pewne pojęcia z~systemu Windows.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{BASH nie zna słowa „litość”. Część~I}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Litość? Co to jest?}
-
-
-  \textit{Gdy samochody rozwijały~się tak jak komputery, to dziś
-    Rolls-Royce kosztowałby jakieś 100\$, przejeżdżałaby milion mil na
-    jednym galonie benzyny i~raz do roku eksplodował zabijając wszystkich
-    w~środku.} \\
-  Robert Cringely, \textit{InfoWorld}, tłum. swobodne, str.~221,
-  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
-
-  Bóg jest litościwy, \textsc{bash} nie zna tego słowa. Przekonają~się
-  Państwo o~tym wielokrotnie. Każdy z~nas popełnia literówki i~\textsc{bash}
-  bez najmniejszej krztyny litości wytknie nam każdą z~nich, albo
-  z~jej powodu zinterpretuje wszystko na~opak. Jak z~wieloma innymi
-  rzeczami, trzeba nauczyć~się z~tym żyć.
-
-  Kolejny problem dotyczy białych znaków (ang. \textit{whitespaces}), przy
-  czym przez „białe znaki” rozumiemy wszystkie odstępy w~tekście, które na
-  kartce papieru są po prostu obszarami bieli (albo innego koloru papieru).
-  Trzy podstawowe białe znaki to spacja, tabulator i~znak nowej linii
-  (klawisz \texttt{Enter}).
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Swoboda używania białych znaków? Nie żartuj.}
-
-
-  Języki takie jak~C, czy nawet Python dają nam dużą swobodę
-  w~pisaniu białych znaków w~tekście. Wolność jaką mamy w~tym względzie
-  w~\textsc{bash}u, to wolność do podróżowania jaką mam więzień zamknięty
-  w~celi. Chodzi po celi można, ale czy to nazwiemy podróżą? Uczulam więc
-  Państwa, na to by pilnować, gdzie są białe znaki. Jeśli coś
-  w~\textsc{bash}u nie działa, to jest bardzo prawdopodobnie, iż~jest to
-  wynik spacji w~złym miejscu.
-
-  Będzie~się starali zaznaczać miejsca, gdzie szczególnie łatwo popełnić
-  błąd, jednak podanie wszystkich zasada pisania w~\textsc{bash}u i~wyjątków
-  od nich to naprawdę nie jest łatwa rzecz. Dlatego jeśli coś nie działa,
-  to proszę sprawdzić, czy wpisane polecenia wyglądają \alert{dokładnie}
-  tak jak zaprezentowane przykłady.
-
-  Błędy w~przykładach też mogą~się zdarzać, prosimy by pisać o~nich do nas
-  po adres \email.
-
-\end{frame}
-% ##################
 
 
 
@@ -1298,6 +1015,30 @@ eprint=true,
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenia}
+
+
+  \textit{Powłoka systemowa (ang.)} shell \textit{jest programem służącym
+    do~uruchamiania innych programów. Umożliwia ona użytkownikom wydawanie
+    poleceń i~stanowi podstawowy interfejs między nimi a~systemem
+    operacyjnym. Gdy loguję~się do systemu Unix, moja klawiatura jest
+    podłączona do działającej instancji (kopii) powłoki systemowej.
+    Mogę napisać polecenia~-- zwykle pojedynczo~-- a~powłoka uruchamia
+    je po kolei; po zakończeniu każdego z~nich jest gotowa do~następnego.
+    Sesja może więc wyglądać tak jak poniżej, przy czym \$ jest
+    wyświetlanym przez powłokę znakiem zachęty, dzięki któremu wiem,
+    że~oczekuje ona na moje działania.} \\[0.3em]
+  Str.~$88$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
 
 
 
@@ -1731,340 +1472,33 @@ eprint=true,
 
 
 
-% ######################################
-\section{Dalsze informacje o~pracy z~BASHem}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Pewne subtelności}
-
-
-  Przyjmijmy, że~jesteśmy w~katalogu \texttt{Systemy-operacyjne-Ćwiczenia}
-  i~mamy utworzony plik \texttt{Notatki-z-zajęć.txt}. Każdy system
-  operacyjny musi podjąć decyzję, czy traktuje on duże i~małe litery
-  jako różne symbole, czy jako dwie wersje tego samego symbolu. Problem
-  sprowadza~się do tego, czy \texttt{Notatki-z-zajęć.txt}
-  i~\texttt{notatki-z-zajęć.txt} są dwoma różnymi nazwami tego samego pliku,
-  czy też są to dwie różne nazwy? Kwestia ta jest sprawą konwencji,
-  ale~należy ją rozstrzygnąć by uniknąć nieporozumień.
-
-  Symbol GNU/Linux przyjął, że~duże i~małe litery to \alert{różne} symbole,
-  więc \texttt{Notatki-z-zajęć.txt} i~\texttt{notatki-z-zajęć.txt} to dwie
-  różne nazwy. Tak jak w~systemie Windows, w~systemie GNU/Linux w~danym
-  katalogu może być tylko jeden plik o~danej nazwie. Jest to rozsądny wybór,
-  gdyż inaczej użytkownik łatwo by~się pogubił.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Polecenie \texttt{mkdir}}
-
-
-  Na mocy tego co powiedzieliśmy wyżej, w~tym samym katalogu mogą
-  współistnieć pliki o~nazwie \texttt{Notatki-z-zajęć.txt}
-  i~\texttt{notatki-z-zajęć.txt}. Byłyby to \alert{różne} pliki, zawartość
-  jednego z~nich nie miałaby nic wspólnego z~zawartością drugiego. Jednak
-  by uniknąć bałaganu, należy unikać podobnych nazw plików.
-
-  Powiedzmy, że~chcemy teraz utworzyć w~naszym katalogu
-  (\texttt{Systemy-operacyjne-Ćwiczenia}) katalog \texttt{Zajęcia-01}.
-  Służy do tego polecenie
-  \colorhref{https://www.arturpyszczuk.pl/commands-mkdir.html}
-  {\texttt{mkdir}}. Polecenie to wymaga do działania argumentu, którym
-  jest nazwa katalogu, który ma zostać utworzony (logiczne): \\
-  \texttt{\$ mkdir Zajęcia-01} \\
-  \texttt{\$ ls} \\
-  \directoryName{Zajęcia-01} \quad \texttt{Notatki-z-zajęć.txt} \\
-  Powiedzmy, że~stwierdziliśmy, że~chcemy zmienić nazwę pliku
-  \texttt{Notatki-z-zajęć.txt} na
-  \texttt{Notatki-z-systemów-operacyjnych-01.txt} i~przenieść do katalogu
-  \texttt{Zajęcia-01}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Polecenie \texttt{mv}}
-
-
-  W~systemie GNU/Linux zarówno do zmiany nazwy pliku, jak i~przenoszenia
-  ich między katalogami służy polecenie
-  \colorhref{https://www.geeksforgeeks.org/mv-command-linux-examples/}
-  {\texttt{mv}} (ang.~\textit{MoVe}). Możemy więc zmienić nazwę pliku
-  za~pomocą polecenia: \\
-  \texttt{\$ mv Notatki-z-zajęć.txt Notatki-z-systemów-operacyjnych-01.txt}
-
-  Następnie możemy przenieść plik
-  \texttt{Notatki-z-systemów-operacyjnych-01.txt} go do katalogu
-  \texttt{Zajęcia-01} za pomocą polecenia: \\
-  \texttt{\$ mv Notatki-z-systemów-operacyjnych-01.txt Zajęcia-01/} \\
-  Symbol „\texttt{/}” na końcu nazwy katalogu nie jest niezbędny,
-  ale~dobrze go tam umieszczać, bo~stanowi dodatkową informację
-  dla~\textsc{bash}a i~użytkownika, że~konkretna nazwa jest nazwą
-  katalogu.
-
-  Ogólnie unikanie wszelkich niejednoznaczności jest dobrą praktyką.
-  Dlatego dobrze jest w~ramach możliwości, jawnie zaznaczać charakter
-  wszystkich bytów, występujących w~poleceniach.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Polecenie \texttt{mv}}
-
-
-  Możemy też przenieść plik do katalogu i~zmienić jego nazwę za pomocą
-  pojedynczego polecenia: \\
-  \texttt{\$ mv Notatki-z-zajęć.txt
-    Zajęcia-01/Notatki-z-systemów-operacyjnych-01.txt} \\
-  Ponieważ polecenie \texttt{mv} może przenosić pliki tylko do istniejących
-  już katalogów, samo potrafi wykryć co jest nazwą katalogu, a~co nową
-  nazwą pliku. Jak z~większością poleceń GNU/Linuxa należy jednak unikać
-  ich użycia, jeśli nie jesteśmy pewni co dane polecenie zrobi.
-
-  Wszyscy zapewne dobrze wiemy, że w~systemie Windows, jeśli chcemy
-  przekopiować plik o~nazwie \texttt{Dane.dat} do katalogu, który już
-  zawiera plik o~tej nazwie, to zobaczymy komunikat typu
-  \textit{Plik „Dane.dat” zostanie nadpisany. Czy chcesz kontynuować?}
-  Niestety, to \alert{nie} jest domyślne działanie polecenia \texttt{mv}
-  i~wielu innych poleceń w~systemie GNU/Linux.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zagrożenia jakie stwarza \texttt{mv}}
-
-
-  Załóżmy więc, że~jesteśmy w~katalogu w~którym znajduje~się plik
-  \texttt{Ważne-dane.dat} i~plik \texttt{Tekst-popularnych-piosenek.txt}.
-  Jeśli przez przypadek wprowadzimy polecenie \\
-  \texttt{\$ mv Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
-  to plik \texttt{Ważne-dane.dat} zostanie nadpisany przez niezbyt ważny
-  plik \texttt{Teksty-popularnych-piosenek.txt}. Odzyskanie pliku
-  \texttt{Ważne-dane.dat} nie jest niemożliwe, ale jest bardzo, ale to
-  \alert{bardzo} trudne i~wymaga sporych umiejętności pracy z~systemem
-  GNU/Linux.
-
-  \textit{Jesteś prawdziwym miłośnikiem ryzyka, jeśli przechowujesz ważne
-    pliki na~komputerze z~systemem \textsc{unix}.} \\
-  Robert E.~Seastrom, tłum. swobodne, str.~$261$
-  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
-  Stwierdzenie to odnosi~się też do systemu GNU/Linux.
-
-  Pomimo tych problemów, polecenia takie jak \texttt{mv} są zbyt ważne,
-  by~ich nie używać. Jak~się jednak zabezpieczyć przed takimi problemami?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
-
-
-  Poprzez dodanie odpowiednich opcji (flag) do~polecenia \texttt{mv}
-  może sprawić, że~zawsze, gdy polecenie to nadpisałoby istniejący
-  plik zostaniemy zapytani, czy naprawdę chcielibyśmy to zrobić.
-  W~tym przypadku opcja tą jest \texttt{-i}, rezultat jej działania
-  przedstawiony jest poniżej. \\
-  \texttt{\$ mv -i Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
-  \texttt{mv: zamazać 'Ważne-dane.dat'?} \\
-  Forma pytania jaką otrzymamy może być inna na Państwa komputerze.
-  Odpowiedzi twierdzącej na to pytanie, możemy udzielić wpisując
-  „\texttt{t}”, „\texttt{tak}”, „\texttt{y}” lub „\texttt{yes}”, wówczas
-  plik \texttt{Ważne-dane.dat} zostanie nadpisany. Jeśli chcemy udzielić
-  odpowiedzi przeczącej możemy wpisać „\texttt{n}”, „\texttt{nie}”
-  lub~„\texttt{no}”.
-
-  Opcje, jak sama nazwa wskazuje, zmieniają działanie polecenia i~na tym
-  kursie nie musimy wiedzieć o~nich wiele więcej.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Opcje (flagi)}
-
-
-  Ponieważ istnieje duże ryzyko, że~osoby rozpoczynają swoją przygodę
-  z~powłoką nadpiszą przez przypadek ważny plik stosując polecenie
-  \texttt{mv}, we wszystkich przykładach będziemy do niego dodawali
-  opcję~\texttt{-i}. Wyjątkiem od tej zasady będą sytuacja, gdy chcemy
-  by~polecenie \texttt{mv} nadpisało już istniejący plik.
-
-  Doświadczeni użytkownicy systemu GNU/Linux już parokrotnie stracili ważne
-  dane przez niewłaściwe użycie polecenia~\texttt{mv}, więc używają go
-  znacznie ostrożniej i~przez to ryzyko utraty kolejnych danych tą metodą
-  jest znacznie mniejsze.
-
-  Opcje poleceń takie jak~\texttt{-i} mogą wyglądać dziwnie i~być ciężkie
-  do zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie
-  nie należy do przyjemnych, wymaga dużo zapamiętywania, częstego
-  googlowania lub~nabycie umiejętności czytania trudnego w~zrozumieniu
-  manuala (\texttt{man}). Do tego tematu jeszcze nie raz wrócimy.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Czemu życie nie może być proste?}
-
-
-  Wszystkie te problemy nie zmieniają faktu, że~polecenia dostępne
-  w~\textsc{bash}u wraz z~ich opcjami dają nam bardzo potężne narzędzie
-  do~ręki i~ich poznanie jest niezbędne, jeśli chcemy naprawdę dobrze
-  poznać system operacyjny GNU/Linux.
-
-  O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
-  podczas następnych spotkań.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
+% ################################################
+\section{Czy tylko mi~się wydaje, że~ten system jest dziwny?}
+% ################################################
 
 
 % ######################################
-\section{BASH nie zna słowa „litość”. Część~II}
-% ######################################
-
-
-% ##################
 \begin{frame}
-  \frametitle{Litość? Jaka litość?}
+  \frametitle{Czy tylko mi~się wydaje, że~ten system jest dziwny?}
 
 
-  Powłoka \textsc{bash} nie zna słowa litość. Powiedzmy, że~chcemy
-  zmienić nazwę pliku \texttt{Data-01.dat} na \texttt{Data-January-04.dat}
-  i~wpisujemy polecenie: \\
-  \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
-  Wciskamy klawisz \texttt{Enter} i~widzimy coś takiego: \\
-  \texttt{mv: cel 'Data-January-04.dat nie jest katalogiem} \\
-  I~w~naszej głowie pojawia~się pytanie „Co~się dzieje?” Od razu zauważmy,
-  że~na Państwa komputerach treść otrzymanego komunikatu może być inna.
-  Problemowi okazuje~się być winna jest temu jedna, jedyna spacja między
-  symbolem „\texttt{-}” oraz~„\texttt{i}”.
+  Niejedna z~poznanych przez nas cech systemu operacyjnego, może
+  wydawać~się nam dziwna. Czy życie nie mogłoby być prostsze, a~system
+  operacyjny bardziej zrozumiały? Odpowiedź na oba pytania brzmi
+  „Prawdopodobnie tak”. Dlaczego więc tak nie jest?
 
-  Jeśli opcja zaczyna~się symbolem „\texttt{-}” to po nim
-  \alert{nie może być spacji}! Poprawna wersja tego polecenia to \\
-  \texttt{\$ mv -i Data-01.dat Data-January-04.dat}
-
-  Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
-  zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
+  Warto sobie uświadomić, że~niektórzy jeżdżą jeszcze zabytkowymi
+  samochodami wyprodukowanymi w~latach $60$-tych XX~wieku. Prawdopodobnie
+  gdzieś na świecie działają jakieś komputery wyprodukowane w~tych latach,
+  ale większa jest szansa zobaczenia go w~muzeum, niż wykonującego jakąś
+  pracę. W~przeciwieństwie do tego, pomysł z~lat $60$-tych mają~się
+  świetnie, również w~informatyce. Pracując z~systemami często
+  napotykamy~się na jakiś jego fragment, który wymyślono w~owym czasie,
+  odbija on więc ówczesny stan wiedzy i~możliwości techniczne. By więc
+  zrozumieć pewne osobliwości systemów operacyjnych warto udać~się w~krótką
+  podróż w~przeszłość.
 
 \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Logika BASHa? Jaka logika?}
-
-
-  Problem bierze~się stąd, że~jeśli wprowadzimy niepoprawne polecenie
-  \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
-  to \textsc{bash} zinterpretuje „\texttt{-}”, „\texttt{i}” oraz
-  „\texttt{Data-01.dat}” jako nazwy \alert{plików}, które ma przenieść
-  do katalogu o~nazwie „\texttt{Data-January-04.dat}” i~zgłasza problem,
-  że~plik \texttt{Data-January-04.dat} nie jest katalogiem.
-
-  Polecenie \texttt{mv} zostało w~taki sposób napisane, że~oczekuje,
-  iż~przesłana do niej opcja zaczyna~się od symbolu „\texttt{-}”,
-  a~natychmiast po tym symbolu litera oznaczająca konkretną opcję.
-  W~przeciwnym razie zinterpretuje następujące po nim napisy jako nazwy
-  odpowiednich plików lub katalogów i~spróbuje wykonać na nich odpowiednią
-  operację.
-
-  Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
-  zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
-
-  Musimy podkreślić, że~w~tym co napisaliśmy jest wiele uproszczeń,
-  ale~nie chcieliśmy wchodzić teraz w~zbyt wiele szczegółów.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Polecenia też ktoś napisał}
-
-
-  Proszę pamiętać, że~polecenie \texttt{mv} jest programem, napisanym
-  prawdopodobnie w~języku~C, który jakiś programista kiedyś stworzył i~ten
-  człowiek zdecydował, że~to polecenie ma działać tak, a~nie inaczej.
-  Często nie należy~się doszukiwać zbyt wiele logiki w~działaniu poleceń,
-  one są takie, bo~tak po prostu wyszło.
-
-  Gdybyśmy dziś tworzyli jakiś system operacyjny i~jego powłokę „od zera”,
-  to pewnie byśmy zaprojektowali je inaczej. Trzeba wszak uczyć~się na
-  własnych błędach ;).
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\appendix
 % ######################################
 
 
@@ -2072,54 +1506,216 @@ eprint=true,
 
 
 % ######################################
-\EndingSlide{Dziękuję! Pytania?}
-% ######################################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Dlaczego BASH~się tak nazywa}
-% ######################################
-
-
-
-% ##################
 \begin{frame}
-  \frametitle{Dlaczego BASH~się tak nazywa?}
+  \frametitle{Trochę historii}
 
 
-  Historia zaczyna~się
-  od~\colorhref{https://en.wikipedia.org/wiki/Stephen\_R.\_Bourne}
-  {Steve Bourne’a}, który w~$1979$~roku napisał powłokę, która w~naturalny
-  sposób została nazwana
-  \colorhref{https://en.wikipedia.org/wiki/Bourne\_shell}{powłoką Bourne’a}
-  (ang.~\textit{Bourne shell}). Bazując na niej
-  \colorhref{https://en.wikipedia.org/wiki/Brian\_Fox\_(programmer)}
-  {Brian Jhan Fox} napisał w~$1989$~roku \textit{Bourne Again SHell},
-  czyli właśnie
-  \colorhref{https://en.wikipedia.org/wiki/Bash\_(Unix\_shell)}
-  {\textsc{bash}a}.
+  Główne przesłanie tej historii jest następujące. Systemy operacyjne
+  których dziś używamy, wyewoluowały do swojej obecnej formy formy
+  na przestrzeni dekad, wchłaniając i~łącząc pomysły pochodzące
+  z~różnorakich źródeł. Stąd ich dzisiejszy czas może sprawiać wrażenie
+  przestarzałego, bałaganiarskiego i~pełnego niekonsekwencji. Jest to prawdą
+  w~przypadku w~zasadzie wszystkich popularnych systemów operacyjnych, nie
+  tylko omawianego przez nas GNU/Linuxa.
 
-  Sama nazwa \textit{Bourne again shell} to również żart językowy. Nazwę tę
-  można bowiem przetłumaczyć jako „ponownie powłoka Borne’a”, jak
-  i~„odrodzona na nowo powłoka”. W~tym drugim przypadku mamy do czynienia
-  z~grą słowną z~terminem
-  \colorhref{https://billygraham.org/answers/what-is-your-definition-of-a-born-again-christian}
-  {\textit{being born again}}, który zyskał
-  duże znaczenie teologiczne wśród protestantów z~nurtu
-  \colorhref{https://pl.wikipedia.org/wiki/Ewangelikalizm}{ewangelikanizmu}.
+  Zaczynamy w~późnej epoce brązu komputerów, czyli roku~$1965$.
+  W~owym roku w~USA, uczelnia M.I.T oraz firmy General Electrics i~Bell
+  Labs zaczynają pracę nad systemem operacyjnym
+  \colorhref{https://en.wikipedia.org/wiki/Multics}{\textsc{multics}}
+  (ang.~\textit{MULTiplexed Information and Computing Service}). Prace
+  nas systemem \textsc{multics} okazały~się wyjątkowo skomplikowane i~sam
+  projekt odniósł jedynie częściowy sukces. Z~uwagi na trudności
+  przy tworzeniu tego systemu Bell Labs wycofały~się z~projektu
+  w~roku $1969$.
 
 \end{frame}
-% ##################
+% ######################################
 
 
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ken Thompson i~jego współpracownicy}
+
+
+  Jednym z~ludzi, który pracował z~ramienia Bell Labs nad \textsc{multics}em
+  jest \colorhref{https://en.wikipedia.org/wiki/Ken\_Thompson}
+  {Ken Thompson}. Po wycofaniu~się Bell Labs z~tego projektu, Thompson
+  poszukując nowych problemów do rozwiązania, zaczyna pisać programy na
+  znajdujący~się w~Bell Labs i~wówczas już rzadko używany komputer
+  \colorhref{https://en.wikipedia.org/wiki/PDP-7}{PDP-$7$}.
+  W~trackie pracy nad nimi w~pewnym momencie dochodzi do~wniosku,
+  że~niewiele mu brakuje do stworzenia systemu operacyjnego. W~ten sposób
+  powstaje system operacyjny \textsc{unix}, którego pierwsza wersja
+  jest gotowa na jesień $1969$~roku.
+
+  Sama nazwa „\textsc{unix}”,
+  jak zgadzają~się wszyscy biorący udział w~jego tworzeniu, jest
+  nawiązaniem, i~to dość złośliwym do nazwy „\textsc{multics}”.
+  Związane jest to z~powszechną krytyką, że~\textsc{multics} próbował
+  osiągnąć zbyt wiele rzeczy na raz i~to nie wyszło mu na zdrowie,
+  a~nowy system będzie skupiał~się na robieniu kilku rzeczy dobrze. Stąd
+  „multi” zmieniono na „unit” i~powstała nazwa \textsc{unix}, por.
+  str.~???.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ken Thompson i~jego współpracownicy}
+
+
+  Do Thompsona w~pracy nad \textsc{unix}em dołącza wielu wybitnych
+  informatyków, pracujących wtedy w~Bell Labs, jak ???
+
+  System \textsc{unix} jest pierwszym bezpośrednim przodkiem używanego
+  przez nas systemu GNU/Linux, jednak droga od jednego do~drugiego
+  jest dość długa i~wyboista.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ken Thompson i~jego współpracownicy}
+
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.3]
+    {./Presentations-pictures/OS-heroes-Pictures/Dennis-Ritchie-Ken-Thompson-around-year-1972.jpg}
+
+
+    \caption{Ken Thompson (siedzi) i~Dennis Ritchie przy komputerze
+      typu PDP-$11$, około roku $1972$-ego.}
+
+
+    \label{fig:Ritchie-Thompson-around-year-1972}
+
+  \end{figure}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ken Thompson i~jego współpracownicy}
+
+
+  Zdjęcie \eqref{fig:Ritchie-Thompson-around-year-1972} przedstawia Kena
+  Thompsona i~Denisa Ritchiego pracujących na komputerze typu
+  \colorhref{https://en.wikipedia.org/wiki/PDP-11}{PDP-$11$}, za~pomocą
+  dalekopisu
+  \colorhref{https://en.wikipedia.org/wiki/Teletype\_Model\_33}
+  {Model~$33$ Teletype}. Współtwórca \textsc{unix}a Brian
+  W.~Kernighan opatrzył to zdjęcie takim komentarzem.
+
+  \textit{Rysunek 3.1 [u~nas \eqref{fig:Ritchie-Thompson-around-year-1972}]
+    przedstawia zrobione na~potrzeby} public relations \textit{w~$1972$
+    zdjęcie Kena Thompsona i~Dennisa Ritchiego pracujących nad PDP-$11$
+    wyposażona we wczesną wersję Uniksa. Sam komputer najprawdopodobniej
+    był specyficznym wariantem PDP-$11$ o~nazwie PDP-$11/20$. Niewielkie,
+    okrągłe obiekty znajdujące~się mniej więcej na wysokości głowy, to
+    DECtapes~-- napędy z~taśmą magnetyczną, które umożliwiały przechowywanie
+    $144\text{K}$ słów $18$-bitowych [$324$ kilobajty pamięci]. Ponieważ
+    pozwalały one na odczyt i~zapis pojedynczych bloków, mogły służyć jako
+    tymczasowe, wolne, ale niezawodne dyski; taśmy były wymienne, używano
+    ich więc też do~archiwizacji danych.}
+  Str.~$64$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ken Thompson i~jego współpracownicy}
+
+
+  \textit{Ken pisze na dalekopisie Model~$33$ Teletype~-- solidnym,
+    ale~wolnym i~hałaśliwym urządzeniu, będącym w~istocie sterowaną przez
+    komputer elektromechaniczną maszyną do~pisania, która potrafiła pisać
+    tylko dużymi literami, w~tempie do~$10$ znaków na sekundę. Model~$33$
+    pochodzi z~$1963$ roku, ale wcześniejsze wersje były w~powszechnym
+    użyciu już od początku lat~$30$.}
+
+  \textit{Teletype Corporation była częścią AT\&T i~urządzenia Teletypes
+    były powszechnie używane w~Bell System i~innych ośrodkach
+    do~wysyłania wiadomości; dopiero w~późniejszym czasie zaczęto
+    podłączać je do komputerów. To, co zostało wprowadzone na klawiaturze
+    Teletype, trafiało do~komputera, a~rezultaty były drukowane (dużymi
+    literami) na długiej roli papieru; na~zdjęciu~są widoczne górne
+    fragmenty tych rolek. Jak sądzę, jednym z~powodów bardzo krótki
+    nazw wielu poleceń Uniksa było to, że~pisanie na Modelu~$33$ wymagało
+    niemałej siły, a~drukowanie przebiegało wolno.}
+  Str.~$65$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego?}
+
+
+  Jak Państwo widzą,
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{To tylko część tej historii}
+
+
+  To co przedstawiliśmy tutaj jest tylko drobnym wycinkiem historii, która
+  doprowadziła do powstania używanych przez nas systemów operacyjnych,
+  takich jak GNU/Linux.
+
+  Jeśli ktoś chce lepiej poznać tę historię to powinien w~pierwszym rzędzie
+  sięgnąć do krótkiej i~bardzo pięknej książki Briana W.~Kernighan
+  \textit{Jak Unix tworzył historię}
+  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}, która była
+  już przez nas wielokrotnie cytowana. Jak sama jej tytuł wskazuje, książka
+  ta dotyczy głównie systemu \textsc{unix}, jego powstania i~rozwoju. Jednak
+  w~ostatniej części, głównie w~rozdziałach ??? i~??? opisuje drogę, jaka
+  wiodła od~\textsc{unix}, do~systemu GNU/Linux. Cała zaś książka jest
+  kopalnią informacji na temat, tego kiedy, gdzie i~dlaczego powstały znane
+  nam dziś części naszych systemów operacyjnych.
+
+\end{frame}
+% ######################################
 
 
 

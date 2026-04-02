@@ -6,7 +6,7 @@
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{dark}
+  \def\PresentationStyle{ligth}
 \fi
 
 
@@ -88,7 +88,7 @@ eprint=true,
 
 % ####################################################################
 \title{Systemy operacyjne}
-\subtitle{2.~Wprowadzenie do pracy z~\textsc{bash}em}
+\subtitle{3.~O~systemie plików}
 
 \author{Kamil Ziemian \\
   \email}
@@ -116,7 +116,7 @@ eprint=true,
 
 
 % ######################################
-% Number of chars: 43k+, 81k+,
+% Number of chars: 81k+, 65k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
 % ######################################
@@ -153,66 +153,33 @@ eprint=true,
 
 
 % ################################################
-\section{Materiały do nauki}
+\section{Pamięć komputera}
 % ################################################
 
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{Pamięć komputera}
 
 
-  W~tym miejscu, chcielibyśmy omówić krótko kilka pozycji, z~których można
-  korzystać przy nauce pracy z~systemami operacyjnymi.
+  Wiemy już jak wykonać pewne czynności z~poziomu \textsc{bash}a, teraz
+  wypada coś więcej powiedzieć o~systemie plików na komputerze. To niestety
+  może być dla Państwa teoretyczne przynudzanie, jednak bez tego nie da~się
+  całkiem obejść. Zdecydowaliśmy~się też powtórzyć pewne mniej lub bardziej
+  znane rzeczy, by uniknąć rozlicznych niejasności, które często
+  wkradają~się do tego typu dyskusji.
 
-  Brian W.~Kernighan \textit{Jak Unix tworzył historię}
-  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021} \\
-  Zaczniemy dość nietypowo, od książki która nie jest podręcznikiem
-  do systemów operacyjnych. Sam autor opisał jej treść w~następujący
-  sposób. \textit{Ta książka jest po części relacją historyczną, a~po
-    części pamiętnikiem; rodzajem spojrzenia na początki Uniksa i~próbą
-    wyjaśnienia czym Unix jest, jak~się narodził i~dlaczego jest tak ważny.
-    Bezsprzecznie nie jest to praca naukowa~-- nie znajdziesz w~niej
-    przypisów bibliograficznych~-- a~wraz z~postępem w~pisaniu nabrała
-    bardziej pamiętnikowego, a~mniej historycznego charakteru niż
-    pierwotnie planowałem} (zob. str.~$3$
-  w~\parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}).
+  Zacznijmy od samych podstaw, czyli tego jak zorganizowana jest pamięć
+  komputera. Najbardziej podstawową jednostką pamięci w~informatyce jest
+  bit, który może przyjmować jeden z~dwóch stanów: $0$ i~$1$. Gdy chodzi
+  o~liczby to bardziej jesteśmy przyzwyczajeni do systemu dziesiętnego,
+  gdzie podstawową „jednostką pamięci” jest cyfra, która może przyjmować
+  jeden z~dziesięciu „stanów”: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$,
+  $8$ i~$9$.
 
-  Powstają więc dwa pytania. Po pierwsze, czemu mamy czytać książkę
-  o~systemie Unix, skoro nie używamy go na zajęciach? Po drugie, co możemy
-  wynieść z~książki pamiętnikarsko-historycznej?
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Gdy chodzi o~pierwsze pytanie, czemu warto czytać książkę o~systemie Unix,
-  to odpowiedź jest następująca. Systemy GNU/Linux,
-  \colorhref{https://en.wikipedia.org/wiki/MacOS}{macOS},
-  \colorhref{https://en.wikipedia.org/wiki/IOS}{iOS},
-  \colorhref{https://en.wikipedia.org/wiki/Android_(operating_system)}
-  {Android} i~wiele innych, wywodzą~się od systemu Unix i~skopiowały
-  wiele jego własności oraz sposobów działania. Tym samym swoje
-  doświadczenie i~wiedzę na temat jedno z~nich, można stosunkowo łatwo
-  przenieść na inne.
-
-  Jeśli chodzi o~drugie pytanie, czemu czytać książkę, która nie jest
-  podręcznikiem do tego przedmiotu, to przemawia za~tym kilka kwestii.
-  \textit{Jak Unix tworzył historię} jest książką napisaną w~sposób prosty,
-  niedługą i~którą szybko~się czyta. Wprowadza ona czytelnika w~świat
-  systemów operacyjnych i~Unixa, nie od strony wysoce technicznej, lecz
-  przez opowiadania o~konkretnych problemach z~którymi~się mierzyli
-  jego twórcy i~tego jak je rozwiązywali. Należy dodać, że~sam Kernighan
-  jest bardzo wybitnym informatykiem i,~jak można było wywnioskować z~jego
-  słów, brał udział w~tworzeniu systemu Unix.
+  Dlaczego używamy więc bitów dwustanowych, a~nie bardziej przyjaznych
+  dziesięciostanowych? By na to odpowiedzieć, trzeba pamiętać, iż~komputer
+  jest urządzeniem elektronicznym.
 
 \end{frame}
 % ######################################
@@ -223,53 +190,28 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{Pamięć komputera}
 
 
-  Książkę Kernighana można więc potraktować jako naprawdę proste,
-  przynajmniej jak na systemy operacyjne, i~niedługie wprowadzenie do
-  tematyki. W~naszej ocenie jest to też bardzo przyjemna i~lekka lektura.
+  Ponieważ każdy komputer jest urządzeniem elektronicznym, dla każdego bitu
+  pamięci trzeba zbudować odpowiedni układ elektroniczny, który go
+  przechowa. Historycznie próbowano zbudować układy elektroniczne, które
+  by przechowywały jeden z~dziesięciu lub pięciu stanów. Ostatecznie, pewne
+  kwestie techniczne sprawiły, że~wybrany został system binarny.
 
-  Inna jej zaleta polega na tym, że~systemy operacyjne które dzisiaj znamy,
-  pełne są rozwiązań, które są często bardzo dziwaczne, które często mają
-  pochodzenie czysto historyczne. Jak sam Kernighan pisze:
-  \textit{I więcej wiemy o~tej historii [powstania systemu operacyjnego],
-    tym bardziej możemy docenić geniusz wynalazczości, który doprowadził
-    do~powstania Uniksa, a~być może także lepiej
-    zrozumieć, dlaczego współczesne systemy komputerowe wyglądają tak,
-    a~nie inaczej. W~najgorszym razie rzuca ona pewne światło na wybory,
-    które dziś mogą wydawać~się nietrafione czy wręcz zupełnie złe,
-    i~pozwala ujrzeć je jako naturalną konsekwencję ówczesnego stanu wiedzy
-    i~możliwości, wyznaczanych przez dostępne wtedy zasoby}
-  (zob. str.~$11$).
+  W~systemie dziesiętnym wygodnie jest używać potęg liczby $10$, takich jak
+  $10$, $100$, $1 \, 000$, $1 \, 000 \, 000$, $1 \, 000 \, 000 \, 000$~etc.
+  Podobnie w~systemie binarnym wygodnie jest korzystać z~potęg liczby~$2$,
+  dlatego podamy wartość tych z~nich, z~którymi często spotykamy~się
+  w~informatyce.
 
-  Z~naszej strony, gorąco zachęcamy do lektury tej pozycji.
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Nim przejdziemy do następnych pozycji, czujemy potrzebę wspomnienia
-  o~pewnej cesze książki \textit{Jak Unix tworzył historię}. Mianowicie,
-  sięga ona w~czasy bardzo odległych, w~skali informatyki, najczęściej
-  do lat $60$-tych i~$70$-tych XX wieku. W~skutek tego jak wiele~się od tego
-  czasu zmieniło oraz jak wielki bałagan panował wtedy w~świecie komputerów,
-  pewne detale techniczne tej książki mogą być trudne do zrozumienia.
-
-  By ograniczyć~się tylko do USA, w~owych czasach na rynku było co najmniej
-  kilka firm produkujących komputery i~każda używała swoich standardów.
-  Jednostka pamięci jaką jest bajt, czyli $8$ bitów, nie był wtedy wcale
-  powszechnie stosowany. Skutkiem tego dany komputer mógł operować nie na
-  bajtach, lecz na jednostce składającej~się z~$16$ bitów, gdy podobny
-  komputer innej firmy pracował na jednostce składające~się z~$36$ bitów.
+  % !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  % Popraw odstępy.
+  $2^{ \, 0 } = 1$ \\
+  $2^{ \, 1 } = 2$ \\
+  $2^{ \, 2 } = 4$ \\
+  $2^{ \, 3 } = 8$ \\
+  $2^{ \, 4 } = 16$
 
 \end{frame}
 % ######################################
@@ -280,51 +222,25 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{System binarny}
 
 
-  Jeśli więc przeczytamy, w~tej książce, że~dany komputer miał
-  $32\text{K}$ (oznaczenie z~książki) pamięci, to ile to jest na dzisiejsze
-  jednostki? Czy to jest $32$ kilobajtów? Czy też może komputer używał
-  jednostki składającej~się z~$16$ bitów i~wtedy jego pamięć wynosiłaby
-  $64$ kilobajty? Tego typu dwuznacznych danych jest w~tej książce wiele
-  i~można odnieść wrażenie, że~sam autor niekiedy gubił~się w~przeliczaniu
-  starych jednostek na nowe.
-
-  Na tego typu kwestie techniczne nie należy poświęcać zbyt wiele czasu
-  podczas czytania tej książki. Ważne jest to, żeby mieć orientacyjne
-  pojęcie jeśli chodzi choćby o~to, jak mała, czy jak duża była pamięć
-  danego komputera, by zrozumieć z~jakiego typu ograniczeniami zmagali~się
-  pracujący na nich ludzie.
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Andrew S. Tanenbaum, Herbert Bos \textit{Systemy operacyjne} \\
-  Następna pozycja jest z~przeciwnego bieguna, niż dzieło Kernighana. Jest
-  to monografia na temat działania systemów operacyjnych, długa, często
-  operująca na bardzo technicznym poziomie, jednak również wspaniale
-  napisana pozycja. Choć mogą Państwo potrzebować trochę czasu i~ponownej
-  lektury, by docenić to jak dobrze jest napisana, gdyż techniczność
-  omawianych problemów utrudnia dostrzeżenie tego.
-
-  Jest to jedna z~podstawowych pozycji, gdy chodzi o~systemy operacyjne
-  i~jej lektura pozwala zrozumieć z~jakimi zdaniami te systemy~się mierzą
-  i~jak je rozwiązują. Książka ta stanowi również skarbnicą informacji
-  na~temat tego jak działają komputery i~można ją z~czystym sumieniem
-  polecić każdemu, kto pragnie bardziej dogłębnie zrozumieć te urządzenia.
-
-  Dla zupełności, warto wspomnieć, że~do trzeciego wydania autorem był
-  sam Tanenbaum.
+  $2^{ \, 5 } = 32$ \\
+  $2^{ \, 6 } = 64$ \\
+  $2^{ \, 7 } = 128$ \\
+  $2^{ \, 8 } = 256$ \\
+  $2^{ \, 9 } = 512$ \\
+  $2^{ \, 10 } = 1 \, 024$ \\
+  $2^{ \, 15 } = 32 \, 768$ \\
+  $2^{ \, 16 } = 65 \, 536$ \\
+  $2^{ \, 20 } = 1 \, 048 \, 576$ \\
+  $2^{ \, 30 } = 1 \, 073 \, 741 \, 824$ \\
+  $2^{ \, 31 } = 2 \, 147 \, 483 \, 648$ \\
+  $2^{ \, 32 } = 4 \, 294 \, 967 \, 296$ \\
+  $2^{ \, 63 } = 9 \, 223 \, 372 \, 036 \, 854 \, 775 \, 808
+  \approx 9 \cdot 10^{ 18 }$ \\
+  $2^{ \, 64 } = 18 \, 446 \, 744 \, 073 \, 709 \, 551 \, 616
+  \approx 1.8 \cdot 10^{ 18 }$
 
 \end{frame}
 % ######################################
@@ -335,122 +251,29 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{Słowa pamięci}
 
 
-  Machtelt Garrels \textit{Introduction to Linux~-- A Hands on Guide}
-  \parencite{Garrels-Introduction-to-Linux-A-Hands-on-Guide-Ver-2008} \\
-  Pozycja ta powstały w~ramach programu \textit{The~Linux Documentation
-    Guide}, jako darmowy podręcznik, dla osób zaczynających swoją przygodę
-  z~systemem GNU/Linux. Tę książkę i~inne pozycje dotyczące tego systemu
-  operacyjnego można pobrać ze~strony wspomnianego projektu:
-  \colorhref{https://tldp.org/guides.html}{https://tldp.org/guides.html}.
+  $2^{ \, 63 } = 9 \, 223 \, 372 \, 036 \, 854 \, 775 \, 808
+  \approx 9 \cdot 10^{ 18 }$ \\
+  $2^{ \, 64 } = 18 \, 446 \, 744 \, 073 \, 709 \, 551 \, 616
+  \approx 1.8 \cdot 10^{ 18 }$
 
-  Główną jej wadą jest to, że~ostatni raz została uaktualniona
-  w~roku~$2008$, a~od tego czasu pewne rzeczy w~systemie GNU/Linux uległy
-  zmianie, choć większość zawartego w~niej materiału jest równie dobra
-  dziś jak była wtedy. Ponieważ jest ona łatwo dostępna i~stosunkowo
-  prosta w~lekturze, możemy ją polecić osobą, które poszukują materiałów
-  do nauki pracy z~tym systemem operacyjnym.
+  Za zapamiętanie dwóch ostatnich liczb powinni przyznawać jakąś nagrodę.
+  Może wyznaczymy za to nagrodę na naszych zajęciach?
 
-\end{frame}
-% ######################################
+  Dla nabrania perspektywy, Ziemia zawiera około $10^{ 50 }$ atomów, więc
+  mogą Państwo sami zdecydować, czy $10^{ 18 }$ to dużo czy mało.
 
+  Najmniejszą jednostkę pamięci jakiej dany komputer może używać nazywamy
+  \textbf{słowem pamięci} (ang. \textit{memory word}). Każda część pamięci
+  jakiej dany komputer może używać, jest wielokrotnością tego słowa.
 
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Z~innych pozycji książkowych możemy polecić
-  \colorhref{https://helion.pl/ksiazki/jak-dziala-linux-podrecznik-administratora-wydanie-iii-brian-ward,jakli3.htm?}
-  {\textit{Jak działa Linux. Podręcznik administratora}} Briana Warda,
-  \colorhref{https://helion.pl/ksiazki/linux-wprowadzenie-do-wiersza-polecen-wydanie-ii-william-shotts,linwp2.htm?}
-  {\textit{Linux. Wprowadzenie do wiersza poleceń}} Williama Shottsa.
-
-  Na Sake będą dostępne niniejsze prezentacje w~formacie w~postaci
-  \textsc{pdf}ów. W~formie źródłowej (plików \LaTeX a) są dostępna na
-  serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp do
-  internetu może je pobrać wpisując \\
-  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
-  Znajdują~się one w~katalogu „Systemy-operacyjne-Prezentacje”. Należy
-  dodać, że~gałąź \texttt{main} jest zwykle w~tyle
-  za~\texttt{Gałąź-robocza}.
-
-  Można też obejrzeć to repozytorium jak normalny człowiek. Czyli
-  w~przeglądarce: \\
-  \colorhref{https://github.com/KZiemian/Presentation}
-  {https://github.com/KZiemian/Presentation}.
-
-\end{frame}
-% ######################################
-
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Na~Sake będziemy się starali umieszczać również inne materiały do nauki.
-  To jakie konkretnie rzeczy będą tam dostępne, wyjdzie w~praktyce.
-
-  % NIE USUWAĆ !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-  % Na Sake będzie dostępna w~formacie \textsc{pdf} \alert{lista zagadnień do
-  %   opanowania z~tego przedmiotu}, która będzie główny punktem odniesieniem
-  % przy tworzeniu pytań testowych. Jak również różne materiały do nauki,
-  % jakie to dokładnie będą materiały, nie umiem powiedzieć w~tym momencie.
-
-  W~naszych materiałach na pewno są błędy rzeczowe. Jeśli ktoś je znajdzie,
-  \alert{bardzo, bardzo prosimy}, by przesłać na o~nich informację na adres
-  \email. Staram~się wracać do tych prezentacji i~je poprawiać, ale nawet
-  po kilku takich przeglądach, wciąż można w~nich znaleźć różnorakie błędy.
-
-\end{frame}
-% ######################################
-
-
-
-
-
-
-
-
-
-
-% ################################################
-\section{Czy ten przedmiot będzie trudny?}
-% ################################################
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Czy ten przedmiot będzie trudny?}
-
-
-  Zanim przejdziemy właściwej treści zajęć, chcielibyśmy zatrzymać~się
-  nad pytaniem: czy ten przedmiot będzie trudny? Jak to zwykle bywa z~tego
-  typu pytaniami, odpowiedź zależy mocno od tego, jak do tego podejdziemy.
-
-  Informatyka to osobna dziedzina nauki i~jeśli zabrnie~się odpowiednio
-  głęboko, to robi~się naprawdę złożona i~niebanalna. Nie zawsze musimy
-  jednak zajmować~się wszystkim szczegółami problemu jaki napotkaliśmy
-  i~wtedy życie jest prostsze.
-
-  By to zilustrować zadajmy sobie następujące pytanie: czy włączenie
-  komputera jest skomplikowane? Odpowiemy na to pytanie na dwóch poziomach.
-  Pierwszy to poziom normalnego użytkownika, drugi to opis pochodzący
-  z~książki Andrewa S.~Tanenbauma \textit{Systemy operacyjne. Wydanie~III}
-  \parencite{Tanenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}, dotyczący
-  komputera z~systemem Pentium. Przy czym „system Pentium” rozumiem
-  w~sensie, który jest opisany w~tej książce na stronie~$48$.
+  Dziś powszechnie używamy słowa pamięci o~rozmiarze bajtu, każdy
+  zaś bajt to $8 = 2^{ 3 }$ bitów. Wobec tego najmniejszą częścią pamięci
+  o~jaką mogę prosić taki komputer to jeden bajt. Nawet jeśli wystarczyłyby
+  mi cztery bity, to muszę pracować na całym bajcie i~cztery bity będą~się
+  marnować.
 
 \end{frame}
 % ######################################
@@ -461,54 +284,32 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Włączanie komputera, poziom normalnego użytkownika}
+  \frametitle{Pamięć}
 
 
-  \begin{enumerate}
+  Analogicznie, większe jednostki pamięci to dwa bajty, trzy
+  bajty, cztery bajty, ~etc. Przypomnijmy definicje kilku powszechnie
+  używanych jednostek pamięci. \textbf{Kilobajt} $\text{kB}$
+  to~$1 \, 024 = 2^{ 10 }$ bajtów, \textbf{megabajt} $\text{MB}$
+  to~$1 \, 048 \, 576 = 2^{ \, 20 }$ bajtów, zaś \textbf{gigabajt}
+  $\text{GB}$ to~$1 \, 073 \, 741 \, 824 = 2^{ \, 30 }$ bajtów.
 
-  \item Wciskamy przycisk \texttt{Power}.
+  Niestety, tutaj w~nazewnictwie panuje spory bałagan i~niektórzy za
+  kilobajt przyjmują $1 \, 000 = 10^{ \, 3 }$ bajtów, za megabajt
+  $1 \, 000 \, 000 = 10^{ \, 6 }$, a~za gigabajt
+  $1 \, 000 \, 000 \, 000 = 10^{ \, 9 }$. Bo czemu życie miałoby być proste?
 
-  \item Czekamy minutę albo dłużej.
-
-  \item Wybieramy użytkownika i~wchodzimy na swoje konto.
-
-  \end{enumerate}
-
-
-
-  Co w~tym trudnego?
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  Oczywiście, opis włączania komputera z~książki Tanenbauma jest tak
-  skomplikowany, że~trzeba najpierw wprowadzić trochę pojęć.
-
-  \textbf{\textsc{rom}}, ang.~\textit{Read Only Memory}, pl.~\textit{pamięć
-    wyłącznie do~odczytu}. Pamięć komputera której zawartość została
-  zapisana przez firmę, która ten fragment pamięci wyprodukowała
-  i~użytkownik nie może zmodyfikować jej zawartości. Przynajmniej nie żadnym
-  normalny sposobem.
-
-  \textbf{\textsc{ram}}, ang.~\textit{Random Access Memory},
-  pl.~\textit{pamięć o~dostępie w~trybie losowym}. Pamięć komputera o~tej
-  własności, że~jeśli wylosuję dowolny jej element, to czas odczytania
-  informacje z~tego elementu nie będzie zależał od tego, który konkretny
-  element został wylosowany. Inaczej mówiąc dostęp do dowolnego miejsca
-  w~tej pamięci zajmuje tyle samo czasu.
-
-  Tak naprawdę czas odczytu zależy w~pewnym stopniu od tego, w~jaki
-  konkretny sposób pamięć \textsc{ram} jest odczytywana, ale jeszcze długo
-  nie będziemy się musieli tym przejmować.
+  Warto wspomnieć, że~historycznie wiele komputerów, nie opierało swojej
+  pamięci na bajtach. Dla przykładu, rozważmy ważną w~historii informatyki
+  rodzinę komputerów
+  \colorhref{https://en.wikipedia.org/wiki/Programmed\_Data\_Processor}{PDP}
+  (ang. \textit{Programmed Data Processor}), produkowanych przez firmę
+  \colorhref{https://en.wikipedia.org/wiki/Digital\_Equipment\_Corporation}
+  {Digital Equipment Corporation} (w~skrócie DEC). Wyprodukowany w~$1965$
+  roku komputer \colorhref{https://en.wikipedia.org/wiki/PDP-7}{PDP-7}
+  używał $18$ bitowych słów pamięci, podczas gdy
+  \colorhref{https://en.wikipedia.org/wiki/PDP-11}{PDP-11} z~roku
+  $1970$, słów $16$ bitowych.
 
 \end{frame}
 % ######################################
@@ -519,46 +320,25 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Kilka pojęcia}
+  \frametitle{Rodzaje pamięci}
 
 
-  \textbf{Pamięć ulotna}, ang.~\textit{volatile memory}. Pamięć której
-  zawartość jest tracona, gdy przestaje przez nią płynąć prąd. Typowym
-  przykładem takiej pamięci jest \textsc{ram}.
+  Musimy, na Państwa nieszczęście, coś powiedzieć, o~różnych rodzajach
+  pamięci w~komputerze. Pominiemy przy tym wiele szczegółów technicznych.
+  Pamięć w~komputerze dzielimy na ulotną (ang.~\textit{volatile})
+  i~nieulotną. Pamięć nieulotna to taka, która nie potrzebuje dopływu prądu,
+  typowym przykładem jest dysk w~naszym komputerze. Zawartość pamięci
+  ulotnej jest tracona, gdy przestaje nią płynąć prąd, jej typowym
+  przykładem jest pamięć RAM (ang. \textit{Random Access Memory}).
 
-  \textbf{Pamięć nieulotna}, ang.~\textit{non-volatile memory}. Pamięć,
-  której treść jest zachowana, gdy przez układ przestaje płynąć prąd.
-  Typowym przykładem jest dysk \textsc{ssd}.
-
-  Żeby skomplikować życie, pamięcią nieulotną nazywa~się także tą pamięć,
-  które jest ulotna w~ścisłym sensie, ale ponieważ jest zaopatrzona
-  we~własną baterię, jej zawartość jest zachowana również po wyłączeniu
-  komputera z~prądu. Bo~niby czemu życie miałoby być proste?
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Kilka pojęcia}
-
-
-  \textbf{Pamięć \textsc{cmos}}, często po prostu \textbf{\textsc{cmos}}.
-  Skrót pochodzi od nazwy technologi ang.~\textit{Complementary
-    Metal-Oxide-Semiconductor}, pl.~\textit{komplementarny półprzewodnik
-    metalowo-tlenkowy}, w~której ta pamięć jest wykonana. Musi być zasilana
-  prądem, by~zachowywała swój stan, ale ponieważ wyposażona jest w~baterię
-  klasyfikowana jest jako nieulotna. Nie wiem czy przekonuje mnie ta
-  terminologia.
-
-  \textbf{\textsc{bios}} ang.~\textit{Basic Input Output System}, pl.
-  \textit{podstawowy system wejścia, wyjścia}. Program znajdujący~się
-  na płycie głównej komputera, odpowiedzialny między innymi za odczytywanie
-  klawiatury, zapisywanie ekranu oraz operacje wejścia-wyjścia dysków.
+  By wyjaśnić po co są różne rodzaje pamięci, rozważmy następujący przykład.
+  Mamy procesor, którego cykl pracy trwa $0.9$ sekundy i~potrzebuje
+  $0.1$ sekundy na wczytanie danych w~potrzebne mu miejsca. Opis pracy tego
+  procesora można więc opisać w~następujący sposób. W~chwili $t = 0 \,
+  \text{s}$ zaczyna pracować, ładuje dane z~pamięci co zajmuje mu $0.1$
+  sekundy, następnie przetwarza te dane przez $0.9$ sekundy i~zwraca je do
+  pamięci, więc w~chwili $t = 1 \, \text{s}$ jest gotowy, by pobrać nowe
+  dane.
 
 \end{frame}
 % ######################################
@@ -569,32 +349,343 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Uruchamianie komputera z~systemem Pentium}
+  \frametitle{Problem przesyłu danych}
 
 
-  \begin{itemize}
+  Nową porcję danych procesor ładuje przez $0.1 \, \text{s}$, więc
+  w~$t = 1.1 \, \text{s}$ rozpoczyna nowy cykl.  Drugi cykl przetwarzania
+  danych kończy~się w~chwili $t = 2 \text{s}$ i~procesor rozpoczyna ładować
+  nowe dane i~cała procedura powtarza~się kolejny raz, aż do momentu
+  wyłączenia komputera.
 
-  \item[1)] Wciskamy przycisk \texttt{Power}.
+  Powinno być jasne, że~procesor jest urządzeniem do przetwarzania danych.
+  Dane te mogą być na przykład ciągiem liczb $1$, $2$, $3$,\ldots, a~zadanie
+  procesora może być obliczeni ich sumy. Niezależnie od tego jakie dane
+  i~w~jaki sposób procesor je przetwarza, jeśli nimi nie dysponuje, może
+  jedynie bezczynnie czekać.
 
-  \item[2)] Z~płyty głównej ładowany jest program \textsc{bios}. Sprawdza on
-    ilość zainstalowanej pamięci \textsc{ram}, czy komputer dysponuje
-    klawiaturą i~innymi podstawowymi urządzeniami oraz sprawdza czy
-    odpowiadają one w~sposób prawidłowy. W~pierwszej kolejności skanowane
-    są magistrale \textsc{isa} (ang. \textit{Industry Standard
-      Architecture}) i~\textsc{pci} (ang.~\textit{Peripheral Component
-      Interconnect}) w~celu wykrycia podłączonych do nich urządzeń.
+  Powyżej zakładaliśmy, że~procesor dostaje dane i~musi jedynie umieścić
+  je w~pewnym miejscu, by przeprowadzić obliczenia. Pominęliśmy zupełnie
+  czas potrzebny, by te dane pobrać z~dysku. Na potrzeby niniejszej
+  dyskusji, będziemy rozróżniać czas odczytania, od czasu załadowywania
+  danych przez procesor.
 
-  \item[3)] Jeśli do komputera podłączone są inne urządzenia, niż te które
-    były dostępne przy jego ostatni uruchomieniu, nowe urządzenia są
-    konfigurowane.
+\end{frame}
+% ######################################
 
-  \item[4)] Program \textsc{bios} odczytuje listę tzw. urządzeń rozruchowych
-    z~pamięci \textsc{cmos}. Urządzenia rozruchowe to te, które zawierają
-    system operacyjny. W~przeszłości były nimi dyskietki, płyty
-    \textsc{cd}-\textsc{rom}, \textsc{dvd}, dziś choćby pendriwy
-    i~dyski~\textsc{ssd}.
 
-  \end{itemize}
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Problem przesyłu danych}
+
+
+  Czas odczytania dotyczy tego, ile potrzeba czasu by dysk znalazł
+  odpowiednie dane i~przesłał je procesorowi. Czas ładowania dotyczy tego,
+  ile czasu potrzebuje procesor od chwili odebrania danych, które przesłał
+  mu dysk, do momentu umieszczenia ich w~miejscu, w~których mogą być
+  następnie przetwarzane.
+
+  Proszę sobie wyobrazić, że~zamawiają Państwo jedzenie z~dostawą do domu.
+  Czas odczytania odpowiada czasowi, gdy jedzenie jedzie z~restauracji
+  do~Państwa mieszkania. Czas ładowania, odpowiada czasowi od chwili, gdy
+  odebrali Państwo jedzenie, do chwili, gdy położyli je Państwo na talerzu.
+
+  Rozważmy sytuację, gdy odczytanie danych z~dysku trwa $10$~sekund, a~dane
+  przesyłane do procesora mają postać liczb. Możemy myśleć, że~procesor
+  pobiera te liczby, by obliczyć ich sumę, lecz w~naszym przykładzie
+  wszystkie te szczegóły są nieistotne. Służą tylko do zobrazowania
+  ogólnego problemu.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Problem przesyłu danych}
+
+
+  By wykonać takie obliczenia, na początku potrzebujemy $10$ sekund,
+  by~odczytać jedną liczbę, następnie procesor potrzebuje $0.1$ sekundy
+  by~ją załadować w~odpowiednie miejsce, co~zajmuje $0.1$ sekundy,
+  następnie przez $0.9$ sekundy liczba ta jest przetwarzana.
+
+  Jeśli więc w~chwili $t = 1 \, \text{s}$, zaczniemy odczytanie kolejnej
+  liczby z~dysku, to przez następne $10$ sekund procesor będzie stał
+  bezczynnie. Jest to marnowanie mocy obliczeniowej w~stopniu, na który nie
+  możemy sobie pozwolić.
+
+  By temu zapobiec stosujemy następującą procedurę.
+  Dokładamy do komputera pamięć RAM, która może pomieścić $10$ liczb
+  i~która jest $10$ razy szybsza od dysku, czyli odczytanie jednej
+  liczby z~niej zajmuje $1$~sekundę. Następnie ładujemy do niej $10$ liczb
+  z~dysku. Mogłoby~się wydawać, że~zajmie to~$100$ sekund, jednak stosując
+  pewne zabiegi wszystkie liczby można pobrać za~pomocą \alert{jednego}
+  odczytania, które zajmie tylko $11$ sekund.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Problem przesyłu danych}
+
+
+  Cykl pracy będzie teraz wyglądał następująco. W~chwili $t = 0 \, \text{s}$
+  zaczynamy przesył $10$ z~dysku do RAMu, procedura ta kończy~się
+  w~chwili $t = 11 \, \text{s}$. Teraz z~RAMu przesyłamy jedną liczbę
+  do~procesora, trafia ona tam w~$t = 12 \, \text{s}$, procesor ładuje
+  ją~w~odpowiednie miejsce, przetwarza i~kończy cykl pracy w~chwili
+  $t = 13 \, \text{s}$.
+
+  Jednocześnie w~chwili $t = 12 \, \text{s}$ zaczęliśmy przesyłanie
+  kolejnej liczby z~RAMu do procesora, więc gdy ten ostatni skończy
+  działanie \\
+  w~$t = 13 \, \text{s}$, czeka na niego nowa liczba do
+  załadowania i~przetworzenia, dzięki czemu również następny cykl pracy
+  będzie wykorzystany.
+
+  Procedura ta jest powtarzana, aż~w~chwili $t = 22 \, \text{s}$
+  wyczerpaliśmy zawartość RAMu i~potrzebujemy go załadować od nowa
+  $10$ liczbami, co trwa $11$ sekund, do $t = 33 \, \text{s}$, kiedy
+  wznawiamy obliczenia, przebiegające jak poprzednio. Mamy nadzieję,
+  że~dyskusja ta przedstawia jasno, czemu tak ważna jest obecność
+  pamięci~RAM.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{To rodzi kilka pytań}
+
+
+  Cała przedstawiona dyskusja rodzi kilka pytań. Najważniejsze z~nich jest
+  zapewne takie: czemu nie zużyjemy $11$ sekund na odczytanie $10$-ciu
+  liczby z~dysku i~nie prześlemy ich bezpośrednio do procesora? Odpowiedź
+  na to pytanie jest taka, że~pamięć procesora jest zbyt mała, by pomieścić
+  $10$ liczb, w~skutek czego~$9$ z~nich zostanie straconych i~trzeba będzie
+  ponownie poświęcić $11$ sekund na ich odczyt.
+
+  Choć liczby w~tym przykładzie zostały wybrane tak, by można prezentowane
+  wyniki były proste w~zrozumieniu, to ilustrują one prawdziwy problem,
+  z~którym musimy~się mierzyć w~roku~$2026$. Mianowicie, pamięć nieulotna,
+  taka jak dyski, jest zbyt wolna, by móc dostarczać dane procesorowi na
+  tyle szybko, by~ten nie stał bezczynnie. Z~drugiej strony, pamięć która
+  jest na tyle szybka, by zapewnić ciągłą napływ danych do procesora,
+  wymaga ciągłego zasilania prądem, jest więc z~definicji ulotna.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Bo czemu życie miałoby być proste?}
+
+
+  By wyjaśnić czemu tak jest, musielibyśmy~się zagłębić w~technologię
+  działania i~wytwarzania urządzeń elektronicznych, a~na to naprawdę nie
+  ma miejsce na tym kursie.
+
+  W~powyższej dyskusji mocno uprościliśmy sposób w~jaki pamięć współpracuje
+  z~procesorem, bo czemu życie miałoby być proste? Główna zasada pozostaje
+  jednak taka sam i~to jest w~tym wszystkim najważniejsze.
+
+  Podstawowy wniosek dla nas jest taki. Różne urządzenia elektroniczne
+  wewnątrz komputera, jak dyski, czy kości RAMu, dostarczają
+  nam pamięci, jednak sposób działania tej pamięci i~jej parametry
+  techniczne, takie jak szybkość odczytu, zależy od własności danego
+  urządzenia. Jedna rzecz która jest wszędzie taka sama, to rozmiar pamięci.
+  Jeden bajt, jest jednym bajtem, czy to na dysku, czy w~RAMie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Pamięć fizyczna i~pamięć wirtualna}
+
+
+  Szczęśliwie, można bardzo wiele czasu spędzić przed komputerem i~nie
+  zastanawiać~się nad tym, w~której części komputera znajduje~się ta porcja
+  danych, której teraz używam. Należy jednak mieć pewne pojęcie, na temat
+  różnicy między pamięcią fizyczną i~wirtualną. Bo czemu życie miałoby być
+  proste.
+
+  Wyobraźmy sobie, że~mamy komputer posiadający dwa dyski. Ponieważ lubimy
+  potęgi liczby~$2$, a~prawdziwy informatyk liczy $0$, $1$, $2$, \ldots,
+  przyjmijmy następującą umowę. Pierwszy dysk nosi nazwę $\text{A}$
+  i~zawiera bajty o~numerach od~$0$ do~$1 \, 023$, drugi dysk nosi nazwę
+  $\text{B}$ i~również zawiera bajty o~numerach od~$0$ do $1 \, 023$.
+
+  Aby więc podać dokładną lokalizację bajtu, musimy podać dwie informacje:
+  nazwę dysku i~numer bajtu. Przykładowo, „bajt numer $3$” jest określeniem
+  niejednoznacznym, bo nie wiemy, czy znajduje~się na dysku $\text{A}$
+  czy $\text{B}$.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Pamięć fizyczna}
+
+
+  Z~drugiej strony „bajt $( A, 3 )$”, daje nam już jednoznaczną informację,
+  że~chodzi o~bajt o~numerze~$3$, znajdujący~się na~dysku~$\text{A}$.
+  Można~się zapytać, w~jaki sposób bajty na dyskach są numerowane i~jak
+  otrzymać dostęp do konkretnego z~nich, to jednak znowu jest pytanie
+  z~zakresu działania i~budowy urządzeń elektronicznych. Dla nas
+  wystarczająca będzie informacja, że~możemy poprosić dysk o~przesłanie nam
+  odpowiednich bajtów i~on to zrobi.
+
+  To co omawiamy, nosi nazwę \textbf{pamięci fizycznej}. Mamy konkretne
+  urządzenia elektroniczne, na nich znajdują~się konkretne bajty, wszytko
+  jest reprezentowane przez pewne urządzenie elektroniczne, bądź jego część.
+  Jednak korzystanie z~pamięci fizycznej jest ogromnie niewygodne z~wielu
+  powodów.
+
+  Weźmy taki przykład. Muszę zapisać zajmujący $100$ bajtów plik. Czy mam
+  umieścić go na dysku $\text{A}$ czy $\text{B}$? Nie ma to dla nas
+  najmniejszego znaczenia. Lepiej więc nie myśleć o~tym wcale.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Pamięć wirtualna}
+
+
+  By uniknąć myślenia o~rzeczach niepotrzebnych wprowadzamy
+  \textbf{pamięć wirtualną}. Mówimy też o~\textbf{wirtualizacji pamięci}.
+  Temat ten jest ogromnie szeroki, bo czemu życie miałoby być proste? Pewną
+  podstawową ideę możemy wyjaśnić prosto na naszym przykładzie.
+
+  Podczas, gdy pamięć fizyczna składa~się z~bajtów $( \text{A}, 0 )$,
+  $( \text{A}, 1 )$, $( \text{A}, 2 )$, \ldots, $( \text{A}, 1 \, 023 )$,
+  $( \text{B}, 0 )$, $( \text{B}, 1 )$, $( \text{B}, 2 )$, \ldots,
+  $( \text{B}, 1 \, 023)$, to pamięć wirtualna zastępuje to wszystko
+  na bajty o~numerach $0$, $1$, $2$, \ldots, $2 \, 047$. Korzystając z~pamięci
+  wirtualnej mogę poprosić o~bajt numer $100$ i~komputer sam przeliczy,
+  że~oznacza to bajt $( \text{A}, 100 )$ w~pamięci fizycznej.
+
+  Na nasze potrzeby możemy zdefiniować \textbf{pamięć wirtualną}, jako
+  sposób ukrycia przed nami szczegóły pamięci fizycznej, zwalniający nas
+  z~myślenia o~wszystkich tych szczegółach jej działania, które nie są
+  dla nas ważne. Należy przy tym pamiętać, że~pamięć fizyczna nie znika,
+  ona jest jedynie przed nami schowana.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Pliki}
+
+
+  Do tej pory mówiliśmy o~pamięci wirtualnej, która dotyczy dysków
+  (pamięci nieulotnej), jednak istnieje też wirtualna pamięć RAM, tego
+  typu zawiłości, nie będą nas jednak interesowały.
+
+  W~języku informatyki, powiedzielibyśmy, że~pamięć wirtualna jest pewną
+  abstrakcją pamięci fizycznej. Przy czym słowo „abstrakcja” należy tu
+  rozumieć raczej jak w~polskim zwrocie „abstrahując od”, jako pominięcie
+  pewnych szczegółów. W~omawianym przykładzie pominęliśmy, że~pamięć
+  znajduje~się na dwóch różnych dyskach, zastępując ją ciągiem bajtów
+  ponumerowanych $0$, $1$, $2$, \ldots, $2 \, 047$.
+
+  Od tej pory nie będziemy interesować~się tym, gdzie konkretnie
+  w~komputerze znajduje~się dana część pamięci. Mówiąc po prawdzie,
+  większość z~nas nie interesowała~się tym również wcześniej. Pamięć,
+  będzie dla nas najwyżej ciągiem bajtów ponumerowanych od zera:
+  $0$, $1$, $2$,\ldots
+
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Pliki}
+
+
+  Po tej koszmarnie długiej dyskusji możemy~się zastanowić, czym jest plik?
+  Na bardzo podstawowym poziomie, plik to ciąg bajtów w~pamięci. Powiedzmy,
+  że~nasza pamięć zawiera bajty od~$0$ do~$2 \, 047$. Plik zajmujący
+  $100$ bajtów może w~niej odpowiadać bajtom o~numerach od $401$ do~$500$.
+  Chyba każdy widzi, że~praca z~plikami oparta na numerach ich bajtów to
+  byłaby niewyobrażalna męka.
+
+  Dlatego wprowadzamy kolejny poziom abstrakcji. Zamiast myśleć o~bajtach,
+  wprowadzamy pliki, które mają swoje nazwy, rozmiar, położenie w~systemie
+  plików, etc. Niewątpliwie, lepiej myśleć o~pliku, który ma nazwę i~zajmuje
+  $100$ bajtów, niż myśleć o~$100$ bajtach o~numerach od~$401$ do~$500$.
+  Tutaj też „abstrakcja”, przynajmniej częściowo, polega na zapominaniu
+  o~pewnych rzeczach.
+
+  Pojęcie pliku, mamy nadzieję, nie wymaga głębszego wyjaśnienia. Bazując
+  na tym pojęciu, spróbujemy powiedzieć coś więcej o~systemie plików
+  GNU/Linuxa.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{System plików}
+
+
+  \textit{W~systemie Linux wszystko jest plikiem. Jeśli coś nie jest
+    plikiem to jest procesem.} (Por.
+  str.~\parencite{Garrels-Introduction-to-Linux-A-Hands-on-Guide-Ver-2008})
+
+  Ten powiedzenie obrazuje, jak ważne są pliki w~systemie takim jak
+  GNU/Linux.
 
 \end{frame}
 % ######################################
@@ -2118,6 +2209,702 @@ eprint=true,
 
 \end{frame}
 % ##################
+
+
+
+
+
+% ######################################
+\section{Dalsze informacje o~pracy z~BASHem}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pewne subtelności}
+
+
+  Przyjmijmy, że~jesteśmy w~katalogu \texttt{Systemy-operacyjne-Ćwiczenia}
+  i~mamy utworzony plik \texttt{Notatki-z-zajęć.txt}. Każdy system
+  operacyjny musi podjąć decyzję, czy traktuje on duże i~małe litery
+  jako różne symbole, czy jako dwie wersje tego samego symbolu. Problem
+  sprowadza~się do tego, czy \texttt{Notatki-z-zajęć.txt}
+  i~\texttt{notatki-z-zajęć.txt} są dwoma różnymi nazwami tego samego pliku,
+  czy też są to dwie różne nazwy? Kwestia ta jest sprawą konwencji,
+  ale~należy ją rozstrzygnąć by uniknąć nieporozumień.
+
+  Symbol GNU/Linux przyjął, że~duże i~małe litery to \alert{różne} symbole,
+  więc \texttt{Notatki-z-zajęć.txt} i~\texttt{notatki-z-zajęć.txt} to dwie
+  różne nazwy. Tak jak w~systemie Windows, w~systemie GNU/Linux w~danym
+  katalogu może być tylko jeden plik o~danej nazwie. Jest to rozsądny wybór,
+  gdyż inaczej użytkownik łatwo by~się pogubił.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenie \texttt{mkdir}}
+
+
+  Na mocy tego co powiedzieliśmy wyżej, w~tym samym katalogu mogą
+  współistnieć pliki o~nazwie \texttt{Notatki-z-zajęć.txt}
+  i~\texttt{notatki-z-zajęć.txt}. Byłyby to \alert{różne} pliki, zawartość
+  jednego z~nich nie miałaby nic wspólnego z~zawartością drugiego. Jednak
+  by uniknąć bałaganu, należy unikać podobnych nazw plików.
+
+  Powiedzmy, że~chcemy teraz utworzyć w~naszym katalogu
+  (\texttt{Systemy-operacyjne-Ćwiczenia}) katalog \texttt{Zajęcia-01}.
+  Służy do tego polecenie
+  \colorhref{https://www.arturpyszczuk.pl/commands-mkdir.html}
+  {\texttt{mkdir}}. Polecenie to wymaga do działania argumentu, którym
+  jest nazwa katalogu, który ma zostać utworzony (logiczne): \\
+  \texttt{\$ mkdir Zajęcia-01} \\
+  \texttt{\$ ls} \\
+  \directoryName{Zajęcia-01} \quad \texttt{Notatki-z-zajęć.txt} \\
+  Powiedzmy, że~stwierdziliśmy, że~chcemy zmienić nazwę pliku
+  \texttt{Notatki-z-zajęć.txt} na
+  \texttt{Notatki-z-systemów-operacyjnych-01.txt} i~przenieść do katalogu
+  \texttt{Zajęcia-01}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenie \texttt{mv}}
+
+
+  W~systemie GNU/Linux zarówno do zmiany nazwy pliku, jak i~przenoszenia
+  ich między katalogami służy polecenie
+  \colorhref{https://www.geeksforgeeks.org/mv-command-linux-examples/}
+  {\texttt{mv}} (ang.~\textit{MoVe}). Możemy więc zmienić nazwę pliku
+  za~pomocą polecenia: \\
+  \texttt{\$ mv Notatki-z-zajęć.txt Notatki-z-systemów-operacyjnych-01.txt}
+
+  Następnie możemy przenieść plik
+  \texttt{Notatki-z-systemów-operacyjnych-01.txt} go do katalogu
+  \texttt{Zajęcia-01} za pomocą polecenia: \\
+  \texttt{\$ mv Notatki-z-systemów-operacyjnych-01.txt Zajęcia-01/} \\
+  Symbol „\texttt{/}” na końcu nazwy katalogu nie jest niezbędny,
+  ale~dobrze go tam umieszczać, bo~stanowi dodatkową informację
+  dla~\textsc{bash}a i~użytkownika, że~konkretna nazwa jest nazwą
+  katalogu.
+
+  Ogólnie unikanie wszelkich niejednoznaczności jest dobrą praktyką.
+  Dlatego dobrze jest w~ramach możliwości, jawnie zaznaczać charakter
+  wszystkich bytów, występujących w~poleceniach.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenie \texttt{mv}}
+
+
+  Możemy też przenieść plik do katalogu i~zmienić jego nazwę za pomocą
+  pojedynczego polecenia: \\
+  \texttt{\$ mv Notatki-z-zajęć.txt
+    Zajęcia-01/Notatki-z-systemów-operacyjnych-01.txt} \\
+  Ponieważ polecenie \texttt{mv} może przenosić pliki tylko do istniejących
+  już katalogów, samo potrafi wykryć co jest nazwą katalogu, a~co nową
+  nazwą pliku. Jak z~większością poleceń GNU/Linuxa należy jednak unikać
+  ich użycia, jeśli nie jesteśmy pewni co dane polecenie zrobi.
+
+  Wszyscy zapewne dobrze wiemy, że w~systemie Windows, jeśli chcemy
+  przekopiować plik o~nazwie \texttt{Dane.dat} do katalogu, który już
+  zawiera plik o~tej nazwie, to zobaczymy komunikat typu
+  \textit{Plik „Dane.dat” zostanie nadpisany. Czy chcesz kontynuować?}
+  Niestety, to \alert{nie} jest domyślne działanie polecenia \texttt{mv}
+  i~wielu innych poleceń w~systemie GNU/Linux.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zagrożenia jakie stwarza \texttt{mv}}
+
+
+  Załóżmy więc, że~jesteśmy w~katalogu w~którym znajduje~się plik
+  \texttt{Ważne-dane.dat} i~plik \texttt{Tekst-popularnych-piosenek.txt}.
+  Jeśli przez przypadek wprowadzimy polecenie \\
+  \texttt{\$ mv Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
+  to plik \texttt{Ważne-dane.dat} zostanie nadpisany przez niezbyt ważny
+  plik \texttt{Teksty-popularnych-piosenek.txt}. Odzyskanie pliku
+  \texttt{Ważne-dane.dat} nie jest niemożliwe, ale jest bardzo, ale to
+  \alert{bardzo} trudne i~wymaga sporych umiejętności pracy z~systemem
+  GNU/Linux.
+
+  \textit{Jesteś prawdziwym miłośnikiem ryzyka, jeśli przechowujesz ważne
+    pliki na~komputerze z~systemem \textsc{unix}.} \\
+  Robert E.~Seastrom, tłum. swobodne, str.~$261$
+  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+  Stwierdzenie to odnosi~się też do systemu GNU/Linux.
+
+  Pomimo tych problemów, polecenia takie jak \texttt{mv} są zbyt ważne,
+  by~ich nie używać. Jak~się jednak zabezpieczyć przed takimi problemami?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
+
+
+  Poprzez dodanie odpowiednich opcji (flag) do~polecenia \texttt{mv}
+  może sprawić, że~zawsze, gdy polecenie to nadpisałoby istniejący
+  plik zostaniemy zapytani, czy naprawdę chcielibyśmy to zrobić.
+  W~tym przypadku opcja tą jest \texttt{-i}, rezultat jej działania
+  przedstawiony jest poniżej. \\
+  \texttt{\$ mv -i Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
+  \texttt{mv: zamazać 'Ważne-dane.dat'?} \\
+  Forma pytania jaką otrzymamy może być inna na Państwa komputerze.
+  Odpowiedzi twierdzącej na to pytanie, możemy udzielić wpisując
+  „\texttt{t}”, „\texttt{tak}”, „\texttt{y}” lub „\texttt{yes}”, wówczas
+  plik \texttt{Ważne-dane.dat} zostanie nadpisany. Jeśli chcemy udzielić
+  odpowiedzi przeczącej możemy wpisać „\texttt{n}”, „\texttt{nie}”
+  lub~„\texttt{no}”.
+
+  Opcje, jak sama nazwa wskazuje, zmieniają działanie polecenia i~na tym
+  kursie nie musimy wiedzieć o~nich wiele więcej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Opcje (flagi)}
+
+
+  Ponieważ istnieje duże ryzyko, że~osoby rozpoczynają swoją przygodę
+  z~powłoką nadpiszą przez przypadek ważny plik stosując polecenie
+  \texttt{mv}, we wszystkich przykładach będziemy do niego dodawali
+  opcję~\texttt{-i}. Wyjątkiem od tej zasady będą sytuacja, gdy chcemy
+  by~polecenie \texttt{mv} nadpisało już istniejący plik.
+
+  Doświadczeni użytkownicy systemu GNU/Linux już parokrotnie stracili ważne
+  dane przez niewłaściwe użycie polecenia~\texttt{mv}, więc używają go
+  znacznie ostrożniej i~przez to ryzyko utraty kolejnych danych tą metodą
+  jest znacznie mniejsze.
+
+  Opcje poleceń takie jak~\texttt{-i} mogą wyglądać dziwnie i~być ciężkie
+  do zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie
+  nie należy do przyjemnych, wymaga dużo zapamiętywania, częstego
+  googlowania lub~nabycie umiejętności czytania trudnego w~zrozumieniu
+  manuala (\texttt{man}). Do tego tematu jeszcze nie raz wrócimy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czemu życie nie może być proste?}
+
+
+  Wszystkie te problemy nie zmieniają faktu, że~polecenia dostępne
+  w~\textsc{bash}u wraz z~ich opcjami dają nam bardzo potężne narzędzie
+  do~ręki i~ich poznanie jest niezbędne, jeśli chcemy naprawdę dobrze
+  poznać system operacyjny GNU/Linux.
+
+  O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
+  podczas następnych spotkań.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{BASH nie zna słowa „litość”. Część~II}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Litość? Jaka litość?}
+
+
+  Powłoka \textsc{bash} nie zna słowa litość. Powiedzmy, że~chcemy
+  zmienić nazwę pliku \texttt{Data-01.dat} na \texttt{Data-January-04.dat}
+  i~wpisujemy polecenie: \\
+  \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
+  Wciskamy klawisz \texttt{Enter} i~widzimy coś takiego: \\
+  \texttt{mv: cel 'Data-January-04.dat nie jest katalogiem} \\
+  I~w~naszej głowie pojawia~się pytanie „Co~się dzieje?” Od razu zauważmy,
+  że~na Państwa komputerach treść otrzymanego komunikatu może być inna.
+  Problemowi okazuje~się być winna jest temu jedna, jedyna spacja między
+  symbolem „\texttt{-}” oraz~„\texttt{i}”.
+
+  Jeśli opcja zaczyna~się symbolem „\texttt{-}” to po nim
+  \alert{nie może być spacji}! Poprawna wersja tego polecenia to \\
+  \texttt{\$ mv -i Data-01.dat Data-January-04.dat}
+
+  Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
+  zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Logika BASHa? Jaka logika?}
+
+
+  Problem bierze~się stąd, że~jeśli wprowadzimy niepoprawne polecenie
+  \texttt{\$ mv - i Data-01.dat Data-January-04.dat} \\
+  to \textsc{bash} zinterpretuje „\texttt{-}”, „\texttt{i}” oraz
+  „\texttt{Data-01.dat}” jako nazwy \alert{plików}, które ma przenieść
+  do katalogu o~nazwie „\texttt{Data-January-04.dat}” i~zgłasza problem,
+  że~plik \texttt{Data-January-04.dat} nie jest katalogiem.
+
+  Polecenie \texttt{mv} zostało w~taki sposób napisane, że~oczekuje,
+  iż~przesłana do niej opcja zaczyna~się od symbolu „\texttt{-}”,
+  a~natychmiast po tym symbolu litera oznaczająca konkretną opcję.
+  W~przeciwnym razie zinterpretuje następujące po nim napisy jako nazwy
+  odpowiednich plików lub katalogów i~spróbuje wykonać na nich odpowiednią
+  operację.
+
+  Jak~się zapewne już Państwo domyślają, istnieją opcje poleceń nie
+  zaczynające~się od symbolu „\texttt{-}”, o~nich opowiemy sobie później.
+
+  Musimy podkreślić, że~w~tym co napisaliśmy jest wiele uproszczeń,
+  ale~nie chcieliśmy wchodzić teraz w~zbyt wiele szczegółów.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Polecenia też ktoś napisał}
+
+
+  Proszę pamiętać, że~polecenie \texttt{mv} jest programem, napisanym
+  prawdopodobnie w~języku~C, który jakiś programista kiedyś stworzył i~ten
+  człowiek zdecydował, że~to polecenie ma działać tak, a~nie inaczej.
+  Często nie należy~się doszukiwać zbyt wiele logiki w~działaniu poleceń,
+  one są takie, bo~tak po prostu wyszło.
+
+  Gdybyśmy dziś tworzyli jakiś system operacyjny i~jego powłokę „od zera”,
+  to pewnie byśmy zaprojektowali je inaczej. Trzeba wszak uczyć~się na
+  własnych błędach ;).
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\appendix
+% ######################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Dziękuję! Pytania?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Dlaczego BASH~się tak nazywa}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego BASH~się tak nazywa?}
+
+
+  Historia zaczyna~się
+  od~\colorhref{https://en.wikipedia.org/wiki/Stephen\_R.\_Bourne}
+  {Steve Bourne’a}, który w~$1979$~roku napisał powłokę, która w~naturalny
+  sposób została nazwana
+  \colorhref{https://en.wikipedia.org/wiki/Bourne\_shell}{powłoką Bourne’a}
+  (ang.~\textit{Bourne shell}). Bazując na niej
+  \colorhref{https://en.wikipedia.org/wiki/Brian\_Fox\_(programmer)}
+  {Brian Jhan Fox} napisał w~$1989$~roku \textit{Bourne Again SHell},
+  czyli właśnie
+  \colorhref{https://en.wikipedia.org/wiki/Bash\_(Unix\_shell)}
+  {\textsc{bash}a}.
+
+  Sama nazwa \textit{Bourne again shell} to również żart językowy. Nazwę tę
+  można bowiem przetłumaczyć jako „ponownie powłoka Borne’a”, jak
+  i~„odrodzona na nowo powłoka”. W~tym drugim przypadku mamy do czynienia
+  z~grą słowną z~terminem
+  \colorhref{https://billygraham.org/answers/what-is-your-definition-of-a-born-again-christian}
+  {\textit{being born again}}, który zyskał
+  duże znaczenie teologiczne wśród protestantów z~nurtu
+  \colorhref{https://pl.wikipedia.org/wiki/Ewangelikalizm}{ewangelikanizmu}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Architektura systemu operacyjnego}
+
+
+  \alert{Dalsza część prezentacji wymaga zmian i poprawek.}
+
+  Pracując z~poziomu powłoki nie raz natkniemy~się na problemy
+  trybów działania systemu operacyjnego oraz różnych poziomów dostępu.
+  Często będzie to wynikiem przypadku i~możemy~się poczuć zagubienie,
+  gdy przestanie działać w~zrozumiały sposób. Z~tego powodu wyjaśnimy teraz
+  kilka pojęć dotyczących systemów operacyjnych.
+
+  W~tym momencie potrzebujemy wprowadzić nowe pojęcie.
+  \textbf{Architekturą systemu operacyjnego} nazywamy ogólny plan budowy
+  danego systemu operacyjnego. Architektura takiego systemu jest więc
+  zbiorem idei, których używamy do tworzenia oraz opisywania systemów
+  operacyjnych. Jak poprzednio, nie będziemy potrzebowali ściślejszej
+  definicji tego pojęcia.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rola systemu operacyjnego}
+
+
+  Podstawowa dziś architektura stosowana dzisiaj, mówi nam, że~system
+  operacyjny może działać w~dwóch podstawowych trybach: trybie jądra
+  i~trybie użytkownika. Oprócz tego dany system operacyjny może wprowadzać
+  inne tryby i~poziomy dostępu, o~kilku z~nich powiemy później. Żeby
+  zrozumieć czemu ten podział został wprowadzony, wróćmy do zagadnienia:
+  po co istnieje system operacyjny?
+
+  System operacyjny istnieje, by zdjąć z~nas obowiązek bezpośredniego
+  zarządzania sprzętem, robienia takich rzeczy jak ręczne ustawienie
+  wartości rejestrów procesora, od~których normalny użytkownik chce~się
+  trzymać z~daleka. Oprócz tego, że~życie użytkownika staje~się przez to
+  prostsze,
+  to jest też bezpieczniejsze, bo pracując na niskim poziomie abstrakcji,
+  łatwiej o~pomyłki i~poważne błędy. Przykładowo, potrzebuje mieć możliwość
+  kasowania danych na dysku. Co jeśli przypadkiem zamiast usunąć jeden
+  plik wydamy polecenie, by~skasować całą zawartość dysku?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tryby działania systemu operacyjnego}
+
+
+  Co więcej, jeśli kilka osób ma dostęp do tego samego komputera, to
+  należy zagwarantować, żeby dane jednej osoby, które powinny pozostać
+  tajne, nie były od ręki dostępne innym jego użytkownikom.
+
+  Aby zapewnić możliwie dużą wygodę, bezpieczeństwo i~tajność danych,
+  w~obecnej architekturze systemów operacyjnych dostępne są dwa główne tryby
+  działania: \textbf{tryb jądra} (ang. \textit{kernel mode})
+  i~\textbf{tryb użytkownika} (ang. \textit{user mode}). Należy pamiętać,
+  że~to są dwa różne tryby działania tego samego programu.
+
+  Pracując w~trybie jądra, możemy korzystać z~wszystkich możliwości jakie
+  udostępnia nam sprzęt oraz mam dostęp do całej pamięci. Tryb ten musi
+  istnieć, bo~wszystkie operacje sprzętu są potrzebne do działania
+  komputera, więc
+  ktoś musi mieć możliwość je uruchomić. Tak samo, ktoś musi mieć dostęp do
+  całej pamięci, aby móc przydzielać ją innym.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Tryb użytkownika}
+
+
+  Przejdźmy teraz do trybu użytkownika. Gdy jesteśmy w~tym trybie, system
+  operacyjny wyłącza nam dostęp do pewny możliwości naszego komputera.
+  W~szczególności, jeśli jakaś część pamięci jest przydzielona innemu
+  użytkownikowi, jest ona dla nas niedostępna.
+
+  Jak tego typu ograniczenia działają w~praktyce? System operacyjny jest
+  programem jak każdy inny, więc jego działanie zależy od~ustawień. Jeśli
+  działając jako użytkownik chcemy zobaczyć zawartość jakiegoś fragmentu
+  pamięci, to wysyłamy zapytanie do systemu operacyjnego o~jej wyświetlenie
+  nam. System, który zawsze widzi całą dostępną pamięć, sprawdza, czy ma
+  prawo udostępnić nam ten konkretny fragment. Jeśli nie to przesyła nam
+  wiadomość, że~nie mamy uprawnień do zobaczenia zawartości tej części
+  pamięci.
+
+  Więcej informacji w~temacie tych dwóch trybów działania można znaleźć
+  w~tym wideo
+  \parencite{Daves-Garage-Kernel-Mode-vs-User-Mode-Why-it-ETC-Ver-2024}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~bezpieczeństwem}
+
+
+  Jak można~się z~tego domyślić, jeśli zdobędę dostęp do trybu jądra, mogę
+  z~tym komputerem zrobić wszystko. Z~tego powodu hakerzy dokładają tylu
+  starań, by uzyskać do niego dostęp \alert{bez} posiadania odpowiednich
+  uprawnień. Dlatego też takie antycheaterskie programy takie jak Vanguard,
+  który miał być dodany choćby do
+  \colorhref{https://www.youtube.com/watch?v=nk6aKV2rY7E}{\textit{League~of
+      Legends}}~są tak problematyczne
+  \parencite{Low-Level-Why-Riots-anti-cheat-is-a-HUGE-problem-Ver-2024}.
+
+  Vanguard działa bowiem w~trybie jądra, ma więc możliwość by zrobić
+  z~moich komputerem absolutnie wszystko co chce. Czy ufamy firmie
+  tworzącej ten program, że~nie nadużyje tych możliwości?
+
+  Pytanie, czemu w~ogóle pozwalamy istnieć taki programom jak Vanguard?
+  Dlatego, że~jeśli program ten pracuje w~trybie jądra to do wyszukiwania
+  cheaterów używam zasobów \alert{naszych} komputera. Jeśli pracowałby
+  w~trybie użytkownika, nie byłoby to możliwe, gdyż z~definicji trybu
+  użytkownika, program ten nie miałby dostępu do informacji potrzebnych by
+  wykryć cheatera.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~bezpieczeństwem}
+
+
+  Alternatywą jest uruchamianie tych programów na serwerze
+  gry, który i~tak dysponuje wszystkimi tego typu informacjami. Co nie jest
+  w~interesie firmy dostarczającej te serwery, dla niej jest lepiej jak
+  serwery obsługują grę, a~wykrywaniem cheaterów zajmują~się komputery
+  graczy.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Pliki i~procesy}
+% ######################################
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pliki i~procesy}
+
+
+  Dwie podstawowe abstrakcje, których będziemy używać na tym kursie,
+  to~\textbf{pliki} i~\textbf{procesy}. Nie wnikając w~szczegóły wystarczy
+  nam stwierdzenie, że~plik czymś jest, a~proces coś robi. Warto tutaj
+  przytoczyć następujące powiedzenie, które funkcjonuje w~wielu różnych
+  wersjach i~różnych systemów operacyjnych.
+
+  \textit{Wszystko w~systemie Linux jest plikiem. Jeśli coś nie jest
+    plikiem to jest procesem.}
+
+  Inaczej mówiąc, jeśli na komputerze znajdują~się jakieś dane, to są
+  wewnątrz jakiegoś pliku. Jeśli komputer coś robi, to jest za to
+  odpowiedzialny odpowiedni proces. Zrozumienie tego na tym poziomie jest
+  wystarczające na~potrzeby tych zajęć. W~przyszłości może zajrzymy pod
+  warstwę abstrakcji plików i~procesów, by~się przekonać, że~ich wewnętrzna
+  budowa wcale nie jest banalna.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Pliki i~procesy}
+
+
+  Ponieważ pliki są mniej abstrakcyjne (hehe), zaczniemy nasze zajęcia od
+  zaznajomieniem~się z~pracą z~plikami pod powłoką \textsc{bash}.
+  Przyjmujemy przy tym, że~znają Państwo pewne pojęcia z~systemu Windows.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{BASH nie zna słowa „litość”. Część~I}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Litość? Co to jest?}
+
+
+  \textit{Gdy samochody rozwijały~się tak jak komputery, to dziś
+    Rolls-Royce kosztowałby jakieś 100\$, przejeżdżałaby milion mil na
+    jednym galonie benzyny i~raz do roku eksplodował zabijając wszystkich
+    w~środku.} \\
+  Robert Cringely, \textit{InfoWorld}, tłum. swobodne, str.~221,
+  \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+
+  Bóg jest litościwy, \textsc{bash} nie zna tego słowa. Przekonają~się
+  Państwo o~tym wielokrotnie. Każdy z~nas popełnia literówki i~\textsc{bash}
+  bez najmniejszej krztyny litości wytknie nam każdą z~nich, albo
+  z~jej powodu zinterpretuje wszystko na~opak. Jak z~wieloma innymi
+  rzeczami, trzeba nauczyć~się z~tym żyć.
+
+  Kolejny problem dotyczy białych znaków (ang. \textit{whitespaces}), przy
+  czym przez „białe znaki” rozumiemy wszystkie odstępy w~tekście, które na
+  kartce papieru są po prostu obszarami bieli (albo innego koloru papieru).
+  Trzy podstawowe białe znaki to spacja, tabulator i~znak nowej linii
+  (klawisz \texttt{Enter}).
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Swoboda używania białych znaków? Nie żartuj.}
+
+
+  Języki takie jak~C, czy nawet Python dają nam dużą swobodę
+  w~pisaniu białych znaków w~tekście. Wolność jaką mamy w~tym względzie
+  w~\textsc{bash}u, to wolność do podróżowania jaką mam więzień zamknięty
+  w~celi. Chodzi po celi można, ale czy to nazwiemy podróżą? Uczulam więc
+  Państwa, na to by pilnować, gdzie są białe znaki. Jeśli coś
+  w~\textsc{bash}u nie działa, to jest bardzo prawdopodobnie, iż~jest to
+  wynik spacji w~złym miejscu.
+
+  Będzie~się starali zaznaczać miejsca, gdzie szczególnie łatwo popełnić
+  błąd, jednak podanie wszystkich zasada pisania w~\textsc{bash}u i~wyjątków
+  od nich to naprawdę nie jest łatwa rzecz. Dlatego jeśli coś nie działa,
+  to proszę sprawdzić, czy wpisane polecenia wyglądają \alert{dokładnie}
+  tak jak zaprezentowane przykłady.
+
+  Błędy w~przykładach też mogą~się zdarzać, prosimy by pisać o~nich do nas
+  po adres \email.
+
+\end{frame}
+% ##################
+
+
+
 
 
 
