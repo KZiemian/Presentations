@@ -1,12 +1,12 @@
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 % Basic configuration of Beamera class and Jagiellonian theme
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
 
 \ifx\PresentationStyle\notset
-  \def\PresentationStyle{light}
+  \def\PresentationStyle{dark}
 \fi
 
 
@@ -88,7 +88,7 @@ eprint=true,
 
 % ####################################################################
 \title{Systemy operacyjne}
-\subtitle{2.~Wprowadzenie do pracy z~\textsc{bash}}
+\subtitle{3.~Pewne informacje o~systemach operacyjnych}
 
 \author{Kamil Ziemian \\
   \email}
@@ -115,25 +115,25 @@ eprint=true,
 
 
 
-% ######################################
-% Number of chars: 43k+,
+% ################################################
+% Number of chars: 43k+, 8k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% ######################################
+% ################################################
 
 
 
 
 
-% ######################################
+% ################################################
 \maketitle
-% ######################################
+% ################################################
 
 
 
 
 
-% ##################
+% ################################################
 \begin{frame}
   \frametitle{Spis treści}
 
@@ -141,7 +141,7 @@ eprint=true,
   \tableofcontents
 
 \end{frame}
-% ##################
+% ################################################
 
 
 
@@ -153,126 +153,82 @@ eprint=true,
 
 
 % ################################################
-\section{Materiały do nauki}
-% ################################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Na Sake będzie dostępna w~formacie \textsc{pdf} \alert{lista zagadnień do
-    opanowania z~tego przedmiotu}, która będzie główny punktem odniesieniem
-  przy tworzeniu pytań testowych. Jak również różne materiały do nauki,
-  jakie to dokładnie będą materiały, nie umiem powiedzieć w~tym momencie.
-
-  Będą tam również dostępne te prezentacje w~formacie \textsc{pdf}ów.
-  W~formie źródłowej (plików \LaTeX a) są dostępna na serwisie GitHub.
-  Każdy kto ma na komputerze program Git i~dostęp do internetu może je
-  pobrać wpisując \\
-  \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
-  Znajdują~się one w~katalogu „Systemy-operacyjne-Prezentacje”. Należy
-  dodać, że~gałąź \texttt{main} jest zwykle w~tyle
-  za~\texttt{Gałąź-robocza}.
-
-  Można też obejrzeć to repozytorium jak normalny człowiek. Czyli
-  w~przeglądarce: \\
-  \colorhref{https://github.com/KZiemian/Presentation}
-  {https://github.com/KZiemian/Presentation}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  W~tym materiałach na pewno są błędy rzeczowe. Jeśli ktoś je znajdzie,
-  \alert{bardzo, bardzo prosimy}, by przesłać na o~nich informację na adres
-  \email.
-
-  Będziemy~się starali wracać do tych prezentacji i~je poprawiać
-  w~przyszłości, ale z~jakiegoś powodu, pomimo kolejnych serii poprawek,
-  wciąż znajdujemy kolejne.
-
-  Podstawowo książką do systemów operacyjne są
-  \textit{Systemy operacyjne. Wyd.~V} Andrewa S.~Tanenbauma i~Bos Herberta.
-  Pierwszy jej rozdział to prawdziwa skarbnica wiedzy o~informatyce, którą
-  każdy informatyk powinien znać. Jeśli Państwo chcą to udostępnię na Sake
-  zdjęcia pierwszego rozdziału mojego egzemplarza, który należy do
-  trzeciego wydania tej pozycji.
-
-  \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Materiały do nauki}
-
-
-  Jeśli jakieś zdjęcia są nieczytelne, proszę do mnie napisać. Do tej
-  pory~się nikt nie skarżył, ale też chyba mało kto czytał tekst widoczny
-  na~tych zdjęciach.
-
-  Gdy chodzi o~pozycje książkowe, to my polecamy
-  \colorhref{https://helion.pl/ksiazki/jak-dziala-linux-podrecznik-administratora-wydanie-iii-brian-ward,jakli3.htm?}
-  {\textit{Jak działa Linux. Podręcznik administratora}} Briana Warda,
-  \colorhref{https://helion.pl/ksiazki/linux-wprowadzenie-do-wiersza-polecen-wydanie-ii-william-shotts,linwp2.htm?}
-  {\textit{Linux. Wprowadzenie do wiersza poleceń}} Williama Shottsa
-  i~\colorhref{https://tldp.org/LDP/intro-linux/intro-linux.pdf}
-  {\textit{Introduction to Linux~-- A Hands on Guide}} Machtelt Garrels
-  \parencite{Garrels-Introduction-to-Linux-A-Hands-on-Guide-Ver-2008}.
-  Na~stronie \colorhref{https://tldp.org/guides.html}
-  {\textit{The~Linux Documentation Guide}} poza książką pani Garrels można
-  znaleźć wiele innych bardzo wartościowych pozycji.
-
-  Jeśli chodzi o~książkę wprowadzającą dogłębnie w~tematykę systemów
-  operacyjnych to kanoniczną pozycją są
-  \colorhref{https://helion.pl/ksiazki/systemy-operacyjne-wydanie-v-andrew-s-tanenbaum-herbert-bos,sysop5.htm}
-  {\textit{Systemy operacyjne}} Andrewa S. Tanenbauma i~Herberta Bosa
-  (do trzeciego wydania autorem był sam Tanenbaum).
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
 \section{Systemy operacyjne wokół nas}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Po co istnieją systemy operacyjne i~czemu jest ich
+    tak wiele?}
+
+
+  Jeśli rozejrzymy~się po świecie, dostrzeżemy jak wielka liczba różnych
+  systemów operacyjnych (os, ang. \textit{Operating System}) jest dziś
+  używana, choć normalny użytkownik
+  styka~się bezpośrednie tylko z~kilkoma z~nich. Dlaczego jest ich tak
+  wiele? Spróbujmy wskazać kilka przyczyn tego stanu rzeczy.
+
+  Pierwszą kwestią o~której należy wspomnieć jest to, że~system operacyjny
+  służy do zarządzania sprzętem komputerowym, różne rodzaje komputerów
+  wymagają różnych systemów operacyjnych. Inny system operacyjny potrzebny
+  jest na komputerze stacjonarnym, inny na smartfonie. To jedna przyczyna
+  tej różnorodności.
+
+  Drugą kwestią jest to, że~różni ludzie mają różne pomysły na temat tego
+  jak system operacyjny powinien działać. Więc nawet na ten sam typ
+  komputera ludzie napiszą różne systemy operacyjne, które według nich
+  lepiej wykonujące swoją pracę, niż inne.
+
+\end{frame}
 % ######################################
 
 
-% ##################
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Po co istnieją systemy operacyjne i~czemu jest ich
+    tak wiele?}
+
+
+  Po trzecie, nawet jeśli rdzeń systemu operacyjnego jest gotowy, to
+  istnieje milion rzeczy dokoła niego, które można zmienić. By użyć bardzo
+  prostych przykładów, jak ma wyglądać jego środowisko graficzne,
+  jakie programy do edycji zdjęć mają być na nim dostępne, jaki program
+  ma odtwarzać na nim muzykę, etc.? Taka właśnie sytuacja ma miejsce
+  w~systemie GNU/Linux, który posiada wiele dystrybucji. Do zagadnienie
+  tego krótko powrócimy w~przyszłości.
+
+  Przejdziemy teraz do krótkiego przegląd systemów operacyjnych używanych
+  w~XXI wieku. To oczywiście bardzo obszerny temat, któremu można by
+  poświęcić wiele godzin. Poniższy przegląd ma na celu tylko wstępne
+  uporządkowanie pewnych rzecz, które mogli już Państwo usłyszeć wcześniej.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
 \begin{frame}
   \frametitle{Jakie systemy operacyjne są dziś używane?}
 
 
   Obecnie na komputerach osobistych dominują trzy rodziny systemów
-  operacyjnych (\textsc{os}, ang. \textit{operating system}). Są to:
+  operacyjnych. Są to:
   \begin{itemize}
 
-  \item GNU/Linux (w~skrócie: Linux);
+  \item \colorhref{https://www.gnu.org/gnu/linux-and-gnu.en.html}{GNU/Linux}
+    i~\colorhref{https://en.wikipedia.org/wiki/Linux\_kernel}{Linux};
 
-  \item mac\textsc{os};
+  \item \colorhref{https://en.wikipedia.org/wiki/MacOS}{macOS};
 
-  \item Windows.
+  \item \colorhref{https://en.wikipedia.org/wiki/Microsoft\_Windows}
+    {Microsoft Windows}.
 
   \end{itemize}
 
@@ -280,56 +236,93 @@ eprint=true,
   operacyjnych dla nich:
   \begin{itemize}
 
-  \item Android;
+  \item
+    \colorhref{https://en.wikipedia.org/wiki/Android\_(operating\_system)}
+    {Android};
 
-  \item i\textsc{os}.
+  \item \colorhref{https://en.wikipedia.org/wiki/IOS}{iOS}.
 
   \end{itemize}
-  Niemniej ja nie jestem ekspertem w~kwestii smartfonów, więc nie będę
-  wnikał w~tą tematykę.
+  Niemniej nie jesteśmy znawcami smartfonów, więc nie będziemy zbytnio
+  poruszali tej tematyki.
+
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Jakie systemy operacyjne są dziś używane?}
 
 
-  Jeśli chodzi o~inne systemy operacyjne to możemy wymienić i~wymieniać:
-  Fire~\textsc{os}, Free\textsc{bsd}, Free\textsc{dos}, Haiku,
-  Harmony\textsc{os}, Heli\textsc{os}, Inferno, \textsc{minix},
-  OpenHarmony, OpenSolaris, Phantom~\textsc{os}, Plan~9
-  from Bell Labs, React\textsc{os}, Redox (bardzo interesujący projekt),
-  Thesueus~\textsc{os} (inny interesujący projekt), Visopsys, etc.
+  Jeśli chodzi o~inne systemy operacyjne dla komputerów osobistych to
+  można wymienić je~bez końca:
+  \colorhref{https://en.wikipedia.org/wiki/Fire\_OS}{Fire~OS},
+  \colorhref{https://en.wikipedia.org/wiki/FreeBSD}{FreeBSD},
+  FreeDOS, Haiku,
+  HarmonyOS, HeliOS, Inferno, MINIX, OpenHarmony, OpenSolaris,
+  Phantom~OS, Plan~9 from Bell Labs, ReactOS, Redox, Thesueus~OS
+  (interesujący projekt), Visopsys, etc.
 
-  Poza tym, systemy operacyjne można podzielić na klasy, w~zależności od
-  tego na jakim sprzęcie mają one działać. Listę podstawowych klas można
-  znaleźć poniżej.
+  Należy pamiętać, że~komputery osobiste, to tylko jeden z~typów
+  komputerów, których obecnie używamy. Z~innych typów komputerów można
+  wymienić smartfony, komputery mainframowe, serwery, komputery wbudowane
+  w~mikrofalówki,~etc.
+
+  Najwięcej różnych systemów operacyjnych jest zapewne na komputery
+  osobiste, bo są one powszechnie dostępne, a~tworzenie dla nich
+  oprogramowania jest relatywnie proste. Stąd jeśli kilku dobrych
+  programistów uważa, że~warto stworzyć dla nich nowy system operacyjny,
+  to niedługo będziemy mogli dopisać jeszcze jedną pozycję do~podanej
+  wcześniej listy.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Komputery i~ich systemy operacyjne}
+
+
+  Należy mieć świadomość, że~jeden system operacyjny może pracować na kilku
+  typach komputerów, czego doskonałym przykładem jest Linux. Z~drugiej
+  strony, różne typy komputery mają różne możliwości i~potrzeby, inaczej
+  działa komputer mainframe zajmujący cały pokój, inaczej smartfon
+  mieszczący~się w~kieszeni. Dlatego też często na komputery różnych typów,
+  pisze~się systemy operacyjne przeznaczone specjalnie dla nich, dostosowane
+  do ich~specyfiki.
+
+  Pozwolimy sobie rzucić krótko okiem na różne typy komputerów i~dostępne
+  na nich systemy operacyjne.
 
   \begin{itemize}
 
   \item Systemy operacyjne komputerów mainframowych. Ten rodzaj komputerów
     spotyka~się zwykle w~centrach obliczeniowych różnorakiego
-    przeznaczenia. Tutaj często używane są specjalne dystrybucje Linuxa,
-    jak~również systemy operacyjne tworzone specjalnie dla nich, jak~z/OS.
+    przeznaczenia. Obsługiwane są przez specjalne dystrybucje Linuxa,
+    jak~również systemy operacyjne stworzone specjalnie dla nich,
+    jak~\colorhref{https://en.wikipedia.org/wiki/Z/OS}{z/OS}.
 
   \end{itemize}
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
-  \frametitle{Różne typy systemów operacyjnych}
+  \frametitle{Komputery i~ich systemy operacyjne}
 
 
   \begin{itemize}
@@ -339,12 +332,14 @@ eprint=true,
   \item Systemy operacyjne komputerów osobistych, nim właśnie jest
     poświęcony ten przedmiot.
 
-  \item Systemy operacyjne smartfonów, jak Android czy i\textsc{os}.
+  \item Systemy operacyjne smartfonów, jak Android czy iOS. Należy
+    dodać, że~Android sam jest odmianą Linuxa.
 
   \item Wbudowane systemy operacyjne. Są to systemy operacyjne obsługujące
     pralki, kuchenki mikrofalowe, samochody, etc.
 
-  \item Systemy operacyjne kart elektronicznych. Temat na inne zajęcia.
+  \item Systemy operacyjne kart elektronicznych. Temat na zupełnie
+    osobne zajęcia.
 
   \item Systemy operacyjne węzłów sensorowych. Przykładem węzła sensorowego
     są czujniki przeciwpożarowe, układy do~mierzenia temperatury, ilości
@@ -352,43 +347,312 @@ eprint=true,
 
   \end{itemize}
 
-  Dodatkowo systemy operacyjne można podzielić na monolityczne,
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Komputery i~ich systemy operacyjne}
+
+
+  Ponieważ życie nie może być proste, podział systemów operacyjnych
+  ze~względu na to na jakim sprzęcie działają, nie jest jedynym
+  istniejącym. Systemy operacyjne można też podzielić na monolityczne,
   wielowarstwowe, czasu rzeczywistego, etc.
 
+  \alert{Nie} muszą się Państwo uczyć powyższej przedstawionych listy
+  systemów operacyjnych. Podaliśmy je, by mieli Państwo świadomość,
+  że~systemy operacyjne to niełatwa część informatyki i~należy odczuwać
+  zdrową porcję szacunku wobec ludzi którzy te systemy tworzą. Pamiętając,
+  że~ci sami ludzie całkiem dużo rzeczy mocno spaprali.
+
+  Zwróćmy uwagę na jeszcze jedną rzecz. Tak jak nasz świat jest pełen
+  komputerów, tak jest pełen systemów operacyjnych. Bez wielkiej przesady
+  można powiedzieć, że~bez systemów operacyjnych setki milionów komputerów
+  stałby~się dla większości ludzi bezużyteczną stertą złomu.
+  \colorhref{https://en.wikipedia.org/wiki/Windows\_11}{Windows~$11$?}
+
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
-  \frametitle{Komputery i~systemy operacyjne}
+  \frametitle{Maszyny Rube Goldbergera}
 
 
-  Tak jak nasz świat jest pełen komputerów, tak jest pełen systemów
-  operacyjnych. Bez wielkiej przesady można powiedzieć, że~bez systemów
-  operacyjnych setki milionów komputerów stałby~się dla większości ludzi
-  bezużyteczną stertą złomu.
-
-  \alert{Nie} muszą się Państwo uczyć powyższej listy. Jedyne co chcemy by
-  Państwo z~niej wynieśli, to świadomość, że~tematyka systemów operacyjnych
-  jest dość skomplikowana i~należy odczuwać zdrowy respekt wobec
-  ludzi którzy te systemy tworzą. Pamiętając, że~ci sami ludzie
-  całkiem dużo rzeczy mocno spaprali.
-
-  Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełna jest
+  Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełne są
   maszyn
   \colorhref{https://en.wikipedia.org/wiki/Rube\_Goldberg\_machine}{Rube
     Goldbergera}. Państwo już na pewno nie raz
   widzieli taką maszynę, a~jedną z~nich można obejrzeć
   \colorhref{https://www.youtube.com/watch?v=vn-g1Mn2\_3g}{tutaj}.
-  Bardzo dużo w~informatyce można uprościć, ale coś mi mówi, że~zajmie nam
-  to jeszcze dużo czasu.
+  Dlatego nie zawsze warto~się zastanawiać, czemu coś w~systemie operacyjnym
+  działa w~dziwaczny sposób. Działa w~taki sposób, bo kiedyś ktoś nie miał
+  lepszego pomysłu i~tak już zostało.
 
 \end{frame}
-% ##################
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Dlaczego na tych zajęciach używamy systemu
+  GNU/Linux?}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego na tych zajęciach używamy systemu
+    GNU/Linux?}
+
+
+  Przypomnijmy jaka jest różnica między GNU/Linuxem, a~Linuxem.
+  Najważniejsza część systemu operacyjnego nosi nazwę jądra
+  (ang.~\textit{kernel}), kontroluje ono działanie sprzętu komputerowego,
+  takiego jak procesor, dysk, ekran, drukarka,~etc. Każdy system
+  operacyjny posiada właściwe jemu jądro. Jednak nikt
+  normalny nie używa systemu operacyjnego składającego~się tylko z~jądra.
+  Potrzebujemy też takich rzeczy jak program do pracy z~pulpitem, o~których
+  istnieniu zwykle nawet nie myślimy.
+
+  Przez „system operacyjny Linux” rozumiem każdy system operacyjny,
+  który używa jądra Linuxa. Przez „GNU/Linuxa” rozumiem system operacyjny,
+  który zawiera jądro Linuxa i~do~wykonywania tysięcy rzeczy, których jądro
+  nie obsługuje bezpośrednio, używa zestawu programów dostarczonych przez
+  projekt GNU. Przypomnijmy, że~„GNU” to rekurencyjny akronim „GNU is Not
+  a~Unix”.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego na tych zajęciach używamy systemu
+    GNU/Linux?}
+
+
+  Dlaczego na tych zajęciach zdecydowaliśmy~się korzystać z~systemu
+  GNU/Linux? W~zasadzie każdy typ systemów operacyjnych (systemy
+  smartfonów, komputerów osobistych, komputerów mainfram, etc.) to osobna
+  gałąź informatyki, więc niezależnie od tego, reprezentanta którego
+  z~tych typów byśmy nie wybrali, dokonamy pewnego zawężenia tematyki
+  naszego przedmiotu. Trzeba jednak podkreślić, że~jeśli dobrze poznamy
+  systemy operacyjne dla komputerów osobistych, to nauka systemów
+  operacyjny smartfonów będzie łatwiejsza. Łatwiejsza, ale~pewnych rzeczy
+  trzeba~się będzie uczyć od nowa. Co więc przemawia za~wybraniem
+  GNU/Linuxa?
+
+  Zacznijmy od czysto praktycznych względów. System ten jest darmowy, więc
+  jeśli ktoś posiada komputer, może go zainstalować na nim, nie płacą za
+  niego nic. Zainstalowanie go wymagać będzie prawie na pewno pewnej
+  dozy wiedzy i~umiejętności, ale dla nikogo nie stanowi bariery finansowej.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego na tych zajęciach używamy systemu
+    GNU/Linux?}
+
+
+  Linux jest systemem posiadający wielkie praktyczne znaczenie, działa
+  na setkach milionów urządzeń, od smartfonów po superkomputery, więc
+  umiejętność jego używania może zostać wykorzystana do rozwiązywania
+  konkretnych życiowych problemów. Linux jest więc antytezą akademickiego
+  systemu operacyjnego, który służy tylko do tego, by prowadzić w~oparciu
+  o~niego zajęcia na jakiejś uczelni.
+
+  W~końcu, GNU/Linux jest projektem o~otwartym kodzie źródłowym, więc jeśli
+  tylko chcemy i~jesteśmy odpowiednio twardzi, możemy zajrzeć do~każdego
+  jego zakamarka i~dowiedzieć~się o~nim \alert{wszystkiego}. Nigdzie
+  w~nauce nie napotkamy bariery, finansowej czy prawnej. Barierą
+  może być tylko trudność zrozumienia danego zagadnienia.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Ile tych GNU/Linuksów jest?}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  W~przeciwieństwie do choćby systemu Windows~$10$, który jest jednym
+  systemem operacyjnym, GNU/Linux jest raczej pstrokatym zbiorowiskiem
+  przeróżnych swoich odmian. Żeby to wyjaśnić, zacznijmy od~komentarza
+  odnośnie Windowsa~$10$. System ten występuje w~kilku wersjach, w~tym
+  sensie, że~firma Microsoft wydaje kolejne updejty ;) tego systemu, jednak
+  to~wciąż jest ten sam system operacyjny, w~którym zmieniono kilka trzeci-
+  i~czwartorzędnych rzeczy.
+
+  Aby było jasne, updaty często zawierają bardzo ważne z~punktu widzenia
+  użytkownika rzeczy, jak na przykład kod ograniczający możliwość
+  zhakowania urządzeni, ale z~punktu widzenia działania systemu
+  operacyjnego, są to kwestie trzeciorzędnej natury.
+
+  W~przeciwieństwie do tego, GNU/Linux występuje w~rozmaitych odmianach,
+  zwanych \alert{dystrybucjami}, których liczba jest trudna do ogarnięcia.
+  Wymieńmy niektóre z~nich.
+  \colorhref{https://antixlinux.com/}{antiX},
+  \colorhref{https://astralinux.ru/}{Astra Linux},
+  \colorhref{https://archlinux.org/}{Arch Linux},
+  \colorhref{https://canaima.softwarelibre.gob.ve/}{Canaima},
+  \colorhref{https://www.debian.org/}{Debian},
+  \colorhref{https://www.gentoo.org/}{Gentoo},
+  \colorhref{https://ubuntu.com/}{Ubuntu},\ldots, lista ta zdaje~się
+  nie mieć końca.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  Dla osób przytłoczonych liczbą tych wersji systemu GNU/Linux, warto
+  dodać, że~choć liczba samych dystrybucji jest ogromna, to można ją
+  podzielić na dosłownie kilka rodzin, jak choćby systemy wywodzące~się od
+  dystrybucji
+  \colorhref{https://en.wikipedia.org/wiki/Debian}{Debian}. Ponieważ
+  dystrybucje wewnątrz jednej rodziny~są do siebie podobne, czyni to całą
+  sytuację możliwą do ogarnięcia.
+
+  Wszystkie te dystrybucje używają oczywiście jądra Linuxa, więc
+  trafne jest stwierdzenie, że~wszystkie są odmianą jednego systemu
+  operacyjnego. Dystrybucje GNU/Linuxa, z~definicji, używają też tych
+  samych narzędzi projektu GNU.
+
+  Przytłaczająca większość dystrybucji Linuxa jest darmowa. Wchodzisz
+  na odpowiednią stronę internetową i~pobierasz wszystko czego chcesz.
+  Istnieje kilka płatnych dystrybucji Linuxa, z~których najsłynniejszą jest
+  zapewne
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat\_Enterprise\_Linux}
+  {Red Hat Enterprise Linux}, w~skrócie RHEL, tworzony przez firmę
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat}{Red Hat Inc.}.
+
+\end{frame}
+% ######################################
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  Dla osób przytłoczonych liczbą tych wersji systemu GNU/Linux, warto
+  dodać, że~choć liczba samych dystrybucji jest ogromna, to można ją
+  podzielić na dosłownie kilka rodzin, jak choćby systemy wywodzące~się od
+  dystrybucji
+  \colorhref{https://en.wikipedia.org/wiki/Debian}{Debian}. Ponieważ
+  dystrybucje wewnątrz jednej rodziny~są do siebie podobne, czyni to całą
+  sytuację możliwą do ogarnięcia.
+
+  Wszystkie te dystrybucje używają oczywiście jądra Linuxa, więc
+  trafne jest stwierdzenie, że~wszystkie są odmianą jednego systemu
+  operacyjnego. Dystrybucje GNU/Linuxa, z~definicji, używają też tych
+  samych narzędzi projektu GNU.
+
+  Przytłaczająca większość dystrybucji Linuxa jest darmowa. Wchodzisz
+  na odpowiednią stronę internetową i~pobierasz wszystko czego chcesz.
+  Istnieje kilka płatnych dystrybucji Linuxa, z~których najsłynniejszą jest
+  zapewne
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat\_Enterprise\_Linux}
+  {Red Hat Enterprise Linux}, w~skrócie RHEL, tworzony przez firmę
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat}{Red Hat Inc.}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Fundacja Linuxa}
+
+
+  W~tym kontekście warto wspomnieć pewne osobliwości związane z~Linuxem
+  i~światem w~którym żyjemy. Rozwojem jądra tego systemu zajmuje~się
+  \colorhref{https://en.wikipedia.org/wiki/Linux\_Foundation}
+  {Fundacja Linuxa}, która jest zarejestrowana jako organizacja non-profit.
+  Mimo tego, można znaleźć informacje, że~w~roku $2024$ przychody tej
+  fundacji wyniosły $300$~milionów dolarów, z~czego mniej niż $3\%$~(!)
+  przeznaczono na rozwój jądra Linuxa. Jak słusznie zwrócił uwagę kanał
+  The~Lunduke Journal, tego typu wyniki finansowe mogłyby zawstydzić
+  niejedną firmę, której celem jest generowanie przychodów
+  \parencite{TLJ-Linux-Foundation-Drops-Linux-Spending-to-Historic-ETC-Ver-2024}.
+
+  Skąd ta Fundacja bierze taką ilość pieniędzy? Według The~Lunduke Journal,
+  $125$ milionów dolarów pochodziło od korporacji wspierających fundację.
+  Co jest ważne w~tym kontekście, najwięksi darczyńcy otrzymują w~ramach
+  tego, co po angielsku nosi nazwę \textit{corporate membership}, prawo
+  do~zasiadania w~zarządzie fundacji (ang.~\textit{board~of directors}).
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Fundacja Linuxa}
+
+
+  W~roku $2026$,
+  w~\colorhref{https://www.linuxfoundation.org/about/leadership}
+  {zarządzie fundacji Linuxa} zasiadali przedstawiciele firm Sony, Red
+  Hat, Huawei,
+
+\end{frame}
+% ######################################
 
 
 
@@ -396,59 +660,30 @@ eprint=true,
 
 % ##################
 \begin{frame}
-  \frametitle{Dlaczego GNU/Linux?}
+  \frametitle{Standaryzacja}
 
 
-  Systemy operacyjne komputerów osobistych, są najbardziej widocznym typem
-  systemów dla większości ludzi. Jest jasne, że~tylko znikoma grupa ludzi
-  ma bezpośrednią styczność z~komputerami typu mainframe, więc ich systemy
-  operacyjne nie są zbyt znane. Ale dlaczego systemy operacyjne smartfonów
-  rzucają~się w~oczy mniej, niż te komputerów osobistych? W~tym momencie
-  nie umiem na~to pytanie odpowiedzieć. Niezależnie od tego, uzasadnia to
-  wybór systemów operacyjnych komputerów stacjonarnych jako głównego
-  przedmiotu zainteresowań tego kursu.
+  Obecnie, piszemy to w~$2025$, GNU/Linux jest dobrze zestandaryzowany
+  na~poziomie swoich podstawowych zasad działania i~funkcji, które oferuje
+  użytkownikom. W~istocie, wiele własności GNU/Linuxa sięga rozwijanego od
+  około $1970$~roku systemu operacyjnego
+  \colorhref{https://en.wikipedia.org/wiki/Unix}{\textsc{unix}} i~zestawu
+  standardów dla tego systemu znanej jako
+  \colorhref{https://en.wikipedia.org/wiki/POSIX}{\textsc{posix}}
+  (ang.~\textit{Portable Operating System Interface for Unix}). Dla
+  kontekstu, standardy \textsc{posix} zaczęły być wydawane przez Instytut
+  Inżynierów Elektryków i~Elektroników (\textsc{ieee},
+  ang.~\textit{Institute of Electrical and Electronics Engineers})
+  w~roku~$1988$.
 
-  Dlaczego jednak zdecydowaliśmy~się omawiać na tych zajęciach system
-  GNU/Linux? W~zasadzie każdy duży rodzina systemów operacyjnych to osobna
-  gałąź informatyki, więc siłą rzeczy którego byśmy nie wybrali na ten kurs,
-  przekazana wiedza nie przeniesie~się w~całości na pozostałe typy systemów.
-  Skoro wybór jest nieunikniony, to co przemawia za~akurat takim?
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Dlaczego GNU/Linux?}
-
-
-  Za wybraniem systemu GNU/Linux przemawia kilka względów. Zacznijmy od
-  czysto praktycznych. System ten darmowy, prowadzenie w~nim zajęć nie
-  stwarza więc bariery finansowanej dla nikogo.
-
-  Oprócz tego, jest to system niezwykle szeroko stosowany w~praktyce, od
-  superkomputerów po smartfony, więc wiedza tu zdobyta może zostać użyta
-  do rozwiązywania konkretnych życiowych problemów. W~końcu, GNU/Linux
-  jest projektem o~otwartym kodzie źródłowym, więc jeśli tylko chcemy
-  i~mamy odpowiednio dużo wytrwałości, możemy zajrzeć do każdego jego
-  zakamarka i~dowiedzieć~się o~nim wszystkiego co~się da.
-
-  Warto dodać, że~system GNU/Linux, należy do rozwijanej od lat 70-tych XX
-  wieku rodziny systemów operacyjnych Unix. Dlatego też, w~wielu wypadkach
-  zamiast mówić „To jest cecha systemu GNU/Linux.”, lepiej jest mówić „To
-  jest cecha systemu Unix.”. Oprócz tego będziemy zamiennie używali
-  nazw „GNU/Linux” i~„Linux”.
+  Dlatego też większość rzeczy, które poznają Państwo na~tym kursie powinny
+  działać w~$99\%$ dystrybucji systemu GNU/Linux i~w~$100\%$ dystrybucji
+  które są używane w~poważnych firmach i~projektach. Będziemy~się też
+  starać wyraźnie zaznaczać, czym mogą~się różnić poszczególne dystrybucje
+  GNU/Linuxa.
 
 \end{frame}
 % ##################
-
-
-
-
 
 
 
@@ -974,71 +1209,6 @@ eprint=true,
 
 
 
-% ######################################
-\section{Ile tych GNU/Linuksów jest?}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
-
-
-  W~przeciwieństwie do choćby systemu Windows~$10$, który jest jednym
-  systemem operacyjnym, GNU/Linux jest tak naprawdę \alert{rodziną systemów}
-  operacyjnych. Żeby to wyjaśnić, zacznijmy od~komentarza odnośnie
-  Windowsa~$10$. System ten występuje w~kilku wersjach, w~tym sensie,
-  że~firma Microsoft wydaje kolejne updejty ;) tego systemu, jednak to~wciąż
-  jest ten sam system operacyjny, w~którym zmieniono kilka drugo-
-  i~trzeciorzędnych rzeczy.
-
-  W~przeciwieństwie do tego, GNU/Linux występuje w~rozmaitych
-  \alert{dystrybucjach}, których liczba jest trudna do ogarnięcia:
-  \colorhref{https://antixlinux.com/}{antiX},
-  \colorhref{https://astralinux.ru/}{Astra Linux},
-  \colorhref{https://archlinux.org/}{Arch Linux},
-  \colorhref{https://canaima.softwarelibre.gob.ve/}{Canaima},
-  \colorhref{https://www.debian.org/}{Debian},
-  \colorhref{https://www.gentoo.org/}{Gentoo},
-  \colorhref{https://ubuntu.com/}{Ubuntu},\ldots, lista ta zdaje~się
-  nie mieć końca. Wyjaśnienie podobieństw i~różnic między tymi systemami
-  zajęłoby zbyt dużo czasu, dlatego ograniczymy~się do podania
-  podstawowych informacji, które pozwolą nam~się ogólnie pośród nich
-  zorientować.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Standaryzacja}
-
-
-  Obecnie, piszemy to w~$2025$, GNU/Linux jest dobrze zestandaryzowany
-  na~poziomie swoich podstawowych zasad działania i~funkcji, które oferuje
-  użytkownikom. W~istocie, wiele własności GNU/Linuxa sięga rozwijanego od
-  około $1970$~roku systemu operacyjnego
-  \colorhref{https://en.wikipedia.org/wiki/Unix}{\textsc{unix}} i~zestawu
-  standardów dla tego systemu znanej jako
-  \colorhref{https://en.wikipedia.org/wiki/POSIX}{\textsc{posix}}
-  (ang.~\textit{Portable Operating System Interface for Unix}). Dla
-  kontekstu, standardy \textsc{posix} zaczęły być wydawane przez Instytut
-  Inżynierów Elektryków i~Elektroników (\textsc{ieee},
-  ang.~\textit{Institute of Electrical and Electronics Engineers})
-  w~roku~$1988$.
-
-  Dlatego też większość rzeczy, które poznają Państwo na~tym kursie powinny
-  działać w~$99\%$ dystrybucji systemu GNU/Linux i~w~$100\%$ dystrybucji
-  które są używane w~poważnych firmach i~projektach. Będziemy~się też
-  starać wyraźnie zaznaczać, czym mogą~się różnić poszczególne dystrybucje
-  GNU/Linuxa.
-
-\end{frame}
-% ##################
 
 
 
@@ -1304,76 +1474,6 @@ eprint=true,
   w~interesie firmy dostarczającej te serwery, dla niej jest lepiej jak
   serwery obsługują grę, a~wykrywaniem cheaterów zajmują~się komputery
   graczy.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Zdalne logowanie~się do GNU/Linuxa z~Windowsa}
-% ######################################
-
-
-% ##################
-\begin{frame}
-  \frametitle{Korzystanie z~systemu Artemis}
-
-
-  Wiemy, że~dla wielu osób zainstalowanie na swoim komputerze systemu
-  GNU/Linux, może być sporym wyzwaniem, dlatego tutaj wyjaśnimy, jak
-  można~się zalogować do niego z~poziomu systemu Windows. Dokładniej,
-  pokażemy, jak połączyć~się przez internet do komputerów dysponujących
-  systemem GNU/Linux, poprzez uczelniany system Artemis. Chciałbym przy tym
-  bardzo podziękować panu Tomaszowi Molęckiemu z~działu \textsc{it}
-  \textsc{wsz}i\textsc{b}u za~udzielenie nam informacji na temat
-  procedury logowania~się do tego systemu.
-
-  Pierwszy krok polega na pobraniu programu
-  \colorhref{https://winscp.net/eng/download.php}{Win\textsc{scp}}. Gdy
-  już mamy go dostępnego, znajdujemy okno logowania, które wypełniamy
-  zgodnie ze~zdjęciem widocznym na następnym slajdzie. Dane logowania
-  wpisujemy takie same jak dla systemu SUSZI. Gdy to jest gotowe, klikamy
-  na przycisk logowania. W~razie problemów proszę pisać do nas (\email),
-  lub pana Molęckiego.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Korzystanie z~systemu Artemis}
-
-  \vspace{-0.5em}
-
-
-  \begin{figure}
-
-    \centering
-
-
-    \includegraphics[scale=0.45]
-    {./Presentations-pictures/Miscancellous-pictures/Artemis.jpg}
-
-
-    \caption{Logowanie~się do systemu Artemis za pomocą programu
-      Win\textsc{scp}.}
-
-
-    \label{fig:Artemis-system}
-
-  \end{figure}
 
 \end{frame}
 % ##################

@@ -1,0 +1,992 @@
+% ####################################################################
+% Basic configuration of Beamera class and Jagiellonian theme
+% ####################################################################
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+\usepackage{./Local-packages/PGF-TikZ-Arrows-styles}
+
+\usepackage{./Local-packages/PGF-TikZ-Diagram-styles}
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+\title{Systemy operacyjne}
+\subtitle{3.~Pewne informacje o~systemach operacyjnych}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ####################################################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ################################################
+% Number of chars: 43k+, 8k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ################################################
+
+
+
+
+
+% ################################################
+\maketitle
+% ################################################
+
+
+
+
+
+% ################################################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ################################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Systemy operacyjne wokół nas}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Po co istnieją systemy operacyjne i~czemu jest ich
+    tak wiele?}
+
+
+  Jeśli rozejrzymy~się po świecie, dostrzeżemy jak wielka liczba różnych
+  systemów operacyjnych (os, ang. \textit{Operating System}) jest dziś
+  używana, choć normalny użytkownik
+  styka~się bezpośrednie tylko z~kilkoma z~nich. Dlaczego jest ich tak
+  wiele? Spróbujmy wskazać kilka przyczyn tego stanu rzeczy.
+
+  Pierwszą kwestią o~której należy wspomnieć jest to, że~system operacyjny
+  służy do zarządzania sprzętem komputerowym, różne rodzaje komputerów
+  wymagają różnych systemów operacyjnych. Inny system operacyjny potrzebny
+  jest na komputerze stacjonarnym, inny na smartfonie. To jedna przyczyna
+  tej różnorodności.
+
+  Drugą kwestią jest to, że~różni ludzie mają różne pomysły na temat tego
+  jak system operacyjny powinien działać. Więc nawet na ten sam typ
+  komputera ludzie napiszą różne systemy operacyjne, które według nich
+  lepiej wykonujące swoją pracę, niż inne.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Po co istnieją systemy operacyjne i~czemu jest ich
+    tak wiele?}
+
+
+  Po trzecie, nawet jeśli rdzeń systemu operacyjnego jest gotowy, to
+  istnieje milion rzeczy dokoła niego, które można zmienić. By użyć bardzo
+  prostych przykładów, jak ma wyglądać jego środowisko graficzne,
+  jakie programy do edycji zdjęć mają być na nim dostępne, jaki program
+  ma odtwarzać na nim muzykę, etc.? Taka właśnie sytuacja ma miejsce
+  w~systemie GNU/Linux, który posiada wiele dystrybucji. Do zagadnienie
+  tego krótko powrócimy w~przyszłości.
+
+  Przejdziemy teraz do krótkiego przegląd systemów operacyjnych używanych
+  w~XXI wieku. To oczywiście bardzo obszerny temat, któremu można by
+  poświęcić wiele godzin. Poniższy przegląd ma na celu tylko wstępne
+  uporządkowanie pewnych rzecz, które mogli już Państwo usłyszeć wcześniej.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie systemy operacyjne są dziś używane?}
+
+
+  Obecnie na komputerach osobistych dominują trzy rodziny systemów
+  operacyjnych. Są to:
+  \begin{itemize}
+
+  \item \colorhref{https://www.gnu.org/gnu/linux-and-gnu.en.html}{GNU/Linux}
+    i~\colorhref{https://en.wikipedia.org/wiki/Linux\_kernel}{Linux};
+
+  \item \colorhref{https://en.wikipedia.org/wiki/MacOS}{macOS};
+
+  \item \colorhref{https://en.wikipedia.org/wiki/Microsoft\_Windows}
+    {Microsoft Windows}.
+
+  \end{itemize}
+
+  Gdy chodzi o~smartfony, to istnieją co~najmniej dwie duże rodziny systemów
+  operacyjnych dla nich:
+  \begin{itemize}
+
+  \item
+    \colorhref{https://en.wikipedia.org/wiki/Android\_(operating\_system)}
+    {Android};
+
+  \item \colorhref{https://en.wikipedia.org/wiki/IOS}{iOS}.
+
+  \end{itemize}
+  Niemniej nie jesteśmy znawcami smartfonów, więc nie będziemy zbytnio
+  poruszali tej tematyki.
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie systemy operacyjne są dziś używane?}
+
+
+  Jeśli chodzi o~inne systemy operacyjne dla komputerów osobistych to
+  można wymienić je~bez końca:
+  \colorhref{https://en.wikipedia.org/wiki/Fire\_OS}{Fire~OS},
+  \colorhref{https://en.wikipedia.org/wiki/FreeBSD}{FreeBSD},
+  FreeDOS, Haiku,
+  HarmonyOS, HeliOS, Inferno, MINIX, OpenHarmony, OpenSolaris,
+  Phantom~OS, Plan~9 from Bell Labs, ReactOS, Redox, Thesueus~OS
+  (interesujący projekt), Visopsys, etc.
+
+  Należy pamiętać, że~komputery osobiste, to tylko jeden z~typów
+  komputerów, których obecnie używamy. Z~innych typów komputerów można
+  wymienić smartfony, komputery mainframowe, serwery, komputery wbudowane
+  w~mikrofalówki,~etc.
+
+  Najwięcej różnych systemów operacyjnych jest zapewne na komputery
+  osobiste, bo są one powszechnie dostępne, a~tworzenie dla nich
+  oprogramowania jest relatywnie proste. Stąd jeśli kilku dobrych
+  programistów uważa, że~warto stworzyć dla nich nowy system operacyjny,
+  to niedługo będziemy mogli dopisać jeszcze jedną pozycję do~podanej
+  wcześniej listy.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Komputery i~ich systemy operacyjne}
+
+
+  Należy mieć świadomość, że~jeden system operacyjny może pracować na kilku
+  typach komputerów, czego doskonałym przykładem jest Linux. Z~drugiej
+  strony, różne typy komputery mają różne możliwości i~potrzeby, inaczej
+  działa komputer mainframe zajmujący cały pokój, inaczej smartfon
+  mieszczący~się w~kieszeni. Dlatego też często na komputery różnych typów,
+  pisze~się systemy operacyjne przeznaczone specjalnie dla nich, dostosowane
+  do ich~specyfiki.
+
+  Pozwolimy sobie rzucić krótko okiem na różne typy komputerów i~dostępne
+  na nich systemy operacyjne.
+
+  \begin{itemize}
+
+  \item Systemy operacyjne komputerów mainframowych. Ten rodzaj komputerów
+    spotyka~się zwykle w~centrach obliczeniowych różnorakiego
+    przeznaczenia. Obsługiwane są przez specjalne dystrybucje Linuxa,
+    jak~również systemy operacyjne stworzone specjalnie dla nich,
+    jak~\colorhref{https://en.wikipedia.org/wiki/Z/OS}{z/OS}.
+
+  \end{itemize}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Komputery i~ich systemy operacyjne}
+
+
+  \begin{itemize}
+
+  \item Systemy operacyjne serwerów. Tutaj również Linux jest popularny.
+
+  \item Systemy operacyjne komputerów osobistych, nim właśnie jest
+    poświęcony ten przedmiot.
+
+  \item Systemy operacyjne smartfonów, jak Android czy iOS. Należy
+    dodać, że~Android sam jest odmianą Linuxa.
+
+  \item Wbudowane systemy operacyjne. Są to systemy operacyjne obsługujące
+    pralki, kuchenki mikrofalowe, samochody, etc.
+
+  \item Systemy operacyjne kart elektronicznych. Temat na zupełnie
+    osobne zajęcia.
+
+  \item Systemy operacyjne węzłów sensorowych. Przykładem węzła sensorowego
+    są czujniki przeciwpożarowe, układy do~mierzenia temperatury, ilości
+    opadów, etc.
+
+  \end{itemize}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Komputery i~ich systemy operacyjne}
+
+
+  Ponieważ życie nie może być proste, podział systemów operacyjnych
+  ze~względu na to na jakim sprzęcie działają, nie jest jedynym
+  istniejącym. Systemy operacyjne można też podzielić na monolityczne,
+  wielowarstwowe, czasu rzeczywistego, etc.
+
+  \alert{Nie} muszą się Państwo uczyć powyższej przedstawionych listy
+  systemów operacyjnych. Podaliśmy je, by mieli Państwo świadomość,
+  że~systemy operacyjne to niełatwa część informatyki i~należy odczuwać
+  zdrową porcję szacunku wobec ludzi którzy te systemy tworzą. Pamiętając,
+  że~ci sami ludzie całkiem dużo rzeczy mocno spaprali.
+
+  Zwróćmy uwagę na jeszcze jedną rzecz. Tak jak nasz świat jest pełen
+  komputerów, tak jest pełen systemów operacyjnych. Bez wielkiej przesady
+  można powiedzieć, że~bez systemów operacyjnych setki milionów komputerów
+  stałby~się dla większości ludzi bezużyteczną stertą złomu.
+  \colorhref{https://en.wikipedia.org/wiki/Windows\_11}{Windows~$11$?}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Maszyny Rube Goldbergera}
+
+
+  Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełne są
+  maszyn
+  \colorhref{https://en.wikipedia.org/wiki/Rube\_Goldberg\_machine}{Rube
+    Goldbergera}. Państwo już na pewno nie raz
+  widzieli taką maszynę, a~jedną z~nich można obejrzeć
+  \colorhref{https://www.youtube.com/watch?v=vn-g1Mn2\_3g}{tutaj}.
+  Dlatego nie zawsze warto~się zastanawiać, czemu coś w~systemie operacyjnym
+  działa w~dziwaczny sposób. Działa w~taki sposób, bo kiedyś ktoś nie miał
+  lepszego pomysłu i~tak już zostało.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Dlaczego na tych zajęciach używamy systemu
+  GNU/Linux?}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego na tych zajęciach używamy systemu
+    GNU/Linux?}
+
+
+  Przypomnijmy jaka jest różnica między GNU/Linuxem, a~Linuxem.
+  Najważniejsza część systemu operacyjnego nosi nazwę jądra
+  (ang.~\textit{kernel}), kontroluje ono działanie sprzętu komputerowego,
+  takiego jak procesor, dysk, ekran, drukarka,~etc. Każdy system
+  operacyjny posiada właściwe jemu jądro. Jednak nikt
+  normalny nie używa systemu operacyjnego składającego~się tylko z~jądra.
+  Potrzebujemy też takich rzeczy jak program do pracy z~pulpitem, o~których
+  istnieniu zwykle nawet nie myślimy.
+
+  Przez „system operacyjny Linux” rozumiem każdy system operacyjny,
+  który używa jądra Linuxa. Przez „GNU/Linuxa” rozumiem system operacyjny,
+  który zawiera jądro Linuxa i~do~wykonywania tysięcy rzeczy, których jądro
+  nie obsługuje bezpośrednio, używa zestawu programów dostarczonych przez
+  projekt GNU. Przypomnijmy, że~„GNU” to rekurencyjny akronim „GNU is Not
+  a~Unix”.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego na tych zajęciach używamy systemu
+    GNU/Linux?}
+
+
+  Dlaczego na tych zajęciach zdecydowaliśmy~się korzystać z~systemu
+  GNU/Linux? W~zasadzie każdy typ systemów operacyjnych (systemy
+  smartfonów, komputerów osobistych, komputerów mainfram, etc.) to osobna
+  gałąź informatyki, więc niezależnie od tego, reprezentanta którego
+  z~tych typów byśmy nie wybrali, dokonamy pewnego zawężenia tematyki
+  naszego przedmiotu. Trzeba jednak podkreślić, że~jeśli dobrze poznamy
+  systemy operacyjne dla komputerów osobistych, to nauka systemów
+  operacyjny smartfonów będzie łatwiejsza. Łatwiejsza, ale~pewnych rzeczy
+  trzeba~się będzie uczyć od nowa. Co więc przemawia za~wybraniem
+  GNU/Linuxa?
+
+  Zacznijmy od czysto praktycznych względów. System ten jest darmowy, więc
+  jeśli ktoś posiada komputer, może go zainstalować na nim, nie płacą za
+  niego nic. Zainstalowanie go wymagać będzie prawie na pewno pewnej
+  dozy wiedzy i~umiejętności, ale dla nikogo nie stanowi bariery finansowej.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego na tych zajęciach używamy systemu
+    GNU/Linux?}
+
+
+  Linux jest systemem posiadający wielkie praktyczne znaczenie, działa
+  na setkach milionów urządzeń, od smartfonów po superkomputery, więc
+  umiejętność jego używania może zostać wykorzystana do rozwiązywania
+  konkretnych życiowych problemów. Linux jest więc antytezą akademickiego
+  systemu operacyjnego, który służy tylko do tego, by prowadzić w~oparciu
+  o~niego zajęcia na jakiejś uczelni.
+
+  W~końcu, GNU/Linux jest projektem o~otwartym kodzie źródłowym, więc jeśli
+  tylko chcemy i~jesteśmy odpowiednio twardzi, możemy zajrzeć do~każdego
+  jego zakamarka i~dowiedzieć~się o~nim \alert{wszystkiego}. Nigdzie
+  w~nauce nie napotkamy bariery, finansowej czy prawnej. Barierą
+  może być tylko trudność zrozumienia danego zagadnienia.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Ile tych GNU/Linuksów jest?}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  W~przeciwieństwie do choćby systemu Windows~$10$, który jest jednym
+  systemem operacyjnym, GNU/Linux jest raczej pstrokatym zbiorowiskiem
+  przeróżnych swoich odmian. Żeby to wyjaśnić, zacznijmy od~komentarza
+  odnośnie Windowsa~$10$. System ten występuje w~kilku wersjach, w~tym
+  sensie, że~firma Microsoft wydaje kolejne updejty ;) tego systemu, jednak
+  to~wciąż jest ten sam system operacyjny, w~którym zmieniono kilka trzeci-
+  i~czwartorzędnych rzeczy.
+
+  Aby było jasne, updaty często zawierają bardzo ważne z~punktu widzenia
+  użytkownika rzeczy, jak na przykład kod ograniczający możliwość
+  zhakowania urządzeni, ale z~punktu widzenia działania systemu
+  operacyjnego, są to kwestie trzeciorzędnej natury.
+
+  W~przeciwieństwie do tego, GNU/Linux występuje w~rozmaitych odmianach,
+  zwanych \alert{dystrybucjami}, których liczba jest trudna do ogarnięcia.
+  Wymieńmy niektóre z~nich.
+  \colorhref{https://antixlinux.com/}{antiX},
+  \colorhref{https://astralinux.ru/}{Astra Linux},
+  \colorhref{https://archlinux.org/}{Arch Linux},
+  \colorhref{https://canaima.softwarelibre.gob.ve/}{Canaima},
+  \colorhref{https://www.debian.org/}{Debian},
+  \colorhref{https://www.gentoo.org/}{Gentoo},
+  \colorhref{https://ubuntu.com/}{Ubuntu},\ldots, lista ta zdaje~się
+  nie mieć końca.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  Dla osób przytłoczonych liczbą tych wersji systemu GNU/Linux, warto
+  dodać, że~choć liczba samych dystrybucji jest ogromna, to można ją
+  podzielić na dosłownie kilka rodzin, jak choćby systemy wywodzące~się od
+  dystrybucji
+  \colorhref{https://en.wikipedia.org/wiki/Debian}{Debian}. Ponieważ
+  dystrybucje wewnątrz jednej rodziny~są do siebie podobne, czyni to całą
+  sytuację możliwą do ogarnięcia.
+
+  Wszystkie te dystrybucje używają oczywiście jądra Linuxa, więc
+  trafne jest stwierdzenie, że~wszystkie są odmianą jednego systemu
+  operacyjnego. Dystrybucje GNU/Linuxa, z~definicji, używają też tych
+  samych narzędzi projektu GNU.
+
+  Przytłaczająca większość dystrybucji Linuxa jest darmowa. Wchodzisz
+  na odpowiednią stronę internetową i~pobierasz wszystko czego chcesz.
+  Istnieje kilka płatnych dystrybucji Linuxa, z~których najsłynniejszą jest
+  zapewne
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat\_Enterprise\_Linux}
+  {Red Hat Enterprise Linux}, w~skrócie RHEL, tworzony przez firmę
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat}{Red Hat Inc.}.
+
+\end{frame}
+% ######################################
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  Dla osób przytłoczonych liczbą tych wersji systemu GNU/Linux, warto
+  dodać, że~choć liczba samych dystrybucji jest ogromna, to można ją
+  podzielić na dosłownie kilka rodzin, jak choćby systemy wywodzące~się od
+  dystrybucji
+  \colorhref{https://en.wikipedia.org/wiki/Debian}{Debian}. Ponieważ
+  dystrybucje wewnątrz jednej rodziny~są do siebie podobne, czyni to całą
+  sytuację możliwą do ogarnięcia.
+
+  Wszystkie te dystrybucje używają oczywiście jądra Linuxa, więc
+  trafne jest stwierdzenie, że~wszystkie są odmianą jednego systemu
+  operacyjnego. Dystrybucje GNU/Linuxa, z~definicji, używają też tych
+  samych narzędzi projektu GNU.
+
+  Przytłaczająca większość dystrybucji Linuxa jest darmowa. Wchodzisz
+  na odpowiednią stronę internetową i~pobierasz wszystko czego chcesz.
+  Istnieje kilka płatnych dystrybucji Linuxa, z~których najsłynniejszą jest
+  zapewne
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat\_Enterprise\_Linux}
+  {Red Hat Enterprise Linux}, w~skrócie RHEL, tworzony przez firmę
+  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat}{Red Hat Inc.}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Fundacja Linuxa}
+
+
+  W~tym kontekście warto wspomnieć pewne osobliwości związane z~Linuxem
+  i~światem w~którym żyjemy. Rozwojem jądra tego systemu zajmuje~się
+  \colorhref{https://en.wikipedia.org/wiki/Linux\_Foundation}
+  {Fundacja Linuxa}, która jest zarejestrowana jako organizacja non-profit.
+  Mimo tego, można znaleźć informacje, że~w~roku $2024$ przychody tej
+  fundacji wyniosły $300$~milionów dolarów, z~czego mniej niż $3\%$~(!)
+  przeznaczono na rozwój jądra Linuxa. Jak słusznie zwrócił uwagę kanał
+  The~Lunduke Journal, tego typu wyniki finansowe mogłyby zawstydzić
+  niejedną firmę, której celem jest generowanie przychodów
+  \parencite{TLJ-Linux-Foundation-Drops-Linux-Spending-to-Historic-ETC-Ver-2024}.
+
+  Skąd ta Fundacja bierze taką ilość pieniędzy? Według The~Lunduke Journal,
+  $125$ milionów dolarów pochodziło od korporacji wspierających fundację.
+  Co jest ważne w~tym kontekście, najwięksi darczyńcy otrzymują w~ramach
+  tego, co po angielsku nosi nazwę \textit{corporate membership}, prawo
+  do~zasiadania w~zarządzie fundacji (ang.~\textit{board~of directors}).
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Fundacja Linuxa}
+
+
+  W~roku $2026$,
+  w~\colorhref{https://www.linuxfoundation.org/about/leadership}
+  {zarządzie fundacji Linuxa} zasiadali przedstawiciele firm Sony, Red
+  Hat, Huawei, Renesas, Fujitsu, Qualcomm Technologies,~Inc., Meta,
+  Hitachi, Panasonic, Microsoft, Samsung, Ericsson, NEC, Intel i~Oracle.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Standaryzacja}
+
+
+  Obecnie, piszemy to w~$2025$, GNU/Linux jest dobrze zestandaryzowany
+  na~poziomie swoich podstawowych zasad działania i~funkcji, które oferuje
+  użytkownikom. W~istocie, wiele własności GNU/Linuxa sięga rozwijanego od
+  około $1970$~roku systemu operacyjnego
+  \colorhref{https://en.wikipedia.org/wiki/Unix}{\textsc{unix}} i~zestawu
+  standardów dla tego systemu znanej jako
+  \colorhref{https://en.wikipedia.org/wiki/POSIX}{\textsc{posix}}
+  (ang.~\textit{Portable Operating System Interface for Unix}). Dla
+  kontekstu, standardy \textsc{posix} zaczęły być wydawane przez Instytut
+  Inżynierów Elektryków i~Elektroników (\textsc{ieee},
+  ang.~\textit{Institute of Electrical and Electronics Engineers})
+  w~roku~$1988$.
+
+  Dlatego też większość rzeczy, które poznają Państwo na~tym kursie powinny
+  działać w~$99\%$ dystrybucji systemu GNU/Linux i~w~$100\%$ dystrybucji
+  które są używane w~poważnych firmach i~projektach. Będziemy~się też
+  starać wyraźnie zaznaczać, czym mogą~się różnić poszczególne dystrybucje
+  GNU/Linuxa.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Zmienne w~BASHu}
+% ################################################
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Zmienne w~BASHu}
+
+
+  Koncepcje zmiennej na pewno znają Państwo już z~innych języków
+  programowania i~tłumaczenie ich użyteczności nie powinno być konieczne.
+  Jednak zmienne w~BASHu, jak chyba wszystko w~BASHu, mają kilka osobliwych
+  cech do których musimy przywyknąć.
+
+  Zacznijmy od zdefiniowania zmiennej w~BASHu. \\
+  \texttt{\$ var1="Jestem zmienną."} \\
+  Powyższa linia definiuje zmienną o~nazwie \texttt{var1}, która zawiera
+  string „\texttt{Jestem zmienną.}”. Proszę bardzo uważać
+  na~\alert{białe znaki} w~przedstawionym poleceniu. BASH nie zna słowa
+  litość, a~gdy chodzi o~definiowanie zmiennych jest jeszcze bardziej
+  bezlitosny, niż normalnie. Jeśli to w~ogóle możliwe.
+
+  Przykładowo, linia \\
+  \texttt{\$ var1 = "Jestem zmienną."} \\
+  jest \alert{niepoprawna}! Bo czemu życie miałoby być proste?
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość. Odcinek kolejny}
+
+
+  Jeśli będziemy próbowali uruchomić polecenie \\
+  \texttt{\$ var1 = "Jestem zmienną."} \\
+  to zobaczymy komunikat o~błędzie, który może wyglądać w~następujący
+  sposób. \\
+  \texttt{> Nie znaleziono polecania 'var1', czy chodziło~o: \ldots} \\
+  Jak zwykle, konkretna postać komunikatu o~błędzie zależy od używanej
+  dystrybucji GNU/Linuxa.
+
+  Problem bierze~się stąd, że~normalnie BASH oczekuje, iż~pierwsze słowo
+  które napotka w~danej linii jest nazwą jakiegoś polecenia. W~przypadku
+  polecania podanego wyżej, pierwszym tym słowem jest „\texttt{var1}” i~BASH
+  narzeka, że~polecenia o~tej nazwie nie zna. Bo czemu życia miałoby być
+  proste?
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość. Odcinek kolejny}
+
+
+  Dopiero zapisanie polecenia \\
+  \texttt{\$ var1="Jestem zmienną."} \\
+  bez spacji, zmusi BASHa do przeczytania całej jego treści
+  i~zorientowania~się, że~jest to instrukcja przypisania wartości
+  do~zmiennej.
+
+  Operację przypisania wartości do zmiennej, też nazywamy poleceniem,
+  bo z~punktu widzenia BASHa, nim właśnie jest. Przypomnijmy, że~w~naszym
+  kontekście, „polecenie” to dowolny kod, który poprawnie opisuje działanie
+  jakie może wykonać BASH (lub inna powłoka).
+
+  Byłoby pięknie, gdyby na tym problemy ze zmiennymi~się kończyły, ale
+  przecież życie nie może być proste. Powiedzmy, że~chcemy odczytać
+  zawartość naszej zmiennej \texttt{var1}. Wydawałoby~się, że~powinien
+  zadziałać kod \\
+  \texttt{\$ echo "var1"}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość. Odcinek kolejny}
+
+
+  Oto co~się naprawdę stanie: \\
+  \texttt{\$ echo "var1"} \\
+  \texttt{> var1} \\
+  Standardowo w~każdym języku programowania, każde wystąpienie zmiennej
+  zastępowane jest jej wartością. Jednak nie w~BASHu, bo czemu życie miałoby
+  być proste?
+
+  Aby zobaczyć wartość przechowywaną przez zmienną w~BASHu, należy jej
+  nazwę poprzedzić znakiem „\$”: \\
+  \texttt{\$ echo "\$var1"} \\
+  \texttt{> Jestem zmienną.} \\
+  Ze znanych nam języków programowania jedynie BASH i~inne języki podobne do
+  niego języki powłok mają taką dziwaczną własność.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość. Odcinek kolejny}
+
+
+  By to lepiej zilustrować, przetestujmy poniższe polecenie: \\
+  \texttt{\$ echo "var1: |\$var1|."} \\
+  \texttt{> var1: |Jestem zmienną.|.} \\
+  W~przykładzie tym użyliśmy kresek pionowych, by wyraźniej zaznaczyć,
+  co~jest przechowywane przez zmienną \texttt{var1}.
+
+  Na tym oczywiście nasze problemy, nie mogę się kończyć, o~nie. Przyjmijmy,
+  że~zmienna \texttt{var2} jest obecnie niezdefiniowana. W~takiej sytuacji,
+  polecenie \\
+  \texttt{\$ echo "var2: |\$var2|."} \\
+  powinno zgłosić błąd.
+
+  Powinno, ale to by znaczyło, że~BASH zna pojęcie litości. Oto co~się
+  naprawdę stanie: \\
+  \texttt{\$ echo "var2: |\$var2|."} \\
+  \texttt{> var2: ||.} \\
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość. Odcinek kolejny}
+
+
+  \texttt{\$ echo "var2: |\$var2|."} \\
+  \texttt{> var2: ||.} \\
+  Z~jakiegoś powodu, gdy BASH napotka nieznaną sobie zmienną, to
+  \alert{zamiast} zgłosić błąd, jak powinien, zwraca jako jej wartość
+  \alert{pusty string}! Powinno być jasne, że~jest to źródło trudnej
+  do~ogarnięcie liczby błędów. Bo czemu życie miałoby być proste?
+
+  Morał z~tej historii jest taki. Jeśli w~pracy z~BASHem używasz
+  zmiennych i~coś nie działa on jak trzeba, to w~pierwszym rzędzie sprawdź,
+  czy nie zrobiłeś gdzieś literówki w~nazwie zmiennej.
+
+  Jeśli wpisując nazwę jakiejś zmiennej zrobiłeś gdzieś literówkę,
+  to~najprawdopodobniej wywołałeś nieistniejącą zmienną, więc zamiast tego
+  co powinno tam być, w~tym miejscu znajduje~się teraz pusty string.
+  I~to niszczy wszystko.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość. Odcinek kolejny}
+
+
+  \texttt{\$ echo "var2: |\$var2|."} \\
+  \texttt{> var2: ||.} \\
+  Z~jakiegoś powodu, gdy BASH napotka nieznaną sobie zmienną, to
+  \alert{zamiast} zgłosić błąd, jak powinien, zwraca jako jej wartość
+  \alert{pusty string}! Powinno być jasne, że~jest to źródło trudnej
+  do~ogarnięcie liczby błędów. Bo czemu życie miałoby być proste?
+
+  Morał z~tej historii jest taki. Jeśli w~pracy z~BASHem używasz
+  zmiennych i~coś nie działa on jak trzeba, to w~pierwszym rzędzie sprawdź,
+  czy nie zrobiłeś gdzieś literówki w~nazwie zmiennej.
+
+  Jeśli wpisując nazwę jakiejś zmiennej zrobiłeś gdzieś literówkę,
+  to~najprawdopodobniej wywołałeś nieistniejącą zmienną, więc zamiast tego
+  co powinno tam być, w~tym miejscu znajduje~się teraz pusty string.
+  I~to niszczy wszystko.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie ze~zmiennych w~BASHu}
+
+
+  Jak już widzieliśmy, używanie zmienne w~BASHu nie należy do najprostszych
+  rzeczy na~świecie. Jednak zmienne są tak bardzo użyteczne, że~nie należy
+  ich unikać. Jak mawiają w~świecie gier wideo, wszystko co musisz zrobić
+  to~„Git gud!”.
+
+  BASH cały czas korzysta z~wielu zmiennych, które noszą nazwę „zmiennych
+  środowiskowych” (ang. \textit{environment variables}). Zmienne te służą
+  do konfigurowania działania BASHa. Przykładowo, skąd BASH wie, gdzie
+  jest nasz katalog domowy? Dlaczego polecenie \texttt{cd $\sim$}
+  przenosi nas właśnie do tego katalogu, a~nie jakiegoś innego?
+
+  Za każdym razem, gdy BASH potrzebuje skorzystać, ze ścieżki do katalogu
+  domowego, jak w~poleceniu \texttt{cd $\sim$}, sprawdza on zawartość
+  zmiennej \texttt{HOME}. Możemy to sprawdzić, pisząc \\
+  \texttt{\$ echo "\$HOME"} \\
+  \texttt{> /home/mojeImie}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie ze~zmiennych w~BASHu}
+
+
+  \texttt{\$ echo "\$HOME"} \\
+  \texttt{> /home/mojeImie} \\
+  Adres czyjegoś katalogu domowego zależy od tego, jak konkretnie
+  ustawione~są katalogi na danym komputerze, na co nie ma żadnej reguły.
+  Nie należy więc~się spodziewać, że~na Państwa komputerze ścieżka do
+  katalogu domowego będzie wyglądać jak podana wyżej. Może nawet nie być
+  zbyt do niej podobna.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ################################################
+\section{Zdalne logowanie~się do GNU/Linuxa z~Windowsa}
+% ################################################
+
+
+
+
+
+
+
+% ################################################
+\appendix
+% ################################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Dziękujmy! Pytania?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

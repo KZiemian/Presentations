@@ -166,7 +166,7 @@ eprint=true,
   korzystać przy nauce pracy z~systemami operacyjnymi.
 
   Brian W.~Kernighan \textit{Jak Unix tworzył historię}
-  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021} \\
+  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}. \\
   Zaczniemy dość nietypowo, od książki która nie jest podręcznikiem
   do systemów operacyjnych. Sam autor opisał jej treść w~następujący
   sposób. \textit{Ta książka jest po części relacją historyczną, a~po
@@ -191,7 +191,7 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{Kernighan \textit{Jak Unix tworzył historię}}
 
 
   Gdy chodzi o~pierwsze pytanie, czemu warto czytać książkę o~systemie Unix,
@@ -223,7 +223,7 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{Kernighan \textit{Jak Unix tworzył historię}}
 
 
   Książkę Kernighana można więc potraktować jako naprawdę proste,
@@ -254,7 +254,7 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{Kernighan \textit{Jak Unix tworzył historię}}
 
 
   Nim przejdziemy do następnych pozycji, czujemy potrzebę wspomnienia
@@ -280,7 +280,7 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Materiały do nauki}
+  \frametitle{Kernighan \textit{Jak Unix tworzył historię}}
 
 
   Jeśli więc przeczytamy, w~tej książce, że~dany komputer miał
@@ -309,7 +309,7 @@ eprint=true,
   \frametitle{Materiały do nauki}
 
 
-  Andrew S. Tanenbaum, Herbert Bos \textit{Systemy operacyjne} \\
+  Andrew S. Tanenbaum, Herbert Bos \textit{Systemy operacyjne}. \\
   Następna pozycja jest z~przeciwnego bieguna, niż dzieło Kernighana. Jest
   to monografia na temat działania systemów operacyjnych, długa, często
   operująca na bardzo technicznym poziomie, jednak również wspaniale
@@ -372,7 +372,7 @@ eprint=true,
   {\textit{Linux. Wprowadzenie do wiersza poleceń}} Williama Shottsa.
 
   Na Sake będą dostępne niniejsze prezentacje w~formacie w~postaci
-  \textsc{pdf}ów. W~formie źródłowej (plików \LaTeX a) są dostępna na
+  PDFów. W~formie plików źródłowych (plików \LaTeX a) są dostępna na
   serwisie GitHub. Każdy kto ma na komputerze program Git i~dostęp do
   internetu może je pobrać wpisując \\
   \texttt{\$ git clone https://github.com/KZiemian/Presentation} \\
@@ -716,19 +716,19 @@ eprint=true,
   Wiemy, że~dla wielu osób zainstalowanie na swoim komputerze systemu
   GNU/Linux, może być sporym wyzwaniem, dlatego tutaj wyjaśnimy, jak
   można~się zalogować do niego z~poziomu systemu Windows. Dokładniej,
-  pokażemy, jak połączyć~się przez internet do komputerów dysponujących
-  systemem GNU/Linux, poprzez uczelniany system Artemis. Chciałbym przy tym
-  bardzo podziękować panu Tomaszowi Molęckiemu z~działu \textsc{it}
-  \textsc{wsz}i\textsc{b}u za~udzielenie nam informacji na temat
-  procedury logowania~się do tego systemu.
+  pokażemy, jak połączyć~się przez internet do komputerów WSZiBu
+  dysponujących systemem GNU/Linux, poprzez uczelniany system Artemis.
+  Chciałbyśmy przy tym bardzo podziękować panu Tomaszowi Molęckiemu
+  z~działu IT WSZiBu za~udzielenie nam informacji na temat procedury
+  logowania~się do tego systemu.
 
   Pierwszy krok polega na pobraniu programu
-  \colorhref{https://winscp.net/eng/download.php}{Win\textsc{scp}}. Gdy
+  \colorhref{https://winscp.net/eng/download.php}{WinSCP}. Gdy
   już mamy go dostępnego, znajdujemy okno logowania, które wypełniamy
-  zgodnie ze~zdjęciem widocznym na następnym slajdzie. Dane logowania
-  wpisujemy takie same jak dla systemu SUSZI. Gdy to jest gotowe, klikamy
-  na przycisk logowania. W~razie problemów proszę pisać do nas (\email),
-  lub pana Molęckiego.
+  zgodnie ze~zdjęciem \eqref{fig:Artemis-system} na następnym slajdzie.
+  Dane logowania wpisujemy takie same jak dla systemu SUSZI. Gdy to jest
+  gotowe, klikamy na przycisk logowania. W~razie problemów proszę pisać do
+  nas, \email, lub pana Molęckiego.
 
 \end{frame}
 % ######################################
@@ -754,7 +754,7 @@ eprint=true,
 
 
     \caption{Logowanie~się do systemu Artemis za pomocą programu
-      Win\textsc{scp}.}
+      WinSCP.}
 
 
     \label{fig:Artemis-system}
@@ -773,11 +773,57 @@ eprint=true,
 
 
 
-
-
 % ################################################
 \section{Włączanie powłoki BASH}
 % ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Praktyka, później teoria}
+
+
+  Przypomnijmy, że~gdy mówimy „GNU/Linux” i~„Linux”, to mówimy o~dwóch
+  trochę odmiennych rzeczach. Różnicę między nimi wyjaśnimy w~przyszłości,
+  na razie nie muszą~się Państwo przejmować tymi detalami.
+
+  Wierzymy, że~większość z~Państwa preferuje uczenie~się tego
+  jako coś zrobić, nad zgłębianie teoretycznych zawiłości. Dlatego
+  teraz przejdziemy do~nauki jak~pracować z~systemem GNU/Linux za pomocą
+  wyjątkowo potężnego narzędzia, jakim jest powłoka BASH,
+  później omówimy pewne kwestie teoretyczne i~historyczne, które mamy
+  nadzieję, wyjaśnią w~jakimś stopniu, czemu to wszystko działa w~taki
+  właśnie sposób.
+
+  Jak już powiedzieliśmy, BASH jest bardzo potężnym i~powszechnie
+  stosowanych narzędziem. Jednocześnie \alert{BASH nie zna słowa
+    litość}. Powtórzmy to, BASH nie zna słowa litość.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{BASH nie zna słowa litość}
+
+
+  Usłyszą to~Państwo na pewno jeszcze nie raz: \textsc{bash} nie zna słowa
+  litość. Jeśli więc coś Państwu nie działa i~nie wiecie dlaczego, to
+  proszę~się nie poddawać. Trzeba~się po prostu nauczy żyć z~bezlitosnym
+  draniem jakim jest \textsc{bash}.
+
+  Dlaczego więc w~ogóle go używamy? Bo jak to bywa z~wieloma nieprzyjemnymi
+  w~kontaktach osiłkami, warto mieć go po swojej stronie.
+
+\end{frame}
+% ######################################
+
+
+
 
 
 % ######################################
@@ -846,7 +892,7 @@ eprint=true,
     Rolls-Royce kosztowałby jakieś 100\$, przejeżdżałaby milion mil na
     jednym galonie benzyny i~raz do roku eksplodował, zabijając wszystkich
     w~środku.} \\
-  Robert Cringely, \textit{InfoWorld}, tłum. swobodne. Por.~str.~221
+  Robert Cringely, \textit{InfoWorld}. Tłum. swobodne, por.~str.~221
   \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
 
   Naszym główny narzędziem na tych zajęciach będzie powłoka
@@ -879,151 +925,20 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Z~BASHem dzieje~się coś dziwnego}
-
-
-  Błędne wprowadzenie jakiegoś polecenia może spowodować, że~\textsc{bash}
-  przestanie reagować, lub będzie reagował zupełnie nie tak jak tego
-  oczekujemy. Ponieważ \textsc{bash} nie wiem czym jest litość, w~zależności
-  od tego co konkretnie~się zepsuło, dokładna procedura naprawy jest inna.
-
-  Jednak w~większości przypadków, by wrócić do normalnej pracy wystarczy
-  wcisnąć \alert{raz} \texttt{Ctrl-d}. Należy zaznaczyć, że~wciśnięcie
-  \texttt{Ctrl-d} \alert{więcej niż raz} może spowodować zamknięcie powłoki
-  \textsc{bash} i~potrzeby zrobienia kilku rzeczy ponownie. Z~tego też
-  powodu, początkujący \alert{nigdy} nie powinni używać tego skrótu, jeśli
-  wszystko działa jak trzeba.
-
-  Mimo tych zastrzeżeń, \texttt{Ctrl-d} jest jednym z~naszych najlepszych
-  przyjaciół.
-
-\end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Podstawy pracy z~poziomu powłoki BASH}
-% ######################################
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka słów wstępnych i~ostrzeżeń}
-
-
-  Przed chwilą mówiliśmy, że~\textsc{bash} nie zna słowa litość i~każda
-  drobna zmiana może wszystko zniszczyć. Jednocześnie nasza swoboda nie jest
-  całkiem zerowa (choć może często sprawiać takie wrażenie), więc
-  podając tutaj różne polecenia, musimy zdecydować~się na pewno konwencje.
-  Proszę więc mieć świadomość, że~\alert{pewne} zmiany można wprowadzić
-  do~poleceń i~nie zmienią one sposób ich działania.
-
-  Jednak zasady które mówią co \alert{można} zmienić w~poleceniu
-  \textsc{bash}a, bez obrócenia wszystkiego w~ruiny, są często nieintuicyjne
-  i~skomplikowane. Ponieważ zaś zawsze $1000$ różnych rzeczy może zepsuć
-  dane polecenie, zdecydowaliśmy, że~w~tym kursie będziemy starali~się
-  podawać te wersje poleceń, które my uważamy za~optymalne i~które działają
-  poprawnie, nie zaś wnikać w~pokrętne zasady „możesz zmienić to tak i~tak,
-  ale~już nie w~ten sposób”.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka słów wstępnych i~ostrzeżeń}
-
-
-  Testowanie różnych wariantów tych poleceń, sprawdzanie który ich wariant
-  działa, a~który nie, jest oczywiście czymś dobrym, co pozwala lepiej
-  zrozumieć powłokę \textsc{bash}, więc bardzo nasz cieszy, gdy ktoś tego
-  próbuje. Zajmuje to jednak czas, a~większość ludzi pragnie by „komputer
-  zrobił to co trzeba”, nie zaś zgłębiać wszystkie niuanse jego pracy.
-  Biorąc to wszystko pod uwagę, uznaliśmy, że~obecne sposób wykładu jest
-  dobrym wyborem.
-
-  Wszystko utrudnia dodatkowy fakt, że~od czasu do czasu można~się natknąć
-  na~dwa warianty poleceń \textsc{bash}a, które działają tak samo, tylko,
-  że~to nie do końca prawda. Działają tak samo w~$90\%$ przypadków,
-  w~pozostały~$10\%$, działają inaczej. By uniknąć niekończących~się
-  dywagacji na temat dzielenia włosa na czworo w~\textsc{bash}u, proszę
-  przyjąć, że~jeśli polecenie nie działa jak trzeba, należy~się upewnić,
-  iż~są one \alert{dokładnie} takie jak podano tutaj.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Kilka słów wstępnych i~ostrzeżeń}
-
-
-  Do problemu, której wersji poleceń/kodu \textsc{bash}a należy używać,
-  wrócimy jeszcze przy okazji pisania skryptów dla tej powłoki. To jednak
-  na tą chwilę dość odległy temat.
-
-  Pomimo tego, że~staramy~się dokładnie przetestować wszystkie podane
-  w~tych wykładach polecenia \textsc{bash}a, nie możemy wykluczyć tego,
-  że~popełnimy jakiś błąd. Dlatego bardzo prosimy by każdy, kto taki
-  znajdzie, przesłał go nam pod adres \email.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Zaczynamy}
-
-
-  Zacznijmy od przyjęcia, że~pracujemy na komputerze jako użytkownik,
-  którego nazwa w~systemie operacyjnym została wybrana jako \texttt{adam}.
-  Jeśli włączymy konsolę zobaczymy pewnie coś takiego: \\
-  \texttt{adam:$\sim$\$} \\
-  Od tego momentu będziemy zwykle skracali ten znak zachęty \\
-  (ang.~\textit{prompt}) do symbolu \texttt{\$}. Przepisywanie pełnej jego
-  postaci wnosi bardzo mało informacji, za~to zabiera sporo miejsca.
-
-  Na początku zajmiemy~się tym, jak poruszać~się po systemie plików
-  i~katalogów. Na pewno wiedzą Państwo, że~na komputerze znajdują~się
-  katalogi (ang.~\textit{directories}), zwane też folderami, które zawierają
-  pliki i~inne katalogi. Z~punktu widzenia systemu GNU/Linux
-  katalog jest plikiem, jedynie specjalnego rodzaju. Dla tego systemu
-  wszystko jest plikiem lub procesem.
-
-\end{frame}
-% ##################
-
-
-
+% ################################################
+\section{Do czego służy BASH?}
+% ################################################
 
 
 % ######################################
 \begin{frame}
-  \frametitle{Polecenia}
+  \frametitle{Do czego służy BASH?}
 
+
+  Do czego służy BASH? Można powiedzieć, że~za pomocą BASHa można zrobić
+  z~systemem GNU/Linux wszystko co tylko~się da. Jednak taka odpowiedź
+  na~początku niewiele mówi. Poniżej cytujemy słowa, jakimi opisał powłokę
+  wybitny informatyk Brian W.~Kernighan.
 
   \textit{Powłoka systemowa (ang.)} shell \textit{jest programem służącym
     do~uruchamiania innych programów. Umożliwia ona użytkownikom wydawanie
@@ -1034,8 +949,10 @@ eprint=true,
     je po kolei; po zakończeniu każdego z~nich jest gotowa do~następnego.
     Sesja może więc wyglądać tak jak poniżej, przy czym \$ jest
     wyświetlanym przez powłokę znakiem zachęty, dzięki któremu wiem,
-    że~oczekuje ona na moje działania.} \\[0.3em]
-  Str.~$88$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+    że~oczekuje ona na moje działania.} Str.~$88$,
+  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+
+  Jak to jednak wygląda w~praktyce?
 
 \end{frame}
 % ######################################
@@ -1044,424 +961,571 @@ eprint=true,
 
 
 
-% ##################
+% ######################################
+\begin{frame}
+  \frametitle{Do czego służy BASH?}
+
+
+  W~dalszym ciągu zakładamy, że~Państwo wiedzą, czym są katalogi (foldery)
+  i~pliki, jeśli jednak ktoś potrzebuje dodatkowego wyjaśnienia, niech~się
+  nie krępuje i~pyta. Do tego, czym właściwie są katalogi
+  (ang.~\textit{directories}, foldery to po ang.~\textit{folders}) i~pliki
+  (ang. \textit{files}) w~systemie GNU/Linux będziemy jeszcze kilkakrotnie
+  wracać.
+
+  Zakładając u~Państwa podstawową znajomość katalogów i~plików, naukę pracy
+  z~BASHem zaczniemy od rzeczy prostych i~podstawowych: przeglądania
+  zawartości katalogu, zmiany katalogu roboczego, przeglądania zawartości
+  plików, przenoszenia plików z~katalogu do katalogu,~etc. Wszystkie te
+  rzeczy można zrobić za pomocą kliknięć myszką, więc powstaje pytanie,
+  czemu mamy robić wszystkie te rzeczy, w~tak niegościnnym środowisku jakim
+  jest BASH?
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego tak uczymy~się BASHa?}
+
+
+  Odpowiedź na to pytanie jest taka, że~BASH pozwala zrobić znacznie więcej,
+  niż klikanie myszką, więc warto go poznać. Naukę zaś trzeba gdzieś zacząć,
+  więc rozpoczniemy od prostej pracy z~katalogami i~plikami. W~naszej
+  ocenie naukę lepiej zacząć od rzeczy prostych i~w~dużej mierze dość
+  znanych, by potem przejść do bardziej egzotycznych i~skomplikowanych
+  zagadnień.
+
+  Gdy już Państwo poznają własności BASHa, sami będą mogli Państwo
+  zdecydować, czy lepiej zrobić coś za pomocą niego, czy myszki.
+
+  Pracując z~BASHem łatwo zrobić coś, co sprawi, że~zacznie~się on
+  zachowywać dziwnie. Jeśli to Państwa spotkało, to~proste rozwiązanie
+  polega na tym, że~wciskamy jeden raz \texttt{Ctrl-c}. Jeśli to nie
+  pomoże, proszę wcisnąć \texttt{Ctrl-c} jeszcze raz, lub dwa razy.
+  W~większości sytuacji, powinno to rozwiązać problem. O~bardziej subtelnych
+  sposobach rozwiązywania problemów z~BASHem, powiem w~swoim czasie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Z~BASHem dzieje~się coś dziwnego}
+
+
+  W~razie napotkania jakichkolwiek problemów, proszę pamiętać, że~jesteśmy
+  od Państwa dyspozycji. Nasz e-mail to \email.
+
+  W~BASHu naprawdę łatwo coś zepsuć i~w~zależności od tego co zostało
+  zepsute, procedura naprawcza wygląda inaczej. Byłoby bez sensu omawiać
+  te wszystkie przypadku już na początku naszej pracy z~BASHem, więc
+  na razie pozostaniemy przy stwierdzeniu, że~\texttt{Ctrl-c} to nasz
+  przyjaciel.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Zaczynamy pracę z~powłoką BASH}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Powłoka BASH}
+
+  \vspace{-0.5em}
+
+
+  \begin{figure}
+
+    \centering
+
+
+    \includegraphics[scale=0.23]
+    {./Presentations-pictures/Miscancellous-pictures/BASH-shell.png}
+
+
+    \caption{Przykładowy wygląd włączonej powłoki \textsc{bash}, naszego
+      głównego narzędzia pracy na tym przedmiocie.}
+
+
+    \label{fig:BASH-shell-02}
+
+  \end{figure}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Zaczynamy pracę z~BASHem}
+
+
+  Na zdjęciu \eqref{fig:BASH-shell-02} widzimy otwartą powłokę BASHa.
+  To jaki ona ma kolor, jakich fontów używa,~etc., to są kwestie, które
+  zależą od ustawień danego komputera i~więc u~Państwa może ona wyglądać
+  zupełnie inaczej niż na zdjęciu. Konkretny wygląd takiej powłoki nie ma
+  znaczenia dla jej działania, ważne jest tylko, żeby Państwu ten wygląd
+  pasował i~ułatwiał, a~nie utrudniał pracę.
+
+  Jeśli obecny wygląd powłoki BASH nie pasuje Państwu, proszę to powiedzieć.
+  Spróbujemy go zmienić na lepszy.
+
+  Na początek musimy wyjaśnić kilka szczegółów technicznych. Każda osoba,
+  która chce pracować na systemie GNU/Linux, musi korzystać z~konta
+  użytkownika (ang.~\textit{user account}). Z~każdym takim kontem
+  związane~są pewne informacje na temat użytkownika, takie jak imię
+  użytkownika, które ma przypisane w~systemie operacyjnym.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Zaczynamy pracę z~BASHem}
+
+
+  Niech imię użytkownika zostało ustawione jako \texttt{adam}. Jeśli
+  włączymy powłokę zobaczymy pewnie coś takiego: \\
+  \texttt{adam:$\sim$\$} \\
+  Ten pojedynczy wiersz zawiera dużo informacji, które będziemy stopniowo
+  wyjaśniać. Do tego, jej postać będzie zależy nie tylko od imienia
+  użytkownika, ale~też od ustawień systemu operacyjnego. Wobec tego, jeśli
+  u~Państwa wygląda ona inaczej, to nie należy~się martwić. Po prostu
+  ustawienia systemu są inne.
+
+  Zwykle powłoka wyświetla nam nazwę użytkownika. Przy czym nazwa
+  użytkownika, może zawierać więcej informacji, niż tylko jego imię.
+  W~podanym przykładzie nazwa użytkownika to po prostu „\texttt{adam}”.
+  Po symbolu dwukropka~„\texttt{:}” następuję informacja o~tym w~jakim
+  katalogu jesteśmy. W~tym przypadku dostajemy informację, że~jesteśmy
+  w~katalogu „$\sim$”, wyjaśnimy to za chwilę.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dużo tu informacji}
+
+
+  \texttt{adam:$\sim$\$} \\
+  Symbol dolara kończący tą linię, to znak zachęty (ang.~\textit{prompt}),
+  informuje on, że~powłoka jest gotowa by podjąć następne działanie, jakie
+  jej zlecimy. Tak jak wszystko, postać znaku zachęty zależy od ustawień
+  konkretnego systemu operacyjnego i~u~Państwa nie musi być nim znak dolara.
+  Ponownie, proszę się tym nie przejmować.
+
+  Jeszcze trochę teoretyczne nudzenia. Standardowo powłoka rozpoczyna pracę
+  w~katalogu domowy użytkownika. Katalog domowy to miejsce, gdzie użytkownik
+  przechowuje wszystkie swoje pliki, umieszczając je w~odpowiednich
+  katalogach. By skrócić nazwy informujące nas o~położeniu różnych
+  katalogów, zdecydowano~się oznaczać katalog domowy symbolem „$\sim$”. Jest
+  to rozsądny wybór, gdyż większość użytkowników spędza większość swojego
+  czasu w~katalogu domowym.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
 \begin{frame}
   \frametitle{Polecenia}
 
 
-  Podstawy działania katalogów w~systemie GNU/Linux są w~zasadzie takie
-  same jak w~systemie Windows, musimy~się jedynie przyzwyczaić do innych
-  konwencji używanych w~tym systemie. Dużo większym wyzwaniem zapewne
-  będzie zamienienie środowiska graficznego (\textsc{gui},
-  ang.~\textit{Graphic User Interface}) na pracę z~poziomu powłoki.
+  Praca z~BASHem opiera~się na podawaniu mu poleceń
+  (ang.~\textit{commands}). Polecenia mówią BASHowi co ma zrobić.
+  Niestety, BASH jest bardzo kapryśny i~nawet mały błąd w~treści polecenia,
+  może je zupełnie zepsuć. Trzeba~się jakoś nauczyć jak unikać podstawowych
+  błędów i~jak rozumieć komunikaty o~błędach w~wprowadzonych poleceniach.
 
-  Podstawą pracy w~powłoce \textsc{bash} jest korzystanie z~poleceń (ang.
-  \textit{commands}). Bez wnikania w~szczegóły, każde polecenie posiada
-  nazwę i~wykonuje pewne działanie. By wykonać dane polecenie w~powłoce
-  należy najpierw wpisać jej nazwę, następnie zaś jej odpowiednie
-  opcje (flagi) i~argumenty. Część poleceń można wykonać bez wpisywania
-  opcji czy~argumentów.
+  Przejdźmy wreszcie do działania i~wpiszmy w~powłoce polecenie
+  \colorhref{https://linux.fandom.com/pl/wiki/Ls}{\texttt{ls}}
+  \texttt{adam:$\sim$\$ ls} \\
+  \texttt{> \directoryName{Dokumenty}} \quad
+  \texttt{Introduction-to-GNU-Linux.pdf} \quad
+  \texttt{\directoryName{Pobrane}}
 
-  Trzeba~się niestety przyzwyczaić do tego, że~nazwy poleceń, jak i~nazwy
-  ich opcji tych poleceń w~systemie GNU/Linux potrafią być dość dziwne
-  i~trudne do~zapamiętania.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Polecenia}
-
-
-  Podstawowych poleceń systemu GNU/Linux jest około~$100$, do tego każde ma
-  kilkanaście albo więcej opcji. Z~tego powodu nauka ich jest bardzo
-  czasochłonna i~niełatwa. Teoretycznie w~każdej chwili w~\textsc{bash}u
-  możemy skorzystać z~manuala (podręcznika), gdzie są opisy wszystkich
-  poleceń. W~praktyce, żeby zrozumieć jego treść, wymagana jest już dość
-  spora wiedza.
-
-  Zdecydowaliśmy~się przyjąć następujące podejście. Naszym głównym celem
-  jest przekazanie Państwu umiejętności pracy spod powłoki \textsc{bash}
-  w~możliwie krótki i~bezbolesny sposób. Dlatego też, dość szybko
-  wprowadzimy możliwie dużo poleceń, bez zagłębiania~się w~zbyt wiele
-  szczegółów. Niekiedy będziemy wracać do wcześniej już omówionych poleceń,
-  by uzupełnić wiadomości o~nich. Wyczerpujące omówienie wszystkich
-  podstawowych poleceń i~tak zabrałoby zbyt dużo czasu, to zaś podejście
-  uważamy, za rozsądny kompromis.
+  Polecenia wpisujemy po znaku zachęty, tutaj jest nim „\texttt{\$}”.
+  Symbol „\texttt{>}” oznacza, że~wiersz ten zawiera tekst wypisany przez
+  BASHa. Od razu należy dodać, iż~w~zależności od ustawień, BASH
+  może rozpocząć wypisywanie tekstu od symbolu innego, niż „\texttt{>}”,
+  lub może w~ogóle nie użyć żadnego symbolu, tylko od razu zacząć wypisywać
+  tekst.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Polecenie \texttt{ls}}
 
 
-  Zacznijmy od~polecenia
-  \colorhref{https://linux.fandom.com/pl/wiki/Ls}{\texttt{ls}}. Jego nazwa
-  pochodzi prawdopodobnie od~ang.~\textit{List fileS}, ale są różne opinie
-  na ten temat. Polecenie to wyświetla zawartość katalogu w~którym~się
-  znajdujemy, z~tego powodu wynik działania tego polecenia będzie~się cały
-  czas zmieniać, jednym z~możliwych może być ten przedstawiony poniżej. \\
-  \texttt{\$ ls} \\
-  \texttt{{\color{jAxisBlue} Dokumenty}} \quad
-  \texttt{introduction-to-GNU-linux.pdf} \quad
-  \texttt{{\color{jAxisBlue} Pobrane}}
+  Praca z~BASHem opiera~się na podawaniu mu poleceń
+  (ang.~\textit{commands}). Polecenia mówią BASHowi co ma zrobić.
+  Niestety, BASH jest bardzo kapryśny i~nawet mały błąd w~treści polecenia,
+  może je zupełnie zepsuć. Trzeba~się jakoś nauczyć jak unikać podstawowych
+  błędów i~jak rozumieć komunikaty o~błędach w~wprowadzonych poleceniach.
 
-  Polecenie \texttt{ls} jest przykładem takiego polecenia, które można
-  uruchomić bez dodatkowych opcji czy argumentów, ono samo ustali w~jakim
-  katalogu jesteśmy i~wypisze jego zawartość.
+  Przejdźmy wreszcie do działania i~wpiszmy w~powłoce polecenie
+  \colorhref{https://linux.fandom.com/pl/wiki/Ls}{\texttt{ls}}. By je
+  uruchomić wciskamy \texttt{Enter}. \\
+  \texttt{adam:$\sim$\$ ls} \\
+  \texttt{> \directoryName{Dokumenty}} \quad
+  \texttt{Introduction-to-GNU-Linux.pdf} \quad
+  \texttt{\directoryName{Pobrane}}
 
-  Obecnie jest standardem, że~powłoka używa kolorów i~różnych typów fontów,
-  by~informować nas o~typie i~własnościach pliku. W~przykładzie powyżej
-  nazwy katalogów są wyróżnione na niebiesko, trzeba jednak pamiętać,
-  że~wszystko to~zależy od~konkretnych ustawień systemu operacyjnego
-  i~łatwo może zostać zmienione.
+  Polecenia wpisujemy po znaku zachęty, tutaj jest nim „\texttt{\$}”.
+  Symbol „\texttt{>}” oznacza, że~wiersz ten zawiera tekst wypisany przez
+  BASHa. Od razu należy dodać, iż~w~zależności od ustawień, BASH
+  może rozpocząć wypisywanie tekstu od symbolu innego, niż „\texttt{>}”,
+  lub może w~ogóle nie użyć żadnego symbolu, tylko od razu wypisać dane
+  tekst.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
-  \frametitle{Polecenie \texttt{pwd}}
+  \frametitle{Polecenie \texttt{ls}}
 
 
-  Kolejnym poleceniem jest
+  \texttt{adam:$\sim$\$ ls} \\
+  \texttt{> \directoryName{Dokumenty}} \quad
+  \texttt{Introduction-to-GNU-Linux.pdf} \quad
+  \texttt{\directoryName{Pobrane}}
+
+  W~tych wykładach będziemy~się trzymali konwencji, że~tekst wypisany
+  przez powłokę BASHa, będzie~się zaczynał od~symbolu~„\texttt{>}”.
+
+  Nazwa polecenia \texttt{ls} pochodzi prawdopodobnie od~ang.~\textit{List
+    fileS}. Polecenie to wyświetla zawartość katalogu w~którym~się
+  znajdujemy, poprzez wypisanie nazw plików i~katalogów jakie on zawiera.
+  Ponieważ uruchomiliśmy je w~katalogu domowym, który oznaczamy
+  symbolem „\texttt{$\sim$}”, wyświetliła się nam jego zawartość.
+
+  Zawartość katalogu domowego zależy oczywiście od tego, co użytkownik
+  w~nim umieścił, więc tutaj już w~ogóle nie ma żadnych ogólnych reguł.
+  Niemniej w~większości przypadków katalog ten będzie zawierał katalogi
+  o~nazwie „Dokument” czy „Pobrane”
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenie \texttt{ls}}
+
+
+  \texttt{adam:$\sim$\$ ls} \\
+  \texttt{> \directoryName{Dokumenty}} \quad
+  \texttt{Introduction-to-GNU-Linux.pdf} \quad
+  \texttt{\directoryName{Pobrane}}
+
+  W~omawianym przykładzie katalog domowy zawiera dwa katalogi, ich nazwy
+  to „Dokumenty”, „Pobrane” oraz plik~PFD o~nazwie
+  „Introduction-to-GNU-Linux.pdf”.
+
+  Powłoka zwykle stara~się wyświetlać nazwy plików w~taki sposób, by
+  podpowiedzieć nam z~jakim typem pliku mamy do czynienia. Jest to kolejne
+  miejsce, gdzie każdy komputer może używać swojej własnej konwencji
+  graficznej, by~ten cel osiągnąć, więc na każdym systemie trzeba poświęcić
+  chwilę czasu, by zrozumieć, jak on to konkretnie robi.
+
+  W~przypadku tych wykładów, przyjęliśmy konwencję, że~nazwy katalogów
+  będą wypisywane na niebiesko. Dlatego „\texttt{\directoryName{Dokumenty}}”
+  to katalog, ale „\texttt{Dokumenty}” to zwykły plik. Mam nadzieję, że~to
+  ułatwi Państwu zrozumienie, co dana nazwa oznacza.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenie \texttt{ls}}
+
+
+  \texttt{adam:$\sim$\$ ls} \\
+  \texttt{> \directoryName{Dokumenty}} \quad
+  \texttt{Introduction-to-GNU-Linux.pdf} \quad
+  \texttt{\directoryName{Pobrane}}
+
+  To czy ten wybór koloru dla oznaczenia katalogów jest dobry, to coś co
+  wyjątkowo trudno nam ocenić. Dlatego jeśli uważają Państwo, że~obecny
+  wybór utrudnia czytanie wykładów, to bardzo prosimy by nas o~tym
+  poinformować, pisząc choćby na~adres e-maila \email.
+
+  Trochę uwag terminologicznych. Wiersz w~BASHu w~której wpisujemy polecenia
+  nosi techniczną nazwę \textbf{wiersza poleceń}
+  (ang. \textit{command line}). Często będziemy jednak mówili,
+  że~„wpisujemy [polecenie] w~wierszu”, zamiast
+  „wpisujemy [polecenie] w~wierszu poleceń BASHa”.
+
+  O~poleceniu \texttt{ls} można by jeszcze dużo mówić, lecz na~razie
+  zajmiemy~się innym problemem.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenie \texttt{cd}}
+
+
+  \texttt{adam:$\sim$\$ ls} \\
+  \texttt{> \directoryName{Dokumenty}} \quad
+  \texttt{Introduction-to-GNU-Linux.pdf} \quad
+  \texttt{\directoryName{Pobrane}}
+
+  Widzimy, że~katalog domowy zawiera katalog
+  \texttt{\directoryName{Dokumenty}}. Aby z~katalogu domowego przejść do
+  katalogu \texttt{\directoryName{Dokumenty}} używamy polecenia
+  \texttt{cd} od ang. \textit{Change Directory}.\\
+  \texttt{adam:$\sim$\$ cd Dokumenty/} \\
+  \texttt{adam:$\sim$/Dokumenty\$}
+
+  Widzą Państwo, że~początek wiersza zmienił~się z~„\texttt{adam:$\sim$\$}” \\
+  na~„\texttt{adam:$\sim$/Dokumenty\$}”. Poświęćmy chwilę na wyjaśnienie tej
+  zmiany. Przypomnijmy, że~w~używanej przez nas konwencji,
+  dwukropek oddziela nazwę użytkownika, od katalogu w~którym~się obecnie
+  znajdujemy. Dlatego \texttt{adam:$\sim$\$} oznacza, że~w~chwili obecnej
+  pracujemy jako użytkownikiem o~nazwie „\texttt{adam}” i~ jesteśmy
+  w~katalogu domowym, oznaczanym przez symbol~„$\sim$”.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ścieżki katalogów}
+
+
+  \texttt{adam:$\sim$/Dokumenty\$} \\
+  Powyższy wiersz oznacza, że~pracujemy jako użytkownik o~nazwie
+  \texttt{adam} i~jesteśmy w~katalogu \texttt{$\sim$/Dokumenty}. Dokładniej,
+  \texttt{$\sim$/Dokumenty}, czytamy jako „Jesteś w~katalogu o~nazwie
+  >>Dokumenty<<, który jest wewnątrz katalogu domowego ($\sim$).”
+  W~terminologi systemów operacyjnych \texttt{$\sim$/Dokumenty} jest
+  \textbf{ścieżką} (ang.~\textit{path}) do katalogu w~którym~się znajdujemy.
+  O~ścieżka powiemy więcej w~przyszłości.
+  % <<
+
+  W~systemie GNU/Linux nazwy katalogów w~ścieżce oddziela symbol
+  „\texttt{/}” (ang. \textit{slash}). Dzięki temu wiemy, że~w~ścieżce
+  \texttt{$\sim$/Dokumenty} mamy dwie nazwy dwóch katalogów, „$\sim$”
+  i~„\texttt{Dokumenty}” i~katalog \texttt{Dokumenty} znajduje~się
+  wewnątrz katalogu $\sim$.
+
+  Rozpatrzmy inny przykład. Powiedzmy, że~ścieżka do katalogu ma postać
+  \texttt{Dokumenty/Marzec/Faktury}. Informuje nas ona, że~katalog
+  \texttt{Dokumenty} zawiera katalog o~nazwie \texttt{Marzec}, zaś katalog
+  \texttt{Marzec} sam zawiera katalog \texttt{Faktury}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ścieżki katalogów}
+
+
+  Z~postaci ścieżki \texttt{Dokumenty/Marzec/Faktury} można wyciągnąć
+  wniosek, że~katalog \texttt{Faktury}, zawiera faktury wystawione
+  w~miesiącu marcu. Ten sposób używania katalogów, by porządkować plik
+  jest Państwu na pewno dobrze znany.
+
+  Warto porównać to z~tym co byśmy zobaczyli na systemie Windows.
+  System ten nie zna pojęcia katalogu domowego w~sensie systemu GNU/Linux,
+  standardowym miejscem gdzie zaczynamy pracę jest dysk~\texttt{C}.
+  Ścieżka do dysku \texttt{C} w~systemie Windows ma postać \\
+  \texttt{C:\textbackslash\textbackslash} \\
+
+  Gdyby na dysku~\texttt{C} znajdował~się katalog o~nazwie
+  „\texttt{Dokumenty}”, a~w~środku niego katalog „\texttt{Marzec}”,
+  a~w~nim katalog \texttt{Faktury}, to ścieżka do tego katalogu miałaby
+  postać \\
+  \texttt{C:\textbackslash\textbackslash Dokumenty\textbackslash
+    Marzec\textbackslash Faktury}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Ścieżki katalogów}
+
+
+  Porównajmy teraz ścieżkę w~systemie GNU/Linux \\
+  \texttt{$\sim$/Dokumenty/Marzec/Faktury} \\
+  z~odpowiadającą jej ścieżką w~systemie Windows \\
+  \texttt{C:\textbackslash\textbackslash Dokumenty\textbackslash
+    Marzec\textbackslash Faktury} \\
+  Widzimy więc, że~Windows do oddzielania nazw katalogów używa symbolu
+  „\texttt{\textbackslash}” (ang. \textit{backslash}), zaś GNU/Linux
+  symbolu „\texttt{/}” (ang. \textit{slash}). Jest to stosunkowo mała
+  różnica, ale i~tak trzeba~się do niej przyzwyczaić.
+
+  O~ścieżka i~katalogach będziemy mówili jeszcze nie raz, na razie
+  zaś wrócimy do pracy z~poleceniami.
+
+  Jeśli chcemy z~katalogu \texttt{$\sim$/Dokumenty} wrócić do katalogu
+  domowego to możemy użyć polecenia \texttt{cd $\sim$}: \\
+  \texttt{adam:$\sim$/Dokumenty\$ cd $\sim$} \\
+  \texttt{adam:$\sim$\$}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenia \texttt{pwd} i~ścieżki}
+
+
+  W~tym miejscu należy zaznaczyć, że~jeśli nie podamy \texttt{cd}
+  żadnego argumentu, to domyślnie zostaniemy przeniesieni do katalogu
+  domowego: \\
+  \texttt{adam:$\sim$/Dokumenty\$ cd} \\
+  \texttt{adam:$\sim$\$}
+
+  Kolejnym poleceniem które warto znać jest
   \colorhref{https://www.arturpyszczuk.pl/commands-pwd.html}{\texttt{pwd}}
-  od ang.~\textit{Print Working Directory}, rezultat jego działania można
-  zobaczyć poniżej. \\
-  \texttt{\$ pwd} \\
-  \texttt{/home/adam}
-
-  Ta krótka linia zawiera bardzo dużo informacji i~potrzebujemy przynajmniej
-  kilka z~nich wyjaśnić. Sposób w~jaki pliki i~katalogi są ułożone na~dysku
-  jest zdefiniowane przez \textbf{system plików} danego systemu
-  operacyjnego i~ten używany w~systemie GNU/Linux różni~się mocno tego
-  w~systemie Windows.
-
-  Zacznijmy od kilku uwag odnośnie notacji. Jeśli pracowalibyśmy w~tym
-  ostatnim systemie i~na dysku~C znajdowałby~się
-  katalog \texttt{Systemy-operacyjne-Ćwiczenia} a~w~nim katalog
-  \texttt{Zajęcia-01}, to ścieżka do niego miałaby postać: \\
-  \texttt{C:\textbackslash\textbackslash
-    Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
+  od ang.~\textit{Print Working Directory}. Termin
+  \textit{working directory} tłumaczymy na polski jako \textit{katalog
+    roboczy}, jest to katalog w~którym~się obecnie znajdujemy. Jeśli
+  wykonany to polecenie w~katalogu domowy, możemy zobaczyć coś takiego. \\
+  \texttt{adam:$\sim$\$ pwd} \\
+  \texttt{> /home/adam} \\
+  Polecenie \texttt{pwd} przekazuje nam informacje, że~jesteśmy
+  w~katalogu, którego ścieżka to~\texttt{/home/adam}. Wynika też z~tego,
+  że~katalog \texttt{adam} zawiera~się w~katalogu \texttt{home}.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
-  \frametitle{System plików}
+  \frametitle{Polecenia \texttt{pwd} i~ścieżki}
 
 
-  Odpowiednikiem ścieżki z~systemu Windows: \\
-  \texttt{C:\textbackslash\textbackslash
-    Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
-  w~systemie GNU/Linux byłaby ścieżka: \\
-  \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
-  Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
-  używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
-  używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
-  ale trzeba~się do niej przyzwyczaić.
+  W~podanym przykładzie ścieżka do katalogu domowego ma postać
+  \texttt{/home/adam}, jednak jej postać zależy od ustawień danego
+  komputera, więc proszę~się nie dziwić i~nie martwić, jeśli na Państwa
+  komputerze będzie wyglądać zupełnie inaczej.
 
-  Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
-  mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
-  plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
-  istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
-  w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
-  którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
-  symbolem~„\texttt{/}”.
+  Ponieważ wykonaliśmy polecenie \texttt{pwd} w~katalogu domowym, mogliśmy
+  oczekiwać, że~zobaczymy na ekranie \\
+  \texttt{> $\sim$} \\
+  Zamiast tego zobaczyliśmy \texttt{/home/adam}, bo $\sim$ jest skrótem
+  wprowadzonym dla wygody użytkownika, zaś poprawna forma ścieżki do
+  katalogu domowego to właśnie \texttt{/home/adam}. Oczywiście, to jest
+  ścieżka na komputerze z~omawianego przykładu i~na Państwa maszynach może
+  ona być inna.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{System plików}
-
-
-%   Odpowiednikiem ścieżki z~systemu Windows: \\
-%   \texttt{C:\textbackslash\textbackslash
-%     Systemy-operacyjne-Ćwiczenia\textbackslash Zajęcia-01} \\
-%   w~systemie GNU/Linux byłaby ścieżka: \\
-%   \texttt{/home/adam/Systemy-operacyjne-Ćwiczenia/Zajęcia-01} \\
-%   Widzimy więc, że~gdy Windows do oddzielania nazw katalogów i~plików
-%   używa symbolu „backslasha”: „\texttt{\textbackslash}”, to GNU/Linux
-%   używa symbolu „slasha”: „\texttt{/}”. Jest to stosunkowo mała różnica,
-%   ale trzeba~się do niej przyzwyczaić.
-
-%   Poważniejsza różnica jest następująca. Komputery z~systemem GNU/Linux
-%   mogą posiadać wiele dysków, nie jest to żadnym problemem, ale~system
-%   plików GNU/Linuxa nie zna pojęcia dysku jako takiego. W~systemie GNU/Linux
-%   istnienie naczelny katalog zwany rootem, czyli po polsku „korzeniem”,
-%   w~którym zawierając~się wszystkie inne pliki oraz katalogi, nieważne na
-%   którym fizycznym dysku są one umieszczone. Katalog root oznaczamy
-%   symbolem~„\texttt{/}”.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% ##################
+% ######################################
 \begin{frame}
-  \frametitle{System plików}
+  \frametitle{Polecenia \texttt{pwd} i~ścieżki}
 
 
-  Wróćmy do polecenia \\
-  \texttt{\$ pwd} \\
-  \texttt{/home/adam} \\
-  Linię \texttt{/home/adam} czytamy „W~katalogu root („\texttt{/}”)
-  znajduje~się katalog \texttt{home}, w~nim zaś znajduje~się katalog
-  \texttt{adam}.” Polecenie \texttt{pwd} podaje więc w~którym katalogu~się
-  obecnie znajdujemy, za~pomocą ścieżki, która zaczyna~się od katalogu root:
-  „\texttt{/}”.
+  Jak już wiemy, ścieżka \texttt{/home/adam} oznacza, że~katalog
+  \texttt{adam} zawiera~się w~katalogu \texttt{home}. Ktoś może zapytać,
+  co oznacza \texttt{/} na początku tej ścieżki? Jest to bardzo dobre
+  pytanie, jednak odpowiedź na nie odłożymy na później, gdy już poznamy
+  kilka podstawowych poleceń BASHa i~to jak z~nich korzystać.
 
-  Katalog w~którym obecnie jesteśmy nosi nazwę \textbf{katalogu roboczego}
-  (ang.~\textit{working directory}), a~jak powiedzieliśmy \texttt{pwd} jest
-  akronimem od~\textit{Print Working Directory}, czyli „wyświetl katalog
-  roboczy”.
+  Zobaczmy teraz, co może~się stać, jeśli polecenie \texttt{pwd} wprowadzimy
+  w~katalogu \texttt{$\sim$/Dokumenty\$}: \\
+  \texttt{adam:$\sim$/Dokumenty\$ pwd} \\
+  \texttt{> /home/adam/Dokumenty} \\
+  Sens ścieżki \texttt{/home/adam/Dokumenty} powinien być już jasny.
 
-  Ścieżkę podającą lokalizację katalogu lub pliku nazywamy
-  \textbf{ścieżką bezwzględną}, jeśli zaczyna~się ona od katalogu root.
-  W~przeciwnym razie mówimy o~\textbf{ścieżce względnej} (podawanej
-  względem innego katalogu niż root).
+  Proszą zwrócić uwagę, że~polecenie \texttt{pwd} nie napisało na ekranie
+  \texttt{$\sim$/Dokumenty}, lecz rozwinęło symbol „$\sim$” do pełnej
+  ścieżki \texttt{/home/adam}.
 
 \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{System plików}
-
-
-  Bez wielkich uproszczeń można przyjąć, że~\textsc{bash}u \alert{każdy}
-  ciąg symboli zaczynający od~symbolu „\texttt{/}” zostanie zinterpretowany
-  jako ścieżka do jakiegoś pliku lub katalogu. Z~tego powodu trzeba
-  \alert{bardzo} uważać przy stosowaniu symbolu~„\texttt{/}”.
-
-  W~szczególności, gdy stosujemy symbol „\texttt{/}”, trzeba zwracać dużą
-  uwagę na~spacje. Ścieżka postaci \\
-  \texttt{/home/adam} \\
-  jest poprawna. Ale już ścieżka \\
-  \texttt{/ home/adam} \\
-  jest \alert{błędna}! To w~jaki sposób jest błędna, to omówimy innym
-  razem. Doświadczenie uczy, że~na początku sprawia to ludziom
-  bardzo dużo problemów.
-
-  To, że~główny katalog nosi nazwę „korzenia” (ang.~\textit{root}) nie jest
-  przypadkiem, ale do tej kwestii wrócimy innym razem.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Katalog domowy}
-
-
-  W~systemie GNU/Linux każdy użytkownik ma swój katalog domowy, w~którym
-  może przechowywać potrzebne mu pliki. Standardowo, choć mogą być wyjątki,
-  użytkownik \texttt{adam} otrzyma katalog \texttt{/home/adam}, użytkownik
-  \texttt{barbara} katalog \texttt{/home/barbara},~etc. Katalog domowy
-  bieżącego użytkownika posiada też alternatywną nazwę „$\sim$”. Stąd znak
-  zachęty \\
-  \texttt{adam:$\sim$\$} \\
-  przekazuje nam informację, że~działamy jako użytkownik \texttt{adam}
-  i~znajdujemy~się w~jego katalogu domowym.
-
-  Załóżmy, że~katalogu domowym znajduje~się katalog o~nazwie
-  \texttt{Systemy-operacyjne-Ćwiczenia}. By sprawdzić, czy tak jest
-  naprawdę możemy użyć polecenia \texttt{ls}: \\
-  \texttt{\$ ls} \\
-  \texttt{{\color{jAxisBlue} Dokumenty}} \quad
-  \texttt{introduction-to-GNU-linux.pdf} \quad
-  \texttt{{\color{jAxisBlue} Pobrane}} \\
-  \texttt{{\color{jAxisBlue} Systemy-operacyjne-Ćwiczenia}} \\
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Polecenie \texttt{cd}}
-
-
-  Jeśli w~bieżącym katalogu znajduje~się katalog
-  \texttt{Systemy-operacyjne-Ćwiczenia} to możemy do niego wejść
-  używając polecenia
-  \colorhref{https://linux.fandom.com/pl/wiki/Cd}{\texttt{cd}}
-  (od ang.~\textit{Change Directory}): \\
-  \texttt{adam:$\sim$\$ cd Systemy-operacyjne-Ćwiczenia} \\
-  \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$} \\
-  Wyjątkowo zapisaliśmy pełniejszą wersję znaku zachęty, by podkreślić,
-  iż~informuje on~nas w~którym katalogu jesteśmy. Mianowicie ścieżka
-  \texttt{$\sim$/Systemy-operacyjne-Ćwiczenia} informuje nas, że~w~katalogu
-  domowych użytkownika \texttt{adam} znajduje~się katalog
-  \texttt{Systemy-operacyjne-Ćwiczenia} i~w~nim właśnie jesteśmy.
-
-  Użyte wyżej polecenie \texttt{cd} jest przykładem polecenia, które
-  pobiera argument, mianowicie nazwę katalogu do którego możemy wejść.
-  W~istocie polecenie to pozwala nam na bardzo swobodne poruszanie~się
-  po systemie plików, jeśli opanujemy dobrze zapis ścieżek w~GNU/Linuxie,
-  ale wszystko po kolei.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Polecenie \texttt{cd}}
-
-
-  Załóżmy, że~teraz chcielibyśmy przejść do katalogu nad nami. By to zrobić
-  należy przekazać poleceniu \texttt{cd} argument „\texttt{..}”: \\
-  \texttt{adam:$\sim$/Systemy-operacyjne-Ćwiczenia\$ cd ..} \\
-  \texttt{adam:$\sim$\$} \\
-  Dlaczego jako argument przesyłamy akurat „\texttt{..}” wyjaśnimy w~swoim
-  czasie, na razie przyjmijmy, iż~tak po prostu jest. Dla lepszej
-  ilustracji tego co~zrobiliśmy, ponownie wypisaliśmy znak zachęty,
-
-  Załóżmy, że~chcemy teraz wejść do katalogu
-  \texttt{Systemy-operacyjne-Ćwiczenia} i~utworzyć tam plik
-  \texttt{Notatki-z-zajęć.txt}. By utworzyć ten plik możemy skorzystać
-  z~polecenia
-  \colorhref{https://linux.fandom.com/pl/wiki/Touch}{\texttt{touch}}. Pełna
-  sekwencja poleceń będzie wyglądać tak. \\
-  \texttt{\$ cd Systemy-operacyjne-Ćwiczenia} \\
-  \texttt{\$ touch Notatki-z-zajęć.txt} \\
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Edycja plików z~pomocą programu gedit}
-
-
-  Możemy teraz użyć polecenia \texttt{ls} by~się przekonać, czy~plik
-  \texttt{Notatki-z-zajęć.txt} został poprawnie utworzony.
-  Z~komputerami nigdy nic nie wiadomo, więc warto to sprawdzić.
-
-  W~następnym kroku otworzymy go do edycji za~pomocą programu
-  \colorhref{https://gedit-text-editor.org/}{gedit}. By to zrobić
-  wpisujemy w~powłoce \\
-  \texttt{\$ gedit Notatki-z-zajęć.txt \&} \\
-  Proszę pamiętać o~dodaniu na końcu polecenia znaku
-  \alert{ampersand}:~„\&”. Inaczej gedit zablokuje nam możliwość wpisywania
-  kolejnych poleceń do powłoki i~by ją odzyskać, będziemy musieli
-  wyłączyć gedita albo użyć kombinacji poleceń \texttt{jobs} i~\texttt{bg}.
-
-  Czemu uruchomienie gedita bez symbolu ampersanda ma takie skutki, omówimy
-  gdy będziemy dyskutowali zagadnienie procesów i~tego jak działają
-  w~systemie GNU/Linux. Nie jest to najprostszy temat na świecie.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Okienko gedita}
-
-
-  Jeśli wszystko poszło dobrze, to na ekranie zobaczymy okienko Gedita,
-  które wygląda mniej więcej tak jak to na~zdjęciu~\eqref{fig:Gedit-window}.
-
-
-
-
-
-  \begin{figure}
-
-    \centering
-
-    \includegraphics[scale=0.145]
-    {./Presentations-pictures/Miscancellous-pictures/gedit-window.png}
-
-    \caption{Otwarte okienko programu gedit.}
-
-
-    \label{fig:Gedit-window}
-
-  \end{figure}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Edytory tekstów}
-
-
-  Teraz możemy do pliku \texttt{Notatki-z-zajęć.txt} wpisać tekst, choćby
-  \textit{Notatki z~przedmiotu „Systemy operacyjne”}. Proszę pamiętać, by
-  zapisywać wprowadzone zmiany, służy do tego choćby skrót~\texttt{Ctrl-s}.
-
-  Kilka słów dlaczego wybraliśmy do~edycji plików program gedit. Na~tym
-  kursie korzystamy głównie z~niego, gdyż jest on prosty w~obsłudze
-  i~w~kilka sekund po jego otwarciu użytkownik może już pisać odpowiedni
-  tekst. Zostawiamy jednak Państwu pełną swobodę w~wyborze edytora tekstu.
-  Nie jest ważne jakiego programu~się używa, ważne jest, żeby udało~się
-  wykonać zadanie jakie przed nami stoi.
-
-  Jeśli chodzi o~edytory dostępne pod systemem GNU/Linux, to w~naszej
-  ocenie warto zwrócić uwagę choćby na~dwa owiane już legendą programy
-  do edycji tekstu \colorhref{https://www.vim.org/}{vim}
-  i~\colorhref{https://www.gnu.org/software/emacs/}{GNU Emacs}.
-
-\end{frame}
-% ##################
+% ######################################
 
 
 
@@ -1473,60 +1537,32 @@ eprint=true,
 
 
 % ################################################
-\section{Czy tylko mi~się wydaje, że~ten system jest dziwny?}
+\section{Polecenia BASHa to podstępne bestie}
 % ################################################
 
 
 % ######################################
 \begin{frame}
-  \frametitle{Czy tylko mi~się wydaje, że~ten system jest dziwny?}
+  \frametitle{Polecenia BASHa to podstępne bestie}
 
 
-  Niejedna z~poznanych przez nas cech systemu operacyjnego, może
-  wydawać~się nam dziwna. Czy życie nie mogłoby być prostsze, a~system
-  operacyjny bardziej zrozumiały? Odpowiedź na oba pytania brzmi
-  „Prawdopodobnie tak”. Dlaczego więc tak nie jest?
+  Polecenia BASHa to podstępne bestie, trzeba nauczyć~się z~nimi żyć.
+  Można spędzić całe dnie omawiając ich własności. Na razie poprzestaniemy
+  na kilku uwagach natury ogólnej.
 
-  Warto sobie uświadomić, że~niektórzy jeżdżą jeszcze zabytkowymi
-  samochodami wyprodukowanymi w~latach $60$-tych XX~wieku. Prawdopodobnie
-  gdzieś na świecie działają jakieś komputery wyprodukowane w~tych latach,
-  ale większa jest szansa zobaczenia go w~muzeum, niż wykonującego jakąś
-  pracę. W~przeciwieństwie do tego, pomysł z~lat $60$-tych mają~się
-  świetnie, również w~informatyce. Pracując z~systemami często
-  napotykamy~się na jakiś jego fragment, który wymyślono w~owym czasie,
-  odbija on więc ówczesny stan wiedzy i~możliwości techniczne. By więc
-  zrozumieć pewne osobliwości systemów operacyjnych warto udać~się w~krótką
-  podróż w~przeszłość.
+  Polecenia mogą występować same, jak polecenie \texttt{cd} \\
+  \texttt{adam:$\sim$/Dokumenty\$ cd} \\
+  \texttt{adam:$\sim$\$} \\
+  Przypomnijmy, że~polecenie \texttt{cd} samo w~sobie przenosi nas do
+  katalogu domowego.
 
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Trochę historii}
-
-
-  Główne przesłanie tej historii jest następujące. Systemy operacyjne
-  których dziś używamy, wyewoluowały do swojej obecnej formy formy
-  na przestrzeni dekad, wchłaniając i~łącząc pomysły pochodzące
-  z~różnorakich źródeł. Stąd ich dzisiejszy czas może sprawiać wrażenie
-  przestarzałego, bałaganiarskiego i~pełnego niekonsekwencji. Jest to prawdą
-  w~przypadku w~zasadzie wszystkich popularnych systemów operacyjnych, nie
-  tylko omawianego przez nas GNU/Linuxa.
-
-  Zaczynamy w~późnej epoce brązu komputerów, czyli roku~$1965$.
-  W~owym roku w~USA, uczelnia M.I.T oraz firmy General Electrics i~Bell
-  Labs zaczynają pracę nad systemem operacyjnym
-  \colorhref{https://en.wikipedia.org/wiki/Multics}{\textsc{multics}}
-  (ang.~\textit{MULTiplexed Information and Computing Service}). Prace
-  nas systemem \textsc{multics} okazały~się wyjątkowo skomplikowane i~sam
-  projekt odniósł jedynie częściowy sukces. Z~uwagi na trudności
-  przy tworzeniu tego systemu Bell Labs wycofały~się z~projektu
-  w~roku $1969$.
+  Jednocześnie polecenia mogą przyjmować \textbf{argumenty}
+  (ang. \textit{arguments}), przykładem jest znów polecenie \texttt{cd}: \\
+  \texttt{adam:$\sim$\$ cd Dokumenty} \\
+  \texttt{adam:$\sim$/Dokumenty\$} \\
+  Argumentem w~tym przypadku jest nazwa katalogu, do którego ma nas
+  przenieść. Przypomnijmy, że~nazwa „\texttt{cd}” pochodzi od
+  ang.~\textit{Change directory}, pl.~\textit{zmień katalog}.
 
 \end{frame}
 % ######################################
@@ -1537,28 +1573,62 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Ken Thompson i~jego współpracownicy}
+  \frametitle{Argumenty poleceń}
 
 
-  Jednym z~ludzi, który pracował z~ramienia Bell Labs nad \textsc{multics}em
-  jest \colorhref{https://en.wikipedia.org/wiki/Ken\_Thompson}
-  {Ken Thompson}. Po wycofaniu~się Bell Labs z~tego projektu, Thompson
-  poszukując nowych problemów do rozwiązania, zaczyna pisać programy na
-  znajdujący~się w~Bell Labs i~wówczas już rzadko używany komputer
-  \colorhref{https://en.wikipedia.org/wiki/PDP-7}{PDP-$7$}.
-  W~trackie pracy nad nimi w~pewnym momencie dochodzi do~wniosku,
-  że~niewiele mu brakuje do stworzenia systemu operacyjnego. W~ten sposób
-  powstaje system operacyjny \textsc{unix}, którego pierwsza wersja
-  jest gotowa na jesień $1969$~roku.
+  Argumenty poleceń można intuicyjnie zdefiniować, jako obiekty, które
+  przesyłamy poleceniom, aby te wykonały na nich jakąś czynność. Poleceniu
+  \texttt{cd} przesyłamy jako argument katalog, do którego ma on nas
+  przenieść.
 
-  Sama nazwa „\textsc{unix}”,
-  jak zgadzają~się wszyscy biorący udział w~jego tworzeniu, jest
-  nawiązaniem, i~to dość złośliwym do nazwy „\textsc{multics}”.
-  Związane jest to z~powszechną krytyką, że~\textsc{multics} próbował
-  osiągnąć zbyt wiele rzeczy na raz i~to nie wyszło mu na zdrowie,
-  a~nowy system będzie skupiał~się na robieniu kilku rzeczy dobrze. Stąd
-  „multi” zmieniono na „unit” i~powstała nazwa \textsc{unix}, por.
-  str.~???.
+  Jeśli posiadają Państwo intuicyjne zrozumienie tego, czym są argumenty
+  poleceń, to jest to wszystko co będzie Państwu potrzebne na tym kursie.
+
+  Poza argumentami polecenia posiadają, prawie zawsze, opcje. Jak argument
+  oznacza coś na czym polecenia ma działać, tak opcja zmienia sposób
+  działania tego polecenia. W~dalszym ciągu nauki poznamy jeszcze wiele
+  poleceń i~ich opcji, więc nie będziemy podawali ich przykładów teraz.
+
+  Do wszystkich tych kwestii jeszcze nie raz wrócimy.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Krótkie podsumowanie}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Krótkie podsumowanie}
+
+
+  Spróbujmy~się na chwilę zatrzymać, podsumować pewne rzeczy, które do
+  tej pory powiedzieliśmy oraz dodać kilka dodatkowych informacji.
+  Przypomnijmy, że~wiele rzeczy mocno upraszczamy, by było prostsze do
+  zrozumienia.
+
+  W~systemie GNU/Linux mamy pliki i~katalogi. Pliki zawierają dane,
+  zaś katalogi zawierają pliki i~inne katalogi. Główny zadaniem katalogów
+  jest porządkowanie plików, poprzez umieszczanie zdjęć w~katalogu o~nazwie
+  \texttt{Zdjęcia}, plików z~muzyką w~katalogu \texttt{Muzyka},~etc.
+
+  Pracując w~systemie GNU/Linux zawsze znajdujemy~się wewnątrz jakiegoś
+  katalogu. Katalog w~którym~się znajdujemy obecnie nosi nazwę
+  \textbf{katalogu roboczego} (ang.~\textit{working directory}).
+
+  \textbf{Ścieżki katalogów} (ang. \textit{directories paths}) pozwalają
+  nam ustalić, gdzie~się znajduje dany katalog.
 
 \end{frame}
 % ######################################
@@ -1569,108 +1639,21 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Ken Thompson i~jego współpracownicy}
+  \frametitle{Krótkie podsumowanie}
 
 
-  Do Thompsona w~pracy nad \textsc{unix}em dołącza wielu wybitnych
-  informatyków, pracujących wtedy w~Bell Labs, jak ???
+  W~BASHu korzystamy z~poleceń by wykonać jakieś zadania. Przykładowo
+  katalog roboczy możemy zmienić korzystając z~polecenia \texttt{cd}
+  (ang.~\textit{Change Directory}).
 
-  System \textsc{unix} jest pierwszym bezpośrednim przodkiem używanego
-  przez nas systemu GNU/Linux, jednak droga od jednego do~drugiego
-  jest dość długa i~wyboista.
+  Polecenia mogą przyjmować argumenty i~opcje. Argumenty, to obiekty
+  na których polecenie wykona jakieś działanie. Przykładowo polecenie
+  \texttt{cd WybranyKatalog} zmieni nasz katalog roboczy na~ten
+  o~nazwie \texttt{WybranyKatalog}. O~opcjach poleceń opowiemy później.
 
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Ken Thompson i~jego współpracownicy}
-
-
-
-  \begin{figure}
-
-    \centering
-
-
-    \includegraphics[scale=0.3]
-    {./Presentations-pictures/OS-heroes-Pictures/Dennis-Ritchie-Ken-Thompson-around-year-1972.jpg}
-
-
-    \caption{Ken Thompson (siedzi) i~Dennis Ritchie przy komputerze
-      typu PDP-$11$, około roku $1972$-ego.}
-
-
-    \label{fig:Ritchie-Thompson-around-year-1972}
-
-  \end{figure}
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Ken Thompson i~jego współpracownicy}
-
-
-  Zdjęcie \eqref{fig:Ritchie-Thompson-around-year-1972} przedstawia Kena
-  Thompsona i~Denisa Ritchiego pracujących na komputerze typu
-  \colorhref{https://en.wikipedia.org/wiki/PDP-11}{PDP-$11$}, za~pomocą
-  dalekopisu
-  \colorhref{https://en.wikipedia.org/wiki/Teletype\_Model\_33}
-  {Model~$33$ Teletype}. Współtwórca \textsc{unix}a Brian
-  W.~Kernighan opatrzył to zdjęcie takim komentarzem.
-
-  \textit{Rysunek 3.1 [u~nas \eqref{fig:Ritchie-Thompson-around-year-1972}]
-    przedstawia zrobione na~potrzeby} public relations \textit{w~$1972$
-    zdjęcie Kena Thompsona i~Dennisa Ritchiego pracujących nad PDP-$11$
-    wyposażona we wczesną wersję Uniksa. Sam komputer najprawdopodobniej
-    był specyficznym wariantem PDP-$11$ o~nazwie PDP-$11/20$. Niewielkie,
-    okrągłe obiekty znajdujące~się mniej więcej na wysokości głowy, to
-    DECtapes~-- napędy z~taśmą magnetyczną, które umożliwiały przechowywanie
-    $144\text{K}$ słów $18$-bitowych [$324$ kilobajty pamięci]. Ponieważ
-    pozwalały one na odczyt i~zapis pojedynczych bloków, mogły służyć jako
-    tymczasowe, wolne, ale niezawodne dyski; taśmy były wymienne, używano
-    ich więc też do~archiwizacji danych.}
-  Str.~$64$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Ken Thompson i~jego współpracownicy}
-
-
-  \textit{Ken pisze na dalekopisie Model~$33$ Teletype~-- solidnym,
-    ale~wolnym i~hałaśliwym urządzeniu, będącym w~istocie sterowaną przez
-    komputer elektromechaniczną maszyną do~pisania, która potrafiła pisać
-    tylko dużymi literami, w~tempie do~$10$ znaków na sekundę. Model~$33$
-    pochodzi z~$1963$ roku, ale wcześniejsze wersje były w~powszechnym
-    użyciu już od początku lat~$30$.}
-
-  \textit{Teletype Corporation była częścią AT\&T i~urządzenia Teletypes
-    były powszechnie używane w~Bell System i~innych ośrodkach
-    do~wysyłania wiadomości; dopiero w~późniejszym czasie zaczęto
-    podłączać je do komputerów. To, co zostało wprowadzone na klawiaturze
-    Teletype, trafiało do~komputera, a~rezultaty były drukowane (dużymi
-    literami) na długiej roli papieru; na~zdjęciu~są widoczne górne
-    fragmenty tych rolek. Jak sądzę, jednym z~powodów bardzo krótki
-    nazw wielu poleceń Uniksa było to, że~pisanie na Modelu~$33$ wymagało
-    niemałej siły, a~drukowanie przebiegało wolno.}
-  Str.~$65$, \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}.
+  Zwykle zaczynamy pracę w~katalogu roboczym, który nosi nazwę
+  \textbf{katalogu domowego} (ang. \textit{home directory}). Katalog
+  domowy służy do przechowywania plików należących do~danego użytkownika.
 
 \end{frame}
 % ######################################
@@ -1680,48 +1663,11 @@ eprint=true,
 
 
 
-% ######################################
-\begin{frame}
-  \frametitle{Dlaczego?}
 
 
-  Jak Państwo widzą,
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{To tylko część tej historii}
-
-
-  To co przedstawiliśmy tutaj jest tylko drobnym wycinkiem historii, która
-  doprowadziła do powstania używanych przez nas systemów operacyjnych,
-  takich jak GNU/Linux.
-
-  Jeśli ktoś chce lepiej poznać tę historię to powinien w~pierwszym rzędzie
-  sięgnąć do krótkiej i~bardzo pięknej książki Briana W.~Kernighan
-  \textit{Jak Unix tworzył historię}
-  \parencite{Kernighan-Jak-Unix-tworzyl-historie-Pub-2021}, która była
-  już przez nas wielokrotnie cytowana. Jak sama jej tytuł wskazuje, książka
-  ta dotyczy głównie systemu \textsc{unix}, jego powstania i~rozwoju. Jednak
-  w~ostatniej części, głównie w~rozdziałach ??? i~??? opisuje drogę, jaka
-  wiodła od~\textsc{unix}, do~systemu GNU/Linux. Cała zaś książka jest
-  kopalnią informacji na temat, tego kiedy, gdzie i~dlaczego powstały znane
-  nam dziś części naszych systemów operacyjnych.
-
-\end{frame}
-% ######################################
-
-
-
-% % ##################
-% \jagiellonianendslide{?????}
-% % ##################
+% ################################################
+\EndingSlide{Dziękujemy! Pytania?}
+% ################################################
 
 
 
