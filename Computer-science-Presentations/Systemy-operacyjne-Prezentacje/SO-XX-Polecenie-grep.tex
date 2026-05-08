@@ -1,6 +1,6 @@
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 % Basic configuration of Beamera class and Jagiellonian theme
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
@@ -82,16 +82,16 @@ eprint=true,
 
 
 
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \title{Systemy operacyjne}
-\subtitle{?. Grep}
+\subtitle{XX. Polecenie grep}
 
 \author{Kamil Ziemian \\
   \email}
 
 
 % \date{}
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 
 
 
@@ -111,38 +111,512 @@ eprint=true,
 
 
 
-% ######################################
-% Number of chars: 20k+,
+% ################################################
+% Number of chars: 20k+, 26k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% ######################################
+% ################################################
 
 
 
 
 
-% ######################################
+% ################################################
 \maketitle
-% ######################################
+% ################################################
 
 
 
 
 
-% ######################################
+% ################################################
 \EndingSlide{Ta prezentacja wciąż nie jest ukończona.}
-% ######################################
+% ################################################
 
 
 
 
 
-% ##################
+% ################################################
 \begin{frame}
   \frametitle{Spis treści}
 
 
   \tableofcontents
+
+\end{frame}
+% ################################################
+
+
+
+
+
+% ################################################
+\section{Polecenie \texttt{grep}}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenie \texttt{grep}}
+
+
+  Naszym kolejnym tematem jest nauka korzystania z~polecenia \texttt{grep}.
+  Do czego ono służy? Mówiąc bardzo prosto, do~przeszukiwania tekstu
+  by~znaleźć miejsca, gdzie występują dane słowa. Można myśleć,
+  że~\texttt{grep} to bardziej rozbudowana wersja \texttt{Ctrl-f}. Dlaczego
+  więc używać \texttt{grep}a, a~nie prostszego \texttt{Ctrl-f}? Doskonałe
+  pytanie.
+
+  Gdyby \texttt{grep} był tylko i~wyłącznie inną wersją \texttt{Ctrl-f},
+  już dawno zostałby przez wszystkich zapomniany. Ponieważ jednak oferuje
+  on nam dużo bogatszy zestaw metod do przeszukiwania tekstu, niż dobrze
+  znany \texttt{Ctrl-f}, przetrwał on do dziś.
+
+  Naukę \texttt{grep}a zaczniemy od~używania go do~przeszukiwania
+  zawartości pliku tekstowego o~nazwie \texttt{PiR-Część-I.txt}. Nazwa tego
+  pliku to skrót od „Podróże i~refleksje. Część~I”. Plik ten zawiera
+  fragment opowiadania o~człowieku, który trochę podróżuje, a~w~czasie tych
+  podróży rozmyśla o~przeróżnych rzeczach. Treść tego opowiadania nie ma
+  dla nas wielkiego znaczenia.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Kolejna dziwna nazwa}
+
+
+  Zdecydowaliśmy wykorzystać do nauki \texttt{grep}a tekst opowiadania,
+  bo~uważamy, że~łatwiej pracuje~się z~tekstem, który opowiada pewną
+  historię, niż z~innymi.
+
+  Zanim przejdziemy do nauki, kolejny raz postawmy sobie pytanie, dlaczego
+  kolejne polecenie w~GNU/Linuxie ma dziwną nazwę? Nie da~się ukryć, „grep”
+  to naprawdę dziwne słowo. Historia nazwy tego polecenia jest stosunkowo
+  długa, dlatego umieściliśmy nie będziemy je przedstawiali tutaj. Można ją
+  znaleźć na~końcu tej prezentacji.
+
+  Standardowe ostrzeżenie. Przed rozpoczęciem nauki pracy
+  z~\texttt{grep}em, proszę~się upewnić, że~plik \texttt{PiR-Część-I.txt}
+  znajduje~się Państwa katalogu roboczym.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~polecenia \texttt{grep}}
+
+
+  Zacznijmy od wyszukania \texttt{grep}em wszystkich wystąpień ciągu znaków
+  „nie” w~tym pliku. Robimy to następującym poleceniem. \\
+  \texttt{\$ grep "nie"{} PiR-Część-I.txt} \\
+  \texttt{::> Poniższy tekst, jest zapisem podroży i~snutych} \\
+  \texttt{podczas \emphasisRed{nie}j refleksji, jaką} \\
+  \texttt{::> Do Lublina dojechałem samochodem o~godzi\emphasisRed{nie}
+    $18 \! : \! 30$} \\
+  \texttt{i~skierowałem~się} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Symbol „\vdots” oznacza, że~dalej następują kolejne linie tekstu, które
+  jednak pominęliśmy, bo nie wnosiły wiele do zrozumienia problemu,
+  za~to zajmowały dużo miejsca.
+
+  Podstawowa zasada działania \texttt{grep}a jest dość prosta: jeśli,
+  w~danej linii tekstu znajduje~się szukany ciąg znaków, to cała ta~linia
+  zostaje wyświetlona na~ekranie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~polecenia \texttt{grep}}
+
+
+  Polecenie \texttt{grep} zwykle jest ustawione tak, by wyróżniało
+  w~jakiś sposób znalezione fragment tekstu. W~przypadku tych
+  prezentacji, fragment te będą pisane na~czerwono, choć na Państwa
+  komputera może to~działać zupełnie inaczej.
+
+  Jeśli u~Państwa znaleziony tekst nie zostały wyróżniony w~żaden sposób,
+  proszę użyć poniższego polecenia. \\
+  \texttt{\$ grep --color "nie"{} PiR-Część-I.txt} \\
+  \texttt{::> Poniższy tekst, jest zapisem podroży i~snutych} \\
+  \texttt{podczas \emphasisRed{nie}j refleksji, jaką} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Jak widzieliśmy, \texttt{grep} sam w~sobie znajduje \alert{każde}
+  wystąpienie danego ciągu znaków, niezależnie od tego, czy są one
+  osobnym słowem, czy częścią innego, dłuższego. Aby wyszukać tylko
+  wystąpienie „nie” jako osobne słowa, należy użyć opcji \texttt{-w}
+  od angielskiego \textit{word}, \textit{słowo}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~polecenia \texttt{grep}}
+
+
+  \texttt{\$ grep -w "nie"{} PiR-Część-I.txt} \\
+  \texttt{::> Mój problem dotyczy bohaterów „Spalenia stodoły”,} \\
+  \texttt{\emphasisRed{nie} fabuły. Fabuła jest} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Często jest dość trudno ustalić, z~której części tekstu pochodzi dana
+  linia, dlatego warto dodać opcję \texttt{-n}, która sprawia,
+  że~wypisywane linie są ponumerowane.
+
+  \texttt{\$ grep -w -n "nie"{} PiR-Część-I.txt} \\
+  \texttt{::> 17:Mój problem dotyczy bohaterów „Spalenia stodoły”,} \\
+  \texttt{\emphasisRed{nie} fabuły. Fabuła jest} \\
+  \texttt{::> 23:ze strony Faulknera. Po prostu \emphasisRed{nie}
+    pisał dla ludzi} \\
+  \texttt{takich jak ja.} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~polecenia \texttt{grep}}
+
+
+  Uważamy, że~wyniki \texttt{grep}a są bardziej czytelne, gdy linie~są
+  ponumerowane. Jeśli Państwo wolę by linie nie były numerowane, proszę
+  nas o~tym poinformować~(\email).
+
+  Jak Państwo mogą~się domyślić, wszystkie poniższe wersje tego
+  polecenia~są całkowicie równoważne. \\
+  \texttt{grep -nw "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -wn "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -n -w "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -w -n "nie"{} PiR-Część-I.txt}
+
+  W~dalszym ciągu będziemy pisali opcję \texttt{-n} osobno, jako
+  pierwszą występującą po nazwie polecenia. Mamy nadzieję, że~to ułatwi
+  Państwu czytanie i~zrozumienie co dana wersja \texttt{grep}a robi.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Duże i~małe litery}
+
+
+  Domyślnie \texttt{grep} rozróżnia duże i~małe liter, co~obrazują poniższe
+  przykłady. \\
+  \texttt{\$ grep -n "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:\emphasisRed{Po}niższy tekst, jest zapisem podroży
+    i~snutych} \\
+  \texttt{podczas niej refleksji, jaką} \\
+  \texttt{::> 2:pewna dość specyficzna osoba odbyła
+    po~\emphasisRed{Po}lsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+  \texttt{\$ grep -n "po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:Poniższy tekst, jest zapisem \emphasisRed{po}droży
+    i~snutych} \\
+  \texttt{podczas niej refleksji, jaką} \\
+  \texttt{::> 2:pewna dość specyficzna osoba odbyła \emphasisRed{po}
+    Polsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Duże i~małe litery}
+
+
+  Jeśli chcemy, by \texttt{grep} ignorował rozmiar liter, to używamy
+  opcji \texttt{-i} od ang.~\textit{ignore case}, pl.~\textit{ignoruj
+    wielkość liter}. \\
+  \texttt{\$ grep -n -i "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:\emphasisRed{Po}niższy tekst, jest zapisem
+    \emphasisRed{po}droży i~snutych} \\
+  \texttt{\emphasisRed{po}dczas niej refleksji, jaką} \\
+  \texttt{2:pewna dość specyficzna osoba odbyła \emphasisRed{po}
+    \emphasisRed{Po}lsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Równoważnie, można użyć następującego polecenia. \\
+  \texttt{\$ grep -n --ignore-case "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:\emphasisRed{Po}niższy tekst, jest zapisem
+    \emphasisRed{po}droży i~snutych} \\
+  \texttt{\emphasisRed{po}dczas niej refleksji, jaką} \\
+  \texttt{2:pewna dość specyficzna osoba odbyła \emphasisRed{po}
+    \emphasisRed{Po}lsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~polecenia \texttt{grep}}
+
+
+  Jeśli chcemy wyświetlić tylko te linie, które \alert{nie} zawierają
+  danego tekstu, można skorzystać z~opcji~\texttt{-v}. By to zilustrować,
+  porównamy rezultaty użycia dwóch wersji tego polecenia. \\
+  \texttt{\$ grep -n -v "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 4:tego, że bohater ma skłonność do opisywania tego co widzi
+    w~terminach nauki,} \\
+  \texttt{::> 5:to snuje refleksje o muzyce, literaturze i~wielu innych
+    rzeczach.} \\
+  \texttt{::> 6:} \\
+  \texttt{::> 7:Do Lublina dojechałem samochodem o~godzinie 18:30} \\
+  \texttt{i~skierowałem~się} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Warto zwrócić uwagę, że~\texttt{grep} w~wynikach umieścił też linię
+  numer~$6$, która jest zupełnie pusta. Jest to właściwe działanie
+  z~jego strony, jako~że pusta linie rzeczywiście nie zawiera ciągu
+  znaków~„Po”.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  Do tej pory używaliśmy \texttt{grep}a tylko do wyszukiwania ciągów
+  liter, jednak możliwości \texttt{grep}a nie ograniczają~się do~tego
+  typu przypadków. Równie dobrze możemy wyszukiwać ciągi znaków
+  zawierające spację, co ilustruje poniższy przykład. \\
+  \texttt{\$ grep -n "a p"{} PiR-Część-I.txt} \\
+  \texttt{::> 2:pewna dość specyficzna osob\emphasisRed{a o}dbyła
+    po~Polsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \texttt{::> 30:obejrzałem. Z~tego też powodu zapewne masa ludzi} \\
+  \texttt{n\emphasisRed{a p}ewno go nie znosi, bo} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Tak samo możemy wyszukiwać wystąpienie w~tekście jakiejś cyfry.
+  By wyszukać wystąpienie w~tekście cyfry „$1$” można użyć poniższej
+  wersji polecenia \texttt{grep}. \\
+  \texttt{grep -n "1"{} PiR-Część-I.txt}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  \texttt{\$ grep -n "1"{} PiR-Część-I.txt} \\
+  \texttt{::> 7:Do Lublina dojechałem samochodem o~godzinie
+    \emphasisRed{1}8:30}
+  \texttt{i~skierowałem~się} \\
+  \texttt{11:mam pierwszy tom jego opowiadań zebranych, wydany} \\
+  \texttt{w~Polsce w~\emphasisRed{1}967 roku.} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Oczywiście możemy też szukać tekstu, który składa~się z~liter, spacji,
+  cyfr,~etc., jak w~poniższym przykładzie. \\
+  \texttt{\$ grep -n "e 1"{} PiR-Część-I.txt} \\
+  \texttt{::> 7:Do Lublina dojechałem samochodem}
+  \texttt{o~godzini\emphasisRed{e 1}8:30 i~skierowałem~się}
+
+  W~tym wypadku tylko jedna linia zawiera szukany przez nas tekst. Powinno
+  teraz być jasne, że~\texttt{grep}owi można podać w~zasadzie dowolny ciąg
+  symboli i~on znajdzie wszystkie linie w~których~się on~pojawia.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  Poleceniu \texttt{grep} można przesłać w~zasadzie dowolny tekst,
+  jaki tylko jesteśmy w~stanie wymyślić, jest tu tylko jedno poważne
+  zastrzeżenie. Mianowicie, \texttt{grep} zakłada, że~podany mu tekst
+  zawiera~się cały w~\alert{pojedynczej linii}. Zobaczymy jak to działa na
+  przykładzie.
+
+  W~pliku \texttt{PiR-Część-I.txt} znajdują~się następujące dwie linie. \\
+  \textit{4:pliku „PiR-Część-I.txt” to skrót od „Podróże i rozmyślania.
+    Część~I”. Oprócz} \\
+  \textit{5:tego, że bohater ma skłonność do opisywania tego
+    co~widzi w~terminach nauki,} \\
+  Dla wygody do każdej z~nich dodaliśmy jej numer. Jak widzimy, tekst ten
+  zawiera ciąg słów „Oprócz tego”, ale rozbity na dwie linie, wobec
+  czego \texttt{grep} go nie znajdzie.
+
+  By~to zobaczyć, proszę~się przyjrzeć następującym przykładom.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  \texttt{\$ grep -n "Oprócz"{} PiR-Część-I.txt} \\
+  \texttt{::> 3:pliku „PiR-Część-I.txt” to skrót od „Podróże} \\
+  \texttt{i~rozmyślania. Część I”. \emphasisRed{Oprócz}}
+
+  \texttt{\$ grep -n "tego"{} PiR-Część-I.txt} \\
+  \texttt{::> 2:pewna dość specyficzna osoba odbyła po~Polsce} \\
+  \texttt{i~okolicach. Nazwa \emphasisRed{tego}} \\
+  \texttt{::> 4:tego, że~bohater ma skłonność do opisywania
+    \emphasisRed{tego}} \\
+  \texttt{co widzi w~terminach nauki,} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Teraz poszukajmy tekstu „Oprócz tego”. \\
+  \texttt{\$ grep -n "Oprócz tego"{} PiR-Część-I.txt} \\
+  \texttt{::>} \\
+  Jak Państwo widzą, \texttt{grep} nie znalazł tekstu „Oprócz tego”, gdyż
+  ten jest podzielony na dwie linie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Zliczanie znalezionych linii}
+
+
+  By~polecenie \texttt{grep} wypisało w~jakiej liczbie linii został
+  znaleziony zadany ciąg symboli (do ilu linii został dopasowany wzorzec)
+  dajemy mu flagę~\texttt{-c}: \\
+  \texttt{\$ grep -n -c "Du"{} Lorem-ipsum.txt} \\
+  \texttt{$6$}
+
+  Jak już wiemy, domyślnie \texttt{grep} wypisuje linie w~których znalazł
+  dany ciąg symboli. By~zobaczyć linie \alert{nie} zawierające tego ciągu
+  należy użyć flagi~\texttt{-v}: \\
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Polecenie \texttt{grep}}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Uwagi techniczne}
+
+
+  Przyjrzyjmy~się jeszcze następującej wersji polecenia \texttt{grep}. \\
+  \texttt{grep "nie"{} PiR-Część-I.txt} \\
+  Polecenie to przyjmuj dwa argumenty. Pierwszym z~nich jest tekst którego
+  wystąpień będziemy szukać, drugim plik, który będziemy przeszukiwać.
+  Później omówimy inne sposoby używania \texttt{grep}a, w~szczególności ten,
+  w~którym \texttt{grep}owi tekst który ma przeszukać, dostarczamy za pomocą
+  przekierowania. Zanim do tego przejdziemy, potrzebujemy poznać jeszcze
+  pewne funkcje tej najbardziej podstawowej formy \texttt{grep}a.
+
+  Warto jednak zaznaczyć, że~jeśli nie podamy \texttt{grep}owi pliku
+  w~którym ma poszukiwać tekstu, to zablokuje on powłokę. Przykładowo
+  jeśli wprowadzimy polecenie poniższe polecenie \\
+  \texttt{grep "nie"} \\
+  to powłoka przestanie reagować na to co piszemy. W~takiej sytuacji
+  proszę wcisnąć \texttt{Ctrl-c} i~problem powinien zostać rozwiązany.
+
+\end{frame}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+
+  Załóżmy, że~jesteśmy w~katalogu, gdzie znajduje~się plik
+  \textit{Lorem-ipsum.txt}. Zaczniemy od najprostszego użycia polecenia
+  \texttt{grep} \\
+  \texttt{\$ grep "in"{} Lorem-ipsum.txt} \\
+  Od razu należy zaznaczyć, że~polecenie \texttt{grep} potrzebuje mnie dwa
+  argumenty: najpierw tekst który ma wyszukać, potem miejsce, gdzie go ma
+  wyszukać. (O~pewnych subtelnościach tego związanych z~przekierowaniami,
+  powiem sobie później.) Jeśli wprowadzimy za mało argumentów, to powłoka
+  może zacząć~się dziwnie zachowywać, wtedy należy spróbować użyć
+  pojedynczego \texttt{Ctrl-d} lub poprosić nas o~pomoc. Od~tego jesteśmy.
 
 \end{frame}
 % ##################
@@ -151,9 +625,18 @@ eprint=true,
 
 
 
-% ######################################
-\section{Podstawy korzystania z~\texttt{grep}a}
-% ######################################
+% ##################
+\begin{frame}
+  \frametitle{????}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
 
 
 % ##################
@@ -304,17 +787,6 @@ eprint=true,
   XVI wieku, jak tekst do~testowania różnych układów strony, więc czemu by
   nie użyć ich i~tutaj?
 
-  Załóżmy, że~jesteśmy w~katalogu, gdzie znajduje~się plik
-  \textit{Lorem-ipsum.txt}. Zaczniemy od najprostszego użycia polecenia
-  \texttt{grep} \\
-  \texttt{\$ grep "in"{} Lorem-ipsum.txt} \\
-  Od razu należy zaznaczyć, że~polecenie \texttt{grep} potrzebuje mnie dwa
-  argumenty: najpierw tekst który ma wyszukać, potem miejsce, gdzie go ma
-  wyszukać. (O~pewnych subtelnościach tego związanych z~przekierowaniami,
-  powiem sobie później.) Jeśli wprowadzimy za mało argumentów, to powłoka
-  może zacząć~się dziwnie zachowywać, wtedy należy spróbować użyć
-  pojedynczego \texttt{Ctrl-d} lub poprosić nas o~pomoc. Od~tego jesteśmy.
-
 \end{frame}
 % ##################
 
@@ -339,10 +811,7 @@ eprint=true,
   Resztę linii wyniku pominęliśmy dla przejrzystość. Jak widzimy,
   \texttt{grep} wyszukuje wszystkie linie w~których znajduje~się ciąg
   symboli „in”, niezależnie czy jest to pojedyncze słowo, czy część
-  większego i~wyróżnia znaleziony fragment odpowiednim kolorem. Jeśli
-  znaleziony tekst nie wyświetla~się komuś na kolorowo, proszę spróbować
-  polecenia \\
-  \texttt{\$ grep --color "in"{} Lorem-ipsum.txt}
+  większego i~wyróżnia znaleziony fragment odpowiednim kolorem.
 
 \end{frame}
 % ##################
@@ -368,8 +837,6 @@ eprint=true,
     vitae massa euismod maximus. Vestibulum sed eros vel arcu iaculis} \\
   \hspace{1em} $\vdots$
 
-  W~dalszych przykładach będziemy standardowo dodawać flagę~\texttt{-n}, by
-  uczynić zwracane rezultaty prostszymi w~czytaniu.
 
 \end{frame}
 % ##################
@@ -387,15 +854,6 @@ eprint=true,
   niezależnie, czy tworzą one w~tekście osoby wyraz, czy nie. Żeby
   wyszukać tylko te wiersze, w~których dany ciąg symboli pojawia~się
   tylko jako osobne słowo, używamy flagi~\texttt{-w}: \\
-  \texttt{\$ grep -n -w "in"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 14}{\color{jAxisBlue} :}quis interdum. Integer at
-    orci at neque pulvinar pretium. Donec {\color{red} in} elementum} \\
-  \texttt{{\color{green} 24}{\color{jAxisBlue} :}massa et rhoncus aliquam.
-    Suspendisse rhoncus nunc {\color{red} in} finibus mattis.} \\
-  \texttt{{\color{green}37}{\color{jAxisBlue} :}vel aliquet. Proin
-    {\color{red} in} hendrerit elit, a finibus ipsum. Integer
-    sollicitudin} \\
-  \hspace{1em} $\vdots$ \\
 
 \end{frame}
 % ##################
@@ -411,8 +869,7 @@ eprint=true,
 
   Tak jak wyjaśniliśmy wcześniej, flagi tego typu można odpowiednio łączyć,
   tak~że polecenia: \\
-  \texttt{\$ grep -nw "in"{} Lorem-ipsum.txt} \\
-  \texttt{\$ grep -wn "in"{} Lorem-ipsum.txt} \\
+
   znaczą to samo. W~poprzednich przykładach dla podkreślenia, że~testujemy
   tylko flagę \texttt{-w} napisaliśmy ją osobno. Tą samą konwencję
   będziemy stosować również dalej.
@@ -424,60 +881,12 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Duże i~małe litery}
-
-
-  Domyślnie \texttt{grep} uwzględnia w~wyszukiwaniu wielkość liter, co
-  obrazują poniższe przykłady. \\
-  \texttt{\$ grep -n "Du"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
-    fringilla dictum leo id
-    interdum. Ut sit amet sem a nunc porttitor} \\
-  \hspace{1em} $\vdots$ \\
-  \texttt{\$ grep -n "du"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 8}{\color{jAxisBlue} :}consectetur a sapien vitae,
-    euismod biben{\color{red} du}m eros.} \\
-  \hspace{1em} $\vdots$
-
-  By~\texttt{grep} ignorował różnicę między małymi i~dużymi literami,
-  należy mu przesłać flagę \texttt{-i}: \\
-  \texttt{\$ grep -n -i "Du"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 8}{\color{jAxisBlue} :}consectetur a sapien vitae,
-    euismod biben{\color{red} du}m eros.} \\
-  \hspace{1em} $\vdots$
-
-\end{frame}
-% ##################
 
 
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Zliczanie dopasowany linii}
 
-
-  By~polecenie \texttt{grep} wypisało w~jakiej liczbie linii został
-  znaleziony zadany ciąg symboli (do ilu linii został dopasowany wzorzec)
-  dajemy mu flagę~\texttt{-c}: \\
-  \texttt{\$ grep -n -c "Du"{} Lorem-ipsum.txt} \\
-  \texttt{$6$}
-
-  Jak już wiemy, domyślnie \texttt{grep} wypisuje linie w~których znalazł
-  dany ciąg symboli. By~zobaczyć linie \alert{nie} zawierające tego ciągu
-  należy użyć flagi~\texttt{-v}: \\
-  \texttt{\$ grep -n -v "Du"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 1}{\color{jAxisBlue} :}Lorem ipsum dolor sit amet,
-    consectetur adipiscing elit. Integer at est erat.} \\
-  \texttt{{\color{green} 2}{\color{jAxisBlue} :}Phasellus gravida ligula
-    eros, eget ornare purus consequat vitae. Quisque} \\
-  \hspace{1em} $\vdots$
-
-\end{frame}
-% ##################
 
 
 
@@ -1225,122 +1634,7 @@ eprint=true,
 
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
 
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{?????}
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{????}
-
-
-
-
-% \end{frame}
-% % ##################
 
 
 

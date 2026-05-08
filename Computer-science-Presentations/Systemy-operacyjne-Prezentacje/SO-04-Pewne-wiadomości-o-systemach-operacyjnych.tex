@@ -88,7 +88,7 @@ eprint=true,
 
 % ####################################################################
 \title{Systemy operacyjne}
-\subtitle{3.~Pewne informacje o~systemach operacyjnych}
+\subtitle{4.~Pewne informacje o~systemach operacyjnych}
 
 \author{Kamil Ziemian \\
   \email}
@@ -184,6 +184,90 @@ eprint=true,
 % ######################################
 
 
+% ##################
+\begin{frame}
+  \frametitle{Uproszczony schemat działania programu}
+
+
+  \begin{figure}
+
+    \label{fig:Scheme-of-CPU}
+
+
+    \begin{tikzpicture}
+
+      \fill[color=brown] (-2.5,0) rectangle (2.5,1.2);
+
+      \node[color=white,scale=1.1] at (0,0.6) {Hardware};
+
+
+      \fill[color=teal] (-2.5,1.2) rectangle (2.5,1.8);
+
+
+
+      \draw[pointing arrow] (3.5,1.5) -- (2.5,1.5);
+
+      \node at (3.7,1.5) {B};
+
+      \node at (4,1.4) {rz};
+
+      \node[rotate=20] at (4.3,1.5) {y};
+
+      \node[rotate=-15] at (4.5,1.4) {d};
+
+      \node at (4.75,1.6) {k};
+
+      \node at (4.9,1.5) {i};
+
+
+      \node at (5.7,1.475) {interfejs};
+
+      \node at (4.5,1) {hardware’u};
+
+
+
+      \fill[color=cyan] (-2.5,1.8) rectangle (2.5,3);
+
+      \node[color=white,scale=1.1] at (0,2.4) {System operacyjny};
+
+
+      \draw[thick diagram arrow] (-2,2.1) -- (-2,0.7);
+
+      \draw[thick diagram arrow] (2,0.9) -- (2,2.3);
+
+
+
+      \fill[color=teal] (-2.5,3) rectangle (2.5,3.6);
+
+
+
+      \draw[pointing arrow] (3.5,3.3) -- (2.5,3.3);
+
+      \node[text width=8em] at (5,3.025)
+      {Piękny interfejs systemu op.};
+
+
+      \fill[color=jAxisGreen] (-2.5,3.6) rectangle (2.5,4.8);
+
+      \node[color=white,scale=1.1] at (0,4.2) {Program użytkowy};
+
+
+      \draw[thick diagram arrow] (-2,3.9) -- (-2,2.5);
+
+      \draw[thick diagram arrow] (2,2.7) -- (2,4.1);
+
+    \end{tikzpicture}
+
+    \caption{Uproszczony schemat łączenia~się programu komputerowego
+      ze~sprzętem, za pośrednictwem systemu operacyjnego. Rysunek wzorowany
+      na ilustracji 1.2 ze str. 34,
+      \parencite{Tanenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}.}
+
+
+  \end{figure}
+
+\end{frame}
+% ##################
 
 
 
@@ -245,7 +329,6 @@ eprint=true,
   \end{itemize}
   Niemniej nie jesteśmy znawcami smartfonów, więc nie będziemy zbytnio
   poruszali tej tematyki.
-
 
 \end{frame}
 % ######################################
@@ -584,26 +667,6 @@ eprint=true,
   \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
 
 
-  Dla osób przytłoczonych liczbą tych wersji systemu GNU/Linux, warto
-  dodać, że~choć liczba samych dystrybucji jest ogromna, to można ją
-  podzielić na dosłownie kilka rodzin, jak choćby systemy wywodzące~się od
-  dystrybucji
-  \colorhref{https://en.wikipedia.org/wiki/Debian}{Debian}. Ponieważ
-  dystrybucje wewnątrz jednej rodziny~są do siebie podobne, czyni to całą
-  sytuację możliwą do ogarnięcia.
-
-  Wszystkie te dystrybucje używają oczywiście jądra Linuxa, więc
-  trafne jest stwierdzenie, że~wszystkie są odmianą jednego systemu
-  operacyjnego. Dystrybucje GNU/Linuxa, z~definicji, używają też tych
-  samych narzędzi projektu GNU.
-
-  Przytłaczająca większość dystrybucji Linuxa jest darmowa. Wchodzisz
-  na odpowiednią stronę internetową i~pobierasz wszystko czego chcesz.
-  Istnieje kilka płatnych dystrybucji Linuxa, z~których najsłynniejszą jest
-  zapewne
-  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat\_Enterprise\_Linux}
-  {Red Hat Enterprise Linux}, w~skrócie RHEL, tworzony przez firmę
-  \colorhref{https://en.wikipedia.org/wiki/Red\_Hat}{Red Hat Inc.}.
 
 \end{frame}
 % ######################################
@@ -688,6 +751,370 @@ eprint=true,
 
 
 
+% ################################################
+\section{Systemy operacyjne wokół nas}
+% ################################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jakie systemy operacyjne są dziś używane?}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jakie systemy operacyjne są dziś używane?}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Różne typy systemów operacyjnych}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Komputery i~systemy operacyjne}
+
+
+  Tak jak nasz świat jest pełen komputerów, tak jest pełen systemów
+  operacyjnych. Bez wielkiej przesady można powiedzieć, że~bez systemów
+  operacyjnych setki milionów komputerów stałby~się dla większości ludzi
+  bezużyteczną stertą złomu.
+
+  \alert{Nie} muszą się Państwo uczyć powyższej listy. Jedyne co chcemy by
+  Państwo z~niej wynieśli, to świadomość, że~tematyka systemów operacyjnych
+  jest dość skomplikowana i~należy odczuwać zdrowy respekt wobec
+  ludzi którzy te systemy tworzą. Pamiętając, że~ci sami ludzie
+  całkiem dużo rzeczy mocno spaprali.
+
+  Informatyka w~ogólności, a~systemy operacyjne w~szczególności, pełna jest
+  maszyn
+  \colorhref{https://en.wikipedia.org/wiki/Rube\_Goldberg\_machine}{Rube
+    Goldbergera}. Państwo już na pewno nie raz
+  widzieli taką maszynę, a~jedną z~nich można obejrzeć
+  \colorhref{https://www.youtube.com/watch?v=vn-g1Mn2\_3g}{tutaj}.
+  Bardzo dużo w~informatyce można uprościć, ale coś mi mówi, że~zajmie nam
+  to jeszcze dużo czasu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego GNU/Linux?}
+
+
+  Systemy operacyjne komputerów osobistych, są najbardziej widocznym typem
+  systemów dla większości ludzi. Jest jasne, że~tylko znikoma grupa ludzi
+  ma bezpośrednią styczność z~komputerami typu mainframe, więc ich systemy
+  operacyjne nie są zbyt znane. Ale dlaczego systemy operacyjne smartfonów
+  rzucają~się w~oczy mniej, niż te komputerów osobistych? W~tym momencie
+  nie umiem na~to pytanie odpowiedzieć. Niezależnie od tego, uzasadnia to
+  wybór systemów operacyjnych komputerów stacjonarnych jako głównego
+  przedmiotu zainteresowań tego kursu.
+
+  Dlaczego jednak zdecydowaliśmy~się omawiać na tych zajęciach system
+  GNU/Linux? W~zasadzie każdy duży rodzina systemów operacyjnych to osobna
+  gałąź informatyki, więc siłą rzeczy którego byśmy nie wybrali na ten kurs,
+  przekazana wiedza nie przeniesie~się w~całości na pozostałe typy systemów.
+  Skoro wybór jest nieunikniony, to co przemawia za~akurat takim?
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Dlaczego GNU/Linux?}
+
+
+  Za wybraniem systemu GNU/Linux przemawia kilka względów. Zacznijmy od
+  czysto praktycznych. System ten darmowy, prowadzenie w~nim zajęć nie
+  stwarza więc bariery finansowanej dla nikogo.
+
+  Oprócz tego, jest to system niezwykle szeroko stosowany w~praktyce, od
+  superkomputerów po smartfony, więc wiedza tu zdobyta może zostać użyta
+  do rozwiązywania konkretnych życiowych problemów. W~końcu, GNU/Linux
+  jest projektem o~otwartym kodzie źródłowym, więc jeśli tylko chcemy
+  i~mamy odpowiednio dużo wytrwałości, możemy zajrzeć do każdego jego
+  zakamarka i~dowiedzieć~się o~nim wszystkiego co~się da.
+
+  Warto dodać, że~system GNU/Linux, należy do rozwijanej od lat 70-tych XX
+  wieku rodziny systemów operacyjnych Unix. Dlatego też, w~wielu wypadkach
+  zamiast mówić „To jest cecha systemu GNU/Linux.”, lepiej jest mówić „To
+  jest cecha systemu Unix.”. Oprócz tego będziemy zamiennie używali
+  nazw „GNU/Linux” i~„Linux”.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Abstrakcje i~interfejsy}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest interfejs?}
+
+
+  Do kluczowych pojęć informatyki, systemów operacyjnych w~szczególności,
+  należą „abstrakcja” i~„interfejs”. By wyjaśnić sens w~jakim będziemy ich
+  używać, posłużymy~się przykładem smartfona. Jest to układ elektroniczny,
+  posiadają rozliczne kable przez które płynie prąd, procesor,
+  akumulator,~etc. Jednak na co dzień nie muszę o~tym myśleć, obsługuję go
+  klikając w~ikony.
+
+  Ponieważ ikony pozwalają mi zapomnieć o~elektronicy wewnątrz smartfona,
+  są one rodzaje abstrakcji. Ponieważ pozwalają mi~się komunikować z~nim,
+  są~one rodzajem interfejsu. Teraz trochę ostrzej zdefiniujemy te pojęcia.
+
+  \textbf{Interfejsem} (pl.~\textit{międzymordzie} ;)) nazywamy metodę
+  komunikowania~się dwóch obiektów. W~tym sensie można powiedzieć,
+  że~telefony komórkowe~są interfejsami między ludźmi, lecz my zawęzimy
+  nasze rozważania do~interfejsów właściwych samym komputerom.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest abstrakcja w~informatyce?}
+
+
+  Ikony w~smartfonie są więc interfejsem, bo pozwalają na komunikację
+  między człowiekiem, a~tym urządzeniem.
+
+  \textbf{Abstrakcją} będziemy nazywać zmianę sposobu opisu rzeczywistości,
+  na taki, który jest z~jakiegoś powodu bardziej użyteczny dla danej grupy
+  ludzi. Ikona na smartfonie jest w~tym sensie abstrakcją, bo dzięki ich
+  istnieniu nie musimy myśleć o~tym jak płynie prąd przez smartfona.
+  Klikamy w~ikonę i~prąd popłynie w~odpowiedni sposób, zdefiniowany przez
+  tą abstrakcję.
+
+  Nie będziemy bardziej precyzować tych pojęć, gdyż na tym kursie ważne
+  jest tylko intuicyjne ich zrozumienie. Nie będziemy też
+  specjalnie dyskutować co odróżnia dobrą abstrakcję od~złej oraz dobry
+  interfejs od złego. Należy jednak zauważyć, że~problem dostarczenia
+  dobrych abstrakcji i~interfejsów przewija~się przez całą informatykę.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Abstrakcje i~interfejsy są wszędzie}
+
+
+  Warto zauważyć, że~coś może być jednocześnie abstrakcją i~interfejsem,
+  jak ikony w~smartfonie. W~temat relacji między tymi pojęciami nie
+  będziemy~się jednak zagłębiać.
+
+  Abstrakcje i~interfejsy w~informatyce są wszędzie i~występują warstwowo:
+  gdy zdejmę jedną warstwę abstrakcji (interfejsu) pod nią zwykle zobaczę
+  kolejną warstwę abstrakcji.
+
+  Rozpatrzmy następujący przypadek, który nie musi być specjalnie zgodny
+  z~rzeczywistością. Załóżmy, że~mam program do przeglądania zdjęć, który
+  oczywiście sam w~sobie jest abstrakcją. Gdy zdejmę tą warstwę abstrakcji,
+  to ukaże mi~się kod źródłowy napisany w~języku Python. Jednak kod
+  źródłowy w~języku Python sam jest \alert{abstrakcją}, bo sam ten język
+  (jego interpreter) jest napisany w~języku~C. Język~C jest zaś abstrakcją
+  wobec dialektu assemblera naszego komputer. Język assemblera też jest
+  pewną abstrakcją, ale proszę, nie idźmy dalej.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Do czego służy system operacyjny?}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Do czego służy system operacyjny?}
+
+
+  Komputer składa~się z~wielu części elektronicznych, takich jak procesor,
+  dysk główny, pamięć \textsc{ram}, monitor,~etc. Każdy z~tych elementów
+  posiada własny interfejs, dzięki któremu możemy~się z~nim komunikować,
+  wysyłając odpowiednie polecenia i~otrzymując odpowiednie informacje
+  zwrotne. Interfejsy te są, koniec końców, oparte o~odpowiedni przepływ
+  prądu elektrycznego. Interfejsy te są prymitywne, niewygodne w~użyciu
+  i~brzydkie. Możemy o~nich powiedzieć więcej, ale wątpię by Państwo byli
+  tym zainteresowani.
+
+  System operacyjny jest programem, który zarządza tymi nieprzyjemnymi
+  rzeczami za nas. Inaczej mówiąc, jest on abstrakcją nałożoną na~sprzęt
+  komputerowy. Gdy korzystamy z~dowolnego programu użytkowego, ten program
+  kontaktuje~się przez odpowiedni interfejs z~systemem operacyjnym,
+  a~system operacyjny komunikuje~się ze~sprzętem za pomocą interfejsu tego
+  sprzętu. System operacyjny pełni więc tutaj rolę pośrednika.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{System operacyjny a~zarządzanie zasobami}
+
+
+  Jak powiedzieliśmy wcześniej, system operacyjny jest abstrakcją nałożoną
+  na interfejsy procesora, dysków, monitora,~etc. Jednak aby wypełniał
+  on swoją rolę jako abstrakcja, to musi być on odpowiednio
+  \alert{zarządzać} wszystkimi tymi zasobami. Musi umieć przydzielać czas
+  procesora, przestrzeń na dysku,~etc. Jest to jakby druga strona działania
+  systemu operacyjnego. Należy zaznaczyć, że~zarządzaniem tymi zasobami nie
+  jest wcale rzeczą prostą.
+
+  By sprostać temu zadaniu system operacyjny sam dzieli~się na różne,
+  jakżeby inaczej, warstwy abstrakcji. Na tych zajęciach zajrzymy pod kilka
+  z~nich, aby zobaczyć jak system tam działa i~jak korzystając z~tej wiedzy
+  możemy go kontrolować.
+
+  Ponieważ system operacyjny jest abstrakcją, jego interfejs który
+  nam udostępnia, może być znacznie bardziej wyrafinowany, prostszy
+  w~użyciu i~piękniejszy od~interfejsu sprzętowego.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+% ######################################
+\section{Ile tych GNU/Linuksów jest?}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{antiX, Astra Linux, Canaima, ile tego jeszcze?}
+
+
+  W~przeciwieństwie do choćby systemu Windows~$10$, który jest jednym
+  systemem operacyjnym, GNU/Linux jest tak naprawdę \alert{rodziną systemów}
+  operacyjnych. Żeby to wyjaśnić, zacznijmy od~komentarza odnośnie
+  Windowsa~$10$. System ten występuje w~kilku wersjach, w~tym sensie,
+  że~firma Microsoft wydaje kolejne updejty ;) tego systemu, jednak to~wciąż
+  jest ten sam system operacyjny, w~którym zmieniono kilka drugo-
+  i~trzeciorzędnych rzeczy.
+
+  W~przeciwieństwie do tego, GNU/Linux występuje w~rozmaitych
+  \alert{dystrybucjach}, których liczba jest trudna do ogarnięcia:
+  \colorhref{https://antixlinux.com/}{antiX},
+  \colorhref{https://astralinux.ru/}{Astra Linux},
+  \colorhref{https://archlinux.org/}{Arch Linux},
+  \colorhref{https://canaima.softwarelibre.gob.ve/}{Canaima},
+  \colorhref{https://www.debian.org/}{Debian},
+  \colorhref{https://www.gentoo.org/}{Gentoo},
+  \colorhref{https://ubuntu.com/}{Ubuntu},\ldots, lista ta zdaje~się
+  nie mieć końca. Wyjaśnienie podobieństw i~różnic między tymi systemami
+  zajęłoby zbyt dużo czasu, dlatego ograniczymy~się do podania
+  podstawowych informacji, które pozwolą nam~się ogólnie pośród nich
+  zorientować.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Standaryzacja}
+
+
+  Obecnie, piszemy to w~$2025$, GNU/Linux jest dobrze zestandaryzowany
+  na~poziomie swoich podstawowych zasad działania i~funkcji, które oferuje
+  użytkownikom. W~istocie, wiele własności GNU/Linuxa sięga rozwijanego od
+  około $1970$~roku systemu operacyjnego
+  \colorhref{https://en.wikipedia.org/wiki/Unix}{\textsc{unix}} i~zestawu
+  standardów dla tego systemu znanej jako
+  \colorhref{https://en.wikipedia.org/wiki/POSIX}{\textsc{posix}}
+  (ang.~\textit{Portable Operating System Interface for Unix}). Dla
+  kontekstu, standardy \textsc{posix} zaczęły być wydawane przez Instytut
+  Inżynierów Elektryków i~Elektroników (\textsc{ieee},
+  ang.~\textit{Institute of Electrical and Electronics Engineers})
+  w~roku~$1988$.
+
+  Dlatego też większość rzeczy, które poznają Państwo na~tym kursie powinny
+  działać w~$99\%$ dystrybucji systemu GNU/Linux i~w~$100\%$ dystrybucji
+  które są używane w~poważnych firmach i~projektach. Będziemy~się też
+  starać wyraźnie zaznaczać, czym mogą~się różnić poszczególne dystrybucje
+  GNU/Linuxa.
+
+\end{frame}
+% ##################
 
 
 
@@ -946,7 +1373,7 @@ eprint=true,
 
 
 % ################################################
-\section{Zdalne logowanie~się do GNU/Linuxa z~Windowsa}
+\section{Z}
 % ################################################
 
 

@@ -1,6 +1,6 @@
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 % Basic configuration of Beamera class and Jagiellonian theme
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
@@ -82,16 +82,16 @@ eprint=true,
 
 
 
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \title{Systemy operacyjne}
-\subtitle{Awk}
+\subtitle{XX.~Program Awk}
 
 \author{Kamil Ziemian \\
   \email}
 
 
 % \date{}
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 
 
 
@@ -111,19 +111,19 @@ eprint=true,
 
 
 
-% ######################################
-% Number of chars: 50k+,
+% ################################################
+% Number of chars: 50k+, 54k+,
 % Text is adjusted to the left and words are broken at the end of the line.
 \RaggedRight
-% ######################################
+% ################################################
 
 
 
 
 
-% ######################################
+% ################################################
 \maketitle
-% ######################################
+% ################################################
 
 
 
@@ -137,7 +137,7 @@ eprint=true,
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Spis treści}
 
@@ -145,32 +145,449 @@ eprint=true,
   \tableofcontents
 
 \end{frame}
-% ##################
-
-
-
-
-
-
-
-
-
-
-% ######################################
-\section{Czym jest \texttt{awk}?}
 % ######################################
 
 
-% ##################
+
+
+
+
+
+
+
+
+% ################################################
+\section{Program Awk, wprowadzenie}
+% ################################################
+
+
+% ######################################
 \begin{frame}
-  \frametitle{Czym jest \texttt{awk}?}
+  \frametitle{Program Awk}
 
 
-  \textit{I~have a natural revulsion to any operating system that shows so
-    little plannning as to have to named all of its commands after digestive
-    noises (awk, grep, fsck, nroff).} \\
-    Autor nieznany, str.~$147$,
-    \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
+  Naukę \colorhref{https://en.wikipedia.org/wiki/AWK}{Awka} warto rozpocząć
+  od wyjaśnienia jego osobliwej nazwy. Jest to akronim nazwisk jego twórców
+  \colorhref{https://en.wikipedia.org/wiki/Alfred\_Aho}{Alfreda Aho}
+  \colorhref{https://en.wikipedia.org/wiki/Peter\_J.\_Weinberger}
+  {Petera Weinbergera}
+  i~\colorhref{https://en.wikipedia.org/wiki/Brian\_Kernighan}
+  {Briana Kernighana}. Pod koniec prezentacji, można znaleźć refleksje
+  na temat Awka, autorstwa Kernighana, w~których przyznaje, że~wybór nazwy
+  nie był najszczęśliwszy.
+
+  By wyjaśnić do czego służy Awk, warto porównać go z~poleceniem
+  \texttt{grep}. Jak już wiemy \texttt{grep} istnieje po to, by móc
+  za jego pomocą przeszukiwać tekst, w~poszukiwaniu miejsc, które pasują do
+  zadanego wzorca. Natomiast Awk służy do \alert{przetwarzania} tekstu, czy
+  zmieniania go wedle przekazanych mu poleceń.
+
+  Awka można również używać to poszukiwania fragmentów tekstu spełniających
+  zadanych wzorzec, ale to nie jest jego główne zadanie. Awk potrafi
+  przeszukiwać tekst w~poszukiwaniu zdanego wzorca, bo~jest to mu potrzebne
+  do efektywnego przetwarzania tekstu, ale to nie jest jego główne zdanie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  Pomimo tego, naukę Awka zaczniemy od wykorzystania go do przeszukiwania
+  zawartości pewnego pliku tekstowego. Jest to uzasadnione tym, że~w~naszej
+  ocenie jest to najprostsza droga do jego nauki.
+
+  Zaczniemy od pracy z~plikiem \texttt{Items-to-sell-I.txt}. Zawiera on
+  $51$ linii, zawierających informację o~rzeczach, jakie pewna firma ma do
+  sprzedania. W~firmie tej panuje spory bałagan, tak że zawartość tego
+  pliku jest chaotyczna. Oto kilka jego pierwszych linii.
+
+  \begin{tabular}{l l l l}
+    Name & Type & Amount & Color \\
+    Volvo & car & $10$ & green \\
+    Volkswagen & car & $20$ & celeste \\
+    Hisense & computers & $15$ & silver \\
+    CCM & bike & $20$ & cyan \\
+    Toyota & car & $7$ & blue \\
+    \hspace{1em} \vdots & & &
+  \end{tabular}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  \begin{tabular}{l l l l}
+    Name & Type & Amount & Color \\
+    Volvo & car & $10$ & green \\
+    Volkswagen & car & $20$ & celeste \\
+    Hisense & computers & $15$ & silver \\
+    \hspace{1em} \vdots & & &
+  \end{tabular}
+
+  Plik \texttt{Items-to-sell-I.txt} jest podzielony na cztery kolumny.
+  Pierwsza linia pliku zawiera nagłówki kolumn, które opisują ich
+  zawartość. Każda następna zawiera nazwę przedmiotu, jego typ, ilość sztuk
+  do sprzedania i~kolor przedmiotu.
+
+  Firma ta ma do sprzedania samochody, typ „car”, rower, typ „bike”
+  i~części do komputerów, typ „computers”. Jeśli dziwi Państwa taki
+  zestaw przedmiotów do~sprzedania, to proszę pamiętać, że~w~firmie tej
+  panuje duży bałagan. Dodajmy, że~„celeste” i~wszystkie inne nazwy
+  kolorów, które pojawiają~się w~tym pliku, naprawdę są używane w~języku
+  angielskim.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  Awka można używać do pracy z~dowolnym plikiem tekstowym, nie tylko
+  takiego, który składa~się z~linii podzielonych na ustaloną liczbę kolumn.
+  Jednak prościej jest zacząć naukę od pracy z~plikiem, który jest równo
+  podzielony na kolumny.
+
+  By wypisać całą zawartość pliku na ekranie możemy użyć polecenia \\
+  \texttt{\$ awk '\{ print \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type Amount Color} \\
+  \texttt{Volvo car $10$ green} \\
+  \texttt{Volkswagen car $20$ celeste} \\
+  \texttt{Hisense computers $15$ silver} \\
+  \hspace{1em} \vdots
+
+  Aby wypisać tylko pierwszą kolumnę możemy użyć polecenia: \\
+  \texttt{awk '\{ print \$$1$ \}' Items-to-sell-I.txt}.
+  Jak Państwo~się pewnie domyślają symbol \$$1$ oznacza pierwszą kolumnę.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  \texttt{\$ awk '\{ print \$$1$ \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name} \\
+  \texttt{Volvo} \\
+  \texttt{Volkswagen} \\
+  \texttt{Hisense} \\
+  \hspace{1em} \vdots
+
+  Jak łatwo się domyślić, by wypisać kolumnę pierwszą i~drugą możemy
+  użyć następującego polecenia. \\
+  \texttt{\$ awk '\{ print \$$1$, \$$2$ \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type} \\
+  \texttt{Volvo car} \\
+  \texttt{Volkswagen car} \\
+  \texttt{Hisense computers} \\
+  \hspace{1em} \vdots
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  Jeśli w~ostatni poleceniu pominiemy przecinek pomiędzy symbolami kolumn
+  \$$1$ i~\$$2$, wynik będzie inny, niż byśmy pragnęli. \\
+  \texttt{\$ awk '\{ print \$$1$ \$$2$ \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{NameType} \\
+  \texttt{Volvocar} \\
+  \texttt{Volkswagencar} \\
+  \texttt{Hisensecomputers} \\
+  \hspace{1em} \vdots
+
+  Możemy też oczywiście wypisać tylko drugą kolumnę. \\
+  \texttt{\$ awk '\{ print \$$2$ \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Type} \\
+  \texttt{car} \\
+  \texttt{car} \\
+  \texttt{computers} \\
+  \hspace{1em} \vdots
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  Czy \texttt{print} w~Awku można przekazać argument~\texttt{\$$0$}?
+  Tak, argument ten oznacza całą linię tekstu. \\
+  \texttt{\$ awk '\{ print \$$0$ \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type Amount Color} \\
+  \texttt{Volvo car $10$ green} \\
+  \texttt{Volkswagen car $20$ celeste} \\
+  \texttt{Hisense computers $15$ silver} \\
+  \hspace{1em} \vdots
+
+  Pomimo tego, że~w~ostatnim poleceniu równie dobrze mogło by być użyte
+  samo \texttt{print}, to użycie argument \$$0$ może niekiedy uprościć
+  wiele rzeczy.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  Oznaczenia kolumn są \alert{wyrażeniami}, co znaczy, iż są obliczane
+  przez Awka. Dlatego, też \$(1 + 1) to dla niego to samo co \$2, co widać
+  w~poniższym przykładzie. \\
+  \texttt{\$ awk '\{ print \$$( 1 + 1 )$ \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Type} \\
+  \texttt{car} \\
+  \texttt{car} \\
+  \texttt{computers} \\
+  \hspace{1em} \vdots
+
+  Przejdźmy teraz do bardziej zaawansowanych możliwości Awka, mianowicie
+  do filtrowania danych na podstawie zadanego warunku. Aby zobaczyć tylko
+  te linie, które zawierająć informacje o~samochodach do sprzedania możemy
+  użyć polecenia \\ \texttt{awk '\$2 == "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  \texttt{\$ awk '\$2 == "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Type} \\
+  \texttt{Volvo car $10$ green} \\
+  \texttt{Volkswagen car $20$ celeste} \\
+  \texttt{Toyota car $20$ blue} \\
+  \hspace{1em} \vdots
+
+  Przyjrzymy~się następującej części tego polecenia:
+  \texttt{'\$2 == "car" \hspace{0.25em} \{ print \}'}. Jego sens jest dość
+  prosty, najpierw sprawdzamy, czy zawartość drugiej kolumny to słowo
+  „car”. Jeśli jest to prawdą, to wykonujemy działanie \texttt{\{ print \}},
+  czyli wypisujemy całą linię.
+
+  Nie powinno Państwa zaskoczyć, że~aby wypisać wszystkie linie, które
+  \alert{nie} zawierają informacji o~samochodach do sprzedania, możemy
+  użyć polecenia \texttt{awk '\$2 != "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  \texttt{\$ awk '\$2 == "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Type} \\
+  \texttt{Volvo car $10$ green} \\
+  \texttt{Volkswagen car $20$ celeste} \\
+  \texttt{Toyota car $20$ blue} \\
+  \hspace{1em} \vdots
+
+  Przyjrzymy~się następującej części tego polecenia:
+  \texttt{'\$2 == "car" \hspace{0.25em} \{ print \}'}. Jego sens jest dość
+  prosty, najpierw sprawdzamy, czy zawartość drugiej kolumny to słowo
+  „car”. Jeśli jest to prawdą, to wykonujemy działanie \texttt{\{ print \}},
+  czyli wypisujemy całą linię.
+
+  Nie powinno Państwa zaskoczyć, że~aby wypisać wszystkie linie, które
+  \alert{nie} zawierają informacji o~samochodach do sprzedania, możemy
+  użyć polecenia: \texttt{awk '\$2 != "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  \texttt{\$ awk '\$2 == "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Type} \\
+  \texttt{Volvo car $10$ green} \\
+  \texttt{Volkswagen car $20$ celeste} \\
+  \texttt{Toyota car $20$ blue} \\
+  \hspace{1em} \vdots
+
+  Przyjrzymy~się następującej części tego polecenia:
+  \texttt{'\$2 == "car" \hspace{0.25em} \{ print \}'}. Jego sens jest dość
+  prosty, najpierw sprawdzamy, czy zawartość drugiej kolumny to słowo
+  „car”. Jeśli jest to prawdą, to wykonujemy działanie \texttt{\{ print \}},
+  czyli wypisujemy całą linię.
+
+  Nie powinno Państwa zaskoczyć, że~aby wypisać wszystkie linie, które
+  \alert{nie} zawierają informacji o~samochodach do sprzedania, możemy
+  użyć polecenia: \texttt{awk '\$2 != "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+  \texttt{\$ awk '\$2 != "car" \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type Amount Color} \\
+  \texttt{Hisense computers $15$ silver} \\
+  \texttt{CCM bike $20$ cyan} \\
+  \texttt{Accell cabike $20$ citron} \\
+  \hspace{1em} \vdots
+
+  Na obecną chwilę poznaliśmy kilka podstawowych sposobów korzystania
+  z~Awka. Zanim poznamy ich więcej, zatrzymamy~się na chwilę by wprowadzić
+  kilka pojęć, używanych w~Awku.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Kilka pojęć dotyczących Awka}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Rekordy i~pola}
+
+
+  Teraz będzie trochę teoretyczne nudzenie, jednak bez wprowadzenia
+  pewnych pojęć, ciężko jest mówić o~Awku w~sposób zrozumiały dla jego
+  doświadczonego użytkownika.
+
+  Przypomnijmy jeszcze raz, że~program Awk służy do przetwarzanie tekstu.
+  Jeden przykład tego już widzieliśmy, Awkowi można przekazać tekst,
+  który składa~się z czterech kolumn, a~on stworzy tekst, składający~się
+  tylko z~jego pierwszej kolumny.
+
+  Tekst który Awk otrzymuje na wejście, jest dzielony przez niego
+  na~\textbf{rekordy} (ang.~\textit{records}). Zwykle każdy rekord
+  składa~się pojedynczej linii tekstu i~na tych zajęciach nie będziemy
+  rozważali innych przypadków. Każdy rekord dzieli~się na pola
+  (ang.~\textit{fields}). Przy domyślnych ustawieniach, każde osobne słowo
+  jest uznane przez Awka za pole. O~tym jak zmienić sposób dzielenia
+  rekordów na~pola, powiemy niedługo.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Działania i~wzorce w~Awku}
+
+
+  Podstawowy sposób pracy Awka jest następujący. Tekst wejściowy dzielony
+  jest na rekordy, następnie na każdym rekordzie wykonywane jest
+  \textbf{działanie} (ang. \textit{action}), którego treść podajemy
+  w~nawiasach wąsatych \texttt{\{ {} \}}.
+
+  Wobec tego polecenie \\
+  \texttt{awk '\{ print \$$0$ \}' Items-to-sell-I.txt} \\
+  mówi, że~Awk ma podzielić tekst w~pliku \texttt{Items-to-sell-I.txt}
+  na rekordy, następnie wykonać działanie \texttt{print \$$0$} na każdym
+  z~tych rekordów. W~tym wypadku sprowadza~się to do wypisania całego pliku
+  na ekranie.
+
+  Ogólna postać wyrażenia Awka jest następująca. \\
+  \texttt{awk [opcje] 'wzorzec \{działanie\}' nazwa-pliku} \\
+  Do tej pory nie używaliśmy Awka z~ustawionymi jawnie opcjami, za~to
+  widzieliśmy już polecenie wykorzystujące odpowiedni \textbf{wzorzec}
+  (ang.~\textit{patter}).
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Działania w~Awku}
+
+
+
 
   Problem z~\colorhref{https://en.wikipedia.org/wiki/AWK}{\texttt{awk}iem}
   jest taki, że~jest to język programowania ukryty poleceniu wiersza
@@ -180,21 +597,72 @@ eprint=true,
   tego, czy zawierają one wiersze Norwida (ja nie rozumiem wierszy
   Norwida), kod źródłowy w~języku~C, dane na temat cen surowców,~etc.
 
-  Polecenia lub programy \texttt{awk}a pozwalają nam przeszukiwać dane
-  w~postaci tekstu, następnie zmieniać ten tekst na podstawie ustawionych
-  przez nas parametrów i~własności.
+\end{frame}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia}
+
+
+  zaś rekordy na \textbf{pola}. Standardowo rekord odpowiada jednej linii
+  tekstu i~nie będziemy rozpatrywali innych przypadków. Nauka \texttt{awk}a
+  już bez tego potrafi być trudna.
+
+  Domyślnie, kązdy rekord (linia tekstu) dzielony jest na pola przez
+  spacje i~inne białe znaki. Stąd każda linia w~pliku
+  \texttt{Fruits-etc.txt} jest podzielona na trzy pola, które naturalnie
+  ustawione są w~kolumny. Później powiem jak sprawić, by \texttt{awk} użył
+  innych znaków jak separtorów pól (ang.~\textit{field separators}).
+
+  Metodę pracy \texttt{awk}a możemy teraz opisać w~następujący sposób.
+  Dzieli on dane wejściowe na linie (rekordy), następnie zaś na każdej
+  z~linii wykonuje zadane działanie. Jak można już było zauważyć,
+  \texttt{awk} przetwarza linie od góry do dołu. Przy czym składnia
+  \texttt{awk}a jest taka, że~treść działania musi być ujęta w nawiasy
+  wąsate \texttt{ \{ { } \} }.
+
+  Tym samym polecenie \\
+  \texttt{\$ awk '\{ print \$1 \}' Fruits-etc.txt} \\
+  czytamy w~następujący sposób. Przejdź plik \texttt{Fruits-etc.txt} linia
+  po~linii, wypisując na wyjściu pierwsze pole każdej z~nich. Nietrudno
+  zauważyć, że~będzie to oznaczało wypisanie pierwszej kolumny pliku.
+
+  W~\texttt{awk}u bierząca linia jest oznaczana przez \texttt{\$0}, dlatego
+  też wypisanie by zobaczyć cały plik na ekranie, możemy użyć polecenia \\
+  \texttt{\$ awk '\{ print \$0 \}' Fruits-etc.txt}
+
+
+  Oznaczenia pól są \alert{wyrażeniami}, czyli \texttt{awk} oblicza
+  wartość każdego z~ich wartość i~przekazuje ją dalej. Dletego też
+  polecenie \\
+  \texttt{\$ awk '\{ print \$(1 + 1) \}' Fruits-etc.txt} \\
+  wypisze w~poprawny sposób drugą kolumnę pliku. Jak się komuś nudzi, to
+  może spróbować następującego polecenia. \\
+  \texttt{\$ awk '\{ print \$(sqrt(9)) \}' Fruits-etc.txt} \\
+  Odradzamy używanie tak przekombinowanych rozwiązań, chyba że~dla własnej
+  rozrywki.
+
+  W~\texttt{awk}u możemy też kożystać z~dobrze  znanych w~informatyce
+  operatorów porównania: \texttt{==}, \texttt{!=}, \texttt{>=}, \texttt{=<},
+  \texttt{>}, \texttt{<}. W~większości wypadków, ich zrozumienie powinno być
+  dość intuicyjne.
 
 \end{frame}
 % ##################
-
-
-
 
 
 % ##################
 \begin{frame}
   \frametitle{Czy~się różnią \texttt{awk} i~\texttt{grep}?}
 
+
+
+
+  Polecenia lub programy \texttt{awk}a pozwalają nam przeszukiwać dane
+  w~postaci tekstu, następnie zmieniać ten tekst na podstawie ustawionych
+  przez nas parametrów i~własności.
 
   Dość szybko nasuwa~się nam pytanie: czym~się różni
   \colorhref{https://en.wikipedia.org/wiki/AWK}{\texttt{awk}}
@@ -222,6 +690,12 @@ eprint=true,
   {Petera Weinbergera} (ur.~$1942$)
   i~\colorhref{https://en.wikipedia.org/wiki/Brian\_Kernighan}
   {Briana Kernighana} (ur.~$1942$).
+
+  \textit{I~have a natural revulsion to any operating system that shows so
+    little plannning as to have to named all of its commands after digestive
+    noises (awk, grep, fsck, nroff).} \\
+    Autor nieznany, str.~$147$,
+    \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
 
 \end{frame}
 % ##################
@@ -273,128 +747,13 @@ eprint=true,
 % ######################################
 
 
-% ##################
-\begin{frame}
-  \frametitle{Podstawy korzystania z~\texttt{awk}a}
-
-
-  Główny zastosowaniem polecenia \texttt{awk}, przynajmniej z~naszego
-  punktu widzenia, jest przetwarzania tekstu zawartego w~pewnym pliku.
-  O~tym jako używać \texttt{awk}a do przetwarzania
-  tekstu, który nie jest zapisany wewnątrz jakiegoś pliku wspomnimy
-  krótko w~swoim czasie.
-
-  Zaczniemy od~kilku przykładów. Potrzebny nam będzie plik
-  \texttt{Fruits-etc.txt} znajdujący~się w~katalogu
-  \texttt{Materiały-do-prezentaji/SO-Ćwiczenia-03-Awk/}. Zawiera on
-  dwanaście linii poniższej postaci. \\
-  \begin{tabular}{l l l}
-    name & color & amount \\
-    apple & red & 4 \\
-    banana & yellow & 6 \\
-    strawberry & red & 3
-  \end{tabular}
-
-  By wypisać jego zawartość na ekranie możemy użyć polecenia \\
-  \texttt{\$ awk '\{ print \}' Fruits-etc.txt} \\
-  Proszę przetestować jego działanie.
-
-\end{frame}
-% ##################
 
 
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Rekordy i~pola}
 
 
-  Plik \texttt{Fruits-etc.txt} jest podzielony na trzy kolumny
-  i~\texttt{awk} pozwala nam sprawnie pracować z~nimi. Aby wypisać tylko
-  pierwszą kolumnę możemy użyć polecenia \\
-  \texttt{\$ awk '\{ print \$1 \}' Fruits-etc.txt} \\
-  Analogicznie by wypisać pierwszą i~drugą kolumnę możemy skrzystać
-  z~polecenia \\
-  \texttt{\$ awk '\{ print \$1, \$2 \}' Fruits-etc.txt}
-
-  Proszę sprawdzić, co~się stanie jeśli pominiemy przecinek pomiędzy
-  symbolami kolumn „\texttt{\$1}„ i~„\texttt{\$2}”, rezultat może być
-  trochę zaskakujący. \\
-  \texttt{\$ awk '\{ print \$1 \$2 \}' Fruits-etc.txt}
-
-  Polecenie \texttt{awk} dzieli swoje dane wejściowe na \textbf{rekordy}
-  (ang.~\textit{records}), zaś rekordy na \textbf{pola}
-  (ang.~\textit{fields}). Standardowo rekord odpowiada jednej linii
-  tekstu i~nie będziemy rozpatrywali innych przypadków. Nauka \texttt{awk}a
-  już bez tego potrafi być trudna.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rekordy i~pola}
-
-
-  Domyślnie, kązdy rekord (linia tekstu) dzielony jest na pola przez
-  spacje i~inne białe znaki. Stąd każda linia w~pliku
-  \texttt{Fruits-etc.txt} jest podzielona na trzy pola, które naturalnie
-  ustawione są w~kolumny. Później powiem jak sprawić, by \texttt{awk} użył
-  innych znaków jak separtorów pól (ang.~\textit{field separators}).
-
-  Metodę pracy \texttt{awk}a możemy teraz opisać w~następujący sposób.
-  Dzieli on dane wejściowe na linie (rekordy), następnie zaś na każdej
-  z~linii wykonuje zadane działanie. Jak można już było zauważyć,
-  \texttt{awk} przetwarza linie od góry do dołu. Przy czym składnia
-  \texttt{awk}a jest taka, że~treść działania musi być ujęta w nawiasy
-  wąsate \texttt{ \{ {} \} }.
-
-  Tym samym polecenie \\
-  \texttt{\$ awk '\{ print \$1 \}' Fruits-etc.txt} \\
-  czytamy w~następujący sposób. Przejdź plik \texttt{Fruits-etc.txt} linia
-  po~linii, wypisując na wyjściu pierwsze pole każdej z~nich. Nietrudno
-  zauważyć, że~będzie to oznaczało wypisanie pierwszej kolumny pliku.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Wyrażenia}
-
-
-  W~\texttt{awk}u bierząca linia jest oznaczana przez \texttt{\$0}, dlatego
-  też wypisanie by zobaczyć cały plik na ekranie, możemy użyć polecenia \\
-  \texttt{\$ awk '\{ print \$0 \}' Fruits-etc.txt}
-
-
-  Oznaczenia pól są \alert{wyrażeniami}, czyli \texttt{awk} oblicza
-  wartość każdego z~ich wartość i~przekazuje ją dalej. Dletego też
-  polecenie \\
-  \texttt{\$ awk '\{ print \$(1 + 1) \}' Fruits-etc.txt} \\
-  wypisze w~poprawny sposób drugą kolumnę pliku. Jak się komuś nudzi, to
-  może spróbować następującego polecenia. \\
-  \texttt{\$ awk '\{ print \$(sqrt(9)) \}' Fruits-etc.txt} \\
-  Odradzamy używanie tak przekombinowanych rozwiązań, chyba że~dla własnej
-  rozrywki.
-
-  W~\texttt{awk}u możemy też kożystać z~dobrze  znanych w~informatyce
-  operatorów porównania: \texttt{==}, \texttt{!=}, \texttt{>=}, \texttt{=<},
-  \texttt{>}, \texttt{<}. W~większości wypadków, ich zrozumienie powinno być
-  dość intuicyjne.
-
-\end{frame}
-% ##################
 
 
 
@@ -551,9 +910,6 @@ eprint=true,
   \texttt{awk}a. Co tu mówić, jego informacje o~błędach nie są specjalnie
   pomocne, więc unikajmy ich jak tylko możemy.
 
-
-  Dla \texttt{awk}a wszystkie dane są ciągiem rekordów ang.
-  \textit{records}, a~każdy rekord jest ciągiem pól \textit{fields}.
 
   Separator pól .
 
