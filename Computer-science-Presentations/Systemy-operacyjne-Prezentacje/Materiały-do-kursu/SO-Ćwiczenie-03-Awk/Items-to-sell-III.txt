@@ -1,0 +1,21 @@
+Name,              Type,         Amount,     Color
+Volkswagen,        car,          34,         generic virdian
+Heinkel,           bike,         14,         golden brown
+Toyota,            car,          37,         green-blue
+Mitsubishi,        car,          10,         hansa yellow
+Favorit,           bike,         19,         kelly green
+Dacia,             car,          3,          cerise
+MINI,              car,          12,         green
+Gazelle,           bike,         7,          kobicha
+Ski-Doo,           car,          13,         lemon curry
+Nagasawa           bike          5           blue
+Mercedes-Benz      car           28          light blue
+Nvidia             computers     33          black
+Mitsubishi         car           44	     light yellow
+Hercules           bike          18          ebony
+SEAT               car           36	     lilac luster
+Norco              bike          10          blue
+Honda              car           37	     lion
+Cadillac           car           35	     lemon curry
+Panasonic          computers     35          silver
+BMW                car           14	     little boy blue

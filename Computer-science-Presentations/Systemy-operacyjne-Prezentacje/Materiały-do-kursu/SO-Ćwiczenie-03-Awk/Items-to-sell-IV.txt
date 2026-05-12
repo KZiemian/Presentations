@@ -1,0 +1,7 @@
+Name               Type          Amount      Color
+Volkswagen         car           24          generic virdian
+Iride              bike          15          black
+Heinkel            bike          30          golden brown
+Toyota             car           37          green-blue
+Mitsubishi         car           10          hansa yellow
+Favorit            bike          29          kelly green

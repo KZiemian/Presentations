@@ -196,7 +196,7 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Korzystanie z~Awka}
 
 
   Pomimo tego, naukę Awka zaczniemy od wykorzystania go do przeszukiwania
@@ -210,12 +210,12 @@ eprint=true,
 
   \begin{tabular}{l l l l}
     Name & Type & Amount & Color \\
-    Volvo & car & $10$ & green \\
-    Volkswagen & car & $20$ & celeste \\
-    Hisense & computers & $15$ & silver \\
-    CCM & bike & $20$ & cyan \\
-    Toyota & car & $7$ & blue \\
-    \hspace{1em} \vdots & & &
+    Volvo & car & 10 & green \\
+    Volkswagen & car & 20 & celeste \\
+    Hisense & computers & 15 & silver \\
+    CCM & bike & 20 & cyan \\
+    Toyota & car & \hphantom{0}7 & blue \\
+    \hspace{2em} \vdots & & &
   \end{tabular}
 
 \end{frame}
@@ -227,15 +227,15 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Korzystanie z~Awka}
 
 
   \begin{tabular}{l l l l}
     Name & Type & Amount & Color \\
-    Volvo & car & $10$ & green \\
-    Volkswagen & car & $20$ & celeste \\
-    Hisense & computers & $15$ & silver \\
-    \hspace{1em} \vdots & & &
+    Volvo & car & 10 & green \\
+    Volkswagen & car & 20 & celeste \\
+    Hisense & computers & 15 & silver \\
+    \hspace{2em} \vdots & & &
   \end{tabular}
 
   Plik \texttt{Items-to-sell-I.txt} jest podzielony na cztery kolumny.
@@ -259,7 +259,7 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Korzystanie z~Awka}
 
 
   Awka można używać do pracy z~dowolnym plikiem tekstowym, nie tylko
@@ -270,14 +270,14 @@ eprint=true,
   By wypisać całą zawartość pliku na ekranie możemy użyć polecenia \\
   \texttt{\$ awk '\{ print \}' Items-to-sell-I.txt} \\
   \texttt{::>} \texttt{Name Type Amount Color} \\
-  \texttt{Volvo car $10$ green} \\
-  \texttt{Volkswagen car $20$ celeste} \\
-  \texttt{Hisense computers $15$ silver} \\
-  \hspace{1em} \vdots
+  \texttt{::>} \texttt{Volvo car 10 green} \\
+  \texttt{::>} \texttt{Volkswagen car 20 celeste} \\
+  \texttt{::>} \texttt{Hisense computers 15 silver} \\
+  \hspace{3em} \vdots
 
   Aby wypisać tylko pierwszą kolumnę możemy użyć polecenia: \\
-  \texttt{awk '\{ print \$$1$ \}' Items-to-sell-I.txt}.
-  Jak Państwo~się pewnie domyślają symbol \$$1$ oznacza pierwszą kolumnę.
+  \texttt{awk '\{ print \$1 \}' Items-to-sell-I.txt}. \\
+  Jak~się Państwo domyślają, symbol \$1 oznacza pierwszą kolumnę.
 
 \end{frame}
 % ######################################
@@ -288,24 +288,24 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Korzystanie z~Awka}
 
 
-  \texttt{\$ awk '\{ print \$$1$ \}' Items-to-sell-I.txt} \\
+  Wypisywanie pierwszej kolumny pliku. \\
+  \texttt{\$ awk '\{ print \$1 \}' Items-to-sell-I.txt} \\
   \texttt{::>} \texttt{Name} \\
-  \texttt{Volvo} \\
-  \texttt{Volkswagen} \\
-  \texttt{Hisense} \\
-  \hspace{1em} \vdots
+  \texttt{::>} \texttt{Volvo} \\
+  \texttt{::>} \texttt{Volkswagen} \\
+  \texttt{::>} \texttt{Hisense} \\
+  \hspace{3em} \vdots
 
-  Jak łatwo się domyślić, by wypisać kolumnę pierwszą i~drugą możemy
-  użyć następującego polecenia. \\
-  \texttt{\$ awk '\{ print \$$1$, \$$2$ \}' Items-to-sell-I.txt} \\
-  \texttt{::>} \texttt{Name Type} \\
-  \texttt{Volvo car} \\
-  \texttt{Volkswagen car} \\
-  \texttt{Hisense computers} \\
-  \hspace{1em} \vdots
+  Tak samo możemy wypisać tylko drugą kolumnę. \\
+  \texttt{\$ awk '\{ print \$2 \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Type} \\
+  \texttt{::>} \texttt{car} \\
+  \texttt{::>} \texttt{car} \\
+  \texttt{::>} \texttt{computers} \\
+  \hspace{3em} \vdots
 
 \end{frame}
 % ######################################
@@ -316,25 +316,25 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Korzystanie z~Awka}
 
+
+  Oto jak możemy wypisać kolumnę pierwszą i~drugą. \\
+  \texttt{\$ awk '\{ print \$1, \$2 \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type} \\
+  \texttt{::>} \texttt{Volvo car} \\
+  \texttt{::>} \texttt{Volkswagen car} \\
+  \texttt{::>} \texttt{Hisense computers} \\
+  \hspace{3em} \vdots
 
   Jeśli w~ostatni poleceniu pominiemy przecinek pomiędzy symbolami kolumn
   \$$1$ i~\$$2$, wynik będzie inny, niż byśmy pragnęli. \\
-  \texttt{\$ awk '\{ print \$$1$ \$$2$ \}' Items-to-sell-I.txt} \\
+  \texttt{\$ awk '\{ print \$1 \$2 \}' Items-to-sell-I.txt} \\
   \texttt{::>} \texttt{NameType} \\
-  \texttt{Volvocar} \\
-  \texttt{Volkswagencar} \\
-  \texttt{Hisensecomputers} \\
-  \hspace{1em} \vdots
-
-  Możemy też oczywiście wypisać tylko drugą kolumnę. \\
-  \texttt{\$ awk '\{ print \$$2$ \}' Items-to-sell-I.txt} \\
-  \texttt{::>} \texttt{Type} \\
-  \texttt{car} \\
-  \texttt{car} \\
-  \texttt{computers} \\
-  \hspace{1em} \vdots
+  \texttt{::>} \texttt{Volvocar} \\
+  \texttt{::>} \texttt{Volkswagencar} \\
+  \texttt{::>} \texttt{Hisensecomputers} \\
+  \hspace{3em} \vdots
 
 \end{frame}
 % ######################################
@@ -345,21 +345,21 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Korzystanie z~Awka}
 
 
   Czy \texttt{print} w~Awku można przekazać argument~\texttt{\$$0$}?
   Tak, argument ten oznacza całą linię tekstu. \\
-  \texttt{\$ awk '\{ print \$$0$ \}' Items-to-sell-I.txt} \\
+  \texttt{\$ awk '\{ print \$0 \}' Items-to-sell-I.txt} \\
   \texttt{::>} \texttt{Name Type Amount Color} \\
-  \texttt{Volvo car $10$ green} \\
-  \texttt{Volkswagen car $20$ celeste} \\
-  \texttt{Hisense computers $15$ silver} \\
-  \hspace{1em} \vdots
+  \texttt{::>} \texttt{Volvo car 10 green} \\
+  \texttt{::>} \texttt{Volkswagen car 20 celeste} \\
+  \texttt{::>} \texttt{Hisense computers 15 silver} \\
+  \hspace{3em} \vdots
 
   Pomimo tego, że~w~ostatnim poleceniu równie dobrze mogło by być użyte
-  samo \texttt{print}, to użycie argument \$$0$ może niekiedy uprościć
-  wiele rzeczy.
+  samo \texttt{print}, to użycie argument \texttt{\$0} może niekiedy
+  uprościć wiele rzeczy.
 
 \end{frame}
 % ######################################
@@ -370,24 +370,23 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Filtrowanie danych}
 
 
   Oznaczenia kolumn są \alert{wyrażeniami}, co znaczy, iż są obliczane
-  przez Awka. Dlatego, też \$(1 + 1) to dla niego to samo co \$2, co widać
-  w~poniższym przykładzie. \\
-  \texttt{\$ awk '\{ print \$$( 1 + 1 )$ \}' Items-to-sell-I.txt} \\
+  przez Awka. Dlatego, też \texttt{\$(1 + 1)} to dla niego to samo
+  co~\texttt{\$2}, co widać w~poniższym przykładzie. \\
+  \texttt{\$ awk '\{ print \$( 1 + 1 ) \}' Items-to-sell-I.txt} \\
   \texttt{::>} \texttt{Type} \\
-  \texttt{car} \\
-  \texttt{car} \\
-  \texttt{computers} \\
-  \hspace{1em} \vdots
+  \texttt{::>} \texttt{car} \\
+  \texttt{::>} \texttt{car} \\
+  \texttt{::>} \texttt{computers} \\
+  \hspace{3em} \vdots
 
-  Przejdźmy teraz do bardziej zaawansowanych możliwości Awka, mianowicie
-  do filtrowania danych na podstawie zadanego warunku. Aby zobaczyć tylko
-  te linie, które zawierająć informacje o~samochodach do sprzedania możemy
-  użyć polecenia \\ \texttt{awk '\$2 == "car" \hspace{0.25em} \{ print \}'
-    Items-to-sell-I.txt}.
+  Przejdźmy teraz do ciekawszych możliwości Awka, mianowicie do~filtrowania
+  danych na podstawie zadanego warunku. Aby zobaczyć tylko te linie, które
+  zawierająć informacje o~samochodach do sprzedania możemy użyć polecenia \\
+  \texttt{awk '\$2 == "car" \hspace{0.25em} \{ print \}' Items-to-sell-I.txt}.
 
 \end{frame}
 % ######################################
@@ -398,16 +397,15 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Filtrowanie danych}
 
 
   \texttt{\$ awk '\$2 == "car" \hspace{0.25em} \{ print \}'
     Items-to-sell-I.txt} \\
-  \texttt{::>} \texttt{Type} \\
-  \texttt{Volvo car $10$ green} \\
-  \texttt{Volkswagen car $20$ celeste} \\
-  \texttt{Toyota car $20$ blue} \\
-  \hspace{1em} \vdots
+  \texttt{::>} \texttt{Volvo car 10 green} \\
+  \texttt{::>} \texttt{Volkswagen car 20 celeste} \\
+  \texttt{::>} \texttt{Toyota car 20 blue} \\
+  \hspace{3em} \vdots
 
   Przyjrzymy~się następującej części tego polecenia:
   \texttt{'\$2 == "car" \hspace{0.25em} \{ print \}'}. Jego sens jest dość
@@ -415,10 +413,10 @@ eprint=true,
   „car”. Jeśli jest to prawdą, to wykonujemy działanie \texttt{\{ print \}},
   czyli wypisujemy całą linię.
 
-  Nie powinno Państwa zaskoczyć, że~aby wypisać wszystkie linie, które
-  \alert{nie} zawierają informacji o~samochodach do sprzedania, możemy
-  użyć polecenia \texttt{awk '\$2 != "car" \hspace{0.25em} \{ print \}'
-    Items-to-sell-I.txt} \\
+  Możemy teraz podać prosty przykład, wykorzystania Awka do przetwarzania
+  tekst. Powiedzmy, że~chcemy utworzyć plik, który zawiera tylko informacje
+  o~samochodach, które~są do sprzedania, gdyż informacje o~innych
+  przedmiotach nie są nam obecnie potrzebne.
 
 \end{frame}
 % ######################################
@@ -429,82 +427,170 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Korzystanie z~Awk}
+  \frametitle{Filtrowanie danych}
 
 
+  By~utworzyć taki plik z~informacjami o~samochodach, wystarczy, że~użyjemy
+  następującego polecenie, korzystające z~przekierowania procesu
+  na~plik. \\
   \texttt{\$ awk '\$2 == "car" \hspace{0.25em} \{ print \}'
-    Items-to-sell-I.txt} \\
-  \texttt{::>} \texttt{Type} \\
-  \texttt{Volvo car $10$ green} \\
-  \texttt{Volkswagen car $20$ celeste} \\
-  \texttt{Toyota car $20$ blue} \\
-  \hspace{1em} \vdots
-
-  Przyjrzymy~się następującej części tego polecenia:
-  \texttt{'\$2 == "car" \hspace{0.25em} \{ print \}'}. Jego sens jest dość
-  prosty, najpierw sprawdzamy, czy zawartość drugiej kolumny to słowo
-  „car”. Jeśli jest to prawdą, to wykonujemy działanie \texttt{\{ print \}},
-  czyli wypisujemy całą linię.
+    Items-to-sell-I.txt > } \\
+  \texttt{Car-to-sell.txt}
 
   Nie powinno Państwa zaskoczyć, że~aby wypisać wszystkie linie, które
   \alert{nie} zawierają informacji o~samochodach do sprzedania, możemy
-  użyć polecenia: \texttt{awk '\$2 != "car" \hspace{0.25em} \{ print \}'
-    Items-to-sell-I.txt} \\
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Korzystanie z~Awk}
-
-
-  \texttt{\$ awk '\$2 == "car" \hspace{0.25em} \{ print \}'
-    Items-to-sell-I.txt} \\
-  \texttt{::>} \texttt{Type} \\
-  \texttt{Volvo car $10$ green} \\
-  \texttt{Volkswagen car $20$ celeste} \\
-  \texttt{Toyota car $20$ blue} \\
-  \hspace{1em} \vdots
-
-  Przyjrzymy~się następującej części tego polecenia:
-  \texttt{'\$2 == "car" \hspace{0.25em} \{ print \}'}. Jego sens jest dość
-  prosty, najpierw sprawdzamy, czy zawartość drugiej kolumny to słowo
-  „car”. Jeśli jest to prawdą, to wykonujemy działanie \texttt{\{ print \}},
-  czyli wypisujemy całą linię.
-
-  Nie powinno Państwa zaskoczyć, że~aby wypisać wszystkie linie, które
-  \alert{nie} zawierają informacji o~samochodach do sprzedania, możemy
-  użyć polecenia: \texttt{awk '\$2 != "car" \hspace{0.25em} \{ print \}'
-    Items-to-sell-I.txt} \\
-
-\end{frame}
-% ######################################
-
-
-
-
-
-% ######################################
-\begin{frame}
-  \frametitle{Korzystanie z~Awk}
-
-
+  użyć następującego polecenia. \\
   \texttt{\$ awk '\$2 != "car" \hspace{0.25em} \{ print \}'
     Items-to-sell-I.txt} \\
   \texttt{::>} \texttt{Name Type Amount Color} \\
-  \texttt{Hisense computers $15$ silver} \\
-  \texttt{CCM bike $20$ cyan} \\
-  \texttt{Accell cabike $20$ citron} \\
-  \hspace{1em} \vdots
+  \texttt{::>} \texttt{Hisense computers 15 silver} \\
+  \texttt{::>} \texttt{CCM bike 20 cyan} \\
+  \texttt{::>} \texttt{Accell cabike 20 citron} \\
+  \hspace{3em} \vdots
 
-  Na obecną chwilę poznaliśmy kilka podstawowych sposobów korzystania
-  z~Awka. Zanim poznamy ich więcej, zatrzymamy~się na chwilę by wprowadzić
-  kilka pojęć, używanych w~Awku.
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Filtrowanie danych}
+
+
+  Widzimy, że~Awk zwrócił wypisał jedną linię, której nie powinien,
+  mianowicie „Name Type Amount Color”. Awk zadziała poprawnie, bo
+  rzeczywiście słowo „Type” jest różne od~„car”. To dość częsty przypadek,
+  że~pierwsze linie plików zawierają nagłówek informujący o~jego
+  zawartości, dlatego jak pozbyć~się takich linii, powiem później,
+  gdy~będziemy trochę więcej wiedzieć.
+
+  Rozpatrzmy inny przykład. Powiedzmy, że~z~jakiegoś powodu, chcemy
+  zobaczyć informacje o~wszystkich przedmiotach, jakie ta firma ma na
+  sprzedaż, które mają kolor niebieski. Jednocześnie, zupełnie nie
+  interesuje nas, ile egzemplarzy każdego z~tych przedmiotów jest
+  w~magazynie. By to zrobić, możemy użyć następującego polecenia.
+  \texttt{\$ awk '\$4 == "blue" \hspace{0.25em} \{ print \$1, \$2, \$4 \}'
+    Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Toyota car blue} \\
+  \hspace{3em} \vdots
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Filtrowanie danych}
+
+
+  Dla lepszego zaznajomienia~się z~własnościami Awka, przerobimy
+  jeszcze kilka przykładów. Oto jak wybrać wszystkie linie, opisujące
+  przedmioty, których mamy $10$ egzemplarzy do sprzedania. \\
+  \texttt{\$ awk '\$3 == 10 \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Volvo car 10 green} \\
+  \texttt{::>} \texttt{Abici bike 10 red} \\
+  \hspace{3em} \vdots
+
+  Sprawdźmy, że~wyrażenia „\$3 == 10” i~„10 == \$3” znaczą to samo. \\
+  \texttt{\$ awk '10 == \$3 \hspace{0.25em} \{ print \}'
+    Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Volvo car 10 green} \\
+  \texttt{::>} \texttt{Abici bike 10 red} \\
+  \hspace{3em} \vdots
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Filtrowanie danych}
+
+
+  Poszukajmy wszystkich przedmiotów, których liczba jest różna
+  od~$10$. \\
+  \texttt{\$ awk '\$3 != 10 \{ print \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type Amount Color} \\
+  \texttt{::>} \texttt{Volkswagen car 20 celeste} \\
+  \texttt{::>} \texttt{Hisense computers 15 silver} \\
+  \hspace{3em} \vdots
+
+  Ponownie Awk zwracam nam linię „Name Type Amount Color”. Później
+  pokażemy, co zrobić jeśli chcemy jej mieć.
+
+  Oto jak wyszukujemy przedmioty, których liczba jest większe od $30$-tu. \\
+  \texttt{\$ awk '\$3 > 30 \{ print \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type Amount Color} \\
+  \texttt{::>} \texttt{Huawei computers 40 silver} \\
+  \texttt{::>} \texttt{Gitane bike 45 dandelion} \\
+  \hspace{3em} \vdots
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Filtrowanie danych i~problemy z~nimi}
+
+
+  Ten ostatni wynik jest dziwny. Czemu Awk stwierdza, że~prawdą jest
+  „Amount > 30”? Przecież słowo „Amount” nie jest liczbą. Tak, ale
+  w~komputerze wszystko jest ciągiem $0$ i~$1$, więc jeśli trzeba może być
+  zinterpretowane jako liczba. I~tutaj wchodzi Awk, który próbuje
+  zinterpretować słowo „Amount” jako liczbę i~wychodzi mu, że jest ona
+  większa od~$30$. Z~takimi dziwactwami trzeba~się nauczyć żyć, bo czemu
+  życie miałoby być proste?
+
+  Zróbmy jeszcze kilka przykładu. Wyszukajmy wszystkie przedmioty, których
+  liczba jest większa, bądź równa $30$-tu. \\
+  \texttt{\$ awk '\$3 >= 30 \{ print \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Name Type Amount Color} \\
+  \texttt{::>} \texttt{Huawei computers 40 silver} \\
+  \texttt{::>} \texttt{Brennabor bike 30 red} \\
+  \hspace{3em} \vdots
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Filtrowanie danych}
+
+
+  Poszukajmy teraz przedmiotów, których jest mniej niż~$10$. \\
+  \texttt{\$ awk '\$3 < 10 \{ print \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Toyota car 7 blue} \\
+  \texttt{::>} \texttt{BH bike 9 blue} \\
+  \hspace{3em} \vdots
+
+  Poszukajmy teraz przedmiotów, których liczba jest mniejsza bądź
+  równa~$10$. \\
+  \texttt{\$ awk '\$3 <= 10 \{ print \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{Volvo car 10 green} \\
+  \texttt{::>} \texttt{Toyota car 7 blue} \\
+  \hspace{3em} \vdots
+
+  W~obecnej chwili znamy już kilka podstawowych sposobów korzystania
+  z~Awka. Zanim poznamy ich więcej, zatrzymamy~się na chwilę
+  by~przyjrzeć~się kilku technicznym zagadnieniom Awka.
 
 \end{frame}
 % ######################################
@@ -519,7 +605,7 @@ eprint=true,
 
 
 % ################################################
-\section{Kilka pojęć dotyczących Awka}
+\section{Trochę technicznych informacji o~Awku}
 % ################################################
 
 
@@ -563,9 +649,9 @@ eprint=true,
   w~nawiasach wąsatych \texttt{\{ {} \}}.
 
   Wobec tego polecenie \\
-  \texttt{awk '\{ print \$$0$ \}' Items-to-sell-I.txt} \\
+  \texttt{awk '\{ print \}' Items-to-sell-I.txt} \\
   mówi, że~Awk ma podzielić tekst w~pliku \texttt{Items-to-sell-I.txt}
-  na rekordy, następnie wykonać działanie \texttt{print \$$0$} na każdym
+  na rekordy, następnie wykonać działanie \texttt{print} na każdym
   z~tych rekordów. W~tym wypadku sprowadza~się to do wypisania całego pliku
   na ekranie.
 
@@ -573,7 +659,7 @@ eprint=true,
   \texttt{awk [opcje] 'wzorzec \{działanie\}' nazwa-pliku} \\
   Do tej pory nie używaliśmy Awka z~ustawionymi jawnie opcjami, za~to
   widzieliśmy już polecenie wykorzystujące odpowiedni \textbf{wzorzec}
-  (ang.~\textit{patter}).
+  (ang.~\textit{patter}), jak choćby „\$3 == 10”.
 
 \end{frame}
 % ######################################
@@ -584,9 +670,36 @@ eprint=true,
 
 % ######################################
 \begin{frame}
-  \frametitle{Działania w~Awku}
+  \frametitle{Zmienna NR}
 
 
+  Awk przechowuje numer rekordu w~zmiennej \texttt{NR}, więc jeśli chcemy
+  zobaczyć wszystkie rekordy z~ich numerami, możemy skorzystać
+  z~następującego polecenia. \\
+  \texttt{\$ awk '\{ print NR ": " \$0 \}' Items-to-sell-I.txt} \\
+  \texttt{::>} \texttt{1: Name Type Amount Color} \\
+  \texttt{::>} \texttt{2: Volvo car 10 green} \\
+  \texttt{::>} \texttt{3: Volkswagen car 20 celeste} \\
+  \hspace{3em} \vdots
+
+  Skorzystaliśmy tutaj też z~następującej własności \texttt{print} w~Awku.
+  Mianowicie, jeśli prześlemy mu ciąg argumentów, oddzielonych tylko
+  spacjami, czy innymi białymi znakami, to on po prostu sklei je w~jeden
+  tekst. Dlatego działanie „\texttt{print NR ": " \$0}” najpierw wypisuje
+  numer rekordu, następnie dwukropek i~spację, a~potem zawartość rekordu
+  (wiersza tekstu), którą reprezentuje zmienna \texttt{\$0}.
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
 
 
   Problem z~\colorhref{https://en.wikipedia.org/wiki/AWK}{\texttt{awk}iem}
@@ -598,17 +711,108 @@ eprint=true,
   Norwida), kod źródłowy w~języku~C, dane na temat cen surowców,~etc.
 
 \end{frame}
+% ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Opcje (flagi)}
+
+
+%   Ponieważ istnieje duże ryzyko, że~osoby rozpoczynają swoją przygodę
+%   z~powłoką nadpiszą przez przypadek ważny plik stosując polecenie
+%   \texttt{mv}, we wszystkich przykładach będziemy do niego dodawali
+%   opcję~\texttt{-i}. Wyjątkiem od tej zasady będą sytuacja, gdy chcemy
+%   by~polecenie \texttt{mv} nadpisało już istniejący plik.
+
+%   Doświadczeni użytkownicy systemu GNU/Linux już parokrotnie stracili ważne
+%   dane przez niewłaściwe użycie polecenia~\texttt{mv}, więc używają go
+%   znacznie ostrożniej i~przez to ryzyko utraty kolejnych danych tą metodą
+%   jest znacznie mniejsze.
+
+%   Opcje poleceń takie jak~\texttt{-i} mogą wyglądać dziwnie i~być ciężkie
+%   do zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie
+%   nie należy do przyjemnych, wymaga dużo zapamiętywania, częstego
+%   googlowania lub~nabycie umiejętności czytania trudnego w~zrozumieniu
+%   manuala (\texttt{man}). Do tego tematu jeszcze nie raz wrócimy.
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{Czemu życie nie może być proste?}
+
+
+%   Wszystkie te problemy nie zmieniają faktu, że~polecenia dostępne
+%   w~\textsc{bash}u wraz z~ich opcjami dają nam bardzo potężne narzędzie
+%   do~ręki i~ich poznanie jest niezbędne, jeśli chcemy naprawdę dobrze
+%   poznać system operacyjny GNU/Linux.
+
+%   O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
+%   podczas następnych spotkań.
+
+% \end{frame}
+% % ##################
+
+
+
 % ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awka}
+
+  Przeczytaj pierwsze 5 stron.
+
+
+
+  % awk '{ print $1 }' Items-to-sell-I-CSV.txt
+  % CSV comma separated value
+  % F from field separator
+  % awk -F"," '{ print $1 }' Items-to-sell-I-CSV.txt
+  % awk '{ print $1 }' Items-to-sell-II.txt
+  % awk -F"," '{ print $1 }' Items-to-sell-II.txt
+  % awk '{ print $1 }' Items-to-sell-III.txt
+  % awk -F"," '{ print $1 }' Items-to-sell-III.txt
+  % awk '{ print NF ": " $0 }' Items-to-sell-II.txt
+  % awk -F '{ print NF ": " $0 }' Items-to-sell-II.txt
+
+  % awk '/blue/ '{ print }' Items-to-sell-I.txt
+  % Magia Awka
+  % awk '{ print > $2 }' Item-to-sell-I.txt
+  % awk '$1 ~ /H.+a/ { print $0 }' Items-to-sell-I.txt
+  % Zaczyna się na H i zawiera a.
+
+  % patter { action }
+
+  % Awk programs are essentially data-driven in that actions
+  % depend on the data, so they are quite a bit different from
+  % programs in many other programming languages.
+
+
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
 
 
 % ##################
 \begin{frame}
   \frametitle{Wyrażenia}
 
-
-  zaś rekordy na \textbf{pola}. Standardowo rekord odpowiada jednej linii
-  tekstu i~nie będziemy rozpatrywali innych przypadków. Nauka \texttt{awk}a
-  już bez tego potrafi być trudna.
 
   Domyślnie, kązdy rekord (linia tekstu) dzielony jest na pola przez
   spacje i~inne białe znaki. Stąd każda linia w~pliku
@@ -734,6 +938,26 @@ eprint=true,
 % ##################
 
 
+
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~Awk}
+
+
+
+
+\end{frame}
+% ######################################
 
 
 
@@ -1554,229 +1778,7 @@ eprint=true,
 % % ######################################
 
 
-% % ##################
-% \begin{frame}
-%   \frametitle{Pewne subtelności}
 
-
-%   Przyjmijmy, że~jesteśmy w~katalogu \texttt{Systemy-operacyjne-Ćwiczenia}
-%   i~mamy utworzony plik \texttt{Notatki-z-zajęć.txt}. Każdy system
-%   operacyjny musi podjąć decyzję, czy traktuje on duże i~małe litery
-%   jako różne symbole, czy jako dwie wersje tego samego symbolu. Problem
-%   sprowadza~się do tego, czy \texttt{Notatki-z-zajęć.txt}
-%   i~\texttt{notatki-z-zajęć.txt} są dwoma różnymi nazwami tego samego pliku,
-%   czy też są to dwie różne nazwy? Kwestia ta jest sprawą konwencji,
-%   ale~należy ją rozstrzygnąć by uniknąć nieporozumień.
-
-%   Symbol GNU/Linux przyjął, że~duże i~małe litery to \alert{różne} symbole,
-%   więc \texttt{Notatki-z-zajęć.txt} i~\texttt{notatki-z-zajęć.txt} to dwie
-%   różne nazwy. Tak jak w~systemie Windows, w~systemie GNU/Linux w~danym
-%   katalogu może być tylko jeden plik o~danej nazwie. Jest to rozsądny wybór,
-%   gdyż inaczej użytkownik łatwo by~się pogubił.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Polecenie \texttt{mkdir}}
-
-
-%   Na mocy tego co powiedzieliśmy wyżej, w~tym samym katalogu mogą
-%   współistnieć pliki o~nazwie \texttt{Notatki-z-zajęć.txt}
-%   i~\texttt{notatki-z-zajęć.txt}. Byłyby to \alert{różne} pliki, zawartość
-%   jednego z~nich nie miałaby nic wspólnego z~zawartością drugiego. Jednak
-%   by uniknąć bałaganu, należy unikać podobnych nazw plików.
-
-%   Powiedzmy, że~chcemy teraz utworzyć w~naszym katalogu
-%   (\texttt{Systemy-operacyjne-Ćwiczenia}) katalog \texttt{Zajęcia-01}.
-%   Służy do tego polecenie
-%   \colorhref{https://www.arturpyszczuk.pl/commands-mkdir.html}
-%   {\texttt{mkdir}}. Polecenie to wymaga do działania argumentu, którym
-%   jest nazwa katalogu, który ma zostać utworzony (logiczne): \\
-%   \texttt{\$ mkdir Zajęcia-01} \\
-%   \texttt{\$ ls} \\
-%   \directoryName{Zajęcia-01} \quad \texttt{Notatki-z-zajęć.txt} \\
-%   Powiedzmy, że~stwierdziliśmy, że~chcemy zmienić nazwę pliku
-%   \texttt{Notatki-z-zajęć.txt} na
-%   \texttt{Notatki-z-systemów-operacyjnych-01.txt} i~przenieść do katalogu
-%   \texttt{Zajęcia-01}.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Polecenie \texttt{mv}}
-
-
-%   W~systemie GNU/Linux zarówno do zmiany nazwy pliku, jak i~przenoszenia
-%   ich między katalogami służy polecenie
-%   \colorhref{https://www.geeksforgeeks.org/mv-command-linux-examples/}
-%   {\texttt{mv}} (ang.~\textit{MoVe}). Możemy więc zmienić nazwę pliku
-%   za~pomocą polecenia: \\
-%   \texttt{\$ mv Notatki-z-zajęć.txt Notatki-z-systemów-operacyjnych-01.txt}
-
-%   Następnie możemy przenieść plik
-%   \texttt{Notatki-z-systemów-operacyjnych-01.txt} go do katalogu
-%   \texttt{Zajęcia-01} za pomocą polecenia: \\
-%   \texttt{\$ mv Notatki-z-systemów-operacyjnych-01.txt Zajęcia-01/} \\
-%   Symbol „\texttt{/}” na końcu nazwy katalogu nie jest niezbędny,
-%   ale~dobrze go tam umieszczać, bo~stanowi dodatkową informację
-%   dla~\textsc{bash}a i~użytkownika, że~konkretna nazwa jest nazwą
-%   katalogu.
-
-%   Ogólnie unikanie wszelkich niejednoznaczności jest dobrą praktyką.
-%   Dlatego dobrze jest w~ramach możliwości, jawnie zaznaczać charakter
-%   wszystkich bytów, występujących w~poleceniach.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Polecenie \texttt{mv}}
-
-
-%   Możemy też przenieść plik do katalogu i~zmienić jego nazwę za pomocą
-%   pojedynczego polecenia: \\
-%   \texttt{\$ mv Notatki-z-zajęć.txt
-%     Zajęcia-01/Notatki-z-systemów-operacyjnych-01.txt} \\
-%   Ponieważ polecenie \texttt{mv} może przenosić pliki tylko do istniejących
-%   już katalogów, samo potrafi wykryć co jest nazwą katalogu, a~co nową
-%   nazwą pliku. Jak z~większością poleceń GNU/Linuxa należy jednak unikać
-%   ich użycia, jeśli nie jesteśmy pewni co dane polecenie zrobi.
-
-%   Wszyscy zapewne dobrze wiemy, że w~systemie Windows, jeśli chcemy
-%   przekopiować plik o~nazwie \texttt{Dane.dat} do katalogu, który już
-%   zawiera plik o~tej nazwie, to zobaczymy komunikat typu
-%   \textit{Plik „Dane.dat” zostanie nadpisany. Czy chcesz kontynuować?}
-%   Niestety, to \alert{nie} jest domyślne działanie polecenia \texttt{mv}
-%   i~wielu innych poleceń w~systemie GNU/Linux.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Zagrożenia jakie stwarza \texttt{mv}}
-
-
-%   Załóżmy więc, że~jesteśmy w~katalogu w~którym znajduje~się plik
-%   \texttt{Ważne-dane.dat} i~plik \texttt{Tekst-popularnych-piosenek.txt}.
-%   Jeśli przez przypadek wprowadzimy polecenie \\
-%   \texttt{\$ mv Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
-%   to plik \texttt{Ważne-dane.dat} zostanie nadpisany przez niezbyt ważny
-%   plik \texttt{Teksty-popularnych-piosenek.txt}. Odzyskanie pliku
-%   \texttt{Ważne-dane.dat} nie jest niemożliwe, ale jest bardzo, ale to
-%   \alert{bardzo} trudne i~wymaga sporych umiejętności pracy z~systemem
-%   GNU/Linux.
-
-%   \textit{Jesteś prawdziwym miłośnikiem ryzyka, jeśli przechowujesz ważne
-%     pliki na~komputerze z~systemem \textsc{unix}.} \\
-%   Robert E.~Seastrom, tłum. swobodne, str.~$261$
-%   \parencite{Garfinkel-Weise-Strassmann-The-UNIX-HATERS-Handbook-Pub-1994}.
-%   Stwierdzenie to odnosi~się też do systemu GNU/Linux.
-
-%   Pomimo tych problemów, polecenia takie jak \texttt{mv} są zbyt ważne,
-%   by~ich nie używać. Jak~się jednak zabezpieczyć przed takimi problemami?
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Jak rozsądnie korzystać z~\texttt{mv}?}
-
-
-%   Poprzez dodanie odpowiednich opcji (flag) do~polecenia \texttt{mv}
-%   może sprawić, że~zawsze, gdy polecenie to nadpisałoby istniejący
-%   plik zostaniemy zapytani, czy naprawdę chcielibyśmy to zrobić.
-%   W~tym przypadku opcja tą jest \texttt{-i}, rezultat jej działania
-%   przedstawiony jest poniżej. \\
-%   \texttt{\$ mv -i Teksty-popularnych-piosenek.txt Ważne-dane.dat} \\
-%   \texttt{mv: zamazać 'Ważne-dane.dat'?} \\
-%   Forma pytania jaką otrzymamy może być inna na Państwa komputerze.
-%   Odpowiedzi twierdzącej na to pytanie, możemy udzielić wpisując
-%   „\texttt{t}”, „\texttt{tak}”, „\texttt{y}” lub „\texttt{yes}”, wówczas
-%   plik \texttt{Ważne-dane.dat} zostanie nadpisany. Jeśli chcemy udzielić
-%   odpowiedzi przeczącej możemy wpisać „\texttt{n}”, „\texttt{nie}”
-%   lub~„\texttt{no}”.
-
-%   Opcje, jak sama nazwa wskazuje, zmieniają działanie polecenia i~na tym
-%   kursie nie musimy wiedzieć o~nich wiele więcej.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Opcje (flagi)}
-
-
-%   Ponieważ istnieje duże ryzyko, że~osoby rozpoczynają swoją przygodę
-%   z~powłoką nadpiszą przez przypadek ważny plik stosując polecenie
-%   \texttt{mv}, we wszystkich przykładach będziemy do niego dodawali
-%   opcję~\texttt{-i}. Wyjątkiem od tej zasady będą sytuacja, gdy chcemy
-%   by~polecenie \texttt{mv} nadpisało już istniejący plik.
-
-%   Doświadczeni użytkownicy systemu GNU/Linux już parokrotnie stracili ważne
-%   dane przez niewłaściwe użycie polecenia~\texttt{mv}, więc używają go
-%   znacznie ostrożniej i~przez to ryzyko utraty kolejnych danych tą metodą
-%   jest znacznie mniejsze.
-
-%   Opcje poleceń takie jak~\texttt{-i} mogą wyglądać dziwnie i~być ciężkie
-%   do zapamiętania, niestety, musimy nauczyć~się z~tym żyć. Ich poznawanie
-%   nie należy do przyjemnych, wymaga dużo zapamiętywania, częstego
-%   googlowania lub~nabycie umiejętności czytania trudnego w~zrozumieniu
-%   manuala (\texttt{man}). Do tego tematu jeszcze nie raz wrócimy.
-
-% \end{frame}
-% % ##################
-
-
-
-
-
-% % ##################
-% \begin{frame}
-%   \frametitle{Czemu życie nie może być proste?}
-
-
-%   Wszystkie te problemy nie zmieniają faktu, że~polecenia dostępne
-%   w~\textsc{bash}u wraz z~ich opcjami dają nam bardzo potężne narzędzie
-%   do~ręki i~ich poznanie jest niezbędne, jeśli chcemy naprawdę dobrze
-%   poznać system operacyjny GNU/Linux.
-
-%   O~opcjach różnych poleceń i~ich pokręconej logice powiemy sobie więcej
-%   podczas następnych spotkań.
-
-% \end{frame}
-% % ##################
 
 
 
