@@ -193,14 +193,13 @@ eprint=true,
 
 
   Zdecydowaliśmy wykorzystać do nauki \texttt{grep}a tekst opowiadania,
-  bo~uważamy, że~łatwiej pracuje~się z~tekstem, który opowiada pewną
-  historię, niż z~innymi.
+  bo~uważamy, że~praca z~nim jest stosunkowo prosta.
 
   Zanim przejdziemy do nauki, kolejny raz postawmy sobie pytanie, dlaczego
   kolejne polecenie w~GNU/Linuxie ma dziwną nazwę? Nie da~się ukryć, „grep”
   to naprawdę dziwne słowo. Historia nazwy tego polecenia jest stosunkowo
-  długa, dlatego umieściliśmy nie będziemy je przedstawiali tutaj. Można ją
-  znaleźć na~końcu tej prezentacji.
+  długa, dlatego nie będziemy je przedstawiali tutaj. Można ją znaleźć
+  na~końcu tej prezentacji.
 
   Standardowe ostrzeżenie. Przed rozpoczęciem nauki pracy
   z~\texttt{grep}em, proszę~się upewnić, że~plik \texttt{PiR-Część-I.txt}
@@ -251,7 +250,7 @@ eprint=true,
   Polecenie \texttt{grep} zwykle jest ustawione tak, by wyróżniało
   w~jakiś sposób znalezione fragment tekstu. W~przypadku tych
   prezentacji, fragment te będą pisane na~czerwono, choć na Państwa
-  komputera może to~działać zupełnie inaczej.
+  komputera może być wyświetlany w~zupełnie inny sposób.
 
   Jeśli u~Państwa znaleziony tekst nie zostały wyróżniony w~żaden sposób,
   proszę użyć poniższego polecenia. \\
@@ -264,7 +263,7 @@ eprint=true,
   wystąpienie danego ciągu znaków, niezależnie od tego, czy są one
   osobnym słowem, czy częścią innego, dłuższego. Aby wyszukać tylko
   wystąpienie „nie” jako osobne słowa, należy użyć opcji \texttt{-w}
-  od angielskiego \textit{word}, \textit{słowo}.
+  od angielskiego \textit{word}, pl.~\textit{słowo}.
 
 \end{frame}
 % ######################################
@@ -285,12 +284,11 @@ eprint=true,
 
   Często jest dość trudno ustalić, z~której części tekstu pochodzi dana
   linia, dlatego warto dodać opcję \texttt{-n}, która sprawia,
-  że~wypisywane linie są ponumerowane.
-
+  że~wypisywane linie są ponumerowane. \\
   \texttt{\$ grep -w -n "nie"{} PiR-Część-I.txt} \\
-  \texttt{::> 17:Mój problem dotyczy bohaterów „Spalenia stodoły”,} \\
+  \texttt{::> 18:Mój problem dotyczy bohaterów „Spalenia stodoły”,} \\
   \texttt{\emphasisRed{nie} fabuły. Fabuła jest} \\
-  \texttt{::> 23:ze strony Faulknera. Po prostu \emphasisRed{nie}
+  \texttt{::> 24:ze strony Faulknera. Po prostu \emphasisRed{nie}
     pisał dla ludzi} \\
   \texttt{takich jak ja.} \\
   \hspace{2em} \texttt{\vdots}
@@ -348,7 +346,7 @@ eprint=true,
   \texttt{\$ grep -n "po"{} PiR-Część-I.txt} \\
   \texttt{::> 1:Poniższy tekst, jest zapisem \emphasisRed{po}droży
     i~snutych} \\
-  \texttt{podczas niej refleksji, jaką} \\
+  \texttt{\emphasisRed{po}dczas niej refleksji, jaką} \\
   \texttt{::> 2:pewna dość specyficzna osoba odbyła \emphasisRed{po}
     Polsce} \\
   \texttt{i~okolicach. Nazwa tego} \\
@@ -402,21 +400,17 @@ eprint=true,
 
   Jeśli chcemy wyświetlić tylko te linie, które \alert{nie} zawierają
   danego tekstu, można skorzystać z~opcji~\texttt{-v}. By to zilustrować,
-  porównamy rezultaty użycia dwóch wersji tego polecenia. \\
+  porównamy rezultaty użycia tych dwóch wersji tego polecenia. \\
   \texttt{\$ grep -n -v "Po"{} PiR-Część-I.txt} \\
   \texttt{::> 4:tego, że bohater ma skłonność do opisywania tego co widzi
     w~terminach nauki,} \\
   \texttt{::> 5:to snuje refleksje o muzyce, literaturze i~wielu innych
-    rzeczach.} \\
-  \texttt{::> 6:} \\
-  \texttt{::> 7:Do Lublina dojechałem samochodem o~godzinie 18:30} \\
+    rzeczach, które} \\
+  \texttt{::> 6:przyjdą mu do głowy.} \\
+  \texttt{::> 7:} \\
+  \texttt{::> 8:Do Lublina dojechałem samochodem o~godzinie 18:30} \\
   \texttt{i~skierowałem~się} \\
   \hspace{2em} \texttt{\vdots}
-
-  Warto zwrócić uwagę, że~\texttt{grep} w~wynikach umieścił też linię
-  numer~$6$, która jest zupełnie pusta. Jest to właściwe działanie
-  z~jego strony, jako~że pusta linie rzeczywiście nie zawiera ciągu
-  znaków~„Po”.
 
 \end{frame}
 % ######################################
@@ -430,22 +424,22 @@ eprint=true,
   \frametitle{Jakie tekstu może szukać \texttt{grep}?}
 
 
+  Warto zwrócić uwagę, że~polecenie \texttt{grep} na poprzednim slajdzie
+  zwróciło też linię numer~$7$, która jest zupełnie pusta. Jest to poprawne
+  zachowanie z~jej strony, jako~że pusta linie rzeczywiście nie zawiera
+  ciągu znaków~„Po”.
+
   Do tej pory używaliśmy \texttt{grep}a tylko do wyszukiwania ciągów
-  liter, jednak możliwości \texttt{grep}a nie ograniczają~się do~tego
-  typu przypadków. Równie dobrze możemy wyszukiwać ciągi znaków
+  liter, jednak jego możliwości nie ograniczają~się tylko do takich
+  zastosowań. Równie dobrze możemy wyszukiwać ciągi znaków
   zawierające spację, co ilustruje poniższy przykład. \\
   \texttt{\$ grep -n "a p"{} PiR-Część-I.txt} \\
   \texttt{::> 2:pewna dość specyficzna osob\emphasisRed{a o}dbyła
     po~Polsce} \\
   \texttt{i~okolicach. Nazwa tego} \\
-  \texttt{::> 30:obejrzałem. Z~tego też powodu zapewne masa ludzi} \\
+  \texttt{::> 31:obejrzałem. Z~tego też powodu zapewne masa ludzi} \\
   \texttt{n\emphasisRed{a p}ewno go nie znosi, bo} \\
   \hspace{2em} \texttt{\vdots}
-
-  Tak samo możemy wyszukiwać wystąpienie w~tekście jakiejś cyfry.
-  By wyszukać wystąpienie w~tekście cyfry „$1$” można użyć poniższej
-  wersji polecenia \texttt{grep}. \\
-  \texttt{grep -n "1"{} PiR-Część-I.txt}
 
 \end{frame}
 % ######################################
@@ -459,23 +453,22 @@ eprint=true,
   \frametitle{Jakie tekstu może szukać \texttt{grep}?}
 
 
+  Tak samo możemy poszukiwać w~tekście cyfry. By wyszukać wystąpienie
+  w~tekście cyfry „$1$” można użyć poniższej wersji polecenia
+  \texttt{grep}. \\
   \texttt{\$ grep -n "1"{} PiR-Część-I.txt} \\
-  \texttt{::> 7:Do Lublina dojechałem samochodem o~godzinie
+  \texttt{::> 8:Do Lublina dojechałem samochodem o~godzinie
     \emphasisRed{1}8:30}
   \texttt{i~skierowałem~się} \\
-  \texttt{11:mam pierwszy tom jego opowiadań zebranych, wydany} \\
+  \texttt{12:mam pierwszy tom jego opowiadań zebranych, wydany} \\
   \texttt{w~Polsce w~\emphasisRed{1}967 roku.} \\
   \hspace{2em} \texttt{\vdots}
 
   Oczywiście możemy też szukać tekstu, który składa~się z~liter, spacji,
   cyfr,~etc., jak w~poniższym przykładzie. \\
   \texttt{\$ grep -n "e 1"{} PiR-Część-I.txt} \\
-  \texttt{::> 7:Do Lublina dojechałem samochodem}
+  \texttt{::> 8:Do Lublina dojechałem samochodem}
   \texttt{o~godzini\emphasisRed{e 1}8:30 i~skierowałem~się}
-
-  W~tym wypadku tylko jedna linia zawiera szukany przez nas tekst. Powinno
-  teraz być jasne, że~\texttt{grep}owi można podać w~zasadzie dowolny ciąg
-  symboli i~on znajdzie wszystkie linie w~których~się on~pojawia.
 
 \end{frame}
 % ######################################
@@ -488,6 +481,10 @@ eprint=true,
 \begin{frame}
   \frametitle{Jakie tekstu może szukać \texttt{grep}?}
 
+
+  W~tym wypadku tylko jedna linia zawiera szukany przez nas tekst. Powinno
+  teraz być jasne, że~\texttt{grep}owi można podać w~zasadzie dowolny ciąg
+  symboli i~on znajdzie wszystkie linie w~których~się on~pojawia.
 
   Poleceniu \texttt{grep} można przesłać w~zasadzie dowolny tekst,
   jaki tylko jesteśmy w~stanie wymyślić, jest tu tylko jedno poważne
@@ -496,15 +493,13 @@ eprint=true,
   przykładzie.
 
   W~pliku \texttt{PiR-Część-I.txt} znajdują~się następujące dwie linie. \\
-  \textit{4:pliku „PiR-Część-I.txt” to skrót od „Podróże i rozmyślania.
+  \textit{3:pliku „PiR-Część-I.txt” to skrót od „Podróże i rozmyślania.
     Część~I”. Oprócz} \\
-  \textit{5:tego, że bohater ma skłonność do opisywania tego
+  \textit{4:tego, że bohater ma skłonność do opisywania tego
     co~widzi w~terminach nauki,} \\
   Dla wygody do każdej z~nich dodaliśmy jej numer. Jak widzimy, tekst ten
   zawiera ciąg słów „Oprócz tego”, ale rozbity na dwie linie, wobec
   czego \texttt{grep} go nie znajdzie.
-
-  By~to zobaczyć, proszę~się przyjrzeć następującym przykładom.
 
 \end{frame}
 % ######################################
@@ -518,6 +513,7 @@ eprint=true,
   \frametitle{Jakie tekstu może szukać \texttt{grep}?}
 
 
+  By~to zobaczyć, proszę~się przyjrzeć następującym przykładom. \\
   \texttt{\$ grep -n "Oprócz"{} PiR-Część-I.txt} \\
   \texttt{::> 3:pliku „PiR-Część-I.txt” to skrót od „Podróże} \\
   \texttt{i~rozmyślania. Część I”. \emphasisRed{Oprócz}}
@@ -525,16 +521,13 @@ eprint=true,
   \texttt{\$ grep -n "tego"{} PiR-Część-I.txt} \\
   \texttt{::> 2:pewna dość specyficzna osoba odbyła po~Polsce} \\
   \texttt{i~okolicach. Nazwa \emphasisRed{tego}} \\
-  \texttt{::> 4:tego, że~bohater ma skłonność do opisywania
+  \texttt{::> 4:\emphasisRed{tego}, że~bohater ma skłonność do opisywania
     \emphasisRed{tego}} \\
   \texttt{co widzi w~terminach nauki,} \\
   \hspace{2em} \texttt{\vdots}
 
-  Teraz poszukajmy tekstu „Oprócz tego”. \\
-  \texttt{\$ grep -n "Oprócz tego"{} PiR-Część-I.txt} \\
-  \texttt{::>} \\
-  Jak Państwo widzą, \texttt{grep} nie znalazł tekstu „Oprócz tego”, gdyż
-  ten jest podzielony na dwie linie.
+  Jak należało~się spodziewać, polecenie \texttt{grep} nie ma problemu
+  ze~znalezieniem słowa „Oprócz” i~„tego”,
 
 \end{frame}
 % ######################################
@@ -548,21 +541,72 @@ eprint=true,
   \frametitle{Zliczanie znalezionych linii}
 
 
+  Teraz poszukajmy tekstu „Oprócz tego”. \\
+  \texttt{\$ grep -n "Oprócz tego"{} PiR-Część-I.txt} \\
+  \texttt{::>} \\
+  Jak Państwo widzą, \texttt{grep} nie znalazł tekstu „Oprócz tego”, gdyż
+  ten jest podzielony na dwie linie.
+
   By~polecenie \texttt{grep} wypisało w~jakiej liczbie linii został
   znaleziony zadany ciąg symboli (do ilu linii został dopasowany wzorzec)
   dajemy mu flagę~\texttt{-c}: \\
-  \texttt{\$ grep -n -c "Du"{} Lorem-ipsum.txt} \\
-  \texttt{$6$}
+  \texttt{\$ grep -n -c "nie"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{47}
 
-  Jak już wiemy, domyślnie \texttt{grep} wypisuje linie w~których znalazł
-  dany ciąg symboli. By~zobaczyć linie \alert{nie} zawierające tego ciągu
-  należy użyć flagi~\texttt{-v}: \\
-
+  Zobaczmy w~ilu liniach „nie” występuje jako osobne słowo. \\
+  \texttt{\$ grep -n -w -c "nie"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{18}
 
 \end{frame}
 % ######################################
 
 
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Zliczanie znalezionych linii}
+
+
+  Dla porządku warto zaznaczyć, że~gdy szukamy w~ilu liniach „nie”
+  występuje jako osobne słowo, opcja \texttt{-n} nie jest potrzebna.
+  Co więcej wszystkie poniższe wersje polecenia \texttt{grep} są
+  równoważne. \\
+  \texttt{grep -w -c "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -c -w "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -wc "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -cw "nie"{} PiR-Część-I.txt}
+
+  Należy podkreślić, że~\texttt{grep} z~opcją~\texttt{-c} zlicza ile
+  \alert{linii} zawiera dany tekst, nie ile razy ten tekst wystąpił.
+  Jeśli by więc tekst „nie” występował tylko w~jednej linii, ale~trzy
+  razy, to~polecenie \texttt{grep -c} zwróci jako rezultat liczbę~$1$.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Wyszukiwanie linii w~których nie ma danego tekstu}
+
+
+  Jak już wiemy, domyślnie \texttt{grep} wypisuje linie w~których znalazł
+  dany ciąg symboli. By~zobaczyć linie \alert{nie} zawierające tego ciągu
+  należy użyć tego polecania z~opcją \texttt{-v}. \\
+  \texttt{\$ grep -n -v "nie"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{2:pewna dość specyficzna osoba odbyła po Polsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \texttt{::>} \texttt{3:pliku „PiR-Część-I.txt” to skrót od „Podróże} \\
+  \texttt{i~rozmyślania. Część I”. Oprócz} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
 
 
 
@@ -604,16 +648,6 @@ eprint=true,
 
 
 
-
-% ##################
-\begin{frame}
-  \frametitle{????}
-
-
-
-
-\end{frame}
-% ##################
 
 
 % ##################

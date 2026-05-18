@@ -9,7 +9,7 @@ NR == 1 {
 }
 
 {
-    numberOfItems += 3;
+    numberOfItems += $3;
 }
 
 END {
