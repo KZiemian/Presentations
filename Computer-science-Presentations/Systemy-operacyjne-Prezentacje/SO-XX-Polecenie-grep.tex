@@ -612,29 +612,21 @@ eprint=true,
 
 
 
-
-
-
-% ################################################
-\section{Polecenie \texttt{grep}}
-% ################################################
-
-
 % ######################################
 \begin{frame}
   \frametitle{Uwagi techniczne}
 
 
-  Przyjrzyjmy~się jeszcze następującej wersji polecenia \texttt{grep}. \\
+  Przyjrzyjmy~się jeszcze przez chwilę następującej wersji polecenia
+  \texttt{grep} i~zastanówmy~się, co ono robi? \\
   \texttt{grep "nie"{} PiR-Część-I.txt} \\
-  Polecenie to przyjmuj dwa argumenty. Pierwszym z~nich jest tekst którego
-  wystąpień będziemy szukać, drugim plik, który będziemy przeszukiwać.
-  Później omówimy inne sposoby używania \texttt{grep}a, w~szczególności ten,
-  w~którym \texttt{grep}owi tekst który ma przeszukać, dostarczamy za pomocą
-  przekierowania. Zanim do tego przejdziemy, potrzebujemy poznać jeszcze
-  pewne funkcje tej najbardziej podstawowej formy \texttt{grep}a.
+  Polecenie to przyjmuj dwa argumenty, pierwszym z~nich jest tekst którego
+  wystąpień będziemy szukać, drugim nazwa pliku, który będziemy
+  przeszukiwać, by znaleźć w~nim dany tekst. Istnieją inne sposoby
+  używania \texttt{grep}, na przykład przesłanie mu tekstu do szukania
+  za~pomocą przekierowania. Te zagadnienia omówimy później.
 
-  Warto jednak zaznaczyć, że~jeśli nie podamy \texttt{grep}owi pliku
+  Warto zaznaczyć, że~jeśli nie podamy \texttt{grep}owi pliku
   w~którym ma poszukiwać tekstu, to zablokuje on powłokę. Przykładowo
   jeśli wprowadzimy polecenie poniższe polecenie \\
   \texttt{grep "nie"} \\
@@ -650,11 +642,58 @@ eprint=true,
 
 
 
-% ##################
+
+
+
+% ################################################
+\section{Polecenie \texttt{grep} i~wyrażenia regularne}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenie \texttt{grep} i~wyrażenia regularne}
+
+
+  Do tej pory polecenie \texttt{grep} może nie jest bardzo intuicyjne,
+  ale nie jest też jakoś strasznie skomplikowane w~użyciu. Jednak nie
+  można mówić o~\texttt{grep}ie i~nie wspomnieć o~używaniu
+  \colorhref{https://en.wikipedia.org/wiki/Regular\_expression}
+  {wyrażeń regularnych} (ang.~\textit{regular expression}, w~skrócie
+  „regex” lub~„regexp”). Nie zakładamy u~Państwa żadnej wiedzy
+  o~wyrażeniach regularnych, dlatego powoli omówimy czym one są i~jak
+  ich używać w~\texttt{grep}ie.
+
+  Wyrażenia regularne są często krytykowane za to, że~łatwo stworzyć
+  takie wyrażenie regularne, którego działania normalny człowiek nie może
+  zrozumieć. Po internecie krąży też taki żart. \\
+  \textit{Pewien programista miał problem. Stwierdził „Użyję wyrażeń
+    regularnych.” Teraz ma dwa problemy.}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
 \begin{frame}
   \frametitle{????}
 
 
+
+  ale~potrafi być przydatne. Oprócz tego jest dobrą ilustrują z~jednej
+  strony potęgi jaką oferuje nam system GNU/Linux, z~drugiej to ile
+  trudu jej zdobycie zwykle kosztuje.
+
+  Wyrażenia regularne, można postrzegać jako ulepszoną wersję wyszukiwania
+  tekstu w~dokumencie, czyli słynnego \texttt{Ctrl-f}. W~najprostszym
+  wypadku, działają dokładnie tak jak \texttt{Ctrl-f}: przesyłamy im
+  jakiś napis i~znajdują one jego wystąpienia w~tekście. Różnica polega na
+  tym, że~za pomocą specjalnej składni, możemy im szukać bardziej złożonych
+  ciągów symboli, niż po prostu konkretny tekst, do tego jednak przejdziemy
+  po ogólnym omówieniu \texttt{grep}a.
 
   Załóżmy, że~jesteśmy w~katalogu, gdzie znajduje~się plik
   \textit{Lorem-ipsum.txt}. Zaczniemy od najprostszego użycia polecenia
@@ -668,40 +707,12 @@ eprint=true,
   pojedynczego \texttt{Ctrl-d} lub poprosić nas o~pomoc. Od~tego jesteśmy.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Dlaczego poświęcamy uwagę \texttt{grep}owi?}
-
-
-  Polecenie \texttt{grep} nie należy do najbardziej intuicyjnych w~użyciu,
-  ale~potrafi być przydatne. Oprócz tego jest dobrą ilustrują z~jednej
-  strony potęgi jaką oferuje nam system GNU/Linux, z~drugiej to ile
-  trudu jej zdobycie zwykle kosztuje. Oprócz tego pozwoli nam zdobyć
-  pewne umiejętności przy korzystaniu
-  z~\colorhref{https://en.wikipedia.org/wiki/Regular\_expression}{wyrażeniami
-    regularnymi} („regex” lub „regexp”, ang.~\textit{regular expression}).
-
-  Wyrażenia regularne, można postrzegać jako ulepszoną wersję wyszukiwania
-  tekstu w~dokumencie, czyli słynnego \texttt{Ctrl-f}. W~najprostszym
-  wypadku, działają dokładnie tak jak \texttt{Ctrl-f}: przesyłamy im
-  jakiś napis i~znajdują one jego wystąpienia w~tekście. Różnica polega na
-  tym, że~za pomocą specjalnej składni, możemy im szukać bardziej złożonych
-  ciągów symboli, niż po prostu konkretny tekst, do tego jednak przejdziemy
-  po ogólnym omówieniu \texttt{grep}a.
-
-\end{frame}
-% ##################
 
 
 
@@ -720,8 +731,7 @@ eprint=true,
   a~błędy popełnić jest bardzo łatwo. Warto tutaj przytoczyć jedną
   z~mądrości informatyki.
 
-  \textit{Pewien programista miał problem. Stwierdził „Użyję wyrażeń
-    regularnych.” Teraz ma dwa problemy.}
+
 
   Choć wyrażenia regularne potrafią być bardzo użyteczne, to jednak nie
   należy ich stosować, jeśli dany problem da~się rozwiązać w~sposób

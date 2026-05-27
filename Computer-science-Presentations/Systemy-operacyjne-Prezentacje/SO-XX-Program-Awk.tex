@@ -917,16 +917,15 @@ eprint=true,
   % ? to co przed nim, 0 lub 1 razy
   \texttt{awk /m?/ \{ print \} Items-to-sell-V.txt} \\
   % Substitute w całym rekordzie. Tylko pierwsze wystąpienie.
-  \texttt{awk /m?/ \{ sub(/A1/, "D1"); print \} Items-to-sell-V.txt} \\
+  \texttt{awk '\{ sub(/car/, "automobile"); print \}' Items-to-sell-VI.txt} \\
   % Substiture tylko w pierwszej kolumnie. Tylko pierwsze wystąpienie.
-  \texttt{awk /m?/ \{ sub(/A1/, "D1", \$1); print \} Items-to-sell-V.txt} \\
-
-
-  % Może już wysłałem te błędy.
-  % Str. 9: printf -> {printf
-  % Str. 11: You can use the logical operators and (written &&) and or
-  % (written ||) to add specificity to your conditionals.
-  % Bold symbols in wrong places.
+  \texttt{awk '\{ sub(/bi/, "CHANGED"); print \}' Items-to-sell-VI.txt} \\
+  \texttt{awk '\{ sub(/bi/, "CHANGED", \$4); print \}' Items-to-sell-VI.txt} \\
+  % gsub - global substitute
+  \texttt{awk '\{ gsub(/bi/, "CHANGED"); print \}' Items-to-sell-VI.txt} \\
+  % Gensub nie działa u mnie.
+  % gensub - general substitute
+  % \texttt{awk '\{ genbsub(/car/, "automobile"); print \}' Items-to-sell-VI.txt} \\
 
 \end{frame}
 % ##################

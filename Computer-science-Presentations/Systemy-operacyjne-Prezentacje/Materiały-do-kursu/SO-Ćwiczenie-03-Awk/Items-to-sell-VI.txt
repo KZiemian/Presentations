@@ -1,0 +1,16 @@
+Company           Type         Number   Vehicle    Color
+Volvo             car          10       car        green
+Volkswagen        car          20       car        celeste
+CCM               bike         20       bicycle    cyan
+Toyota            car          7        car        blue
+Accell            bike         20       bicycle    citron
+BH                bike         9        bicycle    blue
+Mercedes-Benz     car          13       car        silver
+Excelsior         bike         25       bicycle    blue
+Abici             bike         10       bicycle    red
+Honda             car          20       car        celeste
+Bridgestone       bike         5        bicycle    red
+Fiat              car          25       car        blue
+Brennabor         bike         30       bicycle    red
+Suzuki            car          5        car        blue
+Iride             bike         22       bicycle    black
