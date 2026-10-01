@@ -4,13 +4,31 @@
  * Komputer jest więc maszyną do liczenia i dlatego, stosunkowo szybko musimy
  * zrozumieć, jak za jego pomocą można wykonywać obliczenia. */
 
+/* Ktoś może zapytać, co mają wspólnego liczby z takimi ciekawymi rzeczami
+   jak grafika? Okazuje się, że grafika dwuwymiarowa to w dużej mierze
+   operowanie na wektorach, które mają dwie składowe. Czy takie pojęcie
+   wektora jest Państwu znane? Jeśli nie to proszę się tym na razie nie
+   przejmować.
+
+   W grafice dwuwymiarowej do przekształcania wektorów używa się macierzy
+   dwuwymiarowych, które są tablicami zawierającymi cztery liczby.
+   Bo 2 * 2 = 4. Gdy chodzi o grafikę trójwymiarową, to sytuacja jest
+   podobna, tylko operuje się na wektorach o trzech składowych i macierzach
+   trójwymiarowych, które zawierają dziewięć liczb. Bo 3 * 3 = 9.
+
+   Podobną historię można by opowiedzieć o dźwięku w komputerze, bo jednym
+   ze sposobów przechowywania dźwięku jest rozłożenie fali dzwiękowej,
+   za pomocą matematycznych formuł, na tak zwane szeregi Fouriera. Więć
+   i tutaj matematyki, a tym samym liczb, jest sporo. Można by mówić o tym
+   bardzo długo, ale to temat na inny przedmiot. */
+
 int main() {
   printf("Wypisujemy liczbę: %d.\n", 3);
 
   /* Litera „d” w „%d” pochodzi od „decimal” czyli „dziesiętny”. Obecność
    * symbolu „%d” w stringu mówi funkcji printf(), że w to miejsce ma
-   * wstawić liczbę całkowitą podaną po stringu, używając do tego zapisu
-   * dziesiętnego.
+   * wstawić liczbę całkowitą podaną po stringu, używając do jej wyświetlenia
+   * zapisu dziesiętnego dla liczb.
    *
    * Może się wydawać dziwne, że symbol oznaczający zapis dziesiętny służy
    * tylko do tego, by wypisać liczbę całkowitą, ale język C posiada wiele
@@ -52,9 +70,12 @@ int main() {
    * To zagadnienie jest ???? omówione trochę bardziej szczegółowo
    * w innej części materiałów. */
 
-  /* Teraz przedyskutujemy obliczanie reszta z dzielenia. Ze względów
-   * technicznych, symbol „%” wewnątrz stringu piszemy jako „%%”. Mam
-   * nadzieję, że ten fakt nie wymaga głębszego komentarza. */
+  /* Teraz przedyskutujemy obliczanie reszta z dzielenia, którą to operację
+   * w języku C oznaczamy symbolem „%”. Operację tą nazywamy też
+   * „użyciem operatora modul”, gdzie przez „operator modulo” rozumiemy
+   * symbol „%”. Ze względów technicznych, symbol „%” wewnątrz stringu
+   * piszemy jako „%%”. Mam nadzieję, że ten fakt nie wymaga na razie
+   * głębszego komentarza. */
   printf("Działanie operatora modulo: %%.\n");
   printf("Operator modulo zwracam nam resztę z dzielenia danej liczby "
 	 "całkowitej, przez inną liczbę całkowitą.\n");
@@ -83,7 +104,7 @@ int main() {
 
 
   printf("Zobaczmy jeszcze kilka innych przykładów, działania "
-	 "operatora modulo %%.\n");
+	 "operatora modulo „%%”.\n");
   printf("Operacja: x %% 3.\n");
   printf("0 == (0 * 3) + 0, więc (0 %% 3) == %d.\n", 0 % 3);
   printf("1 == (0 * 3) + 1, więc (1 %% 3) == %d.\n", 1 % 3);
@@ -159,6 +180,11 @@ int main() {
   printf("-8 == ((-2) * 4) + 0, więc (-8 %% 4) == %d.\n", -8 % 4);
   printf("-9 == ((-2) * 4) - 1, więc (-9 %% 4) == %d.\n", -9 % 4);
   printf("-10 == ((-2) * 4) - 2, więc (-10 %% 4) == %d.\n", -10 % 4);
+
+  /* Na pocieszenie można powiedzieć, że operację modulu używamy
+   * w większości przypadków, do liczb dodatnich. Dlatego, na razie
+   * nie musimy sobie zaprzątać głowy tym, jak działa ona dla liczb
+   * ujemnych. */
 
 
 

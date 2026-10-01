@@ -1,0 +1,1783 @@
+% ####################################################################
+% Basic configuration of Beamera class and Jagiellonian theme
+% ####################################################################
+\RequirePackage[l2tabu, orthodox]{nag}
+
+
+
+\ifx\PresentationStyle\notset
+  \def\PresentationStyle{dark}
+\fi
+
+
+
+% Options: t - align frame text to the top.
+\documentclass[10pt,t]{beamer}
+\mode<presentation>
+\usetheme[style=\PresentationStyle,JUlogotitle=no]{jagiellonian}
+
+
+
+
+% ------------------------------------------------------------------------------------
+% Procesing configuration files of Jagiellonian theme located
+% in the directory "preambule"
+% ------------------------------------------------------------------------------------
+\input{./preambule/LanguageSettings/JagiellonianPolishLanguageSettings.tex}
+\input{./preambule/TextposConfiguration/TextposConfiguration.tex}
+
+\input{./preambule/ImportingLocalPackages.tex}
+
+\input{./preambule/JagiellonianCustomizationGeneral.tex}
+\input{./preambule/JagiellonianCustomizationCommands.tex}
+
+
+
+
+
+
+
+
+
+
+% ------------------------------------------------------
+% BibLaTeX
+% ------------------------------------------------------
+% Package biblatex, with biber as its backend, allow us to handle
+% bibliography entries that use Unicode symbols outside ASCII.
+\usepackage[
+language=polish,
+backend=biber,
+style=alphabetic,
+url=false,
+eprint=true,
+]{biblatex}
+
+\addbibresource{Systemy-operacyjne-Bibliography.bib}
+
+
+
+
+
+% ------------------------------------------------------
+% Importing packages, libraries and setting their configuration
+% ------------------------------------------------------
+
+
+
+
+
+% ------------------------------------------------------
+% Local packages
+% ------------------------------------------------------
+% Local configuration of this particular presentation
+\usepackage{./Local-packages/local-settings}
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+\title{Systemy operacyjne}
+\subtitle{XX. Procesy w~systemach operacyjnych}
+
+\author{Kamil Ziemian \\
+  \email}
+
+
+% \date{}
+% ####################################################################
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% Beginning of the document
+\begin{document}
+% ####################################################################
+
+
+
+
+
+% ################################################
+% Number of chars: 20k+, 26k+, 41k+,
+% Text is adjusted to the left and words are broken at the end of the line.
+\RaggedRight
+% ################################################
+
+
+
+
+
+% ################################################
+\maketitle
+% ################################################
+
+
+
+
+
+% ################################################
+\EndingSlide{Ta prezentacja wciąż nie jest ukończona.}
+% ################################################
+
+
+
+
+
+% ################################################
+\begin{frame}
+  \frametitle{Spis treści}
+
+
+  \tableofcontents
+
+\end{frame}
+% ################################################
+
+
+
+
+
+% ################################################
+\section{Do czego służą procesy?}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Do czego służą procesy?}
+
+
+  Naszą opowieść o~procesach zaczniemy od dwóch cytatów.
+
+  \textit{Wszystko w~systemie Linux jest plikiem. Jeśli coś nie jest
+    plikiem to jest procesem.} \\
+  Na ten moment, %\date,
+  autora tego powiedzenie nie udało~się ustalić.
+
+  \textit{Ogólnie proces jest kontenerem zawierającym wszystkie informacje
+    niezbędne do uruchomienia programu.} \\
+  Andrewa S.~Tanenbaum, str.~$72$,
+  \parencite{Tanenbaum-Systemy-operacyjne-Wydanie-III-Pub-2013}.
+
+  Dodajmy, że~przez „kontener” (ang.~\textit{container}) Tanenbaum rozumie
+  rodzaj pojemnika, w~który zawarte są wszystkie potrzebne nam rzeczy.
+
+  Jak przypomina pierwszy cytat, proces jest obok pliku, jednym z~dwóch
+  najważniejszych pojęć w~systemie operacyjnym GNU/Linux. Drugi cytat
+  może być trudniejszy do zrozumienie, proszę~się jednak nie martwić,
+  jeśli nie wiedzą Państwo co Tanenbaum chciał przekazać, choć jego słowa
+  kryją głęboką treść.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Do czego służą procesy?}
+
+
+  Ponieważ procesy są tak fundamentalne dla działania komputerów, można
+  by spędzić kilka dni dyskutując czym są, czy jak działają. Natomiast
+  problemowi jak zarządzać procesami trzeba by poświęcić kilka miesięcy
+  czasu. Jednak nasz przedmiot jest tylko wstępem do systemów operacyjnych,
+  więc zadowolimy~się bardzo \alert{uproszczonym} spojrzeniem na całą
+  tematykę procesów.
+
+  Przypomnijmy jeden ze~sloganów tego przedmiotu, który brzmi następująco.
+  Plik czymś jest, proces coś robi. W~innej wersji: plik zawiera dane,
+  proces przetwarza dane.
+
+  Należy zrozumieć, że~pliki to obiekty dość bierne i~mocno statyczne.
+  Z~punktu widzenia komputera większość plików zmienia~się stosunkowo
+  rzadko. W~przeciwieństwo do nich procesy są aktywne, dynamiczne,
+  zmieniające swój stan cały czas. Spróbujemy wyjaśnić to na kilku
+  przykładach.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego potrzebujemy procesów?}
+
+
+  Powiedzmy, że~w~katalogu ma plik \texttt{Data-01.dat}, który chcemy
+  przenieść do katalogu \texttt{Data-March/}. By to zrobić użyjemy
+  polecenia \texttt{mv -i}: \\
+  \texttt{\$ mv -i Data-01.dat Data-March/} \\
+  Ponieważ polecenie \texttt{mv -i} wykonuje pewną czynność, więc należy
+  podejrzewać, że~jego uruchomienie utworzy proces, który to proces
+  przeniesie plik \texttt{Data-01.dat} do katalogu. Tak w~istocie jest.
+  Choć zwykle tego nie dostrzegamy, to wywołanie \alert{prawie każdego}
+  polecenie skutkuje powstanie procesu, który wykonuje daną czynność.
+
+  Jest to tak ważne, że~warto to powiedzieć jeszcze raz, w~trochę innym
+  sposób. Z~zasady, jeśli chcemy by komputery wykonał \alert{dowolną}
+  czynność, to potrzebujemy pewnego procesu, który tą czynność wykona.
+
+  To wciąż nam niewiele mówi na temat tego, jak proces jest zbudowany
+  wewnętrznie, jednak na tym przedmiocie dużo ważniejsze jest zrozumienie
+  na poziomie ogólnym do czego służą procesy, niż to jak są wewnętrznie
+  zbudowane.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego potrzebujemy procesów?}
+
+
+  Rozpatrzmy teraz przykład z~innej bajki. Załóżmy, że~chcemy sprawdzić,
+  kiedy przebieg pierwszych miesięcy I~Wojny Światowej, które są opisane
+  w~książce historycznej, którą mamy na półce. Sięgamy tę książkę z~półki
+  i~zaczynamy czytać. W~tej opowieści książka to odpowiednik pliku,
+  ściągnięcie jej z~półki to odpowiednik procesu.
+
+  Czemu ma służyć ta opowieść? Zauważmy, że~wedle niej książka zawiera
+  pewne informacje/dane, ale zawiera je w~sposób bierny. Informacje w~niej
+  są i~koniec. Jednak, aby móc skorzystać z~tych informacji musimy wykonać
+  pewne czynności, takie jak zdjęcie książki z~półki. Gdy chodzi o~książki,
+  to nie nastręcza problemu, jednak w~przypadku komputerów należy
+  zwrócić uwagę na kilka rzeczy.
+
+  Pliki ze swej natury to dość bierne obiekty. przechowują one pewne dane
+  i~nic więcej. Mówiąc ogólnie, gdybyśmy mieli dany plik z~danymi, ale nie
+  mogli uruchomić żadnego procesu, to dane te istniałyby, ale byłby
+  zupełnie bezużyteczne, bo nie umielibyśmy ich odczytać.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Dlaczego potrzebujemy procesów?}
+
+
+  Używając poprzedniego przykładu, pożądane informacje są  w~danej książce,
+  ale jeśli nie ściągniemy jej z~półki, nigdy do nich nie dotrzemy. Gdy
+  chodzi o~dane zawarte w~pliku by~je uzyskać, potrzebujemy procesu, który
+  otworzy plik, pobierze z~niego dane i~wyświetli je nam na ekranie.
+
+  Zarówno gdy chodzi o~książkę, jak i~o~dane zawarte w~pliku, to na końcu
+  musimy coś przeczytać, zrozumieć znaczenie danego tekstu i~dopiero wtedy
+  można powiedzieć, że~przyswoiliśmy sobie pewne informacje. W~jaki sposób
+  człowiek czyta i~przyswaja informacje to jednak zagadnienie spoza
+  informatyki, którego dyskusji z~premedytacją będziemy~się wystrzegać.
+  Nie mamy bowiem nic mądrego do~powiedzenia w~tej kwestii.
+
+  Historia ta ma ilustrować następującą rzecz. W~komputerze nawet
+  wyświetlenie danych z~pliku wymaga procesu, bo musimy odczytać je z~dysku
+  lub innego miejsca pamięci i~wyświetlić je na ekranie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Do czego służą procesy?}
+
+
+  Widzimy, że~nawet coś takiego jak wyświetlanie zawartości pliku jest
+  formą przetwarzania danych. Zagadnienie w~jaki sposób dane są pobierane
+  z~dysku i~wyświetlane na ekranie to sam w~sobie duży temat, w~który nie
+  będziemy~się więcej zagłębiać, bo nie należy to stricte do tematu
+  naszego przedmiotu.
+
+  Najważniejsze dla nas jest to, że~do każdej czynności na komputerze,
+  nawet tak niewinnej jak przeglądanie zawartości pliku, potrzebujemy
+  jakiegoś procesu, który ją wykona.
+
+  Dla uczciwości należy przypomnieć, że~przedstawiony opis czytania z~pliku
+  jest pewnym uproszczeniem rzeczywistości, niemniej ogólny zarys problemu
+  jest poprawny. Konkretną realizacją tego o~czym mówiliśmy, gdy chodzi
+  o~wyświetlanie zawartości pliku, jest użycie polecenia takiego jak
+  \texttt{cat}, by~wyświetlić zawartość pewnego pliku.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Przykłady procesów}
+
+
+ W~przykładzie użyliśmy pliku
+  \texttt{PiR-Część-I.txt}, dostępnego pośród innych materiałów do kursu. \\
+  \texttt{\$ cat PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{Poniższy tekst jest zapisem podróży i~snutych
+    podczas niej refleksji, jaką} \\
+  \texttt{::>} \texttt{pewna dość specyficzna osoba odbyła po Polsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \texttt{::>} \texttt{pliku „PiR-Część-I.txt” to skrót od „Podróże} \\
+  \texttt{i~rozmyślania. Część I”. Oprócz} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Rozpatrzmy jeszcze jeden przykład procesu. Na dysku mamy program plik
+  \texttt{sum}, zawierający prosty program. Program ten pobiera
+  jako argument nawę pliku i~oblicza sumę liczb jaką ten program zawierał.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Przykłady procesów}
+
+
+  Możemy myśleć, że~program \texttt{sum} został napisany w~języku takim
+  jak C, Python, czy jakimś innym. Choć w~przypadku języka Python powinien
+  on nosić nazwę taką jak \texttt{sum.py}, nie musimy~się tym jednak teraz
+  przejmować. Kod tego programu zapewne będzie zawierał pętlę \texttt{for}
+  służącą do obliczenia sumy liczb jakie program otrzyma na~wejściu.
+  Wszystkie instrukcje jakie musi on wykonać na pliku i~zawartych
+  w~nim liczbach są zapisane w~pliku \texttt{sum}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie}
+
+
+
+
+\end{frame}
+% ######################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Duże i~małe litery}
+
+
+  Domyślnie \texttt{grep} rozróżnia duże i~małe liter, co~obrazują poniższe
+  przykłady. \\
+  \texttt{\$ grep -n "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:\emphasisRed{Po}niższy tekst, jest zapisem podroży
+    i~snutych} \\
+  \texttt{podczas niej refleksji, jaką} \\
+  \texttt{::> 2:pewna dość specyficzna osoba odbyła
+    po~\emphasisRed{Po}lsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+  \texttt{\$ grep -n "po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:Poniższy tekst, jest zapisem \emphasisRed{po}droży
+    i~snutych} \\
+  \texttt{\emphasisRed{po}dczas niej refleksji, jaką} \\
+  \texttt{::> 2:pewna dość specyficzna osoba odbyła \emphasisRed{po}
+    Polsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Duże i~małe litery}
+
+
+  Jeśli chcemy, by \texttt{grep} ignorował rozmiar liter, to używamy
+  opcji \texttt{-i} od ang.~\textit{ignore case}, pl.~\textit{ignoruj
+    wielkość liter}. \\
+  \texttt{\$ grep -n -i "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:\emphasisRed{Po}niższy tekst, jest zapisem
+    \emphasisRed{po}droży i~snutych} \\
+  \texttt{\emphasisRed{po}dczas niej refleksji, jaką} \\
+  \texttt{2:pewna dość specyficzna osoba odbyła \emphasisRed{po}
+    \emphasisRed{Po}lsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Równoważnie, można użyć następującego polecenia. \\
+  \texttt{\$ grep -n --ignore-case "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 1:\emphasisRed{Po}niższy tekst, jest zapisem
+    \emphasisRed{po}droży i~snutych} \\
+  \texttt{\emphasisRed{po}dczas niej refleksji, jaką} \\
+  \texttt{2:pewna dość specyficzna osoba odbyła \emphasisRed{po}
+    \emphasisRed{Po}lsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Korzystanie z~polecenia \texttt{grep}}
+
+
+  Jeśli chcemy wyświetlić tylko te linie, które \alert{nie} zawierają
+  danego tekstu, można skorzystać z~opcji~\texttt{-v}. By to zilustrować,
+  porównamy rezultaty użycia tych dwóch wersji tego polecenia. \\
+  \texttt{\$ grep -n -v "Po"{} PiR-Część-I.txt} \\
+  \texttt{::> 4:tego, że bohater ma skłonność do opisywania tego co widzi
+    w~terminach nauki,} \\
+  \texttt{::> 5:to snuje refleksje o muzyce, literaturze i~wielu innych
+    rzeczach, które} \\
+  \texttt{::> 6:przyjdą mu do głowy.} \\
+  \texttt{::> 7:} \\
+  \texttt{::> 8:Do Lublina dojechałem samochodem o~godzinie 18:30} \\
+  \texttt{i~skierowałem~się} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  Warto zwrócić uwagę, że~polecenie \texttt{grep} na poprzednim slajdzie
+  zwróciło też linię numer~$7$, która jest zupełnie pusta. Jest to poprawne
+  zachowanie z~jej strony, jako~że pusta linie rzeczywiście nie zawiera
+  ciągu znaków~„Po”.
+
+  Do tej pory używaliśmy \texttt{grep}a tylko do wyszukiwania ciągów
+  liter, jednak jego możliwości nie ograniczają~się tylko do takich
+  zastosowań. Równie dobrze możemy wyszukiwać ciągi znaków
+  zawierające spację, co ilustruje poniższy przykład. \\
+  \texttt{\$ grep -n "a p"{} PiR-Część-I.txt} \\
+  \texttt{::> 2:pewna dość specyficzna osob\emphasisRed{a o}dbyła
+    po~Polsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \texttt{::> 31:obejrzałem. Z~tego też powodu zapewne masa ludzi} \\
+  \texttt{n\emphasisRed{a p}ewno go nie znosi, bo} \\
+  \hspace{2em} \texttt{\vdots}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  Tak samo możemy poszukiwać w~tekście cyfry. By wyszukać wystąpienie
+  w~tekście cyfry „$1$” można użyć poniższej wersji polecenia
+  \texttt{grep}. \\
+  \texttt{\$ grep -n "1"{} PiR-Część-I.txt} \\
+  \texttt{::> 8:Do Lublina dojechałem samochodem o~godzinie
+    \emphasisRed{1}8:30}
+  \texttt{i~skierowałem~się} \\
+  \texttt{12:mam pierwszy tom jego opowiadań zebranych, wydany} \\
+  \texttt{w~Polsce w~\emphasisRed{1}967 roku.} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Oczywiście możemy też szukać tekstu, który składa~się z~liter, spacji,
+  cyfr,~etc., jak w~poniższym przykładzie. \\
+  \texttt{\$ grep -n "e 1"{} PiR-Część-I.txt} \\
+  \texttt{::> 8:Do Lublina dojechałem samochodem}
+  \texttt{o~godzini\emphasisRed{e 1}8:30 i~skierowałem~się}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  W~tym wypadku tylko jedna linia zawiera szukany przez nas tekst. Powinno
+  teraz być jasne, że~\texttt{grep}owi można podać w~zasadzie dowolny ciąg
+  symboli i~on znajdzie wszystkie linie w~których~się on~pojawia.
+
+  Poleceniu \texttt{grep} można przesłać w~zasadzie dowolny tekst,
+  jaki tylko jesteśmy w~stanie wymyślić, jest tu tylko jedno poważne
+  zastrzeżenie. Mianowicie, \texttt{grep} zakłada, że~podany mu tekst
+  zawiera~się cały w~\alert{pojedynczej linii}. Zobaczymy jak to działa na
+  przykładzie.
+
+  W~pliku \texttt{PiR-Część-I.txt} znajdują~się następujące dwie linie. \\
+  \textit{3:pliku „PiR-Część-I.txt” to skrót od „Podróże i rozmyślania.
+    Część~I”. Oprócz} \\
+  \textit{4:tego, że bohater ma skłonność do opisywania tego
+    co~widzi w~terminach nauki,} \\
+  Dla wygody do każdej z~nich dodaliśmy jej numer. Jak widzimy, tekst ten
+  zawiera ciąg słów „Oprócz tego”, ale rozbity na dwie linie, wobec
+  czego \texttt{grep} go nie znajdzie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jakie tekstu może szukać \texttt{grep}?}
+
+
+  By~to zobaczyć, proszę~się przyjrzeć następującym przykładom. \\
+  \texttt{\$ grep -n "Oprócz"{} PiR-Część-I.txt} \\
+  \texttt{::> 3:pliku „PiR-Część-I.txt” to skrót od „Podróże} \\
+  \texttt{i~rozmyślania. Część I”. \emphasisRed{Oprócz}}
+
+  \texttt{\$ grep -n "tego"{} PiR-Część-I.txt} \\
+  \texttt{::> 2:pewna dość specyficzna osoba odbyła po~Polsce} \\
+  \texttt{i~okolicach. Nazwa \emphasisRed{tego}} \\
+  \texttt{::> 4:\emphasisRed{tego}, że~bohater ma skłonność do opisywania
+    \emphasisRed{tego}} \\
+  \texttt{co widzi w~terminach nauki,} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Jak należało~się spodziewać, polecenie \texttt{grep} nie ma problemu
+  ze~znalezieniem słowa „Oprócz” i~„tego”,
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Zliczanie znalezionych linii}
+
+
+  Teraz poszukajmy tekstu „Oprócz tego”. \\
+  \texttt{\$ grep -n "Oprócz tego"{} PiR-Część-I.txt} \\
+  \texttt{::>} \\
+  Jak Państwo widzą, \texttt{grep} nie znalazł tekstu „Oprócz tego”, gdyż
+  ten jest podzielony na dwie linie.
+
+  By~polecenie \texttt{grep} wypisało w~jakiej liczbie linii został
+  znaleziony zadany ciąg symboli (do ilu linii został dopasowany wzorzec)
+  dajemy mu flagę~\texttt{-c}: \\
+  \texttt{\$ grep -n -c "nie"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{47}
+
+  Zobaczmy w~ilu liniach „nie” występuje jako osobne słowo. \\
+  \texttt{\$ grep -n -w -c "nie"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{18}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Zliczanie znalezionych linii}
+
+
+  Dla porządku warto zaznaczyć, że~gdy szukamy w~ilu liniach „nie”
+  występuje jako osobne słowo, opcja \texttt{-n} nie jest potrzebna.
+  Co więcej wszystkie poniższe wersje polecenia \texttt{grep} są
+  równoważne. \\
+  \texttt{grep -w -c "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -c -w "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -wc "nie"{} PiR-Część-I.txt} \\
+  \texttt{grep -cw "nie"{} PiR-Część-I.txt}
+
+  Należy podkreślić, że~\texttt{grep} z~opcją~\texttt{-c} zlicza ile
+  \alert{linii} zawiera dany tekst, nie ile razy ten tekst wystąpił.
+  Jeśli by więc tekst „nie” występował tylko w~jednej linii, ale~trzy
+  razy, to~polecenie \texttt{grep -c} zwróci jako rezultat liczbę~$1$.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Wyszukiwanie linii w~których nie ma danego tekstu}
+
+
+  Jak już wiemy, domyślnie \texttt{grep} wypisuje linie w~których znalazł
+  dany ciąg symboli. By~zobaczyć linie \alert{nie} zawierające tego ciągu
+  należy użyć tego polecania z~opcją \texttt{-v}. \\
+  \texttt{\$ grep -n -v "nie"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{2:pewna dość specyficzna osoba odbyła po Polsce} \\
+  \texttt{i~okolicach. Nazwa tego} \\
+  \texttt{::>} \texttt{3:pliku „PiR-Część-I.txt” to skrót od „Podróże} \\
+  \texttt{i~rozmyślania. Część I”. Oprócz} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Powiedzmy, że~oprócz linii w~której znaleziono ciąg symboli, chcemy
+  zobaczyć też linię która następuje zaraz za~nią. W~tym celu do polecenia
+  dodajemy opcję \texttt{-A 1}. Analogicznie, by zobaczyć dwie linie
+  następujące po każdej linii w~której znaleziono ten ciąg dodajemy
+  flagę \texttt{-A 2}, gdy chcemy zobaczyć trzy linie flagę
+  \texttt{-A 3}, etc.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  \texttt{\$ grep -n -A 1 "Faulkner"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{11:gdzie chciałem dalej czytać tom opowiadań
+    Williama \emphasisRed{Faulkner}a. Dokładniej,} \\
+  \texttt{::>} \texttt{12-mam pierwszy tom jego opowiadań zebranych,
+    wydany} \\
+  \texttt{w~Polsce w~1967 roku.} \\
+  \texttt{::>} \texttt{--} \\
+  \texttt{::>} \texttt{16:dobrze napisane. \emphasisRed{Faulkner} to
+    niewątpliwie bardzo dobry pisarz.} \\
+  \texttt{::>} \texttt{17-} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Symbol „\texttt{--}” oznacza, że~kończy~się kontekst związany z~jednym
+  wystąpienia szukanego ciągu znaków, w~naszym wypadku jest nim „Faulkner”.
+  Następna linia po symbolu „\texttt{--}” zawiera kontekst dotyczący
+  kolejnego wystąpienia szukanego ciągu znaków.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  \texttt{\$ grep -n -A 2 "Faulkner"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{11:gdzie chciałem dalej czytać tom opowiadań
+    Williama \emphasisRed{Faulkner}a. Dokładniej,} \\
+  \texttt{::>} \texttt{12-mam pierwszy tom jego opowiadań zebranych, wydany
+    w~Polsce w~1967 roku.} \\
+  \texttt{::>} \texttt{13-Otwiera go opowiadanie „Spalenie stodoły”, które
+    jest tak mocno osadzone} \\
+  \texttt{--} \\
+  \texttt{::>} \texttt{16:dobrze napisane. Faulkner to niewątpliwie bardzo
+    dobry pisarz.} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Symbol „\texttt{-}” w~„\texttt{12-}” oznacza, że~w~linii numer~$12$ nie
+  znaleziono danego ciągu symboli i~jest ona wyświetlana dla kontekstu.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  Aby zobaczyć wiersz, który znajduje~się przed tym w~którym znaleziono
+  szukany ciąg symboli, używamy opcję \texttt{-B 1}. Analogicznie działają
+  opcję \texttt{-B 2}, \texttt{-B 3}, etc.
+
+  \texttt{\$ grep -n -B 1 "Faulkner"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{10-rzadka rzecz w hotelach. Po zjedzeniu kolacji} \\
+  \texttt{udałem~się do swojego pokoju,} \\
+  \texttt{::>} \texttt{11:gdzie chciałem dalej czytać tom opowiadań
+    Williama \emphasisRed{Faulkner}a. Dokładniej,} \\
+  \texttt{::>} \texttt{--} \\
+  \texttt{::>} \texttt{15-i trudne do zrozumienia, pomimo tego, iż samo} \\
+  \texttt{opowiadanie jest naprawdę} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Znaczenie symbolu „\texttt{10-}” jest takie same jak poprzednio.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+
+
+\end{frame}
+% ######################################
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Do czego służą procesy?}
+
+
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Czym jest proces?}
+
+
+  Ze~względu na to, że~produkcja takiej szybkiej pamięci jest bardzo droga,
+  rejestry są zwykle bardzo małe, zawierają często tylko \alert{kilka}
+  bajtów. Problem produkcji szybkiej pamięci, która jest jednocześnie
+  odpowiednio tania, to ciągła bolączka elektroniki XXI~wieku. Przejdźmy
+  teraz do procesów.
+
+   Powiedzenie popularne w~środowisku
+  użytkowników tego systemu, wyjaśniające jedną z~głównych zasad
+  jego funkcjonowania.
+
+  Jeśli
+  komputer z~systemem GNU/Linux coś robi, to odpowiada za~to jeden lub
+  więcej procesów. Innym określeniem procesu, jest stwierdzenie, że~jest
+  to \alert{działający program}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+
+
+  Czy jest jakaś różnica między pojęciem procesu, a~pojęciem programu?
+  To jak używamy tych terminów wskazuje na to, że~tak różnica istotnie
+  istnieje. Rozpatrzmy przykładowo grę \textit{Hollow Knight} (program
+  równie dobry jak każdy inny), którą mam zainstalowaną na dysku, ale
+  w~którą akurat teraz nie gram. Gra ta niewątpliwie jest programem, ale
+  nie jest nią związany żaden proces. Program więc może być więc istnieć
+  w~stanie biernym, jako zbiór plików na dysku, ale nie posiadać w~danej
+  chwili żadnego procesu.
+
+  Wewnętrzna budowa procesu nie jest wcale rzeczą banalną. Każdy proces,
+  z~definicji, coś robi, a~na komputerze robienie czegoś jest w~zasadzie
+  równoważne przetwarzaniu (przeliczaniu) pewnego zbioru danych. Dane te
+  muszą znajdować~się gdzieś w~pamięci komputera, więc każdy proces musi
+  posiadać przyznany mu specjalny obszar pamięci. Ten fragment pamięci
+  należący do danego procesu nazywamy \textbf{przestrzenią adresową
+    procesu}.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+
+
+  Przestrzeń adresowa danego procesu zawiera skopiowany z~dysku kod programu
+  który będzie dany proces wykonywał, dane na których będzie on operował
+  oraz
+  \colorhref{https://en.wikipedia.org/wiki/Stack_(abstract_data_type)}{stos}
+  tego procesu. W~systemach z~rodziny \textsc{unix}a część pamięci
+  zawierającej sam program nazywa~się \textbf{segmentem tekstu},
+  ta zawierające dane na których będzie operował \textbf{segmentem danych},
+  zaś ostatnia \textbf{segmentem stosu}. Ze względu na charakter kursu nie
+  możemy~się bardziej zagłębiać w~tą tematykę.
+
+  Oprócz tego proces korzysta często z~zewnętrzny wobec niego zasobów,
+  takich jak wartości które mają być wpisane do rejestrów urządzeń,
+  z~których korzysta dany proces, listę otwartych plików, etc. Przykładowo
+  program do wyświetlania zdjęć, by wyświetlić konkretne zdjęcie musi
+  otworzyć plik je zawierające oraz ustawić rejestry monitora w~taki
+  sposób, by monitor wyświetlił to zdjęcie w~odpowiednim miejscu ekranu.
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Zaglądnijmy pod warstwę abstrakcji procesu}
+
+
+  Dane dotyczące zewnętrznych zasobów \alert{nie} są przechowywane
+  w~przestrzeni adresowej danego procesu, lecz zarządza nimi sam system
+  operacyjny. W~systemie GNU/Linux jednym z~głównych narzędzi
+  służących do tego jest tablica procesów.
+
+  \textbf{Tablica procesów} jest tablicą używaną przez system operacyjny,
+  w~której w razie potrzeby zapisuje on wszystkie informacje potrzebne
+  do~działania danego procesu, a~które to informacje nie są zawarte w~jego
+  przestrzeni adresowej.
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Jaki stąd morał?}
+
+
+  To co powinni Państwo wynieść z~tych uwag, to fakt, że~proces jest dość
+  złożoną abstrakcją. W~dalszym ciągu zajęć nie będziemy~się zagłębiać
+  w~ten temat, skupimy~się za to na tym, jak w~praktyce pracować
+  z~procesami. Część teoretyczną ograniczy w~miarę możliwości do tych
+  pojęć, które są niezbędne w~codziennej pracy z~procesami.
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Uwagi techniczne}
+
+
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Polecenie \texttt{grep} i~wyrażenia regularne}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Polecenie \texttt{grep} i~wyrażenia regularne}
+
+
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{????}
+
+
+
+
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{}
+
+
+
+\end{frame}
+% ######################################
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Problemy z~wyrażeniami regularnymi}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Mem dla ilustracji problemu}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Co ja robię?}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Praca z~\texttt{grep}em}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyszukiwanie całych wyrazów}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyszukiwanie całych wyrazów}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% ######################################
+\section{Polecenie \texttt{grep} i~wyrażenia regularne}
+% ######################################
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Wyrażenia regularne \texttt{grep}a}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Funkcjonalności \texttt{grep}a można łączyć}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+% ##################
+\begin{frame}
+  \frametitle{Rozbudowane wyrażenia regularne}
+
+
+
+\end{frame}
+% ##################
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{}
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+
+
+
+% % % ######################################
+% % \section{}
+% % % ######################################
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % % ##################
+% % \begin{frame}
+% %   \frametitle{}
+
+
+
+% % \end{frame}
+% % % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{?????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+
+
+
+
+
+
+% % ##################
+% \begin{frame}
+%   \frametitle{????}
+
+
+
+
+% \end{frame}
+% % ##################
+
+
+
+
+
+% ################################################
+\section{Materiały z~których korzystaliśmy}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Materiały z których korzystaliśmy}
+
+
+  Przygotowując tą prezentację korzystaliśmy z~następujących materiałów.
+
+  Anish Singh Walia, Pankaj Kumar, Manikandan Kurup, \textit{Mastering Grep
+    command in~Linux/Unix: A~Beginner's Tutorial},
+  \parencite{WKK-Mastering-Grep-command-in-Linux-Unix-ETC-Ver-2026}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\appendix
+% ################################################
+
+
+
+
+
+% ######################################
+\EndingSlide{Dziękuję! Pytania?}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+
+% ####################################################################
+% ####################################################################
+% Bibliography
+
+\printbibliography
+
+
+
+
+
+% ####################################################################
+% End of the document
+
+\end{document}

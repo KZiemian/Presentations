@@ -605,6 +605,125 @@ eprint=true,
   \texttt{i~rozmyślania. Część I”. Oprócz} \\
   \hspace{2em} \texttt{\vdots}
 
+  Powiedzmy, że~oprócz linii w~której znaleziono ciąg symboli, chcemy
+  zobaczyć też linię która następuje zaraz za~nią. W~tym celu do polecenia
+  dodajemy opcję \texttt{-A 1}. Analogicznie, by zobaczyć dwie linie
+  następujące po każdej linii w~której znaleziono ten ciąg dodajemy
+  flagę \texttt{-A 2}, gdy chcemy zobaczyć trzy linie flagę
+  \texttt{-A 3}, etc.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  \texttt{\$ grep -n -A 1 "Faulkner"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{11:gdzie chciałem dalej czytać tom opowiadań
+    Williama \emphasisRed{Faulkner}a. Dokładniej,} \\
+  \texttt{::>} \texttt{12-mam pierwszy tom jego opowiadań zebranych,
+    wydany} \\
+  \texttt{w~Polsce w~1967 roku.} \\
+  \texttt{::>} \texttt{--} \\
+  \texttt{::>} \texttt{16:dobrze napisane. \emphasisRed{Faulkner} to
+    niewątpliwie bardzo dobry pisarz.} \\
+  \texttt{::>} \texttt{17-} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Symbol „\texttt{--}” oznacza, że~kończy~się kontekst związany z~jednym
+  wystąpienia szukanego ciągu znaków, w~naszym wypadku jest nim „Faulkner”.
+  Następna linia po symbolu „\texttt{--}” zawiera kontekst dotyczący
+  kolejnego wystąpienia szukanego ciągu znaków.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  \texttt{\$ grep -n -A 2 "Faulkner"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{11:gdzie chciałem dalej czytać tom opowiadań
+    Williama \emphasisRed{Faulkner}a. Dokładniej,} \\
+  \texttt{::>} \texttt{12-mam pierwszy tom jego opowiadań zebranych, wydany
+    w~Polsce w~1967 roku.} \\
+  \texttt{::>} \texttt{13-Otwiera go opowiadanie „Spalenie stodoły”, które
+    jest tak mocno osadzone} \\
+  \texttt{--} \\
+  \texttt{::>} \texttt{16:dobrze napisane. Faulkner to niewątpliwie bardzo
+    dobry pisarz.} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Symbol „\texttt{-}” w~„\texttt{12-}” oznacza, że~w~linii numer~$12$ nie
+  znaleziono danego ciągu symboli i~jest ona wyświetlana dla kontekstu.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  Aby zobaczyć wiersz, który znajduje~się przed tym w~którym znaleziono
+  szukany ciąg symboli, używamy opcję \texttt{-B 1}. Analogicznie działają
+  opcję \texttt{-B 2}, \texttt{-B 3}, etc.
+
+  \texttt{\$ grep -n -B 1 "Faulkner"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{10-rzadka rzecz w hotelach. Po zjedzeniu kolacji} \\
+  \texttt{udałem~się do swojego pokoju,} \\
+  \texttt{::>} \texttt{11:gdzie chciałem dalej czytać tom opowiadań
+    Williama \emphasisRed{Faulkner}a. Dokładniej,} \\
+  \texttt{::>} \texttt{--} \\
+  \texttt{::>} \texttt{15-i trudne do zrozumienia, pomimo tego, iż samo} \\
+  \texttt{opowiadanie jest naprawdę} \\
+  \hspace{2em} \texttt{\vdots}
+
+  Znaczenie symbolu „\texttt{10-}” jest takie same jak poprzednio.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Jak zobaczyć szerszy kontekst?}
+
+
+  Żeby zobaczyć jedną linię przed i~jedną po linii, w~której występuje
+  szukany przez nas ciąg symboli, po prostu używamy jednocześnie opcji
+  \texttt{-A 1} i~\texttt{-B 1}.
+
+  \texttt{\$ grep -n -A 1 -B 1 "Faulkner"{} PiR-Część-I.txt} \\
+  \texttt{::>} \texttt{10-rzadka rzecz w hotelach. Po zjedzeniu kolacji} \\
+  \texttt{udałem się do swojego pokoju,} \\
+  \texttt{::>} \texttt{11:gdzie chciałem dalej czytać tom opowiadań
+    Williama \emphasisRed{Faulkner}a. Dokładniej,} \\
+  \texttt{::>} \texttt{12-mam pierwszy tom jego opowiadań zebranych, wydany
+    w~Polsce w~1967 roku.} \\
+  \texttt{::>} \texttt{--} \\
+  \texttt{::>} \texttt{15-i trudne do zrozumienia, pomimo tego, iż samo} \\
+  \texttt{opowiadanie jest naprawdę} \\
+  \hspace{2em} \texttt{\vdots}
+
 \end{frame}
 % ######################################
 
@@ -713,7 +832,14 @@ eprint=true,
 
 
 
+% ######################################
+\begin{frame}
+  \frametitle{}
 
+
+
+\end{frame}
+% ######################################
 
 
 
@@ -870,26 +996,7 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Praca z~\texttt{grep}em}
 
-
-  Wynik staje~się łatwiejszy do czytania, jeśli do~\texttt{grep}a prześlemy
-  flagę \texttt{-n}, która sprawia, że~polecenie wypisuje numery
-  odpowiednich wierszy z~pliku: \\
-  \texttt{\$ grep -n "in"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 1}{\color{jAxisBlue} :}Lorem ipsum dolor sit amet,
-    consectetur adipisc{\color{red} in}g elit. Integer at est erat.} \\
-  \texttt{{\color{green} 6}{\color{jAxisBlue} :}vitae. In ultrices turpis et
-    arcu venenatis, at feugiat elit lac{\color{red} in}ia. Quisque} \\
-  \texttt{{\color{green} 11}{\color{jAxisBlue} :}t{\color{red} in}cidunt
-    vitae massa euismod maximus. Vestibulum sed eros vel arcu iaculis} \\
-  \hspace{1em} $\vdots$
-
-
-\end{frame}
-% ##################
 
 
 
@@ -942,81 +1049,12 @@ eprint=true,
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Jak zobaczyć szerszy kontekst?}
-
-
-  Powiedzmy, że~oprócz linii w~której znaleziono ciąg symboli, chcemy
-  zobaczyć też linię która następuje zaraz za~nią. W~tym celu do polecenia
-  dodajemy flagę \texttt{-A 1}. Analogicznie, by zobaczyć dwie linie
-  następujące po każdej linii w~której znaleziono ten ciąg dodajemy
-  flagę \texttt{-A 2}, gdy chcemy zobaczyć trzy linie flagę
-  \texttt{-A 3}.
-
-  \texttt{\$ grep -n -A 1 "Du"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
-    fringilla dictum leo id interdum. Ut sit amet sem a nunc porttitor} \\
-  \texttt{{\color{green} 33}{\color{jAxisBlue} -}vestibulum.} \\
-  \texttt{{\color{jAxisBlue} -{}-}} \\
-  \texttt{{\color{green} 46}{\color{jAxisBlue} :}nisi. Maecenas euismod
-    magna et est iaculis sollicitudin. {\color{red} Du}is turpis elit,} \\
-  \texttt{{\color{green} 47}{\color{jAxisBlue} -}vulputate quis felis vel,
-    laoreet suscipit diam. Sed vitae diam eu felis} \\
-  \hspace{1em} $\vdots$
-
-\end{frame}
-% ##################
 
 
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Jak zobaczyć szerszy kontekst?}
 
-
-  Aby zobaczyć wiersz, który znajduje~się przed tym w~którym znaleziono
-  szukany ciąg symboli, używamy flagi \texttt{-B 1}. Analogicznie działają
-  flagi \texttt{-B 2}, \texttt{-B 3}, etc.
-
-  \texttt{\$ grep -n -B 1 "Du"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 31}{\color{jAxisBlue}:}Maecenas bibendum egestas
-    condimentum. Nunc lobortis ac tellus at malesuada.} \\
-  \texttt{{\color{green} 32}{\color{jAxisBlue} :}{\color{red} Du}is
-    fringilla dictum leo id interdum. Ut sit amet sem a nunc porttitor} \\
-  \texttt{{\color{jAxisBlue} -{}-}} \\
-  \texttt{{\color{green} 45}{\color{jAxisBlue}-}suscipit. Nullam at neque
-    nulla. Proin quis rhoncus dolor. Nam quis tellus} \\
-  \texttt{{\color{green}46}{\color{jAxisBlue} :}nisi. Maecenas euismod
-    magna et est iaculis} \\
-  \texttt{sollicitudin. {\color{red} Du}is turpis elit,}
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Rozwój GNU/Linuxa}
-
-
-  Tekst który wyszykujemy \texttt{grep}em nie musi~się składać tylko
-  i~wyłącznie z~liter, co obrazuje przykład poniżej.
-
-  \texttt{\$ grep -n "na sem"{} Lorem-ipsum.txt} \\
-  \texttt{{\color{green} 5}{\color{jAxisBlue} :}eleifend commodo. Etiam
-    ornare congue erat, dapibus} \\
-  \texttt{porttitor mag{\color{red}na sem}per} \\
-  \texttt{{\color{green} 120}{\color{jAxisBlue} :}sollicitudin sapien.
-    Integer et mag{\color{red}na sem}per, commodo nunc vel, eleifend}
-
-\end{frame}
-% ##################
 
 
 
@@ -1197,6 +1235,8 @@ eprint=true,
 
 
 
+
+
 % % ##################
 % \begin{frame}
 %   \frametitle{}
@@ -1208,11 +1248,6 @@ eprint=true,
 
 
 
-% % ######################################
-% \section{}
-% % ######################################
-
-
 
 
 
@@ -1233,14 +1268,7 @@ eprint=true,
 
 
 
-% % % ##################
-% % \begin{frame}
-% %   \frametitle{}
 
-
-
-% % \end{frame}
-% % % ##################
 
 
 
@@ -1704,14 +1732,37 @@ eprint=true,
 
 
 
-
-
-
+% ################################################
+\section{Materiały z~których korzystaliśmy}
+% ################################################
 
 
 % ######################################
+\begin{frame}
+  \frametitle{Materiały z których korzystaliśmy}
+
+
+  Przygotowując tą prezentację korzystaliśmy z~następujących materiałów.
+
+  Anish Singh Walia, Pankaj Kumar, Manikandan Kurup, \textit{Mastering Grep
+    command in~Linux/Unix: A~Beginner's Tutorial},
+  \parencite{WKK-Mastering-Grep-command-in-Linux-Unix-ETC-Ver-2026}.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
 \appendix
-% ######################################
+% ################################################
 
 
 
@@ -1720,6 +1771,7 @@ eprint=true,
 % ######################################
 \EndingSlide{Dziękuję! Pytania?}
 % ######################################
+
 
 
 

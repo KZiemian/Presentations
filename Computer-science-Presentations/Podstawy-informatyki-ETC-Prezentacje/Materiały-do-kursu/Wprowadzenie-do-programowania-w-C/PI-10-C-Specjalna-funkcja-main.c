@@ -1,4 +1,14 @@
 #include <stdio.h>
+/* ???? Dawno temu w języku C, zmienne można było definiować tylko na początku
+ * funkcji main() (i w kilku jeszcze innych miejscach, o których sobie
+ * kiedyś powiemy). Jeszcze dziś można się spotkać z informacjami,
+ * że definiowanie zmiennych w innych miejscach programu to zły pomysł.
+ *
+ * Na tych zajęciach będziemy się zwykle trzymali tej konwencji
+ * i definiowali zmienne na początku funkcji main() i w kilku innych
+ * miejscach. */
+
+
 
 /* Funkcje to dość złożone byty, więc musimy się nad nimi trochę zatrzymać.
  * Dla porządku, najpierw omówimy najważniejszą funkcję w języku C,

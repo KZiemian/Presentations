@@ -1,15 +1,6 @@
 #include <stdio.h>
 
 int main() {
-  /* Dawno temu w języku C, zmienne można było definiować tylko na początku
-   * funkcji main() (i w kilku jeszcze innych miejscach, o których sobie
-   * kiedyś powiemy). Jeszcze dziś można się spotkać z informacjami,
-   * że definiowanie zmiennych w innych miejscach programu to zły pomysł.
-   *
-   * Na tych zajęciach będziemy się zwykle trzymali tej konwencji
-   * i definiowali zmienne na początku funkcji main() i w kilku innych
-   * miejscach. */
-
   double argument = 0.0;
   double value = 0.0;
   double someVariable = 0.0;
@@ -19,7 +10,7 @@ int main() {
   value = argument * argument + 2.0 * argument + 1.0;
   /* Operacja przypisania tego typu działa w następujący sposób.
    * Do zmiennej po jej lewej stronie (po lewej stronie znaku „=”) zostaje
-   * przypisana wartość powstała przez wzięcie jej prawej strony, czyli
+   * przypisana wartość powstała przez obliczenie jej prawej strony, czyli
    * argument * argument + 2.0 * argument + 1.0
    * w której podstawiamy za wszystkie zmienne, wartości jakie obecnie
    * posiadają. Czyli w naszym wypadku dostajemy

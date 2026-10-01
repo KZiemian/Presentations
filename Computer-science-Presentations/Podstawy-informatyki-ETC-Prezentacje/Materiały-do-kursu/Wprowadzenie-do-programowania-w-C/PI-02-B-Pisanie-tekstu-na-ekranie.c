@@ -22,7 +22,7 @@ int main() {
    * tego wyjaśnić w jednym zdaniu. Bo czemu życie miałoby być proste? Na
    * razie wystarczy nam intuicja, że funkcja pobiera argumenty i coś z nimi
    * robi. Tak jak w matematyce, argumenty funkcji podajemy w nawiasach
-   * okrągłych po jej nazwie. Przykładowo
+   * okrągłych następujących po jej nazwie. Przykładowo
    * sumNumbers(1, 2)
    * jest funkcją, która obliczy nam sumę liczb 1 i 2, zwracając jako wynik
    * liczbę 3. Jednak wypisywanie wszystkich argumentów funkcji jest
@@ -33,8 +33,7 @@ int main() {
    * Na koniec mała uwaga terminologiczna. Gdy piszemy
    * sumNubmers(1, 2)
    * by wykonać funkcję, to mówimy, że „wywołujemy funkcję z argumentami
-   * 1 i 2”, lub po prostu, że „wywołujemy funkcję”.
-   */
+   * 1 i 2”, lub po prostu, że „wywołujemy funkcję”. */
 
   /* Przypomnijmy, że symbol „\n” oznacza, iż w tym miejscu funkcja printf()
    * przejdzie do nowej linii tekstu. */
@@ -43,7 +42,8 @@ int main() {
 	 "to wypisując tekst, przejdzie do nowej linii.\n");
 
   printf("Użycie dwóch symboli „\\n\\n” oznacza dwukrotne przejście "
-	 "do nowej linii.\n\nCzyli w tekście pojawi się pusta linia.");
+	 "do nowej linii.\n\n"
+	 "Czyli w tekście pojawi się pusta linia.");
 
 
 

@@ -18,9 +18,12 @@ int main() {
   printf("intVar1 == %d.\n", intVar1);
   printf("intVar2 == %d.\n\n", intVar2);
 
-  printf("Dla prostszego zrozumienia co się dzieje, kod operacji w całości "
-	 "zapisujemy w nawiasach okrągłych. Proszę zobaczyć w kodzie, "
-	 "jak użycie tych operacji dokładnie wygląda.\n\n");
+  printf("Dla prostszego zrozumienia co się dzieje, gdy wypisujemy kod "
+	 "na ekranie, to kod danej operacji w całości zapisujemy "
+	 "w nawiasach okrągłych. W kodzie programu możemy używać "
+	 "nawiasów lub je pomijać, dla języka C nie robi to różnicy. "
+	 "Proszę zobaczyć w kodzie programu, jak użycie tych operacji "
+	 "tam wygląda.\n\n");
 
   printf("Za pomocą operacji (intVar1 = intVar2;), zmieniamy wartość "
 	 "przechowywaną w zmiennej intVar1, na tą jaką w tym momencie "

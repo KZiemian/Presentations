@@ -28,20 +28,20 @@ int main() {
    * (https://en.wikipedia.org/wiki/Camel_case), czy styl_węża
    * (https://en.wikipedia.org/wiki/Snake_case). Ze względów praktycznych
    * zdecydowaliśmy się na wybór jednego stylu w którym piszemy programy
-   * na naszych zajęciach i wybór padł na stylWielbłąda. Nie dlatego, że jest
-   * on jakoś obiektywnie lepszy od innych, ale dlatego, że uważamy go
-   * za dobry styl nazywania zmiennych.
+   * na naszych zajęciach i wybór padł na stylWielbłąda. Nie dlatego,
+   * że jest on jakoś obiektywnie lepszy od innych, ale dlatego, że uważamy
+   * go za dobry styl nazywania zmiennych.
    *
    * Dobrą nazwę zmiennej można wymyślić tylko wtedy, gdy wiemy, co dana
-   * zmienna oznacza, czy mierzy poziom wody w zbiorniku, poziom
-   * promieniowania kosmicznego w danym punkcie obserwacyjny, liczbę
-   * zalogowanych użytkowników, etc. To zresztą stanowi dla nas źródło
+   * zmienna oznacza, czy mierzy poziom wody w zbiorniku, liczbę
+   * zalogowanych użytkowników, poziom promieniowania kosmicznego w danym
+   * punkcie obserwacyjny, etc. To zresztą stanowi dla nas źródło
    * pewnych problemów przy tworzeniu tych materiałów.
    *
    * Jak bowiem nazwać zmienną typu int, która służy tylko temu, by pokazać
    * jak język C pracuje z zmiennymi typu int? Można ją nazwać „x” lub „i”,
    * ale takie nazwy nie mówią praktycznie nic. Z drugiej strony nazwy typu
-   * „poziomWodyWZbiorniku” nie mają nic wspólnego, z tym co ta zmienna
+   * „poziomWodyWZbiorniku10” nie mają nic wspólnego, z tym co ta zmienna
    * robi w programie. Zdecydowaliśmy się dla takich zmiennych używać
    * zapisu typu „intVar1” co jest skrótem od angielskiego „INTeger
    * VARiable number 1”, analogicznie dla „intVar2” czy „float64Var1”,

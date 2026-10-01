@@ -17,10 +17,9 @@ int main() {
    * W nazwie zmiennej zaznaczyliśmy, że liczba ta zajmuje w pamięci
    * 64 (2^6) bity, czyli 8 bajtów. Jest to ważne, gdy potrzebujemy
    * wiedzieć, z jaką dokładnością będą wykonywane obliczenia używające
-   * konkretnej zmiennej. Dokładność obliczeń to jednak temat przekraczający
-   * tematykę naszych spotkań, więc nie będziemy go dokładniej omawiać.
-   * W nazwach zmiennych będziemy jednak przypominać o tym z jakim liczbami
-   * zmiennoprzecinkowymi pracujemy. */
+   * konkretnej zmiennej. Do tego, co to dokładniej znaczy, powrócimy
+   * później na zajęciach. W nazwach zmiennych będziemy jednak zawsze
+   * przypominać o tym z jakim liczbami zmiennoprzecinkowymi pracujemy. */
 
   printf("float64Var1 == %.2f.\n", float64Var1);
 
