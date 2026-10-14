@@ -48,7 +48,7 @@ int main() {
 	   wartoscProgowa);
   } else {
     printf("Suma trzech podanych przez ciebie liczb jest mniejsz lub równa "
-	   "wartości progowej.\n");
+	   "wartości progowej %d.\n", wartoscProgowa);
   }
 
   /* Proszę przetestować ten program. */

@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
+
   /* Liczby zmiennoprzecinkowe to w zasadzie liczby, które posiadają część
    * dziesiętną. Temat liczb zmiennoprzecinkowych jest skomplikowany
    * w stopniu trudnym wręcz do pojęcia. Jednak to jest kurs podstaw
@@ -9,8 +10,10 @@ int main() {
    * w przybliżeniu wynik jest taki jak trzeba. */
 
   printf("Wypiszmy liczbę zmiennoprzecinkową: %f.\n", 0.5);
+
   /* Symbol „%f” pochodzi od ang. „floating-point number”, pl. „liczba
    * zmiennoprzecinkowa”. */
+
   printf("Wypiszmy liczbę zmiennoprzecinkową z dwoma cyframi "
 	 "po kropce dziesiętnej: %.2f.\n\n", 0.5);
 
@@ -23,6 +26,7 @@ int main() {
 	 "etc.\n\n");
 
   /* Wszystko wydaje się działać dobrze. */
+
   printf("Cztery podstawowe działania arytmetyczne na liczbach "
 	 "zmiennoprzecinkowych.\n");
   printf("%.2f + %.2f == %.2f.\n", 2.0, 3.0, 2.0 + 3.0);
@@ -73,11 +77,13 @@ int main() {
    * to niekoniecznie wywoła to błąd, ale może zwrócić dziwny wynik,
    * jakim jest inf, oznaczający nieskończoną wartość, lub NaN.
    * Akronim „NaN” roziwja się jako „Not a Number”, czyli „wynikiem obliczeń
-   * jest coś co nie jest liczbą”.
+   * jest coś, co nie jest liczbą”.
    *
    * Dlaczego to jest takie skomplikowane? To sam w sobie jest dość złożony
    * temat, na razie więc zaakceptujmy, że tak jest i wróćmy do poznawania
    * własności języka C. */
+
+
 
 
 

@@ -17,7 +17,7 @@ int main() {
    * zmiennej.
    *
    * Obecność symbolu „&” będziemy mogli wyjaśnić, dopiero po omówieniu
-   * wskaźników. Bo czemu życie miałoby być proste? */
+   * funkcji i wskaźników. Bo czemu życie miałoby być proste? */
 
   printf("Podałeś liczbę: %d.\n\n", intVar1);
 

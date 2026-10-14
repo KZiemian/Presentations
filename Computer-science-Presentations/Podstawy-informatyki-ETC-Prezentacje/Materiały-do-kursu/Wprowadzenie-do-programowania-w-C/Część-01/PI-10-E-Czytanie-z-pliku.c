@@ -8,14 +8,14 @@
 
 int main() {
   /* Za pomocą poniższej linii kodu, otwieramy plik o nazwie
-   * „PI-06-F-Czytanie-z-pliku.dat” w trybie do odczytu. Tryb do oczytu
+   * „PI-10-F-Czytanie-z-pliku.dat” w trybie do odczytu. Tryb do oczytu
    * ustawiamy przez podanie stringu "r" od angielskiego „read”.
    * W trybie tym możemy jedynie odczytywać zawartość pliku, nie możemy
    * jednak zmieniać jego zawartości.
    *
    * Na dzień dzisiejszy ta linia może wyglądać bardzo tajemniczo,
    * w przyszłości wyjaśnimy lepiej jak ona działa. */
-  FILE *fileWithDataPtr = fopen("PI-06-F-Plik-z-danymi.dat", "r");
+  FILE *fileWithDataPtr = fopen("PI-10-F-Plik-z-danymi.dat", "r");
 
   /* Jeśli w powyższej linii podamy błędną nazwę pliku, to grozi nam,
    * że napotkamy błąd „Naruszenie ochrony pamięci”. Z angielskiego błąd

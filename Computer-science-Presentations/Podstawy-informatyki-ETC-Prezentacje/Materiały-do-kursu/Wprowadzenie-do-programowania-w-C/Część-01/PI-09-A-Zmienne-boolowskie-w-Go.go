@@ -8,7 +8,7 @@ import "fmt"
 
 func main() {
 	// Tworzymy zmienną boolowską „boolVar1” i nadajemy jej
-	// wartość „false”.
+	// wartość „true”.
 	var boolVar1 bool = true
 
 	fmt.Printf("Wypisujemy wartość zmiennej boolowskiej na ekranie.\n")

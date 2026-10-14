@@ -23,7 +23,7 @@ int main() {
   printf("intVar1 == %d.\n", intVar1);
   printf("float64Var1 == %.2f.\n\n", float64Var1);
 
-  printf("To raczej nie skończy się :/ dobrze: (intVar1 = float64Var1;).\n");
+  printf("To raczej nie skończy się dobrze: (intVar1 = float64Var1;). :/\n");
 
   intVar1 = float64Var1;
 

@@ -5,16 +5,13 @@ int main() {
    * i nie pozwalają na wiele. Potrzebujemy więc poznać ich więcej.
    *
    * Nie tylko w C, ale ogólniej w programowaniu, istnieją instrukcje
-   * sterujące (ang. control statements). Czemu nazywają się „instrukcjami”,
-   * to kiedyś sobie powiemy. W tym momencie skupimy się na tym, jak pozwalają
-   * one sterować działaniem programu.
+   * sterujące (ang. control statements). Konkretniej, chcemy by program
+   * sprawdził, czy warunek (ang. condition) jest prawdziwy, jeśli tak to ma
+   * wykonać zestaw instrukcji A. Jeśli warunek jest fałszywy, to ma zostać
+   * wykonany zestaw instrukcji B.
    *
-   * Konkretniej, chcemy by program sprawdził, czy warunek (ang. condition)
-   * jest prawdziwy, jeśli tak to ma wykonać zestaw instrukcji A. Jeśli
-   * „condition” jest fałszywy, to ma zostać wykonany zestaw instrukcji B.
-   *
-   * Aby to zademonstrować użyjemy operatora porównania, bo jest to coś, co
-   * jest proste w zrozumieniu. */
+   * Aby to zademonstrować użyjemy operatora porównania, bo jest to coś,
+   * co jest proste w zrozumieniu. */
 
   int intVar1 = 0;
 
@@ -37,7 +34,7 @@ int main() {
   /* Proszę uruchomić ten program kilka razy, podając różne liczby
    * i sprawdzić, czy program działa jak powinien. */
 
-  /* Mówimy, że w instrukcji if kod się rozgałęzia (ang. branching),
+  /* Mówimy, że w instrukcji if kod się rozgałęzia (ang. branching of code),
    * bo możemy pójść jedną z gałęzi (ang. branch) tej instrukcji.
    * Mamy nadzieję, że nie trzeba tego bardziej tłumaczyć.
    *

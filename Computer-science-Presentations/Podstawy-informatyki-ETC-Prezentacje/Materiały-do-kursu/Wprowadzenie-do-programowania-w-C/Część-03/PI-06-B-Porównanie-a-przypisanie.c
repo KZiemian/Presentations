@@ -28,7 +28,7 @@ int main() {
   int intVar1 = 2;
   /* To jest PRZYPISANIE. Od teraz zmienna intVar1 zawiera liczbę 2. */
 
-  printf("Operacja (intVar1 = 2;) to PRZYPISANIE.\n");
+  printf("Instrukcja (intVar1 = 2;) to PRZYPISANIE.\n");
   printf("Wartość zmiennej intVar1 to %d.\n", intVar1);
 
   /* Pytanie, jak sprawdzić, czy zmienna intVar1 zawiera liczbę 3?
@@ -40,11 +40,12 @@ int main() {
    * potrzebuje być o tym jawnie poinformowany. W języku C by porównać
    * dwie wartości używamy symbolu „==”:
    * intVar1 == 3
-   * Powyższa linia sprawdza, czy wartość przechowywana przez zmienną
+   * Powyższa instrukcja sprawdza, czy wartość przechowywana przez zmienną
    * intVar1 jest równa 3. Jeśli jest to prawdą, to porównanie zwraca
    * wartość 1. Jeśli jest to fałszem, to zwraca 0. Dlaczego obowiązują takie
-   * głupie zasady, o tym powiemy później. Bo czemu życie miałoby być
-   * proste? */
+   * głupie zasady, o tym powiemy później. W skrócie, bo język C jest tak
+   * stary. Czemu życie nie mogłoby być proste? */
+
   printf("Wartość testu (intVar1 == 3) to: %d.\n\n", intVar1 == 3);
 
   intVar1 = 3;

@@ -15,7 +15,7 @@ int main() {
   int intVar1 = 1;
   int intVar2 = 2;
 
-  printf("Warto przypomnieć operator porównania „==”.\n");
+  printf("Przyjżyjmy się jeszcze raz operatorowi porównania „==”.\n");
   printf("(1 == 1) == %d.\n", 1 == 1);
   printf("(1 == 2) == %d.\n\n", 1 == 2);
 

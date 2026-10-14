@@ -5,22 +5,22 @@
  * zrozumieć, jak za jego pomocą można wykonywać obliczenia. */
 
 /* Ktoś może zapytać, co mają wspólnego liczby z takimi ciekawymi rzeczami
-   jak grafika? Okazuje się, że grafika dwuwymiarowa to w dużej mierze
-   operowanie na wektorach, które mają dwie składowe. Czy takie pojęcie
-   wektora jest Państwu znane? Jeśli nie to proszę się tym na razie nie
-   przejmować.
-
-   W grafice dwuwymiarowej do przekształcania wektorów używa się macierzy
-   dwuwymiarowych, które są tablicami zawierającymi cztery liczby.
-   Bo 2 * 2 = 4. Gdy chodzi o grafikę trójwymiarową, to sytuacja jest
-   podobna, tylko operuje się na wektorach o trzech składowych i macierzach
-   trójwymiarowych, które zawierają dziewięć liczb. Bo 3 * 3 = 9.
-
-   Podobną historię można by opowiedzieć o dźwięku w komputerze, bo jednym
-   ze sposobów przechowywania dźwięku jest rozłożenie fali dzwiękowej,
-   za pomocą matematycznych formuł, na tak zwane szeregi Fouriera. Więć
-   i tutaj matematyki, a tym samym liczb, jest sporo. Można by mówić o tym
-   bardzo długo, ale to temat na inny przedmiot. */
+ * jak grafika? Okazuje się, że grafika dwuwymiarowa to w dużej mierze
+ * operowanie na wektorach, które mają dwie składowe. Czy takie pojęcie
+ * wektora jest Państwu znane? Jeśli nie to proszę się tym na razie nie
+ * przejmować, na tym przedmiocie nie będziemy go używać.
+ *
+ * W grafice dwuwymiarowej do przekształcania wektorów używa się macierzy
+ * dwuwymiarowych, które są tablicami zawierającymi cztery liczby.
+ * Bo 2 * 2 = 4. Gdy chodzi o grafikę trójwymiarową, to sytuacja jest
+ * podobna, tylko operuje się na wektorach o trzech składowych i macierzach
+ * trójwymiarowych, które zawierają dziewięć liczb. Bo 3 * 3 = 9.
+ *
+ * Podobną historię można by opowiedzieć o dźwięku w komputerze, bo jednym
+ * ze sposobów przechowywania dźwięku jest rozłożenie fali dzwiękowej,
+ * za pomocą matematycznych formuł, na tak zwane szeregi Fouriera. Więć
+ * i tutaj matematyki, a tym samym liczb, jest sporo. Można by mówić o tym
+ * bardzo długo, ale to temat na inny przedmiot. */
 
 int main() {
   printf("Wypisujemy liczbę: %d.\n", 3);
@@ -35,6 +35,7 @@ int main() {
    * tego typu dziwactw. */
 
   /* Analogicznie możemy wypisać na ekranie więcej liczb. */
+
   printf("Wypisujemy dwie liczby: %d, %d.\n\n", 3, 5);
 
   /* Niestety, już tu zaczynają się schody. Komputer i język C dzielą liczby
@@ -42,7 +43,7 @@ int main() {
    * z nimi pracować. Przykładowo, C zna liczby liczby całkowite 8 bitowe,
    * 16 bitowe, 32 bitowe, 64 bitowe oraz liczby całkowite 8 bitowe bez
    * znaku, liczby całkowite 16 bitowe bez znaku, liczby całkowite 32 bitowe
-   * bez znaku,..., i tak bez końca.
+   * bez znaku,..., i tak dalej.
    *
    * By nie pogubić się w tym co się tu dzieje, zacznijmy od najprostszego
    * typu liczb w komputerze, czyli standardowych liczb całkowitych. */
@@ -52,6 +53,7 @@ int main() {
   printf("%d - %d == %d.\n", 2, 5, 2 - 5);
   printf("%d * %d == %d.\n", 2, 6, 2 * 6);
   printf("%d / %d == %d.\n\n", 6, 2, 6 / 2);
+
   /* By pozostać w zgodzie z konwencją języka C, jako symbolu oznaczającego,
    * że lewa strona jest równa prawej używamy dwóch znaków równości: „==”.
    *
@@ -61,21 +63,23 @@ int main() {
   printf("Już tutaj czeka na nas PUŁAPKA!\n");
   printf("%d / %d == %d.\n", 5, 2, 5 / 2);
   printf("Bo czemu życie miałoby być proste?\n\n\n");
+
   /* 5 / 2 == 2. W C jest tak, gdyż przyjęto, że wynik dzielenia dwóch
    * liczb całkowitych ma być liczbą całkowitą. Dzielenie liczby
    * całkowitych zaprogramowano więc tak, by wynik był taki, jakbyśmy
-   * dokładnie ten wynik obliczyli, a potem odrzucili część ułamkową.
-   * Symbolicznie:
+   * obliczyli ten wynik dokładnie, a potem odrzucili część ułamkową.
+   * Inaczej mówiąc, rachunek przebiega mniej więcej tak:
    * 5 / 2 == (2.5 -> 2).
    * To zagadnienie jest ???? omówione trochę bardziej szczegółowo
-   * w innej części materiałów. */
+   * w innej części tych materiałów. */
 
   /* Teraz przedyskutujemy obliczanie reszta z dzielenia, którą to operację
-   * w języku C oznaczamy symbolem „%”. Operację tą nazywamy też
+   * w języku C oznaczamy symbolem „%”. Operację tę nazywamy też
    * „użyciem operatora modul”, gdzie przez „operator modulo” rozumiemy
    * symbol „%”. Ze względów technicznych, symbol „%” wewnątrz stringu
    * piszemy jako „%%”. Mam nadzieję, że ten fakt nie wymaga na razie
    * głębszego komentarza. */
+
   printf("Działanie operatora modulo: %%.\n");
   printf("Operator modulo zwracam nam resztę z dzielenia danej liczby "
 	 "całkowitej, przez inną liczbę całkowitą.\n");

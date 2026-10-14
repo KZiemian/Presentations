@@ -18,7 +18,7 @@ class Main {
 
 	System.out.print("Like other programming languages, Java has " +
 			 "modulo operator %.\n");
-	System.out.print("0 == 0 + 2 * 0, so 0 % 2 == " + (0 % 2) + ".\n");
+	System.out.print("0 == (0 * 2) + 0, so 0 % 2 == " + (0 % 2) + ".\n");
 	System.out.print("1 == 1 + 0 * 2, so 1 % 2 == " + (1 % 2) + ".\n");
 	System.out.print("2 == 0 + 2 * 1, so 2 % 2 == " + (2 % 2) + ".\n");
 	System.out.print("3 == 1 + 2 * 1, so 3 % 2 == " + (3 % 2) + ".\n");
