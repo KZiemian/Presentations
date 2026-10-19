@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /* Żeby zilustrować wykorzystanie pętli i instrukcji takich jak break,
  * za ich pomocą poszukamy miejsca zerowego funkcji
  * functionMath(x) = cos(x) - x
@@ -10,16 +11,18 @@
  * informatyki”. */
 
 /* Proszę pamiętać o dołączeniu tej linii. */
+
 #include <math.h>
 
 /* I o zmianie „magicznego zaklęcia” na
  *
- * time gcc -ansi --std=c99 -pedantic PI-08-D-Przykładowy-program-04.c -lm
+ * $ gcc -ansi --std=c99 -pedantic PI-08-D-Przykładowy-program-04.c -lm
  * -o prog.out
  *
  * Proszę pamiętać, że to polecenie należy wpisać w JEDNYM wierszu powłoki. */
 
 int main() {
+
   /* Metoda znalezienia miejsca zerowego funkcji której użyjemy, będzie
    * bardzo naiwna, ale dla nas wystarczająca. Zaczynamy od tego, że
    * function(0.0) = cos(0.0) - 0.0 = 1.0 > 0,

@@ -1,0 +1,17 @@
+For compilation.
+19 X 2026.
+PI-01-A-Program-pokazowy-w-C.c
+PI-01-B-Program-pokazowy-w-C.c
+PI-02-A-Hello-World.c
+PI-02-B-Komentarze-w-kodzie-źródłowym.c
+PI-02-C-Pisanie-tekstu-na-ekranie.c
+PI-02-D-Stringi.c
+PI-02-E-Liczby.c
+PI-02-F-Liczby-zmiennoprzecinkowe.c
+PI-03-A-Błędy-w-języku-C-Część-01.c (won't compile by design)
+PI-03-A-Błędy-w-języku-C-Część-02.c
+
+For correct text.
+19 X 2026
+PI-01-A-Program-pokazowy-w-C.c
+PI-01-B-Program-pokazowy-w-C.c

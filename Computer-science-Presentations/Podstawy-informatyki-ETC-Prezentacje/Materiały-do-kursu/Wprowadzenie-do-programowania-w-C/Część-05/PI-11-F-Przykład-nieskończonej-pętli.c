@@ -7,12 +7,12 @@
  * zakończy działania.
  *
  * Jeśli przypadkowo napisaliśmy program zawierający nieskończoną pętle
- * i uruchomiliśmy go w powłoce, to możemy go przerwać wciskając JEDEN
- * RAZ kombinacje klawiszy Ctrl-c. Kilkukrotne wciśnięcie Ctrl-c
- * zakończy pracę CAŁEJ powłoki, a tego nie chcemy. */
+ * i uruchomiliśmy go w powłoce, to możemy go przerwać wciskając kombinacje
+ * klawiszy Ctrl-c. */
 
 
 int main() {
+
   /* Poniżej mamy prosty przykład pętli, która w skutek naszego błędu,
    * zamiast wykonać się pięć razy, będzie się wykonywała bez końca. */
 
@@ -22,7 +22,7 @@ int main() {
 
   /* Problem nieskończonej pętli ma duże znaczenie w informatyce teoretycznej
    * i okazuje się być pod wieloma względami niebanalny. My jednak nie
-   * będziemy się w niego zagłębiać, chyba że Państwo tego chcą. */
+   * będziemy się w niego zagłębiać, chyba że Państwo będą tego chcieli. */
 
 
 

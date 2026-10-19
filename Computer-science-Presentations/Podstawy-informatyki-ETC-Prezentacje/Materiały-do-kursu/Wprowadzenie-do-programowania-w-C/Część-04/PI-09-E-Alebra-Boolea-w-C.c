@@ -54,6 +54,7 @@ int main() {
   /* Operator porównania „==” już znamy, ale dla porządku warto go
    * przypomnieć który sprawdza, czy dwie wartości są
    * identyczne, czy nie. */
+
   printf("Dla porządku, przypomnijmy operator porównania „==”.\n");
   printf("1 == 1: %d.\n", 1 == 1);
   printf("1 == 2: %d.\n\n", 1 == 2);

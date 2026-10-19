@@ -6,6 +6,7 @@ text_file_to_clean_up="PI-01-A-Text-output.txt"
 
 if [[ -e $text_file_to_clean_up ]]; then
     echo "File exists: $text_file_to_clean_up."
+
     rm $text_file_to_clean_up
 fi
 

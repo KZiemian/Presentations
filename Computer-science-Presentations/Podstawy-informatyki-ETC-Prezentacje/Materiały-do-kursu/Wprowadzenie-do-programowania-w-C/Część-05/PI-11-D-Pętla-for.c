@@ -6,6 +6,7 @@
  * przyjęło się używać pętli for i while w innych sytuacjach. */
 
 int main() {
+
   /* Zaczniemy od prezentacji działa pętli for. Pętlę tą stosujemy,
    * gdy potrafimy w zawczasu określić ile dokładnie razy mamy powtórzyć
    * daną część kodu. Czyli jeśli wiemy, że ten kod mamy powtórzyć 10 razy,
@@ -14,17 +15,37 @@ int main() {
    * Poniżej pętla for która wypisuje „Hello, World!” pięć razy. */
 
   for (int i = 0; i < 5; i++) {
+
     /* Również dla pętli for, ta część kodu nosi nazwę ciała pętli. */
+
     printf("Hello, World! %d time.\n", i + 1);
   }
 
+  printf("\nKoniec pierwszej pętli for.\n\n");
+
   /* Ze względu na to, jak powszechne są pętle for, w których zmienna „i”
    * zaczyna odliczanie od wartości 0, tutaj również postanowiliśmy jej użyć.
-   * Równie dobrze jednak moglibyśmy użyć pętli for zaczynającej się od
-   * for (int i = 1; i <= 5; i++)
-   */
+   * Równie dobrze jednak moglibyśmy użyć pętli for zaczynającej liczenie
+   * od i = 1, jej kod znajduje się poniżej. */
 
-  printf("\nPętla for zakończyła działanie.\n");
+  for (int i = 1; i <= 5; i++) {
+    printf("Hello, World! %d time.\n", i);
+  }
+
+  /* Zmienna o nazwie „i” jest powszechnie wykorzystywana w informatyce,
+   * do kontrolowania liczby obiegów pętli. Przez obieg pętli rozumiemy
+   * pojedyncze wykonanie ciała pętli. Litera „i” pochodzi od słowa
+   * „iteration”, po polsku „iterować”, „powtarzać”. Ponieważ użycie
+   * zmiennej o tej nazwie w tym kontekście jest tak powszechne,
+   * my również będziemy z niej korzystać.
+   *
+   * Proszę mieć na uwadze, że zmienna „i” musi być typu całkowitego,
+   * inaczej osoba, która będzie później korzystała z tego kodu,
+   * ma prawo nazwać ciebie ohydnym potworem i kryminalistą. Lepiej
+   * tego nie ryzykować. Przyjęło się, że zmienna „i” jest typu całkowitego,
+   * nie próbujmy zadzierać z tą umową. */
+
+  printf("\nKoniec drugiej pętli for.\n");
 
   /* Przyjrzyjmy się nawiasowi (int i = 0; i < 5; i++), który składa się
    * z trzech instrukcji oddzielonych średnikami:
@@ -70,7 +91,7 @@ int main() {
    * nazywany jest „warunkiem inicjalizacji pętli”.
    *
    * Warunek numer C wykonywany jest zaraz po każdym wykonaniu ciała pętli
-   * (mówimy też: obiegu pętli).
+   * (obiegu pętli).
    *
    * Warunek B jest testem, który ustala, czy pętla ma się zakończyć w tym
    * momencie, czy mamy wykonać jeszcze co najmniej jeden obieg pętli. */

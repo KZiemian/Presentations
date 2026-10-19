@@ -1,6 +1,7 @@
 #include <stdio.h>
 
 int main() {
+
   /* Narzędzia języka C które poznaliśmy do tej pory, są dość ograniczone
    * i nie pozwalają na wiele. Potrzebujemy więc poznać ich więcej.
    *
@@ -17,16 +18,21 @@ int main() {
 
   /* Proszę pamiętać, że funkcja scanf() jest bardzo niebezpieczna i można
    * jej używać tylko do celów edukacyjnych. */
+
   printf("Podaj liczbę: ");
   scanf("%d", &intVar1);
 
 
   if (intVar1 == 5) {
+
     /* Jeśli (intVar1 == 5) jest prawdą, to zostanie wykonany ten zestaw
      * instrukcji. */
+
     printf("intVar1 == %d.\n", intVar1);
   } else {
+
     /* Jeśli (intVar1 == 5) nie jest prawdą, to zostanie zrobione to. */
+
     printf("intVar1 == %d, czyli zmienna ta przechowuje wartość inną, "
 	   "niż 5.\n", intVar1);
   }

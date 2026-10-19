@@ -8,6 +8,7 @@ int main() {
   /* Typowym przykładem wyrażeń, są wyrażenia arytmetyczne. Wyrażenie
    * 1 + 2
    * wykonuje operację dodawania i zwraca jej wynik. */
+
   printf("Wyrażenie dodawania.\n");
   printf("1 + 2 == %d.\n\n", 1 + 2);
 

@@ -3,12 +3,15 @@
 int main() {
   /* Instrukcja sterująca if może występować w wielu wariantach. Oto kilka
    * z nich. */
+
   int intVar1 = 0;
 
   printf("Pierwsza wersja instrukcji warunkowej if.\n");
 
   printf("Podaj liczbę: ");
+
   /* Proszę pamiętać jak niebezpieczna jest funkcja scanf()! */
+
   scanf("%d", &intVar1);
 
   /* Ta instrukcja warunkowa if sprawdza, czy (intVar1 < 10) jest prawdą.
