@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /* Ten problem pochodzi z klasycznej książki o języku C autorstwa Kernighana
  * i Ritchiego „Język ANSI C” (K&R), co usprawiedliwia zajęciem się nim
  * tutaj. Stanowi dobrą ilustracji tego, jak podstępne potrafi być

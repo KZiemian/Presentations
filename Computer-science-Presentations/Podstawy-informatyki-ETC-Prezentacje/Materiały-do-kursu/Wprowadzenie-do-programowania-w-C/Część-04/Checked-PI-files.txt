@@ -1,0 +1,14 @@
+For compilation.
+20 X 2026.
+PI-09-A-Zmienne-boolowskie-w-Go.go
+PI-09-B-Zmienne-pseudoboolowskie-w-C.c
+PI-09-C-Zmienne-pseudoboolowskie-i-stdbool-h.c
+PI-09-D-Sensowny-typ-bool.go
+PI-09-E-Alebra-Boolea-w-C.c
+PI-09-F-Przykład-wykorzystania-iloczynu-logicznego.c
+PI-10-A-Inkrementacja-zmiennej-i-pokrewne-tematy.c
+PI-10-B-Operator-plus-plus-etc.c
+PI-10-C-Przykładowy-program-02.c
+PI-10-D-Hello-World.cpp
+
+For correct text.

@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+/* NA RAZIE NIE MA PLIKU PI-11-C-Czytanie-z-pliku.c */
+
 /* ZRÓB LEPSZE KOMENTARZE. */
 /* W tym miejscu zrobimy krótkie wprowadzenia do czytania danych z plików.
  * Tak jak w przypadku nieszczęśnej funkcji scanf(), nasza wiedza jest
