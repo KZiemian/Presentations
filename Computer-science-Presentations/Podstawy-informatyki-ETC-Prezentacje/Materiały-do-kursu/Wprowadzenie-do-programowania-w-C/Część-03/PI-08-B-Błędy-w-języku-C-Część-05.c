@@ -13,7 +13,7 @@ int main() {
     printf("Użytkownik podał liczbę 9.\n");
   } else {
     printf("Użytkownik nie podał liczby 9, tylko liczbę %d.",
-	   liczbaOdUzytkownika)
+	   liczbaOdUzytkownika);
   }
 
   printf("\nNiezależnie co podamy, program napisze, że podaliśmy 9!!!\n");

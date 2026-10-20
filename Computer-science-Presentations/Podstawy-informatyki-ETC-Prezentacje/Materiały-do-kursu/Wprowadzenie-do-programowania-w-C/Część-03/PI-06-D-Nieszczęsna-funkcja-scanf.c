@@ -27,18 +27,24 @@
  * wartości z klawiatury. */
 
 int main() {
-  int intVar1 = 0;
+  /* Nazwa zmiennej powinna odpowiadać jej przeznaczeniu, dlatego zmienną
+   * która będzie przechowywać liczbę podaną od użytkownika nadaliśmy
+   * nazwę „liczbaOdUzytkownika”. */
+
+  int liczbaOdUzytkownika = 0;
 
   /* Funkcja scanf() działa w ten sposób, że pozwala nam pobrać dane
    * z klawiatury i zapisać je do zmiennej. */
+
   printf("Podaj liczbę całkowitą: ");
 
-  scanf("%d", &intVar1);
+  scanf("%d", &liczbaOdUzytkownika);
+
   /* Proszę zwrócić uwagę na symbol „&” (ampersand) przed nazwą zmiennej.
    * By wyjaśnić co on robi, będziemy musieli najpierw omówić wskaźniki
    * i funkcje. Bo czemu życie miałoby być proste? */
 
-  printf("Podałeś liczbę: %d.\n", intVar1);
+  printf("Podałeś liczbę: %d.\n", liczbaOdUzytkownika);
 
 
 

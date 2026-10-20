@@ -1,10 +1,12 @@
 #!/bin/bash
 
+# Script for cleaning up files with excecutbles of C programs and text
+# output produced by this executables.
+
 # Importing functions used in this script.
 source ../BASH-scripts/useful-functions-01.sh
 
-# Script for cleaning up files with excecutbles of C programs and text
-# output produced by this executables.
+
 
 
 

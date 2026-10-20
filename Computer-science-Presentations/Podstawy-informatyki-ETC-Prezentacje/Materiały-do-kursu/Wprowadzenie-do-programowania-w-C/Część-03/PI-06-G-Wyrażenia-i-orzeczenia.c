@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /* Wyrażenie (ang. expression) coś robi i zwraca wartość. Orzeczenie (
    ang. statement) tylko coś robi. */
 

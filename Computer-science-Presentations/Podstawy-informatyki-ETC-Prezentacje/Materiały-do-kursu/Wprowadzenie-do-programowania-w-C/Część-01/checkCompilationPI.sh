@@ -1,12 +1,12 @@
 #!/bin/bash
 
+# Script for checking if C files for "Podstawy informatyki" compiles and
+# for saving their text output in .txt files.
+
 # Importing functions used in this script.
 source ../BASH-scripts/useful-functions-01.sh
 
 
-
-# Script for checking if C files for "Podstawy informatyki" compiles and
-# for saving their text output in .txt files.
 
 
 
@@ -44,8 +44,8 @@ save_output_text="false"
 
 
 if [[ $run_code == "true" ]]; then
-    echo "Program in file $c_file_name produce simple animation, so" \
-	 "we don't need to save it text output to the file."
+    echo -e "Program in file $c_file_name produce simple animation, so" \
+	 "we don't need to save it text output to the file.\n"
 
     manage_a_C_program_PI $c_file_name $executable_output_file_name \
 			  $save_output_text

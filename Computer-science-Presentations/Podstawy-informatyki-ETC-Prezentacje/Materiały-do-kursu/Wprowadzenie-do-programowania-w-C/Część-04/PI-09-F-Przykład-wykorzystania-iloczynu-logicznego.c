@@ -1,16 +1,16 @@
 #include <stdio.h>
 
 int main() {
-  int intVar1 = 0;
+  int liczbaOdUzytkownika = 0;
 
   printf("Podaj liczbę: ");
-  scanf("%d", &intVar1);
+  scanf("%d", &liczbaOdUzytkownika);
 
-  if ((intVar1 < 3) && (-5 < intVar1)) {
-    printf("Wartość zmiennej intVar1 zawiera się "
+  if ((liczbaOdUzytkownika < 3) && (-5 < liczbaOdUzytkownika)) {
+    printf("Wartość zmiennej liczbaOdUzytkownika zawiera się "
 	   "w pożądanych zakresie.\n");
   } else {
-    printf("Wartość zmiennej intVar1 znajduje się poza "
+    printf("Wartość zmiennej liczbaOdUzytkownika znajduje się poza "
 	   "pożądany zakres.\n");
   }
 

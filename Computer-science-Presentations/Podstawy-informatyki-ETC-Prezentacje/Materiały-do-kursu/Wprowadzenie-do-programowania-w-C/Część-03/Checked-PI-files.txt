@@ -1,0 +1,15 @@
+For compilation.
+20 X 2026.
+PI-06-A-Czym-jest-instrukcja.c
+PI-06-B-Porównanie-a-przypisanie.c
+PI-06-C-Operatory-porównania.c
+PI-06-D-Nieszczęsna-funkcja-scanf.c
+PI-06-E-Jeszcze-o-nieszczęsnej-funkcji-scanf.c
+PI-06-F-Sterowanie-programem.c
+PI-06-G-Wyrażenia-i-orzeczenia.c
+PI-07-A-Różne-wersje-ifa.c
+PI-07-B-Przykładowy-program-01.c
+PI-08-A-Błędy-w-języku-C-Część-04.c
+PI-08-B-Błędy-w-języku-C-Część-05.c
+
+For correct text.

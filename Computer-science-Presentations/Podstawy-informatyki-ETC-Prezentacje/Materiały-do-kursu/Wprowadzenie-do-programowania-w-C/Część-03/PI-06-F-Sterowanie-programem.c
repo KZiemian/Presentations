@@ -14,27 +14,28 @@ int main() {
    * Aby to zademonstrować użyjemy operatora porównania, bo jest to coś,
    * co jest proste w zrozumieniu. */
 
-  int intVar1 = 0;
+  int liczbaOdUzytkownika = 0;
 
   /* Proszę pamiętać, że funkcja scanf() jest bardzo niebezpieczna i można
    * jej używać tylko do celów edukacyjnych. */
 
   printf("Podaj liczbę: ");
-  scanf("%d", &intVar1);
+  scanf("%d", &liczbaOdUzytkownika);
 
 
-  if (intVar1 == 5) {
+  if (liczbaOdUzytkownika == 5) {
 
     /* Jeśli (intVar1 == 5) jest prawdą, to zostanie wykonany ten zestaw
      * instrukcji. */
 
-    printf("intVar1 == %d.\n", intVar1);
+    printf("Podałeś liczę pięć: liczbaOdUzytkownika == %d.\n",
+	   liczbaOdUzytkownika);
   } else {
 
     /* Jeśli (intVar1 == 5) nie jest prawdą, to zostanie zrobione to. */
 
-    printf("intVar1 == %d, czyli zmienna ta przechowuje wartość inną, "
-	   "niż 5.\n", intVar1);
+    printf("liczbaOdUztykownika == %d, czyli zmienna ta przechowuje "
+	   "wartość inną, niż 5.\n", liczbaOdUzytkownika);
   }
 
   /* Proszę uruchomić ten program kilka razy, podając różne liczby
