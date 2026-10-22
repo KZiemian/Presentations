@@ -2,20 +2,23 @@
 
 class Main {
     public static void main(String[] args) {
-	int intVar1 = 0;
+	int i = 0;
 
 	System.out.print("While loop in Java is quite straightforward.\n" +
 			 "Like in C and C++, while loops execute " +
 			 "its body when the loop condition is true.\n\n");
 
+	System.out.print("To keep with tradition, we name variable for " +
+			 "a loop as i, from the word \"iteration\".\n\n");
+
 	System.out.print("Like always, remember to check that your " +
 			 "loop will stop at the right moment.\n\n");
 
 
-	while (intVar1 < 5) {
-	    System.out.println("intVar1 == " + intVar1 + ".");
+	while (i < 5) {
+	    System.out.println("intVar1 == " + i + ".");
 
-	    intVar1++;
+	    i++;
 	}
     }
 }

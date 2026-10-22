@@ -1,0 +1,14 @@
+For compilation.
+22 X 2026
+PinJ-03-A-Additional-operations-on-variables.java
+PinJ-03-B-Additional-operations-on-variables.java
+PinJ-03-C-Incrementation-of-variables.java
+PinJ-03-D-Standard-traps-of-incrementations.java
+PinJ-04-A-Comperasion-operators.java
+PinJ-04-B-Comperasion-operators.java
+PinJ-04-C-Logical-operators.java
+PinJ-05-A-Taking-input-from-the-user.java
+PinJ-05-B-if-else.java
+PinJ-05-C-if-else-and-assigments.java
+
+For correct output text.

@@ -1,0 +1,15 @@
+For compilation.
+22 X 2026
+PinJ-06-A-While-loop.java
+PinJ-06-B-For-loop.java
+PinJ-06-C-For-loop-in-Java-is-quite-advanced.java
+PinJ-06-D-Instruction-break.java
+PinJ-06-E-Instruction-continue.java
+PinJ-07-A-Classes.java
+PinJ-07-B-Classes-are-quite-complex.java
+PinJ-07-C-Classes-are-quite-complex.java
+PinJ-07-D-Special-property-of-the-fields.java
+PinJ-07-E-Traps-of-assigning-objects.java
+PinJ-07-F-Traps-of-comparing-objects.java
+
+For correct output text.

@@ -1,0 +1,17 @@
+For compilation.
+22 X 2026
+PinJ-08-A-Methods.java
+PinJ-08-B-Methods.java
+PinJ-08-C-Constructor.java
+PinJ-08-D-Default-constructor.java
+PinJ-08-E-Constructor-gone-wrong.java
+PinJ-08-F-Multiple-constructors.java
+PinJ-09-A-Back-to-the-methods.java
+PinJ-09-B-Lamp-class.java
+PinJ-09-C-More-about-return.java
+PinJ-09-D-Static-methods-aka-functions.java
+PinJ-09-E-Static-methods-belongs-to-the-class.java
+PinJ-09-F-Static-fields.java
+PinJ-09-G-Library-of-functions.java
+
+For correct output text.

@@ -1,0 +1,14 @@
+For compilation.
+21 X 2026
+PinJ-01-A-Hello-World.java
+PinJ-01-B-How-to-implement-lamp-in-Java.java
+PinJ-02-A-Comments.java
+PinJ-02-B-System-out-println.java
+PinJ-02-C-Printing-to-output-and-strings.java
+PinJ-02-D-Arithmetics-and-joining-strings.java
+PinJ-02-E-Traps-of-joining-strings.java
+PinJ-02-F-Variables.java
+PinJ-02-G-Basic-types.java
+PinJ-02-H-Basic-types-are-copied.java
+
+For correct output text.

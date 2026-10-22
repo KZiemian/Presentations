@@ -11,7 +11,7 @@ PI-02-F-Liczby-zmiennoprzecinkowe.c
 PI-03-A-Błędy-w-języku-C-Część-01.c (won't compile by design)
 PI-03-A-Błędy-w-języku-C-Część-02.c
 
-For correct text.
+For correct output text.
 19 X 2026
 PI-01-A-Program-pokazowy-w-C.c
 PI-01-B-Program-pokazowy-w-C.c

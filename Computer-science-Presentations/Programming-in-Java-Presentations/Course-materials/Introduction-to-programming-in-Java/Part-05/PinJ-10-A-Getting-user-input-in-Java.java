@@ -1,4 +1,5 @@
 // MAKE BETTER COMMENTS
+// We now back for a moment, to reading data from the input.
 // Before we go further it is useful, to learn more!!! how to read user input
 // from keybord in Java.
 
