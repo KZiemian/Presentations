@@ -14,7 +14,7 @@ source ../BASH-scripts/useful-functions-01.sh
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-01-A.out"
-text_file_to_clean_up="prog-01-A-Text-output.txt"
+text_file_to_clean_up="Text-output-01-A.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -29,7 +29,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-01-B.out"
-text_file_to_clean_up="prog-01-B-Text-output.txt"
+text_file_to_clean_up="Text-output-01-B.txt"
 
 
 
@@ -45,7 +45,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-02-A.out"
-text_file_to_clean_up="prog-02-A-Text-output.txt"
+text_file_to_clean_up="Text-output-02-A.txt"
 
 
 
@@ -61,7 +61,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-02-B.out"
-text_file_to_clean_up="prog-02-B-Text-output.txt"
+text_file_to_clean_up="Text-output-02-B.txt"
 
 
 
@@ -77,7 +77,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-02-C.out"
-text_file_to_clean_up="prog-02-C-Text-output.txt"
+text_file_to_clean_up="Text-output-02-C.txt"
 
 
 
@@ -93,7 +93,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-02-D.out"
-text_file_to_clean_up="prog-02-D-Text-output.txt"
+text_file_to_clean_up="Text-output-02-D.txt"
 
 
 
@@ -109,7 +109,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-02-E.out"
-text_file_to_clean_up="prog-02-E-Text-output.txt"
+text_file_to_clean_up="Text-output-02-E.txt"
 
 
 
@@ -125,7 +125,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-02-F.out"
-text_file_to_clean_up="prog-02-F-Text-output.txt"
+text_file_to_clean_up="Text-output-02-F.txt"
 
 
 
@@ -141,7 +141,7 @@ fi
 run_code="true"
 # run_code="false"
 executable_file_to_clean_up="prog-03-B.out"
-text_file_to_clean_up="prog-03-B-Text-output.txt"
+text_file_to_clean_up="Text-output-03-B.txt"
 
 
 

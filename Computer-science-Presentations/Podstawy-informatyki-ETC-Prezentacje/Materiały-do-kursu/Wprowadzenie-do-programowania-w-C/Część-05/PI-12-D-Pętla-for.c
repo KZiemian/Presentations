@@ -21,7 +21,7 @@ int main() {
     printf("Hello, World! %d time.\n", i + 1);
   }
 
-  printf("\nKoniec pierwszej pętli for.\n\n");
+  printf("\n" "Koniec pierwszej pętli for.\n\n");
 
   /* Ze względu na to, jak powszechne są pętle for, w których zmienna „i”
    * zaczyna odliczanie od wartości 0, tutaj również postanowiliśmy jej użyć.

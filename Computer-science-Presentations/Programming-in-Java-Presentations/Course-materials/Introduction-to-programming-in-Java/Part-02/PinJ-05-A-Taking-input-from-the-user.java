@@ -1,7 +1,7 @@
 // Taking input from the user in Java is not a very straightforward operation.
 // Honestly, what in Java is a straightforward operation? At the same time,
 // it would be useful for us, to learn how to read things like numbers from
-// the user, even when code doing so, will be for some time mysterious to us.
+// the user, even when code doing it, will be for some time mysterious to us.
 //
 // As such this file presents to you code that reads an integer number from
 // the keyboard and prints it on the screen. If you don't understand it now,

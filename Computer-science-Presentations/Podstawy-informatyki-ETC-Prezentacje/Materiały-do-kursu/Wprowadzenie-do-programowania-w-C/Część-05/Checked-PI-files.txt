@@ -1,7 +1,22 @@
 Od tego miejsca, pliki wymagają dokładnego przejrzenia.
 
-For compilation.
-20 X 2026.
+File checked for compilation.
+11 XI 2026.
+PI-11-A-Czytanie-z-pliku.c
+PI-11-B-Czytanie-z-pliku.c
+This files is with data only.
+PI-11-D-Czytanie-z-pliku.c
+PI-11-F-Czytanie-z-pliku.c
+PI-11-H-Czytanie-z-pliku.c
+PI-12-A-Funkcja-sleep.c
+PI-12-B-Pętla-while.c
+PI-12-C-Pętla-while.c
+PI-12-D-Pętla-for.c
+PI-12-E-Przykładowy-program-03.c
+PI-12-F-Przykład-nieskończonej-pętli.c
+PI-12-G-Zmienna-wewnętrzna-pętli.c
+PI-12-H-Starsza-wersja-pętli-for.c
+PI-12-I-Której-pętli-użyć.c
+PI-12-J-Pętle-i-liczby-zmiennoprzecinkowe.c
 
-
-For correct text.
+File checked for correct text.

@@ -1,6 +1,6 @@
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 % Basic configuration of Beamera class and Jagiellonian theme
-% ------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \RequirePackage[l2tabu, orthodox]{nag}
 
 
@@ -87,9 +87,13 @@ eprint=true,
 
 
 
-% ------------------------------------------------------
+% ######################################
 % Local macros
-% ------------------------------------------------------
+% ######################################
+
+
+
+% Macros for writing numbers
 \newcommand{\btext}{\text{b}}
 \newcommand{\otext}{\text{o}}
 \newcommand{\xtext}{\text{x}}
@@ -112,7 +116,7 @@ eprint=true,
 
 
 
-% ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 \title{Podstawy informatyki z~językiem~C}
 \subtitle{Programowanie nie jest trudne, debugowanie już tak}
 
@@ -121,7 +125,7 @@ eprint=true,
 
 
 % \date{}
-% ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+% ####################################################################
 
 
 
@@ -178,12 +182,12 @@ eprint=true,
 
 
 
-% ######################################
-\section{Zapisywanie liczb w~komputerze}
-% ######################################
+% ################################################
+\section{O~liczbach w~komputerze}
+% ################################################
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Komputer to maszyna do liczenia}
 
@@ -196,31 +200,147 @@ eprint=true,
   naszym zdaniem potrzebne do wyrobienia sobie podstawowych intuicji.
   Za głębsze wniknięcie w~naturę rzeczy odpowiedzialne są inne przedmioty.
 
-  Zaczniemy od pewnie dość nudnego dla większości osób przyjrzenia~się
-  potęgom liczby~$2$. W~informatyce bardzo lubimy liczbę~$2$. By być wiernym
-  duchowni języka~C równość dwóch liczb oznaczamy symbolem $==$. \\
-  $2^{ \HorSpaceTwo 0 } == 1$ \\[0.1em]
-  $2^{ \HorSpaceTwo 1 } == 2$ \\[0.1em]
-  $2^{ \HorSpaceTwo 2 } == 4$
+  Jednym z~powodów dla których zaczynamy od liczb, jest to, że~gdy omówimy
+  jak komputer przechowuje liczby, będziemy mogli zrozumieć, jak przechowuje
+  inne rzeczy. Dzieje~się tak, że~dla komputera wszystko jest ciągiem
+  bajtów, a~każdy bajt można zrozumieć jako liczbę całkowitą, z~zakresu
+  $0$, $1$, $2$, \ldots, $253$, $254$, $255$. Może~się to wydawać trochę
+  nieintuicyjne, proszę jednak uwierzyć, że~to ma sens i~dać nam trochę
+  czasu na wytłumaczenie tego.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
+\begin{frame}
+  \frametitle{System pozycyjny}
+
+
+  Najprostsze liczby to liczby naturalne: $0$, $1$, $2$, \ldots, dlatego
+  naszą dyskusję zaczniemy właśnie od nich. Niektórzy nie zaliczają
+  liczby~$0$ do liczb naturalnych, jednak ze~względu na użyteczność tej
+  liczby w~obliczeniach, w~informatyce przyjmujemy konwencję, że~$0$ jest
+  liczbą naturalną.
+
+  Komputery pracują w~systemie binarnym, co wynika zapewne z~tego powodu,
+  że~komputer są urządzeniami elektronicznymi, a~choć można zbudować
+  urządzenia które pracują choćby w~systemie dziesiętnym, to jest to dużo
+  trudniejsze. To jednak temat na zajęcia z~elektroniki.
+
+  Niemniej, warto zacząć od przyjrzenia~się dobrze nam znanemu systemu
+  dziesiętnemu, gdyż do niego jesteśmy najbardziej przyzwyczajeniu.
+  Jest on systemem pozycyjnym zapisu liczb o~podstawie równej liczbie
+  dziesięć. W~systemie tym mamy dziesięć bazowych symboli, zwanych cyframi:
+  $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ i~$9$.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{System pozycyjny}
+
+
+  Za pomocą tego ciągu cyfr możemy zapisać dowolną liczbę naturalną. Przy
+  tym proszę zwrócić uwagę, na to, iż~sama liczba dziesięć \alert{nie jest}
+  reprezentowana przez żadną cyfrę, lecz przez ciąg dwóch cyfr~$10$.
+  Warto o~tym pamiętać, porównując ten system z~systemem binarnym.
+
+  Ten system zapisu liczb nosi nazwę systemu pozycyjnego, bo liczby
+  naturalne zapisuje jako ciągi cyfr, a~następnie czytamy od prawej
+  do~lewej, przy czym znaczenie każdej cyfry zależy od~jej \alert{pozycji}
+  w~tym ciągu. By to lepiej zobaczyć, rozpatrzmy kilka przykładów.
+
+  Zanim podamy przykłady, należy wspomnieć, że~dla zgodności z~notacją
+  z~języka~C, znak równa~się zapisujemy jako $==$. Przypominamy,
+  że~w~języku C symbol „$=$” oznacza \alert{przypisanie} wartości
+  do~zmiennej, nie zaś równość dwóch liczb.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{System pozycyjny}
+
+
+  Kilka przykładów czytania liczb w~systemie dziesiętnym. \\
+  $123 == 3 \cdot 10^{ \HorSpaceTwo 0 } + 2 \cdot 10^{ \HorSpaceTwo 1 } +
+  1 \cdot 10^{ \HorSpaceTwo 2 } == 3 \cdot 1 + 2 \cdot 10 + 1 \cdot 100 == 3 + 20 + 100$. \\
+  $456 == 6 \cdot 10^{ \HorSpaceTwo 0 } + 5 \cdot 10^{ \HorSpaceTwo 1 } +
+  4 \cdot 10^{ \HorSpaceTwo 2 } == 6 \cdot 1 + 5 \cdot 10 + 4 \cdot 100 == 6 + 50 + 400$. \\
+  $2 \, 345 == 5 \cdot 10^{ \HorSpaceTwo 0 } + 4 \cdot 10^{ \HorSpaceTwo 1 } +
+  3 \cdot 10^{ \HorSpaceTwo 2 } + 2 \cdot 10^{ \HorSpaceTwo 3 } == 5 \cdot 1 + 4 \cdot 10 +
+  3 \cdot 100 \, +$ \\
+  $+ \, 2 \cdot 1 \, 000 == 5 + 40 + 300 + 2 \, 000$.
+
+  Dopisywanie zer po lewej stronie danej liczby, nie zmienia jej wartość.
+  Czyli $12 == 012 == 0012 == 00012$. W~informatyce ten drobny szczegół
+  ma duże znaczenie.
+
+  W~systemie binarnym mamy tylko dwie cyfry $0$ i~$1$. Element pamięci
+  komputer, który jest w~stanie przechować jedną z~wartości $0$ lub $1$,
+  nazywamy \textbf{bitem}. Wszystko co komputer przechowuje w~pamięci,
+  teksty, obrazy, dźwięki, jest dla niego ciągiem bitów. Jak to działa,
+  o~tym spróbujemy powiedzieć później.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
 \begin{frame}
   \frametitle{Wybrane potęgi liczby~$2$}
 
 
+  W~systemie dziesiętnym lubimy potęgi liczby dziesięć, które z~tego powodu
+  mają w~większości przypadków specjalne nazwy, takie jak „tysiąc”
+  czy~„milion”. Dokładnie z~tego samego powodu w~systemie binarnym lubimy
+  potęgi liczby dwa. Choć jest to strasznie nudne dla normalnego człowieka,
+  przyjrzymy~się teraz pewnym potęgom liczby dwa. Wbrew pozorom,
+  w~informatyce ta wiedza potrafi być cenna.
+
+  $2^{ \HorSpaceTwo 0 } == 1$ \\[0.1em]
+  $2^{ \HorSpaceTwo 1 } == 2$ \\[0.1em]
+  $2^{ \HorSpaceTwo 2 } == 4$ \\[0.1em]
   $2^{ \HorSpaceTwo 3 } == 8$ \\[0.1em]
   $2^{ \HorSpaceTwo 4 } == 16$ \\[0.1em]
   $2^{ \HorSpaceTwo 5 } == 32$ \\[0.1em]
   $2^{ \HorSpaceTwo 6 } == 64$ \\[0.1em]
   $2^{ \HorSpaceTwo 7 } == 128$ \\[0.1em]
-  $2^{ \HorSpaceTwo 8 } == 256$ \\[0.1em]
+  $2^{ \HorSpaceTwo 8 } == 256$
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
+
+  Podstawową jednostką pamięci jaką dziś używamy w~komputerach, jest
+  jeden bajt, czyli $8 == 2^{ 3 }$ bitów. To jeden z~przykładów tego jak
+  lubimy potęgi liczby~$2$.
+
   $2^{ \HorSpaceTwo 9 } == 512$ \\[0.1em]
   $2^{ \HorSpaceTwo 10 } == 1 \; 024$ \\[0.1em]
   $2^{ \HorSpaceTwo 11 } == 2 \; 048$ \\[0.1em]
@@ -228,23 +348,23 @@ eprint=true,
   $2^{ \HorSpaceTwo 15 } == 32 \; 768$ \\[0.1em]
   $2^{ \HorSpaceTwo 16 } == 65 \; 536$
 
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Wybrane potęgi liczby~$2$}
-
-
   Liczby $2^{ \HorSpaceTwo 16 } == 65 \; 536$
   i~$2^{ \HorSpaceTwo 16 } - 1 == 65 \; 535$ pojawiają~się
   często w~różnych działach techniki, gdyż często zachodzi potrzeba
   przesyłania informacji, której podstawową jednostką są dwa bajty,
   czyli $16$~bitów.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Wybrane potęgi liczby~$2$}
+
 
   $2^{ \HorSpaceTwo 17 } == 131 \; 072$ \\[0.1em]
   $2^{ \HorSpaceTwo 18 } == 262 \; 144$ \\[0.1em]
@@ -256,24 +376,24 @@ eprint=true,
   $2^{ \HorSpaceTwo 24 } == 16 \; 777 \; 216$ \\[0.1em]
   $2^{ \HorSpaceTwo 25 } == 33 \; 554 \; 432$ \\[0.1em]
   $2^{ \HorSpaceTwo 26 } == 67 \; 108 \; 864$ \\[0.1em]
-  $2^{ \HorSpaceTwo 27 } == 134 \; 217 \; 728$
+  $2^{ \HorSpaceTwo 27 } == 134 \; 217 \; 728$ \\[0.1em]
+  $2^{ \HorSpaceTwo 28 } == 268 \; 435 \; 456$ \\[0.1em]
+  $2^{ \HorSpaceTwo 29 } == 536 \; 870 \; 912$ \\[0.1em]
+  $2^{ \HorSpaceTwo 30 } == 1 \; 073 \; 741 \; 824$ \\[0.1em]
+  $2^{ \HorSpaceTwo 31 } == 2 \; 147 \; 483 \; 648$
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Wybrane potęgi liczby~$2$}
 
 
-  $2^{ \HorSpaceTwo 28 } == 268 \; 435 \; 456$ \\[0.1em]
-  $2^{ \HorSpaceTwo 29 } == 536 \; 870 \; 912$ \\[0.1em]
-  $2^{ \HorSpaceTwo 30 } == 1 \; 073 \; 741 \; 824$ \\[0.1em]
-  $2^{ \HorSpaceTwo 31 } == 2 \; 147 \; 483 \; 648$ \\[0.1em]
   $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$
 
   Liczba $2^{ \HorSpaceTwo 32 } == 4 \; 294 \; 967 \; 296$ jest bardzo ważna
@@ -291,19 +411,19 @@ eprint=true,
   $36$~miliardy, $854$~miliony, $775$~tysięcy, $808$.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{Wybrane potęgi liczby~$2$}
 
 
   $2^{ \HorSpaceTwo 64 } == 18 \; 446 \; 744 \; 073 \; 709 \; 551 \; 616 \approx
-  18 \cdot 10^{ 18 }$ \\
+  1.8 \cdot 10^{ 19 }$ \\
   Słownie: osiemnaście trylionów, czterysta czterdzieści sześć biliardów,
   siedemset czterdzieści cztery biliony, siedemdziesiąt trzy miliardy,
   siedemset dziewięć milionów, pięćset pięćdziesiąt jeden milionów,
@@ -312,192 +432,186 @@ eprint=true,
   $709$ milionów, $551$ tysięcy, $616$.
 
   Jak ktoś~się tej liczby nauczy na pamięć, to zasługuje na $5$~dodatkowych
-  punktów.
+  punktów z~prac domowych.
 
   Liczba ta jest oczywiście bardzo ważna, dla systemów $64$-bitowych.
 
 \end{frame}
-% ##################
+% ######################################
 
 
 
 
 
-% ##################
-\begin{frame}
-  \frametitle{Systemy pozycyjny zapisu liczb naturalnych}
-
-
-  Sposoby zapisu liczb w~komputerze to naprawdę temat na osobny wykład,
-  taki jak metody numeryczne. My zaczniemy od~prostej dyskusji jak komputery
-  zapisują liczby naturalne, w~miarę potrzeby omawiając bardziej zaawansowane
-  tematy.
-
-  Zacznijmy od krótkiego odświeżenia najlepiej nam znanego systemu
-  pozycyjnego, czyli tego opartego o~liczbę~$10$. Liczby w~tym systemie
-  czytamy od~prawej do lewej w~następujący sposób. \\
-  $123 == 3 \cdot 10^{ \HorSpaceTwo 0 } + 2 \cdot 10^{ \HorSpaceTwo 1 } +
-  1 \cdot 10^{ \HorSpaceTwo 2 } == 3 \cdot 1 + 2 \cdot 10 + 1 \cdot 100 == 3 + 20 + 100$ \\
-  $456 == 6 \cdot 10^{ \HorSpaceTwo 0 } + 5 \cdot 10^{ \HorSpaceTwo 1 } +
-  4 \cdot 10^{ \HorSpaceTwo 2 } == 6 \cdot 1 + 5 \cdot 10 + 4 \cdot 100 == 6 + 50 + 400$ \\
-  $2345 == 5 \cdot 10^{ \HorSpaceTwo 0 } + 4 \cdot 10^{ \HorSpaceTwo 1 } +
-  3 \cdot 10^{ \HorSpaceTwo 2 } + 2 \cdot 10^{ \HorSpaceTwo 3 } == 5 \cdot 1 + 4 \cdot 10 +
-  3 \cdot 100 \, +$ \\
-  $+ \, 2 \cdot 1000 == 5 + 40 + 300 + 2000$
-
-  Wzorując~się na języku Go, liczby binarne będziemy zapisywać jako
-  $0\text{b}1$, $0\text{b}01$, $0\text{b}111$,~etc. Tak jak w~systemie
-  dziesiętnym, czytamy je od prawej do lewej. Prześledźmy teraz
-  kilka przykładów.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
+% ######################################
 \begin{frame}
   \frametitle{System binarny zapisu liczb naturalnych}
 
 
-  $0\text{b}0 == 0 \cdot 2^{ \HorSpaceTwo 0 } == 0 \cdot 1 == 0$ \\
-  $0\text{b}1 == 1 \cdot 2^{ \HorSpaceTwo 0 } == 1 \cdot 1 == 1$ \\
-  $0\text{b}10 == 0 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
-  0 \cdot 1 + 1 \cdot 2 == 2$ \\
-  $0\text{b}11 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
-  1 \cdot 1 + 1 \cdot 2 == 1 + 2 == 3$ \\
-  $0\text{b}111 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } +
-  1 \cdot 2^{ \HorSpaceTwo 2 } == 1 \cdot 1 + 1 \cdot 2 + 1 \cdot 4 == 1 + 2 + 4 == 7$ \\
-  $0\text{b}10101 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 0 \cdot 2^{ \HorSpaceTwo 1 } +
+  Przejdziemy teraz do tego, jak zapisywać liczby naturalne w~systemie
+  binarnym. Wzorując~się na języku programowania Go, liczby binarne
+  będziemy zapisywać jako $0\text{b}1$, $0\text{b}01$, $0\text{b}100$,~etc.
+  Tak jak w~systemie dziesiętnym, czytamy je od prawej do lewej.
+  Prześledźmy teraz kilka przykładów.
+
+  $0\btext 0 == 0 \cdot 2^{ \HorSpaceTwo 0 } == 0 \cdot 1 == 0$. \\
+  $0\btext 1 == 1 \cdot 2^{ \HorSpaceTwo 0 } == 1 \cdot 1 == 1$. \\
+  $0\btext 10 == 0 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
+  0 \cdot 1 + 1 \cdot 2 == 2$. \\
+  $0\btext 11 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } ==
+  1 \cdot 1 + 1 \cdot 2 == 1 + 2 == 3$. \\
+  $0\btext 10 == 0 \cdot 2^{ \HorSpaceTwo 0 } + 0 \cdot 2^{ \HorSpaceTwo 1 } +
+  1 \cdot 2^{ \HorSpaceTwo 2 } == 0 \cdot 1 + 0 \cdot 2 + 1 \cdot 4 == 1 + 2 + 4 == 7$.
+
+  Rozpatrzmy jeszcze kilka innych przykładów. \\
+  $0\btext 111 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 1 \cdot 2^{ \HorSpaceTwo 1 } +
+  1 \cdot 2^{ \HorSpaceTwo 2 } == 1 \cdot 1 + 1 \cdot 2 + 1 \cdot 4 == 1 + 2 + 4 == 7$. \\
+  $0\btext 10101 == 1 \cdot 2^{ \HorSpaceTwo 0 } + 0 \cdot 2^{ \HorSpaceTwo 1 } +
   1 \cdot 2^{ \HorSpaceTwo 2 } + 0 \cdot 2^{ \HorSpaceTwo 3 } + 1 \cdot 2^{ \HorSpaceTwo 4 } ==
   1 \cdot 1 + 0 \cdot 2 + 1 \cdot 4 \, +$ \\
-  $+ \, 0 \cdot 8 + 1 \cdot 16 == 1 + 4 + 16 == 21$
-
-  Jak dobrze wszyscy wiemy, jednostkę która może przechowywać wartość
-  $0$ albo $1$ nazywamy \textbf{bitem}. Bity grupujemy dziś w~\textbf{bajty},
-  jeden bajt to $2^{ \HorSpaceTwo 3 } == 8$ bitów. W~tym, że~bajt zawiera
-  $2^{ \HorSpaceTwo 3 }$ bitów widać upodobanie informatyki do potęgi
-  liczby~$2$. Skąd jednak jest to upodobanie.
-
-  Wydaje~się, że~podstawą tego są kwestie techniczne. Zbudowanie urządzenia,
-  które może przechowywać dwie różne wartości ($0$ lub $1$), jest prostsze,
-  niż takiego, które przechowywałoby trzy wartości ($0$, $1$ lub $2$).
-  Warto powiedzieć o~tym kilka słów więcej.
+  $+ \, 0 \cdot 8 + 1 \cdot 16 == 1 + 4 + 16 == 21$.
 
 \end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{System binarny zapisu liczb naturalnych}
-
-
-  Pozostając na bardzo ogólnym poziomie, w~XX wieku eksperymentowano
-  z~układami elektronicznymi, których podstawowa jednostka pamięci, była
-  w~stanie przechowywać jedną z~trzech wartości ($0$, $1$ lub $2$), jedną
-  z~czterech ($0$, $1$, $2$ lub $3$),~etc. Jednostki te odpowiadały temu,
-  czemu w~dzisiejszym komputerze odpowiada bit. Gdyby ludzkość
-  zdecydowała~się budować komputery w systemie trójkowym, pewnie dzisiaj
-  operowalibyśmy „bajtami” o~długości $3^{ 2 } == 9$ „bitów”.
-
-  Różne względy, które są bardziej odpowiednie na bardzo obszerny wykład
-  z~elektroniki, sprawiły, iż~zdecydowaliśmy~się oprzeć pamięć komputera
-  o~jednostki dwustanowe, czyli właśnie dobrze nam znane bity. Czy tak już
-  pozostanie? Przewidywanie przyszłości jest trudne.
-
-  Zadajmy sobie teraz pytanie, ile liczb możemy zapisać za pomocą jednego
-  bitu? Dwie $0\text{b}0 == 0$ i~$0\text{b}1 == 1$. Ile zaś za pomocą
-  dwóch bitów? Cztery: $0\text{b}00 == 0$, $0\text{b}01 == 1$,
-  $0\text{b}10 == 2$ i~$0\text{b}11 == 3$.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{System binarny zapisu liczb naturalnych}
-
-
-  Zadajmy sobie jeszcze pytanie, ile liczb jesteśmy w~stanie zapisać
-  na trzech bitach? Odpowiedź to~$8$: $0\text{b}000 == 0$,
-  $0\text{b}001 == 1$, $0\text{b}010 == 2$, $0\text{b}011 == 3$,
-  $0\text{b}100 == 4$, $0\text{b}101 == 5$, $0\text{b}110 == 6$
-  i~$0\text{b}111 == 7$.
-
-  Te przykłady powinny zilustrować następujący fakt. Mając dostępne
-  $n$~bitów możemy za ich pomocą zapisać $2^{ \HorSpaceTwo n }$ stanów. Jest
-  to fakt ogólny, którego prosto dowodzi~się matematycznie, jednak
-  zajmowanie~się matematycznymi podstawami informatyki, nie należy do zakresu
-  tych zajęć. Naszym celem jest pomóc wyrobić sobie Państwu odpowiednią
-  intuicję, pozostawiając innym przedmiotom dokładniejsze omówienie tych
-  spraw.
-
-  Zwróćmy uwagę na jeszcze jeden fakt. W~tym systemie notacji liczb
-  naturalnych, mając do dyspozycji $n$~bitów jeden stan zużywamy na zapisanie
-  liczby $0 == 0\text{b}00\ldots0$, pozostałe $2^{ \HorSpaceTwo n - 1 }$ zużywamy
-  na zapisanie kolejny liczb naturalnych. Stąd, w~tym konkretnym
-  systemie, największą liczbą jaką możemy zapisać na $n$~bitach
-  jest $2^{ \HorSpaceTwo n } - 1$.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{System binarny zapisu liczb naturalnych}
-
-
-  Maksymalna liczba naturalna, jaką w~prezentowanym systemie można zapisać
-  na $n$~bitach to $2^{ \HorSpaceTwo n - 1 }$. Ponieważ
-  $2^{ \HorSpaceOne 8 } - 1 == 256 - 1 == 255$, to wyjaśnia czemu w~wielu
-  miejscach musimy podawać liczby w~zakresie od~$0$ do~$255$. Po porostu
-  komputer na zapisanie tej liczby poświęca dokładnie jeden bajt ($8$~bitów).
-
-  System który omówiliśmy nie pozwala zapisywać choć liczb całkowitych
-  ujemnych, musi więc zostać odpowiednio rozszerzony. Jednak my nie będziemy
-  wnikać w~tego typu zagadnienia, gdyż to co powiedzieliśmy, jest na nasze
-  potrzeby wystarczające.
-
-\end{frame}
-% ##################
-
-
-
-
-
+% ######################################
 
 
 
 
 
 % ######################################
-\section{Liczby i~cała reszta}
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Porównajmy teraz system dziesiętny do~binarnego. W~systemie dziesiętnym
+  mamy dziesięć cyfr: $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ i~$9$.
+  Podstawę tego systemu, liczbę dziesięć zapisujemy jako $10$. W~systemie
+  binarnym mamy dwie cyfry: $0$ i~$1$. Podstawę tego systemu, liczbę~$2$
+  zapisujemy jako $0\btext 10$.
+
+  Rozpatrzmy teraz ważny dla informatyki problem. Ile liczb możemy zapisać
+  za~pomocą jednej cyfry dziesiętnej? Odpowiedź jest, że~dziesięć:
+  $0$, $1$, $2$, $3$, $4$, $5$, $6$, $7$, $8$ i~$9$. Ile liczb możemy
+  zapisać za pomocą dwóch cyfr dziesiętnych? Liczb takich jest sto:
+  $0$, $1$, $2$, \ldots, $97$, $98$, $99$. Analogicznie, za pomocą trzech cyfr
+  dziesiętnych możemy zapisać tysiąc liczb: $0$, $1$, $2$, \ldots, $997$,
+  $998$, $999$.
+
+  Proszę zauważyć, że~dla jednej cyfry mamy $10^{ \, 1 }$ możliwych liczb,
+  dla dwóch $100 == 10^{ \, 2 }$ liczb, dla trzech $1 \, 000 == 10^{ \, 3 }$
+  liczb. Ogólnie, za pomocą ciąŋu~$n$ cyfr dziesiętnych możemy zapisać
+  $10^{ \, n }$.
+
+\end{frame}
 % ######################################
 
 
-% ##################
+
+
+
+% ######################################
 \begin{frame}
-  \frametitle{Liczby i~cała reszta}
+  \frametitle{System binarny zapisu liczb naturalnych}
 
 
-  Do tej pory powiedzieliśmy sobie jak komputer może zapisywać liczby,
-  ale przecież komputer może oprócz liczb zapisywać również wiele innych
-  rzeczy, choć litery alfabetu, którymi ta prezentacja jest zapisana. Myśląc
-  o~takich sprawach wkraczamy na temat kodowania w~komputerze.
+  Ogólniej, jeśli podstawą systemu jest liczba $p$, to za pomocą
+  $n$ cyfr tego systemu możemy zapisać $p^{ \, n }$ liczb. Ten matematyczny
+  fakt, można prosto udowodnić metodą indukcji, ale nie będziemy tego
+  robić, bo dowodzenie taki rzeczy raczej państwa nie interesuje, a~to nie
+  są zajęcia z~matematyki.
+
+  Przyjrzyjmy~się jak to działa da systemu binarnego. Dla jednej cyfry
+  binarnej (jednego bitu), powinno być $2^{ \, 1 } == 2$ liczb i~tak
+  jest w~istocie: $0\btext 0 == 0$ i~$0\btext 1 == 1$. Dla dwóch cyfr
+  binarnych (dwóch bitów), powinno być $2^{ \, 2 } == 4$ liczby.
+  Oto one: $0\btext 00 == 0$, $0\btext 01 == 1$, $0\btext 10 == 2$
+  i~$0\btext 11 == 3$. Dla trzech cyfr binarnych (trzech bitów) mamy
+  już $2^{ \, 3 } == 8$ liczb: $0\btext 000 == 0$, $0\btext 001 == 1$,
+  $0\btext 010 == 2$, $0\btext 011 == 3$, $0\btext 100 == 4$,
+  $0\btext 101 == 5$, $0\btext 110 == 6$ i~$0\btext 111 == 7$.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Dla czterech cyfr binarnych (czterech bitów), mamy już $2^{ \, 4 } == 16$
+  możliwych liczb. Ten przykład można przeanalizować dokładnie tak samo,
+  nie będziemy tego robić tylko ze względu na ilość czasu i~miejsca
+  jaki by to zajęło.
+
+  Jak może Państwo już zauważyli, za~pomocą $n$ bitów zapisujemy
+  $2^{ \, n }$ liczb: $0$, $1$, \ldots, $2^{ \, n } - 1$. Proszę zwrócić uwagę,
+  że~\alert{największą} liczbą jaką w~ten sposób zapisujemy jest
+  $2^{ \, n } - 1$.
+
+  Teraz trochę kwestii technicznych. Najmniejszą jednostką pamięci, jakiej
+  używa komputer jest jeden bit: $0$ lub~$1$. Jednak ludzkość uznała,
+  że~jest bardzo niewygodnie operować na tak małej jednostce pamięci,
+  dlatego przyjęto, że~najmniejszą jednostką \alert{przesyłania} danych
+  jest \textbf{bajt}. Z~definicji bajt to $8 == 2^{ \, 3 }$ bitów, gdzie
+  wychodzi upodobanie informatyki do potęg liczby~$2$.
+
+  Z~tego właśnie powodu mówimy, że~pamięć komputera jest ciągiem bajtów.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{System binarny zapisu liczb naturalnych}
+
+
+  Zgodnie z~tym co powiedziano wcześniej, każdy bajt może przechowywać
+  liczby od $0$ do $2^{ \HorSpaceOne 8 } - 1 == 256 - 1 == 255$. Z~tego
+  powodu dowolną rzecz w~komputerze, czy to tekst, czy to obraz, czy
+  muzyka, można przedstawić za pomocą ciągu liczby naturalny, przy czym
+  każda z~tych liczb jest w~zakresie od~$0$ do~$255$. Bardzo możliwe,
+  że~z~tego powodu już wielokrotnie natknęli~się Państwo na te liczby
+  w~swoim życiu.
+
+  To może wydawać~się nieprawdopodobne. Jak zakodować powiedzmy utwór
+  muzyczny jako ciąg liczb od~$0$ do $255$? Na razie proszę nam uwierzyć,
+  że~jest to wykonalne.
+
+  Na razie omówiliśmy tylko jak komputer zapisuje liczby naturalne: $0$,
+  $1$, $2$, \ldots A~co z~liczbami ujemnymi? A~z~liczbami wymiernymi?
+  A~z~liczbami niewymiernymi? Te temat są bardziej skomplikowane, niż
+  mogłoby~się wydawać, więc zanim to zrobimy, omówimy coś prostszego.
+  Mianowicie to, jak reprezentować tekst za pomocą liczb.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+
+
+
+
+
+% ################################################
+\section{Reprezentowanie litera jako liczb}
+% ################################################
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Reprezentowanie litera jako liczb}
+
 
   Zacznijmy od bardzo prostego przykładu, który może~się wydawać
   dziwny, ale jest wbrew pozorom bardzo praktyczny. Jak można zapamiętać
@@ -507,28 +621,230 @@ eprint=true,
   w~następujący sposób. \\
   $\text{A} \to 1$, $\text{B} \to 2$, $\text{C} \to 3$, \ldots, $\text{Z} \to 26$,
   $\text{a} \to 27$, $\text{b} \to 28$, $\text{c} \to 29$, \ldots,
-  $\text{z} \to 52$. \\
+  $\text{z} \to 52$.
+
   Taka odpowiedniość między literami alfabetu angielskiego, a~liczbami
-  naturalnymi nazywamy \textbf{kodowaniem}. Dokładniej, zakodowaniem
-  znaków jako liczb naturalnych.
+  naturalnymi nazywamy \textbf{kodowaniem}. W~kontekście tego kursu, przez
+  kodowanie będziemy zawsze rozumieli przypisanie pewnym obiektom
+  odpowiednich liczb naturalnych.
+
+  Od razu wyjaśnijmy kilka rzeczy. Czemu zajmujemy~się tylko alfabetem
+  angielskim? Bo informatykę jaką znamy stworzono w~USA, a~tam głównym
+  językiem był i~jest angielski, więc komputerze kodowanie jego alfabetu
+  jest wyjątkowo proste.
 
 \end{frame}
-% ##################
+% ######################################
 
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Reprezentowanie litera jako liczb}
+
+
+  Jak kodowane są takie litery jak używane w~języku polski~„ą”, czy symbole
+  języka japońskiego, to niestety \alert{dużo} bardziej skomplikowany temat.
+  Wrócimy do tego na~krótko potem.
+
+  Alfabet języka angielskiego ma $26$ liter, więc uwzględniając,
+  że~mamy duże i~małe litery, w~sumie potrzebujemy liczb od~$1$ do $52$.
+  Poniżej można znaleźć tabele opisującą jak działa nasze kodowania
+  liczb na litery.
+
+  \begin{center}
+
+    \begin{tabular}{| c | c | c | c | c | c |}
+      \hline
+      $\text{A} \to 1$ & $\text{B} \to 2$ & $\text{C} \to 3$
+      & $\text{D} \to 4$ & $\text{E} \to 5$ & $\text{F} \to 6$ \\
+      \hline
+      $\text{G} \to 7$ & $\text{H} \to 8$ & $\text{I} \to 9$
+      & $\text{J} \to 10$ & $\text{K} \to 11$ & $\text{L} \to 12$ \\
+      \hline
+      $\text{M} \to 13$ & $\text{N} \to 14$ & $\text{O} \to 15$
+      & $\text{P} \to 16$ & $\text{Q} \to 17$ & $\text{R} \to 18$ \\
+      \hline
+      $\text{S} \to 19$ & $\text{T} \to 20$ & $\text{U} \to 21$
+      & $\text{V} \to 22$ & $\text{W} \to 23$ & $\text{X} \to 24$ \\
+      \hline
+      $\text{Y} \to 25$ & $\text{Z} \to 26$ & & & & \\
+      \hline
+    \end{tabular}
+
+  \end{center}
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{Tabele naszego kodowania}
+
+
+  \begin{center}
+
+    \begin{tabular}{| c | c | c | c | c | c |}
+      \hline
+      $\text{a} \to 27$ & $\text{b} \to 28$ & $\text{c} \to 29$
+      & $\text{d} \to 30$ & $\text{e} \to 31$ & $\text{f} \to 32$ \\
+      \hline
+      $\text{g} \to 33$ & $\text{h} \to 34$ & $\text{i} \to 35$
+      & $\text{j} \to 36$ & $\text{k} \to 37$ & $\text{l} \to 38$ \\
+      \hline
+      $\text{m} \to 39$ & $\text{n} \to 40$ & $\text{o} \to 41$
+      & $\text{p} \to 42$ & $\text{q} \to 43$ & $\text{r} \to 44$ \\
+      \hline
+      $\text{s} \to 45$ & $\text{t} \to 46$ & $\text{u} \to 47$
+      & $\text{v} \to 48$ & $\text{w} \to 49$ & $\text{x} \to 50$ \\
+      \hline
+      $\text{y} \to 51$ & $\text{z} \to 52$ & & & & \\
+      \hline
+    \end{tabular}
+
+  \end{center}
+
+  Możemy teraz zakodować słowo „Hello” jako następujący ciąg liczb:
+  $8 \; 31 \; 38 \; 38 \; 41$.
+
+  Jak zobaczymy niedługo, komputer naprawdę
+  używa koduje znaki jako liczby, choć nie w~ten sposób, który podaliśmy.
+  Dobrze, ale jak komputer wyświetla liczby na ekranie? W~skrócie to działa
+  tak, że~komputer dostaje rozkaz „Przełącz~się na tryb, w~którym każdą
+  liczbę od $1$ do~$52$ oznacza pewną literę alfabetu angielskiego.
+  Jeśli ją napotkasz, to na ekranie wyświetl odpowiedni znak.”. To mamy
+  nadzieję, jest wystarczające wyjaśnienie.
+
+\end{frame}
+% ######################################
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{To wciąż za mało}
+
+
+  Jednak wciąż nie możemy wypisać na ekranie „Hello, World!”, bo umiemy
+  tylko kodować liczby, a~co ze znakami przecinka, spacji i~wykrzyknika?
+  Nie ma problemu po prostu dorzucamy następujące zasady do naszego kodu,
+  gdzie ostatnia pozycja symbolizuje kodowanie znaku spacji.
+
+  \begin{center}
+
+    \begin{tabular}{| c | c | c |}
+      \hline
+      $\text{,} \to 53$ & $\text{!} \to 54$ & $\text{'\hphantom{a}'} \to 55$ \\
+      \hline
+    \end{tabular}
+
+  \end{center}
+
+  Teraz możemy zapisać „Hello, World!” jako ciąg liczb: \\
+  $8 \; 31 \; 38 \; 38 \; 41 \; 53 \; 23 \; 41 \; 44 \; 38 \; 30 \; 55$
+
+  Świetnie, ale teraz powstaje problem. Co jeśli ktoś uzna, że najpierw
+  należy kodować małe litery, a potem duże? Czyli użyje następującego
+  kodowania. \\
+  $\text{a} \to 1$, $\text{b} \to 2$, $\text{c} \to 3$, \ldots, $\text{z} \to 26$,
+  $\text{A} \to 27$, $\text{B} \to 28$, $\text{C} \to 29$, \ldots,
+  $\text{Z} \to 52$.
+
+\end{frame}
+% ######################################
+
+
+% a -> 1
+% b -> 2
+% c -> 3
+% d -> 4
+% e -> 5
+% f -> 6
+% g -> 7
+% h -> 8
+% i -> 9
+% j -> 10
+% k -> 11
+% l -> 12
+% m -> 13
+% n -> 14
+% o -> 15
+% p -> 16
+% q -> 17
+% r -> 18
+% s -> 19
+% t -> 20
+% u -> 21
+% v -> 22
+% w -> 23
+% x -> 24
+% y -> 25
+% z -> 26
+% A -> 27
+% B -> 28
+% C -> 29
+% D -> 30
+% E -> 31
+% F -> 32
+% G -> 33
+% H -> 34
+% I -> 35
+% J -> 36
+% K -> 37
+% L -> 38
+% M -> 39
+% N -> 40
+% O -> 41
+% P -> 42
+% Q -> 43
+% R -> 44
+% S -> 45
+% T -> 46
+% U -> 47
+% V -> 48
+% W -> 49
+% X -> 50
+% Y -> 51
+% Z -> 52
+% . -> 53
+% ! -> 54
+%   -> 55
+
+
+
+
+
+% ######################################
+\begin{frame}
+  \frametitle{To wciąż za mało}
+
+
+  A~jeśli ktoś uzna, że~kodowanie powinno być takie, że~najpierw
+  duża litera, potem mała? \\
+  $\text{A} \to 1$, $\text{a} \to 2$, $\text{B} \to 3$, $\text{b} \to 3$, \ldots,
+  $\text{z} \to 26$, $\text{A} \to 27$, $\text{B} \to 28$, $\text{C} \to 29$, \ldots,
+  $\text{Z} \to 52$.
+
+\end{frame}
+% ######################################
 
 
 
 
 % ##################
 \begin{frame}
-  \frametitle{Kodowanie liter}
+  \frametitle{Historia kodu ASCII}
 
 
-  Możemy teraz zakodować słowo „Hello” jako ciąg liczb
-  $8 \; 31 \; 38 \; 38 \; 41$. Niedługo zobaczymy takie kodowanie w~praktyce.
-  Teraz możemy komputerowi powiedzieć „Przełącz~się na tryb, w~którym
-  każdą liczbę od $1$ do~$52$ rozumiesz jako pewną literę alfabetu
-  angielskiego. Jeśli ją napotkasz, to na ekranie wyświetl odpowiedni znak.”
+
 
   To wbrew pozorom dobrze opisuje, jak komputery działają, co więcej,
   język~C działa tak cały czas. Jednak zanim powiemy sobie jak język~C
@@ -543,18 +859,6 @@ eprint=true,
   potrzeby, co wyjaśnia dlaczego opiera~się na alfabecie angielskim.
   Dlatego też niektórzy uważają, że~powinno~się go nazywać
   \textsc{us-ascii}.
-
-\end{frame}
-% ##################
-
-
-
-
-
-% ##################
-\begin{frame}
-  \frametitle{Historia kodu ASCII}
-
 
   Powstanie kodu \textsc{ascii} zaczyna~się w~$1961$ roku. Należy sobie
   uświadomić jak wówczas wyglądała świat komputerów. Komputery potrafiły
@@ -835,6 +1139,57 @@ eprint=true,
 % ##################
 
 
+  miejscach musimy podawać liczby w~zakresie od~$0$ do~$255$. Po porostu
+  komputer na zapisanie tej liczby poświęca dokładnie jeden bajt ($8$~bitów).
+
+  System który omówiliśmy nie pozwala zapisywać choć liczb całkowitych
+  ujemnych, musi więc zostać odpowiednio rozszerzony. Jednak my nie będziemy
+  wnikać w~tego typu zagadnienia, gdyż to co powiedzieliśmy, jest na nasze
+  potrzeby wystarczające.
+
+
+    Jak dobrze wszyscy wiemy, jednostkę która może przechowywać wartość
+  $0$ albo $1$ nazywamy \textbf{bitem}. Bity grupujemy dziś
+  w~\textbf{bajty},
+  jeden bajt to $2^{ \HorSpaceTwo 3 } == 8$ bitów. W~tym, że~bajt zawiera
+  $2^{ \HorSpaceTwo 3 }$ bitów widać upodobanie informatyki do potęgi
+  liczby~$2$. Skąd jednak jest to upodobanie.
+
+  Wydaje~się, że~podstawą tego są kwestie techniczne. Zbudowanie urządzenia,
+  które może przechowywać dwie różne wartości ($0$ lub $1$), jest prostsze,
+  niż takiego, które przechowywałoby trzy wartości ($0$, $1$ lub $2$).
+  Warto powiedzieć o~tym kilka słów więcej.
+
+  Zadajmy sobie jeszcze pytanie, ile liczb jesteśmy w~stanie zapisać
+
+
+  Te przykłady powinny zilustrować następujący fakt. Mając dostępne
+  $n$~bitów możemy za ich pomocą zapisać $2^{ \HorSpaceTwo n }$ stanów. Jest
+  to fakt ogólny, którego prosto dowodzi~się matematycznie, jednak
+  zajmowanie~się matematycznymi podstawami informatyki, nie należy do zakresu
+  tych zajęć. Naszym celem jest pomóc wyrobić sobie Państwu odpowiednią
+  intuicję, pozostawiając innym przedmiotom dokładniejsze omówienie tych
+  spraw.
+
+  Zwróćmy uwagę na jeszcze jeden fakt. W~tym systemie notacji liczb
+  naturalnych, mając do dyspozycji $n$~bitów jeden stan zużywamy na zapisanie
+  liczby $0 == 0\text{b}00\ldots0$, pozostałe $2^{ \HorSpaceTwo n - 1 }$ zużywamy
+  na zapisanie kolejny liczb naturalnych. Stąd, w~tym konkretnym
+  systemie, największą liczbą jaką możemy zapisać na $n$~bitach
+  jest $2^{ \HorSpaceTwo n } - 1$.
+
+    Pozostając na bardzo ogólnym poziomie, w~XX wieku eksperymentowano
+  z~układami elektronicznymi, których podstawowa jednostka pamięci, była
+  w~stanie przechowywać jedną z~trzech wartości ($0$, $1$ lub $2$), jedną
+  z~czterech ($0$, $1$, $2$ lub $3$),~etc. Jednostki te odpowiadały temu,
+  czemu w~dzisiejszym komputerze odpowiada bit. Gdyby ludzkość
+  zdecydowała~się budować komputery w systemie trójkowym, pewnie dzisiaj
+  operowalibyśmy „bajtami” o~długości $3^{ 2 } == 9$ „bitów”.
+
+  Różne względy, które są bardziej odpowiednie na bardzo obszerny wykład
+  z~elektroniki, sprawiły, iż~zdecydowaliśmy~się oprzeć pamięć komputera
+  o~jednostki dwustanowe, czyli właśnie dobrze nam znane bity. Czy tak już
+  pozostanie? Przewidywanie przyszłości jest trudne.
 
 
 

@@ -1,7 +1,9 @@
 #include <stdio.h>
 
 int main() {
+
   double float64Var1 = 0.5;
+
   /* Typ liczb zmiennoprzecinkowych, jakiego będziemy używać najczęściej,
    * to „double”, czytaj „dabl”. Dlaczego ten typ posiada w C tak dziwną
    * nazwę, wyjaśnimy trochę później.
@@ -13,6 +15,12 @@ int main() {
    * na 64 bitach działają w C, nazwa ta jakoś oddaje jej sens. Ponownie,
    * dajemy jej numer 1, bo często będziemy potrzebować kilku zmiennych tego
    * konkretnego typu.
+   *
+   * Zastanawialiśmy się, czy nie nazwać takiej zmiennej
+   * „liczbaZmiennoprzecinkowa64Zmienna1”, ale uznaliśmy, że stosowanie
+   * polskich słów w tej nazwie, jest znacznie mniej wygodne od angielskiego
+   * skrótów „float” i „var”. Jeśli mają Państwo inne zdanie, to chętnie się
+   * z nim zapoznamy.
    *
    * W nazwie zmiennej zaznaczyliśmy, że liczba ta zajmuje w pamięci
    * 64 (2^6) bity, czyli 8 bajtów. Jest to ważne, gdy potrzebujemy

@@ -6,24 +6,28 @@ class TwoNumbers {
 
     // We again and again see Java heritage from C++. We define method of
     // the instance of the class by writing first the type that it returns,
-    // then name of the method and after that parenthesis  and then body of
-    // the method inside round brackets. We go back to what is in parenthesis
-    // in the second.
+    // then name of the method and after that parenthesis and then body of
+    // the method inside curly brackets. We go back to what is in parenthesis
+    // in a second.
 
     // In our case we are not interested in our method returning any value,
     // but in it printing text to the string. As such, we will state that
     // the type is "void" (emptiness, nothing). Type void is a bit awkward,
     // but very useful in Java.
+
     void showNumbers() {
-	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.print("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
+			 ").");
     }
 }
 
 class Main {
+
     // Finally, after such a long time, we can explain SOMETHING from this
     // ubiquitous line! We have method main, that returns nothing, so we
     // put "void" before its name. But what is "public" and "static"?
     // These are, unfortunately, things that we will need to discuss later.
+
     public static void main(String[] args) {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers();
 	TwoNumbers twoNumbersVar2 = new TwoNumbers();

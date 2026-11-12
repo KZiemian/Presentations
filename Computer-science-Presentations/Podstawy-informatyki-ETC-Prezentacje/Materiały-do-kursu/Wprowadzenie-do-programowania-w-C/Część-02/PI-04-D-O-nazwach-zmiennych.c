@@ -1,9 +1,14 @@
 #include <stdio.h>
 
 int main() {
+
   /* Krótkie zasady rządzące nazwami zmiennych. Nazwa zmiennej w C składa się
-   * z dużych i małych liter alfabetu ANGIELSKIEGO (programowanie wymyślili
-   * głównie Amerykanie), cyfr i znaku „_”.
+   * z dużych i małych liter alfabetu angielskiego (programowanie stworzono
+   * głównie w USA), cyfr i znaku „_”.
+   *
+   * Dziś możliwe jest używanie w nazwach zmiennych w języku C, choćby
+   * polskich „ą” czy „ę”, jednak dla własnego dobra lepiej tego nie robić.
+   * O przyczynach takiego stanu porozmawiamy w odpowiednim czasie.
    *
    * Najważniejsze zasady rządzące nazwami zmiennych są podane poniżej.
    * 1) Duże i małe litery to różne symbole, więc „intVar1” i „intvar1”
@@ -11,12 +16,14 @@ int main() {
    * 2) Nazwa zmiennej NIE może zaczynać się od cyfry.
    * 3) NIE wolno zacząć nazwy zmiennej od symbolu „_”. Chyba że wiesz
    *    co to oznacza i tego chcesz. */
-  int intVar1 = 0;
-  int intvar1 = 1;
 
-  printf("intVar1 == %d.\n", intVar1);
-  printf("intvar1 == %d.\n", intvar1);
-  printf("Jak widzimy, intVar1 i intvar1 to dwie różne zmienne!\n");
+  int liczbaCalkowita1 = 1;
+  int liczbacalkowita1 = 2;
+
+  printf("liczbaCalkowita1 == %d.\n", liczbaCalkowita1);
+  printf("liczbacalkowita == %d.\n", liczbacalkowita1);
+  printf("Jak widzimy, liczbaCalkowita1 i liczbacalkowita1 to dwie różne "
+	 "zmienne!\n");
 
   /* Zmienny należy nadawać nazwy, które informują nas o tym, co dana
    * zamienna robi. Jeśli mam zmienną, która opisuje, powiedzmy, wysokość
@@ -43,9 +50,7 @@ int main() {
    * ale takie nazwy nie mówią praktycznie nic. Z drugiej strony nazwy typu
    * „poziomWodyWZbiorniku10” nie mają nic wspólnego, z tym co ta zmienna
    * robi w programie. Zdecydowaliśmy się dla takich zmiennych używać
-   * zapisu typu „intVar1” co jest skrótem od angielskiego „INTeger
-   * VARiable number 1”, analogicznie dla „intVar2” czy „float64Var1”,
-   * „float64Var2”, etc.
+   * nazw typu „liczbaCalkowita1”.
    *
    * Nazwy takie informują, że te zmienne są wprowadzone tylko po to, by
    * pokazać jak język C nimi operuje i w tym znaczeniu nazwy te są trafne.

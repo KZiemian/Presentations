@@ -1,5 +1,6 @@
 class Main {
     public static void main(String[] args) {
+
 	// Instruction continue end execution of the current body of the loop
 	// and go to the next iteration of it (the body of the loop).
 
@@ -7,6 +8,8 @@ class Main {
 
 	for (int i = 0; i < 10; i++) {
 	    if ((i % 2) == 1) {
+		System.out.println("Instruction: continue;");
+
 		continue;
 	    }
 
@@ -22,10 +25,14 @@ class Main {
 	System.out.println("We go inside the while loop.");
 
 	while (intVar1 < 50) {
-	    // Remember to check that your loop will end.
+
+	    // Remember to check that your loop will end at some point.
+
 	    intVar1++;
 
 	    if ((intVar1 % 9) != 0) {
+		System.out.println("Instruction: continue;");
+
 		continue;
 	    }
 

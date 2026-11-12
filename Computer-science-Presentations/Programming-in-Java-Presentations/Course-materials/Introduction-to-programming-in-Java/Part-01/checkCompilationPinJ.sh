@@ -11,8 +11,8 @@ source ../BASH-scripts/useful-functions-01.sh
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-01-A-Hello-World.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -35,8 +35,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-01-B-How-to-implement-lamp-in-Java.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -59,8 +59,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-A-Comments.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -83,8 +83,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-B-System-out-println.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -107,8 +107,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-C-Printing-to-output-and-strings.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -131,8 +131,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-D-Arithmetics-and-joining-strings.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -155,8 +155,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-E-Traps-of-joining-strings.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -179,8 +179,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-F-Variables.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -203,8 +203,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-G-Basic-types.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -227,8 +227,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-02-H-Basic-types-are-copied.java"
 java_file_top_class_name="Main"
 save_output_text="true"

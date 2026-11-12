@@ -1,20 +1,24 @@
 // To make things simpler, we will create three versions of our silly,
 // but simple, class. Two numbers version 1, two numbers version 2
 // and two numbers version 3. This time we need TwoNumbersVerTwo.
+
 class TwoNumbersVerTwo {
     int m_intVar1;
     int m_intVar2;
 
     // You can create a constructor that takes no arguments and does nothing
-    // useful, but this is a very bad idea. We mention it, because you can
-    // see such code in various learning materials for Java.
+    // useful, but this is a very bad idea. We mention it, because you CAN
+    // see such code in various learning materials for Java. Please, don't
+    // follow them in this respect.
+
     TwoNumbersVerTwo() {
 	System.out.println("We are now running a totally useless " +
-			   "constructor TwoNumbersVerTwo().");
+			   "constructor of class TwoNumbersVerTwo.");
     }
 
     void showNumbers() {
-	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
+			   ").");
     }
 }
 
@@ -24,6 +28,7 @@ class Main {
 
 	// This code is very stupid, but it works and this is all the deal.
 	// You shouldn't never, ever write such code.
+
 	TwoNumbersVerTwo twoNumbersVerTwoVar1 = new TwoNumbersVerTwo();
 	TwoNumbersVerTwo twoNumbersVerTwoVar2 = new TwoNumbersVerTwo();
 

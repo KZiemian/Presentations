@@ -11,34 +11,12 @@ source ../BASH-scripts/useful-functions-01.sh
 
 
 ##################################################
-# run_code="true"
-run_code="false"
-go_file_name="PI-09-A-Zmienne-boolowskie-w-Go.go"
+run_code="true"
+# run_code="false"
+c_file_name="PI-15-A-break.c"
+executable_output_file_name="prog-15-A.out"
 save_output_text="true"
-text_output_file_name="prog-09-A-Text-output.txt"
-
-
-
-if [[ $run_code == "true" ]]; then
-    go run $go_file_name >> $text_output_file_name
-elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for Go file $c_file_name we have" \
-	 "wrong value of \"run_code\" variable: \"$run_code\".\n"
-
-    exit 1
-fi
-
-
-
-
-
-##################################################
-# run_code="true"
-run_code="false"
-c_file_name="PI-09-B-Zmienne-pseudoboolowskie-w-C.c"
-executable_output_file_name="prog-09-B.out"
-save_output_text="true"
-text_output_file_name="prog-09-B-Text-output.txt"
+text_output_file_name="Text-output-15-A.txt"
 
 
 
@@ -57,12 +35,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
-c_file_name="PI-09-C-Zmienne-pseudoboolowskie-i-stdbool-h.c"
-executable_output_file_name="prog-09-C.out"
+run_code="true"
+# run_code="false"
+c_file_name="PI-15-B-continue.c"
+executable_output_file_name="prog-15-B.out"
 save_output_text="true"
-text_output_file_name="prog-09-C-Text-output.txt"
+text_output_file_name="Text-output-15-B.txt"
 
 
 
@@ -81,171 +59,25 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
-go_file_name="PI-09-D-Sensowny-typ-bool.go"
+run_code="true"
+# run_code="false"
+c_file_name="PI-16-A-Funkcje-matematyczne.c"
+executable_output_file_name="prog-16-A.out"
 save_output_text="true"
-text_output_file_name="prog-09-D-Text-output.txt"
+text_output_file_name="Text-output-16-A.txt"
 
 
 
 if [[ $run_code == "true" ]]; then
-    go run $go_file_name >> $text_output_file_name
-elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for Go file $c_file_name we have" \
-	 "wrong value of \"run_code\" variable: \"$run_code\".\n"
+    echo -e "Compiling $c_file_name.\n"
 
-    exit 1
-fi
+    gcc -ansi --std=c99 -pedantic $c_file_name -lm \
+	-o $executable_output_file_name
 
-
-
-
-
-##################################################
-# run_code="true"
-run_code="false"
-c_file_name="PI-09-E-Alebra-Boolea-w-C.c"
-executable_output_file_name="prog-09-E.out"
-save_output_text="true"
-text_output_file_name="prog-09-E-Text-output.txt"
-
-
-
-if [[ $run_code == "true" ]]; then
-    manage_a_C_program_PI $c_file_name $executable_output_file_name \
-			  $save_output_text $text_output_file_name
-elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
-	 "value of \"run_code\" variable: \"$run_code\".\n"
-
-    exit 1
-fi
-
-
-
-
-
-##################################################
-# run_code="true"
-run_code="false"
-c_file_name="PI-09-F-Przykład-wykorzystania-iloczynu-logicznego.c"
-executable_output_file_name="prog-09-F.out"
-save_output_text="false"
-
-
-
-if [[ $run_code == "true" ]]; then
-    echo -e "Program in file $c_file_name use dangerous scanf()" \
-	 "function, to take user input. So producing output file" \
-	 "for it, requires user action.\n"
-
-    manage_a_C_program_PI $c_file_name $executable_output_file_name \
-			  $save_output_text
-elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
-	 "value of \"run_code\" variable: \"$run_code\".\n"
-
-    exit 1
-fi
-
-
-
-
-
-##################################################
-# run_code="true"
-run_code="false"
-c_file_name="PI-10-A-Inkrementacja-zmiennej-i-pokrewne-tematy.c"
-executable_output_file_name="prog-10-A.out"
-save_output_text="true"
-text_output_file_name="prog-10-A-Text-output.txt"
-
-
-
-if [[ $run_code == "true" ]]; then
-    manage_a_C_program_PI $c_file_name $executable_output_file_name \
-			  $save_output_text $text_output_file_name
-elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
-	 "value of \"run_code\" variable: \"$run_code\".\n"
-
-    exit 1
-fi
-
-
-
-
-
-##################################################
-# run_code="true"
-run_code="false"
-c_file_name="PI-10-B-Operator-plus-plus-etc.c"
-executable_output_file_name="prog-10-B.out"
-save_output_text="true"
-text_output_file_name="prog-10-B-Text-output.txt"
-
-
-
-if [[ $run_code == "true" ]]; then
-    manage_a_C_program_PI $c_file_name $executable_output_file_name \
-			  $save_output_text $text_output_file_name
-elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
-	 "value of \"run_code\" variable: \"$run_code\".\n"
-
-    exit 1
-fi
-
-
-
-
-
-##################################################
-# run_code="true"
-run_code="false"
-c_file_name="PI-10-C-Przykładowy-program-02.c"
-executable_output_file_name="prog-10-C.out"
-save_output_text="false"
-
-
-
-if [[ $run_code == "true" ]]; then
-    echo -e "Program in file $c_file_name use dangerous scanf()" \
-	 "function, to take user input. So producing output file" \
-	 "for it, requires user action.\n"
-
-    manage_a_C_program_PI $c_file_name $executable_output_file_name \
-			  $save_output_text
-elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
-	 "value of \"run_code\" variable: \"$run_code\".\n"
-
-    exit 1
-fi
-
-
-
-
-
-##################################################
-# run_code="true"
-run_code="false"
-cpp_file_name="PI-10-D-Hello-World.cpp"
-executable_output_file_name="prog-10-D.out"
-save_output_text="true"
-text_output_file_name="prog-10-D-Text-output.txt"
-
-
-
-if [[ $run_code == "true" ]]; then
-    echo "Improve this part of script."
-
-    g++ $cpp_file_name -o $executable_output_file_name
     ./$executable_output_file_name >> $text_output_file_name
 elif [[ $run_code != "false" ]]; then
-    echo -e "ERROR. In the BASH code for Go file $c_file_name we have" \
-	 "wrong value of \"run_code\" variable: \"$run_code\".\n"
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
 
     exit 1
 fi
@@ -255,24 +87,151 @@ fi
 
 
 ##################################################
-# run_code="true"
+run_code="true"
 # run_code="false"
-# c_file_name="PI-10-C-Przykładowy-program-02.c"
-# executable_output_file_name="prog-10-C.out"
-# save_output_text="false"
+c_file_name="PI-16-B-Przykład-szukania-miejsca-zerowego.c"
+executable_output_file_name="prog-16-B.out"
+save_output_text="true"
+text_output_file_name="Text-output-16-B.txt"
 
 
 
-# if [[ $run_code == "true" ]]; then
-#     echo -e "Program in file $c_file_name use dangerous scanf()" \
-# 	 "function, to take user input. So producing output file" \
-# 	 "for it, requires user action.\n"
+if [[ $run_code == "true" ]]; then
+    echo -e "Compiling $c_file_name.\n"
 
-#     manage_a_C_program_PI $c_file_name $executable_output_file_name \
-# 			  $save_output_text
-# elif [[ $run_code != "false" ]]; then
-#     echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
-# 	 "value of \"run_code\" variable: \"$run_code\".\n"
+    gcc -ansi --std=c99 -pedantic $c_file_name -lm \
+	-o $executable_output_file_name
 
-#     exit 1
-# fi
+    ./$executable_output_file_name >> $text_output_file_name
+
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
+c_file_name="PI-16-C-Testowanie-miejsca-zerowego.c"
+executable_output_file_name="prog-16-C.out"
+save_output_text="true"
+text_output_file_name="Text-output-16-C.txt"
+
+
+
+if [[ $run_code == "true" ]]; then
+    echo -e "Compiling $c_file_name.\n"
+
+    gcc -ansi --std=c99 -pedantic $c_file_name -lm \
+	-o $executable_output_file_name
+
+    ./$executable_output_file_name >> $text_output_file_name
+
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
+c_file_name="PI-17-A-Funkcje.c"
+executable_output_file_name="prog-17-A.out"
+save_output_text="true"
+text_output_file_name="Text-output-17-A.txt"
+
+
+
+if [[ $run_code == "true" ]]; then
+    manage_a_C_program_PI $c_file_name $executable_output_file_name \
+			  $save_output_text $text_output_file_name
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
+c_file_name="PI-17-B-Definiowanie-funkcji.c"
+executable_output_file_name="prog-17-B.out"
+save_output_text="true"
+text_output_file_name="Text-output-17-B.txt"
+
+
+
+if [[ $run_code == "true" ]]; then
+    manage_a_C_program_PI $c_file_name $executable_output_file_name \
+			  $save_output_text $text_output_file_name
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
+c_file_name="PI-17-C-Definiowanie-funkcji.c"
+executable_output_file_name="prog-17-C.out"
+save_output_text="true"
+text_output_file_name="Text-output-17-C.txt"
+
+
+
+if [[ $run_code == "true" ]]; then
+    manage_a_C_program_PI $c_file_name $executable_output_file_name \
+			  $save_output_text $text_output_file_name
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
+c_file_name="PI-17-D-Funkcja-liniowa.c"
+executable_output_file_name="prog-17-D.out"
+save_output_text="true"
+text_output_file_name="Text-output-17-D.txt"
+
+
+
+if [[ $run_code == "true" ]]; then
+    manage_a_C_program_PI $c_file_name $executable_output_file_name \
+			  $save_output_text $text_output_file_name
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi

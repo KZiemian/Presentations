@@ -93,6 +93,22 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
+text_file_to_clean_up="prog-02-D-Text-output.txt"
+
+
+if [[ $run_code == "true" && -e $text_file_to_clean_up ]]; then
+    echo "File exists: $text_file_to_clean_up."
+
+    rm $text_file_to_clean_up
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
 text_file_to_clean_up="prog-02-E-Text-output.txt"
 
 

@@ -2,6 +2,8 @@
 
 #include <unistd.h>
 
+
+
 int main() {
 
   /* Zasadę działania pętli while najlepiej wyjaśnić na przykładzie. Mówiąc

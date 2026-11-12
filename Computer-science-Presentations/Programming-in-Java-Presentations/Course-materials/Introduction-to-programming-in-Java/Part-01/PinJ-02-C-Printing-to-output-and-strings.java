@@ -1,11 +1,13 @@
 class Main {
     public static void main(String[] args) {
+
 	// Do we need to make some refreshment about strings?
 	//
 	// Strings in Java, like in many other languages, can be joined
 	// (concatenated) by using the "+" operator.
 
 	System.out.println("We have " + 5 + " people in the room.");
+
 	// In this code 5 is casted into string, but we will talk about
 	// casting of types later.
 
@@ -15,12 +17,14 @@ class Main {
 
 	// Like in many other languages, you can use \n to add a new line
 	// to the string.
+
 	System.out.println("\nAdding new lines to the text can make it " +
 			   "more readable.\n" + "Especially when it is " +
 			   "quite long.");
 
 	// We can also use System.out.print(), which prints text on
 	// the screen, but doesn't add a new line at the end of the text.
+
 	System.out.print("\nI'm listening to a podcast ");
 	System.out.print("about the world of computer science. ");
 	System.out.print("It is very interesting.\n");
@@ -28,6 +32,5 @@ class Main {
 	// What should you choose, println() or print()? It depends on what
 	// you want. We will use one that in a given context feels more
 	// natural to us. Which is of course quite a subjective choice.
-
     }
 }

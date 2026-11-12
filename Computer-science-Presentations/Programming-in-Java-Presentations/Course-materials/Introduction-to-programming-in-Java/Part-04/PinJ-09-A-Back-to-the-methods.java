@@ -10,16 +10,19 @@ class TwoNumbers {
 	m_intVar2 = intValue2;
     }
 
-    void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+    void showTwoNumbers() {
+	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
+			   ").");
     }
 
     // Methods can return value. To define such method we first wrote
     // the type of returned value, then name of the method and the parentese
     // with types and names of parameters. As said before, these parentheses
     // can be empty, like in the example below.
-    int addNumbers() {
+
+    int addYourTwoNumbers() {
 	return m_intVar1 + m_intVar2;
+
 	// Keyword return is extremely important. It literally returns
 	// value written after it, to the one that called this method.
     }
@@ -32,7 +35,8 @@ class TwoNumbers {
     // This method changes the values of the fields, so it doesn't need to
     // return anything. As such we declare it as void (void == don't return
     // anything).
-    void multiplyTwoNumbers(int multiplicationFactor) {
+
+    void multiplyEachNumberByArgument(int multiplicationFactor) {
 	m_intVar1 *= multiplicationFactor;
 	m_intVar2 *= multiplicationFactor;
     }
@@ -43,20 +47,21 @@ class Main {
 	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
 
 	// We can see how the method returns value.
-	System.out.print("twoNumbersVar1.addNumbers() == " +
-			   twoNumbersVar1.addNumbers() + ".\n\n");
+
+	System.out.print("twoNumbersVar1.addYourTwoNumbers() == " +
+			   twoNumbersVar1.addYourTwoNumbers() + ".\n\n");
 
 	System.out.print("Methods can change the state of the " +
 			 "object.\n\n");
 
 	System.out.print("twoNumbersVar1: ");
-	twoNumbersVar1.showNumbers();
+	twoNumbersVar1.showTwoNumbers();
 
-	System.out.println("twoNumberVar1.multiplyTwoNumbers(7);");
+	System.out.println("twoNumberVar1.multiplyEachNumberByArgument(7);");
 
-	twoNumbersVar1.multiplyTwoNumbers(7);
+	twoNumbersVar1.multiplyEachNumberByArgument(7);
 
 	System.out.print("twoNumbersVar1: ");
-	twoNumbersVar1.showNumbers();
+	twoNumbersVar1.showTwoNumbers();
     }
 }

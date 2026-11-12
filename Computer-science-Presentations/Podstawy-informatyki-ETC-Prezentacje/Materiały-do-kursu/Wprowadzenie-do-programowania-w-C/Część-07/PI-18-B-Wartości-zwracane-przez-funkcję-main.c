@@ -10,7 +10,7 @@ int main() {
   return 0;
 }
 
-/* Należy wyjaśnić jaka jest rola wartości zwracanej przez funkcję main.
+/* Należy wyjaśnić jaka jest rola wartości zwracanej przez funkcję main().
  * Przekazuje ona powłoce informację o tym, czy program ten zakończył się
  * poprawnie, czy nastąpił błąd. Jak Państwo już się zapewne przekonali,
  * błędne działanie programów, to coś co w informatyce występuje bez przerwy,

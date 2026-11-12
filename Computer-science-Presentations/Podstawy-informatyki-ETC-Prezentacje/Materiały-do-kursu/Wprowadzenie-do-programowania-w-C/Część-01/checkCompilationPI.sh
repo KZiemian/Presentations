@@ -11,12 +11,12 @@ source ../BASH-scripts/useful-functions-01.sh
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-01-A-Program-pokazowy-w-C.c"
 executable_output_file_name="prog-01-A.out"
 save_output_text="true"
-text_output_file_name="prog-01-A-Text-output.txt"
+text_output_file_name="Text-output-01-A.txt"
 
 
 
@@ -35,8 +35,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-01-B-Program-pokazowy-w-C.c"
 executable_output_file_name="prog-01-B.out"
 save_output_text="false"
@@ -61,12 +61,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-02-A-Hello-World.c"
 executable_output_file_name="prog-02-A.out"
 save_output_text="true"
-text_output_file_name="prog-02-A-Text-output.txt"
+text_output_file_name="Text-output-02-A.txt"
 
 
 
@@ -85,12 +85,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-02-B-Komentarze-w-kodzie-źródłowym.c"
 executable_output_file_name="prog-02-B.out"
 save_output_text="true"
-text_output_file_name="prog-02-B-Text-output.txt"
+text_output_file_name="Text-output-02-B.txt"
 
 
 
@@ -108,12 +108,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-02-C-Pisanie-tekstu-na-ekranie.c"
 executable_output_file_name="prog-02-C.out"
 save_output_text="true"
-text_output_file_name="prog-02-C-Text-output.txt"
+text_output_file_name="Text-output-02-C.txt"
 
 
 
@@ -132,12 +132,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-02-D-Stringi.c"
 executable_output_file_name="prog-02-D.out"
 save_output_text="true"
-text_output_file_name="prog-02-D-Text-output.txt"
+text_output_file_name="Text-output-02-D.txt"
 
 
 
@@ -156,12 +156,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-02-E-Liczby.c"
 executable_output_file_name="prog-02-E.out"
 save_output_text="true"
-text_output_file_name="prog-02-E-Text-output.txt"
+text_output_file_name="Text-output-02-E.txt"
 
 
 
@@ -183,12 +183,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 c_file_name="PI-02-F-Liczby-zmiennoprzecinkowe.c"
 executable_output_file_name="prog-02-F.out"
 save_output_text="true"
-text_output_file_name="prog-02-F-Text-output.txt"
+text_output_file_name="Text-output-02-F.txt"
 
 
 
@@ -233,7 +233,7 @@ run_code="true"
 c_file_name="PI-03-B-Błędy-w-języku-C-Część-02.c"
 executable_output_file_name="prog-03-B.out"
 save_output_text="true"
-text_output_file_name="prog-03-B-Text-output.txt"
+text_output_file_name="Text-output-03-B.txt"
 
 
 

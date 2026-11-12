@@ -1,9 +1,12 @@
 #include <stdio.h>
 
+
+
 int main() {
   /* Powiedzmy, że chcielibyśmy wyliczyć resztę z dzielenia liczby 293
    * przez liczbę 7. Po co? Powiedzmy, że tak by przetestować nasz komputer.
    * Piszemy więc poniższy kod. */
+
   printf("(293 % 7) == %d.\n", 293 % 7);
 
   /* Niestety kod ten zawier błąd. Napisaliśmy symbol „%”, bo chcielibyśmy

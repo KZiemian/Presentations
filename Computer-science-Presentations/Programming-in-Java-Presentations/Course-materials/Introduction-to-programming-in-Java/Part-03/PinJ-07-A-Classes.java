@@ -6,31 +6,33 @@
 // stores two numbers.
 
 class TwoIntNumbers {
-    int m_intVar1;
-    int m_intVar2;
+    int m_firstNumber;
+    int m_secondNumber;
 }
+
 // Code above defines class. It tell use that every object build according
 // to the rules defined by class TwoIntNumbers contains inside two integer
 // numbers.
 //
 // Technical term for such internal variables is "field". So class TwoNumbers
-// have two fields with the names m_intVar1 and m_intVar2.
+// have two fields with the names m_firstNumber and m_secondNumber.
 
 // We have seen "class Main" many times already. We explain what it means,
 // when we learn a few more things about the classes.
+
 class Main {
     public static void main(String[] args) {
 	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 
 	System.out.print("Instructions:\n" +
-			 "twoIntNumbersVar1.m_intVar1 = 1;\n" +
-			 "twoIntNumbersVar2.m_intVar2 = 2;\n\n");
-	twoIntNumbersVar1.m_intVar1 = 1;
-	twoIntNumbersVar1.m_intVar2 = 2;
+			 "twoIntNumbersVar1.m_firstNumber = 1;\n" +
+			 "twoIntNumbersVar2.m_secondNumber = 2;\n\n");
+	twoIntNumbersVar1.m_firstNumber = 1;
+	twoIntNumbersVar1.m_firstNumber = 2;
 
-	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
-			   twoIntNumbersVar1.m_intVar1 + ".");
-	System.out.println("twoIntNumbersVar1.m_intVar2 == " +
-			   twoIntNumbersVar1.m_intVar2 + ".");
+	System.out.println("twoIntNumbersVar1.m_firstNumber == " +
+			   twoIntNumbersVar1.m_firstNumber + ".");
+	System.out.println("twoIntNumbersVar1.m_secondNumber == " +
+			   twoIntNumbersVar1.m_secondNumber + ".");
     }
 }

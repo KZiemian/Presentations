@@ -1,12 +1,14 @@
 // To make things simpler, we will create three versions of our silly,
 // but simple, class. Two numbers version 1, two numbers version 2
 // and two numbers version 3.
+
 class TwoNumbersVerThree {
     int m_intVar1;
     int m_intVar2;
 
     // You can define multiple constructors for a single class. Which is both
     // very useful and totally confusing.
+
     TwoNumbersVerThree() {
 	m_intVar1 = 1;
 	m_intVar2 = 2;
@@ -18,14 +20,17 @@ class TwoNumbersVerThree {
     }
 
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
+			   ").");
     }
 }
 
 class Main {
     public static void main(String[] args) {
+
 	// Constructors are identified by the number of arguments that they
 	// take. And a few other things, about which we will not talk.
+
 	TwoNumbersVerThree twoNumbersVerThreeVar1 = new TwoNumbersVerThree();
 	TwoNumbersVerThree twoNumbersVerThreeVar2 =
 	    new TwoNumbersVerThree(3, 4);

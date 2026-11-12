@@ -1,9 +1,9 @@
 // We will start by writing "Hello, World!" program, since it is a law of
-// computer science that it should be your first program in a given
+// computer science that it should be your first program in every
 // language ;).
 
 // This line below is a tricky one, but for now just write "class Main" in
-// this place as it is. Later we will discuss when it is the wrong name
+// this place as it is. Later we will discuss why it is the wrong name
 // for a class.
 class Main {
     public static void main(String[] args) {

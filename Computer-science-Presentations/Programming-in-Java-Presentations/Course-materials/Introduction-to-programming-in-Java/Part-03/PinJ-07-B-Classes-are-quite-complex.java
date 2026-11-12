@@ -8,10 +8,10 @@ class TwoIntNumbers {
 // their various features, but to not be overwhelmed, we will approach it
 // slowly.
 //
-// As we said the class TwoNumbers contains two fields m_intVar1, m_intVar2 of
-// the type: integers. This basically means that each instance (object build
-// according to the blueprint of the class) contains inside two numbers of
-// the type int and nothing more.
+// As we said the class TwoIntNumbers contains two fields m_firstNumber,
+// m_secondNumber of the type: integers. This basically means that each
+// instance (object build according to the blueprint of the class) contains
+// inside two numbers of the type int and nothing more.
 //
 // We can explain it using analogy. You have documents that describe the
 // design of a car. It can contain drawings of car looks, technical
@@ -30,13 +30,16 @@ class TwoIntNumbers {
 
 class Main {
     public static void main(String[] args) {
+
 	// Every class defines a new type. Do we need to spend some time
 	// explaining what type in programming language is?
 
 	// Because every class define a type, we define variable for holding
-	// instances of the class the same way as always:
+	// instances of the class in almost the same way as always:
 	// nameOfTheType nameOfVariable = valueToBeAssigned;
+
 	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
+
 	// As we can see, the name of the class is at the same time the name
 	// of the type defined by this particular class.
 

@@ -3,6 +3,8 @@
 /* Ten kod można byłoby napisać w dużo lepszy sposób, ale to nie jest teraz
  * ważne. On ma tylko ilustrować działanie języka C. */
 
+
+
 #include <stdio.h>
 #include <unistd.h>
 

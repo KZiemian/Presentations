@@ -7,8 +7,8 @@ class Main {
 	System.out.print("float64Var2 == " + float64Var2 + ".\n\n");
 
 	System.out.print("Operators presented below, work in " +
-			   "the same way on the floating-point numbers, " +
-			   "as they work on integer numbers.\n\n");
+			 "the same way on the floating-point numbers, " +
+			 "as they work on integer numbers.\n\n");
 
 	System.out.println("Instruction: float64Var1 += 0.25;");
 	float64Var1 += 0.25;

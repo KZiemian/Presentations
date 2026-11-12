@@ -11,8 +11,8 @@ source ../BASH-scripts/useful-functions-01.sh
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-08-A-Methods.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -35,12 +35,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-08-B-Methods.java"
 java_file_top_class_name="Main"
 save_output_text="true"
-text_output_file_name="prog-06-B-Text-output.txt"
+text_output_file_name="prog-08-B-Text-output.txt"
 
 
 
@@ -59,8 +59,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-08-C-Constructor.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -83,8 +83,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-08-D-Default-constructor.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -107,8 +107,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-08-E-Constructor-gone-wrong.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -131,8 +131,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-08-F-Multiple-constructors.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -155,8 +155,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-09-A-Back-to-the-methods.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -179,8 +179,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-09-B-Lamp-class.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -203,8 +203,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-09-C-More-about-return.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -227,8 +227,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-09-D-Static-methods-aka-functions.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -251,8 +251,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-09-E-Static-methods-belongs-to-the-class.java"
 java_file_top_class_name="Main"
 save_output_text="true"

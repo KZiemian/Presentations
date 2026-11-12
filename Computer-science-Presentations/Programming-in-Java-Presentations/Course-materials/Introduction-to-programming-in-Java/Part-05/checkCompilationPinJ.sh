@@ -16,7 +16,6 @@ run_code="true"
 java_file_name="PinJ-10-A-Getting-user-input-in-Java.java"
 java_file_top_class_name="Main"
 save_output_text="false"
-text_output_file_name="prog-10-A-Text-output.txt"
 
 
 
@@ -38,16 +37,18 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-10-B-Getting-user-input-in-Java.java"
 java_file_top_class_name="Main"
-save_output_text="true"
-text_output_file_name="prog-10-B-Text-output.txt"
+save_output_text="false"
 
 
 
 if [[ $run_code == "true" ]]; then
+    echo -e "Program in file $java_file_name take input from the user." \
+	 "So producing output file for it, requires user action.\n"
+
     manage_a_Java_program_PinJ $java_file_name $java_file_top_class_name \
 			       $save_output_text $text_output_file_name
 elif [[ $run_code != "false" ]]; then
@@ -62,16 +63,18 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-10-C-Implementation-hiding-and-related-topics.java"
 java_file_top_class_name="Main"
-save_output_text="true"
-text_output_file_name="prog-10-C-Text-output.txt"
+save_output_text="false"
 
 
 
 if [[ $run_code == "true" ]]; then
+    echo -e "Program in file $java_file_name take input from the user." \
+	 "So producing output file for it, requires user action.\n"
+
     manage_a_Java_program_PinJ $java_file_name $java_file_top_class_name \
 			       $save_output_text $text_output_file_name
 elif [[ $run_code != "false" ]]; then
@@ -86,8 +89,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-10-D-Private-members-of-a-class.java"
 java_file_top_class_name="Main"
 save_output_text="true"

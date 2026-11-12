@@ -7,9 +7,9 @@
 // function or member function/method is, you will have to stretch your
 // imagination a little bit.
 //
-// Problem is that functions are simpler objects than methods,
-// but in Java it is more logical to learn methods first and Java's functions
-// later. This is a price for it being object-oriented language from top to
+// Problem is that functions are simpler objects than methods, but in Java
+// it is more logical to learn methods first and Java's functions later.
+// This is a price for Java of being object-oriented language from top to
 // bottom.
 
 // Dictionary warning. The same concepts in different programming languages
@@ -23,42 +23,44 @@
 
 // We go back to the silly, but very simple class.
 
-class TwoNumbers {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbers {
+    int m_firstNumber;
+    int m_secondNumber;
 
     // The simplest definition of the method is that the method is a part of
     // the class instance that works on its fields. We start from simple
     // example, that is not as silly as the whole class.
-    void showNumbers() {
-	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
+
+    void showTwoNumbers() {
+	System.out.print("TwoNumbers: (" + m_firstNumber + ", " +
+			 m_secondNumber + ").");
     }
 }
 
 class Main {
     public static void main(String[] args) {
-	TwoNumbers twoNumbersVar1 = new TwoNumbers();
-	TwoNumbers twoNumbersVar2 = new TwoNumbers();
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
+	TwoIntNumbers twoIntNumbersVar2 = new TwoIntNumbers();
 
-	twoNumbersVar1.m_intVar1 = 1;
-	twoNumbersVar1.m_intVar2 = 2;
+	twoIntNumbersVar1.m_firstNumber = 1;
+	twoIntNumbersVar1.m_secondNumber = 2;
 
-	twoNumbersVar2.m_intVar1 = 3;
-	twoNumbersVar2.m_intVar2 = 4;
+	twoIntNumbersVar2.m_firstNumber = 3;
+	twoIntNumbersVar2.m_secondNumber = 4;
 
-	System.out.println("Now we use the method showNumbers() to print " +
-			   "values of the fields to the screen.");
+	System.out.println("Now we use the method showTwoNumbers() to " +
+			   "print values of the fields to the screen.");
 
 	System.out.print("twoNumbersVar1: ");
-	twoNumbersVar1.showNumbers();
+	twoIntNumbersVar1.showTwoNumbers();
 
 	System.out.print("\ntwoNumbersVar2: ");
-	twoNumbersVar2.showNumbers();
+	twoIntNumbersVar2.showTwoNumbers();
 
 	System.out.println("\n\nWe can see how methods can be useful.");
 
 	// We can see that the syntax of the calling method
-	// twoNumbersVar1.showNumbers();
+	// twoNumbersVar1.showTWoNumbers();
 	// looks similar to "System.out.println()". We discussed what
 	// "System.out.println" means a long time ago and now we will try to
 	// tighten it together. The basic syntax for calling method of some
@@ -70,7 +72,7 @@ class Main {
 	// have some values that we want to send to the method. We will
 	// explain after showing some examples.
 
-	// Syntax "System.out.println" means that there is an object called
+	// Syntax "System.out.println()" means that there is an object called
 	// "System" it has a field called "out" and "out" has a method
 	// called "println". Complicated? Unfortunately, the truth is even
 	// more complicated, but we will learn it bit by bit.

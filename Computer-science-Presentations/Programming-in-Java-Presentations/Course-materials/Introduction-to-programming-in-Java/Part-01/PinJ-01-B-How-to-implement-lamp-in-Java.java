@@ -1,6 +1,6 @@
 // This code is very unprofessional, but it works. Not the worst thing in
-// the world, but don't write such code for real life programs. Write
-// better one.
+// the world, but don't write such code for real life programs, write
+// a better one.
 
 class Lamp {
     boolean m_stateOfLightBubble;
@@ -81,6 +81,7 @@ class Main {
 	System.out.println("\n\nEnd of the program.");
 
 	// This code is very unprofessional, but it works. It can be
-	// tolerated for a while, because we are still just learning Java.
+	// tolerated for a while, because we are just learning basiscs of
+	// Java.
     }
 }

@@ -1,21 +1,27 @@
 #include <stdio.h>
 
-/* Pokażemy teraz kod w języku C, dzięki któremy możemy wykonać operację
- * matematyczną 2^3. Na początku pewnie będą sobie Państwo zadawać pytanie:
- * czemu to wszystko jest takie skomplikowane? */
-
-/* By uruchomić ten program, potrzeba trochę innego zestawu „magicznych
- * zaklęć”, niż dotychczas. Oto one:
- * $ time gcc -ansi -std=c99 -pedantic PI-03-H-Potęgowanie-w-języku-C.c -lm -o prog.out
- * $ ./prog.out
- */
-
-#include <math.h>
-
 int main() {
-  printf("2.0^3.0 == %.2f.\n", pow(2.0, 3.0));
 
-  /* Proszę spróbować samemu obliczyć tym sposobem kilka wyrażeń typu a^b. */
+  /* Widzieliśmy, już kilka raz jak w języku C działają operacje
+   * arytmetyczne +, -, * oraz /. Teraz przyjżymy się operacji
+   * potęgowania ^. */
+
+  printf("Ten kod nie zadziała w sposób, którego oczekujemy!!!\n");
+  printf("2^3 == %d.\n", 2^3);
+  printf("Przecież 2^3 to ni jak nie jest %d!!!\n", 2^3);
+
+  /* Widzą Państwo, języki programowania bardzo często nie stosują się
+   * do ogólnie przyjętych konwencji i tutaj widzimy tego przykład.
+   * W języku C symbol „^” NIE oznacza potęgowania, tylko zupełnie inną
+   * operację, o której powiem w swoim czasie.
+   *
+   * Rada na przyszłość: nie zakładaj, że język programowania działa
+   * w sposób prosty i logiczny. Pozwoli ci to uniknąć wielu problemów.
+   * Jak masz wątpliwości jak coś zrobić w danym języku, to sprawdź
+   * w odpowiednim źródle, choćby w internecie. To pozwoli ci uniknąć
+   * wielu problemów.
+   *
+   * O tym jak wykonać potęgowanie w języku C powiemy w następnej części. */
 
 
 
@@ -23,13 +29,3 @@ int main() {
 
   return 0;
 }
-
-/* Pytanie, dlaczego to wszystko jest tak bardzo zawikłane? Trzeba pamiętać,
- * że język C jest starym językiem, wywodzi się z lat 70-tych XX wieku.
- * W tamtych czasach komputery miały procesory o szybkości rzędu 10 kHz
- * i 100 kB pamięci na dysku (dane przyblione, wymagające sprawdzenia).
- * Operacja potęgowania jest dużo kosztowniejsza obliczeniowo, niż choćby
- * dodawanie, więc na tak słabych komputerach jakie miano wówczas należało
- * jej używać tylko wtedy, gdy była naprawdę potrzebna. Zdecydowano się więc
- * umieścić ją w języku C w taki sposób, że aby jej użyć należy się trochę
- * wysilić, co zapobiega wielu lekkomyślnym jej użyciom. */

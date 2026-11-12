@@ -29,7 +29,7 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-text_file_to_clean_up="prog-08-B-Text-output.txt"
+text_file_to_clean_up="prog-10-B-Text-output.txt"
 
 
 if [[ $run_code == "true" && -e $text_file_to_clean_up ]]; then
@@ -45,7 +45,7 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-text_file_to_clean_up="prog-08-C-Text-output.txt"
+text_file_to_clean_up="prog-10-C-Text-output.txt"
 
 
 if [[ $run_code == "true" && -e $text_file_to_clean_up ]]; then

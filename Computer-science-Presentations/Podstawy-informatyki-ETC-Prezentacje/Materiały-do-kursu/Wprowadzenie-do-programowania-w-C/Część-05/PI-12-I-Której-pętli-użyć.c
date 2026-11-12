@@ -9,6 +9,7 @@
  * Później podamy przykład o co nam dokładnie chodzi. */
 
 int main() {
+
   /* Prosty przykład użycia pętli while: prosimy użytkownika o podawanie
    * liczb całkowitych, dopóki suma podanych liczb nie przekroczy 20.
    * Ponieważ nie wiem jakie liczby użytkownik poda, więc nie wiemy

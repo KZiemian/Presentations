@@ -9,9 +9,13 @@ class BasicTypesClass {
     char m_charField;
     double m_doubleField;
     int m_intField;
+
     // Below are other basic types, about whom we spoke very little.
     // It is still worth our attention to check their default values
     // in the class.
+    // SHOULD it be "short" or "short int"? The same question applies to
+    // "long".
+
     short m_shortIntField;
     long m_longIntField;
     float m_floatField;

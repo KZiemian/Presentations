@@ -10,7 +10,8 @@ class TwoNumbersVerOne {
     int m_intVar2;
 
     void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
+			   ").");
     }
 }
 
@@ -19,6 +20,7 @@ class TwoNumbersVerOne {
 class Main {
     public static void main(String[] args) {
 	TwoNumbersVerOne twoNumbersVerOneVar1 = new TwoNumbersVerOne();
+
 	// We can now understood better, why when creating instance of the
 	// class, we wrote
 	// new TwoNumbersVerOne();
@@ -30,6 +32,7 @@ class Main {
 	// don't define a constructor to our class, Java creates a default
 	// constructor for us. We won't dig down what default constructor
 	// do, we just mention that it is responsible for "zeroing fields".
+
 	System.out.println("twoNumbersVerOne.m_intVar1 == " +
 			   twoNumbersVerOneVar1.m_intVar1 + ".");
 	System.out.println("twoNumbersVerOne.m_intVar2 == " +
@@ -41,15 +44,15 @@ class Main {
 	// new TwoNumbersVerOne();
 	// with what we had before:
 	// new TwoNumbers(1, 2);
-
+	//
 	// How can we describe the role of a constructor? Everytime when we
-	// want to create object of new class computer give us a part of
+	// want to create object of class computer give us a part of
 	// memory, where it will be stored. Then the constructor changes this
 	// part of memory, transforming it according to class description.
 	// In our cases, the default constructor outlines when in this
 	// piece of memory should be placed integers m_intVar1 and m_intVar2,
 	// then it sets their values to 0.
-
+	//
 	// We again want to stress that the constructor NEVER returns any
 	// value. We can think that in the instruction
 	// TwoNumbersVerOne twoNumbersVerOneVar1 = new TwoNumberVerOne();

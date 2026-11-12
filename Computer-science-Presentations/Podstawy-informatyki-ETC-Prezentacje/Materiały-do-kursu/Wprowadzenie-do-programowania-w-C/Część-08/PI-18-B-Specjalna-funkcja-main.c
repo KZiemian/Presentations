@@ -1,23 +1,12 @@
 #include <stdio.h>
-/* ???? Dawno temu w języku C, zmienne można było definiować tylko na początku
- * funkcji main() (i w kilku jeszcze innych miejscach, o których sobie
- * kiedyś powiemy). Jeszcze dziś można się spotkać z informacjami,
- * że definiowanie zmiennych w innych miejscach programu to zły pomysł.
- *
- * Na tych zajęciach będziemy się zwykle trzymali tej konwencji
- * i definiowali zmienne na początku funkcji main() i w kilku innych
- * miejscach. */
-
-
 
 /* Funkcje to dość złożone byty, więc musimy się nad nimi trochę zatrzymać.
- * Dla porządku, najpierw omówimy najważniejszą funkcję w języku C,
- * która nosi nazwę main() i której używamy od pierwszego programu, który
- * napisaliśmy, bo w języku C nie da się pracować inaczej.
+ * Teraz omówimy najważniejszą funkcję w języku C, która nosi nazwę main()
+ * i której używamy od pierwszego programu, który napisaliśmy, bo w języku
+ * C nie da się pracować inaczej.
  *
  * Pierwsza rzecz, którą należy wiedzieć. W języku C funkcja main() ma
- * specjalny status i nie stosują się do niej pewne reguły, które
- * obowiązują wszystkie inne funkcje. Powiemy o tym w swoim czasie.
+ * specjalny status i nie obowiązują jej pewne reguły, które później poznamy.
  *
  * Zgodnie z tym co powiedzieliśmy poprzednio, linię
  * int main()
@@ -41,14 +30,15 @@ int main() {
 
   /* Zgodnie z tym co powiedzieliśmy, poniższa linia zwraca jako wartość
    * funkcji main() liczbę 0. Można się zapytać: a gdzie main() zwraca
-   * tą liczbę? Krótka odpowiedź: do powłoki. */
+   * tą liczbę? Krótka odpowiedź: do terminala i systemu operacyjnego. */
+
   return 0;
 }
 
-/* Po uruchomieniu programu poleceniem
- * ./prog.out
- * proszę w powłoce wpisać tajemną formułę
- * echo $?
+/* Jeśli pracują Państwo w terminalu pod systemem GNU/Linux to po wykonaniu
+ * $ ./prog.out
+ * proszę wpisać wpisać tajemną formułę
+ * $ echo $?
  * Pozwala ona zobaczyć jaka liczba została zwrócona przez nasz program
  * napisany w C.
  *
@@ -57,17 +47,17 @@ int main() {
  * na coś innego, choćby
  * return 7;
  * i wykonać ciąg „zaklęć”
- * gcc -ansi --std=c99 -pedantic PI-09-C-Specjalna-funkcja-main.c -o prog.out
- * ./prog.out
- * echo $?
+ * $ gcc -ansi --std=c99 -pedantic PI-18-A-Specjalna-funkcja-main.c -o prog.out
+ * $ ./prog.out
+ * $ echo $?
  * żeby zobaczyć, że rzeczywiście powłoka przejęła odpowiednią wartość
  * zwróconą przez nasz program.
  *
  * Tu oczywiście jest haczyk, bo czemu życie miałoby być proste? Każde
  * polecenie wpisane w powłoce coś zwraca i polecenie
- * echo $?
+ * $ echo $?
  * poinformuje nas o tym co zwróciła OSTATNIE wywołane polecenie. Dlatego
  * należy je wprowadzić NATYCHMIAST po linii
- * ./prog.out
+ * $ ./prog.out
  * W przeciwnym wypadku, wynik zwrócony przez nasz program w języku C,
  * zostanie nadpisany przez to co zwróciło następne polecenie. */

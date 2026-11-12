@@ -1,5 +1,6 @@
 class Main {
     public static void main(String[] args) {
+
 	// In Java languages some types are called "basic types", we will
 	// make a short introduction to some of them.
 
@@ -8,6 +9,8 @@ class Main {
 
 	System.out.println("Type int is standard integer type.");
 	System.out.print("intVar1 == " + intVar1 + ".\n\n\n");
+
+
 
 	// Byte, just 8 bits of memory.
 	byte byteVar1 = 25;
@@ -25,6 +28,8 @@ class Main {
 	// Since the whole reason for this variable to exists is to allow
 	// us to test how Java handles this type, its name is quite
 	// descriptive of its meaning.
+
+
 
 	// Floating-point numbers, single precision (32-bit).
 	float float32Var1 = 0.5F;
@@ -48,12 +53,15 @@ class Main {
 	System.out.print("float32Var1 == " + float32Var1 + ".\n\n\n");
 
 
+
 	// Floating-point numbers, double precision (64-bit).
 	double float64Var1 = 0.7;
 
 	System.out.println("Type double stores floating-point numbers " +
 			   "using 64 bits.");
 	System.out.print("float64Var1 == " + float64Var1 + ".\n\n\n");
+
+
 
 	// Boolean variable.
 	boolean boolVar1 = true;
@@ -65,6 +73,7 @@ class Main {
 	boolVar1 = false;
 
 	System.out.print("boolVar1 == " + boolVar1 + ".\n\n\n");
+
 
 
 	// Chars in Java represent single characters and as in C and C++
@@ -90,7 +99,7 @@ class Main {
 
 	System.out.println("charVar1 == " + charVar1 + ".");
 
-	// This also works.
+	System.out.println("This also works in Java.");
 	System.out.println("Instruction: charVar1 = '\\u00AB';");
 	charVar1 = '\u00AB';
 
@@ -101,6 +110,8 @@ class Main {
 			 "a very big topic, maybe we will discuss it " +
 			 "in more detail some time later. Maybe.\n\n\n");
 
+
+
 	// Strings are more complicated, as it should be expected. But at
 	// this moment we don't need to care about this that much.
 	String stringVar1 = "I'm a string.";
@@ -108,6 +119,8 @@ class Main {
 	System.out.println("Type string is of course, for storing " +
 			   "strings.");
 	System.out.println("stringVar1 == " + stringVar1);
+
+
 
 	// Our course is quite short, so we will mostly use ints, doubles,
 	// strings and boolean variables and values.

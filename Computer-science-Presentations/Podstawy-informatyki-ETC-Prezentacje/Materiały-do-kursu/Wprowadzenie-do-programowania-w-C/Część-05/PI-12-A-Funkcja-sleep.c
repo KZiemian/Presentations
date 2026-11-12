@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 /* Rozważmy następujący problem. Mamy program, który by zacząć działanie
  * potrzebuje by użytkownik przesłał mu dwa pliki. Jednak użytkownik
  * wysłał tylko jeden z tych plików, poszedł na obiad i nie będzie go
@@ -14,12 +16,14 @@
  * sleep(). My wykorzystamy ją również do tego, by objaśnić działanie
  * pętli w języku C. */
 
-#include <stdio.h>
+
 
 /* By użyć funkcji sleep() potrzebujemy poniższej linii. Jej sens objaśnimy
  * w odpowiednim czasie. */
 
 #include <unistd.h>
+
+
 
 int main() {
   printf("Początek programu demonstrującego działanie funkcji sleep().\n"

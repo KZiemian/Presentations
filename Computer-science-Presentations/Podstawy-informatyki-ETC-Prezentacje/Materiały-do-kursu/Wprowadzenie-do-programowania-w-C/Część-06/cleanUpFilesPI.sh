@@ -14,8 +14,8 @@ source ../BASH-scripts/useful-functions-01.sh
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-09-A.out"
-text_file_to_clean_up="prog-09-A-Text-output.txt"
+executable_file_to_clean_up="prog-13-A.out"
+text_file_to_clean_up="Text-output-13-A.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -29,8 +29,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-09-B.out"
-text_file_to_clean_up="prog-09-B-Text-output.txt"
+executable_file_to_clean_up="prog-13-C.out"
+text_file_to_clean_up="Text-output-13-C.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -44,8 +44,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-09-C.out"
-text_file_to_clean_up="prog-09-C-Text-output.txt"
+executable_file_to_clean_up="prog-13-D.out"
+text_file_to_clean_up="Text-output-13-D.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -59,8 +59,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-09-D.out"
-text_file_to_clean_up="prog-09-D-Text-output.txt"
+executable_file_to_clean_up="prog-14-A.out"
+text_file_to_clean_up="Text-output-14-A.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -74,8 +74,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-09-E.out"
-text_file_to_clean_up="prog-09-E-Text-output.txt"
+executable_file_to_clean_up="prog-14-B.out"
+text_file_to_clean_up="Text-output-14-B.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -89,8 +89,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-09-F.out"
-text_file_to_clean_up="prog-09-F-Text-output.txt"
+executable_file_to_clean_up="prog-14-C.out"
+text_file_to_clean_up="Text-output-14-C.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -104,8 +104,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-10-A.out"
-text_file_to_clean_up="prog-10-A-Text-output.txt"
+executable_file_to_clean_up="prog-14-D.out"
+text_file_to_clean_up="Text-output-14-D.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -119,8 +119,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-10-B.out"
-text_file_to_clean_up="prog-10-B-Text-output.txt"
+executable_file_to_clean_up="prog-14-E.out"
+text_file_to_clean_up="Text-output-14-E.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -134,38 +134,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-10-C.out"
-text_file_to_clean_up="prog-10-C-Text-output.txt"
-
-
-if [[ $run_code == "true" ]]; then
-    clean_two_files $executable_file_to_clean_up $text_file_to_clean_up
-fi
-
-
-
-
-
-##################################################
-run_code="true"
-# run_code="false"
-executable_file_to_clean_up="prog-10-D.out"
-text_file_to_clean_up="prog-10-D-Text-output.txt"
-
-
-if [[ $run_code == "true" ]]; then
-    clean_two_files $executable_file_to_clean_up $text_file_to_clean_up
-fi
-
-
-
-
-
-##################################################
-run_code="true"
-# run_code="false"
-executable_file_to_clean_up="prog-08-B.out"
-text_file_to_clean_up="prog-08-B-Text-output.txt"
+executable_file_to_clean_up="prog-14-F.out"
+text_file_to_clean_up="Text-output-14-F.txt"
 
 
 if [[ $run_code == "true" ]]; then

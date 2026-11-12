@@ -36,4 +36,4 @@ JagiellonianPictures-directories
 W_Ross_Ashbys_1948_Homeostat.jpeg
 
 # ignore files for checking programs' text output
-PI-*-Text-output.txt
+Text-output-*-*.txt

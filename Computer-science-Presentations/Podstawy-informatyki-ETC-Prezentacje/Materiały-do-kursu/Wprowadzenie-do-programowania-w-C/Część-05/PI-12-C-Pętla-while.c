@@ -11,16 +11,16 @@
 
 int main() {
 
-  int numberOfLoops = 1;
+  int liczbaObiegowPetli = 1;
 
   printf("Zaczynamy wykonywać pętlę.\n");
 
 
 
-  while (numberOfLoops <= 5) {
-    printf("Wykonujemy ciało pętli po raz %d.\n", numberOfLoops);
+  while (liczbaObiegowPetli <= 5) {
+    printf("Wykonujemy ciało pętli po raz %d.\n", liczbaObiegowPetli);
 
-    numberOfLoops++;
+    liczbaObiegowPetli++;
   }
 
   printf("Koniec pętli while.\n");

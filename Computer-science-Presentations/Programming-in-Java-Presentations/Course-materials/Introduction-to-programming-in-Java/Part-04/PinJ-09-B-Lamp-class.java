@@ -15,6 +15,7 @@ class Lamp {
 
     // It is not the best constructor, but for the classroom it can be
     // tolerated.
+
     Lamp(boolean stateOfLamp, String lightBubblePower) {
 	m_lightBubblePower = lightBubblePower;
 	m_stateOfLamp = stateOfLamp;

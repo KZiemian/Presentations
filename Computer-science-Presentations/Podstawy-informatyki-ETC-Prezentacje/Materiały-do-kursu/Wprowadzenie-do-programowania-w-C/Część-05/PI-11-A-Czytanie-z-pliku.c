@@ -1,8 +1,5 @@
 #include <stdio.h>
 
-/* NA RAZIE NIE MA PLIKU PI-11-C-Czytanie-z-pliku.c */
-
-/* ZRÓB LEPSZE KOMENTARZE. */
 /* W tym miejscu zrobimy krótkie wprowadzenia do czytania danych z plików.
  * Tak jak w przypadku nieszczęśnej funkcji scanf(), nasza wiedza jest
  * wciąż niewystarczająca by wyjaśnić jak działa wiele elementów tego
@@ -11,7 +8,7 @@
 int main() {
 
   /* Za pomocą poniższej linii kodu, otwieramy plik o nazwie
-   * „PI-10-F-Czytanie-z-pliku.dat” w trybie do odczytu. Tryb do oczytu
+   * „PI-11-B-Plik-z-danymi.dat” w trybie do odczytu. Tryb do oczytu
    * ustawiamy przez podanie stringu "r" od angielskiego „read”.
    * W trybie tym możemy jedynie odczytywać zawartość pliku, nie możemy
    * jednak zmieniać jego zawartości.
@@ -19,64 +16,64 @@ int main() {
    * Na dzień dzisiejszy ta linia może wyglądać bardzo tajemniczo,
    * w przyszłości wyjaśnimy lepiej jak ona działa. */
 
-  FILE *fileWithDataPtr = fopen("PI-10-F-Plik-z-danymi.dat", "r");
+  FILE *wskaznikDoPlikuZDanymi = fopen("PI-11-C-Plik-z-danymi.dat", "r");
 
-  /* Jeśli w powyższej linii podamy błędną nazwę pliku, to grozi nam,
-   * że napotkamy błąd „Naruszenie ochrony pamięci”. Z angielskiego błąd
-   * ten nosi nazwę „seg fault” od „segmentation fault”. */
+  /* Dlaczego ta zmienna nazywa się „wskaznikDoPliku”? I znowu, wyjaśnimy,
+   * gdy poznamy wskaźniki. */
+
+  /* Używamy tu funkcji fopen(), której nazwa pochodzi od „File OPEN”,
+   * która zwraca nam otwarty plik (to oczywiście musi być bardziej
+   * skomplikowane). Jeśli w tej funkcji podamy błędną nazwę pliku,
+   * to grozi nam, że napotkamy błąd „Naruszenie ochrony pamięci”.
+   * Z angielskiego błąd ten nosi nazwę „seg fault” od „segmentation fault”.
+   *
+   * W nowoczesnym języku programowania dostalibyśmy ostrzeżenie,
+   * że próbujemy otworzyć plik którego nie ma i tak właśnie powinno być.
+   * Jednak w języku C nie ma takich luksusów. It's 1972 again! */
 
   /* Tworzymy zmienne do których będziemy zapisywać dane odczytane z pliku. */
 
-  int intVar1 = 0;
-  int intVar2 = 0;
-  int intVar3 = 0;
-  double float64Var1 = 0.0;
-  double float64Var2 = 0.0;
-  double float64Var3 = 0.0;
+  int liczbaCalkowita1 = 0;
 
-  /* Funkcja fscanf() odczytuje pojedynczą linię z pliku który wcześniej
-   * otworzyliśmy w trybie do czytania. String "%d %d" oznacza, że funkcja
-   * fscanf() ma odczytać z tej linii dwie liczby całkowite, następnie
-   * zapisze odczytane wartości do dwóch zmiennych podanych dalej,
-   * intVar1 i intVar2. Proszę pamiętać o postawieniu przed nimi znaku
-   * „&” (ampersand). */
+  /* Funkcja fscanf() odczytuje dane z pliku który wcześniej otworzyliśmy
+   * w trybie do czytania. String "%d" oznacza, że funkcja fscanf() ma
+   * odczytać z pliku jedną liczbę całkowitą, następnie zapisać tą liczbę
+   * do zmiennej liczbaCalkowita1. Proszę pamiętać o postawieniu przed
+   * nazwą tej zmiennej znaku „&” (ampersand).
+   *
+   * Nazwa „fscanf()” prawdopodobnie pochodzi od „file scan function”. */
 
-  fscanf(fileWithDataPtr, "%d %d", &intVar1, &intVar2);
+  printf("Odczytuje pierwszą liczbę z pliku.\n");
 
-  printf("Zawartość pierwszej linii pliku: %d, %d.\n", intVar1, intVar2);
+  fscanf(wskaznikDoPlikuZDanymi, "%d", &liczbaCalkowita1);
 
-  /* Poniższa linia odczytuje trzy liczby całkowite z drugiej linii pliku. */
+  printf("Pierwsza liczba odczytana z pliku: %d.\n\n", liczbaCalkowita1);
 
-  fscanf(fileWithDataPtr, "%d %d %d", &intVar1, &intVar2, &intVar3);
 
-  printf("Zawartość drugiej linii pliku: %d, %d, %d.\n", intVar1, intVar2,
-	 intVar1);
 
-  /* Funkcja fscanf() nie tylko z nazwy jest podobna do nieszczęsnej
-   * funkcji scanf(). Również pewne jej funkcjonalności są podobne.
-   * Przykładowo by odczytać liczbę typu double, potrzebujemy podać
-   * nie „%f”, lecz „%lf” od „long floating-point number”. */
+  printf("Odczytujemy drugą liczbę z pliku.\n");
 
-  fscanf(fileWithDataPtr, "%lf %lf", &float64Var1, &float64Var2);
+  fscanf(wskaznikDoPlikuZDanymi, "%d", &liczbaCalkowita1);
 
-  printf("Zawartość trzeciej linii pliku: %.2f, %.2f.\n", float64Var1,
-	 float64Var2);
+  printf("Druga liczba odczytana z pliku: %d.\n\n", liczbaCalkowita1);
 
-  /* Z czwartej linii pliku odczytamy trzy liczby zmiennoprzecinkowe. */
 
-  fscanf(fileWithDataPtr, "%lf %lf %lf", &float64Var1, &float64Var2,
-	 &float64Var3);
 
-  printf("Zawartośc czwarte linii pliku: %.2f, %.2f, %.2f.\n", float64Var1,
-	 float64Var2, float64Var3);
+  printf("Odczytujemy trzecią liczbę z pliku.\n");
+
+  fscanf(wskaznikDoPlikuZDanymi, "%d", &liczbaCalkowita1);
+
+  printf("Trzecia liczba odczytana z pliku: %d.\n", liczbaCalkowita1);
+
+
 
   /* Poniższa funkcja zamyka plik z którego czytaliśmy. Zawsze należy
    * pamiętać o zamknięciu każdego pliku, który otwarliśmy. Powiemy o tym
    * więcej w przyszłości. */
 
-  fclose(fileWithDataPtr);
+  fclose(wskaznikDoPlikuZDanymi);
 
-
+  /* Jej nazwa pochodzi od „File CLOSE”. */
 
 
 

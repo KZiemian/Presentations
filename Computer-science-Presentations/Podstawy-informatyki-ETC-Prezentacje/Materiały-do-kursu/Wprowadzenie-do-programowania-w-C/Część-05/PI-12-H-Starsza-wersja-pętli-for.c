@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /* W starszych wersja języka C nie było możliwe tworzenie zmiennych
  * wewnętrznych pętli for, więc zmienną taką trzeba było definiować
  * jak każdą inną. Poniższy program demonstruje jak to wyglądało. */

@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+
 int main() {
 
   /* Liczby zmiennoprzecinkowe to w zasadzie liczby, które posiadają część

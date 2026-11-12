@@ -1,11 +1,13 @@
 class Main {
     public static void main(String[] args) {
+
 	// Java of course allows us to perform basic arithmetic operations
 	// on integers and floating-point numbers.
 	//
 	// Since "=" is an assignment operator in Java, no surprise here,
 	// we will use comparison operator "==" to symbolize that two things
 	// are equal.
+
 	System.out.print("Four basic arithmetical operations.\n");
 	System.out.print("2 + 3 == " + (2 + 3) + ".\n");
 	System.out.print("5 - 3 == " + (5 - 3) + ".\n");
@@ -87,6 +89,7 @@ class Main {
 
 	// We already see many times that we can join (concatenate) strings
 	// using the "+" operator.
+
 	System.out.print("We can join (concatenate) strings using \"+\" " +
 			 "operator.\n");
 	System.out.print("Instruction: \"Joining\" + \"strings.\\n\"\n");

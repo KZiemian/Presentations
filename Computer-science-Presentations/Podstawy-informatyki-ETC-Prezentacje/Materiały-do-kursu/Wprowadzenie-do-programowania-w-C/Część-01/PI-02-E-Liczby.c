@@ -70,8 +70,9 @@ int main() {
    * obliczyli ten wynik dokładnie, a potem odrzucili część ułamkową.
    * Inaczej mówiąc, rachunek przebiega mniej więcej tak:
    * 5 / 2 == (2.5 -> 2).
-   * To zagadnienie jest ???? omówione trochę bardziej szczegółowo
-   * w innej części tych materiałów. */
+   * To zagadnienie będzie omówione trochę bardziej szczegółowo
+   * w innej części tych materiałów. Jeśli nie jest, to proszę się
+   * na to poskarżyć do nas. To pomoże się nam zmobilizować. */
 
   /* Teraz przedyskutujemy obliczanie reszta z dzielenia, którą to operację
    * w języku C oznaczamy symbolem „%”. Operację tę nazywamy też

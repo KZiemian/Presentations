@@ -11,8 +11,8 @@ source ../BASH-scripts/useful-functions-01.sh
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-03-A-Additional-operations-on-variables.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -35,8 +35,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-03-B-Additional-operations-on-variables.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -59,8 +59,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-03-C-Incrementation-of-variables.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -83,8 +83,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-03-D-Standard-traps-of-incrementations.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -107,8 +107,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-04-A-Comperasion-operators.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -131,8 +131,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-04-B-Comperasion-operators.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -155,8 +155,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-04-C-Logical-operators.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -179,8 +179,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-05-A-Taking-input-from-the-user.java"
 java_file_top_class_name="Main"
 save_output_text="false"
@@ -205,8 +205,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-05-B-if-else.java"
 java_file_top_class_name="Main"
 save_output_text="false"

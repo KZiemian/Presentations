@@ -3,6 +3,7 @@
 // name of the class and then inside curly brackets we have code that
 // describes our class. We will talk a lot about how to define classes
 // in Java.
+
 class TwoIntNumbers {
     int m_intVar1;
     int m_intVar2;

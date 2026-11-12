@@ -1,6 +1,9 @@
+// IMPROVE THIS FILE.
 class Main {
     public static void main(String[] args) {
+
 	// We should be aware of some traps.
+
 	System.out.println("Instruction: " +
 			   "\"3 + 4 == \" + (3 + 4) + \".\"");
 	System.out.println("3 + 4 == " + (3 + 4) + ".");
@@ -9,6 +12,7 @@ class Main {
 			   "\"3 + 4 == \" + 3 + 4 + \".\"");
 	System.out.println("3 + 4 == " + 3 + 4 + ".");
 	System.out.print("Why must life be so complicated?\n\n");
+
 	// In the first case parenteses (3 + 4) tells Java that it needs to
 	// first compute 3 + 4, which is equal to 7 and then join strings
 	// "3 + 4 == " + "7" + "."

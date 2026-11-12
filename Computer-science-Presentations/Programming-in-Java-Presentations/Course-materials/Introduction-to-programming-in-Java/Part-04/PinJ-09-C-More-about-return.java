@@ -1,17 +1,18 @@
-class TwoNumbers {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbers {
+    int m_firstNumber;
+    int m_secondNumber;
 
-    TwoNumbers(int intValue1, int intValue2) {
-	m_intVar1 = intValue1;
-	m_intVar2 = intValue2;
+    TwoIntNumbers(int firstNumber, int secondNumber) {
+	m_firstNumber = firstNumber;
+	m_secondNumber = secondNumber;
     }
 
-    void showNumbers() {
-	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
+    void showTwoNumbers() {
+	System.out.println("TwoIntNumbers: (" + m_firstNumber + ", " +
+			   m_secondNumber + ").");
     }
 
-    int addNumbers() {
+    int addYourNumbers() {
 	// Instruction return has another important property. It ends
 	// execution of every method, so the code after it is never used.
 	// This behavior is logical, if you think about methods as a thing
@@ -22,24 +23,24 @@ class TwoNumbers {
 	// So every code after return is called "unreachable" and Java
 	// considers it existence as an error.
 
-	return m_intVar1 + m_intVar2;
+	return m_firstNumber + m_secondNumber;
 
-	// System.out.println("This part of method addNumbers will never " +
-	// 		   "be print to the screen.");
+	// System.out.println("This part of method addYourNumbers will " +
+	// 		   "never be print to the screen.");
     }
 
-    void multiplyTwoNumbers(int multiplicationFactor) {
-	m_intVar1 *= multiplicationFactor;
-	m_intVar2 *= multiplicationFactor;
+    void multiplyEachNumberByArgument(int multiplicationFactor) {
+	m_firstNumber *= multiplicationFactor;
+	m_secondNumber *= multiplicationFactor;
     }
 }
 
 class Main {
     public static void main(String[] args) {
-	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers(1, 2);
 
-	System.out.println("twoNumbersVar1.addNumbers() == " +
-			   twoNumbersVar1.addNumbers() + ".");
+	System.out.println("twoIntNumbersVar1.addYourNumbers() == " +
+			   twoIntNumbersVar1.addYourNumbers() + ".");
 
 	// Putting return that returns nothing in the function with returning
 	// type void is correct. At some level this makes sense.

@@ -5,16 +5,16 @@ int main() {
    * Program ma wziąć zmienną, dodać do niej 1 i wypisać wynik. Jest on
    * w zasadzie bezużyteczny, ale prosty w zrozumieniu. */
 
-  int intVar1;
+  int liczbaCalkowita1;
 
   printf("Ten program zawiera błąd!!!\n");
-  printf("intVar1 + 1 == %d.\n", intVar1 + 1);
+  printf("liczbaCalkowita + 1 == %d.\n", liczbaCalkowita1 + 1);
 
   /* Ten program może zwrócić dowolny wynik!!! Jest tak dlatego, że jeśli
    * w C napiszemy
-   * int intVar1 = 0;
-   * to zmienna intVar1 ma wartość 0. Ale jeśli napiszemy
-   * int intVar1;
+   * int liczbaCalkowita1 = 0;
+   * to zmienna liczbaCalkowita1 ma wartość 0. Ale jeśli napiszemy
+   * int liczbaCalkowita;
    * nie podając początkowej wartości, to język C ma prawo wstawić do niej
    * COKOLWIEK! Co gorsza, często mija sporo czasu, zanim zorientujemy się,
    * że nasz program pracuje na wartości wziętej z sufitu i tracimy kilka

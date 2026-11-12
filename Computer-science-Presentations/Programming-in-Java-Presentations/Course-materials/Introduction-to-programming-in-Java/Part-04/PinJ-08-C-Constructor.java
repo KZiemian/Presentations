@@ -1,6 +1,6 @@
 // Setting values of the fields by hand is tedious, so our next move is
 // to learn how to make it more pleasant. This will lead us to the concept
-// soo important that we want to/need to speak about it right now.
+// soo important that we want/need to speak about it right now.
 //
 // Constructor is a very important concept in Java, so we will discuss it
 // before other, probably more simple things. Yet again, in design of Java's
@@ -27,23 +27,27 @@ class TwoNumbers {
     // the constructor) we can put
     // (typeOfParameter1 parameterName1, typeOfParameter2 parameterName2,
     // typeOfParameter3 parameterName3, ...)
-    // Namely, the list of parameters that method will take. Like in defining
-    // variable, every position in this list is in the form
+    // Namely, the list of parameters that method will take. Like with
+    // defining variable, every position in this list is in the form
     // "typeOfParameter parameterName".
 
     // The choice of parameters in the case of constructor of silly class
     // TwoNumbers is obvious: numbers to which we want to set two fields of
     // the class.
+
     TwoNumbers(int intValue1, int intValue2) {
 	m_intVar1 = intValue1;
 	m_intVar2 = intValue2;
     }
+
     // This code is in the current state quite unprofessional, but we will
     // make it better when we learn more.
 
     // Method showNumbers() will be useful also this time.
+
     void showNumbers() {
-	System.out.print(m_intVar1 + ", " + m_intVar2 + ".");
+	System.out.print("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
+			 ").");
     }
 }
 

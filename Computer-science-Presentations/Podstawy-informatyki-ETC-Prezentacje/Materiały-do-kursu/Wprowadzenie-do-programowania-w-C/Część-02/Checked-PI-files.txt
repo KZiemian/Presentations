@@ -1,7 +1,9 @@
-For compilation.
-19 X 2026.
+Files checked for compilation.
+
+10 XI 2026
 PI-04-A-Zmienne.c
 PI-04-B-Obliczenia-na-zmiennych-typu-int.c
+PI-04-C-O-białych-znakach-w-języku-C.c
 PI-04-C-O-nazwach-zmiennych.c
 PI-04-D-Zmienne-typu-double.c
 PI-04-E-Korzystanie-ze-zmiennych.c
@@ -10,5 +12,5 @@ PI-04-G-Potęgowanie-w-języku-C.c
 
 
 
-For correct text.
+Files checked for correct text.
 19 X 2026

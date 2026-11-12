@@ -1,5 +1,6 @@
 class Main {
     public static void main(String[] args) {
+
 	// Code below doesn't work and this is a good thing. The expression
 	// intVar1 = intVar2
 	// produces value of type int and it cannot be used to evaluate

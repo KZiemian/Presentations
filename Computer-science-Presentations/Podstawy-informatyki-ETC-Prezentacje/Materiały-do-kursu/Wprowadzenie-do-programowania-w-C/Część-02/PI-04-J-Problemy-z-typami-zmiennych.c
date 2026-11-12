@@ -3,14 +3,14 @@
 int main() {
   /* Zmienna typu int przechowuj tylko liczby całkowite, ta o typie double,
    * liczby posiadające część dziesiętną. */
-  int intVar1 = 1;
+  int liczbaCalkowita1 = 1;
   double float64Var1 = 1.5;
 
-  printf("intVar1 == %d.\n", intVar1);
+  printf("liczbaCalkowita == %d.\n", liczbaCalkowita1);
   printf("float64Var1 == %.2f.\n\n", float64Var1);
 
-  printf("To powinno być okej: (float64Var1 = intVar1;).\n");
-  float64Var1 = intVar1;
+  printf("To powinno być okej: (float64Var1 = liczbaCalkowita1;).\n");
+  float64Var1 = liczbaCalkowita1;
 
   printf("float64Var1 == %.2f.\n", float64Var1);
   printf("Wszystko działa, bo jest jasne jak zamienić liczbę 1 "
@@ -20,14 +20,15 @@ int main() {
   float64Var1 = 1.5;
 
   printf("Obecne wartości zmiennych.\n");
-  printf("intVar1 == %d.\n", intVar1);
+  printf("liczbaCalkowita1 == %d.\n", liczbaCalkowita1);
   printf("float64Var1 == %.2f.\n\n", float64Var1);
 
-  printf("To raczej nie skończy się dobrze: (intVar1 = float64Var1;). :/\n");
+  printf("To raczej nie skończy się dobrze: "
+	 "(liczbaCalkowita1 = float64Var1;). :/\n");
 
-  intVar1 = float64Var1;
+  liczbaCalkowita1 = float64Var1;
 
-  printf("intVar1 == %d.\n", intVar1);
+  printf("liczbaCalkowita1 == %d.\n", liczbaCalkowita1);
   printf("float64Var1 == %.2f.\n", float64Var1);
 
   printf("Bo niby czemu życie miałoby być proste?\n");

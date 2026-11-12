@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+
+
 int main() {
   printf("O stringach słów kilka.\n");
 

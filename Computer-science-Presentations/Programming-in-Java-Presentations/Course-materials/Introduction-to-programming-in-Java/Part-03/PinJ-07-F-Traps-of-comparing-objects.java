@@ -5,7 +5,9 @@ class TwoIntNumbers {
 
 class Main {
     public static void main(String[] args) {
+
 	// Comparing objects in Java can be a big source of mistakes.
+
 	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 	TwoIntNumbers twoIntNumbersVar2 = new TwoIntNumbers();
 

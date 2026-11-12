@@ -149,6 +149,21 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
+executable_file_to_clean_up="prog-04-J.out"
+text_file_to_clean_up="prog-04-J-Text-output.txt"
+
+
+if [[ $run_code == "true" ]]; then
+    clean_two_files $executable_file_to_clean_up $text_file_to_clean_up
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
 executable_file_to_clean_up="prog-05-A.out"
 text_file_to_clean_up="prog-05-A-Text-output.txt"
 

@@ -1,4 +1,5 @@
 #include <stdio.h>
+
 /* Rozpatrzmy szalenie prosty problem obliczeniowy. Tworzymy zmienną
  * double x = 0.0;
  * coś dla tej wartości zmiennej obliczamy, potem dodajemy do niej
@@ -19,15 +20,13 @@ int main() {
     x += 0.1;
   }
 
-  printf("\nDziwne, gdzie x == 2.0?\n");
+  if (x != 2.0) {
+    printf("\n" "Dziwne, gdzie zgubiliśmy x == 2.0?\n");
 
-  if (x > 2.0) {
-    printf("Wartość x == %.1f, jest większa od 2.0.\n\n", x);
+    printf("Wartość x == %.1f, jest różna od 2.0.\n\n", x);
+    printf("x - 2.0 == %g.\n", x - 2.0);
+    printf("Bo czemu życie miałoby być proste?\n");
   }
-
-  printf("x - 2.0 == %g.\n", x - 2.0);
-
-  printf("Bo czemu życie miałoby być proste?\n");
 
 
 

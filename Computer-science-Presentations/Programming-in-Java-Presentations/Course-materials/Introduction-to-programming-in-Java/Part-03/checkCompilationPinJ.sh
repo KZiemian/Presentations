@@ -11,8 +11,8 @@ source ../BASH-scripts/useful-functions-01.sh
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-06-A-While-loop.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -35,8 +35,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-06-B-For-loop.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -59,8 +59,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-06-C-For-loop-in-Java-is-quite-advanced.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -83,8 +83,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-06-D-Instruction-break.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -107,8 +107,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-06-E-Instruction-continue.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -131,8 +131,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-07-A-Classes.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -155,12 +155,12 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-07-B-Classes-are-quite-complex.java"
 java_file_top_class_name="Main"
 save_output_text="true"
-text_output_file_name="prog-04-C-Text-output.txt"
+text_output_file_name="prog-07-B-Text-output.txt"
 
 
 
@@ -179,8 +179,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-07-C-Classes-are-quite-complex.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -203,8 +203,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-07-D-Special-property-of-the-fields.java"
 java_file_top_class_name="Main"
 save_output_text="true"
@@ -227,8 +227,8 @@ fi
 
 
 ##################################################
-# run_code="true"
-run_code="false"
+run_code="true"
+# run_code="false"
 java_file_name="PinJ-07-E-Traps-of-assigning-objects.java"
 java_file_top_class_name="Main"
 save_output_text="true"

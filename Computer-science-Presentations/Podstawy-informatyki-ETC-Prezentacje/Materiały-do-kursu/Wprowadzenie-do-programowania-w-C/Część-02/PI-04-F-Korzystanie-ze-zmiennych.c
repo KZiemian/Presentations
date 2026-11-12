@@ -1,70 +1,48 @@
 #include <stdio.h>
 
 int main() {
-  double argument = 0.0;
-  double value = 0.0;
-  double someVariable = 0.0;
 
-  printf("Kilka wartości funkcji f(x) == x^2 + 2.0 * x + 1.0.\n");
+  /* Przykłady korzystania ze zmiennych w C. W dużej mierze, korzystamy
+   * z nich tak samo jak na kartce papieru. */
 
-  value = argument * argument + 2.0 * argument + 1.0;
-  /* Operacja przypisania tego typu działa w następujący sposób.
-   * Do zmiennej po jej lewej stronie (po lewej stronie znaku „=”) zostaje
-   * przypisana wartość powstała przez obliczenie jej prawej strony, czyli
-   * argument * argument + 2.0 * argument + 1.0
-   * w której podstawiamy za wszystkie zmienne, wartości jakie obecnie
-   * posiadają. Czyli w naszym wypadku dostajemy
-   * 0.0 * 0.0 + 2.0 * 0.0 + 1.0
-   * Następnie wartość tego wyrażenia jest obliczana, wynosi ona 1.0 i ta
-   * wartość zostaje przypisana do zmiennej value. Od teraz value == 1.0. */
+  int liczbaCalkowita1 = 0;
+  int liczbaCalkowita2 = 1;
 
-  printf("f(%.2f) == %.2f.\n", argument, value);
+  printf("Początkowe wartości zmiennych.\n");
+  printf("liczbaCalkowita1 == %d.\n", liczbaCalkowita1);
+  printf("liczbaCalkowita2 == %d.\n\n", liczbaCalkowita2);
 
-  argument = 1.0;
-  value = argument * argument + 2.0 * argument + 1.0;
+  printf("Zmieniamy wartość zmiennych wykonując operacje "
+	 "(liczbaCalkowita1 = 3;) i (liczbaCalkowita2 = 5;).\n");
+  liczbaCalkowita1 = 3;
+  liczbaCalkowita2 = 5;
 
-  printf("f(%.2f) == %.2f.\n", argument, value);
+  printf("liczbaCalkowita1 == %d.\n", liczbaCalkowita1);
+  printf("liczbaCalkowita2 == %d.\n\n", liczbaCalkowita2);
 
-  argument = 1.5;
-  value = argument * argument + 2.0 * argument + 1.0;
+  printf("Dla prostszego zrozumienia co się dzieje, gdy wypisujemy kod "
+	 "na ekranie, to kod danej operacji w całości zapisujemy "
+	 "w nawiasach okrągłych. W kodzie programu możemy używać "
+	 "nawiasów lub je pomijać, dla języka C nie robi to różnicy. "
+	 "Proszę zobaczyć w kodzie programu, jak użycie tych operacji "
+	 "tam wygląda.\n\n");
 
-  printf("f(%.2f) == %.2f.\n", argument, value);
+  printf("Za pomocą operacji (liczbaCalkowita1 = liczbaCalkowita2;), "
+	 "zmieniamy wartość przechowywaną w zmiennej liczbaCalkowita1, na tą "
+	 "jaką w tym momencie przechowuje zmienna liczbaCalkowita2.\n");
 
-  printf("Później zobaczymy jak napisać ten kod lepiej.\n\n");
+  liczbaCalkowita1 = liczbaCalkowita2;
 
-  /* Mamy nadzieję, że sens tego kodu jest wystarczająco zrozumiały.
-   *
-   * Nie jest to najlepszy sposób przeprowadzania tego typu obliczeń w języku
-   * C, ale program działa. O bardziej efektywnych metodach napisania
-   * takiego programu opowiemy później. */
+  printf("liczbaCalkowita1 == %d.\n", liczbaCalkowita1);
+  printf("liczbaCalkowita2 == %d.\n\n", liczbaCalkowita2);
 
-  printf("Teraz przedstawimy trochę mniej oczywiste operacje na zmienny.\n");
+  printf("Wartość zmiennych możemy zmieniać dowolną liczbę razy.\n");
+  printf("Wykonujemy (liczbaCalkowita1 = -1;) i (liczbaCalkowita2 = -3;).\n");
+  liczbaCalkowita1 = -1;
+  liczbaCalkowita2 = -3;
 
-  someVariable = 5.0;
-
-  printf("someVariable == %.2f.\n", someVariable);
-
-  printf("Wykonujemy (someVariable = someVariable + 4.0;).\n");
-  someVariable = someVariable + 4.0;
-
-  printf("someVariable == %.2f.\n", someVariable);
-
-  /* Linia
-   * someVariable = someVariable + 4.0;
-   * może być początkowo trudna do zrozumienia, bo zmienna someVariable
-   * występuje w niej po obu stronach instrukcji przypisania. Sens jej jest
-   * jednak taki sam jak poprzednio. Po lewej stronie tej instrukcji
-   * znajduje się zmienna do której przypiszemy wartość zwróconą przez
-   * obliczenia obecne na jej prawej stronie. Przy czym za zmienną
-   * someVariable po prawej stronie operacji przypisania, zostanie
-   * podstawiona jej aktualna wartość, jaką obecnie posiada w programie.
-   *
-   * Inaczej mówiąc, ponieważ someVaraible == 5.0, więc linia
-   * someVariable = someVariable + 4.0;
-   * zostanie przekształcona do postaci
-   * someVariable = 5.0 + 4.0;
-   * Tym samym po tej operacji zmienna someVariable, będzie miała wartość
-   * równą 9.0. */
+  printf("liczbaCalkowita1 == %d.\n", liczbaCalkowita1);
+  printf("liczbaCalkowita2 == %d.\n\n", liczbaCalkowita2);
 
 
 
