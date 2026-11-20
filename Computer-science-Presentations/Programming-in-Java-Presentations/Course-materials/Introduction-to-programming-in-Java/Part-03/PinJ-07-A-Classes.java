@@ -6,8 +6,8 @@
 // stores two numbers.
 
 class TwoIntNumbers {
-    int m_firstNumber;
-    int m_secondNumber;
+    int m_integerNumber1;
+    int m_integerNumber2;
 }
 
 // Code above defines class. It tell use that every object build according
@@ -20,19 +20,21 @@ class TwoIntNumbers {
 // We have seen "class Main" many times already. We explain what it means,
 // when we learn a few more things about the classes.
 
+
+
 class Main {
     public static void main(String[] args) {
 	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 
 	System.out.print("Instructions:\n" +
-			 "twoIntNumbersVar1.m_firstNumber = 1;\n" +
-			 "twoIntNumbersVar2.m_secondNumber = 2;\n\n");
-	twoIntNumbersVar1.m_firstNumber = 1;
-	twoIntNumbersVar1.m_firstNumber = 2;
+			 "twoIntNumbersVar1.m_integerNumber1 = 1;\n" +
+			 "twoIntNumbersVar2.m_integerNumber2 = 2;\n\n");
+	twoIntNumbersVar1.m_integerNumber1 = 1;
+	twoIntNumbersVar1.m_integerNumber2 = 2;
 
-	System.out.println("twoIntNumbersVar1.m_firstNumber == " +
-			   twoIntNumbersVar1.m_firstNumber + ".");
-	System.out.println("twoIntNumbersVar1.m_secondNumber == " +
-			   twoIntNumbersVar1.m_secondNumber + ".");
+	System.out.println("twoIntNumbersVar1.m_integerNumber1 == " +
+			   twoIntNumbersVar1.m_integerNumber1 + ".");
+	System.out.println("twoIntNumbersVar1.m_integerNumber2 == " +
+			   twoIntNumbersVar1.m_integerNumber2 + ".");
     }
 }

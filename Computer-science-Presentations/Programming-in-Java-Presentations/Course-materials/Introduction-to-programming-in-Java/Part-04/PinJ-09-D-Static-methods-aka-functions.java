@@ -3,34 +3,35 @@
 // existence of other objects. The normal method in Java is a quite
 // different story.
 
-class TwoNumbers {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbers {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
-    TwoNumbers(int intValue1, int intValue2) {
-	m_intVar1 = intValue1;
-	m_intVar2 = intValue2;
+    TwoIntNumbers(int integerNumber1, int integerNumber2) {
+	m_integerNumber1 = integerNumber1;
+	m_integerNumber2 = integerNumber2;
     }
 
-    void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+    void showTwoIntNumbers() {
+	System.out.println("TwoIntNumbers: (" + m_integerNumber1 + ", " +
+			   m_integerNumber2 + ").");
     }
 
-    int addNumbers() {
-	return m_intVar1 + m_intVar2;
+    int addYourTwoIntNumbers() {
+	return m_integerNumber1 + m_integerNumber2;
     }
 
-    void multiplyTwoNumbers(int multiplicationFactor) {
-	m_intVar1 *= multiplicationFactor;
-	m_intVar2 *= multiplicationFactor;
+    void multiplyEachNumberByArgument(int multiplicationFactor) {
+	m_integerNumber1 *= multiplicationFactor;
+	m_integerNumber2 *= multiplicationFactor;
     }
 }
 
 class Main {
-    // Can I call the method showNumbers() here? Of course not, there is
-    // no object of the class TwoNumbers in this program, so there are
+    // Can I call the method showTwoIntNumbers() here? Of course not, there
+    // is/ no object of the class TwoNumbers in this program, so there are
     // no fields to show. So this line will produce an error.
-    // showNumbers();
+    // showTwoIntNumbers();
     //
     // We told you that the object is a box and the fields and methods are
     // inside that box. So if you don't have a box, you don't have
@@ -38,7 +39,7 @@ class Main {
     //
     // We can say it in another way. Every standard method can only be run
     // as a part of the object to which it belongs, something like
-    // twoNumbersVar1.showNumbers();
+    // twoIntNumbersVar1.showTwoIntNumbers();
     //
     // But, what to do when we want to have functionality that shouldn't
     // be part of some object? Java have a solution to this problem,
@@ -67,6 +68,8 @@ class Main {
     static double linearFunction(double x) {
 	return 2.0 * x + 1.0;
     }
+
+
 
     public static void main(String[] args) {
 	double x = 0.0;

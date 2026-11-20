@@ -6,9 +6,9 @@
 // before other, probably more simple things. Yet again, in design of Java's
 // constructor we see the influence of C++.
 
-class TwoNumbers {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbers {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
     // Constructor is a method, but a very odd method. It does not return any
     // value, but DOESN'T have a type void. The reason that Eckel gives for
@@ -35,9 +35,19 @@ class TwoNumbers {
     // TwoNumbers is obvious: numbers to which we want to set two fields of
     // the class.
 
-    TwoNumbers(int intValue1, int intValue2) {
-	m_intVar1 = intValue1;
-	m_intVar2 = intValue2;
+    TwoIntNumbers(int integerNumber1, int integerNumber2) {
+	m_integerNumber1 = integerNumber1;
+	m_integerNumber2 = integerNumber2;
+
+	// This is cumbersome. It would be nice to name BOTH field of
+	// the class and argument of the method as "integerNumber1",
+	// but then we wouldn't know which is which. So we start
+	// name of the fields with prefix "m_" from "member of the class".
+	// It is still not the best solution, since names of fields are
+	// now a bit odd.
+	//
+	// Fortunetly, Java has mechanism to overcome this problem, we will
+	// talk about it soon.
     }
 
     // This code is in the current state quite unprofessional, but we will
@@ -45,23 +55,27 @@ class TwoNumbers {
 
     // Method showNumbers() will be useful also this time.
 
-    void showNumbers() {
-	System.out.print("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
-			 ").");
+    void showTwoIntNumbers() {
+	System.out.print("TwoIntNumbers: (" + m_integerNumber1 + ", " +
+			 m_integerNumber2 + ").");
     }
 }
 
+
+
+
+
 class Main {
     public static void main(String[] args) {
-	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
-	TwoNumbers twoNumbersVar2 = new TwoNumbers(3, 4);
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers(1, 2);
+	TwoIntNumbers twoIntNumbersVar2 = new TwoIntNumbers(3, 4);
 
-	System.out.print("twoNumbersVar1: ");
-	twoNumbersVar1.showNumbers();
+	System.out.print("twoIntNumbersVar1: ");
+	twoIntNumbersVar1.showTwoIntNumbers();
 
-	System.out.print("\ntwoNumbersVar2: ");
-	twoNumbersVar2.showNumbers();
+	System.out.print("\n" + "twoIntNumbersVar2: ");
+	twoIntNumbersVar2.showTwoIntNumbers();
 
-	System.out.println("\n\nEverything works as it should.");
+	System.out.println("\n\n" + "Everything works as it should.");
     }
 }

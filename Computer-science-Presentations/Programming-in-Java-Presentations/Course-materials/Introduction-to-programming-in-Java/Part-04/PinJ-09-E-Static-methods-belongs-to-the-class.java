@@ -4,17 +4,18 @@
 // static fields and methods are inside not of instance of the class, but of
 // the CLASS itself. We hope that this example explains what this means.
 
-class TwoNumbers {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbers {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
-    TwoNumbers(int intValue1, int intValue2) {
-	m_intVar1 = intValue1;
-	m_intVar2 = intValue2;
+    TwoIntNumbers(int integerNumber1, int integerNumber2) {
+	m_integerNumber1 = integerNumber1;
+	m_integerNumber2 = integerNumber2;
     }
 
-    void showNumbers() {
-	System.out.println(m_intVar1 + ", " + m_intVar2 + ".");
+    void showTwoIntNumbers() {
+	System.out.println("TwoIntNumbers: (" + m_integerNumber1 + ", " +
+			   m_integerNumber2 + ").");
     }
 
     // Silly, but simple.
@@ -24,14 +25,18 @@ class TwoNumbers {
     }
 }
 
+
+
+
+
 class Main {
     public static void main(String[] args) {
-	System.out.println("TwoNumbers.introduceYourselfClass();");
+	System.out.println("TwoIntNumbers.introduceYourselfClass();");
 
-	TwoNumbers.introduceYourselfClass();
+	TwoIntNumbers.introduceYourselfClass();
 
-	// You can see that we didn't call introduceYourselfClass() method o
-	// n the instance of the class. We didn't even created any instance
+	// You can see that we didn't call introduceYourselfClass() method of
+	// the instance of the class. We didn't even created any instance
 	// of the class! We call this method on the CLASS itself. This is why
 	// it is so important to distinguish fields and methods belonging to
 	// the instance of the class, from the methods and fields belonging
@@ -39,7 +44,7 @@ class Main {
 
 	// You can see that we cannot call showNumbers() on the class
 	// itself, it will cause an error.
-	// TwoNumbers.showNumbers();
+	// TwoIntNumbers.showTwoIntNumbers();
 	// Java will force us to distinguish methods belonging to the instance
 	// of the class, from the methods of the class itself.
     }

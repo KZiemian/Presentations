@@ -1,7 +1,11 @@
 class TwoIntNumbers {
-    int m_intVar1;
-    int m_intVar2;
+    int m_integerNumber1;
+    int m_integerNumber2;
 }
+
+
+
+
 
 class Main {
     public static void main(String[] args) {
@@ -11,11 +15,11 @@ class Main {
 	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 	TwoIntNumbers twoIntNumbersVar2 = new TwoIntNumbers();
 
-	twoIntNumbersVar1.m_intVar1 = 1;
-	twoIntNumbersVar1.m_intVar2 = 2;
+	twoIntNumbersVar1.m_integerNumber1 = 1;
+	twoIntNumbersVar1.m_integerNumber2 = 2;
 
-	twoIntNumbersVar2.m_intVar1 = 1;
-	twoIntNumbersVar2.m_intVar2 = 2;
+	twoIntNumbersVar2.m_integerNumber1 = 1;
+	twoIntNumbersVar2.m_integerNumber2 = 2;
 
 
 
@@ -23,16 +27,16 @@ class Main {
 			 "a big source of mistakes.\n\n");
 
 	System.out.println("Content of the twoIntNumbersVar1:");
-	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
-			   twoIntNumbersVar1.m_intVar1 + ",");
-	System.out.print("twoIntNumbersVar1.m_intVar2 == " +
-			   twoIntNumbersVar1.m_intVar2 + ".\n\n");
+	System.out.println("twoIntNumbersVar1.m_integerNumber1 == " +
+			   twoIntNumbersVar1.m_integerNumber1 + ",");
+	System.out.print("twoIntNumbersVar1.m_integerNumber2 == " +
+			   twoIntNumbersVar1.m_integerNumber2 + ".\n\n");
 
 	System.out.println("Content of the twoIntNumbersVar2:");
-	System.out.println("twoIntNumbersVar2.m_intVar1 == " +
-			   twoIntNumbersVar2.m_intVar1 + ",");
-	System.out.print("twoIntNumbersVar2.m_intVar2 == " +
-			   twoIntNumbersVar2.m_intVar2 + ".\n\n");
+	System.out.println("twoIntNumbersVar2.m_integerNumber1 == " +
+			   twoIntNumbersVar2.m_integerNumber1 + ",");
+	System.out.print("twoIntNumbersVar2.m_integerNumber2 == " +
+			   twoIntNumbersVar2.m_integerNumber2 + ".\n\n");
 
 
 

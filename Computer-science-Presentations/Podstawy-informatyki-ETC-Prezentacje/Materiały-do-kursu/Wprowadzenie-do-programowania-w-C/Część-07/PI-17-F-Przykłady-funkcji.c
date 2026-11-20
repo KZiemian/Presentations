@@ -13,7 +13,7 @@
  * pobierająca dwa argumenty typu int i zwracająca liczbę całkowitą,
  * czyli typu int. */
 
-int functionLiniowaDwochZmiennych(int x, int y) {
+int funkcjaLiniowaDwochZmiennych(int x, int y) {
   return x - 2 * y;
 }
 
@@ -22,7 +22,7 @@ int functionLiniowaDwochZmiennych(int x, int y) {
 /* Funkcja pobierająca trzy argumenty typu int i zwracająca liczbę całkowitą,
  * czyli typu int. Dodatkowo, funkcja ta opisuje wykonane obliczenia. */
 
-int functionLiniowaTrzechZmiennych(int x, int y, int z) {
+int funkcjaLiniowaTrzechZmiennych(int x, int y, int z) {
   int value = x + 2 * y + 3 * z;
 
   printf("%d + 2 * %d + 3 * %d == %d.\n", x, y, z, value);
@@ -35,7 +35,7 @@ int functionLiniowaTrzechZmiennych(int x, int y, int z) {
 /* Przykład funkcji, która nie pobiera żadnych argumentów, zwraca jednak
  * liczbę 4. */
 
-int functionNiePobierajacaArgumentow() {
+int funkcjaNiePobierajacaArgumentow() {
   /* Funkcji które nie pobierają argumentu należy unikać jak ognia.
    * Jednak za względu na pewne bardziej zaawansowane własności języka C,
    * takie funkcje mogą okazać się użyteczne.
@@ -59,7 +59,7 @@ int main() {
 	 "liczbaCalkowita1 = funkcjaLiniowaTrzechZmiennych(1, 2, 3).\n");
 
   /* Wartość zwracaną przez funkcję, możemy przypisać do zmiennej. */
-  liczbaCalkowita1 = funckcjaLiniowaTrzechZmiennych(1, 2, 3);
+  liczbaCalkowita1 = funkcjaLiniowaTrzechZmiennych(1, 2, 3);
 
   printf("liczbaCalkowita1 == %d.\n\n", liczbaCalkowita1);
 

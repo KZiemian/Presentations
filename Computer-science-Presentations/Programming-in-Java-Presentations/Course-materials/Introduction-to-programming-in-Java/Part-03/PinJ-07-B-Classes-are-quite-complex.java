@@ -1,6 +1,6 @@
 class TwoIntNumbers {
-    int m_intVar1;
-    int m_intVar2;
+    int m_integerNumber1;
+    int m_integerNumber2;
 }
 
 // This class is silly, but there is still a lot to talk about. Classes
@@ -28,6 +28,8 @@ class TwoIntNumbers {
 // Unfortunately it is, but we will talk about it later. For a moment,
 // think that this class has only two numbers inside.
 
+
+
 class Main {
     public static void main(String[] args) {
 
@@ -50,23 +52,24 @@ class Main {
 	// according to the blueprint of the class TwoNumbers.
 
 	System.out.print("Instructions:\n" +
-			 "twoIntNumbersVar1.m_intVar1 = 1;\n" +
-			 "twoIntNubmersVar1.m_intVar2 = 2;\n\n");
-	twoIntNumbersVar1.m_intVar1 = 1;
-	twoIntNumbersVar1.m_intVar2 = 2;
+			 "twoIntNumbersVar1.m_integerNumber1 = 1;\n" +
+			 "twoIntNubmersVar1.m_integerNumber2 = 2;\n\n");
+	twoIntNumbersVar1.m_integerNumber1 = 1;
+	twoIntNumbersVar1.m_integerNumber2 = 2;
 
 	// In Java we use "dot notation". If object twoIntNumbersVar1 has
-	// field of the name m_intVar1 we can access this field writing
-	// twoIntNumbersVar1.m_intVar1
+	// field of the name m_integerNumber1 we can access this field
+	// by writing instruction
+	// twoIntNumbersVar1.m_integerNumber1
 	// Outside that, fields behave much like plain variables. But, of
 	// course, there must be a catch and we will talk about it.
 
 	// This "dot notation" partially explains what System.out.println()
 	// means. But this is still only a partial explanation.
 
-	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
-			   twoIntNumbersVar1.m_intVar1 + ".");
-	System.out.println("twoIntNumbersVar1.m_intVar2 == " +
-			   twoIntNumbersVar1.m_intVar2 + ".");
+	System.out.println("twoIntNumbersVar1.m_integerNumber1 == " +
+			   twoIntNumbersVar1.m_integerNumber1 + ".");
+	System.out.println("twoIntNumbersVar1.m_integerNumber2 == " +
+			   twoIntNumbersVar1.m_integerNumber2 + ".");
     }
 }

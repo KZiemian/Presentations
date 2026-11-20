@@ -1,7 +1,11 @@
 class TwoIntNumbers {
-    int m_intVar1;
-    int m_intVar2;
+    int m_integerNumber1;
+    int m_integerNumber2;
 }
+
+
+
+
 
 class Main {
     public static void main(String[] args) {
@@ -14,48 +18,48 @@ class Main {
 			 "illustrates what it means.\n\n");
 
 	System.out.print("Instructions:\n" +
-			 "twoIntNumbersVar1.m_intVar1 = 1;\n" +
-			 "twoIntNumbersVar1.m_intVar2 = 2;\n" +
-			 "twoIntNumbersVar2.m_intVar1 = 7;\n" +
-			 "twoIntNumbersVar2.m_intVar2 = 9;\n\n");
+			 "twoIntNumbersVar1.m_integerNumber1 = 1;\n" +
+			 "twoIntNumbersVar1.m_integerNumber2 = 2;\n" +
+			 "twoIntNumbersVar2.m_integerNumber1 = 7;\n" +
+			 "twoIntNumbersVar2.m_integerNumber2 = 9;\n\n");
 
-	twoIntNumbersVar1.m_intVar1 = 1;
-	twoIntNumbersVar1.m_intVar2 = 2;
+	twoIntNumbersVar1.m_integerNumber1 = 1;
+	twoIntNumbersVar1.m_integerNumber2 = 2;
 
-	twoIntNumbersVar2.m_intVar1 = 7;
-	twoIntNumbersVar2.m_intVar2 = 9;
+	twoIntNumbersVar2.m_integerNumber1 = 7;
+	twoIntNumbersVar2.m_integerNumber2 = 9;
 
 	System.out.println("Results.");
-	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
-			   twoIntNumbersVar1.m_intVar1 + ".");
-	System.out.print("twoIntNumbersVar1.m_intVar2 == " +
-			 twoIntNumbersVar1.m_intVar2 + ".\n\n");
+	System.out.println("twoIntNumbersVar1.m_integerNumber1 == " +
+			   twoIntNumbersVar1.m_integerNumber1 + ".");
+	System.out.print("twoIntNumbersVar1.m_integerNumber2 == " +
+			 twoIntNumbersVar1.m_integerNumber2 + ".\n\n");
 
-	System.out.println("twoIntNumbersVar2.m_intVar1 == " +
-			   twoIntNumbersVar2.m_intVar1 + ".");
-	System.out.print("twoIntNumbersVar2.m_intVar2 == " +
-			 twoIntNumbersVar2.m_intVar2 + ".\n\n");
+	System.out.println("twoIntNumbersVar2.m_integerNumber1 == " +
+			   twoIntNumbersVar2.m_integerNumber1 + ".");
+	System.out.print("twoIntNumbersVar2.m_integerNumber2 == " +
+			 twoIntNumbersVar2.m_integerNumber2 + ".\n\n");
 
 	System.out.print("Instructions:\n" +
 			 "twoIntNumbersVar2 = twoIntNumbersVar1;\n" +
-			 "twoIntNumbersVar1.m_intVar1 = 3;\n" +
-			 "twoIntNumbersVar1.m_intVar2 = 4;\n\n");
+			 "twoIntNumbersVar1.m_integerNumber1 = 3;\n" +
+			 "twoIntNumbersVar1.m_integerNumber2 = 4;\n\n");
 
 	twoIntNumbersVar2 = twoIntNumbersVar1;
 
-	twoIntNumbersVar1.m_intVar1 = 3;
-	twoIntNumbersVar1.m_intVar2 = 4;
+	twoIntNumbersVar1.m_integerNumber1 = 3;
+	twoIntNumbersVar1.m_integerNumber2 = 4;
 
 	System.out.println("Results.");
-	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
-			   twoIntNumbersVar1.m_intVar1 + ".");
-	System.out.print("twoIntNumbersVar1.m_intVar2 == " +
-			 twoIntNumbersVar1.m_intVar2 + ".\n\n");
+	System.out.println("twoIntNumbersVar1.m_integerNumber1 == " +
+			   twoIntNumbersVar1.m_integerNumber1 + ".");
+	System.out.print("twoIntNumbersVar1.m_integerNumber2 == " +
+			 twoIntNumbersVar1.m_integerNumber2 + ".\n\n");
 
-	System.out.println("twoIntNumbersVar2.m_intVar1 == " +
-			   twoIntNumbersVar2.m_intVar1 + ".");
-	System.out.print("twoIntNumbersVar2.m_intVar2 == " +
-			 twoIntNumbersVar2.m_intVar2 + ".\n\n\n\n");
+	System.out.println("twoIntNumbersVar2.m_integerNumber1 == " +
+			   twoIntNumbersVar2.m_integerNumber1 + ".");
+	System.out.print("twoIntNumbersVar2.m_integerNumber2 == " +
+			 twoIntNumbersVar2.m_integerNumber2 + ".\n\n\n\n");
 
 
 
@@ -77,7 +81,7 @@ class Main {
 
 	System.out.print("As a result, when we assigned one variable " +
 			 "to the other, i.e. we	wrote something like\n" +
-			 "intVar1 = intVar2;\n" +
+			 "integerNumber1 = integerNumber2;\n" +
 			 "result depends on the type of used " +
 			 "variables. If the type of both variables is " +
 			 "one of the basic types (boolean, int, float, " +

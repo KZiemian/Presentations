@@ -1,6 +1,6 @@
 class TwoIntNumbers {
-    int m_intVar1;
-    int m_intVar2;
+    int m_integerNumber1;
+    int m_integerNumber2;
 }
 
 class BasicTypesClass {
@@ -21,6 +21,10 @@ class BasicTypesClass {
     float m_floatField;
 }
 
+
+
+
+
 class Main {
     public static void main(String[] args) {
 	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
@@ -30,10 +34,10 @@ class Main {
 			 "But fields of the class instance are treated " +
 			 "in a special way.\n\n");
 
-	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
-			   twoIntNumbersVar1.m_intVar1 + ".");
-	System.out.print("twoIntNumbersVar1.m_intVar2 == " +
-			   twoIntNumbersVar1.m_intVar2 + ".\n\n");
+	System.out.println("twoIntNumbersVar1.m_integerNumber1 == " +
+			   twoIntNumbersVar1.m_integerNumber1 + ".");
+	System.out.print("twoIntNumbersVar1.m_integerNumber2 == " +
+			   twoIntNumbersVar1.m_integerNumber2 + ".\n\n");
 
 	System.out.print("When an instance of the class is created " +
 			 "and we didn't give Java any information about " +

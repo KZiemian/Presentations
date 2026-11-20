@@ -2,35 +2,37 @@
 // property of static parts of the class. Why must life be so complicated?
 
 // We again use a silly, but simple example.
-class TwoNumbersAndOneStatic {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbersAndOneStatic {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
-    static int m_staticIntVar1;
+    static int m_staticIntegerNumber1;
 
-    TwoNumbersAndOneStatic(int intValue1, int intValue2) {
-	m_intVar1 = intValue1;
-	m_intVar2 = intValue2;
+    TwoIntNumbersAndOneStatic(int integerNumber1, int integerNumber2) {
+	m_integerNumber1 = integerNumber1;
+	m_integerNumber2 = integerNumber2;
     }
 
-    void showNumbers() {
-	System.out.print(m_intVar1 + ", " + m_intVar2 + ". ");
-	System.out.print("m_staticIntVar1 == " + m_staticIntVar1 + ".");
+    void showTwoIntNumbersAndOneStatic() {
+	System.out.print("TwoIntNumbers: (" + m_integerNumber1 + ", " +
+			 m_integerNumber2 + "). ");
+	System.out.print("One static number: " + m_staticIntegerNumber1 +
+			 ".");
     }
 }
 
 class Main {
     public static void main(String[] args) {
-	TwoNumbersAndOneStatic twoNumbersAndOneStaticVar1 =
-	    new TwoNumbersAndOneStatic(1, 2);
-	TwoNumbersAndOneStatic twoNumbersAndOneStaticVar2 =
-	    new TwoNumbersAndOneStatic(3, 4);
+	TwoIntNumbersAndOneStatic twoIntNumbersAndOneStaticVar1 =
+	    new TwoIntNumbersAndOneStatic(1, 2);
+	TwoIntNumbersAndOneStatic twoIntNumbersAndOneStaticVar2 =
+	    new TwoIntNumbersAndOneStatic(3, 4);
 
-	System.out.print("twoNumbersAndOneStaticVar1: ");
-	twoNumbersAndOneStaticVar1.showNumbers();
+	System.out.print("twoIntNumbersAndOneStaticVar1: ");
+	twoIntNumbersAndOneStaticVar1.showTwoIntNumbersAndOneStatic();
 
 	System.out.print("\ntwoNumbersAndOneStaticVar2: ");
-	twoNumbersAndOneStaticVar2.showNumbers();
+	twoIntNumbersAndOneStaticVar2.showTwoIntNumbersAndOneStatic();
 
 	// Code above shows that, what we see many times before, that
 	// standard fields belong to every INSTANCE of the class
@@ -41,20 +43,22 @@ class Main {
 	// There is only one copy of the static variable and can be accessed
 	// by all instances of the class.
 
-	System.out.println("\nWe now change the static field of the class " +
-			   "TwoNumbersAndOneStatic.");
-	twoNumbersAndOneStaticVar1.m_staticIntVar1 = 5;
+	System.out.println("\n" + "We now change the static field of " +
+			   "the class TwoIntNumbersAndOneStatic.");
+	twoIntNumbersAndOneStaticVar1.m_staticIntegerNumber1 = 5;
 
-	System.out.print("\ntwoNumbersAndOneStaticVar1: ");
-	twoNumbersAndOneStaticVar1.showNumbers();
+	System.out.print("\n" + "twoIntNumbersAndOneStaticVar1: ");
+	twoIntNumbersAndOneStaticVar1.showTwoIntNumbersAndOneStatic();
 
-	System.out.print("\ntwoNumbersAndOneStaticVar2: ");
-	twoNumbersAndOneStaticVar2.showNumbers();
+	System.out.print("\n" + "twoNumbersAndOneStaticVar2: ");
+	twoIntNumbersAndOneStaticVar2.showTwoIntNumbersAndOneStatic();
 
-	System.out.println("\n\nYou can of course access static fields " +
-			   "directly by the class.");
-	System.out.println("twoNumbersAndOneStatic.m_staticIntVar1: " +
-			   TwoNumbersAndOneStatic.m_staticIntVar1 + ".");
+	System.out.println("\n\n" + "You can of course access static " +
+			   "fields directly by the class.");
+	System.out.println("twoIntNumbersAndOneStatic." +
+			   "m_staticIntegerNumber: " +
+			   twoIntNumbersAndOneStaticVar1.
+			   m_staticIntegerNumber1 + ".");
     }
 }
 

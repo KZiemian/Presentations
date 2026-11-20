@@ -149,8 +149,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-10-D.out"
-text_file_to_clean_up="prog-10-D-Text-output.txt"
+executable_file_to_clean_up="prog-17-E.out"
+text_file_to_clean_up="Text-output-17-E.txt"
 
 
 if [[ $run_code == "true" ]]; then
@@ -164,8 +164,8 @@ fi
 ##################################################
 run_code="true"
 # run_code="false"
-executable_file_to_clean_up="prog-08-B.out"
-text_file_to_clean_up="prog-08-B-Text-output.txt"
+executable_file_to_clean_up="prog-17-F.out"
+text_file_to_clean_up="Text-output-17-F.txt"
 
 
 if [[ $run_code == "true" ]]; then

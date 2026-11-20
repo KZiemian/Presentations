@@ -32,7 +32,7 @@ class Main {
 			 "between C, C++ and Java. In the case of first " +
 			 "two languages you can use \",\" as operator " +
 			 "in instructions like this:\n" +
-			 "intVar1 = 1, intVar2 = 2;\n" +
+			 "integerNumber1 = 1, integerNumber2 = 2;\n" +
 			 "Comma just separates these two instructions, " +
 			 "allowing them to be parts of one expression. " +
 			 "But, in Java this is forbidden. You can ONLY " +

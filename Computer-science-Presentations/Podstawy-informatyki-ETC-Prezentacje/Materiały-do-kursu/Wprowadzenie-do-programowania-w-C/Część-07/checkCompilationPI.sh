@@ -235,3 +235,49 @@ elif [[ $run_code != "false" ]]; then
 
     exit 1
 fi
+
+
+
+
+
+##################################################
+# run_code="true"
+run_code="false"
+go_file_name="PI-17-E-Język-Go-jest-prostszy-w-czystaniu.go"
+save_output_text="true"
+text_output_file_name="Text-output-17-E.txt"
+
+
+
+if [[ $run_code == "true" ]]; then
+    go run $go_file_name >> $text_output_file_name
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for Go file $c_file_name we have" \
+	 "wrong value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi
+
+
+
+
+
+##################################################
+run_code="true"
+# run_code="false"
+c_file_name="PI-17-F-Przykłady-funkcji.c"
+executable_output_file_name="prog-17-F.out"
+save_output_text="true"
+text_output_file_name="Text-output-17-F.txt"
+
+
+
+if [[ $run_code == "true" ]]; then
+    manage_a_C_program_PI $c_file_name $executable_output_file_name \
+			  $save_output_text $text_output_file_name
+elif [[ $run_code != "false" ]]; then
+    echo -e "ERROR. In the BASH code for C file $c_file_name we have wrong" \
+	 "value of \"run_code\" variable: \"$run_code\".\n"
+
+    exit 1
+fi

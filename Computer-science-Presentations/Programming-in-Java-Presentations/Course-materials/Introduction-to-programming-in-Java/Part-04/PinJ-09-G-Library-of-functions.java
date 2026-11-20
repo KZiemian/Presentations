@@ -24,7 +24,9 @@ class Main {
 	}
 
 	// We add empty line for better readability.
-	System.out.println("");
+	System.out.print("\n");
+
+
 
 	x = 0.0;
 

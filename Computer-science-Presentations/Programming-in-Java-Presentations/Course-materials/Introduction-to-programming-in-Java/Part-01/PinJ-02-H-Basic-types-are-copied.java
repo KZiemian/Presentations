@@ -8,31 +8,33 @@ class Main {
 	// If you don't understand what this mean, please, give us some
 	// time to explain it.
 
-	int intVar1 = 0;
-	int intVar2 = 1;
+	int integerNumber1 = 0;
+	int integerNumber2 = 1;
 
-	System.out.println("intVar1 == " + intVar1 + ".");
-	System.out.print("intVar2 == " + intVar2 + ".\n\n");
+	System.out.println("integerNumber1 == " + integerNumber1 + ".");
+	System.out.print("integerNumber2 == " + integerNumber2 + ".\n\n");
 
-	System.out.print("Number 1 is COPIED from intVar2 to intVar1." +
-			 "As such, values that these two variables " +
-			 "contain are independent, as we expected.\n\n");
+	System.out.print("Number 1 is COPIED from integerNumber2 to " +
+			 "integerNumber1. As such, values that these two " +
+			 " variables contain are independent, as we " +
+			 "expected.\n\n");
 
-	System.out.println("Instruction: intVar1 = intVar2;");
-	intVar1 = intVar2;
+	System.out.println("Instruction: integerNumber1 = integerNumber2;");
+	integerNumber1 = integerNumber2;
 
-	System.out.println("intVar1 == " + intVar1 + ".");
-	System.out.print("intVar2 == " + intVar2 + ".\n\n");
+	System.out.println("integerNumber1 == " + integerNumber1 + ".");
+	System.out.print("integerNumber2 == " + integerNumber2 + ".\n\n");
 
-	System.out.println("Instruction: intVar2 = 7;");
-	intVar2 = 7;
+	System.out.println("Instruction: integerNumber2 = 7;");
+	integerNumber2 = 7;
 
-	System.out.println("intVar1 == " + intVar1 + ".");
-	System.out.print("intVar2 == " + intVar2 + ".\n\n");
+	System.out.println("integerNumber1 == " + integerNumber1 + ".");
+	System.out.print("integerNumber2 == " + integerNumber2 + ".\n\n");
 
-	System.out.print("As we can see, changing the value of intVar2 " +
-			 "has no influence on value of intVar1, because " +
-			 "we COPIED the value from intVar2 to intVar1.\n\n");
+	System.out.print("As we can see, changing the value of " +
+			 "integerNumber2 has no influence on value of " +
+			 "integerNumber1, because we COPIED the value from " +
+			 "integerNumber2 to integerNumber1.\n\n");
 
 	System.out.println("One may think \"This is the only thing that " +
 			   "makes sense here.\", but in computer " +

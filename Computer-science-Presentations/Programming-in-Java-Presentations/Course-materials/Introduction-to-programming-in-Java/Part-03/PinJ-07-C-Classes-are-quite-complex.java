@@ -5,9 +5,13 @@
 // in Java.
 
 class TwoIntNumbers {
-    int m_intVar1;
-    int m_intVar2;
+    int m_integerNumber1;
+    int m_integerNumber2;
 }
+
+
+
+
 
 class Main {
     public static void main(String[] args) {
@@ -15,26 +19,26 @@ class Main {
 	TwoIntNumbers twoIntNumbersVar2 = new TwoIntNumbers();
 
 	System.out.print("Instructions:\n" +
-			 "twoIntNumbersVar1.m_intVar1 = 1;\n" +
-			 "twoIntNumbersVar2.m_intVar2 = 2;\n\n");
-	twoIntNumbersVar1.m_intVar1 = 1;
-	twoIntNumbersVar1.m_intVar2 = 2;
+			 "twoIntNumbersVar1.m_integerNumber1 = 1;\n" +
+			 "twoIntNumbersVar2.m_integerNumber2 = 2;\n\n");
+	twoIntNumbersVar1.m_integerNumber1 = 1;
+	twoIntNumbersVar1.m_integerNumber2 = 2;
 
 	System.out.print("Instructions:\n" +
-			 "twoIntNumbersVar2.m_intVar1 = 7;\n" +
-			 "twoIntNumbersVar2.m_intVar2 = 9;\n\n");
-	twoIntNumbersVar2.m_intVar1 = 7;
-	twoIntNumbersVar2.m_intVar2 = 9;
+			 "twoIntNumbersVar2.m_integerNumber1 = 7;\n" +
+			 "twoIntNumbersVar2.m_integerNumber2 = 9;\n\n");
+	twoIntNumbersVar2.m_integerNumber1 = 7;
+	twoIntNumbersVar2.m_integerNumber2 = 9;
 
-	System.out.println("twoIntNumbersVar1.m_intVar1 == " +
-			   twoIntNumbersVar1.m_intVar1 + ".");
-	System.out.println("twoIntNumbersVar1.m_intVar2 == " +
-			   twoIntNumbersVar1.m_intVar2 + ".");
+	System.out.println("twoIntNumbersVar1.m_integerNumber1 == " +
+			   twoIntNumbersVar1.m_integerNumber1 + ".");
+	System.out.println("twoIntNumbersVar1.m_integerNumber2 == " +
+			   twoIntNumbersVar1.m_integerNumber2 + ".");
 
-	System.out.println("\ntwoIntNumbersVar2.m_intVar1 == " +
-			   twoIntNumbersVar2.m_intVar1 + ".");
-	System.out.print("twoIntNumbersVar2.m_intVar2 == " +
-			   twoIntNumbersVar2.m_intVar2 + ".\n\n");
+	System.out.println("\ntwoIntNumbersVar2.m_integerNumber1 == " +
+			   twoIntNumbersVar2.m_integerNumber1 + ".");
+	System.out.print("twoIntNumbersVar2.m_integerNumber2 == " +
+			   twoIntNumbersVar2.m_integerNumber2 + ".\n\n");
 
 	System.out.print("This example shows that every instance of " +
 			 "the class has its own set of fields.\n\n" +

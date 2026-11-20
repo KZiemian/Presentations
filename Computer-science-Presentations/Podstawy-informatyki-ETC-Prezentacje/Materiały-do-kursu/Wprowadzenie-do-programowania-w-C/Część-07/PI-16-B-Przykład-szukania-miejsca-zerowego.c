@@ -2,9 +2,9 @@
 
 /* Żeby zilustrować wykorzystanie pętli i instrukcji takich jak break,
  * za ich pomocą poszukamy miejsca zerowego funkcji
- * functionMath(x) = cos(x) - x
+ * funkcjaMatematyczna(x) = cos(x) - x
  * Ale po co nam wiedza, dla jakiego x jest prawdą, że
- * function(x) = cos(x) - x = 0
+ * funkcjaMatematyczna(x) = cos(x) - x = 0
  * Dobre pytanie. Wbrew pozorom w wielu praktycznych problemach
  * inżynieryjnych, ważne jest szukanie miejsc zerowych funkcji.
  * Ale i tak nie jest to najlepsza motywacja na kurs „Podstawy
@@ -25,8 +25,8 @@ int main() {
 
   /* Metoda znalezienia miejsca zerowego funkcji której użyjemy, będzie
    * bardzo naiwna, ale dla nas wystarczająca. Zaczynamy od tego, że
-   * function(0.0) = cos(0.0) - 0.0 = 1.0 > 0,
-   * function(pi/2.0) = cos(pi/2.0) - pi/2.0 = -pi/2.0 ~ -1.57 < 0.
+   * funkcjaMatematyczna(0.0) = cos(0.0) - 0.0 = 1.0 > 0,
+   * funkcjaMatematyczna(pi/2.0) = cos(pi/2.0) - pi/2.0 = -pi/2.0 ~ -1.57 < 0.
    * Symbolu „~” używamy w znaczeniu „w przybliżeniu równe”.
    *
    * Pewne twierdzenie matematyczne mówi, że funkcja tego typu, która
@@ -41,9 +41,12 @@ int main() {
    * Po angielsku takie metody noszą nazwę „brute force method”. Po polskiemu
    * „metody przez brutalną siłę”, albo „metoda Nachamowa” ;). */
 
+  /* Zmienne nazywamy „x” i „y”, bo to standardowe nazwy tych wielkości
+   * w matematyce, więc program powinien być prosty w zrozumieniu. */
+
   double x = 0.0;
   double y = 0.0;
-  double step = 0.01;
+  double krokMetody = 0.01;
 
 
 
@@ -54,7 +57,7 @@ int main() {
       break;
     }
 
-    x += step;
+    x += krokMetody;
   }
 
   printf("x == %.3f.\n", x);

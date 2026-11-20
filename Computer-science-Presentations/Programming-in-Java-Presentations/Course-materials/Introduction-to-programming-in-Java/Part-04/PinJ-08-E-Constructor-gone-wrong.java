@@ -2,25 +2,29 @@
 // but simple, class. Two numbers version 1, two numbers version 2
 // and two numbers version 3. This time we need TwoNumbersVerTwo.
 
-class TwoNumbersVerTwo {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbersVerTwo {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
     // You can create a constructor that takes no arguments and does nothing
     // useful, but this is a very bad idea. We mention it, because you CAN
     // see such code in various learning materials for Java. Please, don't
     // follow them in this respect.
 
-    TwoNumbersVerTwo() {
+    TwoIntNumbersVerTwo() {
 	System.out.println("We are now running a totally useless " +
-			   "constructor of class TwoNumbersVerTwo.");
+			   "constructor of class TwoIntNumbersVerTwo.");
     }
 
-    void showNumbers() {
-	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
-			   ").");
+    void showTwoIntNumbersVerTWo() {
+	System.out.println("TwoIntNumbersVerTwo: (" + m_integerNumber1 +
+			   ", " + m_integerNumber2 + ").");
     }
 }
+
+
+
+
 
 class Main {
     public static void main(String[] args) {
@@ -29,8 +33,10 @@ class Main {
 	// This code is very stupid, but it works and this is all the deal.
 	// You shouldn't never, ever write such code.
 
-	TwoNumbersVerTwo twoNumbersVerTwoVar1 = new TwoNumbersVerTwo();
-	TwoNumbersVerTwo twoNumbersVerTwoVar2 = new TwoNumbersVerTwo();
+	TwoIntNumbersVerTwo twoIntNumbersVerTwoVar1 =
+	    new TwoIntNumbersVerTwo();
+	TwoIntNumbersVerTwo twoIntNumbersVerTwoVar2 =
+	    new TwoIntNumbersVerTwo();
 
 	System.out.print("\nCode after defining variables.\n\n");
 

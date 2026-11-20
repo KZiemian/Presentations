@@ -2,28 +2,32 @@
 // but simple, class. Two numbers version 1, two numbers version 2
 // and two numbers version 3.
 
-class TwoNumbersVerThree {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbersVerThree {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
     // You can define multiple constructors for a single class. Which is both
     // very useful and totally confusing.
 
-    TwoNumbersVerThree() {
-	m_intVar1 = 1;
-	m_intVar2 = 2;
+    TwoIntNumbersVerThree() {
+	m_integerNumber1 = 1;
+	m_integerNumber2 = 2;
     }
 
-    TwoNumbersVerThree(int intValue1, int intValue2) {
-	m_intVar1 = intValue1;
-	m_intVar2 = intValue2;
+    TwoIntNumbersVerThree(int integerNumber1, int integerNumber2) {
+	m_integerNumber1 = integerNumber1;
+	m_integerNumber2 = integerNumber2;
     }
 
-    void showNumbers() {
-	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
-			   ").");
+    void showTwoIntNumbersVerThree() {
+	System.out.println("TwoIntNumbersVerThree: (" +
+			   m_integerNumber1 + ", " + m_integerNumber2 + ").");
     }
 }
+
+
+
+
 
 class Main {
     public static void main(String[] args) {
@@ -31,14 +35,15 @@ class Main {
 	// Constructors are identified by the number of arguments that they
 	// take. And a few other things, about which we will not talk.
 
-	TwoNumbersVerThree twoNumbersVerThreeVar1 = new TwoNumbersVerThree();
-	TwoNumbersVerThree twoNumbersVerThreeVar2 =
-	    new TwoNumbersVerThree(3, 4);
+	TwoIntNumbersVerThree twoIntNumbersVerThreeVar1 =
+	    new TwoIntNumbersVerThree();
+	TwoIntNumbersVerThree twoIntNumbersVerThreeVar2 =
+	    new TwoIntNumbersVerThree(3, 4);
 
-	System.out.print("twoNumbersVerThreeVar1: ");
-	twoNumbersVerThreeVar1.showNumbers();
-	System.out.print("twoNumbersVerThreeVar2: ");
-	twoNumbersVerThreeVar2.showNumbers();
+	System.out.print("twoIntNumbersVerThreeVar1: ");
+	twoIntNumbersVerThreeVar1.showTwoIntNumbersVerThree();
+	System.out.print("twoIntNumbersVerThreeVar2: ");
+	twoIntNumbersVerThreeVar2.showTwoIntNumbersVerThree();
 
 	// Creating multiple constructors is a special case of the method
 	// overloading, which is a great way to create code that no one

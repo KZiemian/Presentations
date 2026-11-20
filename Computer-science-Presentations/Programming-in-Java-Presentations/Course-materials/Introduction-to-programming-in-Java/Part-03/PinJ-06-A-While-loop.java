@@ -16,7 +16,7 @@ class Main {
 
 
 	while (i < 5) {
-	    System.out.println("intVar1 == " + i + ".");
+	    System.out.println("Loop iterations: " + i + ".");
 
 	    i++;
 	}

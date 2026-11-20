@@ -5,25 +5,28 @@
 // To make things simpler, we will create three versions of our silly,
 // but simple, class. Two numbers version 1, two numbers version 2
 // and two numbers version 3. For now, we only need class TwoNumbersVerOne.
-class TwoNumbersVerOne {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbersVerOne {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
-    void showNumbers() {
-	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
-			   ").");
+    void showTwoIntNumbers() {
+	System.out.println("TwoIntNumbers: (" + m_integerNumber1 + ", " +
+			   m_integerNumber2 + ").");
     }
 }
 
 
 
+
+
 class Main {
     public static void main(String[] args) {
-	TwoNumbersVerOne twoNumbersVerOneVar1 = new TwoNumbersVerOne();
+	TwoIntNumbersVerOne twoIntNumbersVerOneVar1 =
+	    new TwoIntNumbersVerOne();
 
 	// We can now understood better, why when creating instance of the
 	// class, we wrote
-	// new TwoNumbersVerOne();
+	// new TwoIntNumbersVerOne();
 	// We were calling the constructor of the class to set up our new
 	// object.
 	//
@@ -33,17 +36,17 @@ class Main {
 	// constructor for us. We won't dig down what default constructor
 	// do, we just mention that it is responsible for "zeroing fields".
 
-	System.out.println("twoNumbersVerOne.m_intVar1 == " +
-			   twoNumbersVerOneVar1.m_intVar1 + ".");
-	System.out.println("twoNumbersVerOne.m_intVar2 == " +
-			   twoNumbersVerOneVar1.m_intVar2 + ".");
+	System.out.println("twoIntNumbersVerOne.m_integerNumber1 == " +
+			   twoIntNumbersVerOneVar1.m_integerNumber1 + ".");
+	System.out.println("twoIntNumbersVerOne.m_integerNumber2 == " +
+			   twoIntNumbersVerOneVar1.m_integerNumber2 + ".");
 
 	// It should be quite clear that the default constructor doesn't
 	// take any arguments, because Java doesn't know how to use such
 	// additional data. To see it, compare line
-	// new TwoNumbersVerOne();
+	// new TwoIntNumbersVerOne();
 	// with what we had before:
-	// new TwoNumbers(1, 2);
+	// new TwoIntNumbers(1, 2);
 	//
 	// How can we describe the role of a constructor? Everytime when we
 	// want to create object of class computer give us a part of
@@ -55,9 +58,10 @@ class Main {
 	//
 	// We again want to stress that the constructor NEVER returns any
 	// value. We can think that in the instruction
-	// TwoNumbersVerOne twoNumbersVerOneVar1 = new TwoNumberVerOne();
+	// TwoIntNumbersVerOne twoIntNumbersVerOneVar1 = new
+	//     TwoIntNumberVerOne();
 	// the "new" word is what tells the instruction
-	// new TwoNumberVerOne()
+	// new TwoIntNumberVerOne()
 	// to return reference to our class instance. And this return
 	// reference is then stored in the variable twoNumbersVerOneVar1.
 	// Why must life be so complicated?

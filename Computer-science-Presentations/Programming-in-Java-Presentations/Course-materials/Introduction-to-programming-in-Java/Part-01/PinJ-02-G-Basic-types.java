@@ -5,10 +5,10 @@ class Main {
 	// make a short introduction to some of them.
 
 	// Standard integer numbers.
-	int intVar1 = 10;
+	int integerNumber1 = 10;
 
 	System.out.println("Type int is standard integer type.");
-	System.out.print("intVar1 == " + intVar1 + ".\n\n\n");
+	System.out.print("integerNumber1 == " + integerNumber1 + ".\n\n\n");
 
 
 
@@ -32,34 +32,41 @@ class Main {
 
 
 	// Floating-point numbers, single precision (32-bit).
-	float float32Var1 = 0.5F;
+	float floatNumber32Var1 = 0.5F;
+
+	// We decided to name this variable floatNumber32Var1, since full
+	// name „floating-point number on 32 bits” is long and inconvinient
+	// to use.
 
 	System.out.println("Type float stores floating-point numbers " +
 			   "using 32 bits.");
-	System.out.print("float32Var1 == " + float32Var1 + ".\n\n");
+	System.out.print("floatNumber32Var1 == " + floatNumber32Var1 +
+			 ".\n\n");
 
 	// Note "F" in "0.5F". It is needed, since without it, "0.0" would
 	// be interpreted as double precision floating-point number,
 	// 64-bits of length.
 	//
 	// You can also use a small "f".
-	float32Var1 = 0.75f;
+	floatNumber32Var1 = 0.75f;
 
 	System.out.println("In Java, if you want to use a 32 bit long " +
 			   "floating-point number, you must end it " +
 			   "by \"F\" or \"f\": 0.5F, 0.75f.");
 	System.out.println("In any other case, Java will store such " +
 			   "numbers using 64 bits.");
-	System.out.print("float32Var1 == " + float32Var1 + ".\n\n\n");
+	System.out.print("floatNumber32Var1 == " + floatNumber32Var1 +
+			 ".\n\n\n");
 
 
 
 	// Floating-point numbers, double precision (64-bit).
-	double float64Var1 = 0.7;
+	double floatNumber64Var1 = 0.7;
 
 	System.out.println("Type double stores floating-point numbers " +
 			   "using 64 bits.");
-	System.out.print("float64Var1 == " + float64Var1 + ".\n\n\n");
+	System.out.print("floatNumber64Var1 == " + floatNumber64Var1 +
+			 ".\n\n\n");
 
 
 
@@ -78,32 +85,32 @@ class Main {
 
 	// Chars in Java represent single characters and as in C and C++
 	// they have a numerical side.
-	char charVar1 = 'a';
+	char character1 = 'a';
 
 	System.out.println("Type char stores, as names suggest, single " +
 			   "char.");
-	System.out.println("charVar1 == " + charVar1 + ".");
+	System.out.println("character1 == " + character1 + ".");
 
-	System.out.println("Instruction: charVar1 = 65;");
-	charVar1 = 65;
+	System.out.println("Instruction: character1 = 65;");
+	character1 = 65;
 
-	System.out.println("charVar1 == " + charVar1 + ".");
+	System.out.println("character1 == " + character1 + ".");
 
 	// Line below is forbidden in Java and this is a good thing.
-	// charVar1 = 'a' + intVar1;
+	// character1 = 'a' + integerNumber1;
 
 	System.out.println("Java by design supports Unicode, " +
 			   "so these lines are also valid.");
-	System.out.println("Instruction: charVar1 = 333;");
-	charVar1 = 333;
+	System.out.println("Instruction: character1 = 333;");
+	character1 = 333;
 
-	System.out.println("charVar1 == " + charVar1 + ".");
+	System.out.println("character1 == " + character1 + ".");
 
 	System.out.println("This also works in Java.");
-	System.out.println("Instruction: charVar1 = '\\u00AB';");
-	charVar1 = '\u00AB';
+	System.out.println("Instruction: character1 = '\\u00AB';");
+	character1 = '\u00AB';
 
-	System.out.print("charVar1 == " + charVar1 + ".\n\n");
+	System.out.print("character1 == " + character1 + ".\n\n");
 
 	System.out.print("For the record, Unicode is a system of " +
 			 "defining and classifying characters. It is " +

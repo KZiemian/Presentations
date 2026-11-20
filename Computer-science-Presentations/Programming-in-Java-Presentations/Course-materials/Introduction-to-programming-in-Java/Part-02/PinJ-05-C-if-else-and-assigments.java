@@ -2,20 +2,24 @@ class Main {
     public static void main(String[] args) {
 
 	// Code below doesn't work and this is a good thing. The expression
-	// intVar1 = intVar2
+	// integerNumber1 = integerNumber2
 	// produces value of type int and it cannot be used to evaluate
 	// condition in the if statement. Because condition in if accepts
 	// only values of the boolean type.
-	//
-	// int intVar1 = 0;
-	// int intVar2 = 1;
-	//
-	// if (intVar1 = intVar2) {
+
+
+
+	// int integerNumber1 = 0;
+	// int integerNumber2 = 1;
+
+	// if (integerNumber1 = integerNumber2) {
 	//     System.out.println("Both variables have value " +
-	// 		       intVar1 + ".");
+	// 		       integerNumber1 + ".");
 	// } else {
-	//     System.out.println("intVar1 == " + intVar1 + ".");
-	//     System.out.println("intVar2 == " + intVar2 + ".");
+	//     System.out.println("integerNumber1 == " + integerNumber1 +
+	// 		       ".");
+	//     System.out.println("integerNumber2 == " + integerNumber2 +
+	// 		       ".");
 	// }
 
 
@@ -43,6 +47,6 @@ class Main {
 			 "boolVar1 = false\n" +
 			 "returns false. It should be clear that putting " +
 			 "assignments inside conditions is a very bad " +
-			 "idea.");
+			 "idea.\n");
     }
 }

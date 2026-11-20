@@ -20,23 +20,23 @@ class Main {
 
 
 
-	int intVar1 = 0;
+	int integerNumber1 = 0;
 
 	System.out.println("We go inside the while loop.");
 
-	while (intVar1 < 50) {
+	while (integerNumber1 < 50) {
 
 	    // Remember to check that your loop will end at some point.
 
-	    intVar1++;
+	    integerNumber1++;
 
-	    if ((intVar1 % 9) != 0) {
+	    if ((integerNumber1 % 9) != 0) {
 		System.out.println("Instruction: continue;");
 
 		continue;
 	    }
 
-	    System.out.println("intVar1 == " + intVar1 + ".");
+	    System.out.println("integerNumber1 == " + integerNumber1 + ".");
 	}
     }
 }

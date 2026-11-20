@@ -24,43 +24,47 @@
 // We go back to the silly, but very simple class.
 
 class TwoIntNumbers {
-    int m_firstNumber;
-    int m_secondNumber;
+    int m_integerNumber1;
+    int m_integerNumber2;
 
     // The simplest definition of the method is that the method is a part of
     // the class instance that works on its fields. We start from simple
     // example, that is not as silly as the whole class.
 
-    void showTwoNumbers() {
-	System.out.print("TwoNumbers: (" + m_firstNumber + ", " +
-			 m_secondNumber + ").");
+    void showTwoIntNumbers() {
+	System.out.print("TwoNumbers: (" + m_integerNumber1 + ", " +
+			 m_integerNumber2 + ").");
     }
 }
+
+
+
+
 
 class Main {
     public static void main(String[] args) {
 	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
 	TwoIntNumbers twoIntNumbersVar2 = new TwoIntNumbers();
 
-	twoIntNumbersVar1.m_firstNumber = 1;
-	twoIntNumbersVar1.m_secondNumber = 2;
+	twoIntNumbersVar1.m_integerNumber1 = 1;
+	twoIntNumbersVar1.m_integerNumber2 = 2;
 
-	twoIntNumbersVar2.m_firstNumber = 3;
-	twoIntNumbersVar2.m_secondNumber = 4;
+	twoIntNumbersVar2.m_integerNumber1 = 3;
+	twoIntNumbersVar2.m_integerNumber2 = 4;
 
 	System.out.println("Now we use the method showTwoNumbers() to " +
 			   "print values of the fields to the screen.");
 
 	System.out.print("twoNumbersVar1: ");
-	twoIntNumbersVar1.showTwoNumbers();
+	twoIntNumbersVar1.showTwoIntNumbers();
 
 	System.out.print("\ntwoNumbersVar2: ");
-	twoIntNumbersVar2.showTwoNumbers();
+	twoIntNumbersVar2.showTwoIntNumbers();
 
 	System.out.println("\n\nWe can see how methods can be useful.");
 
 	// We can see that the syntax of the calling method
-	// twoNumbersVar1.showTWoNumbers();
+	// twoNumbersVar1.showTwoNumbers();
 	// looks similar to "System.out.println()". We discussed what
 	// "System.out.println" means a long time ago and now we will try to
 	// tighten it together. The basic syntax for calling method of some

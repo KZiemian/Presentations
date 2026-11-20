@@ -1,18 +1,18 @@
 // After a mind bending journey into constructors, we can go back to more
 // basic methods.
 
-class TwoNumbers {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbers {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
-    TwoNumbers(int intValue1, int intValue2) {
-	m_intVar1 = intValue1;
-	m_intVar2 = intValue2;
+    TwoIntNumbers(int integerNumber1, int integerNumber2) {
+	m_integerNumber1 = integerNumber1;
+	m_integerNumber2 = integerNumber2;
     }
 
-    void showTwoNumbers() {
-	System.out.println("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
-			   ").");
+    void showTwoIntNumbers() {
+	System.out.println("TwoIntNumbers: (" + m_integerNumber1 + ", " +
+			   m_integerNumber2 + ").");
     }
 
     // Methods can return value. To define such method we first wrote
@@ -20,8 +20,8 @@ class TwoNumbers {
     // with types and names of parameters. As said before, these parentheses
     // can be empty, like in the example below.
 
-    int addYourTwoNumbers() {
-	return m_intVar1 + m_intVar2;
+    int addYourTwoIntNumbers() {
+	return m_integerNumber1 + m_integerNumber2;
 
 	// Keyword return is extremely important. It literally returns
 	// value written after it, to the one that called this method.
@@ -37,31 +37,33 @@ class TwoNumbers {
     // anything).
 
     void multiplyEachNumberByArgument(int multiplicationFactor) {
-	m_intVar1 *= multiplicationFactor;
-	m_intVar2 *= multiplicationFactor;
+	m_integerNumber1 *= multiplicationFactor;
+	m_integerNumber2 *= multiplicationFactor;
     }
 }
 
 class Main {
     public static void main(String[] args) {
-	TwoNumbers twoNumbersVar1 = new TwoNumbers(1, 2);
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers(1, 2);
 
 	// We can see how the method returns value.
 
-	System.out.print("twoNumbersVar1.addYourTwoNumbers() == " +
-			   twoNumbersVar1.addYourTwoNumbers() + ".\n\n");
+	System.out.print("twoNumbersVar1.addYourTwoIntNumbers() == " +
+			   twoIntNumbersVar1.addYourTwoIntNumbers() +
+			 ".\n\n");
 
 	System.out.print("Methods can change the state of the " +
 			 "object.\n\n");
 
-	System.out.print("twoNumbersVar1: ");
-	twoNumbersVar1.showTwoNumbers();
+	System.out.print("twoIntNumbersVar1: ");
+	twoIntNumbersVar1.showTwoIntNumbers();
 
-	System.out.println("twoNumberVar1.multiplyEachNumberByArgument(7);");
+	System.out.println("twoIntNumberVar1." +
+			   "multiplyEachNumberByArgument(7);");
 
-	twoNumbersVar1.multiplyEachNumberByArgument(7);
+	twoIntNumbersVar1.multiplyEachNumberByArgument(7);
 
-	System.out.print("twoNumbersVar1: ");
-	twoNumbersVar1.showTwoNumbers();
+	System.out.print("twoIntNumbersVar1: ");
+	twoIntNumbersVar1.showTwoIntNumbers();
     }
 }

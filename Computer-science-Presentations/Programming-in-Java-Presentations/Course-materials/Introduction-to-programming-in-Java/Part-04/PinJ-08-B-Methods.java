@@ -1,8 +1,8 @@
 // Silly, but simple.
 
-class TwoNumbers {
-    int m_intVar1;
-    int m_intVar2;
+class TwoIntNumbers {
+    int m_integerNumber1;
+    int m_integerNumber2;
 
     // We again and again see Java heritage from C++. We define method of
     // the instance of the class by writing first the type that it returns,
@@ -15,11 +15,15 @@ class TwoNumbers {
     // the type is "void" (emptiness, nothing). Type void is a bit awkward,
     // but very useful in Java.
 
-    void showNumbers() {
-	System.out.print("TwoNumbers: (" + m_intVar1 + ", " + m_intVar2 +
-			 ").");
+    void showTwoIntNumbers() {
+	System.out.print("TwoNumbers: (" + m_integerNumber1 + ", " +
+			 m_integerNumber2 + ").");
     }
 }
+
+
+
+
 
 class Main {
 
@@ -29,20 +33,20 @@ class Main {
     // These are, unfortunately, things that we will need to discuss later.
 
     public static void main(String[] args) {
-	TwoNumbers twoNumbersVar1 = new TwoNumbers();
-	TwoNumbers twoNumbersVar2 = new TwoNumbers();
+	TwoIntNumbers twoIntNumbersVar1 = new TwoIntNumbers();
+	TwoIntNumbers twoIntNumbersVar2 = new TwoIntNumbers();
 
-	twoNumbersVar1.m_intVar1 = 1;
-	twoNumbersVar1.m_intVar2 = 2;
+	twoIntNumbersVar1.m_integerNumber1 = 1;
+	twoIntNumbersVar1.m_integerNumber2 = 2;
 
-	twoNumbersVar2.m_intVar1 = 3;
-	twoNumbersVar2.m_intVar2 = 4;
+	twoIntNumbersVar2.m_integerNumber1 = 3;
+	twoIntNumbersVar2.m_integerNumber2 = 4;
 
 	System.out.print("twoNumbersVar1: ");
-	twoNumbersVar1.showNumbers();
+	twoIntNumbersVar1.showTwoIntNumbers();
 
 	System.out.print("\ntwoNumbersVar2: ");
-	twoNumbersVar2.showNumbers();
+	twoIntNumbersVar2.showTwoIntNumbers();
 
 	// The picture that we use to describe an instance of the class is
 	// that it is a box that has insides both its fields and methods.

@@ -16,10 +16,10 @@ import java.util.Scanner;
 class Main {
     public static void main(String[] args) {
 	int numberFromTheUser = 0;
-	Scanner scannerObject = new Scanner(System.in);
+	Scanner scanFromTheKeyboard = new Scanner(System.in);
 
 	System.out.print("Give us an integer number: ");
-	String userInput = scannerObject.nextLine();
+	String userInput = scanFromTheKeyboard.nextLine();
 
 	numberFromTheUser = Integer.parseInt(userInput);
 
